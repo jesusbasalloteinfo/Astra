@@ -1,19 +1,16 @@
 <div align="center">
-  <img src="assets/icona_astra.svg" alt="ASTRA Logo" width="200">
-  
-  <h1>ASTRA</h1>
-  
+  <img src="assets/icona_astra.svg" alt="ASTRA Logo" width="200">  
   <p>
     <strong>Automated Smart Telescope Remote Assistant</strong>
   </p>
   
   <p>
   <p>
-    <a href="www.gnu.org">
-      <img src="img.shields.io" alt="License: AGPL v3">
+    <a href="https://www.gnu.org/licenses/agpl-3.0">
+      <img src="https://img.shields.io/badge/License-AGPL_v3-orange.svg" alt="License: AGPL v3">
     </a>
     <img src="https://img.shields.io/badge/python-3.11+-blue.svg" alt="Python Version">
-    <img src="https://img.shields.io/badge/docker-ready-blue" alt="Docker">
+    <img src="https://img.shields.io/badge/docker-ready-green" alt="Docker">
   </p>
 </div>
 
