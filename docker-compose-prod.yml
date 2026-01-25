@@ -1,0 +1,8 @@
+services:
+  astra_ui:
+    build:
+      context: ./astra_ui
+      target: prod
+    ports:
+      - "4000:3000"
+    #No volumes, compiled inside image

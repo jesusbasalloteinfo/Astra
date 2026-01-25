@@ -1,0 +1,10 @@
+services:
+  astra_ui:
+    build:
+      context: ./astra_ui
+      target: dev
+    ports:
+      - "4000:5173"
+    volumes:
+      - ./astra_ui:/app
+      - /app/node_modules
