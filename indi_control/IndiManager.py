@@ -8,9 +8,9 @@ from common.INDIModels import *
 
 import re
 
-LOGGER=get_logger("INDIController")
+LOGGER=get_logger("IndiManager")
 
-class INDIClient(IPyClient):
+class IndiClient(IPyClient):
     """
     INDI Client Class to handle events
     """
@@ -91,29 +91,27 @@ class INDIClient(IPyClient):
                 payload=self.format_coordinates(event)
 
         elif event.eventtype == "Define":
-            # Handled in INDIController, no need to send them
+            # Handled in IndiManager, no need to send them
             return
 
         elif event.eventtype == "Delete":
-            # Handled in INDIController, no need to send them
+            # Handled in IndiManager, no need to send them
             return
         elif event.eventtype == "Busy":
-            # Handled in INDIController, no need to send them
+            # Handled in IndiManager, no need to send them
             return
 
         if payload:
             event_message=EventMessage(timestamp=event.timestamp, payload=payload)
             await self.send_event(event_message)
 
-# TODO: IMPROVE CALLBACK !!
-
-class INDIController:
+class IndiManager:
     """
-    Class to control an INDI client and server
+    Class to manage an INDI client and server
     """
 
     def __init__(self, host="localhost", port=7624, context_provider=None, event_callback=None):
-        self._client:INDIClient = INDIClient(host, port, context_provider, self.get_proxy_type, event_callback)
+        self._client:IndiClient = IndiClient(host, port, context_provider, self.get_proxy_type, event_callback)
         
         self._devices_proxy:dict[INDIDevice] = {}
 
