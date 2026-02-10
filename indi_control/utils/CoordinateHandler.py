@@ -8,7 +8,7 @@ import asyncio
 class CoordinateTypes(Enum):
     EQUATORIAL_J2000 = "EQUATORIAL_COORD" # Equatorial coordinats at J2000 frame (at 2000)
     EQUATORIAL_EOD = "EQUATORIAL_EOD_COORD" # Equatorial coordinates at Equinox of Date (at this moment)
-    ALTAZIMUTAL = "HORIZONTAL_COORD" # Altazimutal coordinates with the observer position and date
+    HORIZONTAL = "HORIZONTAL_COORD" # Horizontal coordinates with the observer position and date
 
     @classmethod
     def from_str(cls, value: str):
@@ -44,7 +44,7 @@ class CoordinateHandler:
         priority_types = [
             CoordinateTypes.EQUATORIAL_EOD,
             CoordinateTypes.EQUATORIAL_J2000,
-            CoordinateTypes.ALTAZIMUTAL
+            CoordinateTypes.HORIZONTAL
         ]
         self.converter_type = CoordinateTypes.EQUATORIAL_J2000
         
@@ -73,7 +73,7 @@ class CoordinateHandler:
         return self.converter_type.value
     
     @staticmethod
-    def _convert_coord(time:Time, coord:tuple[float, float], location_in:tuple[float, float]|None, 
+    def convert_coord(time:Time, coord:tuple[float, float], location_in:tuple[float, float]|None, 
                        convert_from: CoordinateTypes, convert_to: CoordinateTypes):
         """
         Convert coordinates between different systems
@@ -82,8 +82,8 @@ class CoordinateHandler:
         coord_1, coord_2 = coord
         lat, lon = location_in if location_in is not None else (None, None)
         if (lat is None or lon is None) and \
-            (convert_from == CoordinateTypes.ALTAZIMUTAL or convert_to == CoordinateTypes.ALTAZIMUTAL):
-            raise ValueError("Latitude and longitude needed for ALTAZ conversions")
+            (convert_from == CoordinateTypes.HORIZONTAL or convert_to == CoordinateTypes.HORIZONTAL):
+            raise ValueError("Latitude and longitude needed for Horizontal conversions")
 
         location = None   
         coord = None     
@@ -103,7 +103,7 @@ class CoordinateHandler:
                     dec=coord_2 * u.deg,
                     frame=FK5(equinox=time)
                 )
-            else:  # ALTAZ
+            else:  # Horizontal
                 coord = SkyCoord(
                     alt=coord_1 * u.deg,
                     az=coord_2 * u.deg,
@@ -129,9 +129,9 @@ class CoordinateHandler:
         """
         Convert coordinates between different systems
         """
-        result1, result2 = CoordinateHandler._convert_coord(time, coord, location, convert_from=convert_from, convert_to=self.converter_type)
+        result1, result2 = CoordinateHandler.convert_coord(time, coord, location, convert_from=convert_from, convert_to=self.converter_type)
         
-        if self.converter_type==CoordinateTypes.ALTAZIMUTAL:
+        if self.converter_type==CoordinateTypes.HORIZONTAL:
             return {"ALT": result1,"AZ":result2}
         else:
             return {"RA": result1, "DEC": result2}
@@ -141,14 +141,14 @@ class CoordinateHandler:
         """
         Convert coordinates between different systems
         """
-        if self.converter_type==CoordinateTypes.ALTAZIMUTAL:
+        if self.converter_type==CoordinateTypes.HORIZONTAL:
             coords = map(float, (coord["ALT"], coord["AZ"]))
         else:
             coords = map(float, (coord["RA"], coord["DEC"]))
         
-        result1, result2 = CoordinateHandler._convert_coord(time, coords, location, convert_to=convert_to, convert_from=self.converter_type)
+        result1, result2 = CoordinateHandler.convert_coord(time, coords, location, convert_to=convert_to, convert_from=self.converter_type)
 
-        if convert_to==CoordinateTypes.ALTAZIMUTAL:
+        if convert_to==CoordinateTypes.HORIZONTAL:
             return {"ALT": result1,"AZ":result2}
         else:
             return {"RA": result1, "DEC": result2}

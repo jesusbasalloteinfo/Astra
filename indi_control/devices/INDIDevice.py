@@ -27,13 +27,11 @@ class INDIDevice:
     
     async def connect(self):
         """Connect the device"""
-        if not self.is_connected():
-            await self._client.send_newVector(self.name, "CONNECTION", members={"CONNECT": "On", "DISCONNECT": "Off"})
+        await self._client.send_newVector(self.name, "CONNECTION", members={"CONNECT": "On", "DISCONNECT": "Off"})
 
     async def disconnect(self):
         """Disconnect the device"""
-        if self.is_connected():
-            await self._client.send_newVector(self.name, "CONNECTION", members={"CONNECT": "Off", "DISCONNECT": "On"})
+        await self._client.send_newVector(self.name, "CONNECTION", members={"CONNECT": "Off", "DISCONNECT": "On"})
             
 
     def __repr__(self):

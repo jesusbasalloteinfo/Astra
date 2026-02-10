@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import json
 import logging
@@ -37,7 +38,7 @@ class SmartFormatter(logging.Formatter):
         else:
             if has_extra:
                 if isinstance(full_data, (dict, list)):
-                    formatted_data = json.dumps(full_data, indent=4, ensure_ascii=False)
+                    formatted_data = json.dumps(full_data, indent=4, ensure_ascii=False, default=lambda obj: obj.isoformat() if isinstance(obj, datetime) else str(obj))
                     margin = " " * 36
                     full_data = formatted_data.replace("\n", "\n" + margin)
 

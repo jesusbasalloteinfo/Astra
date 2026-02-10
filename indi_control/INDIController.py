@@ -4,6 +4,7 @@ from indipyclient import IPyClient
 from devices.INDIDeviceFactory import *
 from utils.CoordinateHandler import CoordinateHandler, CoordinateTypes
 from utils.logging import get_logger
+from common.INDIModels import *
 
 import re
 
@@ -14,63 +15,80 @@ class INDIClient(IPyClient):
     INDI Client Class to handle events
     """
 
-    def __init__(self, host, port, event_callback):
+    def __init__(self, host:str, port:int, context_provider:callable, device_type_provider:callable, send_event:callable):
         super().__init__(host=host, port=port)
-        self.event_callback = event_callback
+        self.get_context = context_provider
+        self.get_device_type = device_type_provider
+        self.send_event = send_event
 
         # Parses lines starting with "[LEVEL] Message" format.
         # Group 1: Log Category | Group 2: Remaining message text
-        self.tag_re = re.compile(r'^\[(INFO|WARNING|ERROR|DEBUG)\]\s*(.*)', re.IGNORECASE)
+        self.message_regex = re.compile(r'^\[(INFO|WARNING|ERROR|DEBUG)\]\s*(.*)', re.IGNORECASE)
+    
+    def parse_message_level(self, raw_msg:str) -> tuple[str, str]:
+        """Parse the level and message of the raw message with format [LEVEL] Message"""
+        match = self.message_regex.match(raw_msg)
+        if match:
+            level = match.group(1).upper()
+            clean_msg = match.group(2)
+        else:
+            level = "INFO"
+            clean_msg = raw_msg
+        return level, clean_msg
 
-    def format_position_messages(self, event):
-        
-        data = {"RA": event.vector["RA"], "DEC": event.vector["DEC"]}
+    def format_coordinates(self, event):
+
+        """ Formats and converts the coordinates to a message """
+
+        data = tuple(map(float, (event.vector.get("RA", "ALT"), event.vector.get("DEC", "AZ"))))
         time=event.timestamp
-        handler=CoordinateHandler()
-        if event.vectorname == CoordinateTypes.ALTAZIMUTAL.value:
-            # TODO: Coordinates missing!!
-            data = handler.convert_from(time, map(float, (event.vector["ALT"], event.vector["AZ"])), (), CoordinateTypes.ALTAZIMUTAL)
+        location, _ = self.get_context()
+        orig_type=CoordinateTypes.from_str(event.vectorname)
 
-        elif event.vectorname == CoordinateTypes.EQUATORIAL_EOD.value:
-            data = handler.convert_from(time, map(float, (event.vector["RA"], event.vector["DEC"])), None, convert_from=CoordinateTypes.EQUATORIAL_EOD)
-        
-        return {"ra": data["RA"], "dec": data["DEC"]}
+        eq_j2000_ra, eq_j2000_dec =CoordinateHandler.convert_coord(time, data, location, convert_from=orig_type, convert_to=CoordinateTypes.EQUATORIAL_J2000)
+        eq_eod_ra, eq_eod_dec=CoordinateHandler.convert_coord(time, data, location, convert_from=orig_type, convert_to=CoordinateTypes.EQUATORIAL_EOD)
+        horiz_alt, horiz_az=CoordinateHandler.convert_coord(time, data, location, convert_from=orig_type, convert_to=CoordinateTypes.HORIZONTAL)
+
+        msg_eq_j2000=EquatorialCoordModel(ra=eq_j2000_ra, dec=eq_j2000_dec)
+        msg_eq_eod=EquatorialCoordModel(ra=eq_eod_ra, dec=eq_eod_dec)
+        msg_horiz=HorizontalCoordModel(alt=horiz_alt, az=horiz_az)
+
+        data=CoordEventData(equatorial_j2000=msg_eq_j2000, equatorial_eod=msg_eq_eod, horizontal=msg_horiz)
+        return CoordEvent(device=event.devicename, data=data)
 
     async def rxevent(self, event):
+        """
+        Process an event from INDI
+        """
+        payload=None
         if event.eventtype == "Message":
-            raw_msg = event.message
-            match = self.tag_re.match(raw_msg)
-            
-            if match:
-                level = match.group(1).upper()
-                clean_msg = match.group(2)
-            else:
-                level = "INFO"  # Default level
-                clean_msg = raw_msg
+            level, content=self.parse_message_level(event.message)
+            data=MessageEventData(level=level, content=content)
+            device=event.devicename if event.devicename else "indi"
+            device_type= await self.get_device_type(device)
+            device_type="indi" if not device_type else device_type.value
 
-            await self.event_callback("LOG", {
-                "level": level, 
-                "msg": clean_msg, 
-                "device": event.devicename
-            })
-        
+            payload=MessageEvent(device=device, device_type=device_type, data=data)
+
         elif event.eventtype == "Set":
             if event.vectorname in CoordinateTypes.list_values():
-                rta=self.format_position_messages(event)
-                await self.event_callback("COORD_UPDATE", rta)
+                # Coordinate UPDATE
+                payload=self.format_coordinates(event)
 
         elif event.eventtype == "Define":
             # Handled in INDIController, no need to send them
-            pass
+            return
 
         elif event.eventtype == "Delete":
             # Handled in INDIController, no need to send them
-            pass
+            return
         elif event.eventtype == "Busy":
             # Handled in INDIController, no need to send them
-            pass
-        await super().rxevent(event)
+            return
 
+        if payload:
+            event_message=EventMessage(timestamp=event.timestamp, payload=payload)
+            await self.send_event(event_message)
 
 # TODO: IMPROVE CALLBACK !!
 
@@ -79,8 +97,8 @@ class INDIController:
     Class to control an INDI client and server
     """
 
-    def __init__(self, host="localhost", port=7624, event_callback=None):
-        self._client:INDIClient = INDIClient(host, port, event_callback)
+    def __init__(self, host="localhost", port=7624, context_provider=None, event_callback=None):
+        self._client:INDIClient = INDIClient(host, port, context_provider, self.get_proxy_type, event_callback)
         
         self._devices_proxy:dict[INDIDevice] = {}
 
@@ -160,6 +178,18 @@ class INDIController:
             raise ValueError(f"Device {device_name} not found!")
         return self._devices_proxy.get(device_name)
     
+    async def get_proxy_type(self, device_name: str) -> INDIDeviceType | None:
+        """
+        Get the type of a device by its name, returns None if not found
+        """
+        try:
+            if device_name=="indi":
+                return None
+            proxy = await self.get_proxy(device_name)
+            return proxy.type
+        except Exception as e:
+            LOGGER.error(f"Error getting device type for {device_name}", details=e)
+            return None
 
     async def get_telescope(self, telescope_name) -> Telescope:
         """Helper to get the first available telescope"""
