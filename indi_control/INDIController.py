@@ -45,16 +45,31 @@ class INDIClient(IPyClient):
         location, _ = self.get_context()
         orig_type=CoordinateTypes.from_str(event.vectorname)
 
-        eq_j2000_ra, eq_j2000_dec =CoordinateHandler.convert_coord(time, data, location, convert_from=orig_type, convert_to=CoordinateTypes.EQUATORIAL_J2000)
-        eq_eod_ra, eq_eod_dec=CoordinateHandler.convert_coord(time, data, location, convert_from=orig_type, convert_to=CoordinateTypes.EQUATORIAL_EOD)
-        horiz_alt, horiz_az=CoordinateHandler.convert_coord(time, data, location, convert_from=orig_type, convert_to=CoordinateTypes.HORIZONTAL)
+        conversions = {}
+        
+        # Map of types and Pydantic models
+        models = {
+            CoordinateTypes.EQUATORIAL_J2000: EquatorialCoordModel,
+            CoordinateTypes.EQUATORIAL_EOD: EquatorialCoordModel,
+            CoordinateTypes.HORIZONTAL: HorizontalCoordModel
+        }
 
-        msg_eq_j2000=EquatorialCoordModel(ra=eq_j2000_ra, dec=eq_j2000_dec)
-        msg_eq_eod=EquatorialCoordModel(ra=eq_eod_ra, dec=eq_eod_dec)
-        msg_horiz=HorizontalCoordModel(alt=horiz_alt, az=horiz_az)
+        for convert_type, model_class in models.items():
+            converted = CoordinateHandler.convert_coord(
+                time, data, location, convert_from=orig_type, convert_to=convert_type
+            )
+            # Builds the objects with the properties names
+            props = dict(zip(convert_type.get_properties(), converted))
+            conversions[convert_type.value] = model_class(**props)
 
-        data=CoordEventData(equatorial_j2000=msg_eq_j2000, equatorial_eod=msg_eq_eod, horizontal=msg_horiz)
-        return CoordEvent(device=event.devicename, data=data)
+        # Final object
+        data_event = CoordEventData(
+            equatorial_j2000=conversions[CoordinateTypes.EQUATORIAL_J2000.value],
+            equatorial_eod=conversions[CoordinateTypes.EQUATORIAL_EOD.value],
+            horizontal=conversions[CoordinateTypes.HORIZONTAL.value]
+        )
+        
+        return CoordEvent(device=event.devicename, data=data_event)
 
     async def rxevent(self, event):
         """

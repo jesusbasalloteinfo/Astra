@@ -22,6 +22,17 @@ class CoordinateTypes(Enum):
         """Get the device value"""
         return self.value
     
+    def get_properties(self) -> tuple[str, str]:
+        properties=("ra", "dec")
+        if self == CoordinateTypes.HORIZONTAL:
+            properties=("alt", "az")
+        return properties
+    
+    @classmethod
+    def list(cls):
+        """Returns a list with the enum"""
+        return [item for item in cls]
+    
     @classmethod
     def list_values(cls):
         """Returns a list with the enum values"""
