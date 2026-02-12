@@ -120,7 +120,6 @@ class IndiManager:
         """Start the async loop of the client"""
         LOGGER.info(f"Starting INDI Client...")
         self._client_task = asyncio.create_task(self._client.asyncrun())
-        # return asyncio.create_task(self._client.asyncrun())
     
     async def stop(self):
         """Stop the INDI client"""
@@ -134,11 +133,7 @@ class IndiManager:
                 await self._client_task
             except asyncio.CancelledError:
                 LOGGER.info("INDI Client task cancelled successfully.")
-        
-        # Opcional: Si tu clase IPyClient tiene un método disconnect() explícito, llámalo aquí
-        # if hasattr(self._client, 'disconnect'):
-        #     self._client.disconnect()
-    
+
     async def _probe_device(self, device_name):
         """
         Connect the device for a moment to read its properties and create a proxy object
@@ -171,7 +166,7 @@ class IndiManager:
         for name in to_remove:
             del self._devices_proxy[name]
         
-        # Check existing Generic devicesz
+        # Check existing Generic devices
         for name, proxy in list(self._devices_proxy.items()):
             if proxy.type == INDIDeviceType.GENERIC:
                 LOGGER.debug(f"Added generic device to scan queue: {name}")
@@ -188,6 +183,26 @@ class IndiManager:
                 self._devices_proxy[proxy.name] = proxy
                 LOGGER.debug(f"Registered device: {proxy}")
 
+    async def _get_proxy(self, device_name: str) -> INDIDevice:
+        """Return the proxy object"""
+        await self._sync_proxies()
+        if device_name not in self._devices_proxy:
+            raise ValueError(f"Device {device_name} not found!")
+        return self._devices_proxy.get(device_name)
+    
+    async def get_proxy_type(self, device_name: str) -> INDIDeviceType | None:
+        """
+        Get the type of a device by its name, returns None if not found
+        """
+        try:
+            if device_name=="indi":
+                return None
+            proxy = await self._get_proxy(device_name)
+            return proxy.type
+        except Exception as e:
+            LOGGER.error(f"Error getting device type for {device_name}", details=e)
+            return None
+
 
     async def get_devices(self)->dict[list]:
         """
@@ -203,32 +218,17 @@ class IndiManager:
             ret[category_key].append(proxy.name)
 
         return ret
-    
-    async def get_proxy(self, device_name: str) -> INDIDevice:
-        """Return the proxy object"""
-        await self._sync_proxies()
-        if device_name not in self._devices_proxy:
-            raise ValueError(f"Device {device_name} not found!")
-        return self._devices_proxy.get(device_name)
-    
-    async def get_proxy_type(self, device_name: str) -> INDIDeviceType | None:
-        """
-        Get the type of a device by its name, returns None if not found
-        """
-        try:
-            if device_name=="indi":
-                return None
-            proxy = await self.get_proxy(device_name)
-            return proxy.type
-        except Exception as e:
-            LOGGER.error(f"Error getting device type for {device_name}", details=e)
-            return None
+        
+    async def connect_device(self, device_name:str) -> INDIDevice:
+        """ Connect the device and return it"""
+        device = await self._get_proxy(device_name)
+        await device.connect()
+        return device
 
-    async def get_telescope(self, telescope_name) -> Telescope:
-        """Helper to get the first available telescope"""
-        return await self.get_proxy(telescope_name)
-    
-        # TODO: PENDING IF DELETED
+    async def disconnect_device(self, device_name:str):
+        """ Disconnect the device """
+        device = await self._get_proxy(device_name)
+        await device.disconnect()
 
 
 
