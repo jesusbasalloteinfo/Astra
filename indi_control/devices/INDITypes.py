@@ -5,7 +5,7 @@ class INDIDeviceType(Enum):
     CAMERA = "camera"
     FOCUSER = "focuser"
     FILTER_WHEEL = "filter_wheel"
-    GENERIC = "other"
+    GENERIC = "indi"
 
     @classmethod
     def from_str(cls, value: str):

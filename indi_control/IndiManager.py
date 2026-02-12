@@ -81,7 +81,7 @@ class IndiClient(IPyClient):
             data=MessageEventData(level=level, content=content)
             device=event.devicename if event.devicename else "indi"
             device_type= await self.get_device_type(device)
-            device_type="indi" if not device_type else device_type.value
+            device_type="indi" if not device_type or device_type else device_type.value
 
             payload=MessageEvent(device=device, device_type=device_type, data=data)
 
@@ -114,10 +114,30 @@ class IndiManager:
         self._client:IndiClient = IndiClient(host, port, context_provider, self.get_proxy_type, event_callback)
         
         self._devices_proxy:dict[INDIDevice] = {}
+        self._client_task = None
 
     async def start(self):
         """Start the async loop of the client"""
-        return asyncio.create_task(self._client.asyncrun())
+        LOGGER.info(f"Starting INDI Client...")
+        self._client_task = asyncio.create_task(self._client.asyncrun())
+        # return asyncio.create_task(self._client.asyncrun())
+    
+    async def stop(self):
+        """Stop the INDI client"""
+        if self._client_task and not self._client_task.done():
+            LOGGER.info("Stopping INDI Client...")
+            
+            self._client_task.cancel()
+            
+            try:
+                # Wait for cleanup
+                await self._client_task
+            except asyncio.CancelledError:
+                LOGGER.info("INDI Client task cancelled successfully.")
+        
+        # Opcional: Si tu clase IPyClient tiene un método disconnect() explícito, llámalo aquí
+        # if hasattr(self._client, 'disconnect'):
+        #     self._client.disconnect()
     
     async def _probe_device(self, device_name):
         """
