@@ -40,7 +40,7 @@ class IndiAPI:
     async def _notify_observers(self, pydantic_packet):
         """Updates a new event to all observers"""
         for callback in self._observers:
-            callback(pydantic_packet)
+            await callback(pydantic_packet)
 
     def subscribe(self, callback):
         """Allows to subscribe a component to the events"""
@@ -86,6 +86,10 @@ class IndiAPI:
                              mode:Literal["SLEW", "TRACK", "SYNC"]="TRACK"):
         telescope=await self._connect_telescope(telescope_name)
         await telescope.slew(input_type, mode, coord, self._location, self._time.now)
+
+    async def abort_slew_telescope(self, telescope_name:str):
+        telescope=await self._connect_telescope(telescope_name)
+        await telescope.abort_motion()
 
     def update_location(self, lat: float, lon: float):
         """Update location and notify observers"""

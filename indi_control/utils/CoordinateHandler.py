@@ -74,7 +74,7 @@ class CoordinateHandler:
         """
         return self.converter_type
     
-    def get_slew_command(self) -> str:
+    def get_converter_type_value(self) -> str:
         """
         Get the appropriate slew command name for the device
         

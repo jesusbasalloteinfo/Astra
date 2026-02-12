@@ -1,3 +1,4 @@
+import asyncio
 from enum import Enum
 import json
 from typing import Literal
@@ -20,11 +21,11 @@ class Telescope(INDIDevice):
                      location:tuple[float, float], 
                      time:datetime)-> dict:
         """Gets the position of the telescope in diferent coordinate systems"""
-        slew_command = self._converter.get_slew_command()
-        vector = self._device_data.get(slew_command)
+        command_type = self._converter.get_converter_type()
+        vector = self._device_data.get(command_type.value)
 
         if not vector:
-            raise ValueError(f"No data available for command: {slew_command}")
+            raise ValueError(f"No data available for command: {command_type}")
         
         data = tuple(map(float, (vector.get("RA", "ALT"), vector.get("DEC", "AZ"))))
 
@@ -35,7 +36,7 @@ class Telescope(INDIDevice):
                 (CoordinateTypes.HORIZONTAL, 'horizontal')
             ]
         for coord_type, key in coordinate_types:
-            converted = CoordinateHandler.convert_coord(time, data, location, convert_from=slew_command, convert_to=coord_type)
+            converted = CoordinateHandler.convert_coord(time, data, location, convert_from=command_type, convert_to=coord_type)
             keys = coord_type.get_properties()
 
             # Coordinates with their properties
@@ -61,6 +62,22 @@ class Telescope(INDIDevice):
         members=self._converter.convert_from(time, coord, location, input_type)
         LOGGER.info(f"Slewing to {coord} in {input_type} to {self._converter.get_converter_type()}", details=members)
         # Send movement command
-        await self._client.send_newVector(self.name, self._converter.get_slew_command(), members=members)
+        await self._client.send_newVector(self.name, self._converter.get_converter_type_value(), members=members)
+
+    async def abort_motion(self):
+        """Cancel movement"""
+        
+        vector = self._device_data["TELESCOPE_ABORT_MOTION"]
+        property = list(vector.keys())[0]
+        await self._client.send_newVector(self.name, "TELESCOPE_ABORT_MOTION", members={property: "On"})
+
+        vector = self._device_data["TELESCOPE_ABORT_MOTION"]
+        while vector.state == "Busy":
+            await asyncio.sleep(0.2)
+            vector = self._device_data["TELESCOPE_ABORT_MOTION"]
+
+        
+        if vector.state != "Ok":
+            raise ValueError(f"Unexpected state at abort for {self.name}: {vector.state}")
 
     
