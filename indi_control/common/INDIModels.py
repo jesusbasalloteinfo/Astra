@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
-from typing import Annotated, Literal, Union, Dict, Any
+from typing import Annotated, Literal, Optional, Union, Dict, Any
 from datetime import datetime
-
+from utils.CoordinateHandler import CoordinateTypes
 # --- Coord Data ---
 
 class EquatorialCoordModel(BaseModel):
@@ -31,7 +31,7 @@ class MessageEventData(BaseModel):
 # --- Event Payload ---
 
 class CoordEvent(BaseModel):
-    """Common message for all events"""
+    """Coord message"""
     event_type: Literal["coord"] = "coord"
     device: str
     device_type: Literal["telescope"] = "telescope"
@@ -51,19 +51,65 @@ EventPayloadUnion = Annotated[
     Field(discriminator="event_type")
 ]
 
-# --- Messages ---
+# ------------------------------------------------------------------------------------
+# COMMAND TYPES
+# ------------------------------------------------------------------------------------
 
+# --- Command Data ---
+class SlewCommandData(BaseModel):
+    """Parámetros específicos para mover el telescopio"""
+    coord: tuple[float, float]
+    input_type: CoordinateTypes = CoordinateTypes.EQUATORIAL_J2000 
+    mode: Literal["SLEW", "TRACK", "SYNC"] = "TRACK"
+
+    class Config:
+        # String-capable for coordinate types
+        use_enum_values = True 
+
+# --- Command Payload ---
+class SlewCommand(BaseModel):
+    action: Literal["slew"] = "slew"
+    lane: Literal["MOVEMENT"] = Field("MOVEMENT", frozen=True)
+    device: str
+    data: SlewCommandData
+
+class AbortCommand(BaseModel):
+    action: Literal["abort"] = "abort"
+    lane: Literal["MOVEMENT"] = Field("MOVEMENT", frozen=True)
+    device: str
+
+CommandPayloadUnion = Annotated[
+    Union[SlewCommand, AbortCommand], 
+    Field(discriminator="action")
+]
+
+
+# ************************************************************************************
+# GLOBAL MESSAGE TYPES
+# ************************************************************************************
 
 class EventMessage(BaseModel):
     """Event type message"""
-    type: Literal["event"] = "event"            
+    type: Literal["EVENT"] = Field("EVENT", frozen=True)
     timestamp: datetime
     payload: EventPayloadUnion         
 
+class CommandMessage(BaseModel):
+    type: Literal["COMMAND"] = Field("COMMAND", frozen=True)
+    req_id: str
+    payload: CommandPayloadUnion
 
-# TODO: COMMAND and RESPONSE types
+
+class ResponseMessage(BaseModel):
+    type: Literal["RESPONSE"] = Field("RESPONSE", frozen=True)
+    req_id: str
+    status: Literal["OK", "ERROR", "CANCELLED"]
+    reason: Optional[str] = None
+    data: Optional[Dict[str, Any]] = None
+
+
 
 GlobalMessage = Annotated[
-    Union[EventMessage],
+    Union[EventMessage, CommandMessage, ResponseMessage],
     Field(discriminator="type")
 ]

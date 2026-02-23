@@ -1,26 +1,22 @@
 import asyncio
 from typing import Literal
+import contextlib
+from datetime import datetime, timezone
 from IndiManager import IndiManager
 from utils.Clock import Clock
-from datetime import datetime, timezone
 from devices.Telescope import Telescope
 from utils.CoordinateHandler import CoordinateTypes
+from utils.logging import get_logger
+from common.INDIModels import *
 
+logger = get_logger("IndiAPI")
 
 class IndiAPI:
     """
     Class with state management and high-level methods to control the INDI devices
     """
-    _instance = None
-
-    def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super(IndiAPI, cls).__new__(cls)
-            cls._instance._initialized = False
-        return cls._instance
 
     def __init__(self, host="localhost", port=7624):
-        if self._initialized: return 
         
         self._observers = []
 
@@ -32,8 +28,8 @@ class IndiAPI:
         )
         self._location:tuple[float, float]=(0,0)
         self._time:Clock=Clock()
-        self._initialized = True
-    
+
+
     def _get_context_logic(self) -> tuple[tuple, callable]:
         return self._location, self._time.now
 
@@ -60,7 +56,10 @@ class IndiAPI:
     async def stop_indi_manager(self):
         "Stops the INDI manager"
         await self._manager.stop()
+
+    # ==========================================
     # Device and API logic
+    # ==========================================
 
     async def _connect_telescope(self, telescope_name:str) -> Telescope:
         """ Auxiliar method to get and connect a telescope """
@@ -86,6 +85,9 @@ class IndiAPI:
                              mode:Literal["SLEW", "TRACK", "SYNC"]="TRACK"):
         telescope=await self._connect_telescope(telescope_name)
         await telescope.slew(input_type, mode, coord, self._location, self._time.now)
+        
+        while telescope.is_slewing():
+            await asyncio.sleep(0.2)
 
     async def abort_slew_telescope(self, telescope_name:str):
         telescope=await self._connect_telescope(telescope_name)

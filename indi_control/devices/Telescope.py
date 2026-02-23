@@ -64,6 +64,17 @@ class Telescope(INDIDevice):
         # Send movement command
         await self._client.send_newVector(self.name, self._converter.get_converter_type_value(), members=members)
 
+    def is_slewing(self):
+        """Check if the telescope is moving"""
+        command_type = self._converter.get_converter_type()
+        vector = self._device_data.get(command_type.value)
+
+        if not vector:
+            raise ValueError(f"No data available for command: {command_type}")
+        
+        return True if vector.state == "Busy" else False
+        
+
     async def abort_motion(self):
         """Cancel movement"""
         
