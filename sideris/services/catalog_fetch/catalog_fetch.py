@@ -2,9 +2,12 @@ import asyncio
 from concurrent.futures import ProcessPoolExecutor
 import json
 import argparse
+import pickle
+
+from core.logging import get_logger
 from .fetch_utils.utils import *
 from .fetch_utils.registry import CatalogRegistry
-from models.CatalogSchemas import AstronomicalCatalog, CatalogData, Star, DeepSky
+from models.CatalogSchemas import AstronomicalCatalog, CatalogData, Constellation, Star, DeepSky
 
 from .fetch_utils.providers.hipparcos import HipparcosProvider
 from .fetch_utils.providers.messier import MessierProvider
@@ -110,10 +113,10 @@ def generate_catalog(
     dist_threshold: float = 2.5,
     debug:bool = False
 ):
-    print("Starting Astronomical Catalog Generation Pipeline...")
+    get_logger("CatalogFetch").debug("Starting Astronomical Catalog Generation Pipeline...")
     
     # 1. Parse FAB
-    print("\n--- 1. Parsing Constellations (FAB) ---")
+    get_logger("CatalogFetch").debug("--- 1. Parsing Constellations (FAB) ---")
     min_stars_set, constellations_data = ParseUtils.parse_fab_file(fab_input)
     
     if constellations_data:
@@ -131,10 +134,10 @@ def generate_catalog(
     deep_sky = []
 
     # 3. Execute Providers
-    print("\n--- 2. Fetching and Processing Catalogs ---")
+    get_logger("CatalogFetch").debug("\n--- 2. Fetching and Processing Catalogs ---")
     for provider in registry.get_providers():
         provider_name = provider.__class__.__name__
-        print(f"\n[{provider_name}] starting...")
+        get_logger("CatalogFetch").debug(f"[{provider_name}] starting...")
         try:
             results = provider.run()
 
@@ -152,12 +155,12 @@ def generate_catalog(
                 else:
                     raise TypeError(f"Unknown type {type(results[0])}")
 
-            print(f"[{provider_name}] completed successfully.")
+            get_logger("CatalogFetch").debug(f"[{provider_name}] completed successfully.")
         except Exception as e:
-            print(f"[{provider_name}] failed: {e}")
+            get_logger("CatalogFetch").debug(f"[{provider_name}] failed: {e}")
 
     # 4. Intelligent Cross Matching (NGC/IC vs Messier)
-    print("\n--- 3. Merging Messier and NGC/IC catalogs ---")
+    get_logger("CatalogFetch").debug("\n--- 3. Merging Messier and NGC/IC catalogs ---")
     final_deep_sky=merge_messier_ngc(deep_sky, dist_threshold)
     
     # Clean unique names and recalculate default_name with proper ranking
@@ -176,7 +179,7 @@ def generate_catalog(
 
 
     # 5. Generate Metadata
-    print("\n--- 4. Generating Metadata ---")
+    get_logger("CatalogFetch").debug("\n--- 4. Generating Metadata ---")
     metadata = MetadataUtils.generate_metadata(stars, final_deep_sky)
     
     catalog_data = CatalogData(stars=stars, deep_sky=final_deep_sky)
@@ -186,42 +189,49 @@ def generate_catalog(
         data=catalog_data
     )
         
-    # 6. Export to JSON
-    print(f"\n--- 5. Exporting data to {output_file} ---")
+    # 6. Export to JSON/Pickle
+    get_logger("CatalogFetch").debug(f"--- 5. Exporting data to {output_file} ---")
     with open(output_file, "w", encoding="utf-8") as f:
         dump_func = getattr(final_catalog, 'model_dump', final_catalog.model_dump())
         json.dump(dump_func(), f, ensure_ascii=False, indent=4)
 
+
+    # 7. Export to PICKLE (fast loading)
+    pickle_file = output_file.replace(".json", ".pkl")
+    get_logger("CatalogFetch").debug(f"--- 6. Exporting data to Pickle: {pickle_file} ---")
+    with open(pickle_file, "wb") as f:
+        pickle.dump(final_catalog, f)
+
     if debug:
         audit_catalog(stars, final_deep_sky)
         
-    print("\nProcess completed successfully!")
+    get_logger("CatalogFetch").debug("Process completed successfully!")
 
     return final_catalog, constellations_data
 
 async def get_catalog(
-    output_file: str = "data/catalog.json",
+    output_file: str = "data/catalog.pkl",
     fab_input: str = "data/constellationship.fab",
     fab_output: str = "data/constellationship.json",
     mag_limit: float = 6.0,
     dist_threshold: float = 2.5,
-    debug:bool = False
 ) -> tuple[AstronomicalCatalog, ConstellationCatalog]:
-    if not os.path.isfile(output_file) or not os.path.isfile(fab_output):        
-        print("Catalogs not found! Generating...")
-        loop = asyncio.get_running_loop()
+    loop = asyncio.get_running_loop()
+    if not os.path.isfile(output_file) or not os.path.isfile(fab_output):     
+        get_logger("CatalogFetch").debug("Catalogs not found! Generating...")
         with ProcessPoolExecutor() as pool:
-            catalog, constellations = await loop.run_in_executor(pool, generate_catalog, output_file, fab_input, fab_output, mag_limit, dist_threshold, debug)
+            catalog, constellations = await loop.run_in_executor(pool, generate_catalog, output_file, fab_input, fab_output, mag_limit, dist_threshold, False)
         return catalog, constellations
     else:
-        print("Found catalogs!")
-        with open(output_file, 'r', encoding='utf-8') as f:
-            data=json.load(f)
-            catalog=AstronomicalCatalog.model_validate(data)
+        get_logger("CatalogFetch").debug("Loading from Pickle...")
+        with open(output_file, 'rb') as f:
+            catalog = pickle.load(f)
         with open(fab_output, 'r', encoding='utf-8') as f:
             data=json.load(f)
             constellations=ConstellationCatalog.model_validate(data)
+        get_logger("CatalogFetch").debug("Loaded from Pickle successfully!")
         return catalog, constellations
+        
 
     
 
@@ -231,7 +241,7 @@ if __name__ == "__main__":
     parser.add_argument("--fab-input", type=str, default="data/constellationship.fab",
                         help="Path to the .fab file with constellation data.")
     parser.add_argument("--fab-output", type=str, default="data/constellationship.json",
-                        help="Output path for saving the constellations in JSON.")
+                        help="Output path for saving the constsellations in JSON.")
     parser.add_argument("--mag-limit", type=float, default=6.0,
                         help="Minimum star magnitude.")
     parser.add_argument("--dist-threshold", type=float, default=2.5,

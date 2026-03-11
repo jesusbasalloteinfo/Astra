@@ -26,7 +26,7 @@ setup_global_logging()
 
 API_BASE_PATH="/api"
 
-CATALOG_FILE="data/catalog.json"
+CATALOG_FILE="data/catalog.pkl"
 
 CONSTELLATION_IN_FILE= "data/constellationship.fab"
 CONSTELLATION_OUT_FILE= "data/constellationship.json"

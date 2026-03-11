@@ -8,6 +8,7 @@ import astropy.units as u
 from typing import List, Tuple
 from services.astro_service.engines.BaseEngine import BaseEngine
 from models.ResponseSchemas import EphemerisMovementData, SyncPayload
+from core.logging import get_logger
 
 class SiderealEngine(BaseEngine):
     def __init__(self, catalog):
@@ -15,7 +16,7 @@ class SiderealEngine(BaseEngine):
         Starts the engine with the catalog data
         """
         super().__init__()
-        print("Starting Sidereal Engine...")
+        get_logger("SiderealEngine").debug("Starting Sidereal Engine...")
         ras, decs, pm_ras, pm_decs, self.ids = [], [], [], [], []
 
         # Extract Stars
@@ -46,7 +47,7 @@ class SiderealEngine(BaseEngine):
             frame='icrs',
             obstime=Time('J2000')
         )
-        print(f"Sidereal engine started: Loaded {len(self.ids)} objects.")
+        get_logger("SiderealEngine").info(f"Sidereal engine started: Loaded {len(self.ids)} objects.")
 
     def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0) -> SyncPayload:
         """

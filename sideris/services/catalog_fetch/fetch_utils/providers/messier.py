@@ -3,6 +3,7 @@ from ..utils import NamingUtils, ParseUtils
 from models.CatalogSchemas import DeepSky
 from astropy.coordinates import SkyCoord
 import astropy.units as u
+from core.logging import get_logger
 
 from ..config import SIMBAD_VOTABLE_FIELDS
 
@@ -19,7 +20,7 @@ class MessierProvider(BaseCatalogProvider):
 
     def fetch(self):
         """Run the fetching of data"""
-        print("Fetching Messier Catalog (Simbad)...")
+        get_logger("CatalogFetch").debug("Fetching Messier Catalog (Simbad)...")
         return self._query_simbad(object_list=self.objects, request_columns=self.simbad_fields)
 
     def clean(self, raw_data):

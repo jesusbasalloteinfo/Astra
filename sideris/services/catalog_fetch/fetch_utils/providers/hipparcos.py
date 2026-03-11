@@ -6,6 +6,8 @@ from models.CatalogSchemas import Star
 import numpy as np
 from astropy.coordinates import SkyCoord
 import astropy.units as u
+from core.logging import get_logger
+
 
 class HipparcosProvider(BaseCatalogProvider):
     def __init__(self, min_fetch_mag:float, min_stars_set: set):
@@ -26,12 +28,12 @@ class HipparcosProvider(BaseCatalogProvider):
 
     def fetch(self):
         """Run the fetching of data"""
-        print("Fetching Hipparcos Catalog...")
+        get_logger("CatalogFetch").debug("Fetching Hipparcos Catalog...")
         return self._query_vizieR(self.vizier_fields, self.catalog, row_limit=-1)
 
     def clean(self, raw_data):
         """Clean and validate fetched data"""
-        print(f"Cleaning {len(raw_data)} Hipparcos rows...")
+        get_logger("CatalogFetch").debug(f"Cleaning {len(raw_data)} Hipparcos rows...")
         valid_stars = {}
         # Debug counters
         n_bright = 0
@@ -79,18 +81,18 @@ class HipparcosProvider(BaseCatalogProvider):
                         "b_v": b_v,
                         'distance_ly': dist_ly
                     }
-        print(f"Found {len(valid_stars)} stars ({n_bright} bright / {n_req} required).")
+        get_logger("CatalogFetch").debug(f"Found {len(valid_stars)} stars ({n_bright} bright / {n_req} required).")
         if req_names and n_req<=10:
-            print(f"   ↳ Stars required and added: {', '.join(req_names)}")
+            get_logger("CatalogFetch").debug(f"   ↳ Stars required and added: {', '.join(req_names)}")
         return valid_stars
 
     def normalize(self, cleaned_data) -> list[Star]:
         """Enrich data by fetching Simbad star data"""
-        print(f"Querying Simbad for {len(cleaned_data)} stars...")
+        get_logger("CatalogFetch").debug(f"Querying Simbad for {len(cleaned_data)} stars...")
         s_table = self._query_simbad_batch(list(cleaned_data.keys()), self.simbad_fields, batch_size=1500)
         stars = []
         if s_table is not None:
-            print("Enriching stars with Simbad data...")
+            get_logger("CatalogFetch").debug("Enriching stars with Simbad data...")
             coords = SkyCoord(s_table['ra'], s_table['dec'], unit=(u.hourangle, u.deg))
             constellations = coords.get_constellation(short_name=True)
 

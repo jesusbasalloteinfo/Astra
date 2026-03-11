@@ -5,6 +5,8 @@ from models.CatalogSchemas import DeepSky
 import numpy as np
 from astropy.coordinates import SkyCoord
 import astropy.units as u
+from core.logging import get_logger
+
 
 class NGCProvider(BaseCatalogProvider):
     def __init__(self):
@@ -21,12 +23,12 @@ class NGCProvider(BaseCatalogProvider):
 
     def fetch(self):
         """Run the fetching of data"""
-        print("Fetching NGC/IC Catalog...")
+        get_logger("CatalogFetch").debug("Fetching NGC/IC Catalog...")
         return self._query_vizieR(self.vizier_fields, self.catalog, row_limit=-1)
 
     def clean(self, raw_data):
         """Clean and validate fetched data"""
-        print(f"Cleaning {len(raw_data)} NGC/IC rows...")
+        get_logger("CatalogFetch").debug(f"Cleaning {len(raw_data)} NGC/IC rows...")
         dso_temp = []
 
         # Transform the equatorial data to RA hours and DEC degrees + constellation calc
@@ -61,7 +63,7 @@ class NGCProvider(BaseCatalogProvider):
         names_for_simbad = sorted([obj["base_id"] for obj in cleaned_data])
         ngc_dict = {obj["base_id"]: obj for obj in cleaned_data}
         
-        print(f"Merging {len(names_for_simbad)} NGC/IC objects...")
+        get_logger("CatalogFetch").debug(f"Merging {len(names_for_simbad)} NGC/IC objects...")
         s_table = self._query_simbad_batch(names_for_simbad, SIMBAD_VOTABLE_FIELDS, batch_size=1500)
         
         consolidated_objects = {}

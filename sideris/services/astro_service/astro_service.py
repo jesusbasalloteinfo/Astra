@@ -42,6 +42,8 @@ class AstroService:
             self._catalog_index[star.id] = star
         for dso in self._sidereal_catalog.data.deep_sky:
             self._catalog_index[dso.id] = dso
+        
+        get_logger("AAAAAAA").info("paera")
 
     
     # Sidereal Object Handling
