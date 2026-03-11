@@ -35,7 +35,7 @@ class AstroService:
     
     async def _setup_catalog(self):
         self._sidereal_catalog, self._constellation_catalog = await get_catalog(self._sidereal_path, self._constellation_in_path, self._constellation_out_path)
-        self._sidereal_engine:SiderealEngine = SiderealEngine(self._sidereal_catalog)
+        self._sidereal_engine:SiderealEngine = SiderealEngine(self._sidereal_catalog, self._constellation_catalog)
 
         self._catalog_index = {}
         for star in self._sidereal_catalog.data.stars:
@@ -43,8 +43,6 @@ class AstroService:
         for dso in self._sidereal_catalog.data.deep_sky:
             self._catalog_index[dso.id] = dso
         
-        get_logger("AAAAAAA").info("paera")
-
     
     # Sidereal Object Handling
 
