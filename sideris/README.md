@@ -14,7 +14,7 @@ For the constellations, it uses the constellation data `constellationship.fab` f
 
 By default, fetches *HIP* catalog for stars and *Messier*, *NGC* and *IC* catalogs for DSO, along with some manual added objects not found on those catalogs that can be configured through `config.py`.
 
-I've defined a BaseProvider to allow new catalog fetching, although you may want to later merge the results with the other catalogs (inside `caatlog_fetch.py`)
+I've defined a BaseProvider to allow new catalog fetching, although you may want to later merge the results with the other catalogs (inside `catalog_fetch.py`)
 
 ## **Sideris API** (`sideris.py`)
 
