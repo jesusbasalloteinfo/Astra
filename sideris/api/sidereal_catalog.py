@@ -3,12 +3,26 @@ from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from services.astro_service.astro_service import AstroService
-from models.ResponseSchemas import SyncPayload, SiderealObjectDataResponse
+from models.ResponseSchemas import SyncPayload, SiderealObjectDataResponse, MetadataCatalogPayload
 
 async def get_astro_service() -> AstroService:
     return await AstroService.get_instance()
 
 router = APIRouter()
+
+@router.get("/metadata", response_model=MetadataCatalogPayload, summary="Get sidereal catalog metadata")
+async def get_metadata(service:AstroService=Depends(get_astro_service)):
+    """
+    Returns all sidereal catalog metadata
+    """
+    return service.get_sidereal_metadata()
+
+@router.get("/constellations", response_model=MetadataCatalogPayload, summary="Get constellations metadata")
+async def get_constellations(service:AstroService=Depends(get_astro_service)):
+    """
+    Returns all constellations metadata
+    """
+    return service.get_constellations_metadata()
 
 @router.get("/sync", response_model=SyncPayload, summary="Get star and DSO movement for a given time and place")
 def sync_sky(

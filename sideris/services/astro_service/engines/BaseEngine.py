@@ -10,12 +10,12 @@ from models.ResponseSchemas import SyncPayload
 
 class BaseEngine(ABC):
     
-    @abstractmethod
-    def get_metadata(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0):
-        """
-        Returns all the objects metadata for a time and location
-        """
-        pass
+    # @abstractmethod
+    # def get_metadata(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0):
+    #     """
+    #     Returns all the objects metadata for a time and location
+    #     """
+    #     pass
 
     @abstractmethod
     def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0) -> SyncPayload:

@@ -36,7 +36,7 @@ SiderealObjectDataResponse = Union[StarDataResponse, DSODataResponse]
 # Metadata
 # ===========================================================================================
 
-class UIObjectData(BaseModel):
+class SiderealObjectMetadata(BaseModel):
     id: str
     name: str
     type: str # "star", "galaxy", "nebula", etc.
@@ -52,14 +52,20 @@ class UIObjectData(BaseModel):
     spectral_type: Optional[str] = None
     size_arcmin: Optional[float] = None
 
-class UIConstellation(BaseModel):
+class SolarSistemObjectMetadata(BaseModel):
+    id: str
+    name: str
+    type: str # "planet", "moon"
+
+class ConstellationMetadata(BaseModel):
     abbr: str
     name: str
-    stars_ids: List[str] # TODO S'HA DE CONVERTIR DE HIP AL MEU SISTEMA D'ID!!!
+    stars_ids: List[str] 
     lines_indices: List[Tuple[int, int]] 
+
+ObjectMetadata = Union[SolarSistemObjectMetadata, SiderealObjectMetadata]
 
 class MetadataCatalogPayload(BaseModel):
     version: str = "1.0"
-    total_objects: int
-    constellations: List[UIConstellation]
-    sky_objects: Dict[str, UIObjectData] 
+    total: int
+    data: Union[Dict[str, ObjectMetadata], List[ConstellationMetadata]]
