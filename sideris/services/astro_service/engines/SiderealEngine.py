@@ -9,7 +9,6 @@ from typing import List, Tuple
 from services.astro_service.engines.BaseEngine import BaseEngine
 from models.CatalogSchemas import *
 from models.ResponseSchemas import EphemerisMovementData, SyncPayload
-from core.logging import get_logger
 
 class SiderealEngine(BaseEngine):
     def __init__(self, catalog:AstronomicalCatalog, constellations:ConstellationCatalog):
@@ -51,7 +50,8 @@ class SiderealEngine(BaseEngine):
         )
         get_logger("SiderealEngine").info(f"Sidereal engine started: Loaded {len(self.ids)} objects.")
     
-    def get_metadata(self, t0_dt, lat, lon, elev_m = 0):
+    def get_metadata(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0):
+        
         return None
 
     def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0) -> SyncPayload:

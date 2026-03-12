@@ -4,8 +4,7 @@ import numpy as np
 from typing import Tuple, Set, List, Dict, Any, Type
 from astropy.coordinates import SkyCoord
 import astropy.units as u
-from core.logging import get_logger
-from .config import IAU_CONSTELLATIONS, IMPORTANT_STAR_NAMES, OBJECT_TAGS, STAR_CATALOG_RANKING, DSO_CATALOG_RANKING
+from catalog_fetch.config import IAU_CONSTELLATIONS, IMPORTANT_STAR_NAMES, OBJECT_TAGS, STAR_CATALOG_RANKING, DSO_CATALOG_RANKING
 from models.CatalogSchemas import ConstellationCatalog, Metadata, Star, DeepSky
 
 class NamingUtils:
@@ -304,7 +303,7 @@ class ParseUtils:
                     
                     global_hip_ids.update(unique_stars)
 
-            get_logger("CatalogFetch").debug(f" -> .fab parsed: {len(global_hip_ids)} stars required for {len(constellations_data)} constellations.")
+            print(f" -> .fab parsed: {len(global_hip_ids)} stars required for {len(constellations_data)} constellations.")
             catalog = ConstellationCatalog(constellations=constellations_data)
 
         return global_hip_ids, catalog

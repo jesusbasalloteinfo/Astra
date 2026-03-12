@@ -1,10 +1,9 @@
-from .base import BaseCatalogProvider
-from ..config import VIP_STARS, VIP_DSO, SIMBAD_VOTABLE_FIELDS
-from ..utils import NamingUtils, ParseUtils
+from catalog_fetch.providers.base import BaseCatalogProvider
+from catalog_fetch.config import VIP_STARS, VIP_DSO, SIMBAD_VOTABLE_FIELDS
+from catalog_fetch.utils import NamingUtils, ParseUtils
 from models.CatalogSchemas import Star, DeepSky
 from astropy.coordinates import SkyCoord
 import astropy.units as u
-from core.logging import get_logger
 
 
 class ManualOverrideProvider(BaseCatalogProvider):
@@ -13,14 +12,14 @@ class ManualOverrideProvider(BaseCatalogProvider):
         return self.normalize((s_raw, d_raw))
 
     def fetch(self):
-        get_logger("CatalogFetch").debug("Fetching VIP manual objects (Simbad)...")
+        print("Fetching VIP manual objects (Simbad)...")
         vip_s_table = None
         try: vip_s_table = self._query_simbad(VIP_STARS, SIMBAD_VOTABLE_FIELDS)
-        except Exception as e: get_logger("CatalogFetch").debug(f"Error VIP stars: {e}")
+        except Exception as e: print(f"Error VIP stars: {e}")
         
         vip_d_table = None
         try: vip_d_table = self._query_simbad(VIP_DSO, SIMBAD_VOTABLE_FIELDS)
-        except Exception as e: get_logger("CatalogFetch").debug(f"Error VIP objects: {e}")
+        except Exception as e: print(f"Error VIP objects: {e}")
             
         return vip_s_table, vip_d_table
 

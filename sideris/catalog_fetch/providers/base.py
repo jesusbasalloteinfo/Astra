@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Any
-from ..network import NetworkMixin
+from catalog_fetch.network import NetworkMixin
 
 class BaseCatalogProvider(ABC, NetworkMixin):
 

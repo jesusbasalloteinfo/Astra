@@ -1,14 +1,14 @@
 import asyncio
-from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime
+import json
 import os
+import pickle
 import time
 from typing import List, Optional, Tuple
 
 from models.ResponseSchemas import SiderealObjectDataResponse, StarDataResponse, DSODataResponse
-from services.catalog_fetch.catalog_fetch import get_catalog
 from services.astro_service.engines.SiderealEngine import SiderealEngine
-from core.logging import get_logger
+from models.CatalogSchemas import ConstellationCatalog
 
 class AstroService:
     """Singleton class for astronomical calculations and data retrieval."""
@@ -16,10 +16,9 @@ class AstroService:
     _instance: Optional['AstroService'] = None
     _lock = asyncio.Lock()  # Avoid race conditions
 
-    def __init__(self, sidereal_path: str, constellation_in_path: str, constellation_out_path: str):
+    def __init__(self, sidereal_path: str, constellation_path: str):
         self._sidereal_path = sidereal_path
-        self._constellation_in_path = constellation_in_path
-        self._constellation_out_path = constellation_out_path
+        self._constellation_path = constellation_path
         self._initialized = True
         self._sidereal_catalog=None
 
@@ -34,7 +33,17 @@ class AstroService:
         return cls._instance
     
     async def _setup_catalog(self):
-        self._sidereal_catalog, self._constellation_catalog = await get_catalog(self._sidereal_path, self._constellation_in_path, self._constellation_out_path)
+        if os.path.isfile(self._sidereal_path) and os.path.isfile(self._constellation_path):
+            get_logger("Astroservice").debug("Loading from Pickle...")
+            with open(self._sidereal_path, 'rb') as f:
+                self._sidereal_catalog = pickle.load(f)
+            with open(self._constellation_path, 'r', encoding='utf-8') as f:
+                data=json.load(f)
+                self._constellation_catalog=ConstellationCatalog.model_validate(data)
+            get_logger("Astroservice").debug("Loaded from Pickle successfully!")
+        else:
+            raise FileNotFoundError("Catalogs have not been found!")
+        
         self._sidereal_engine:SiderealEngine = SiderealEngine(self._sidereal_catalog, self._constellation_catalog)
 
         self._catalog_index = {}

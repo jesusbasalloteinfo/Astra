@@ -24,4 +24,4 @@ services:
     volumes:
       - ./sideris:/app
 
-    command: uvicorn main:app --reload --host 0.0.0.0 --port 8624
+    command: uvicorn sideris:app --reload --host 0.0.0.0 --port 8624

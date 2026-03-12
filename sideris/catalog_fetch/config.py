@@ -1,4 +1,9 @@
 
+# Manual downloaded objects
+VIP_STARS = ["Eta Carinae"]
+
+VIP_DSO = ["LMC", "Melotte 25", "Coalsack Nebula"]
+
 
 STAR_CATALOG_RANKING = {
     '* ': 1,    # Bayer (phi Cas) and Flamsteed (34 Cas)
@@ -80,7 +85,3 @@ SIMBAD_MIRRORS = [
 SIMBAD_VOTABLE_FIELDS=['ids', 'otype', 'V', 'B', 'dim', 'r']
 
 
-
-VIP_STARS = ["Eta Carinae"]
-
-VIP_DSO = ["LMC", "Melotte 25", "Coalsack Nebula"]

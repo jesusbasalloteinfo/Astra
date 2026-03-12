@@ -3,8 +3,7 @@ import time
 from astroquery.simbad import Simbad
 from astroquery.vizier import Vizier
 from astropy.table import vstack
-from core.logging import get_logger
-from .config import SIMBAD_VOTABLE_FIELDS, VIZIER_MIRRORS, SIMBAD_MIRRORS
+from catalog_fetch.config import SIMBAD_VOTABLE_FIELDS, VIZIER_MIRRORS, SIMBAD_MIRRORS
 
 class NetworkMixin:
     """
@@ -20,10 +19,10 @@ class NetworkMixin:
                 catalogs = v.get_catalogs(catalog_name)
                 if not catalogs:
                     raise Exception(f"No results found for catalog {catalog_name}")
-                get_logger("CatalogFetch").debug(f"  > VizieR data fetched from {mirror}!")
+                print(f"  > VizieR data fetched from {mirror}!")
                 return catalogs[0]
             except Exception as e:
-                get_logger("CatalogFetch").debug(f"  [!] Failed on {mirror}: {e}. Switching mirror...")
+                print(f"  [!] Failed on {mirror}: {e}. Switching mirror...")
                 
                 raise Exception(f"All VizieR servers failed! Unable to download catalog {catalog_name}")
 
@@ -40,7 +39,7 @@ class NetworkMixin:
                 table = simbad.query_objects(object_list)
                 return table
             except Exception as e:
-                get_logger("CatalogFetch").debug(f"  [!] Failed Simbad ({mirror}): {e}. Switching mirror...")
+                print(f"  [!] Failed Simbad ({mirror}): {e}. Switching mirror...")
                 
         raise Exception(f"All Simbad servers failed! Unable to download data!")
 
@@ -52,7 +51,7 @@ class NetworkMixin:
         total_batches = len(batches)
         
         for i, batch in enumerate(batches, 1): 
-            get_logger("CatalogFetch").debug(f"    -> Querying Simbad: Batch {i}/{total_batches} ({len(batch)} objets)")
+            print(f"    -> Querying Simbad: Batch {i}/{total_batches} ({len(batch)} objets)")
             
             table = self._query_simbad(batch, request_columns, timeout=timeout)
             if table is not None:

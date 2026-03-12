@@ -1,21 +1,18 @@
-import asyncio
-from concurrent.futures import ProcessPoolExecutor
 import json
 import argparse
+from pathlib import Path
 import pickle
+import sys
 
-from core.logging import get_logger
-from .fetch_utils.utils import *
-from .fetch_utils.registry import CatalogRegistry
+from catalog_fetch.utils import *
+from catalog_fetch.registry import CatalogRegistry
 from models.CatalogSchemas import AstronomicalCatalog, CatalogData, Constellation, Star, DeepSky
 
-from .fetch_utils.providers.hipparcos import HipparcosProvider
-from .fetch_utils.providers.messier import MessierProvider
-from .fetch_utils.providers.ngc import NGCProvider
-from .fetch_utils.providers.vip import ManualOverrideProvider
-# from core.logging import get_logger, setup_global_logging
+from catalog_fetch.providers.hipparcos import HipparcosProvider
+from catalog_fetch.providers.messier import MessierProvider
+from catalog_fetch.providers.ngc import NGCProvider
+from catalog_fetch.providers.vip import ManualOverrideProvider
 
-# setup_global_logging()
 
 def merge_messier_ngc(objects: List[DeepSky], dist_threshold: float = 2.5) -> List[DeepSky]:
     """
@@ -106,23 +103,20 @@ def audit_catalog(stars, deep_sky):
 
 
 def generate_catalog(
-    output_file: str = "data/catalog.json",
-    fab_input: str = "data/constellationship.fab",
-    fab_output: str = "data/constellationship.json",
+    output_file: str = "data/sidereal_catalog",
+    const_input: str = "data/constellationship.fab",
+    const_output: str = "data/constellationship.json",
     mag_limit: float = 6.0,
     dist_threshold: float = 2.5,
     debug:bool = False
 ):
-    get_logger("CatalogFetch").debug("Starting Astronomical Catalog Generation Pipeline...")
+    print("Starting Astronomical Catalog Generation Pipeline...")
     
     # 1. Parse FAB
-    get_logger("CatalogFetch").debug("--- 1. Parsing Constellations (FAB) ---")
-    min_stars_set, constellations_data = ParseUtils.parse_fab_file(fab_input)
+    print("--- 1. Parsing Constellations (FAB) ---")
+    min_stars_set, constellations_data = ParseUtils.parse_fab_file(const_input)
     
-    if constellations_data:
-        with open(fab_output, "w", encoding="utf-8") as f:
-            json.dump(constellations_data.model_dump(), f, ensure_ascii=False, indent=4)
-        
+    
     # 2. Setup Registry
     registry = CatalogRegistry()
     registry.register(HipparcosProvider(mag_limit, min_stars_set))
@@ -134,10 +128,10 @@ def generate_catalog(
     deep_sky = []
 
     # 3. Execute Providers
-    get_logger("CatalogFetch").debug("\n--- 2. Fetching and Processing Catalogs ---")
+    print("\n--- 2. Fetching and Processing Catalogs ---")
     for provider in registry.get_providers():
         provider_name = provider.__class__.__name__
-        get_logger("CatalogFetch").debug(f"[{provider_name}] starting...")
+        print(f"[{provider_name}] starting...")
         try:
             results = provider.run()
 
@@ -155,12 +149,12 @@ def generate_catalog(
                 else:
                     raise TypeError(f"Unknown type {type(results[0])}")
 
-            get_logger("CatalogFetch").debug(f"[{provider_name}] completed successfully.")
+            print(f"[{provider_name}] completed successfully.")
         except Exception as e:
-            get_logger("CatalogFetch").debug(f"[{provider_name}] failed: {e}")
+            print(f"[{provider_name}] failed: {e}")
 
-    # 4. Intelligent Cross Matching (NGC/IC vs Messier)
-    get_logger("CatalogFetch").debug("\n--- 3. Merging Messier and NGC/IC catalogs ---")
+    # 4. Cross Matching (NGC/IC vs Messier)
+    print("\n--- 3. Merging Messier and NGC/IC catalogs ---")
     final_deep_sky=merge_messier_ngc(deep_sky, dist_threshold)
     
     # Clean unique names and recalculate default_name with proper ranking
@@ -178,8 +172,33 @@ def generate_catalog(
     final_deep_sky.sort(key=lambda x: (x.ra_j2000, x.dec_j2000))
 
 
+    print("\n--- Translating Constellation HIP IDs to IAU IDs ---")
+    
+    # Dictionary to translate HIP -> ID
+    hip_to_iau = {}
+    for star in stars:
+        for cat in star.catalog_names:
+            if cat.startswith("HIP "):
+                try:
+                    hip_num = int(cat.split()[1])
+                    hip_to_iau[hip_num] = star.id
+                except ValueError:
+                    pass
+    # Do the translation
+    if constellations_data:
+        for const in constellations_data.constellations:
+            mapped_ids = []
+            for hip_num in const.stars_ids:
+                mapped_ids.append(hip_to_iau.get(hip_num, f"UNKNOWN_HIP_{hip_num}"))
+            const.stars_ids = mapped_ids
+            
+        print(f"Saving translated constellations to {const_output}")
+        with open(const_output, "w", encoding="utf-8") as f:
+            json.dump(constellations_data.model_dump(), f, ensure_ascii=False, indent=4)
+
+
     # 5. Generate Metadata
-    get_logger("CatalogFetch").debug("\n--- 4. Generating Metadata ---")
+    print("\n--- 4. Generating Metadata ---")
     metadata = MetadataUtils.generate_metadata(stars, final_deep_sky)
     
     catalog_data = CatalogData(stars=stars, deep_sky=final_deep_sky)
@@ -189,75 +208,65 @@ def generate_catalog(
         data=catalog_data
     )
         
-    # 6. Export to JSON/Pickle
-    get_logger("CatalogFetch").debug(f"--- 5. Exporting data to {output_file} ---")
-    with open(output_file, "w", encoding="utf-8") as f:
+    # 6. Export to JSON    
+    json_file = output_file + ".json"
+    print(f"--- 5. Exporting data to JSON {json_file} ---")
+    with open(json_file, "w", encoding="utf-8") as f:
         dump_func = getattr(final_catalog, 'model_dump', final_catalog.model_dump())
         json.dump(dump_func(), f, ensure_ascii=False, indent=4)
 
 
-    # 7. Export to PICKLE (fast loading)
-    pickle_file = output_file.replace(".json", ".pkl")
-    get_logger("CatalogFetch").debug(f"--- 6. Exporting data to Pickle: {pickle_file} ---")
+    # 7. Export to PICKLE
+    pickle_file = output_file + ".pkl"
+    print(f"--- 6. Exporting data to Pickle: {pickle_file} ---")
     with open(pickle_file, "wb") as f:
         pickle.dump(final_catalog, f)
 
     if debug:
         audit_catalog(stars, final_deep_sky)
         
-    get_logger("CatalogFetch").debug("Process completed successfully!")
+    print("Process completed successfully!")
 
     return final_catalog, constellations_data
-
-async def get_catalog(
-    output_file: str = "data/catalog.pkl",
-    fab_input: str = "data/constellationship.fab",
-    fab_output: str = "data/constellationship.json",
-    mag_limit: float = 6.0,
-    dist_threshold: float = 2.5,
-) -> tuple[AstronomicalCatalog, ConstellationCatalog]:
-    loop = asyncio.get_running_loop()
-    if not os.path.isfile(output_file) or not os.path.isfile(fab_output):     
-        get_logger("CatalogFetch").debug("Catalogs not found! Generating...")
-        with ProcessPoolExecutor() as pool:
-            catalog, constellations = await loop.run_in_executor(pool, generate_catalog, output_file, fab_input, fab_output, mag_limit, dist_threshold, False)
-        return catalog, constellations
-    else:
-        get_logger("CatalogFetch").debug("Loading from Pickle...")
-        with open(output_file, 'rb') as f:
-            catalog = pickle.load(f)
-        with open(fab_output, 'r', encoding='utf-8') as f:
-            data=json.load(f)
-            constellations=ConstellationCatalog.model_validate(data)
-        get_logger("CatalogFetch").debug("Loaded from Pickle successfully!")
-        return catalog, constellations
-        
-
     
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Astronomical Catalog Fetching pipeline")
     
-    parser.add_argument("--fab-input", type=str, default="data/constellationship.fab",
+    parser.add_argument("-ci","--const-input", type=str, default="data/constellationship.fab",
                         help="Path to the .fab file with constellation data.")
-    parser.add_argument("--fab-output", type=str, default="data/constellationship.json",
-                        help="Output path for saving the constsellations in JSON.")
-    parser.add_argument("--mag-limit", type=float, default=6.0,
-                        help="Minimum star magnitude.")
-    parser.add_argument("--dist-threshold", type=float, default=2.5,
+    parser.add_argument("-co","--const-output", type=str, default="data/constellationship.json",
+                        help="Output path for saving the constellations in JSON.")
+    parser.add_argument("-m","--mag-limit", type=float, default=6.0,
+                        help="Maximum star magnitude.")
+    parser.add_argument("-d","--dist-threshold", type=float, default=2.5,
                         help="Distance threshold for object merging.")
-    parser.add_argument("--output", type=str, default="data/catalog.json",
-                        help="Output path for the final result catalog.")
-    parser.add_argument("--no-stats", action="store_true",
-                    help="Disable the final stats print")
+    parser.add_argument("-o","--output", type=str, default="data/sidereal_catalog",
+                        help="Output path for the final result catalog in JSON and pkl.")
+    parser.add_argument("-ns","--no-stats", action="store_true",
+                    help="Disable final stats print")
 
     args = parser.parse_args()
 
-    generate_catalog(
-        fab_input=args.fab_input,
-        fab_output=args.fab_output,
-        mag_limit=args.mag_limit,
-        dist_threshold=args.dist_threshold,
-        output_file=args.output,
-        debug=not args.no_stats
-    )
+    fab_path = Path(args.const_input)
+    
+    if not fab_path.exists():
+        print(f"Error: Constellation data not found in '{args.const_input}'")
+        sys.exit(1)
+
+
+    try:
+        generate_catalog(
+            const_input=args.const_input,
+            const_output=args.const_output,
+            mag_limit=args.mag_limit,
+            dist_threshold=args.dist_threshold,
+            output_file=args.output,
+            debug=not args.no_stats
+        )
+        print("Generation completed successfully!")
+        
+    except Exception as e:
+        print(f"Unexpected error during generation: {e}")
+        sys.exit(1)
+    

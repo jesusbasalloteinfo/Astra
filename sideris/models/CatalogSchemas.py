@@ -50,7 +50,7 @@ class AstronomicalCatalog(BaseModel):
 class Constellation(BaseModel):
     abbr: str
     full_name: str
-    stars_ids: List[int]
+    stars_ids: List[int|str]
     lines_indices: List[Tuple[int, int]]
 
 class ConstellationCatalog(BaseModel):
