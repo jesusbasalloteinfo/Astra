@@ -69,10 +69,9 @@ class SiderealEngine(BaseEngine):
         alt1 = altaz_t1.alt.degree
         az1 = altaz_t1.az.degree
 
-        dt_ms = ttl * 1000.0
-        d_alt = (alt1 - alt0) / dt_ms
+        d_alt = (alt1 - alt0) / ttl
         delta_az = (az1 - az0 + 180) % 360 - 180
-        d_az = delta_az / dt_ms
+        d_az = delta_az / ttl
         d_az = np.where(alt0 > 89.5, 0.0, d_az) # Zenit filter for high stars
 
         return SyncPayload(
