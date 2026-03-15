@@ -11,6 +11,7 @@ services:
     command: uvicorn main:app --reload --host 0.0.0.0 --port 80
 
   astra_ui:
+    container_name: astra_ui
     build:
       context: ./astra_ui
       target: dev
@@ -19,3 +20,17 @@ services:
     volumes:
       - ./astra_ui:/app
       - /app/node_modules
+  
+  # Ephemerides API Service
+  sideris:
+    container_name: sideris
+    build:
+      context: ./sideris
+      # target: dev
+    restart: unless-stopped
+    ports:
+      - "8624:8624"
+    volumes:
+      - ./sideris:/app
+
+    command: uvicorn sideris:app --reload --host 0.0.0.0 --port 8624
