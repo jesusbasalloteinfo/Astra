@@ -7,3 +7,4 @@ pydantic==2.12.5
 rich==14.3.3
 uvicorn==0.41.0
 scipy==1.17.0
+skyfield==1.54

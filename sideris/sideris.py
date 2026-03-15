@@ -6,6 +6,8 @@ from pydantic import BaseModel, Field
 from services.astro_service.astro_service import AstroService
 from core.logging import get_logger, setup_global_logging
 from api.sidereal_catalog import router as sidereal_catalog_router
+from api.planetary_catalog import router as planetary_catalog_router
+
 
 
 
@@ -69,6 +71,7 @@ def health():
 
 
 app.include_router(sidereal_catalog_router, prefix=API_BASE_PATH+"/sidereal", tags=["Sidereal Catalog"])
+app.include_router(planetary_catalog_router, prefix=API_BASE_PATH+"/planetary", tags=["Planetary Catalog"])
 app.include_router(api)
 if __name__=="__main__":
     uvicorn.run("sideris:app", host="127.0.0.1", port=8624, reload=True)

@@ -6,10 +6,12 @@ import pickle
 import time
 from typing import List, Optional, Tuple
 
-from models.ResponseSchemas import SiderealObjectMetadata, StarDataResponse, DSODataResponse, SiderealObjectDataResponse, ConstellationMetadata, MetadataCatalogPayload
+from models.ResponseSchemas import SiderealObjectMetadata, StarDataResponse, DSODataResponse, SiderealObjectDataResponse, ConstellationMetadata, MetadataCatalogPayload, SyncPayload
 from services.astro_service.engines.SiderealEngine import SiderealEngine
+from services.astro_service.engines.PlanetaryEngine import PlanetaryEngine
 from models.CatalogSchemas import ConstellationCatalog, Star
 from core.logging import get_logger
+from models.PlanetarySchemas import PlanetaryObject
 
 class AstroService:
     """Singleton class for astronomical calculations and data retrieval."""
@@ -46,6 +48,7 @@ class AstroService:
             raise FileNotFoundError("Catalogs have not been found!")
         
         self._sidereal_engine:SiderealEngine = SiderealEngine(self._sidereal_catalog, self._constellation_catalog)
+        self._planetary_engine:PlanetaryEngine = PlanetaryEngine()
 
         self._catalog_index = {}
         for star in self._sidereal_catalog.data.stars:
@@ -125,7 +128,7 @@ class AstroService:
         """Return the cached constellations metadata."""
         return self._constellations_metadata
     
-    def get_sidereal_positions(self, target_time: datetime, lat: float, lon: float, elev: float, ttl:float=120.0) -> List[Tuple]:
+    def get_sidereal_positions(self, target_time: datetime, lat: float, lon: float, elev: float, ttl:float=120.0) -> SyncPayload:
         """Calculate positions for stars and deep-sky objects."""
         return self._sidereal_engine.get_sky_movement(target_time, lat, lon, elev, ttl)
     
@@ -144,4 +147,31 @@ class AstroService:
             return StarDataResponse(**combined_dict)
         else:
             return DSODataResponse(**combined_dict)
+        
+        
 
+    # ═════════════════════════════════════════════
+    # PLANETARY METHODS
+    # ═════════════════════════════════════════════
+
+
+    def get_planetary_metadata(self, utc_time: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0):
+        """Return the cached sidereal metadata"""
+        return self._planetary_engine.get_metadata(utc_time, lat, lon, elev_m, ttl)
+    
+
+    def get_planetary_positions(self, target_time: datetime, lat: float, lon: float, elev: float, ttl:float=120.0) -> SyncPayload:
+        """Calculate positions for all planetary objects"""
+        return self._planetary_engine.get_sky_movement(target_time, lat, lon, elev, ttl)
+    
+    
+    def get_planetary_object(self, target_obj:str, target_time: datetime, lat: float, lon: float, elev: float, ttl:float=120.0):
+        """Calculate and return information about an object"""
+        
+        try:
+            _ = PlanetaryObject[target_obj.upper()]
+        except KeyError:
+            raise ValueError(f"Object {target_obj} not found!")
+            
+        return self._planetary_engine.get_object_movement(target_obj, target_time, lat, lon, elev, ttl)
+        

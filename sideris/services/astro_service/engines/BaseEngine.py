@@ -16,7 +16,11 @@ class BaseEngine(ABC):
     #     Returns all the objects metadata for a time and location
     #     """
     #     pass
-
+    @staticmethod
+    def _circular_diff(a: float, b: float, max_val: float = 360.0) -> float:
+        """Handles wrap-around differences (e.g., 359 degrees to 1 degree)."""
+        return (a - b + max_val / 2) % max_val - max_val / 2
+    
     @abstractmethod
     def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0) -> SyncPayload:
         """

@@ -16,6 +16,8 @@ class SyncPayload(BaseModel):
     # Updates: [id (str), alt (float), az (float), d_alt (float), d_az (float)]
     updates: List[Tuple[str, float, float, float, float]]
 
+
+
 class EphemerisMovementData(BaseModel):
     alt: float
     az: float
@@ -65,7 +67,7 @@ class ConstellationMetadata(BaseModel):
     stars_ids: List[str] 
     lines_indices: List[Tuple[int, int]] 
 
-ObjectMetadata = Union[SolarSistemObjectMetadata, SiderealObjectMetadata]
+ObjectMetadata = Union[SiderealObjectMetadata]
 
 class MetadataCatalogPayload(BaseModel):
     version: str = "1.0"
