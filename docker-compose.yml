@@ -1,5 +1,6 @@
 services:
   astra_api:
+    container_name: astra_api
     build:
       context: ./astra_api
       # target: dev
