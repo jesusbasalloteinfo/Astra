@@ -66,7 +66,10 @@ api=APIRouter(prefix=API_BASE_PATH)
 def health():
     return {"status": "ok", "message": "Astra API is running!"}
 
-# Dummy Token Auth
+
+
+
+# TODO Temporal dummy token auth. Later we will use a separate Auth Handler
 # --------------------------------------------------------------------------------
 
 class DummyAuth(BaseModel):
@@ -116,3 +119,7 @@ async def dummy_logout(response:Response):
     return {"status":"ok", "message": "Successful dummy Logout!"}
 
 app.include_router(api)
+
+
+
+

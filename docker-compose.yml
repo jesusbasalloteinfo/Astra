@@ -11,17 +11,40 @@ services:
       - ./astra_api:/app
     networks:
       - gateway-net
+      - api-net
     expose:
       - 80
     command: uvicorn main:app --reload --host 0.0.0.0 --port 80
+  
+  astra_api_db:
+    image: mongo:7.0
+    container_name: astra_api_db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_init:/docker-entrypoint-initdb.d:ro
+    networks:
+      - api-net
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   astra_ui:
     container_name: astra_ui
     build:
       context: ./astra_ui
       target: dev
-    # ports:
-    #   - "4000:5173"
+    ports:
+      - "4000:5173"
     volumes:
       - ./astra_ui:/app
       - /app/node_modules
@@ -77,3 +100,10 @@ services:
 networks:
   gateway-net:
     driver: bridge
+  api-net:
+    driver: bridge
+  
+
+volumes:
+  mongodb_data:
+  mongodb_init:
