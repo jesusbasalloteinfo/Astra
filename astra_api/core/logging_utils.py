@@ -21,7 +21,7 @@ class SmartFormatter(logging.Formatter):
         terminal_width = _console.width
         dynamic_max = max(40, terminal_width - 45)
 
-        original_msg = record.msg
+        original_msg = str(record.msg)
         full_data = getattr(record, 'full_msg', None)
         has_extra = full_data is not None
 

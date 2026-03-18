@@ -4,6 +4,8 @@ services:
     build:
       context: ./astra_api
       # target: dev
+    env_file:
+      - .env
     restart: unless-stopped
     # ports:
     #   - "5245:80"

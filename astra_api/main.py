@@ -9,6 +9,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime, timezone
 from contextlib import asynccontextmanager
 from core.logging_utils import get_logger, setup_global_logging
+from core.MongoDBConnector import MongoDBConnector, db_connector
+from services.db.UserService import UserService
+from models.user import User
 
 # ================================================================================
 # API CONFIGURATION
@@ -32,6 +35,7 @@ async def lifespan(app:FastAPI):
 
     try:
         app.state.logger=LOG
+        await db_connector.connect()
         yield
     except Exception as e:
         LOG.error(f"Error during lifespan: {e}", details=inspect.currentframe().f_code.co_name)
@@ -39,6 +43,8 @@ async def lifespan(app:FastAPI):
             status_code=500,
             detail="Error during lifespan"
             ) from e
+    finally:
+        await db_connector.disconnect()
     
 app=FastAPI(
     title="Astra Backend API",
@@ -117,6 +123,24 @@ async def dummy_logout(response:Response):
         path="/"
     )
     return {"status":"ok", "message": "Successful dummy Logout!"}
+
+
+# TODO Temporal dummy users, only for testing the DB
+# --------------------------------------------------------------------------------
+
+
+@api.post("/users", response_model=dict)
+async def new_user(user: User):
+    user_service:UserService = UserService()
+
+    user_id = await user_service.create_user(user)
+    return {"message": "User created", "id": user_id}
+
+@api.get("/users/{name}", response_model=User)
+async def get_user(name: str):
+    user_service:UserService = UserService()
+
+    return await user_service.get_user(name)
 
 app.include_router(api)
 
