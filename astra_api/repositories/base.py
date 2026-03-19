@@ -2,6 +2,7 @@ from typing import TypeVar, Generic, Type, Optional
 from pydantic import BaseModel
 from core.MongoDBConnector import db_connector
 from bson import ObjectId
+from pymongo import IndexModel, ASCENDING, DESCENDING
 
 T = TypeVar('T', bound=BaseModel)
 
@@ -14,6 +15,10 @@ class BaseMongoRepository(Generic[T]):
     def collection(self):
         """Get the corresponding collection dinamically"""
         return db_connector.get_collection(self.collection_name)
+
+    async def setup_indexes(self):
+        """Sets the collection indices"""
+        pass
 
     async def insert_one(self, model: T) -> str:
         """Insert an element into the collection"""
@@ -29,3 +34,8 @@ class BaseMongoRepository(Generic[T]):
             doc["_id"] = str(doc["_id"]) # Mongo id to str id
             return self.model_class(**doc)
         return None
+    
+    async def delete_one(self, query: dict) -> bool:
+        """Delete an element of a collection"""
+        result = await self.collection.delete_one(query)
+        return result.deleted_count > 0

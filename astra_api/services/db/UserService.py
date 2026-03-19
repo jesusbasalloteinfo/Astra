@@ -8,7 +8,7 @@ class UserService:
 
     async def create_user(self, data: User) -> str:
 
-        exists = await self.repo.find_by_name(data.name)
+        exists = await self.repo.find_by_name(data.username)
         if exists:
             raise HTTPException(status_code=400, detail="The name is already taken")
         

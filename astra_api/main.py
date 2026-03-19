@@ -22,6 +22,12 @@ setup_global_logging(file_path=f".tmp/log-{datetime.now(timezone.utc)}.log")
 
 API_BASE_PATH="/api"
 
+async def init_db():
+    await db_connector.connect()
+
+    user_service = UserService()
+    await user_service.repo.setup_indexes() 
+
 
 @asynccontextmanager
 async def lifespan(app:FastAPI):
@@ -35,7 +41,8 @@ async def lifespan(app:FastAPI):
 
     try:
         app.state.logger=LOG
-        await db_connector.connect()
+        await init_db()
+        
         yield
     except Exception as e:
         LOG.error(f"Error during lifespan: {e}", details=inspect.currentframe().f_code.co_name)
@@ -133,6 +140,7 @@ async def dummy_logout(response:Response):
 async def new_user(user: User):
     user_service:UserService = UserService()
 
+    user.id=None
     user_id = await user_service.create_user(user)
     return {"message": "User created", "id": user_id}
 
