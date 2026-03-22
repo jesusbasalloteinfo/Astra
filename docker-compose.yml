@@ -16,6 +16,9 @@ services:
       - api-net
     expose:
       - 80
+    depends_on:
+      astra_api_db:
+        condition: service_healthy
     command: uvicorn main:app --reload --host 0.0.0.0 --port 80
   
   astra_api_db:
@@ -74,6 +77,41 @@ services:
     command: uvicorn sideris:app --reload --host 0.0.0.0 --port 8624 --root-path /api/sideris
 
 
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    container_name: litellm
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./litellm-config.yaml:/app/config.yaml
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "postgresql://llm_user:llm_password@litellm_db:5432/litellm"
+    depends_on:
+      litellm_db:
+        condition: service_healthy
+    command: [ "--config", "/app/config.yaml", "--port", "5000", "--num_workers", "8" ] 
+    networks:
+      - litellm-net
+      - api-net
+
+  litellm_db:
+    image: postgres:16-alpine
+    container_name: litellm_db
+    environment:
+      POSTGRES_DB: litellm
+      POSTGRES_USER: llm_user
+      POSTGRES_PASSWORD: llm_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U llm_user -d litellm"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - litellm-net
+
   kong_gateway:
     container_name: kong_gateway
     image: kong:3.6
@@ -104,8 +142,10 @@ networks:
     driver: bridge
   api-net:
     driver: bridge
-  
+  litellm-net:
+    driver: bridge
 
+    
 volumes:
   mongodb_data:
   mongodb_init:
