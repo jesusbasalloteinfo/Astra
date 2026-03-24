@@ -2,14 +2,20 @@
     import * as m from '$lib/paraglide/messages.js';
     import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
 
-    // Una pequeña función para resaltar el botón activo
     let currentLocale = $derived(getLocale());
-    function switchLocale(locale: 'en' | 'es') {
-        document.cookie = `locale=${locale}; path=/; max-age=31536000`;
+
+    async function switchLocale(locale: 'en' | 'es') {
+        // 1. Tell the server to set the cookie properly
+        await fetch('/system/set-locale', {
+            method: 'POST',
+            body: JSON.stringify({ locale }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        // 2. Update Paraglide on the client immediately (no flicker)
         setLocale(locale);
     }
 </script>
-
 
 <div class="flex flex-col items-center justify-center min-h-[50vh] p-8 space-y-6 font-sans">
     
