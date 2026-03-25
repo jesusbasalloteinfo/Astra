@@ -29,25 +29,6 @@
     </div>
 
     <div class="flex gap-4 p-2 bg-slate-100 rounded-xl shadow-inner">
-        <button 
-            onclick={() => switchLocale('en')}
-            class="px-6 py-2 rounded-lg font-medium transition-all
-            {currentLocale === 'en' 
-                ? 'bg-white text-indigo-600 shadow-md scale-105' 
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'}"
-        >
-            🇺🇸 English
-        </button>
-
-        <button 
-            onclick={() => switchLocale('es')}
-            class="px-6 py-2 rounded-lg font-medium transition-all
-            {currentLocale === 'es' 
-                ? 'bg-white text-indigo-600 shadow-md scale-105' 
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'}"
-        >
-            🇪🇸 Spanish
-        </button>
     </div>
 
 </div>

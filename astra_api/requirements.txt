@@ -5,3 +5,4 @@ uvicorn==0.40.0
 pymongo==4.16.0
 pydantic==2.12.5
 python-dotenv==1.2.2
+litellm==1.82.3

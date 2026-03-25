@@ -45,6 +45,7 @@ services:
 
   astra_ui:
     container_name: astra_ui
+    restart: always
     build:
       context: ./astra_ui
       target: dev
@@ -89,6 +90,7 @@ services:
       - .env
     environment:
       DATABASE_URL: "postgresql://llm_user:llm_password@litellm_db:5432/litellm"
+      STORE_MODEL_IN_DB: True
     depends_on:
       litellm_db:
         condition: service_healthy
@@ -100,6 +102,7 @@ services:
   litellm_db:
     image: postgres:16-alpine
     container_name: litellm_db
+    restart: always
     environment:
       POSTGRES_DB: litellm
       POSTGRES_USER: llm_user
