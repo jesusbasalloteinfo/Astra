@@ -1,3 +1,14 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+
+@theme {
+  --color-astralanding-dark: #0a1525;
+  --color-astralanding-darker: #08101f;
+  --color-astralanding-panel: #0f1a2e;
+}
+
+html {
+  scroll-behavior: smooth;
+}

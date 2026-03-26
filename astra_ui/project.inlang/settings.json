@@ -3,6 +3,7 @@
   "baseLocale": "en",
   "locales": [
     "en",
+    "ca",
     "es"
   ],
   "modules": [

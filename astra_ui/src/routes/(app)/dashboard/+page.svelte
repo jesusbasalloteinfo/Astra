@@ -1,30 +1,24 @@
 <script lang="ts">
     import * as m from '$lib/paraglide/messages.js';
     import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
+    import { AVAILABLE_LANGUAGES, type LanguageCode } from '$lib/config/languages';
 
-    let currentLocale = $derived(getLocale());
+    const SUPPORTED_LOCALES = AVAILABLE_LANGUAGES.map(l => l.code);
 
-    async function switchLocale(locale: 'en' | 'es') {
-        // 1. Tell the server to set the cookie properly
-        await fetch('/system/set-locale', {
-            method: 'POST',
-            body: JSON.stringify({ locale }),
-            headers: { 'Content-Type': 'application/json' }
-        });
 
-        // 2. Update Paraglide on the client immediately (no flicker)
-        setLocale(locale);
-    }
+
+    let currentLocale = $state(getLocale());
+
 </script>
 
 <div class="flex flex-col items-center justify-center min-h-[50vh] p-8 space-y-6 font-sans">
     
     <div class="text-center space-y-2">
         <h1 class="text-4xl font-bold text-slate-800 tracking-tight">
-            {m.example_message({ username: 'User' })}
+            {m.name()}
         </h1>
         <p class="text-slate-500">
-            Idioma actual: <span class="font-mono font-bold text-indigo-600 uppercase">{currentLocale}</span>
+            Test language: <span class="font-mono font-bold text-indigo-600 uppercase">{currentLocale}</span>
         </p>
     </div>
 
