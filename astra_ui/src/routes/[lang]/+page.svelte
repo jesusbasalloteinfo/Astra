@@ -1,6 +1,7 @@
 <script lang="ts">
     import * as m from '$lib/paraglide/messages.js';
     import { page } from '$app/state';
+    
 
     import { Eye, Navigation, Zap, GraduationCap, Globe, Moon, ChevronRight, Menu, X, Crosshair } from 'lucide-svelte';
 
@@ -70,7 +71,7 @@
     <nav class="fixed top-0 left-0 right-0 px-8 z-50 transition-all duration-500 border-b border-white/10 {scrolled ? 'bg-astralanding-dark/80 backdrop-blur-lg border-white/10 py-4' : 'bg-transparent py-8 backdrop-blur-md'}">
         <div class="flex items-center justify-between">
 
-			<a href="/" class="flex items-center gap-4 group transition-opacity hover:opacity-70">
+			<a href="/{page.params.lang ?? ''}" class="flex items-center gap-4 group transition-opacity hover:opacity-70">
                 <AppLogo class="w-12 h-12" />
                 <div class="hidden sm:block">
                     <h1 class="text-2xl font-bold text-white">{m.name().toUpperCase()}</h1>
