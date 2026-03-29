@@ -49,6 +49,8 @@ services:
     build:
       context: ./astra_ui
       target: dev
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
     ports:
       - "4000:5173"
     volumes:

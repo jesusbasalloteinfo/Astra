@@ -82,7 +82,7 @@
 	{#if isOpen}
 		<div
 			transition:fade={{ duration: 150 }}
-			class="absolute top-full right-0 z-50 mt-2 w-32 origin-top-right overflow-hidden border shadow-2xl backdrop-blur-xl focus:outline-none {classDropdown}"
+			class="absolute top-full left-0 origin-top-left md:right-0 md:left-auto md:origin-top-right z-50 mt-2 w-32  overflow-hidden border shadow-2xl backdrop-blur-xl focus:outline-none {classDropdown}"
 			role="menu"
 		>
 			<div class="py-1">

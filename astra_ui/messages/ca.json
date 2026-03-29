@@ -63,5 +63,17 @@
   "landing_footer_cont": "Contribuïr",
   "landing_footer_contact": "Contactar",
   
-  "landing_footer_copyright": "ASTRA Astronomy. Tots els drets reservats."
+  "landing_footer_copyright": "ASTRA Astronomy. Tots els drets reservats.",
+
+
+
+  "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_welcome": "Benvingut",
+  "login_input_msg": "Inicia sessió per a continuar",
+  "login_username_input": "Usuari",
+  "login_input_button": "Inicia sessió",
+  "login_sign_in_process": "Iniciant sessió...",
+  "login_no_user": "Introdueix el teu nom d'usuari",
+  "login_login_error": "No s'ha pogut iniciar sessió. Intenta-ho de nou.",
+  "login_return_home": "← Torna a l'inici"
 }

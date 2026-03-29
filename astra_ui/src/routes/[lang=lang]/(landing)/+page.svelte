@@ -68,47 +68,69 @@
     <Stars />
 
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 px-8 z-50 transition-all duration-500 border-b border-white/10 {scrolled ? 'bg-astralanding-dark/80 backdrop-blur-lg border-white/10 py-4' : 'bg-transparent py-8 backdrop-blur-md'}">
+    <nav class="fixed top-0 left-0 right-0 px-8 z-50 transition-all duration-500 border-b border-white/10 {scrolled ? 'bg-astralanding-dark/80 backdrop-blur-lg py-4' : 'bg-transparent py-8 backdrop-blur-md'}">
         <div class="flex items-center justify-between">
 
-			<a href="/{page.params.lang ?? ''}" class="flex items-center gap-4 group transition-opacity hover:opacity-70">
-                <AppLogo class="w-12 h-12" />
+            <a href="/{page.params.lang ?? ''}"  class="flex items-center gap-4 group transition-opacity hover:opacity-70">
+                <AppLogo class="w-10 h-10" />
                 <div class="hidden sm:block">
-                    <h1 class="text-2xl font-bold text-white">{m.name().toUpperCase()}</h1>
+                    <h1 class="text-xl font-bold text-white">{m.name().toUpperCase()}</h1>
                     <p class="text-[10px] tracking-widest text-blue-300 font-medium">{m.name_sign().toUpperCase()}</p>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center gap-6 xl:gap-8">
+            <!-- Desktop menu: md and forward -->
+            <div class="hidden md:flex items-center gap-6 xl:gap-8">
                 {#each navLinks as link}
                     <a href={link.href} class="text-sm font-medium text-slate-400 hover:text-white transition-colors">
                         {link.name}
                     </a>
                 {/each}
                 <div class="w-px h-6 bg-white/10"></div>
-
-                <div class="flex items-center gap-6 xl:gap-8">
-                    <LanguageSelector
-                        classButton = 'text-white bg-white/5 border-white/10 rounded-full hover:bg-white/10 backdrop-blur-sm'
-                        classDropdown = 'bg-astralanding-dark/95 border-white/10 rounded-xl'
-                        classActive = 'bg-blue-500/10 text-blue-400 font-semibold'
-                        classInactive = 'text-slate-300 hover:bg-white/10 hover:text-white' />
-                    <a href="/dashboard" class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-bold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] whitespace-nowrap">
-                        {m.landing_cta()}
-                    </a>
-                </div>
+                <LanguageSelector
+                    classButton="text-white bg-white/5 border-white/10 rounded-full hover:bg-white/10 backdrop-blur-sm"
+                    classDropdown="bg-astralanding-dark/95 border-white/10 rounded-xl"
+                    classActive="bg-blue-500/10 text-blue-400 font-semibold"
+                    classInactive="text-slate-300 hover:bg-white/10 hover:text-white" />
+                <a href="/dashboard" 
+                    // class="px-6 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-bold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] whitespace-nowrap">
+                    class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-sm font-bold transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 whitespace-nowrap">
+                    {m.landing_cta()}
+                </a>
             </div>
 
-            <button class="md:hidden text-white" onclick={() => isMenuOpen = !isMenuOpen}>
+            <!-- Hamburger for mobile view -->
+            <button class="md:hidden text-white p-2" onclick={() => isMenuOpen = !isMenuOpen}>
                 {#if isMenuOpen}<X />{:else}<Menu />{/if}
             </button>
         </div>
+
+        <!-- Mobile menu panel -->
+        {#if isMenuOpen}
+            <div class="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-white/10 pt-4">
+                {#each navLinks as link}
+                    <a href={link.href} onclick={() => isMenuOpen = false}
+                    class="text-sm font-medium text-slate-300 hover:text-white transition-colors py-1">
+                        {link.name}
+                    </a>
+                {/each}
+                <div class="h-px bg-white/10"></div>
+                <LanguageSelector
+                    classButton="text-white bg-white/5 border-white/10 rounded-full hover:bg-white/10 backdrop-blur-sm"
+                    classDropdown="bg-astralanding-dark/95 border-white/10 rounded-xl"
+                    classActive="bg-blue-500/10 text-blue-400 font-semibold"
+                    classInactive="text-slate-300 hover:bg-white/10 hover:text-white" />
+                <a href="/dashboard" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-bold text-center transition-all">
+                    {m.landing_cta()}
+                </a>
+            </div>
+        {/if}
     </nav>
 
     <main>
         <!-- Landing Section -->
-        <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-            <div class="absolute top left w-[1000px] h-[500px] bg-blue-600/10 rounded-full blur-[240px] animate-pulse"></div>
+        <section class="relative min-h-screen flex flex-col items-center justify-center pt-32 md:pt-40 pb-20 overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] max-w-[1000px] aspect-video bg-blue-600/10 rounded-full blur-[100px] md:blur-[240px] animate-pulse pointer-events-none z-0"></div>
             
             <div class="container mx-auto px-6 relative z-10 text-center">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-medium mb-10">
@@ -129,6 +151,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button class="px-10 py-4 bg-white text-astralanding-dark font-bold rounded-xl hover:bg-blue-200 transition-colors flex items-center justify-center gap-2 group">
+                        <!-- <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30"> -->
                         {m.landing_cta()}
                         <ChevronRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </button>
@@ -208,7 +231,7 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
+                        <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
                             {m.landing_cta()}
                         </button>
                         <button class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm">
