@@ -75,5 +75,33 @@
   "login_sign_in_process": "Loging in...",
   "login_no_user": "Please enter a username",
   "login_login_error": "Login failed. Please try again.",
-  "login_return_home": "← Back to home"
+  "login_return_home": "← Back to home",
+
+  "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
+  "dash_side_name": "Dashboard",
+  "dash_side_new_session": "New session",
+  "dash_side_home": "Home",
+  "dash_side_sessions": "Sessions",
+  "dash_side_telescope": "Telescopes",
+  "dash_side_location": "Location",
+  "dash_side_profile": "Profile",
+
+
+
+  "-------------------------------------- DASHBOARD MAIN -------------------------------------- ": "",
+  "dash_main_greeting_morning": "Good morning, {user} ☀️",
+  "dash_main_sub_morning_morning": "Planning today's solar session?",
+  "dash_main_greeting_afternoon": "Good afternoon, {user} 🌤️",
+  "dash_main_sub_morning_afternoon": "Ready for the twilight transition?",
+  "dash_main_greeting_evening": "Good evening, {user} 🌙",
+  "dash_main_sub_morning_evening": "Ready for tonight's session?",
+  "dash_main_greeting_night": "Good night, {user} 🌌",
+  "dash_main_sub_morning_night": "What's the target for tonight?",
+
+  "dash_main_new_session": "New session",
+
+  "dash_main_recent": "Recent sessions",
+  "dash_main_view_sessions": "View all →"
+
+
 }

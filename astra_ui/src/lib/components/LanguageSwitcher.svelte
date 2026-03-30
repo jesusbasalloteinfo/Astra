@@ -13,6 +13,7 @@
         classDropdown = 'bg-white border-slate-200 text-slate-800',
         classActive = 'bg-blue-50 text-blue-600 font-semibold',
         classInactive = 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
+		placement = 'bottom'
     } = $props();
 
 	let currentLocale = $state(getLocale()); 
@@ -82,7 +83,8 @@
 	{#if isOpen}
 		<div
 			transition:fade={{ duration: 150 }}
-			class="absolute top-full left-0 origin-top-left md:right-0 md:left-auto md:origin-top-right z-50 mt-2 w-32  overflow-hidden border shadow-2xl backdrop-blur-xl focus:outline-none {classDropdown}"
+			class="absolute {placement === 'top' ? 'bottom-full mb-2 origin-bottom-right' : 'top-full mt-2 origin-top-right'} 
+                   right-0 z-50 w-32 overflow-hidden border shadow-2xl backdrop-blur-xl focus:outline-none {classDropdown}"
 			role="menu"
 		>
 			<div class="py-1">

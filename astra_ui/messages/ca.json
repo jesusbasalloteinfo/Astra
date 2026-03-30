@@ -75,5 +75,31 @@
   "login_sign_in_process": "Iniciant sessió...",
   "login_no_user": "Introdueix el teu nom d'usuari",
   "login_login_error": "No s'ha pogut iniciar sessió. Intenta-ho de nou.",
-  "login_return_home": "← Torna a l'inici"
+  "login_return_home": "← Torna a l'inici",
+
+  "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
+  "dash_side_name": "Taulell de control",
+  "dash_side_new_session": "Nova sessió",
+  "dash_side_home": "Inici",
+  "dash_side_sessions": "Sessions",
+  "dash_side_telescope": "Telescopis",
+  "dash_side_location": "Ubicació",
+  "dash_side_profile": "Perfil",
+
+
+  "-------------------------------------- DASHBOARD -------------------------------------- ": "",
+  "dash_main_greeting_morning": "Bon dia, {user} ☀️",
+  "dash_main_sub_morning_morning": "Planificant la sessió solar d'avui?",
+  "dash_main_greeting_afternoon": "Bona tarda, {user} 🌤️",
+  "dash_main_sub_morning_afternoon": "A punt per a la transició cap al crepuscle?",
+  "dash_main_greeting_evening": "Bon vespre, {user} 🌙",
+  "dash_main_sub_morning_evening": "Tot a punt per a la sessió d'aquesta nit?",
+  "dash_main_greeting_night": "Bona nit, {user} 🌌",
+  "dash_main_sub_morning_night": "Quin és l'objectiu per a aquesta nit?",
+  
+  "dash_main_new_session": "Nova sessió",
+
+  "dash_main_recent": "Últimes sessions",
+  "dash_main_view_sessions": "Veure totes →"
+
 }

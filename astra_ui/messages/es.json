@@ -75,5 +75,34 @@
   "login_sign_in_process": "Iniciando sesión...",
   "login_no_user": "Introduce tu nombre de usuario",
   "login_login_error": "No se ha podido iniciar sesión. Inténtalo de nuevo.",
-  "login_return_home": "← Volver al inicio"
+  "login_return_home": "← Volver al inicio",
+
+
+  "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
+  "dash_side_name": "Panel de control",
+  "dash_side_new_session": "Nueva sesión",
+  "dash_side_home": "Inicio",
+  "dash_side_sessions": "Sesiones",
+  "dash_side_telescope": "Telescopios",
+  "dash_side_location": "Ubicación",
+
+  "dash_side_profile": "Perfil",
+
+
+  "-------------------------------------- DASHBOARD -------------------------------------- ": "",
+  "dash_main_greeting_morning": "¡Buenos días, {user}! ☀️",
+  "dash_main_sub_morning_morning": "¿Planificando la sesión solar de hoy?",
+  "dash_main_greeting_afternoon": "Buenas tardes, {user} 🌤️",
+  "dash_main_sub_morning_afternoon": "¿Listo para la transición al crepúsculo?",
+  "dash_main_greeting_evening": "Buenas noches, {user} 🌙",
+  "dash_main_sub_morning_evening": "¿Todo preparado para la sesión de esta noche?",
+  "dash_main_greeting_night": "Buenas noches, {user} 🌌",
+  "dash_main_sub_morning_night": "¿Cuál es el objetivo de esta noche?",
+
+  "dash_main_new_session": "Nueva sesión",
+
+  "dash_main_recent": "Últimas sesiones",
+  "dash_main_view_sessions": "Ver todas →"
+
+
 }
