@@ -1,3 +1,4 @@
+// lib/api/auth.ts
 import { api } from './client';
 import { endpoints } from './endpoints';
 

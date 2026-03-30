@@ -1,7 +1,8 @@
+// lib/api/client.ts
 import axios from 'axios';
 import { goto } from '$app/navigation';
 import { endpoints } from './endpoints';
-import { page } from '$app/state';
+import { browser } from '$app/environment'; 
 
 export const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api',
@@ -11,6 +12,7 @@ export const api = axios.create({
 
 // Redirects to /login saving the destination route as ?goto=
 const redirectToLogin = () => {
+    if (!browser) return; // Avoid Node.js execution
     const redirect = encodeURIComponent(window.location.pathname + window.location.search);
     goto(`/login?goto=${redirect}`);
 };
