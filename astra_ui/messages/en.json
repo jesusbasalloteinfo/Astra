@@ -68,6 +68,7 @@
 
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_title": "Login - {name}",
   "login_welcome": "Welcome back",
   "login_input_msg": "Login to continue",
   "login_username_input": "Username",
@@ -76,6 +77,10 @@
   "login_no_user": "Please enter a username",
   "login_login_error": "Login failed. Please try again.",
   "login_return_home": "← Back to home",
+
+  "====================================== DASHBOARD ======================================": "",
+  "dash_title": "Dashboard - {name}",
+
 
   "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
   "dash_side_name": "Dashboard",

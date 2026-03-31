@@ -63,6 +63,11 @@
     const currentYear = new Date().getFullYear();
 </script>
 
+<svelte:head>
+    <title>{m.name().toUpperCase()} - {m.name_sign()}</title>
+    <meta name="description" content={m.name().toUpperCase() + "-" + m.name_sign()} />
+</svelte:head>
+
 <div class="min-h-screen bg-astralanding-dark text-slate-200 selection:bg-blue-500/30 selection:text-white">
     
     <Stars />
@@ -150,12 +155,11 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="px-10 py-4 bg-white text-astralanding-dark font-bold rounded-xl hover:bg-blue-200 transition-colors flex items-center justify-center gap-2 group">
-                        <!-- <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30"> -->
+                    <a href="/dashboard" class="px-10 py-4 bg-white text-astralanding-dark font-bold rounded-xl hover:bg-blue-200 transition-colors flex items-center justify-center gap-2 group">
                         {m.landing_cta()}
                         <ChevronRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                    <button class="px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all backdrop-blur-md">
+                    </a>
+                    <button class="cursor-pointer px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all backdrop-blur-md">
                         {m.landing_cta_docs()}
                     </button>
                 </div>
@@ -231,9 +235,9 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
+                        <a href="/dashboard"  class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
                             {m.landing_cta()}
-                        </button>
+                        </a>
                         <button class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm">
                             {m.landing_cta_gallery()}
                         </button>

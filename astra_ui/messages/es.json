@@ -68,6 +68,7 @@
 
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_title": "Iniciar sesión - {name}",
   "login_welcome": "Bienvenido",
   "login_input_msg": "Inicia sesión para continuar",
   "login_username_input": "Usuario",
@@ -76,6 +77,10 @@
   "login_no_user": "Introduce tu nombre de usuario",
   "login_login_error": "No se ha podido iniciar sesión. Inténtalo de nuevo.",
   "login_return_home": "← Volver al inicio",
+
+
+  "====================================== DASHBOARD ======================================": "",
+  "dash_title": "Panel de control - {name}",
 
 
   "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",

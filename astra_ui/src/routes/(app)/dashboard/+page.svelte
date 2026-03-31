@@ -78,6 +78,11 @@
     let greetings = $derived(getGreeting(period, user.name));
 </script>
 
+<svelte:head>
+    <title>{m.dash_title({name: m.name().toUpperCase()})}</title>
+    <meta name="description" content={m.dash_title({name: m.name().toUpperCase()})} />
+</svelte:head>
+
 <div class="max-w-4xl mx-auto">
 
     <!-- Welcome -->

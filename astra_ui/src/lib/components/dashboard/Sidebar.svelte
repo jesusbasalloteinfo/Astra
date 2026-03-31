@@ -31,7 +31,7 @@
 
     <!-- Logo -->
     <div class="px-5 py-5 border-b border-border">
-        <a href="/dashboard" class="flex items-center gap-3 hover:opacity-70 transition-opacity">
+        <a href="/" class="flex items-center gap-3 hover:opacity-70 transition-opacity">
             <AppLogo class="w-8 h-8" />
             <div>
                 <p class="text-sm font-bold text-copy-primary leading-none">{m.name().toUpperCase()}</p>

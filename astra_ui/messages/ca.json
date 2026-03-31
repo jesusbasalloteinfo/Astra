@@ -68,6 +68,7 @@
 
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_title": "Iniciar sessió - {name}",
   "login_welcome": "Benvingut",
   "login_input_msg": "Inicia sessió per a continuar",
   "login_username_input": "Usuari",
@@ -76,6 +77,12 @@
   "login_no_user": "Introdueix el teu nom d'usuari",
   "login_login_error": "No s'ha pogut iniciar sessió. Intenta-ho de nou.",
   "login_return_home": "← Torna a l'inici",
+
+
+  "====================================== DASHBOARD ======================================": "",
+  "dash_title": "Taulell de control - {name}",
+
+
 
   "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
   "dash_side_name": "Taulell de control",
