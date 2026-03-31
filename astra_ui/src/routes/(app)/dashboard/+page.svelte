@@ -88,7 +88,7 @@
             </h1>
             <p class="text-sm text-copy-muted mt-1">{greetings.subtitle}</p>
         </div>
-        <button class="flex items-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover
+        <button class="cursor-pointer flex items-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover
                        text-white font-semibold transition-colors shadow-glow">
             <Plus size={18} />
             {m.dash_main_new_session()}

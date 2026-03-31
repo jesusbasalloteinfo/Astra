@@ -56,7 +56,7 @@
 	<button
 		type="button"
 		onclick={() => (isOpen = !isOpen)}
-		class="inline-flex h-10 items-center justify-center gap-2 border px-3 font-medium transition-all focus:ring-2 focus:ring-blue-500/50 focus:outline-none {classButton}"
+		class="cursor-pointer inline-flex h-10 items-center justify-center gap-2 border px-3 font-medium transition-all focus:ring-2 focus:ring-blue-500/50 focus:outline-none {classButton}"
 		aria-expanded={isOpen}
 	>
 		<span
@@ -91,7 +91,7 @@
 				{#each AVAILABLE_LANGUAGES as { code, label, svg }}
 					<button
 						onclick={() => switchLocale(code)}
-						class="flex h-10 w-full items-center px-3 text-left text-sm transition-colors
+						class="cursor-pointer flex h-10 w-full items-center px-3 text-left text-sm transition-colors
                             {currentLocale === code ? classActive : classInactive}"
 						role="menuitem"
 					>
@@ -100,7 +100,7 @@
 						>
 							{@html svg}
 						</span>
-						<span class="leading-none">{label}</span>
+						<span class="truncate">{label}</span>
 					</button>
 				{/each}
 			</div>

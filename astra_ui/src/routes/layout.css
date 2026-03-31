@@ -23,6 +23,9 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-glow: var(--accent-glow);
 
+  --color-danger: var(--text-danger);
+  --color-danger-surface: var(--bg-danger-surface);
+
   --color-border: var(--border);
 }
 
@@ -44,6 +47,8 @@
     --accent:        #3b82f6;
     --accent-hover:  #2563eb;
     --accent-glow:   rgba(59, 130, 246, 0.4);
+    --text-danger:   #ef4444; 
+    --bg-danger-surface: rgba(239, 68, 68, 0.1);
 }
 
 [data-theme="dark"] {
@@ -58,6 +63,8 @@
     --accent:        #6366f1;
     --accent-hover:  #4f46e5;
     --accent-glow:   rgba(99, 102, 241, 0.4);
+    --text-danger:   #f87171;
+    --bg-danger-surface: rgba(248, 113, 113, 0.1);
 }
 
 [data-theme="light"] {
@@ -72,6 +79,8 @@
     --accent:        #2563eb;
     --accent-hover:  #1d4ed8;
     --accent-glow:   rgba(37, 99, 235, 0.3);
+    --text-danger:   #dc2626; 
+    --bg-danger-surface: rgba(220, 38, 38, 0.1);
 }
 
 [data-theme="astronomical"] {
@@ -86,6 +95,10 @@
     --accent:        #ff3333;
     --accent-hover:  #cc0000;
     --accent-glow:   rgba(255, 51, 51, 0.4);
+    /* --text-danger:   #ff6666;
+    --bg-danger-surface: rgba(255, 102, 102, 0.15); rgba(251, 85, 85, 0.15);*/
+    --text-danger:   #ff0000;
+    --bg-danger-surface: rgba(255, 51, 51, 0.4);
 }
 
 /* Other base styles */
