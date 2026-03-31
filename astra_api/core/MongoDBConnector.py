@@ -29,7 +29,7 @@ class MongoDBConnector:
                     uri = f"mongodb://{self.host}:{self.port}"
 
                 self.logger.debug(f"Connecting to MongoDB at {self.host}:{self.port}...")
-                self.client = AsyncMongoClient(uri)
+                self.client = AsyncMongoClient(uri, tz_aware=True)
 
                 self.logger.info("Succesfully established connection with MongoDB.")
             except Exception as e:

@@ -6,9 +6,9 @@ import { browser } from '$app/environment';
 
 export const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api',
-    withCredentials: true,
     headers: { 'Content-Type': 'application/json' },
 });
+
 
 // Redirects to /login saving the destination route as ?goto=
 const redirectToLogin = () => {
@@ -16,6 +16,16 @@ const redirectToLogin = () => {
     const redirect = encodeURIComponent(window.location.pathname + window.location.search);
     goto(`/login?goto=${redirect}`);
 };
+
+api.interceptors.request.use((config) => {
+    if (browser) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+    }
+    return config;
+});
 
 // Response interceptor 
 api.interceptors.response.use(

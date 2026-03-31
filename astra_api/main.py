@@ -11,7 +11,8 @@ from contextlib import asynccontextmanager
 from core.logging_utils import get_logger, setup_global_logging
 from core.MongoDBConnector import MongoDBConnector, db_connector
 from services.db.UserService import UserService
-from models.user import User
+from core.dependencies import get_request_user
+from api.users import router as users_router
 
 # ================================================================================
 # API CONFIGURATION
@@ -89,18 +90,20 @@ class DummyAuth(BaseModel):
     token:str
 
 @api.post("/login")
-async def dummy_login(data:DummyAuth, response:Response):
-    """ Set an HTTP-only dummy cookie with a token"""
-    response.set_cookie(key="auth", 
-                        value=data.token,
-                        httponly=True, 
-                        secure=True,
-                        samesite="lax",
-                        max_age=72000,
-                        path="/",
-                        domain=None)
-    return {"status":"ok", "message": "Successful dummy Login!"}
+async def dummy_login(data: DummyAuth):
+    """ 
+    Login + create a dummy user
+    """
+    user_service = UserService()
+    try:
+        await user_service.ensure_user(data.token)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Database Error: {str(e)}")
 
+    return {
+        "access_token": data.token,
+        "token_type": "bearer"
+    }
 
 
 class CheckResponse(BaseModel):
@@ -114,43 +117,20 @@ class CheckResponse(BaseModel):
         },
         response_model=CheckResponse
     )
-async def dummy_check(auth: Optional[str] = Cookie(None)):
+async def dummy_check(user: str = Depends(get_request_user)):
     """ Check a dummy session"""
-    if not auth:
-        raise HTTPException(401, "Not authenticated!")
-    return CheckResponse(status="ok", message=auth)
-
+    return CheckResponse(status="ok", message=f"Authorised as: {user}")
 
 
 @api.post("/logout")
-async def dummy_logout(response:Response):
-    """ Delete an HTTP-only dummy cookie"""
-    response.delete_cookie(
-        key="auth",
-        path="/"
-    )
+async def dummy_logout():
+    """ Delete a session (dummy)"""
     return {"status":"ok", "message": "Successful dummy Logout!"}
 
 
-# TODO Temporal dummy users, only for testing the DB
-# --------------------------------------------------------------------------------
+app.include_router(api, tags=["Main API"])
+app.include_router(users_router, prefix=API_BASE_PATH+"/users", tags=["User Management"])
 
-
-@api.post("/users", response_model=dict)
-async def new_user(user: User):
-    user_service:UserService = UserService()
-
-    user.id=None
-    user_id = await user_service.create_user(user)
-    return {"message": "User created", "id": user_id}
-
-@api.get("/users/{name}", response_model=User)
-async def get_user(name: str):
-    user_service:UserService = UserService()
-
-    return await user_service.get_user(name)
-
-app.include_router(api)
 
 
 
