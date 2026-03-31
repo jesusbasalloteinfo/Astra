@@ -1,0 +1,108 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+
+  "name": "Astra",
+  "name_sign": "Asistente Remoto Inteligente para Telescopios",
+
+  "-------------------------------------- LANDING SECTION -------------------------------------- ": "",
+  "landing_badge": "¡Versión Dev!",
+  "landing_hero_prefix": "Explora el Universo con",
+  "landing_hero_subtitle": "Tu sistema personal de navegación celeste. Control avanzado de telescopios, mapeo del cielo en tiempo real y planificación automatizada de observaciones en una sola aplicación.",
+  
+  "landing_cta": "Empieza a Explorar",
+  "landing_cta_docs": "Ver Documentación",
+  "landing_cta_gallery": "Ver Galería",
+
+  "landing_nav_features": "Características",
+  "landing_nav_technology": "Tecnología",
+  "landing_nav_docs": "Documentación",
+  "landing_nav_community": "Comunidad",
+  
+  "landing_features_title": "Herramientas Astronómicas Avanzadas",
+  "landing_features_subtitle": "ASTRA combina una automatización intuitiva con un control avanzado del telescopio para que la observación sea accesible para todos.",
+
+  "landing_feature_obs_title": "Observación en tiempo real",
+  "landing_feature_obs_desc": "Disfruta del cielo nocturno en tiempo real con un motor de simulación avanzado. Sigue los cuerpos celestes con una precisión total.",
+  "landing_feature_telescope_title": "Control inteligente del telescopio",
+  "landing_feature_telescope_desc": "Controla tu telescopio automáticamente, ya sea de manera manual o con un asistente basado en IA que se encarga de apuntar y realizar el seguimiento por ti.",
+  "landing_feature_ai_title": "Automatización inteligente",
+  "landing_feature_ai_desc": "Programa observaciones y automatiza tus sesiones con nuestro asistente inteligente.",
+  "landing_feature_learn_title": "Aprende a tu ritmo",
+  "landing_feature_learn_desc": "Consulta información y datos interesantes sobre cualquier objeto o pide a nuestro asistente con IA que te explique conceptos complejos.",
+  "landing_feature_global_title": "Conectividad global",
+  "landing_feature_global_desc": "Conéctate con tu equipo astronómico desde cualquier lugar del mundo.",
+  "landing_feature_night_title": "Modo noche y de observación",
+  "landing_feature_night_desc": "Disfruta de temas oscuros perfectamente calibrados que preservan tu visión nocturna y ofrecen una visualización nítida.",
+  
+  "landing_tech_card_title": "Mapa del cielo en tiempo real",
+  "landing_tech_card_desc": "Seguimiento celestial preciso basado en datos de catálogos comunes, como NGC y Messier.",
+  "landing_tech_title_1": "Sistema de Control",
+  "landing_tech_title_2": "Inteligente para Telescopios",
+  "landing_tech_desc_1": "ASTRA (Automated Smart Telescope Remote Assistant) representa la siguiente generación de software astronómico. Esta aplicación conecta la astronomía amateur con la profesional, haciéndola más sencilla y accesible para cualquier persona.",
+  "landing_tech_desc_2": "Tanto si estás aprendiendo sobre los planetas, fotografiando DSOs lejanos, o simplemente explorando el cielo nocturno con tu telescopio, ASTRA se adapta a tus necesidades con automatización inteligente y control preciso.",
+  
+  "landing_stat_indi": "Protocolo INDI",
+  "landing_stat_telescopes": "Soportado",
+  "landing_stat_objects": "Objetos Celestiales",
+  "landing_stat_guiding": "Precisión del Auto-Guiado",
+  "landing_stat_satisfaction": "Satisfacción de Usuarios",
+
+  "landing_end_cta_title": "¿Estás preparado para explorar el Cosmos?",
+  "landing_end_cta_desc": "Únete a miles de aficionados que utilizan ASTRA para descubrir las maravillas del universo. Disponible en la web.",
+  "landing_end_cta_disclaimer": "Gratis y de Código Abierto",
+
+  "landing_footer_desc": "Impulsando a aficionados de todo el mundo con control avanzado de telescopios, navegación celeste y herramientas de control automatizado de observaciones.",
+
+  "landing_footer_product_title": "Producto",
+  "landing_footer_feat": "Características",
+  "landing_footer_tele": "Soporte de Telescopios",
+  "landing_footer_docs": "Documentación",
+  "landing_footer_log": "Historial de Cambios",
+
+  "landing_footer_community_title": "Comunidad",  
+  "landing_footer_cont": "Contribuir",
+  "landing_footer_contact": "Contactar",
+  
+  "landing_footer_copyright": "ASTRA Astronomy. Todos los derechos reservados.",
+
+
+
+  "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_welcome": "Bienvenido",
+  "login_input_msg": "Inicia sesión para continuar",
+  "login_username_input": "Usuario",
+  "login_input_button": "Iniciar sesión",
+  "login_sign_in_process": "Iniciando sesión...",
+  "login_no_user": "Introduce tu nombre de usuario",
+  "login_login_error": "No se ha podido iniciar sesión. Inténtalo de nuevo.",
+  "login_return_home": "← Volver al inicio",
+
+
+  "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
+  "dash_side_name": "Panel de control",
+  "dash_side_new_session": "Nueva sesión",
+  "dash_side_home": "Inicio",
+  "dash_side_sessions": "Sesiones",
+  "dash_side_telescope": "Telescopios",
+  "dash_side_location": "Ubicación",
+
+  "dash_side_profile": "Perfil",
+
+
+  "-------------------------------------- DASHBOARD -------------------------------------- ": "",
+  "dash_main_greeting_morning": "¡Buenos días, {user}! ☀️",
+  "dash_main_sub_morning_morning": "¿Planificando la sesión solar de hoy?",
+  "dash_main_greeting_afternoon": "Buenas tardes, {user} 🌤️",
+  "dash_main_sub_morning_afternoon": "¿Listo para la transición al crepúsculo?",
+  "dash_main_greeting_evening": "Buenas noches, {user} 🌙",
+  "dash_main_sub_morning_evening": "¿Todo preparado para la sesión de esta noche?",
+  "dash_main_greeting_night": "Buenas noches, {user} 🌌",
+  "dash_main_sub_morning_night": "¿Cuál es el objetivo de esta noche?",
+
+  "dash_main_new_session": "Nueva sesión",
+
+  "dash_main_recent": "Últimas sesiones",
+  "dash_main_view_sessions": "Ver todas →"
+
+
+}

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  
+  "name": "Astra",
+  "name_sign": "Assistent Remot Intel·ligent per a Telescopis",
+
+  "-------------------------------------- LANDING SECTION -------------------------------------- ": "",
+  "landing_badge": "Versió Dev!",
+  "landing_hero_prefix": "Explora l'Univers amb",
+  "landing_hero_subtitle": "El teu sistema personal de navegació celeste. Control avançat de telescopis, mapeig del cel en temps real i planificació automatitzada d'observacions en una sola aplicació.",
+  
+  "landing_cta": "Comença a Explorar",
+  "landing_cta_docs": "Veure Documentació",
+  "landing_cta_gallery": "Veure Galeria",
+
+  "landing_nav_features": "Característiques",
+  "landing_nav_technology": "Tecnologia",
+  "landing_nav_docs": "Documentació",
+  "landing_nav_community": "Comunitat",
+  
+  "landing_features_title": "Eines Astronòmiques Avançades",
+  "landing_features_subtitle":  "ASTRA combina una automatització intuïtiva amb un control avançat del telescopi per fer que l'observació sigui accessible per a tothom.",
+
+  "landing_feature_obs_title": "Observació en temps real",
+  "landing_feature_obs_desc": "Gaudeix del cel nocturn en temps real amb un motor de simulació avançat. Segueix els cossos celestes amb una precisió total.",
+  "landing_feature_telescope_title": "Control intel·ligent del telescopi",
+  "landing_feature_telescope_desc": "Controla el teu telescopi automàticament, ja sigui de manera manual o amb un assistent basat en IA que s'encarrega d'apuntar i fer el seguiment per tu.",
+  "landing_feature_ai_title": "Automatització intel·ligent",
+  "landing_feature_ai_desc": "Programa observacions i automatitza les teves sessions amb el nostre assistent intel·ligent.",
+  "landing_feature_learn_title": "Aprèn al teu ritme",
+  "landing_feature_learn_desc": "Consulta informació i dades interessants sobre qualsevol objecte o demana al nostre assistent amb IA que t'expliqui conceptes complexos.",
+  "landing_feature_global_title": "Connectivitat global",
+  "landing_feature_global_desc": "Connecta't amb el teu equip astronòmic des de qualsevol lloc del món.",
+  "landing_feature_night_title": "Mode nit i d'observació",
+  "landing_feature_night_desc": "Gaudeix de temes foscos perfectament calibrats que preserven la teva visió nocturna i ofereixen una visualització nítida.",
+  
+  "landing_tech_card_title": "Mapa del cel en temps real",
+  "landing_tech_card_desc": "Seguiment celestial precís basat en dades de catàlegs comuns, com ara NGC i Messier.",
+  "landing_tech_title_1": "Sistema de Control",
+  "landing_tech_title_2": "Intel·ligent per a Telescopis",
+  "landing_tech_desc_1": "ASTRA (Automated Smart Telescope Remote Assistant) representa la següent generació de programari astronòmic. Aquesta aplicació connecta l'astronomia amateur amb la professional, fent que sigui més senzilla i accesible per a qualsevol persona.",
+  "landing_tech_desc_2": "Tant si estàs aprenent sobre els planetes, fotografiant DSOs llunyans, o simplement explorant el cel nocturn amb el teu telescopi, ASTRA s'adapta a les teves necessitats amb automatització intel·ligent i control precís.",
+  
+  "landing_stat_indi": "Protocol INDI",
+  "landing_stat_telescopes": "Suportat",
+  "landing_stat_objects": "Objectes Celestials",
+  "landing_stat_guiding": "Precició de l'Auto Guiatge",
+  "landing_stat_satisfaction": "Satisfacció d'Usuaris",
+
+  "landing_end_cta_title": "Estàs preparat per explorar el Cosmos?",
+  "landing_end_cta_desc": "Uneix-te a milers d'aficionats que fan servir ASTRA per descobrir les meravelles de l'univers. Disponible a la web.",
+  "landing_end_cta_disclaimer": "Gratuït i de Codi Obert",
+
+  "landing_footer_desc": "Impulsant aficionats d'arreu del mon amb amb control avançat de telescopis, navegació celeste i eines de control automatitzat d'observacions.",
+
+  "landing_footer_product_title": "Producte",
+  "landing_footer_feat": "Característiques",
+  "landing_footer_tele": "Suport de Telescopis",
+  "landing_footer_docs": "Documentació",
+  "landing_footer_log": "Historial de Canvis",
+
+  "landing_footer_community_title": "Comunitat",  
+  "landing_footer_cont": "Contribuïr",
+  "landing_footer_contact": "Contactar",
+  
+  "landing_footer_copyright": "ASTRA Astronomy. Tots els drets reservats.",
+
+
+
+  "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_welcome": "Benvingut",
+  "login_input_msg": "Inicia sessió per a continuar",
+  "login_username_input": "Usuari",
+  "login_input_button": "Inicia sessió",
+  "login_sign_in_process": "Iniciant sessió...",
+  "login_no_user": "Introdueix el teu nom d'usuari",
+  "login_login_error": "No s'ha pogut iniciar sessió. Intenta-ho de nou.",
+  "login_return_home": "← Torna a l'inici",
+
+  "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
+  "dash_side_name": "Taulell de control",
+  "dash_side_new_session": "Nova sessió",
+  "dash_side_home": "Inici",
+  "dash_side_sessions": "Sessions",
+  "dash_side_telescope": "Telescopis",
+  "dash_side_location": "Ubicació",
+  "dash_side_profile": "Perfil",
+
+
+  "-------------------------------------- DASHBOARD -------------------------------------- ": "",
+  "dash_main_greeting_morning": "Bon dia, {user} ☀️",
+  "dash_main_sub_morning_morning": "Planificant la sessió solar d'avui?",
+  "dash_main_greeting_afternoon": "Bona tarda, {user} 🌤️",
+  "dash_main_sub_morning_afternoon": "A punt per a la transició cap al crepuscle?",
+  "dash_main_greeting_evening": "Bon vespre, {user} 🌙",
+  "dash_main_sub_morning_evening": "Tot a punt per a la sessió d'aquesta nit?",
+  "dash_main_greeting_night": "Bona nit, {user} 🌌",
+  "dash_main_sub_morning_night": "Quin és l'objectiu per a aquesta nit?",
+  
+  "dash_main_new_session": "Nova sessió",
+
+  "dash_main_recent": "Últimes sessions",
+  "dash_main_view_sessions": "Veure totes →"
+
+}

@@ -1,16 +1,65 @@
 services:
+  astra_api:
+    container_name: astra_api
+    build:
+      context: ./astra_api
+      # target: dev
+    env_file:
+      - .env
+    restart: unless-stopped
+    # ports:
+    #   - "5245:80"
+    volumes:
+      - ./astra_api:/app
+    networks:
+      - gateway-net
+      - api-net
+    expose:
+      - 80
+    depends_on:
+      astra_api_db:
+        condition: service_healthy
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 80
+  
+  astra_api_db:
+    image: mongo:7.0
+    container_name: astra_api_db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_init:/docker-entrypoint-initdb.d:ro
+    networks:
+      - api-net
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
-  # ASTRA UI 
   astra_ui:
     container_name: astra_ui
+    restart: always
     build:
       context: ./astra_ui
       target: dev
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
     ports:
       - "4000:5173"
     volumes:
       - ./astra_ui:/app
       - /app/node_modules
+    networks:
+      - gateway-net
+    expose:
+      - 5173
   
   # Ephemerides API Service
   sideris:
@@ -19,9 +68,89 @@ services:
       context: ./sideris
       # target: dev
     restart: unless-stopped
-    ports:
-      - "8624:8624"
+    # ports:
+    #   - "8624:8624"
     volumes:
       - ./sideris:/app
+    networks:
+      - gateway-net
+    expose:
+      - 8624
 
-    command: uvicorn sideris:app --reload --host 0.0.0.0 --port 8624
+    command: uvicorn sideris:app --reload --host 0.0.0.0 --port 8624 --root-path /api/sideris
+
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    container_name: litellm
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./litellm-config.yaml:/app/config.yaml
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "postgresql://llm_user:llm_password@litellm_db:5432/litellm"
+      STORE_MODEL_IN_DB: True
+    depends_on:
+      litellm_db:
+        condition: service_healthy
+    command: [ "--config", "/app/config.yaml", "--port", "5000", "--num_workers", "8" ] 
+    networks:
+      - litellm-net
+      - api-net
+
+  litellm_db:
+    image: postgres:16-alpine
+    container_name: litellm_db
+    restart: always
+    environment:
+      POSTGRES_DB: litellm
+      POSTGRES_USER: llm_user
+      POSTGRES_PASSWORD: llm_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U llm_user -d litellm"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - litellm-net
+
+  kong_gateway:
+    container_name: kong_gateway
+    image: kong:3.6
+    restart: unless-stopped
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /kong/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+
+    volumes:
+      - ./gateway/config.yml:/kong/kong.yml:ro
+      - ./gateway:/var/log/kong/logs
+    
+    ports:
+      - "8000:8000"
+      - "8443:8443"
+    depends_on:
+      - astra_api
+    
+    networks:
+      - gateway-net
+  
+networks:
+  gateway-net:
+    driver: bridge
+  api-net:
+    driver: bridge
+  litellm-net:
+    driver: bridge
+
+    
+volumes:
+  mongodb_data:
+  mongodb_init:

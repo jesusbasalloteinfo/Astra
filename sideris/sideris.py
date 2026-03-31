@@ -13,7 +13,7 @@ from api.planetary_catalog import router as planetary_catalog_router
 
 setup_global_logging()
 
-API_BASE_PATH="/api"
+API_BASE_PATH=""
 
 CATALOG_FILE="data/sidereal_catalog.pkl"
 CONST_CATALOG= "data/constellationship.json"
@@ -57,15 +57,12 @@ app=FastAPI(
 
 
 
-
-api=APIRouter(prefix=API_BASE_PATH)
-
+api = APIRouter(prefix=API_BASE_PATH)
 
 
 
 
-
-@api.get("")
+@api.get("/")
 def health():
     return {"status": "ok", "message": "Sideris Ephemerides API is running!"}
 
