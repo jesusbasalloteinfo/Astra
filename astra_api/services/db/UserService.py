@@ -1,6 +1,5 @@
 from models.user import User
 from repositories.user import UserRepository
-from fastapi import HTTPException
 from core.db_exceptions import ObjectAlreadyExistsError, ObjectNotFoundError
 
 class UserService:

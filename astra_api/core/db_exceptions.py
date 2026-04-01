@@ -5,3 +5,6 @@ class ObjectAlreadyExistsError(Exception):
 
 class ObjectNotFoundError(Exception):
     pass
+
+class ObjectFailureError(Exception):
+    pass

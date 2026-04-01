@@ -1,4 +1,4 @@
-from typing import TypeVar, Generic, Type, Optional
+from typing import List, TypeVar, Generic, Type, Optional
 from pydantic import BaseModel
 from core.MongoDBConnector import db_connector
 from bson import ObjectId
@@ -27,6 +27,12 @@ class BaseMongoRepository(Generic[T]):
         result = await self.collection.insert_one(data)
         return str(result.inserted_id)
 
+    async def update_one(self, query: dict, update_data: dict) -> bool:
+        """Update an element inside the collection"""
+        # update_data must include the Mongo operators like $set, $push, etc.
+        result = await self.collection.update_one(query, update_data)
+        return result.modified_count > 0
+    
     async def find_one(self, query: dict) -> Optional[T]:
         """Find an element inside the collection"""
         doc = await self.collection.find_one(query)
@@ -35,6 +41,17 @@ class BaseMongoRepository(Generic[T]):
             return self.model_class(**doc)
         return None
     
+    async def find_many(self, query: dict) -> List[T]:
+        """Find multiple elements inside the collection"""
+        cursor = self.collection.find(query)
+        docs = await cursor.to_list(length=None)
+        
+        results = []
+        for doc in docs:
+            doc["_id"] = str(doc["_id"])
+            results.append(self.model_class(**doc))
+        return results
+
     async def delete_one(self, query: dict) -> bool:
         """Delete an element of a collection"""
         result = await self.collection.delete_one(query)
