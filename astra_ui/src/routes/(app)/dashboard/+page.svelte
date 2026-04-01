@@ -21,8 +21,8 @@
         return 'night';
     };
 
-    let now = $state(new Date());
-    let period = $derived(getPeriod(now.getHours()));
+    let now = $state<Date | null>(null);
+    let period = $derived(now ? getPeriod(now.getHours()) : 'night'); 
 
     const getGreeting = (p: Period, name: string) => {
         const key = `dash_main_greeting_${p}` as const;
@@ -36,6 +36,8 @@
     
     // Update time for greeting
     onMount(() => {
+        now = new Date();
+
         const interval = setInterval(() => {
             now = new Date();
         }, 60000); 
@@ -83,8 +85,7 @@
     <meta name="description" content={m.dash_title({name: m.name().toUpperCase()})} />
 </svelte:head>
 
-<div class="max-w-4xl mx-auto">
-
+<div class="max-w-4xl mx-auto transition-opacity duration-300 {now ? 'opacity-100' : 'opacity-0'}">
     <!-- Welcome -->
     <div class="flex items-center justify-between mb-8">
         <div>
