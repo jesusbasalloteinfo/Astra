@@ -13,6 +13,7 @@ from core.MongoDBConnector import MongoDBConnector, db_connector
 from services.db.UserService import UserService
 from core.dependencies import get_request_user
 from api.users import router as users_router
+from api.observations import router as obs_router
 
 # ================================================================================
 # API CONFIGURATION
@@ -130,6 +131,7 @@ async def dummy_logout():
 
 app.include_router(api, tags=["Main API"])
 app.include_router(users_router, prefix=API_BASE_PATH+"/users", tags=["User Management"])
+app.include_router(obs_router, prefix=API_BASE_PATH+"/observations", tags=["Observations"])
 
 
 
