@@ -6,10 +6,9 @@
     import TelescopeStatus from '$lib/components/telescope/TelescopeStatus.svelte';
     import LocationStatus from '$lib/components/location/LocationStatus.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
-
-    // Dummy user
-    const user = { name: 'Test string' };
-
+	import { obsStore } from '$lib/stores/observations.svelte';
+	import { authStore } from '$lib/stores/auth.svelte';
+	import { newObsStore } from '$lib/stores/newObservation.svelte';
 
     // Dynamic greeting message
     type Period = 'morning' | 'afternoon' | 'evening' | 'night';
@@ -44,40 +43,10 @@
         return () => clearInterval(interval);
     });
 
-    // Dummy recent sessions
-    const recentSessions = [
-        {
-            id: '1',
-            name: 'dummy 1 Orion Nebula Night',
-            date: '28 Mar 2026',
-            duration: '2h 34m',
-            telescope: 'Celestron 8"',
-            objectsObserved: 4,
-            type: 'observation' as const,
-        },
-        {
-            id: '2',
-            name: 'dummy 2 Messier Marathon',
-            date: '21 Mar 2026',
-            duration: '5h 10m',
-            telescope: 'Celestron 8"',
-            objectsObserved: 18,
-            type: 'observation' as const,
-        },
-        {
-            id: '3',
-            name: 'dummy 3 Learning: Moon phases',
-            date: '15 Mar 2026',
-            duration: '45m',
-            telescope: 'Celestron 8"',
-            objectsObserved: 1,
-            type: 'learning' as const,
-        },
-    ];
-
     let telescopeModalOpen = $state(false);
     let locationModalOpen = $state(false);
-    let greetings = $derived(getGreeting(period, user.name));
+    let greetings = $derived(getGreeting(period, authStore.user?.username || ""));
+    const recentSessions = $derived(obsStore.items.slice(0, 3));
 </script>
 
 <svelte:head>
@@ -94,11 +63,7 @@
             </h1>
             <p class="text-sm text-copy-muted mt-1">{greetings.subtitle}</p>
         </div>
-        <button class="cursor-pointer flex items-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover
-                       text-white font-semibold transition-colors shadow-glow">
-            <Plus size={18} />
-            {m.dash_main_new_session()}
-        </button>
+        
     </div>
 
     <!-- Widgets row -->
@@ -124,8 +89,23 @@
             </a>
         </div>
         <div class="flex flex-col gap-3">
-            {#each recentSessions as session}
-                <SessionCard {...session} />
+            <button 
+                onclick={() => newObsStore.open()}
+                class="cursor-pointer w-1/4 flex items-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover
+                    text-white font-semibold transition-colors shadow-glow">
+                <Plus size={18} />
+                {m.dash_main_new_session()}
+            </button>
+            {#each recentSessions as session (session.id)}
+                <SessionCard 
+                    id={session.id}
+                    name={session.name}
+                    creation={session.creation}
+                />
+            {:else}
+                <div class="text-center py-12 border-2 border-dashed border-border rounded-2xl">
+                    <p class="text-copy-muted">{m.dash_observ_not_found()}</p>
+                </div>
             {/each}
         </div>
     </div>

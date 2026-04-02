@@ -127,13 +127,22 @@
     }
   ],
   "dash_observ_not_found": "No se ha encontrado ninguna sesión. ¡Empieza tu viaje!",
+  "dash_observ_no_description": "Sin descripción",
   
   "dash_observ_edit_title": "Editar Sesión",
   "dash_observ_edit_name_title": "Nombre de la sesión",
+  "dash_observ_edit_description_title": "Descripción",
 
   "dash_observ_del_title_prefix": "¿Estás seguro de que quieres eliminar ",
   "dash_observ_del_title_suffix": " ?",
 
+  "dash_observ_new_subtitle": "Detalles de sessión",
+  "dash_observ_new_required": "Obligatorio",
+  "dash_observ_new_name_placeholder": "ej. Messier 45 - Pléyades...",
+  "dash_observ_new_description_placeholder": "Estado del cielo, objetivos, equipo...",
+
+  "dash_observ_action_create": "Crear sessión",
+  "dash_observ_action_creating": "Creando...",
   "dash_observ_action_save": "Guardar cambios",
   "dash_observ_action_delete": "Eliminar",
   "dash_observ_action_cancel": "Cancelar"

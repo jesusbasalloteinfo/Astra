@@ -1,68 +1,49 @@
 <script lang="ts">
     import SessionCard from '$lib/components/session/SessionCard.svelte';
     import { Plus } from 'lucide-svelte';
-
-    // Dummy data
-    const sessions = [
-        {
-            id: '1',
-            name: 'Session 1',
-            date: '28 Mar 2026',
-            duration: '2h 34m',
-            telescope: 'Celestron 8"',
-            objectsObserved: 4,
-            type: 'observation' as const,
-        },
-        {
-            id: '2',
-            name: 'Session 2',
-            date: '21 Mar 2026',
-            duration: '5h 10m',
-            telescope: 'Celestron 8"',
-            objectsObserved: 18,
-            type: 'observation' as const,
-        },
-        {
-            id: '3',
-            name: 'Learning: Moon phases',
-            date: '15 Mar 2026',
-            duration: '45m',
-            telescope: 'Celestron 8"',
-            objectsObserved: 1,
-            type: 'learning' as const,
-        },
-        {
-            id: '4',
-            name: 'Session Saturn',
-            date: '10 Mar 2026',
-            duration: '1h 20m',
-            telescope: 'Celestron 8"',
-            objectsObserved: 2,
-            type: 'observation' as const,
-        },
-    ];
+    import { obsStore } from '$lib/stores/observations.svelte';
+    import * as m from '$lib/paraglide/messages.js';
+	import { newObsStore } from '$lib/stores/newObservation.svelte';
 </script>
 
-<div class="max-w-3xl mx-auto">
+<div class="max-w-3xl mx-auto p-6">
 
     <!-- Header -->
     <div class="flex items-center justify-between mb-8">
         <div>
-            <h1 class="text-2xl font-bold text-copy-primary">Sessions</h1>
-            <p class="text-sm text-copy-muted mt-1">{sessions.length} sessions recorded</p>
+            <h1 class="text-2xl font-bold text-copy-primary">{m.dash_observ_title()}</h1>
+            <p class="text-sm text-copy-muted mt-1">
+                {m.dash_observ_found({count: obsStore.count})}
+            </p>
         </div>
-        <button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent hover:bg-accent-hover
-                       text-white text-sm font-semibold transition-colors">
+        
+        <button
+            onclick={() => newObsStore.open()}
+            class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent hover:bg-accent-hover
+                text-white text-sm font-semibold transition-colors shadow-lg shadow-accent/20">
             <Plus size={15} />
-            New session
+            {m.dash_observ_new_session()}
         </button>
     </div>
 
-    <!-- List -->
     <div class="flex flex-col gap-3">
-        {#each sessions as session}
-            <SessionCard {...session} />
-        {/each}
+        {#if obsStore.isLoading && obsStore.count === 0}
+            {#each Array(3) as _}
+                <div class="h-20 w-full bg-panel/50 animate-pulse rounded-xl border border-border"></div>
+            {/each}
+        {:else}
+            {#each obsStore.items as session (session.id)}
+                <SessionCard 
+                    id={session.id}
+                    name={session.name}
+                    description={session.description}
+                    creation={session.creation}
+                />
+            {:else}
+                <div class="text-center py-12 border-2 border-dashed border-border rounded-2xl">
+                    <p class="text-copy-muted">{m.dash_observ_not_found()}</p>
+                </div>
+            {/each}
+        {/if}
     </div>
-
 </div>

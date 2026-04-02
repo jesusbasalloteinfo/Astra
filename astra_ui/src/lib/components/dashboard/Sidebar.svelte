@@ -7,9 +7,11 @@
     import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
     import { LayoutDashboard, History, Telescope, MapPin, User, Plus, LogOut } from 'lucide-svelte';
-	import { authAPI } from '$lib/api/auth';
+    import { authStore } from '$lib/stores/auth.svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { obsStore } from '$lib/stores/observations.svelte';
+	import { newObsStore } from '$lib/stores/newObservation.svelte';
 
     const navItems = [
         { href: '/dashboard',           icon: LayoutDashboard, label: m.dash_side_home() },
@@ -21,7 +23,8 @@
     let profileOpen = $state(false);
 
     async function handleLogout() {
-        await authAPI.logout();
+        await authStore.logout()
+        await obsStore.reset()
         const destination = '/';
         goto(destination);
     }
@@ -42,8 +45,10 @@
 
     <!-- New session CTA -->
     <div class="px-4 pt-4">
-        <button class="cursor-pointer w-full flex items-center justify-center gap-2 py-2.5 rounded-lg
-                       bg-accent hover:bg-accent-hover text-white text-sm font-semibold transition-colors">
+        <button 
+            onclick={() => newObsStore.open()}
+            class="cursor-pointer w-full flex items-center justify-center gap-2 py-2.5 rounded-lg
+                bg-accent hover:bg-accent-hover text-white text-sm font-semibold transition-colors">
             <Plus size={16} />
             {m.dash_side_new_session()}
         </button>

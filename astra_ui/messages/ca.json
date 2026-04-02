@@ -126,13 +126,22 @@
     }
   ],
   "dash_observ_not_found": "No s'ha trobat cap sessió. Comença el teu viatge!",
+  "dash_observ_no_description": "Sense descripció",
   
   "dash_observ_edit_title": "Editar Sessió",
   "dash_observ_edit_name_title": "Nom de la sessió",
+  "dash_observ_edit_description_title": "Descripció",
 
   "dash_observ_del_title_prefix": "Estàs segur de voler eliminar ",
   "dash_observ_del_title_suffix": " ?",
 
+  "dash_observ_new_subtitle": "Detalls de la sessió",
+  "dash_observ_new_required": "Obligatori",
+  "dash_observ_new_name_placeholder": "p. ex. Messier 45 - Plèiades...",
+  "dash_observ_new_description_placeholder": "Estat del cel, objectius, equipament...",
+
+  "dash_observ_action_create": "Crear sessió",
+  "dash_observ_action_creating": "Creant...",
   "dash_observ_action_save": "Desar canvis",
   "dash_observ_action_delete": "Esborrar",
   "dash_observ_action_cancel": "Cancel·lar"

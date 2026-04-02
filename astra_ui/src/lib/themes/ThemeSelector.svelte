@@ -5,7 +5,6 @@
 
     let { 
         class: className = '',
-        // Props con valores por defecto para que funcione out-of-the-box
         classButton = 'bg-surface border border-border text-copy-secondary hover:text-copy-primary hover:bg-panel',
         classDropdown = 'bg-panel border border-border shadow-xl',
         classActive = 'text-accent bg-surface',
@@ -36,7 +35,10 @@
         class="cursor-pointer flex w-full items-center justify-between gap-2 px-3 h-10 rounded-lg text-sm font-medium transition-all focus:outline-none min-w-0 {classButton}"
     >
         <div class="flex items-center gap-2 min-w-0">
-            <span class="flex-shrink-0 flex items-center justify-center">{current.icon}</span>
+            <span class="flex-shrink-0 flex items-center justify-center 
+                        {current.id === 'astronomical' ? 'text-red-500' : 'text-copy-muted'}">
+                <current.icon size={16} strokeWidth={2} />
+            </span>
             <span class="truncate pt-0.5">{current.label}</span>
         </div>
         
@@ -62,7 +64,10 @@
                                {themeState.current === t.id ? classActive : classInactive}"
                         role="menuitem"
                     >
-                        <span class="flex-shrink-0 flex items-center justify-center">{t.icon}</span>
+                        <span class="flex-shrink-0 flex items-center justify-center 
+                                    {t.id === 'astronomical' ? 'text-red-500' : 'text-copy-muted'}">
+                            <t.icon size={16} strokeWidth={2} />
+                        </span>
                         <span class="truncate">{t.label}</span>
                     </button>
                 {/each}
