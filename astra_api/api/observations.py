@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import APIRouter, HTTPException, Depends, status
 from typing import List, Optional
 from pydantic import BaseModel
@@ -11,6 +13,16 @@ router = APIRouter()
 
 # --- Request Schemas ---
 
+class ObservationResponse(BaseModel):
+    id: str
+    name: str
+    description: Optional[str] = None
+    owner: str
+    creation: datetime
+    last_used: datetime
+    
+    model_config = {"from_attributes": True} # Read the atributes from DB
+
 class ObservationCreate(BaseModel):
     name: str
     description: Optional[str] = None
@@ -21,7 +33,25 @@ class ObservationUpdate(BaseModel):
 
 # --- Endpoints ---
 
-@router.post("/", status_code=status.HTTP_201_CREATED)
+@router.get("", response_model=List[ObservationResponse], response_model_by_alias=False)
+async def list_obs(username: str = Depends(get_request_user)):
+    service = ObservationService()
+    return await service.get_owner_observations(username)
+
+
+@router.get("/{obs_id}", response_model=ObservationResponse, response_model_by_alias=False)
+async def get_obs(
+    obs_id: str, 
+    username: str = Depends(get_request_user)
+):
+    service = ObservationService()
+    try:
+        return await service.get_observation(obs_id, username)
+    except ObjectNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@router.post("", status_code=status.HTTP_201_CREATED)
 async def create_obs(
     data: ObservationCreate, 
     username: str = Depends(get_request_user)
@@ -35,23 +65,6 @@ async def create_obs(
     except ObjectAlreadyExistsError as e:
         raise HTTPException(status_code=409, detail=str(e))
 
-
-@router.get("/", response_model=List[Observation], response_model_by_alias=False)
-async def list_obs(username: str = Depends(get_request_user)):
-    service = ObservationService()
-    return await service.get_owner_observations(username)
-
-
-@router.get("/{obs_id}", response_model=Observation, response_model_by_alias=False)
-async def get_obs(
-    obs_id: str, 
-    username: str = Depends(get_request_user)
-):
-    service = ObservationService()
-    try:
-        return await service.get_observation(obs_id, username)
-    except ObjectNotFoundError as e:
-        raise HTTPException(status_code=404, detail=str(e))
 
 
 @router.patch("/{obs_id}")

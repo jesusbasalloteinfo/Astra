@@ -37,7 +37,7 @@
     >
         <div class="flex items-center gap-2 min-w-0">
             <span class="flex-shrink-0 flex items-center justify-center">{current.icon}</span>
-            <span class="truncate leading-none pt-0.5">{current.label}</span>
+            <span class="truncate pt-0.5">{current.label}</span>
         </div>
         
         <ChevronDown

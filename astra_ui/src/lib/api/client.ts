@@ -19,7 +19,7 @@ const redirectToLogin = () => {
 
 api.interceptors.request.use((config) => {
     if (browser) {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('auth');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }

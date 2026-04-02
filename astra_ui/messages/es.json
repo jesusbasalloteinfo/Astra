@@ -107,7 +107,36 @@
   "dash_main_new_session": "Nueva sesión",
 
   "dash_main_recent": "Últimas sesiones",
-  "dash_main_view_sessions": "Ver todas →"
+  "dash_main_view_sessions": "Ver todas →",
+
+  
+
+
+  "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
+  "dash_observ_title": "Sesiones",
+  "dash_observ_new_session": "Nueva sesión",
+  
+  "dash_observ_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 sesión encontrada",
+				"countPlural=other": "{count} sesiones encontradas"
+			}
+    }
+  ],
+  "dash_observ_not_found": "No se ha encontrado ninguna sesión. ¡Empieza tu viaje!",
+  
+  "dash_observ_edit_title": "Editar Sesión",
+  "dash_observ_edit_name_title": "Nombre de la sesión",
+
+  "dash_observ_del_title_prefix": "¿Estás seguro de que quieres eliminar ",
+  "dash_observ_del_title_suffix": " ?",
+
+  "dash_observ_action_save": "Guardar cambios",
+  "dash_observ_action_delete": "Eliminar",
+  "dash_observ_action_cancel": "Cancelar"
 
 
 }

@@ -7,7 +7,7 @@ import { getLocale } from '$lib/paraglide/runtime.js';
 
 export const load: LayoutLoad = async ({ url }) => {
     if (browser) {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('auth');
         
         if (!token) {
             const locale = getLocale(); 
