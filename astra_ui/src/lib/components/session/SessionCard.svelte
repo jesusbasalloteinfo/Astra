@@ -25,7 +25,7 @@
 </script>
 
 <div class="group relative flex items-center">
-    <a href="/dashboard/sessions/{id}"
+    <a href="/observation/{id}"
        class="flex flex-1 items-center gap-4 p-4 bg-panel border border-border rounded-xl
               hover:bg-surface transition-all cursor-pointer pr-12">
         
