@@ -1,67 +1,105 @@
 <script lang="ts">
-    import { Calendar, Clock, Telescope, ChevronRight } from 'lucide-svelte';
+    import { Calendar, Telescope, ChevronRight, Trash2, Pencil } from 'lucide-svelte';
+    import { obsStore } from '$lib/stores/observations.svelte';
+    import Modal from '$lib/components/ui/Modal.svelte';
+	import { m } from '$lib/paraglide/messages';
+    import { formatDate } from '$lib/utils/date';
 
-    let {
-        id,
-        name,
-        date,
-        duration,
-        telescope,
-        objectsObserved = 0,
-        type = 'observation',
-    }: {
-        id: string;
-        name: string;
-        date: string;
-        duration: string;
-        telescope: string;
-        objectsObserved?: number;
-        type?: 'observation' | 'learning';
-    } = $props();
+    let { id, name, creation, telescope = 'Generic', description= null } = $props();
 
-    const typeStyles = {
-        observation: 'bg-accent/10 text-accent',
-        learning:    'bg-purple-500/10 text-purple-400',
-    };
+    let showDeleteModal = $state(false);
+    let showEditModal = $state(false);
+    let editName = $state(name);
+
+    const formattedDate = $derived(formatDate(creation));
+
+    async function handleDelete() {
+        await obsStore.remove(id);
+        showDeleteModal = false;
+    }
+
+    async function handleUpdate() {
+        await obsStore.update(id, { name: editName });
+        showEditModal = false;
+    }
 </script>
 
-<a href="/sessions/{id}"
-   class="group flex items-center gap-4 p-4 bg-panel border border-border rounded-xl
-          hover:bg-surface transition-colors cursor-pointer">
+<div class="group relative flex items-center">
+    <a href="/dashboard/sessions/{id}"
+       class="flex flex-1 items-center gap-4 p-4 bg-panel border border-border rounded-xl
+              hover:bg-surface transition-all cursor-pointer pr-12">
+        
+        <div class="w-1 self-stretch rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"></div>
 
-    <!-- Type indicator -->
-    <div class="w-1 self-stretch rounded-full {type === 'observation' ? 'bg-accent' : 'bg-purple-400'}"></div>
-
-    <!-- Info -->
-    <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-2">
-            <span class="text-sm font-semibold text-copy-primary truncate">{name}</span>
-            <span class="text-[10px] font-medium px-2 py-0.5 rounded-full {typeStyles[type]}">
-                {type}
-            </span>
+        <div class="flex-1 min-w-0 space-y-2">
+            <div class="text-sm font-semibold text-copy-primary truncate">{name}</div>
+            {#if description!=null}
+                <div class="text-xs text-copy-muted">{description || m.dash_observ_no_description()}</div>
+            {/if}
+            <div class="flex items-center gap-4 text-xs text-copy-muted">
+                <span class="flex items-center gap-1"><Calendar size={11} /> {formattedDate}</span>
+                <span class="flex items-center gap-1"><Telescope size={11} /> {telescope}</span>
+            </div>
         </div>
-        <div class="flex items-center gap-4 text-xs text-copy-muted">
-            <span class="flex items-center gap-1">
-                <Calendar size={11} />
-                {date}
-            </span>
-            <span class="flex items-center gap-1">
-                <Clock size={11} />
-                {duration}
-            </span>
-            <span class="flex items-center gap-1">
-                <Telescope size={11} />
-                {telescope}
-            </span>
+
+        <!-- Hidden when inside -->
+        <div class="transition-opacity duration-200 group-hover:opacity-0">
+            <ChevronRight size={16} class="text-copy-muted" />
+        </div>
+    </a>
+
+    <!-- Action buttons -->
+    <div class="absolute right-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
+        <button 
+            onclick={() => showEditModal = true}
+            class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-accent hover:border-accent/30 transition-all shadow-sm">
+            <Pencil size={14} />
+        </button>
+        <button 
+            onclick={() => showDeleteModal = true}
+            class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-danger hover:border-danger/30 transition-all shadow-sm">
+            <Trash2 size={14} />
+        </button>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<Modal bind:open={showEditModal} title={m.dash_observ_edit_title()}>
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+            <label for="edit-name" class="text-sm font-medium text-copy-muted">{m.dash_observ_edit_name_title()}</label>
+            <input
+                id="edit-name"
+                type="text"
+                placeholder={m.dash_observ_edit_name_title()}
+                bind:value={editName}
+                class="w-full px-4 py-2 bg-secondary border border-border rounded-xl text-copy-primary focus:outline-none focus:border-accent transition-colors"
+            />
+        </div>
+        <div class="flex justify-end gap-3 mt-4">
+            <button onclick={() => showEditModal = false} class="cursor-pointer px-4 py-2 text-sm font-medium text-copy-muted">
+                {m.dash_observ_action_cancel()}
+            </button>
+            <button onclick={handleUpdate} class="cursor-pointer px-4 py-2 bg-accent hover:bg-accent-hover text-white text-sm font-bold rounded-xl shadow-lg shadow-accent/20">
+                {m.dash_observ_action_save()}
+            </button>
         </div>
     </div>
+</Modal>
 
-    <!-- Objects count -->
-    <div class="text-right flex-shrink-0">
-        <p class="text-lg font-bold text-copy-primary">{objectsObserved}</p>
-        <p class="text-[10px] text-copy-muted">objects</p>
+<!-- Delete Modal -->
+<Modal bind:open={showDeleteModal} title={m.dash_observ_del_title()} size="sm">
+    <p class="text-sm text-copy-muted mb-6">
+        {m.dash_observ_del_title_prefix()}
+        <span class="text-copy-primary font-medium">"{name}"</span>
+        {m.dash_observ_del_title_suffix()}
+    </p>
+    <div class="flex justify-end gap-3">
+        <button onclick={() => showDeleteModal = false} class="cursor-pointer px-4 py-2 text-sm font-medium text-copy-muted hover:text-copy-primary">
+            {m.dash_observ_action_cancel()}
+        </button>
+        <button onclick={handleDelete} class="cursor-pointer px-4 py-2 bg-danger-surface hover:opacity-90 text-danger text-sm font-bold rounded-xl transition-all shadow-lg shadow-danger-surface/20">
+            {m.dash_observ_action_delete()}
+        </button>
     </div>
-
-    <!-- Arrow -->
-    <ChevronRight size={16} class="text-copy-muted group-hover:text-copy-primary group-hover:translate-x-0.5 transition-all flex-shrink-0" />
-</a>
+</Modal>

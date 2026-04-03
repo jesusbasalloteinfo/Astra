@@ -32,6 +32,11 @@
     }
 </script>
 
+<svelte:head>
+    <title>{m.login_title({name: m.name().toUpperCase()})}</title>
+    <meta name="description" content={m.login_title({name: m.name().toUpperCase()})} />
+</svelte:head>
+
 <div class="min-h-screen bg-astralanding-dark text-slate-200 flex items-center justify-center relative">
 
     <Stars />

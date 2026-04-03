@@ -68,6 +68,7 @@
 
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_title": "Iniciar sesión - {name}",
   "login_welcome": "Bienvenido",
   "login_input_msg": "Inicia sesión para continuar",
   "login_username_input": "Usuario",
@@ -78,6 +79,10 @@
   "login_return_home": "← Volver al inicio",
 
 
+  "====================================== DASHBOARD ======================================": "",
+  "dash_title": "Panel de control - {name}",
+
+
   "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
   "dash_side_name": "Panel de control",
   "dash_side_new_session": "Nueva sesión",
@@ -85,8 +90,8 @@
   "dash_side_sessions": "Sesiones",
   "dash_side_telescope": "Telescopios",
   "dash_side_location": "Ubicación",
-
   "dash_side_profile": "Perfil",
+  "dash_side_logout": "Cerrar sesión",
 
 
   "-------------------------------------- DASHBOARD -------------------------------------- ": "",
@@ -102,7 +107,95 @@
   "dash_main_new_session": "Nueva sesión",
 
   "dash_main_recent": "Últimas sesiones",
-  "dash_main_view_sessions": "Ver todas →"
+  "dash_main_view_sessions": "Ver todas →",
 
+
+  "dash_main_zeroconf_welcome": "¡Bienvenido a Astra!",
+  "dash_main_zeroconf_info": "Para poder calcular las posiciones de los objectos, necesitamos saber desde donde estás observando.",
+  "dash_main_zeroconf_config": "Configurar la ubicación",
+ 
+  "dash_main_locationwidget_title": "Ubicación actual",
+  "dash_main_locationwidget_config": "Configurar ubicaciones",
+  "dash_main_locationwidget_temp": "Temperatura",
+  "dash_main_locationwidget_humidity": "Humedad",
+  "dash_main_locationwidget_no_location":"Ninguna ubicación disponible",
+  "dash_main_locationwidget_gps": "Configurar GPS",
+
+  "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
+  "dash_observ_title": "Sesiones",
+  "dash_observ_new_session": "Nueva sesión",
+  
+  "dash_observ_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 sesión encontrada",
+				"countPlural=other": "{count} sesiones encontradas"
+			}
+    }
+  ],
+  "dash_observ_not_found": "No se ha encontrado ninguna sesión. ¡Empieza tu viaje!",
+  "dash_observ_no_description": "Sin descripción",
+  
+  "dash_observ_edit_title": "Editar sesión",
+  "dash_observ_edit_name_title": "Nombre de la sesión",
+  "dash_observ_edit_description_title": "Descripción",
+
+  "dash_observ_del_title": "Eliminar sessión",
+  "dash_observ_del_title_prefix": "¿Estás seguro de que quieres eliminar ",
+  "dash_observ_del_title_suffix": " ?",
+
+  "dash_observ_new_subtitle": "Detalles de sessión",
+  "dash_observ_new_required": "Obligatorio",
+  "dash_observ_new_name_placeholder": "ej. Messier 45 - Pléyades...",
+  "dash_observ_new_description_placeholder": "Estado del cielo, objetivos, equipo...",
+
+  "dash_observ_action_create": "Crear sessión",
+  "dash_observ_action_creating": "Creando...",
+  "dash_observ_action_save": "Guardar cambios",
+  "dash_observ_action_delete": "Eliminar",
+  "dash_observ_action_cancel": "Cancelar",
+
+  "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
+  "dash_location_title": "Ubicaciones de observación",
+  "dash_location_subtitle": "Ubicaciones guardadas",
+  "dash_location_new_location": "Nueva ubicación",
+
+  "dash_location_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 ubicación configurada",
+				"countPlural=other": "{count} ubicaciones configurades"
+			}
+    }
+  ],
+  
+  "dash_location_not_found": "No se han encontrado ubicaciones. ¡Configura una ahora!",
+  "dash_location_selected": "Selecionada",
+
+  "dash_location_del_title": "Eliminar ubicación",
+  "dash_location_del_title_prefix": "¿Estás seguro de que quieres eliminar ",
+  "dash_location_del_title_suffix": " ?",
+  
+  "dash_location_new_subtitle": "Datos de la ubicación",
+  "dash_location_new_required": "Obligatorio",
+  "dash_location_new_label": "Etiqueta",
+  "dash_location_new_label_placeholder": "ej. Jardín, Observatorio...",
+  "dash_location_new_lat": "Latitud",
+  "dash_location_new_lng": "Longitud",
+  "dash_location_new_elev": "Elevación",
+
+  "dash_location_new_gps": "Configurar por GPS",
+  "dash_location_new_gps_detect": "Detectando...",
+
+  "dash_location_new_default": "Definir como ubicación predeterminada",
+
+  "dash_location_action_add": "Añadir ubicación",
+  "dash_location_action_saving": "Guardando...",
+  "dash_location_action_delete": "Eliminar",
+  "dash_location_action_cancel": "Cancelar"
 
 }

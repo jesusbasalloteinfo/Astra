@@ -68,6 +68,7 @@
 
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
+  "login_title": "Iniciar sessió - {name}",
   "login_welcome": "Benvingut",
   "login_input_msg": "Inicia sessió per a continuar",
   "login_username_input": "Usuari",
@@ -77,6 +78,12 @@
   "login_login_error": "No s'ha pogut iniciar sessió. Intenta-ho de nou.",
   "login_return_home": "← Torna a l'inici",
 
+
+  "====================================== DASHBOARD ======================================": "",
+  "dash_title": "Taulell de control - {name}",
+
+
+
   "-------------------------------------- DASHBOARD SIDEBAR -------------------------------------- ": "",
   "dash_side_name": "Taulell de control",
   "dash_side_new_session": "Nova sessió",
@@ -85,6 +92,7 @@
   "dash_side_telescope": "Telescopis",
   "dash_side_location": "Ubicació",
   "dash_side_profile": "Perfil",
+  "dash_side_logout": "Tancar sessió",
 
 
   "-------------------------------------- DASHBOARD -------------------------------------- ": "",
@@ -100,6 +108,96 @@
   "dash_main_new_session": "Nova sessió",
 
   "dash_main_recent": "Últimes sessions",
-  "dash_main_view_sessions": "Veure totes →"
+  "dash_main_view_sessions": "Veure totes →",
+
+  "dash_main_zeroconf_welcome": "Benvingut a Astra!",
+  "dash_main_zeroconf_info": "Per poder calcular les posicions dels objectes, necesitem saber des d'on estas observant.",
+  "dash_main_zeroconf_config": "Configurar la ubicació",
+
+  "dash_main_locationwidget_title": "Ubicació actual",
+  "dash_main_locationwidget_config": "Configurar ubicacions",
+  "dash_main_locationwidget_temp": "Temperatura",
+  "dash_main_locationwidget_humidity": "Humitat",
+  "dash_main_locationwidget_no_location":"Cap ubicació disponible",
+  "dash_main_locationwidget_gps": "Configurar GPS",
+
+
+  "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
+  "dash_observ_title": "Sessions",
+  "dash_observ_new_session": "Nova sessió",
+
+  "dash_observ_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 sessió trobada",
+				"countPlural=other": "{count} sessions trobades"
+			}
+    }
+  ],
+  "dash_observ_not_found": "No s'ha trobat cap sessió. Comença el teu viatge!",
+  "dash_observ_no_description": "Sense descripció",
+  
+  "dash_observ_edit_title": "Editar Sessió",
+  "dash_observ_edit_name_title": "Nom de la sessió",
+  "dash_observ_edit_description_title": "Descripció",
+
+  "dash_observ_del_title": "Esborrar sessió",
+  "dash_observ_del_title_prefix": "Estàs segur de voler esborrar ",
+  "dash_observ_del_title_suffix": " ?",
+
+  "dash_observ_new_subtitle": "Detalls de la sessió",
+  "dash_observ_new_required": "Obligatori",
+  "dash_observ_new_name_placeholder": "p. ex. Messier 45 - Plèiades...",
+  "dash_observ_new_description_placeholder": "Estat del cel, objectius, equipament...",
+
+  "dash_observ_action_create": "Crear sessió",
+  "dash_observ_action_creating": "Creant...",
+  "dash_observ_action_save": "Desar canvis",
+  "dash_observ_action_delete": "Esborrar",
+  "dash_observ_action_cancel": "Cancel·lar",
+
+
+  "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
+  "dash_location_title": "Ubicacions d'observació",
+  "dash_location_subtitle": "Ubicacions desades",
+  "dash_location_new_location": "Nova ubicació",
+
+  "dash_location_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 ubicació configurada",
+				"countPlural=other": "{count} ubicacions configurades"
+			}
+    }
+  ],
+  
+  "dash_location_not_found": "No s'han trobat ubicacions. Configura'n una ara!",
+  "dash_location_selected": "Seleccionada",
+
+  "dash_location_del_title": "Esborrar ubicació",
+  "dash_location_del_title_prefix": "Estàs segur de voler eliminar ",
+  "dash_location_del_title_suffix": " ?",
+  
+  "dash_location_new_subtitle": "Dades de la ubicació",
+  "dash_location_new_required": "Obligatori",
+  "dash_location_new_label": "Etiqueta",
+  "dash_location_new_label_placeholder": "p. ex. Jardí, Observatori...",
+  "dash_location_new_lat": "Latitud",
+  "dash_location_new_lng": "Longitud",
+  "dash_location_new_elev": "Elevació",
+
+  "dash_location_new_gps": "Configurar per GPS",
+  "dash_location_new_gps_detect": "Detectant...",
+
+  "dash_location_new_default": "Defineix com a ubicació predeterminada",
+
+  "dash_location_action_add": "Afegir ubicació",
+  "dash_location_action_saving": "Desant...",
+  "dash_location_action_delete": "Esborrar",
+  "dash_location_action_cancel": "Cancel·lar"
 
 }

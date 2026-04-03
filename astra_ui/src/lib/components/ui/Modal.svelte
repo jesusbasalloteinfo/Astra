@@ -45,11 +45,16 @@
     <div
         transition:fade={{ duration: 150 }}
         onclick={handleBackdrop}
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        onkeydown={handleKeydown}
+        role="presentation"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm cursor-default outline-none">
 
         <!-- Panel -->
         <div
             transition:scale={{ duration: 150, start: 0.95 }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={title ? 'modal-title' : undefined}
             class="w-full {sizes[size]} bg-panel border border-border rounded-2xl shadow-2xl">
 
             <!-- Header -->
@@ -58,7 +63,7 @@
                     <h2 class="text-base font-semibold text-copy-primary">{title}</h2>
                     <button
                         onclick={close}
-                        class="text-copy-muted hover:text-copy-primary transition-colors p-1 rounded-lg hover:bg-surface">
+                        class="cursor-pointer text-copy-muted hover:text-copy-primary transition-colors p-1 rounded-lg hover:bg-surface">
                         <X size={18} />
                     </button>
                 </div>
