@@ -8,8 +8,8 @@ from typing import Optional
 class Location(BaseModel):
     id: Optional[str] = Field(default_factory=lambda: str(uuid4()))
     label: str  # Custom user label
-    lat: float
-    lng: float
+    lat: float = Field(..., ge=-90, le=90, description="Latitude")
+    lng: float = Field(..., ge=-180, le=180, description="Longitude")
     elevation: float = 0.0
     is_default: Optional[bool] = False
 

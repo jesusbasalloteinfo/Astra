@@ -68,6 +68,10 @@ class LocationStore {
     }
 
     async addLocation(data: LocationCreate) {
+        if (data.lat < -90 || data.lat > 90) throw new Error("Invalid latitude");
+        if (data.lng < -180 || data.lng > 180) throw new Error("Invalid longitude");
+        if (!data.label.trim()) throw new Error("Label is required");
+
         this.isSyncing = true;
 
         try {
@@ -75,6 +79,7 @@ class LocationStore {
 
             await authStore.refreshProfile();
             if (this.all.length === 1) this.activeId = this.all[0].id;
+            this.hideForm();
         } finally {
             this.isSyncing = false;
         }
