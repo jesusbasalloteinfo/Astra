@@ -1,3 +1,4 @@
+<!-- src/routes/(app)/+layout.svelte -->
 <script lang="ts">
     import { authStore } from '$lib/stores/auth.svelte';
     import { obsStore } from '$lib/stores/observations.svelte';

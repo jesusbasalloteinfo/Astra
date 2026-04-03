@@ -5,6 +5,10 @@ export const endpoints = {
         session: '/session',
         user_details: 'users/me'
     },
+    user:{
+        locations: 'users/me/locations',
+        location_get: (id: string) => `users/me/locations/${id}`,
+    },
     observations: {
         base:   '/observations',
         detail: (id: string) => `/observations/${id}`,

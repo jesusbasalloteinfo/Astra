@@ -1,52 +1,82 @@
 <script lang="ts">
-    import { MapPin, Thermometer, Droplets, Settings } from 'lucide-svelte';
+    import { locStore } from '$lib/stores/location.svelte';
+    import { MapPin, Thermometer, Droplets, Settings, Navigation } from 'lucide-svelte';
+    import { fade } from 'svelte/transition';
 
     let {
-        configured = false,
-        name = 'No location set',
-        temperature,
-        humidity,
-        onconfig,
-    }: {
-        configured?: boolean;
-        name?: string;
-        temperature?: number;
-        humidity?: number;
-        onconfig?: () => void;
+        temperature = 12, 
+        humidity = 65,
     } = $props();
+
+    const active = $derived(locStore.active);
 </script>
 
-<div class="bg-panel border border-border rounded-xl p-5">
-    <div class="flex items-center justify-between mb-4">
+<div class="bg-panel border border-border rounded-2xl p-5 shadow-sm hover:border-accent/20 transition-all duration-300 group">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-5">
         <div class="flex items-center gap-2">
-            <MapPin size={16} class="text-copy-muted" />
-            <span class="text-xs font-semibold text-copy-muted uppercase tracking-wider">Location</span>
+            <div class="p-1.5 bg-accent/10 rounded-lg text-accent">
+                <MapPin size={14} />
+            </div>
+            <span class="text-[10px] font-bold text-copy-muted uppercase tracking-[0.2em]">Current location</span>
         </div>
-        <button
-            onclick={onconfig}
-            class="text-copy-muted hover:text-copy-primary transition-colors p-1 rounded-lg hover:bg-surface">
+        <a
+            href="/dashboard/location"
+            class="text-copy-muted hover:text-copy-primary transition-colors p-1.5 rounded-lg hover:bg-surface"
+            title="Configure Locations"
+        >
             <Settings size={14} />
-        </button>
+        </a>
     </div>
 
-    <p class="text-sm font-semibold text-copy-primary mb-3 truncate">{name}</p>
+    {#if active}
+        <div in:fade>
+            <h3 class="text-lg font-bold text-copy-primary truncate mb-1">
+                {active.label}
+            </h3>
 
-    {#if configured && (temperature !== undefined || humidity !== undefined)}
-        <div class="flex items-center gap-4">
-            {#if temperature !== undefined}
-                <div class="flex items-center gap-1.5 text-xs text-copy-secondary">
-                    <Thermometer size={13} class="text-copy-muted" />
-                    {temperature}°C
+            <div class="flex items-center gap-3 text-[10px] font-mono text-copy-muted mb-6 opacity-70">
+                <div class="flex items-center gap-1">
+                    <Navigation size={10} class="text-accent/60 rotate-45" />
+                    <span>{active.lat.toFixed(4)}°N</span>
                 </div>
-            {/if}
-            {#if humidity !== undefined}
-                <div class="flex items-center gap-1.5 text-xs text-copy-secondary">
-                    <Droplets size={13} class="text-copy-muted" />
-                    {humidity}%
+                <span class="opacity-30">•</span>
+                <span>{active.lng.toFixed(4)}°E</span>
+                <span class="opacity-30">•</span>
+                <span>{active.elevation}m</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-4 border-t border-border/40">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center text-copy-muted group-hover:text-accent transition-colors">
+                        <Thermometer size={15} />
+                    </div>
+                    <div>
+                        <p class="text-[9px] uppercase font-black text-copy-muted leading-none mb-1">Temp</p>
+                        <p class="text-sm font-mono text-copy-primary leading-none">{temperature}°C</p>
+                    </div>
                 </div>
-            {/if}
+
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center text-copy-muted group-hover:text-accent transition-colors">
+                        <Droplets size={15} />
+                    </div>
+                    <div>
+                        <p class="text-[9px] uppercase font-black text-copy-muted leading-none mb-1">Humidity</p>
+                        <p class="text-sm font-mono text-copy-primary leading-none">{humidity}%</p>
+                    </div>
+                </div>
+            </div>
         </div>
     {:else}
-        <p class="text-xs text-copy-muted">No conditions data</p>
+        <div class="py-6 text-center border-2 border-dashed border-border/50 rounded-xl bg-secondary/20">
+            <p class="text-xs text-copy-muted italic mb-4">No location active</p>
+            <a
+                href="/dashboard/settings/location"
+                class="inline-block px-4 py-2 bg-accent/10 hover:bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-widest rounded-lg transition-all"
+            >
+                Configure GPS
+            </a>
+        </div>
     {/if}
 </div>

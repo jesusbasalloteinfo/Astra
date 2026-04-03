@@ -1,3 +1,4 @@
+<!-- src/routes/(app)/dashboard/sessions/+page.svelte -->
 <script lang="ts">
     import SessionCard from '$lib/components/session/SessionCard.svelte';
     import { Plus } from 'lucide-svelte';

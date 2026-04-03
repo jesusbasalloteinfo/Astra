@@ -1,4 +1,4 @@
-from models.user import User
+from models.user import Location, User
 from repositories.user import UserRepository
 from core.db_exceptions import ObjectAlreadyExistsError, ObjectNotFoundError
 
@@ -28,4 +28,14 @@ class UserService:
             return await self.create_user(user)
         except ObjectAlreadyExistsError:
             return username
+    
+    async def add_location(self, username: str, location: Location) -> bool:
+        
+        update_data = {"$push": {"locations": location.model_dump()}}
+        return await self.repo.update_one({"username": username}, update_data)
+
+    async def remove_location(self, username: str, location_id: str) -> bool:
+        
+        update_data = {"$pull": {"locations": {"id": location_id}}}
+        return await self.repo.update_one({"username": username}, update_data)
         
