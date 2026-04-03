@@ -108,6 +108,18 @@
   "dash_main_recent": "Recent sessions",
   "dash_main_view_sessions": "View all →",
 
+  "dash_main_zeroconf_welcome": "Welcome to Astra!",
+  "dash_main_zeroconf_info": "To calculate the exact position of sky objects, we need to know from where are you looking the sky.",
+  "dash_main_zeroconf_config": "Configure my location",
+
+
+  "dash_main_locationwidget_title": "Current location",
+  "dash_main_locationwidget_config": "Configure locations",
+  "dash_main_locationwidget_temp": "Temperature",
+  "dash_main_locationwidget_humidity": "Humidity",
+  "dash_main_locationwidget_no_location":"No location active",
+  "dash_main_locationwidget_gps": "Configure GPS",
+
 
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
@@ -126,11 +138,12 @@
   "dash_observ_not_found": "No sessions found. Start your journey!",
   "dash_observ_no_description": "No description",
 
-  "dash_observ_edit_title": "Session Edit",
+  "dash_observ_edit_title": "Edit session",
   "dash_observ_edit_name_title": "Session name",
   "dash_observ_edit_description_title": "Session description",
 
 
+  "dash_observ_del_title": "Delete session",
   "dash_observ_del_title_prefix": "Are you sure you want to delete ",
   "dash_observ_del_title_suffix": " ?",
   
@@ -143,6 +156,47 @@
   "dash_observ_action_creating": "Creating...",
   "dash_observ_action_save": "Save changes",
   "dash_observ_action_delete": "Delete",
-  "dash_observ_action_cancel": "Cancel"
+  "dash_observ_action_cancel": "Cancel",
+
+  "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
+  "dash_location_title": "Observing Locations",
+  "dash_location_subtitle": "Saved locations",
+  "dash_location_new_location": "New location",
+
+  "dash_location_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 location configured",
+				"countPlural=other": "{count} locations configured"
+			}
+    }
+  ],
+  
+  "dash_location_not_found": "No locations found. Configure one now!",
+  "dash_location_selected": "Selected",
+
+  "dash_location_del_title": "Delete location",
+  "dash_location_del_title_prefix": "Are you sure you want to delete ",
+  "dash_location_del_title_suffix": " ?",
+  
+  "dash_location_new_subtitle": "Location data",
+  "dash_location_new_required": "Required",
+  "dash_location_new_label": "Label",
+  "dash_location_new_label_placeholder": "e.g. Backyard, Observatory...",
+  "dash_location_new_lat": "Latitude",
+  "dash_location_new_lng": "Longitude",
+  "dash_location_new_elev": "Elevation",
+
+  "dash_location_new_gps": "Use GPS",
+  "dash_location_new_gps_detect": "Detecting...",
+
+  "dash_location_new_default": "Set as default location",
+
+  "dash_location_action_add": "Add location",
+  "dash_location_action_saving": "Saving...",
+  "dash_location_action_delete": "Delete",
+  "dash_location_action_cancel": "Cancel"
 
 }

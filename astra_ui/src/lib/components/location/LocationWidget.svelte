@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { m } from '$lib/paraglide/messages';
     import { locStore } from '$lib/stores/location.svelte';
     import { MapPin, Thermometer, Droplets, Settings, Navigation } from 'lucide-svelte';
     import { fade } from 'svelte/transition';
@@ -18,12 +19,12 @@
             <div class="p-1.5 bg-accent/10 rounded-lg text-accent">
                 <MapPin size={14} />
             </div>
-            <span class="text-[10px] font-bold text-copy-muted uppercase tracking-[0.2em]">Current location</span>
+            <span class="text-[10px] font-bold text-copy-muted uppercase tracking-[0.2em]">{m.dash_main_locationwidget_title()}</span>
         </div>
         <a
             href="/dashboard/location"
             class="text-copy-muted hover:text-copy-primary transition-colors p-1.5 rounded-lg hover:bg-surface"
-            title="Configure Locations"
+            title={m.dash_main_locationwidget_config()}
         >
             <Settings size={14} />
         </a>
@@ -52,7 +53,7 @@
                         <Thermometer size={15} />
                     </div>
                     <div>
-                        <p class="text-[9px] uppercase font-black text-copy-muted leading-none mb-1">Temp</p>
+                        <p class="text-[9px] uppercase font-black text-copy-muted leading-none mb-1">{m.dash_main_locationwidget_temp()}</p>
                         <p class="text-sm font-mono text-copy-primary leading-none">{temperature}°C</p>
                     </div>
                 </div>
@@ -62,7 +63,7 @@
                         <Droplets size={15} />
                     </div>
                     <div>
-                        <p class="text-[9px] uppercase font-black text-copy-muted leading-none mb-1">Humidity</p>
+                        <p class="text-[9px] uppercase font-black text-copy-muted leading-none mb-1">{m.dash_main_locationwidget_humidity()}</p>
                         <p class="text-sm font-mono text-copy-primary leading-none">{humidity}%</p>
                     </div>
                 </div>
@@ -70,12 +71,12 @@
         </div>
     {:else}
         <div class="py-6 text-center border-2 border-dashed border-border/50 rounded-xl bg-secondary/20">
-            <p class="text-xs text-copy-muted italic mb-4">No location active</p>
+            <p class="text-xs text-copy-muted italic mb-4">{m.dash_main_locationwidget_no_location()}</p>
             <a
                 href="/dashboard/settings/location"
                 class="inline-block px-4 py-2 bg-accent/10 hover:bg-accent/20 text-accent text-[10px] font-bold uppercase tracking-widest rounded-lg transition-all"
             >
-                Configure GPS
+                {m.dash_main_locationwidget_gps()}
             </a>
         </div>
     {/if}

@@ -110,6 +110,17 @@
   "dash_main_recent": "Últimes sessions",
   "dash_main_view_sessions": "Veure totes →",
 
+  "dash_main_zeroconf_welcome": "Benvingut a Astra!",
+  "dash_main_zeroconf_info": "Per poder calcular les posicions dels objectes, necesitem saber des d'on estas observant.",
+  "dash_main_zeroconf_config": "Configurar la ubicació",
+
+  "dash_main_locationwidget_title": "Ubicació actual",
+  "dash_main_locationwidget_config": "Configurar ubicacions",
+  "dash_main_locationwidget_temp": "Temperatura",
+  "dash_main_locationwidget_humidity": "Humitat",
+  "dash_main_locationwidget_no_location":"Cap ubicació disponible",
+  "dash_main_locationwidget_gps": "Configurar GPS",
+
 
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
@@ -132,7 +143,8 @@
   "dash_observ_edit_name_title": "Nom de la sessió",
   "dash_observ_edit_description_title": "Descripció",
 
-  "dash_observ_del_title_prefix": "Estàs segur de voler eliminar ",
+  "dash_observ_del_title": "Esborrar sessió",
+  "dash_observ_del_title_prefix": "Estàs segur de voler esborrar ",
   "dash_observ_del_title_suffix": " ?",
 
   "dash_observ_new_subtitle": "Detalls de la sessió",
@@ -144,6 +156,48 @@
   "dash_observ_action_creating": "Creant...",
   "dash_observ_action_save": "Desar canvis",
   "dash_observ_action_delete": "Esborrar",
-  "dash_observ_action_cancel": "Cancel·lar"
+  "dash_observ_action_cancel": "Cancel·lar",
+
+
+  "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
+  "dash_location_title": "Ubicacions d'observació",
+  "dash_location_subtitle": "Ubicacions desades",
+  "dash_location_new_location": "Nova ubicació",
+
+  "dash_location_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 ubicació configurada",
+				"countPlural=other": "{count} ubicacions configurades"
+			}
+    }
+  ],
+  
+  "dash_location_not_found": "No s'han trobat ubicacions. Configura'n una ara!",
+  "dash_location_selected": "Seleccionada",
+
+  "dash_location_del_title": "Esborrar ubicació",
+  "dash_location_del_title_prefix": "Estàs segur de voler eliminar ",
+  "dash_location_del_title_suffix": " ?",
+  
+  "dash_location_new_subtitle": "Dades de la ubicació",
+  "dash_location_new_required": "Obligatori",
+  "dash_location_new_label": "Etiqueta",
+  "dash_location_new_label_placeholder": "p. ex. Jardí, Observatori...",
+  "dash_location_new_lat": "Latitud",
+  "dash_location_new_lng": "Longitud",
+  "dash_location_new_elev": "Elevació",
+
+  "dash_location_new_gps": "Configurar per GPS",
+  "dash_location_new_gps_detect": "Detectant...",
+
+  "dash_location_new_default": "Defineix com a ubicació predeterminada",
+
+  "dash_location_action_add": "Afegir ubicació",
+  "dash_location_action_saving": "Desant...",
+  "dash_location_action_delete": "Esborrar",
+  "dash_location_action_cancel": "Cancel·lar"
 
 }

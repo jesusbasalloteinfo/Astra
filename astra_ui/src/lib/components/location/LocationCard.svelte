@@ -1,6 +1,6 @@
 <script lang="ts">
     import { locStore } from '$lib/stores/location.svelte';
-    import { MapPin, Home, Plus, Trash2, X, Map as MapIcon, Globe, ChevronRight } from 'lucide-svelte';
+    import { MapPin, Home, Plus, Trash2, X, Map as MapIcon, Globe, ChevronRight, House } from 'lucide-svelte';
     import { fade, slide } from 'svelte/transition';
     import type {UserLocation, LocationCreate} from '$lib/types/user'
     import * as m from '$lib/paraglide/messages.js';
@@ -36,12 +36,12 @@
                 <span class="text-sm font-semibold text-copy-primary truncate">{label}</span>
                 {#if locStore.all.find(l => l.id === id)?.is_default}
                     <div title="Default Location" class="text-accent">
-                        <Home size={10} fill="currentColor" class="opacity-80" />
+                        <House size={10} fill="currentColor" class="opacity-80" />
                     </div>
                 {/if}
                 {#if locStore.effectiveActiveId === id}
                     <span class="text-[9px] font-bold text-accent uppercase tracking-tighter bg-accent/10 px-1.5 py-0.5 rounded">
-                        Selected
+                        {m.dash_location_selected()}
                     </span>
                 {/if}
             </div>
@@ -63,18 +63,18 @@
     </div>
 </div>
 <!-- Delete Modal -->
-<Modal bind:open={showDeleteModal} title="Delete location" size="sm">
+<Modal bind:open={showDeleteModal} title={m.dash_location_del_title()} size="sm">
     <p class="text-sm text-copy-muted mb-6">
-        {m.dash_observ_del_title_prefix()}
+        {m.dash_location_del_title_prefix()}
         <span class="text-copy-primary font-medium">"{label}"</span>
-        {m.dash_observ_del_title_suffix()}
+        {m.dash_location_del_title_suffix()}
     </p>
     <div class="flex justify-end gap-3">
         <button onclick={() => showDeleteModal = false} class="cursor-pointer px-4 py-2 text-sm font-medium text-copy-muted hover:text-copy-primary">
-            {m.dash_observ_action_cancel()}
+            {m.dash_location_action_cancel()}
         </button>
         <button onclick={handleDelete} class="cursor-pointer px-4 py-2 bg-danger-surface hover:opacity-90 text-danger text-sm font-bold rounded-xl transition-all shadow-lg shadow-danger-surface/20">
-            {m.dash_observ_action_delete()}
+            {m.dash_location_action_delete()}
         </button>
     </div>
 </Modal>

@@ -36,7 +36,7 @@
     <div class="flex items-center justify-between px-1">
         <h3 class="text-[10px] font-bold text-copy-muted uppercase tracking-[0.2em] flex items-center gap-2">
             <Globe size={12} class="text-accent" />
-            {'Saved locations'}
+            {m.dash_location_subtitle()}
         </h3>
     </div>
     
@@ -51,7 +51,7 @@
             />
         {:else}
             <div class="py-10 text-center border-2 border-dashed border-border rounded-2xl bg-panel/20">
-                <p class="text-xs text-copy-muted italic">{'No locations configured'}</p>
+                <p class="text-xs text-copy-muted italic">{m.dash_location_not_found()}</p>
             </div>
         {/each}
     </div>
@@ -64,35 +64,36 @@
                 class="cursor-pointer w-full flex items-center justify-center gap-2 p-3 rounded-xl border border-dashed border-border 
                        hover:bg-accent/5 hover:border-accent/50 hover:text-accent transition-all text-[11px] font-bold uppercase tracking-widest text-copy-muted">
                 <Plus size={14} />
-                {'New location'}
+                {m.dash_location_new_location()}
             </button>
         {:else}
             <div in:slide={{ duration: 200 }} class="p-5 rounded-2xl bg-panel border border-accent/20 space-y-4 shadow-2xl">
                 <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-black uppercase tracking-widest text-accent">Location Data</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-accent">{m.dash_location_new_subtitle()}</span>
                     <button onclick={() => locStore.isAdding = false} class="cursor-pointer text-copy-muted hover:text-copy-primary transition-colors">
                         <X size={16} />
                     </button>
                 </div>
 
                 <div class="space-y-4">
+                    <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_label()}</span>
                     <input 
                         bind:value={newLoc.label} 
-                        placeholder="Label (e.g. Backyard)" 
+                        placeholder={m.dash_location_new_label_placeholder()}
                         class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2.5 text-sm text-copy-primary focus:border-accent outline-none transition-colors"
                     />
                     
                     <div class="grid grid-cols-3 gap-3">
                         <div class="space-y-1">
-                            <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">Lat</span>
+                            <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_lat()}</span>
                             <input type="number" bind:value={newLoc.lat} class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
                         </div>
                         <div class="space-y-1">
-                            <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">Lng</span>
+                            <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_lng()}</span>
                             <input type="number" bind:value={newLoc.lng} class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
                         </div>
                         <div class="space-y-1">
-                            <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">Elev</span>
+                            <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_elev()}</span>
                             <input type="number" bind:value={newLoc.elevation} class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
                         </div>
                     </div>
@@ -102,7 +103,7 @@
                         disabled={locStore.isDetecting}
                         class="w-full flex items-center justify-center gap-2 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-secondary/30 hover:bg-secondary/60 border border-border rounded-xl transition-all">
                         <Navigation size={14} class={locStore.isDetecting ? 'animate-spin text-accent' : ''} />
-                        {locStore.isDetecting ? 'Detecting...' : 'Use GPS Coords'}
+                        {locStore.isDetecting ? m.dash_location_new_gps_detect() : m.dash_location_new_gps()}
                     </button>
                     <label class="flex items-center gap-3 cursor-pointer p-2 group">
                         <div class="relative flex items-center">
@@ -115,7 +116,7 @@
                             <div class="absolute left-1 w-2 h-2 bg-copy-muted rounded-full transition-all peer-checked:left-5 peer-checked:bg-accent"></div>
                         </div>
                         <span class="text-[10px] font-bold text-copy-muted uppercase tracking-widest group-hover:text-copy-primary transition-colors">
-                            Set as default location
+                            {m.dash_location_new_default()}
                         </span>
                     </label>
 
@@ -123,7 +124,7 @@
                         onclick={save}
                         disabled={!newLoc.label || locStore.isSyncing}
                         class="w-full py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/20 disabled:opacity-30 transition-all active:scale-[0.98]">
-                        {locStore.isSyncing ? 'Saving...' : 'Add location'}
+                        {locStore.isSyncing ? m.dash_location_action_saving() : m.dash_location_action_add()}
                     </button>
                 </div>
             </div>

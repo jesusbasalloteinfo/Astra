@@ -5,7 +5,7 @@
     import { Plus } from 'lucide-svelte';
     import SessionCard from '$lib/components/session/SessionCard.svelte';
     import TelescopeStatus from '$lib/components/telescope/TelescopeStatus.svelte';
-    import LocationStatus from '$lib/components/location/LocationStatus.svelte';
+    import LocationWidget from '$lib/components/location/LocationWidget.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
 	import { obsStore } from '$lib/stores/observations.svelte';
 	import { authStore } from '$lib/stores/auth.svelte';
@@ -47,7 +47,6 @@
     });
 
     let telescopeModalOpen = $state(false);
-    let locationModalOpen = $state(false);
     let greetings = $derived(getGreeting(period, authStore.user?.username || ""));
     const recentSessions = $derived(obsStore.items.slice(0, 3));
 </script>
@@ -75,22 +74,21 @@
             connected={false}
             name="Testing"
             onconfig={() => telescopeModalOpen = true} />
-        <LocationStatus
+        <LocationWidget
             temperature={14}
-            humidity={62}
-            onconfig={() => locationModalOpen = true} />
+            humidity={62}/>
     {:else}
         <!-- Zero State -->
         <div class="col-span-full p-12 bg-panel border-2 border-dashed border-border rounded-3xl text-center">
             <div class="w-16 h-16 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto mb-4">
                 <Globe size={32} />
             </div>
-            <h2 class="text-xl font-bold text-copy-primary">Welcome to Astra!</h2>
+            <h2 class="text-xl font-bold text-copy-primary">{ m.dash_main_zeroconf_welcome() }</h2>
             <p class="text-sm text-copy-muted max-w-sm mx-auto mt-2 mb-6">
-                To calculate the exact position of sky objects, we need to know from where are you looking the sky.
+                { m.dash_main_zeroconf_info() }
             </p>
             <a href="/dashboard/location" class="px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-accent/20">
-                Configure my first location
+                { m.dash_main_zeroconf_config() }
             </a>
         </div>
     {/if}
@@ -131,8 +129,4 @@
 <!-- Modals -->
 <Modal bind:open={telescopeModalOpen} title="Telescope configuration" size="md">
     <p class="text-copy-secondary text-sm">Telescope config coming soon.</p>
-</Modal>
-
-<Modal bind:open={locationModalOpen} title="Location" size="md">
-    <p class="text-copy-secondary text-sm">Location config coming soon.</p>
 </Modal>

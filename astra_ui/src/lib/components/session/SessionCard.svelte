@@ -88,7 +88,7 @@
 </Modal>
 
 <!-- Delete Modal -->
-<Modal bind:open={showDeleteModal} title="Eliminar Observación" size="sm">
+<Modal bind:open={showDeleteModal} title={m.dash_observ_del_title()} size="sm">
     <p class="text-sm text-copy-muted mb-6">
         {m.dash_observ_del_title_prefix()}
         <span class="text-copy-primary font-medium">"{name}"</span>

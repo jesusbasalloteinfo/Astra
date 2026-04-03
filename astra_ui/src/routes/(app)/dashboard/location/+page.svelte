@@ -15,10 +15,10 @@
             </div>
             <div>
                 <h1 class="text-2xl font-bold text-copy-primary">
-                    {'Observing Locations'}
+                    {m.dash_location_title()}
                 </h1>
                 <p class="text-sm text-copy-muted mt-1">
-                    {locStore.all.length} {locStore.all.length === 1 ? 'location' : 'locations'} configured
+                    {m.dash_location_found({count: locStore.all.length})}
                 </p>
             </div>
         </div>
