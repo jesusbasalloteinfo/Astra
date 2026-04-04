@@ -6,13 +6,25 @@
     import * as m from '$lib/paraglide/messages.js';
 	import LocationCard from './LocationCard.svelte';
 
+    const getLocalTimezone = () => -(new Date().getTimezoneOffset() / 60);
+
     let newLoc = $state<LocationCreate>({ 
         label: '', 
         lat: 0, 
         lng: 0, 
         elevation: 0,
+        timezone: getLocalTimezone(),
         is_default: false 
     });
+
+    // Validación reactiva
+    const isValid = $derived(
+        newLoc.label.trim() !== '' &&
+        newLoc.lat >= -90 && newLoc.lat <= 90 &&
+        newLoc.lng >= -180 && newLoc.lng <= 180 &&
+        newLoc.elevation >= -1000 && newLoc.elevation <= 10000 &&
+        newLoc.timezone >= -12 && newLoc.timezone <= 14
+    );
 
     async function handleGPS() {
         try {
@@ -20,6 +32,7 @@
             newLoc.lat = coords.lat ?? 0;
             newLoc.lng = coords.lng ?? 0;
             newLoc.elevation = coords.elevation ?? 0;
+            newLoc.timezone = coords.timezone ?? getLocalTimezone();
         } catch (e) {
             console.error("GPS Error", e);
         }
@@ -28,7 +41,7 @@
     async function save() {
         await locStore.addLocation(newLoc);
         locStore.hideForm();
-        newLoc = { label: '', lat: 0, lng: 0, elevation: 0, is_default: false };
+        newLoc = { label: '', lat: 0, lng: 0, elevation: 0, timezone: getLocalTimezone(), is_default: false };
     }
 </script>
 
@@ -47,6 +60,7 @@
                 label={loc.label}
                 lat={loc.lat}
                 lng={loc.lng}
+                tz={loc.timezone}
                 elevation={loc.elevation} 
             />
         {:else}
@@ -83,18 +97,44 @@
                         class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2.5 text-sm text-copy-primary focus:border-accent outline-none transition-colors"
                     />
                     
-                    <div class="grid grid-cols-3 gap-3">
+                    <div class="grid grid-cols-4 gap-3">
                         <div class="space-y-1">
                             <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_lat()}</span>
-                            <input type="number" bind:value={newLoc.lat} class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
+                            <input 
+                                type="number" 
+                                min="-90" 
+                                max="90"
+                                bind:value={newLoc.lat} 
+                                class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
                         </div>
                         <div class="space-y-1">
                             <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_lng()}</span>
-                            <input type="number" bind:value={newLoc.lng} class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
+                            <input 
+                                type="number" 
+                                min="-180" 
+                                max="180"
+                                bind:value={newLoc.lng} 
+                                class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
                         </div>
                         <div class="space-y-1">
                             <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_elev()}</span>
-                            <input type="number" bind:value={newLoc.elevation} class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
+                            <input 
+                                type="number"
+                                min="-1000" 
+                                max="10000"
+                                bind:value={newLoc.elevation} 
+                                class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" />
+                        </div>
+                        <div class="space-y-1">
+                            <span class="text-[9px] font-bold text-copy-muted ml-1 uppercase">{m.dash_location_new_tz()}</span>
+                            <input 
+                                type="number" 
+                                step="0.5" 
+                                min="-12" 
+                                max="14" 
+                                bind:value={newLoc.timezone} 
+                                class="w-full bg-secondary/50 border border-border rounded-xl px-4 py-2 text-sm font-mono text-copy-primary outline-none focus:border-accent/50" 
+                            />
                         </div>
                     </div>
 
@@ -122,7 +162,7 @@
 
                     <button 
                         onclick={save}
-                        disabled={!newLoc.label || locStore.isSyncing}
+                        disabled={!isValid || locStore.isSyncing}
                         class="w-full py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/20 disabled:opacity-30 transition-all active:scale-[0.98]">
                         {locStore.isSyncing ? m.dash_location_action_saving() : m.dash_location_action_add()}
                     </button>

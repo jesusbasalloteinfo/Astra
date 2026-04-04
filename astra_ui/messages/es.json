@@ -187,6 +187,7 @@
   "dash_location_new_lat": "Latitud",
   "dash_location_new_lng": "Longitud",
   "dash_location_new_elev": "Elevación",
+  "dash_location_new_tz": "Zona horaria",
 
   "dash_location_new_gps": "Configurar por GPS",
   "dash_location_new_gps_detect": "Detectando...",

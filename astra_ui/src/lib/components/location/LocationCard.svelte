@@ -6,7 +6,7 @@
     import * as m from '$lib/paraglide/messages.js';
 	import Modal from '../ui/Modal.svelte';
 
-    let { id, label, lat, lng, elevation } = $props();
+    let { id, label, lat, lng, tz, elevation } = $props();
 
     let showDeleteModal = $state(false);
 
@@ -14,6 +14,8 @@
         locStore.deleteLocation(id);
         showDeleteModal = false;
     }
+    
+    const formattedTZ = $derived(tz >= 0 ? `+${tz}` : `${tz}`);
 </script>
 
 
@@ -49,6 +51,7 @@
                 <span>{lat.toFixed(4)}°, {lng.toFixed(4)}°</span>
                 <span class="opacity-30">•</span>
                 <span>{elevation}m</span>
+                <span>UTC{formattedTZ}</span>
             </div>
         </div>
     </button>
