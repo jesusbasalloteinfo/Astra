@@ -101,6 +101,13 @@ export class SkyMap3DEngine {
             );
         }
     }
+    
+    /**
+     * Commands the camera controller to fly towards specific celestial coordinates.
+     */
+    flyTo(alt: number, az: number) {
+        this.cameraCtrl.flyTo(alt, az);
+    }
 
     /**
      * Handles browser window resizing to maintain correct aspect ratio.

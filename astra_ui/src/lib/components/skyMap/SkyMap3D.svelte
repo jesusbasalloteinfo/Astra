@@ -32,6 +32,10 @@
         // Shutdown
         return () => engine.dispose();
     });
+
+    export const flyTo = (alt: number, az: number) => {
+        if (engine) engine.flyTo(alt, az);
+    };
 </script>
 
 <div class="w-full h-full relative group">

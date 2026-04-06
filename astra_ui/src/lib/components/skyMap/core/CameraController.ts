@@ -17,6 +17,10 @@ export class CameraController {
     private initialPinchDistance: number | null = null;
     private container: HTMLElement;
 
+    // ── Navigation State ──
+    private isFlying: boolean = false;
+    private flightTarget: THREE.Vector3 = new THREE.Vector3();
+
     constructor(container: HTMLElement) {
         this.container = container;
         // Initialize camera with a wide default Field of View
@@ -45,13 +49,46 @@ export class CameraController {
         this.container.addEventListener('touchstart', this.onTouchStart, { passive: false });
         this.container.addEventListener('touchmove', this.onTouchMove, { passive: false });
         this.container.addEventListener('touchend', this.onTouchEnd);
+
+        // Abort fly motion
+        this.container.addEventListener('pointerdown', this.cancelFlight);
+
     }
+
+    /**
+     * Starts a smooth movement to the coordinates.
+     */
+    flyTo(alt: number, az: number) {
+        const altRad = alt * (Math.PI / 180);
+        const azRad  = (180 - az) * (Math.PI / 180);
+
+        // Direction vector to where we want to look at
+        const dirX = Math.cos(altRad) * Math.sin(azRad);
+        const dirY = Math.sin(altRad);
+        const dirZ = Math.cos(altRad) * Math.cos(azRad);
+
+        this.flightTarget.set(
+            this.controls.target.x - (dirX * 0.1),
+            this.controls.target.y - (dirY * 0.1),
+            this.controls.target.z - (dirZ * 0.1)
+        );
+        this.isFlying = true;
+    }
+
+    /**
+     * Stops the flying momement if user takes control.
+     */
+    private cancelFlight = () => {
+        this.isFlying = false;
+    };
+
 
     /**
      * Custom zoom handler using the mouse wheel (Desktop).
      */
     private onWheel = (e: WheelEvent) => {
         e.preventDefault();
+        this.cancelFlight();
         this.applyZoom(e.deltaY * ZOOM_SPEED);
     };
 
@@ -59,6 +96,7 @@ export class CameraController {
      * Initializes pinch distance when two fingers touch the screen (Mobile).
      */
     private onTouchStart = (e: TouchEvent) => {
+        this.cancelFlight();
         if (e.touches.length === 2) {
             e.preventDefault(); // Prevent accidental page scrolling
             const dx = e.touches[0].clientX - e.touches[1].clientX;
@@ -115,6 +153,22 @@ export class CameraController {
      * Should be called in the main animation loop to update damping physics.
      */
     update() {
+        if (this.isFlying) {
+            // Get the relative offsets
+            const currentOffset = this.camera.position.clone().sub(this.controls.target);
+            const targetOffset = this.flightTarget.clone().sub(this.controls.target);
+            
+            // Interpolate and force lenght at 0.1 to keep camera in place
+            currentOffset.lerp(targetOffset, 0.05).setLength(0.1);
+            
+            // Apply position
+            this.camera.position.copy(this.controls.target).add(currentOffset);
+            
+            // When near target, cancel flying
+            if (currentOffset.distanceTo(targetOffset) < 0.001) {
+                this.isFlying = false;
+            }
+        }
         this.controls.update();
     }
 
@@ -130,6 +184,7 @@ export class CameraController {
      * Cleans up event listeners and controls when destroyed.
      */
     dispose() {
+        this.container.removeEventListener('pointerdown', this.cancelFlight);
         this.container.removeEventListener('wheel', this.onWheel);
         this.container.removeEventListener('touchstart', this.onTouchStart);
         this.container.removeEventListener('touchmove', this.onTouchMove);
