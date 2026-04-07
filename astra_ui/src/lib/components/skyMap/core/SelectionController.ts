@@ -30,54 +30,10 @@ export class SelectionController {
         this.container.addEventListener('pointermove', this.onPointerMove);
         this.container.addEventListener('pointerup', this.onPointerUp);
     }
-
-    /** Save the initial position for pointer */
-    private onPointerDown = (event: PointerEvent) => {
-        this.pointerDownPos = { x: event.clientX, y: event.clientY };
-        this.isDragging = true;
-        this.container.style.cursor = 'grabbing'; 
-    };
-
-    /** 
-     * Listens everytime for the pointer
-     * If is a click, checks if there's an object behind to activate the cursor
-     */
-    private onPointerMove = (event: PointerEvent) => {
-        if (this.isDragging) return;
-
-        const rect = this.container.getBoundingClientRect();
-        this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-        this.raycaster.setFromCamera(this.pointer, this.cameraCtrl.camera);
-
-        const intersects = this.raycaster.intersectObjects([
-            this.planetary.getPointsMesh(),
-            this.sidereal.getPointsMesh()
-        ], false);
-
-        // Activate cursor detection
-        this.container.style.cursor = intersects.length > 0 ? 'pointer' : 'default';
-    };
-
-    /** 
-     * Check if has been a drag. If not, checks the object behind with the raycaster
-     */
-    private onPointerUp = (event: PointerEvent) => {
-        this.isDragging = false;
-
-        // Update for the pointer
-        this.onPointerMove(event);
-
-        const deltaX = Math.abs(event.clientX - this.pointerDownPos.x);
-        const deltaY = Math.abs(event.clientY - this.pointerDownPos.y);
-        
-        // Dragging detected, so cancel
-        if (deltaX > 5 || deltaY > 5) return;
-
-        const rect = this.container.getBoundingClientRect();
-        this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    /** Creates an calculates an intersecting ray with an xy position */
+    private raycast(posX:number, posY:number){
+        this.pointer.x = posX;
+        this.pointer.y = posY;
 
         this.raycaster.setFromCamera(this.pointer, this.cameraCtrl.camera);
 
@@ -130,7 +86,59 @@ export class SelectionController {
             this.targetReticle.hide();
             selectionStore.clear();
         }
+    }
+
+    /** Save the initial position for pointer */
+    private onPointerDown = (event: PointerEvent) => {
+        this.pointerDownPos = { x: event.clientX, y: event.clientY };
+        this.isDragging = true;
+        this.container.style.cursor = 'grabbing'; 
     };
+
+    /** 
+     * Listens everytime for the pointer
+     * If is a click, checks if there's an object behind to activate the cursor
+     */
+    private onPointerMove = (event: PointerEvent) => {
+        if (this.isDragging) return;
+
+        const rect = this.container.getBoundingClientRect();
+        this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+        this.raycaster.setFromCamera(this.pointer, this.cameraCtrl.camera);
+
+        const intersects = this.raycaster.intersectObjects([
+            this.planetary.getPointsMesh(),
+            this.sidereal.getPointsMesh()
+        ], false);
+
+        // Activate cursor detection
+        this.container.style.cursor = intersects.length > 0 ? 'pointer' : 'default';
+    };
+
+    /** 
+     * Check if has been a drag. If not, checks the object behind with the raycaster
+     */
+    private onPointerUp = (event: PointerEvent) => {
+        this.isDragging = false;
+
+        // Update for the pointer
+        this.onPointerMove(event);
+
+        const deltaX = Math.abs(event.clientX - this.pointerDownPos.x);
+        const deltaY = Math.abs(event.clientY - this.pointerDownPos.y);
+        
+        // Dragging detected, so cancel
+        if (deltaX > 5 || deltaY > 5) return;
+
+        const rect = this.container.getBoundingClientRect();
+        const posX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        const posY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+        this.raycast(posX, posY)
+    };
+
 
     dispose() {
         this.container.removeEventListener('pointerdown', this.onPointerDown);
