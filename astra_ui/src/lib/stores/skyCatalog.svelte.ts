@@ -110,6 +110,12 @@ class CatalogStore {
         }
     }
 
+    getInfo(objId:string): SiderealObjectMetadata | PlanetaryObjectMetadata | null {
+        if (objId in this.siderealData) return this.siderealData[objId];
+        if (objId in this.planetaryData) return this.planetaryData[objId];
+        return null;        
+    }
+
     /**
      * Clears the cache and resets the store
      */

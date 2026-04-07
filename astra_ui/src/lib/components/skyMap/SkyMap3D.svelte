@@ -2,6 +2,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { SkyMap3DEngine } from './core/SkyMap3DEngine';
+	import { selectionStore } from '$lib/stores/activeSelection.svelte';
+	import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
     let {
         showGround = true,
@@ -39,9 +41,15 @@
 </script>
 
 <div class="w-full h-full relative group">
-    <div bind:this={container} class="w-full h-full bg-transparent rounded-3xl overflow-hidden cursor-move"></div>
+    <div bind:this={container} class="w-full h-full bg-transparent rounded-3xl overflow-hidden"></div>
     <div class="absolute top-4 left-4 px-3 py-1.5 bg-slate-900/80 backdrop-blur border border-slate-700 rounded-lg text-[10px] font-mono text-slate-300 uppercase pointer-events-none z-10 flex flex-col gap-1">
         <span class="text-yellow-400 font-bold">Sky 3D Engine</span>
         <span class="text-slate-400">Scroll: Zoom | Drag: Move</span>
+        {#if selectionStore.targetId}
+            <div class="mt-1 pt-1 border-t border-slate-700 flex flex-col">
+                <span class="text-cyan-400 font-bold">Target Locked:</span>
+                <span class="text-white text-xs">{catalogStore.getInfo(selectionStore.targetId)?.name}</span>
+            </div>
+        {/if}
     </div>
 </div>

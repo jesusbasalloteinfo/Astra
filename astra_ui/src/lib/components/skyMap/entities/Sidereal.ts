@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { DOME_RADIUS } from '../utils/const';
 import { altAzToXYZ } from '../utils/coordinates';
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
+import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 
 /**
  * Custom Vertex Shader
@@ -114,12 +115,20 @@ export class Sidereal {
         
         return geo;
     }
+
+    getPointsMesh() {
+        return this.points;
+    }
+
+    getIdByIndex(index: number): string | null {
+        return this.starIds[index] || null; 
+    }
     
     /**
      * Updates the XYZ coordinates of all stars based on their current AltAz values.
      * Called continuously inside the render loop.
      */
-    update(positionsMap: Map<string, { alt: number, az: number }>, zoomFactor: number) {
+    update(positionsMap: PositionUpdates, zoomFactor: number) {
         // Update the shader uniform for zoom scaling
         (this.points.material as THREE.ShaderMaterial).uniforms.zoom.value = zoomFactor;
         const posArray = this.points.geometry.attributes.position.array as Float32Array;

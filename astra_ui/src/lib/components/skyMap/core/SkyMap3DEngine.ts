@@ -2,12 +2,14 @@
 
 import * as THREE from 'three';
 import { CameraController } from './CameraController';
+import { SelectionController } from './SelectionController';
 import { Environment } from '../entities/Environment';
 import { Planetary } from '../entities/Planetary';
 import { Sidereal } from '../entities/Sidereal';
 import { Constellations } from '../entities/Constellations';
 import { FOV_DEFAULT } from '../utils/const';
 import { skyEngine } from '$lib/stores/skyEngine.svelte';
+import { TargetReticle } from '../entities/TargetReticle';
 
 /**
  * SkyMap3DEngine
@@ -20,14 +22,18 @@ export class SkyMap3DEngine {
     // Core Three.js components
     private scene: THREE.Scene;
     private renderer: THREE.WebGLRenderer;
-    private cameraCtrl: CameraController;
     private animationId: number = 0;
+
+    // Controllers
+    private cameraCtrl: CameraController;
+    private selectionCtrl: SelectionController;
     
     // Scene entities
     private environment: Environment;
     private planetary: Planetary;
     private sidereal: Sidereal;
     private constellations: Constellations;
+    private targetReticle:TargetReticle;
 
     constructor(private container: HTMLDivElement, props: any) {
         // Initialize Scene & Renderer
@@ -39,20 +45,29 @@ export class SkyMap3DEngine {
         this.renderer.setSize(container.clientWidth, container.clientHeight);
         container.appendChild(this.renderer.domElement);
 
-        // Initialize Camera Controller
-        this.cameraCtrl = new CameraController(container);
-
         // Instantiate Entities
         this.environment = new Environment(props.groundColor, props.cardinalColor);
         this.planetary = new Planetary(props.starOpacity);
         this.sidereal = new Sidereal(props.starOpacity);
         this.constellations = new Constellations(props.constellationColor, props.constellationOpacity);
+        this.targetReticle = new TargetReticle();   
+        
+        // Initialize Controllers
+        this.cameraCtrl = new CameraController(container);
+        this.selectionCtrl = new SelectionController(
+            this.container, 
+            this.cameraCtrl, 
+            this.planetary, 
+            this.sidereal, 
+            this.targetReticle
+        );
 
         // Add entities to the scene
         this.scene.add(this.environment.group);
         this.scene.add(this.sidereal.group);
         this.scene.add(this.planetary.group);
         this.scene.add(this.constellations.group);
+        this.scene.add(this.targetReticle.sprite);
 
         // Apply initial visual properties
         this.updateProps(props); 
@@ -78,6 +93,7 @@ export class SkyMap3DEngine {
             this.planetary.update(skyEngine.positions, zoomFactor);
             this.sidereal.update(skyEngine.positions, zoomFactor);
             this.constellations.update(skyEngine.positions);
+            this.targetReticle.update(skyEngine.positions);
         }
 
         // Update camera damping/controls and render the scene
@@ -128,6 +144,8 @@ export class SkyMap3DEngine {
         this.planetary.dispose();
         this.sidereal.dispose();
         this.constellations.dispose();
+        this.targetReticle.dispose();
+
         this.renderer.dispose();
         if (this.container.contains(this.renderer.domElement)) {
             this.container.removeChild(this.renderer.domElement);

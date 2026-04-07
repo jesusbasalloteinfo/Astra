@@ -10,6 +10,7 @@ interface InterpolationData {
     dAz: number;     // Azimuth velocity (degrees per second)
 }
 
+export type PositionUpdates = Map<string, { alt: number, az: number }>
 class SkyEngine {
 
     // --- State & Cache ---
@@ -27,7 +28,7 @@ class SkyEngine {
     // --- REAL-TIME POSITIONS ---
     // Automatically recalculates all object positions for every clock tick, using the delta positions
     positions = $derived.by(() => {
-        const results = new Map<string, { alt: number, az: number }>();
+        const results: PositionUpdates = new Map();
         if (this.lastSyncTime === 0) return results;
 
         // Time delta in seconds since the last API fetch
