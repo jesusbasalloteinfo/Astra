@@ -22,6 +22,7 @@ export class SkyMap3DEngine {
     // Core Three.js components
     private scene: THREE.Scene;
     private renderer: THREE.WebGLRenderer;
+    private resizeObserver: ResizeObserver; 
     private animationId: number = 0;
 
     // Controllers
@@ -72,8 +73,17 @@ export class SkyMap3DEngine {
         // Apply initial visual properties
         this.updateProps(props); 
 
-        // Set up event listeners and start the render loop
-        window.addEventListener('resize', this.onResize);
+        this.resizeObserver = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                // Le pasamos el ancho y alto real del div al hacer resize
+                const { width, height } = entry.contentRect;
+                if (width > 0 && height > 0) {
+                    this.onResize(width, height);
+                }
+            }
+        });
+        // Ponemos al observador a vigilar tu div contenedor
+        this.resizeObserver.observe(this.container);
         this.animate();
     }
     
@@ -110,6 +120,7 @@ export class SkyMap3DEngine {
         if (props.groundColor !== undefined) this.environment.setGroundColor(props.groundColor);
         
         if (this.constellations && props.showConstellations !== undefined) {
+            console.log("show Constellations:", props.showConstellations)
             this.constellations.setProps(
                 props.showConstellations, 
                 props.constellationColor, 
@@ -121,16 +132,17 @@ export class SkyMap3DEngine {
     /**
      * Commands the camera controller to fly towards specific celestial coordinates.
      */
-    flyTo(alt: number, az: number) {
+    flyTo(alt: number, az: number, setReticle:boolean =false) {
         this.cameraCtrl.flyTo(alt, az);
+        if (setReticle) alert("PENDING")
     }
 
     /**
      * Handles browser window resizing to maintain correct aspect ratio.
      */
-    private onResize = () => {
-        this.cameraCtrl.resize(this.container.clientWidth, this.container.clientHeight);
-        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+    private onResize = (width: number, height: number) => {
+        this.cameraCtrl.resize(width, height);
+        this.renderer.setSize(width, height);
     };
 
     /**
@@ -138,13 +150,16 @@ export class SkyMap3DEngine {
      */
     dispose() {
         cancelAnimationFrame(this.animationId);
-        window.removeEventListener('resize', this.onResize);
         this.cameraCtrl.dispose();
+        this.selectionCtrl.dispose()
         this.environment.dispose();
         this.planetary.dispose();
         this.sidereal.dispose();
         this.constellations.dispose();
         this.targetReticle.dispose();
+
+        this.resizeObserver.disconnect();
+        
 
         this.renderer.dispose();
         if (this.container.contains(this.renderer.domElement)) {

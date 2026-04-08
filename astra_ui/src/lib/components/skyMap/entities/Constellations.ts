@@ -89,9 +89,17 @@ export class Constellations {
      * Dynamically updates the visual properties (visibility, color, opacity).
      */
     setProps(visible: boolean, color: number, opacity: number) {
-        this.lines.visible = visible;
-        (this.lines.material as THREE.LineBasicMaterial).color.setHex(color);
-        (this.lines.material as THREE.LineBasicMaterial).opacity = opacity;
+        if (visible !== undefined) {
+            this.group.visible = visible;
+        }
+
+        if (color !== undefined) {
+            (this.lines.material as THREE.LineBasicMaterial).color.setHex(color);
+        }
+
+        if (opacity !== undefined) {
+            (this.lines.material as THREE.LineBasicMaterial).opacity = opacity;
+        }
     }
 
     /**
