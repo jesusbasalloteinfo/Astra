@@ -44,6 +44,10 @@
     export const flyTo = (alt: number, az: number) => {
         if (engine) engine.flyTo(alt, az);
     };
+    
+    export const selectObject = (id: string) => {
+        if (engine) engine.selectObject(id);
+    };
 </script>
 
 <div class="w-full h-full relative group">

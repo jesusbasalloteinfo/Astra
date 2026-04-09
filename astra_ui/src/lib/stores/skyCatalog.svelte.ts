@@ -13,7 +13,12 @@ import { locStore } from './location.svelte';
 import { timeEngine } from './timeEngine.svelte';
 import { untrack } from 'svelte';
 
-
+export interface SearchResult {
+    id: string;
+    name: string;
+    type: string;
+    mag: number | null;
+}
 class CatalogStore {
     
     // Fast dictionary storage
@@ -29,6 +34,8 @@ class CatalogStore {
     error = $state<string | null>(null);
 
     private lastPlanetaryUpdate = 0; 
+
+    private searchIndex: { key: string, result: SearchResult }[] = [];
 
     constructor() {
         // Effect root to manage auto-subscriptions safely outside a component
@@ -76,6 +83,8 @@ class CatalogStore {
             this.siderealData = siderealRes.data;
             this.constellations = constelRes.data;
             this.planetaryData = planetaryRes.data;
+
+            this.buildSearchIndex();
             
             this.lastPlanetaryUpdate = new Date(params.target_time).getTime();
             this.isLoaded = true;
@@ -104,11 +113,70 @@ class CatalogStore {
                 const res = await siderisAPI.getMetadata('planetary', params) as PlanetaryCatalogResponse;
                 this.planetaryData = res.data;
                 this.lastPlanetaryUpdate = targetMs;
+                this.buildSearchIndex();
             } catch (e) {
                 console.error("Failed to update planetary metadata:", e);
             }
         }
     }
+
+    /**
+     * Creates a fast search dictionary flattening all possible names
+     */
+    private buildSearchIndex() {
+        this.searchIndex = [];
+
+        // Planetary indexing
+        for (const [id, data] of Object.entries(this.planetaryData)) {
+            const res = { id, name: data.name, type: 'Planetary', mag: data.mag };
+            const cleanName = data.name.toLowerCase().replace(/\s+/g, '');
+            this.searchIndex.push({ key: cleanName, result: res });
+        }
+
+        // Sidereal indexing
+        for (const [id, data] of Object.entries(this.siderealData)) {
+            const displayName = data.name || data.common_names?.[0] || data.catalog_names?.[0] || id;
+            const res = { id, name: displayName, type: data.type || 'Star', mag: data.mag };
+
+            const possibleNames = [
+                data.name,
+                ...(data.common_names || []),
+                ...(data.catalog_names || []),
+                id
+            ];
+
+            for (const name of possibleNames) {
+                if (name) {
+                    const searchKey = name.toLowerCase().replace(/\s+/g, '');
+                    this.searchIndex.push({ key: searchKey, result: res });
+                }
+            }
+        }
+    }
+
+    /**
+     * Search objects within the catalog, normalising the search query
+     */
+    public searchObjects(query: string, limit = 10): SearchResult[] {
+        const cleanQuery = query.toLowerCase().replace(/\s+/g, '');
+        if (cleanQuery.length < 2) return [];
+
+        const matches = new Map<string, SearchResult>();
+
+        for (const item of this.searchIndex) {
+            if (item.key.includes(cleanQuery)) {
+                if (!matches.has(item.result.id)) {
+                    matches.set(item.result.id, item.result);
+                }
+            }
+        }
+
+        // Order by magnitude
+        return Array.from(matches.values())
+            .sort((a, b) => (a.mag ?? 99) - (b.mag ?? 99))
+            .slice(0, limit);
+    }
+
 
     getInfo(objId:string): SiderealObjectMetadata | PlanetaryObjectMetadata | null {
         if (objId in this.siderealData) return this.siderealData[objId];

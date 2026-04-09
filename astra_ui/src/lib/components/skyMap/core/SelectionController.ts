@@ -7,6 +7,7 @@ import { Sidereal } from '../entities/Sidereal';
 import { TargetReticle } from '../entities/TargetReticle';
 import { skyEngine } from '$lib/stores/skyEngine.svelte';
 import { selectionStore } from '$lib/stores/activeSelection.svelte'; 
+import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
 export class SelectionController {
     private raycaster: THREE.Raycaster = new THREE.Raycaster();
@@ -139,6 +140,51 @@ export class SelectionController {
         this.raycast(posX, posY)
     };
 
+    /**
+     * Select an object via id
+     */
+    public selectById(id: string) {
+        if (id === this.selectedId) return;
+
+        const pos = skyEngine.positions.get(id);
+        const info = catalogStore.getInfo(id);
+
+        if (!pos || !info) {
+            this.selectedId = null;
+            this.targetReticle.hide();
+            selectionStore.clear();
+            return;
+        }
+
+        this.selectedId = id;
+        selectionStore.targetId = id;
+
+        const isPlanet = id in catalogStore.planetaryData;
+        
+        let hexColor = '#ed1556'//isPlanet ? '#f59e0b' : '#38bdf8'; 
+        let baseSize = isPlanet ? 4 : Math.max(1, 5 - (info.mag ?? 0));
+
+        const entity = isPlanet ? this.planetary : this.sidereal;
+        
+        // Get vertex index
+        const index = entity.getIndexById ? entity.getIndexById(id) : undefined;
+
+        if (index !== undefined) {
+            const geometry = (entity.getPointsMesh() as THREE.Points).geometry;
+            
+            // Size
+            baseSize = geometry.attributes.size.getX(index);
+            
+            // Colour
+            const r = geometry.attributes.color.getX(index);
+            const g = geometry.attributes.color.getY(index);
+            const b = geometry.attributes.color.getZ(index);
+            hexColor = '#' + new THREE.Color(r, g, b).getHexString();
+        }
+
+        this.targetReticle.lockOn(isPlanet, hexColor, baseSize);
+        this.cameraCtrl.flyTo(pos.alt, pos.az);
+    }
 
     dispose() {
         this.container.removeEventListener('pointerdown', this.onPointerDown);

@@ -145,6 +145,11 @@ export class Planetary {
     getIdByIndex(index: number): string | null {
         return this.planetIds[index] || null; 
     }
+    
+    getIndexById(id: string): number | undefined {
+        const index = this.planetIds.indexOf(id); 
+        return index !== -1 ? index : undefined;
+    }
 
     /**
      * Updates the XYZ coordinates of all planets based on their current AltAz values.

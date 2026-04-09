@@ -134,7 +134,13 @@ export class SkyMap3DEngine {
      */
     flyTo(alt: number, az: number, setReticle:boolean =false) {
         this.cameraCtrl.flyTo(alt, az);
-        if (setReticle) alert("PENDING")
+    }
+
+    /**
+     * Programmatically selects an object, turns on the reticle, and flies to it.
+     */
+    selectObject(id: string) {
+        this.selectionCtrl.selectById(id);
     }
 
     /**

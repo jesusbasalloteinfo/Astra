@@ -44,6 +44,10 @@ class TimeEngine {
 
     setRate(speed: number) {
         this.playbackRate = speed;
+        this.isLive=false;
+        if (speed!==1){
+            this.isLive=true;
+        }
     }
 
     private loop(currentRealTime: number) {
