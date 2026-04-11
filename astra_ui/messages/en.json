@@ -198,6 +198,38 @@
   "dash_location_action_add": "Add location",
   "dash_location_action_saving": "Saving...",
   "dash_location_action_delete": "Delete",
-  "dash_location_action_cancel": "Cancel"
+  "dash_location_action_cancel": "Cancel",
+
+  "====================================== OBSERVATION ======================================": "",
+  "obs": "Observation",
+  "obs_title": "{obs_title} · {name}",
+
+  "obs_load_title": "Loading observation",
+  "obs_load_subtitle": "Synchronising...",
+
+  "obs_error_load_title": "Error loading observation",
+  "obs_error_load_btn": "Return to Dashboard",
+
+  "obs_sidedock_return": "Return to Sessions",
+  "obs_sidedock_settings": "Visual settings",
+  "obs_sidedock_constellations": "Constellations",
+  "obs_sidedock_horizon": "Horizon",
+
+  "obs_targetinfo_title": "Target Object",
+  "obs_targetinfo_center": "Center object",
+
+  "obs_timecontrol_real": "Real",
+  "obs_timecontrol_time_travel": "Time Travel",
+  "obs_timecontrol_live": "Live Sync",
+  "obs_timecontrol_warp": "Warp",
+  "obs_timecontrol_back": "Back to present",
+
+  "obs_skyfinder_close": "Close searcher",
+  "obs_skyfinder_placeholder": "Search stars, DSO or planetary... (e.g., M31, Polaris)",
+  "obs_skyfinder_type": "Type an object to search",
+  "obs_skyfinder_no_objects": "No objects found matching \"{query}\"",
+  "obs_skyfinder_select": "Select",
+
+  "obs_ai_title": "Astra AI"
 
 }

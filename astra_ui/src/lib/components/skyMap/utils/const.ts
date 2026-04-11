@@ -17,9 +17,9 @@ export const CARDINAL_LABELS = [
     { text: 'E',  az: 90  },
     { text: 'SE', az: 135 },
     { text: 'S',  az: 180 },
-    { text: 'SO', az: 225 },
-    { text: 'O',  az: 270 },
-    { text: 'NO', az: 315 }
+    { text: 'SW', az: 225 },
+    { text: 'W',  az: 270 },
+    { text: 'NW', az: 315 }
 ] as const;
 
 

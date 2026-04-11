@@ -199,6 +199,39 @@
   "dash_location_action_add": "Afegir ubicació",
   "dash_location_action_saving": "Desant...",
   "dash_location_action_delete": "Esborrar",
-  "dash_location_action_cancel": "Cancel·lar"
+  "dash_location_action_cancel": "Cancel·lar",
+
+  "====================================== OBSERVATION ======================================": "",
+  "obs": "Observació",
+  "obs_title": "{obs_title} · {name}",
+
+  "obs_load_title": "Carregant observació",
+  "obs_load_subtitle": "Sincronitzant...",
+
+  "obs_error_load_title": "Error carregant observació",
+  "obs_error_load_btn": "Tornar al Taulell de control",
+
+  "obs_sidedock_return": "Tornar a Sessions",
+  "obs_sidedock_settings": "Configuració visual",
+  "obs_sidedock_constellations": "Constel·lacions",
+  "obs_sidedock_horizon": "Horitzó",
+
+  "obs_targetinfo_title": "Objecte Sel·leccionat",
+  "obs_targetinfo_center": "Centrar objecte",
+
+  "obs_timecontrol_real": "Real",
+  "obs_timecontrol_time_travel": "Viatge temporal",
+  "obs_timecontrol_live": "En viu",
+  "obs_timecontrol_warp": "Accelerant",
+  "obs_timecontrol_back": "Restablir temps",
+
+  "obs_skyfinder_close": "Tancar cercador",
+  "obs_skyfinder_placeholder": "Busca estrelles, DSO o planetari... (ex., M31, Polaris)",
+  "obs_skyfinder_type": "Escriu un objecte per a buscar",
+  "obs_skyfinder_no_objects": "Cap objecte coincideix amb \"{query}\"",
+  "obs_skyfinder_select": "Seleccionar",
+
+  "obs_ai_title": "Astra AI"
+
 
 }
