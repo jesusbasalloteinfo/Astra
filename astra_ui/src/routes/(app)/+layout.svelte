@@ -5,7 +5,7 @@
     import { onMount } from 'svelte';
     import { fade } from 'svelte/transition';
     import SplashScreen from '$lib/components/SplashScreen.svelte';
-	import NewSessionModal from '$lib/components/session/newSessionModal.svelte';
+	import SessionModal from '$lib/components/session/SessionModal.svelte';
 
     let { children } = $props();
 
@@ -39,5 +39,5 @@
     </div>
 {:else}
     {@render children()}
-    <NewSessionModal />
+    <SessionModal />
 {/if}

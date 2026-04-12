@@ -22,7 +22,7 @@
             newObsStore.close();
             name = '';
             description = '';
-            await goto(`/dashboard/sessions/${id}`);
+            await goto(`/observation/${id}`);
         } finally {
             isSubmitting = false;
         }

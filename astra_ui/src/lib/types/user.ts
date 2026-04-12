@@ -4,6 +4,7 @@ export interface UserLocation {
     lat: number;     
     lng: number;     
     elevation: number;
+    timezone: number; 
     is_default: boolean;
 }
 
@@ -12,6 +13,7 @@ export interface LocationCreate {
     lat: number;     
     lng: number;     
     elevation: number;
+    timezone: number; 
     is_default: boolean;
 }
 

@@ -5,7 +5,8 @@ import type { LocationCreate } from '$lib/types/user';
 import { browser } from '$app/environment';
 
 class LocationStore {
-    activeId = $state<string | null>(null);
+    activeId = $state<string | null>(browser ? localStorage.getItem('active_location_id') : null);
+
     isSyncing = $state(false);
     isDetecting = $state(false);
     isAdding = $state(false); // UI control
@@ -35,9 +36,12 @@ class LocationStore {
         return this.active?.id || null;
     }
 
-    select(id: string) {
+    select(id: string | null) {
         this.activeId = id;
-        if (browser) localStorage.setItem('active_location_id', id);
+        if (browser) {
+            if (id) localStorage.setItem('active_location_id', id);
+            else localStorage.removeItem('active_location_id');
+        }
     }
 
     async detectGPS(): Promise<Partial<LocationCreate>> {
@@ -51,11 +55,13 @@ class LocationStore {
             
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
+                    const tzOffsetHours = -(new Date().getTimezoneOffset() / 60);
                     this.isDetecting = false; 
                     resolve({
                         lat: pos.coords.latitude,
                         lng: pos.coords.longitude,
-                        elevation: Math.round(pos.coords.altitude || 0)
+                        elevation: Math.round(pos.coords.altitude || 0),
+                        timezone: tzOffsetHours || 0
                     });
                 },
                 (err) => {
@@ -71,6 +77,9 @@ class LocationStore {
         if (data.lat < -90 || data.lat > 90) throw new Error("Invalid latitude");
         if (data.lng < -180 || data.lng > 180) throw new Error("Invalid longitude");
         if (!data.label.trim()) throw new Error("Label is required");
+        if (data.timezone < -12 || data.timezone > 14) {
+            throw new Error("Invalid timezone offset");
+        }
 
         this.isSyncing = true;
 
@@ -78,6 +87,12 @@ class LocationStore {
             await userAPI.addLocation(data);
 
             await authStore.refreshProfile();
+            if (data.is_default) {
+                this.select(null); 
+            } 
+            else if (this.all.length === 1) {
+                this.select(this.all[0].id);
+            }
             if (this.all.length === 1) this.activeId = this.all[0].id;
             this.hideForm();
         } finally {
@@ -90,7 +105,9 @@ class LocationStore {
         try {
             await userAPI.removeLocation(id);
             await authStore.refreshProfile();
-            if (this.activeId === id) this.activeId = null;
+            if (this.activeId === id) {
+                this.select(null);
+            }
         } finally {
             this.isSyncing = false;
         }

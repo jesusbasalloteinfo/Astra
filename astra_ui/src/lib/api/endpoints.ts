@@ -14,3 +14,20 @@ export const endpoints = {
         detail: (id: string) => `/observations/${id}`,
     }
 } as const;
+
+
+
+export const siderisEndpoints = {
+    base: '/sideris',
+    sidereal: {
+        sync: '/sideris/sidereal/sync',
+        constellations: '/sideris/sidereal/constellations',
+        metadata: '/sideris/sidereal/metadata',
+        object: (id: string) => `/sideris/sidereal/${id}`
+    },
+    planetary: {
+        sync: '/sideris/planetary/sync',
+        metadata: '/sideris/planetary/metadata',
+        object: (id: string) => `/sideris/planetary/${id}`
+    }
+} as const;

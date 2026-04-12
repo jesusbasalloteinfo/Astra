@@ -11,6 +11,7 @@ class Location(BaseModel):
     lat: float = Field(..., ge=-90, le=90, description="Latitude")
     lng: float = Field(..., ge=-180, le=180, description="Longitude")
     elevation: float = 0.0
+    timezone: float = 0.0
     is_default: Optional[bool] = False
 
 
@@ -20,6 +21,7 @@ class User(BaseModel):
     username: str
 
     locations: list[Location] = []
+    
     creation: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
     

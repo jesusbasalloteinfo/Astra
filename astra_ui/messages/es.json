@@ -187,6 +187,7 @@
   "dash_location_new_lat": "Latitud",
   "dash_location_new_lng": "Longitud",
   "dash_location_new_elev": "Elevación",
+  "dash_location_new_tz": "Zona horaria",
 
   "dash_location_new_gps": "Configurar por GPS",
   "dash_location_new_gps_detect": "Detectando...",
@@ -196,6 +197,40 @@
   "dash_location_action_add": "Añadir ubicación",
   "dash_location_action_saving": "Guardando...",
   "dash_location_action_delete": "Eliminar",
-  "dash_location_action_cancel": "Cancelar"
+  "dash_location_action_cancel": "Cancelar",
+
+  "====================================== OBSERVATION ======================================": "",
+  "obs": "Observación",
+  "obs_title": "{obs_title} · {name}",
+
+  "obs_load_title": "Cargando observación",
+  "obs_load_subtitle": "Sincronitzant...",
+
+  "obs_error_load_title": "Error cargando observación",
+  "obs_error_load_btn": "Volver al Panel de control",
+
+  "obs_sidedock_return": "Volver a Sesiones",
+  "obs_sidedock_settings": "Configuración visual",
+  "obs_sidedock_constellations": "Constelaciones",
+  "obs_sidedock_horizon": "Horizonte",
+
+  "obs_targetinfo_title": "Objeto Selecionado",
+  "obs_targetinfo_center": "Centrar objeto",
+
+  "obs_timecontrol_real": "Real",
+  "obs_timecontrol_time_travel": "Viaje temporal",
+  "obs_timecontrol_live": "En vivo",
+  "obs_timecontrol_warp": "Acelerando",
+  "obs_timecontrol_back": "Restablecer tiempo",
+
+  "obs_skyfinder_close": "Cerrar buscador",
+  "obs_skyfinder_placeholder": "Busca estrellas, DSO o planetaria... (ej., M31, Polaris)",
+  "obs_skyfinder_type": "Escribe un objeto para buscar",
+  "obs_skyfinder_no_objects": "Ningun objeto coincide con \"{query}\"",
+  "obs_skyfinder_select": "Seleccionar",
+
+  "obs_ai_title": "Astra AI"
+
+
 
 }
