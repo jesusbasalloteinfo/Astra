@@ -1,6 +1,6 @@
 from catalog_fetch.providers.base import *
 from catalog_fetch.utils import NamingUtils, ParseUtils
-from models.CatalogSchemas import DeepSky
+from models.catalog.sidereal import DeepSky
 from astropy.coordinates import SkyCoord
 import astropy.units as u
 

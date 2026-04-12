@@ -6,12 +6,14 @@ import pickle
 import time
 from typing import List, Optional, Tuple
 
-from models.ResponseSchemas import SiderealObjectMetadata, StarDataResponse, DSODataResponse, SiderealObjectDataResponse, ConstellationMetadata, MetadataCatalogPayload, SyncPayload
+from models.api.sidereal import SiderealObjectMetadata, StarDataResponse, DSODataResponse, SiderealObjectDataResponse, ConstellationMetadata
+from models.api.common import MetadataCatalogPayload, SyncPayload
 from services.astro_service.engines.SiderealEngine import SiderealEngine
 from services.astro_service.engines.PlanetaryEngine import PlanetaryEngine
-from models.CatalogSchemas import ConstellationCatalog, Star
+from models.catalog.constellations import ConstellationCatalog
+from models.catalog.sidereal import Star
 from core.logging import get_logger
-from models.PlanetarySchemas import PlanetaryObject
+from models.catalog.planetary import PlanetaryObject
 
 class AstroService:
     """Singleton class for astronomical calculations and data retrieval."""

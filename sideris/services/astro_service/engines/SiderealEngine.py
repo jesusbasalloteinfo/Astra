@@ -7,8 +7,10 @@ from astroplan import Observer, TargetAlwaysUpWarning, TargetNeverUpWarning
 import astropy.units as u
 from typing import List, Tuple
 from services.astro_service.engines.BaseEngine import BaseEngine
-from models.CatalogSchemas import *
-from models.ResponseSchemas import EphemerisMovementData, SyncPayload
+from models.catalog.sidereal import AstronomicalCatalog, Star, DeepSky
+from models.catalog.constellations import ConstellationCatalog
+from models.api.sidereal import EphemerisMovementData
+from models.api.common import SyncPayload
 from core.logging import get_logger
 
 class SiderealEngine(BaseEngine):

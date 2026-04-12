@@ -3,7 +3,7 @@ from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from services.astro_service.astro_service import AstroService
-from models.ResponseSchemas import SyncPayload, SiderealObjectDataResponse, MetadataCatalogPayload
+from models.api.common import SyncPayload, MetadataCatalogPayload
 
 async def get_astro_service() -> AstroService:
     return await AstroService.get_instance()

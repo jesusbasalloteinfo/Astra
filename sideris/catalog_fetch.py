@@ -6,7 +6,8 @@ import sys
 
 from catalog_fetch.utils import *
 from catalog_fetch.registry import CatalogRegistry
-from models.CatalogSchemas import AstronomicalCatalog, CatalogData, Constellation, Star, DeepSky
+from models.catalog.sidereal import AstronomicalCatalog, CatalogData, Star, DeepSky
+from models.catalog.constellations import Constellation
 
 from catalog_fetch.providers.hipparcos import HipparcosProvider
 from catalog_fetch.providers.messier import MessierProvider

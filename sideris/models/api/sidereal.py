@@ -1,22 +1,7 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple, Union
-
-from models.CatalogSchemas import Star, DeepSky
-
-
-
-# ===========================================================================================
-# Payload
-# ===========================================================================================
-
-class SyncPayload(BaseModel):
-    target_time: datetime = Field(..., description="Time in UTC for calculation")
-    ttl: float = Field(120.0, description="Time to live in seconds for the velocities")
-    # Updates: [id (str), alt (float), az (float), d_alt (float), d_az (float)]
-    updates: List[Tuple[str, float, float, float, float]]
-
-
+from typing import List, Optional, Tuple, Union
+from models.catalog.sidereal import Star, DeepSky
 
 class EphemerisMovementData(BaseModel):
     alt: float
@@ -35,11 +20,6 @@ class DSODataResponse(EphemerisMovementData, DeepSky):
 
 SiderealObjectDataResponse = Union[StarDataResponse, DSODataResponse]
 
-
-# ===========================================================================================
-# Metadata
-# ===========================================================================================
-
 class SiderealObjectMetadata(BaseModel):
     id: str
     name: str
@@ -56,11 +36,6 @@ class SiderealObjectMetadata(BaseModel):
     spectral_type: Optional[str] = None
     size_arcmin: Optional[float] = None
 
-class SolarSistemObjectMetadata(BaseModel):
-    id: str
-    name: str
-    type: str # "planet", "moon"
-
 class ConstellationMetadata(BaseModel):
     abbr: str
     name: str
@@ -68,8 +43,3 @@ class ConstellationMetadata(BaseModel):
     lines_indices: List[Tuple[int, int]] 
 
 ObjectMetadata = Union[SiderealObjectMetadata]
-
-class MetadataCatalogPayload(BaseModel):
-    version: str = "1.0"
-    total: int
-    data: Union[Dict[str, ObjectMetadata], List[ConstellationMetadata]]
