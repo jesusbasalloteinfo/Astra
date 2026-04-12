@@ -1,3 +1,111 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+/* TAILWIND THEMES CONFIG */
+@theme {
+  /* Landing static colors */
+  --color-astralanding-dark: #0a1525;
+  --color-astralanding-darker: #08101f;
+  --color-astralanding-panel: #0f1a2e;
+
+  /* Theme mapping in :root */
+  --color-primary: var(--bg-primary);
+  --color-secondary: var(--bg-secondary);
+  --color-panel: var(--bg-panel);
+  --color-surface: var(--bg-surface);
+  
+  --color-copy-primary: var(--text-primary);
+  --color-copy-secondary: var(--text-secondary);
+  --color-copy-muted: var(--text-muted);
+  
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-glow: var(--accent-glow);
+
+  --color-danger: var(--text-danger);
+  --color-danger-surface: var(--bg-danger-surface);
+
+  --color-border: var(--border);
+}
+
+/* ============================================
+   THEMES
+   ============================================ */
+
+/* Standard = astra colors */
+:root,
+[data-theme="standard"] {
+    --bg-primary:    #0a1525;  /* = astralanding-dark */
+    --bg-secondary:  #08101f;  /* = astralanding-darker */
+    --bg-panel:      #0f1a2e;  /* = astralanding-panel */
+    --bg-surface:    rgba(255, 255, 255, 0.05);
+    --border:        rgba(255, 255, 255, 0.06);
+    --text-primary:  #e2e8f0;
+    --text-secondary:#94a3b8;
+    --text-muted:    #64748b;
+    --accent:        #3b82f6;
+    --accent-hover:  #2563eb;
+    --accent-glow:   rgba(59, 130, 246, 0.4);
+    --text-danger:   #ef4444; 
+    --bg-danger-surface: rgba(239, 68, 68, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-primary:    #09090b;
+    --bg-secondary:  #050505;
+    --bg-panel:      #18181b;
+    --bg-surface:    rgba(255, 255, 255, 0.04);
+    --border:        rgba(255, 255, 255, 0.08);
+    --text-primary:  #fafafa;
+    --text-secondary:#a1a1aa;
+    --text-muted:    #52525b;
+    --accent:        #6366f1;
+    --accent-hover:  #4f46e5;
+    --accent-glow:   rgba(99, 102, 241, 0.4);
+    --text-danger:   #f87171;
+    --bg-danger-surface: rgba(248, 113, 113, 0.1);
+}
+
+[data-theme="light"] {
+    --bg-primary:    #f8fafc;
+    --bg-secondary:  #f1f5f9;
+    --bg-panel:      #ffffff;
+    --bg-surface:    rgba(0, 0, 0, 0.03);
+    --border:        rgba(0, 0, 0, 0.08);
+    --text-primary:  #0f172a;
+    --text-secondary:#475569;
+    --text-muted:    #94a3b8;
+    --accent:        #2563eb;
+    --accent-hover:  #1d4ed8;
+    --accent-glow:   rgba(37, 99, 235, 0.3);
+    --text-danger:   #dc2626; 
+    --bg-danger-surface: rgba(220, 38, 38, 0.1);
+}
+
+[data-theme="astronomical"] {
+    --bg-primary:    #0a0000;
+    --bg-secondary:  #060000;
+    --bg-panel:      #120000;
+    --bg-surface:    rgba(255, 0, 0, 0.05);
+    --border:        rgba(255, 60, 60, 0.15);
+    --text-primary:  #ffcccc;
+    --text-secondary:#cc6666;
+    --text-muted:    #7a3333;
+    --accent:        #ff3333;
+    --accent-hover:  #cc0000;
+    --accent-glow:   rgba(255, 51, 51, 0.4);
+    /* --text-danger:   #ff6666;
+    --bg-danger-surface: rgba(255, 102, 102, 0.15); rgba(251, 85, 85, 0.15);*/
+    --text-danger:   #ff0000;
+    --bg-danger-surface: rgba(255, 51, 51, 0.4);
+}
+
+/* Other base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  overscroll-behavior-x: none; 
+}

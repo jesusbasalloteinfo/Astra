@@ -1,0 +1,90 @@
+from pydantic import BaseModel, Field
+from datetime import datetime
+from typing import Dict, List, Literal, Optional, Tuple, Union
+from enum import Enum
+
+class PlanetaryObject(Enum):
+    SUN = 10
+    MOON = 301
+    MERCURY = 1
+    VENUS = 2
+    EARTH = 399
+    MARS = 4
+    JUPITER = 5
+    SATURN = 6
+    URANUS = 7
+    NEPTUNE = 8
+    PLUTO = 9
+
+
+
+class MoonDetails(BaseModel):
+    type: Literal["moon"] = "moon"
+    illumination_pct: float
+    age: Optional[float]=0.0
+    phase_angle_deg: float
+    limb_angle_deg: float
+    next_new_moon: Optional[datetime] = None
+    next_full_moon: Optional[datetime] = None
+
+class PlanetDetails(BaseModel):
+    type: Literal["planet"] = "planet"
+    elongation_deg: float
+    phase_angle_deg: float
+    illumination_pct: float
+
+ExtraDetails = Union[MoonDetails, PlanetDetails]
+
+
+class RiseSetTransit(BaseModel):
+    is_visible: Optional[bool] = False
+    next_rise: Optional[datetime]
+    next_transit: Optional[datetime]
+    next_set: Optional[datetime]
+    
+    rise_az: Optional[float] = None
+    set_az: Optional[float]  = None
+    transit_alt: Optional[float] = None
+    transit_visible: Optional[bool] = False
+
+
+class ObjectLightMetadata(BaseModel):
+    id: str
+    name: str
+    dist: float # AU
+    mag: Optional[float]
+
+
+class MotionDelta(BaseModel):
+    ttl: int
+    target_time: datetime = Field(..., description="Time in UTC for calculation")
+    delta_alt: float = Field(description="Delta altitude (arcsec)")
+    delta_az:  float = Field(description="Delta Azimuth (arcsec)")
+    delta_ra:  float = Field(description="Delta RA (arcsec)")
+    delta_dec: float = Field(description="Delta Dec (arcsec)")
+
+class ObjectMetadata(BaseModel):
+    id: str
+    name: str
+    dist: float # AU
+    mag: Optional[float] = None
+    ang_diameter: Optional[float] = None # In arcmin
+    
+    alt: float
+    az: float
+    ra_j2000: float
+    dec_j2000: float
+    motion: MotionDelta
+
+    rise_set_transit: RiseSetTransit
+
+    extra_details: Optional[ExtraDetails] = Field(default=None, discriminator='type')
+
+
+
+class MetadataCatalogPayload(BaseModel):
+    version: str = "1.0"
+    total: int
+    data: Dict[str, ObjectLightMetadata]
+
+

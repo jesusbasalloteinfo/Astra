@@ -1,0 +1,5 @@
+model_list:
+  - model_name: gemini-3.1-flash
+    litellm_params:
+      model: gemini/gemini-3.1-flash-lite-preview
+      api_key: "os.environ/TEST_API_KEY" 

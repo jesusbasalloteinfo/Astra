@@ -1,0 +1,42 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+
+  # ════════════════════════════════════════════════════════════════════════════════
+  #                                   ASTRA API
+  # ════════════════════════════════════════════════════════════════════════════════
+  - name: astra_api
+    url: http://astra_api:80
+    routes:
+      - name: astra_api-gateway
+        paths:
+          - /api
+        strip_path: false 
+  
+  # ════════════════════════════════════════════════════════════════════════════════
+  #                                 SIDERIS API
+  # ════════════════════════════════════════════════════════════════════════════════
+  - name: sideris
+    url: http://sideris:8624
+    routes:
+      - name: sideris-api
+        paths:
+          - /api/sideris
+        strip_path: true 
+  
+  # ════════════════════════════════════════════════════════════════════════════════
+  #                                   ASTRA UI
+  # ════════════════════════════════════════════════════════════════════════════════
+
+  - name: astra_ui
+    url: http://astra_ui:5173
+    # Timeouts for Vite Hot Module Replacement
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+    routes:
+      - name: astra_ui-gateway
+        paths:
+          - /
+        strip_path: false
