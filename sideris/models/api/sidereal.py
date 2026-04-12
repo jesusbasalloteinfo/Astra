@@ -32,13 +32,14 @@ class SiderealObjectMetadata(BaseModel):
     b_v: Optional[float] = None
     
     luminosity: Optional[float] = None
-    distance_ly: Optional[float] = None
+    dist: Optional[float] = None
     spectral_type: Optional[str] = None
     size_arcmin: Optional[float] = None
 
 class ConstellationMetadata(BaseModel):
     abbr: str
     name: str
+    latin: str
     stars_ids: List[str] 
     lines_indices: List[Tuple[int, int]] 
 

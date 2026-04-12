@@ -7,6 +7,7 @@ from services.astro_service.astro_service import AstroService
 from core.logging import get_logger, setup_global_logging
 from api.sidereal_catalog import router as sidereal_catalog_router
 from api.planetary_catalog import router as planetary_catalog_router
+from core.translations import load_translations
 
 
 
@@ -35,10 +36,15 @@ async def lifespan(app:FastAPI):
 
         await AstroService.get_instance(CATALOG_FILE, CONST_CATALOG)
 
+        load_translations()
+
         LOG.info(f"Service is running!")  
         yield
     except Exception as e:
         LOG.error(f"Error during lifespan: {e} \n {inspect.currentframe().f_code.co_name}")
+
+        load_translations()
+        
         raise HTTPException(
             status_code=500,
             detail="Error during lifespan"

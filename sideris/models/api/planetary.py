@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
-from typing import Literal, Optional, Union
+from typing import List, Literal, Optional, Union
 
 class MoonDetails(BaseModel):
     type: Literal["moon"] = "moon"
@@ -33,6 +33,7 @@ class RiseSetTransit(BaseModel):
 class ObjectLightMetadata(BaseModel):
     id: str
     name: str
+    common_names: List[str] = Field(default_factory=list)
     dist: float # AU
     mag: Optional[float]
 
@@ -47,6 +48,7 @@ class MotionDelta(BaseModel):
 class PlanetaryObjectMetadata(BaseModel):
     id: str
     name: str
+    common_names: List[str] = Field(default_factory=list)
     dist: float # AU
     mag: Optional[float] = None
     ang_diameter: Optional[float] = None # In arcmin

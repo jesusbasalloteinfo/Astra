@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from services.astro_service.astro_service import AstroService
 from models.api.common import SyncPayload, MetadataCatalogPayload
 from models.api.sidereal import SiderealObjectDataResponse
+from core.translations import get_lang_dict, localise_dict_payload, localise_list_payload, localise_object
 
 async def get_astro_service() -> AstroService:
     return await AstroService.get_instance()
@@ -12,18 +13,25 @@ async def get_astro_service() -> AstroService:
 router = APIRouter()
 
 @router.get("/metadata", response_model=MetadataCatalogPayload, summary="Get sidereal catalog metadata")
-async def get_metadata(service:AstroService=Depends(get_astro_service)):
+async def get_metadata(lang: str = Query("en", description="Language code for names (e.g., 'es', 'en')"), service:AstroService=Depends(get_astro_service)):
     """
     Returns all sidereal catalog metadata
     """
-    return service.get_sidereal_metadata()
+    raw_data=service.get_sidereal_metadata()
+    lang_dict = get_lang_dict("sidereal", lang)
+
+    
+    return localise_dict_payload(raw_data, lang_dict)
 
 @router.get("/constellations", response_model=MetadataCatalogPayload, summary="Get constellations metadata")
-async def get_constellations(service:AstroService=Depends(get_astro_service)):
+async def get_constellations(lang: str = Query("en", description="Language code for names (e.g., 'es', 'en')"), service:AstroService=Depends(get_astro_service)):
     """
     Returns all constellations metadata
     """
-    return service.get_constellations_metadata()
+    raw_data=service.get_constellations_metadata()
+    lang_dict = get_lang_dict("constellations", lang)
+  
+    return localise_list_payload(raw_data, lang_dict)
 
 @router.get("/sync", response_model=SyncPayload, summary="Get star and DSO movement for a given time and place")
 def sync_sky(
@@ -54,12 +62,16 @@ async def get_ephemeris(
     lat: float = Query(..., description="Observer latitude in degrees"),
     lon: float = Query(..., description="Observer longitude in degrees"),
     elev: float = Query(0.0, description="Observer elevation in metres"), 
+    lang: str = Query("en", description="Language code for names (e.g., 'es', 'en')"), 
     service:AstroService=Depends(get_astro_service)
 ):
     """
     Calculates the object ephemeris data for a given time and place
     """
     try:
-        return service.get_sidereal_object(object_id, target_time, lat, lon, elev)
+        raw_data = service.get_sidereal_object(object_id, target_time, lat, lon, elev)
+        lang_dict = get_lang_dict("sidereal", lang)
+        
+        return localise_object(raw_data, lang_dict)
     except ValueError as e:
         raise HTTPException(404, str(e))

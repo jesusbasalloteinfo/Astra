@@ -269,6 +269,7 @@ class PlanetaryEngine(BaseEngine):
             objects[obj.name.lower()] = ObjectLightMetadata(
                 id=obj.name.lower(),
                 name=obj.name.capitalize(),
+                common_names=[obj.name.capitalize()],
                 dist=round(distance.au, 6),
                 mag=magnitude
             )
@@ -361,6 +362,7 @@ class PlanetaryEngine(BaseEngine):
         return PlanetaryObjectMetadata(
             id=obj.name.lower(),
             name=obj.name.capitalize(),
+            common_names=[obj.name.capitalize()],
             dist=round(distance.au, 6),
             mag=magnitude,
             ang_diameter=ang_diameter,

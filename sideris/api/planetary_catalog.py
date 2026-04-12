@@ -4,6 +4,7 @@ from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, Query
 from services.astro_service.astro_service import AstroService
 from models.api.common import SyncPayload, MetadataCatalogPayload
+from core.translations import get_lang_dict, localise_dict_payload, localise_object
 
 async def get_astro_service() -> AstroService:
     return await AstroService.get_instance()
@@ -16,11 +17,17 @@ async def get_metadata(
     lat: float = Query(..., description="Observer latitude in degrees"),
     lon: float = Query(..., description="Observer longitude in degrees"),
     elev: float = Query(0.0, description="Observer elevation in metres"), 
+    lang: str = Query("en", description="Language code for names (e.g., 'es', 'en')"),
     service:AstroService=Depends(get_astro_service)):
     """
     Returns all planetary catalog metadata
     """
-    return service.get_planetary_metadata(target_time, lat, lon, elev, ttl=120)
+    
+    raw_data=service.get_planetary_metadata(target_time, lat, lon, elev, ttl=120)
+    lang_dict = get_lang_dict("planetary", lang)
+
+    
+    return localise_dict_payload(raw_data, lang_dict)
 
 @router.get("/sync", response_model=SyncPayload, summary="Get planetary movement for a given time and place")
 def sync_sky(
@@ -51,12 +58,17 @@ async def get_ephemeris(
     lat: float = Query(..., description="Observer latitude in degrees"),
     lon: float = Query(..., description="Observer longitude in degrees"),
     elev: float = Query(0.0, description="Observer elevation in metres"), 
+    lang: str = Query("en", description="Language code for names (e.g., 'es', 'en')"),
     service:AstroService=Depends(get_astro_service)
 ):
     """
     Calculates the object ephemeris data for a given time and place
     """
     try:
-        return service.get_planetary_object(object_id, target_time, lat, lon, elev, ttl=120)
+        raw_data=service.get_planetary_object(object_id, target_time, lat, lon, elev, ttl=120)
+        lang_dict = get_lang_dict("planetary", lang)
+
+        
+        return localise_object(raw_data, lang_dict)
     except ValueError as e:
         raise HTTPException(404, str(e))

@@ -77,7 +77,7 @@ class AstroService:
                 abs_mag=star.abs_mag,
                 b_v=star.b_v,
                 luminosity=getattr(star, 'luminosity', None),
-                distance_ly=star.dist_ly,
+                dist=star.dist_ly,
                 spectral_type=getattr(star, 'spectral_type', None),
                 size_arcmin=None
             )
@@ -94,7 +94,7 @@ class AstroService:
                 abs_mag=None,
                 b_v=None,
                 luminosity=None,
-                distance_ly=None,
+                dist=None,
                 spectral_type=None,
                 size_arcmin=ds.size_arcmin
             )
@@ -104,6 +104,7 @@ class AstroService:
             ui_constellations.append(ConstellationMetadata(
                 abbr=const.abbr,
                 name=const.full_name,
+                latin=const.full_name,
                 stars_ids=[str(sid) for sid in const.stars_ids],
                 lines_indices=const.lines_indices
             ))
