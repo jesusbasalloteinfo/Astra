@@ -5,6 +5,7 @@
 export interface ConstellationMetadata {
     abbr: string;
     name: string;
+    latin: string;
     stars_ids: string[];
     lines_indices: [number, number][];
 }
@@ -28,6 +29,7 @@ export interface SiderealObjectMetadata {
 export interface PlanetaryObjectMetadata {
     id: string;
     name: string;
+    common_names: string[];
     dist: number; // AU
     mag: number | null;
 }

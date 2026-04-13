@@ -14,7 +14,7 @@ export class SelectionController {
     private pointer: THREE.Vector2 = new THREE.Vector2();
     private pointerDownPos = { x: 0, y: 0 }; // Distinguish click from drag
     private isDragging: boolean = false;
-    private selectedId: string | null = null;
+    public selectedId: string | null = null;
 
     constructor(
         private container: HTMLDivElement,
@@ -31,6 +31,32 @@ export class SelectionController {
         this.container.addEventListener('pointermove', this.onPointerMove);
         this.container.addEventListener('pointerup', this.onPointerUp);
     }
+
+    /** * Double raycast
+     * Check first planetary objects, then sidereal
+     */
+    private getHit(): { id: string, isPlanet: boolean } | null {
+        // First raycast. Planetary
+        this.raycaster.params.Points.threshold = 10; // Big hitbox
+        let intersects = this.raycaster.intersectObject(this.planetary.getPointsMesh(), false);
+        
+        if (intersects.length > 0 && intersects[0].index !== undefined) {
+            const id = this.planetary.getIdByIndex(intersects[0].index);
+            if (id) return { id, isPlanet: true };
+        }
+
+        // Second raycast. Sidereal
+        this.raycaster.params.Points.threshold = 8; // Smaller hitbox
+        intersects = this.raycaster.intersectObject(this.sidereal.getPointsMesh(), false);
+        
+        if (intersects.length > 0 && intersects[0].index !== undefined) {
+            const id = this.sidereal.getIdByIndex(intersects[0].index);
+            if (id) return { id, isPlanet: false };
+        }
+
+        return null;
+    }
+
     /** Creates an calculates an intersecting ray with an xy position */
     private raycast(posX:number, posY:number){
         this.pointer.x = posX;
@@ -39,48 +65,11 @@ export class SelectionController {
         this.raycaster.setFromCamera(this.pointer, this.cameraCtrl.camera);
 
         // Shoot ray to planetary and sidereal objects
-        const intersects = this.raycaster.intersectObjects([
-            this.planetary.getPointsMesh(),
-            this.sidereal.getPointsMesh()
-        ], false);
+        const result = this.getHit();
 
-        if (intersects.length > 0) {
-            // Get the nearest hit
-            const hit = intersects[0];
-            const index = hit.index;
-            let isPlanet = false;
-            let foundId: string | null = null;
-
-            if (index !== undefined) {
-                if (hit.object === this.planetary.getPointsMesh()) {
-                    foundId = this.planetary.getIdByIndex(index);
-                    isPlanet = true;
-                } else if (hit.object === this.sidereal.getPointsMesh()) {
-                    foundId = this.sidereal.getIdByIndex(index);
-                }
-            }
-
-            if (foundId && foundId !== this.selectedId) {
-                this.selectedId = foundId;
-                
-                // Get size and colour of the object
-                const geometry = (hit.object as THREE.Points).geometry;
-                const baseSize = geometry.attributes.size.getX(index!);
-                
-                const r = geometry.attributes.color.getX(index!);
-                const g = geometry.attributes.color.getY(index!);
-                const b = geometry.attributes.color.getZ(index!);
-                const hexColor = '#' + new THREE.Color(r, g, b).getHexString();
-
-                // Activate crosshair
-                this.targetReticle.lockOn(isPlanet, hexColor, baseSize);
-                            
-                // Move to selected object
-                const pos = skyEngine.positions.get(foundId);
-                if(pos) this.cameraCtrl.flyTo(pos.alt, pos.az);
-                selectionStore.targetId = foundId;
-                console.log("Selected object:", foundId);
-            }
+        if (result) {
+            // Reutilizamos toda la magia visual que hicimos para el Buscador
+            this.selectById(result.id);
         } else {
             // Void click -> clear selection
             this.selectedId = null;
@@ -88,57 +77,6 @@ export class SelectionController {
             selectionStore.clear();
         }
     }
-
-    /** Save the initial position for pointer */
-    private onPointerDown = (event: PointerEvent) => {
-        this.pointerDownPos = { x: event.clientX, y: event.clientY };
-        this.isDragging = true;
-        this.container.style.cursor = 'grabbing'; 
-    };
-
-    /** 
-     * Listens everytime for the pointer
-     * If is a click, checks if there's an object behind to activate the cursor
-     */
-    private onPointerMove = (event: PointerEvent) => {
-        if (this.isDragging) return;
-
-        const rect = this.container.getBoundingClientRect();
-        this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-        this.raycaster.setFromCamera(this.pointer, this.cameraCtrl.camera);
-
-        const intersects = this.raycaster.intersectObjects([
-            this.planetary.getPointsMesh(),
-            this.sidereal.getPointsMesh()
-        ], false);
-
-        // Activate cursor detection
-        this.container.style.cursor = intersects.length > 0 ? 'pointer' : 'default';
-    };
-
-    /** 
-     * Check if has been a drag. If not, checks the object behind with the raycaster
-     */
-    private onPointerUp = (event: PointerEvent) => {
-        this.isDragging = false;
-
-        // Update for the pointer
-        this.onPointerMove(event);
-
-        const deltaX = Math.abs(event.clientX - this.pointerDownPos.x);
-        const deltaY = Math.abs(event.clientY - this.pointerDownPos.y);
-        
-        // Dragging detected, so cancel
-        if (deltaX > 5 || deltaY > 5) return;
-
-        const rect = this.container.getBoundingClientRect();
-        const posX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        const posY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-        this.raycast(posX, posY)
-    };
 
     /**
      * Select an object via id
@@ -185,6 +123,53 @@ export class SelectionController {
         this.targetReticle.lockOn(isPlanet, hexColor, baseSize);
         this.cameraCtrl.flyTo(pos.alt, pos.az);
     }
+    /** Save the initial position for pointer */
+    private onPointerDown = (event: PointerEvent) => {
+        this.pointerDownPos = { x: event.clientX, y: event.clientY };
+        this.isDragging = true;
+        this.container.style.cursor = 'grabbing'; 
+    };
+
+    /** 
+     * Listens everytime for the pointer
+     * If is a click, checks if there's an object behind to activate the cursor
+     */
+    private onPointerMove = (event: PointerEvent) => {
+        if (this.isDragging) return;
+
+        const rect = this.container.getBoundingClientRect();
+        this.pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        this.pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+        this.raycaster.setFromCamera(this.pointer, this.cameraCtrl.camera);
+
+        const result = this.getHit();
+
+        // Activate cursor detection
+        this.container.style.cursor = result ? 'pointer' : 'default';
+    };
+
+    /** 
+     * Check if has been a drag. If not, checks the object behind with the raycaster
+     */
+    private onPointerUp = (event: PointerEvent) => {
+        this.isDragging = false;
+
+        // Update for the pointer
+        this.onPointerMove(event);
+
+        const deltaX = Math.abs(event.clientX - this.pointerDownPos.x);
+        const deltaY = Math.abs(event.clientY - this.pointerDownPos.y);
+        
+        // Dragging detected, so cancel
+        if (deltaX > 5 || deltaY > 5) return;
+
+        const rect = this.container.getBoundingClientRect();
+        const posX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        const posY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+        this.raycast(posX, posY)
+    };
 
     dispose() {
         this.container.removeEventListener('pointerdown', this.onPointerDown);

@@ -12,6 +12,7 @@ import type {
 import { locStore } from './location.svelte';
 import { timeEngine } from './timeEngine.svelte';
 import { untrack } from 'svelte';
+import { getLocale } from '$lib/paraglide/runtime';
 
 export interface SearchResult {
     id: string;
@@ -75,9 +76,9 @@ class CatalogStore {
         try {
             // Execute all 3 requests concurrently
             const [siderealRes, constelRes, planetaryRes] = await Promise.all([
-                siderisAPI.getMetadata('sidereal') as Promise<SiderealCatalogResponse>,
-                siderisAPI.getConstellations() as Promise<ConstellationCatalogResponse>,
-                siderisAPI.getMetadata('planetary', params) as Promise<PlanetaryCatalogResponse>
+                siderisAPI.getMetadata('sidereal', undefined, getLocale()) as Promise<SiderealCatalogResponse>,
+                siderisAPI.getConstellations(getLocale()) as Promise<ConstellationCatalogResponse>,
+                siderisAPI.getMetadata('planetary', params, getLocale()) as Promise<PlanetaryCatalogResponse>
             ]);
             
             this.siderealData = siderealRes.data;
@@ -110,7 +111,7 @@ class CatalogStore {
         // Every 5 minuts, refetch the planetary metadata.
         if (deltaSec >= 300) {
             try {
-                const res = await siderisAPI.getMetadata('planetary', params) as PlanetaryCatalogResponse;
+                const res = await siderisAPI.getMetadata('planetary', params, getLocale()) as PlanetaryCatalogResponse;
                 this.planetaryData = res.data;
                 this.lastPlanetaryUpdate = targetMs;
                 this.buildSearchIndex();
@@ -126,13 +127,26 @@ class CatalogStore {
     private buildSearchIndex() {
         this.searchIndex = [];
 
-        // Planetary indexing
         for (const [id, data] of Object.entries(this.planetaryData)) {
-            const res = { id, name: data.name, type: 'Planetary', mag: data.mag };
-            const cleanName = data.name.toLowerCase().replace(/\s+/g, '');
-            this.searchIndex.push({ key: cleanName, result: res });
-        }
+            
+            const displayName = data.name;
+            
+            // TODO: Change internacionalisation to use Paraglide
+            const res = { id, name: displayName, type: 'Planetary', mag: data.mag };
 
+            const possibleNames = [
+                data.name,
+                ...(data.common_names || []),
+                id
+            ];
+
+            for (const name of possibleNames) {
+                if (name) {
+                    const searchKey = name.toLowerCase().replace(/\s+/g, '');
+                    this.searchIndex.push({ key: searchKey, result: res });
+                }
+            }
+        }
         // Sidereal indexing
         for (const [id, data] of Object.entries(this.siderealData)) {
             const displayName = data.name || data.common_names?.[0] || data.catalog_names?.[0] || id;
