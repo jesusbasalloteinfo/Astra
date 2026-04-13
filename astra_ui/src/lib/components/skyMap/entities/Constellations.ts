@@ -5,19 +5,37 @@ import { DOME_RADIUS } from '../utils/const';
 import { altAzToXYZ } from '../utils/coordinates';
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
+interface ConstellationLabel {
+    sprite: THREE.Sprite;
+    starsIds: string[];
+    name: string;
+    latin: string;
+    texture: THREE.CanvasTexture;
+    ctx: CanvasRenderingContext2D;
+}
+
 /**
  * Constellations Entity
- * 
- * Manages the rendering of constellation lines 
+ * * Manages the rendering of constellation lines and their dynamic labels
  */
 export class Constellations {
     public group = new THREE.Group();
     private lines: THREE.LineSegments;
 
-    // Stores a flattened list of star IDs where every two sequential IDs form a line segment.
     private constellationPairs: string[] = [];
+    private labels: ConstellationLabel[] = [];
+    
+    private showLabels: boolean = true;
+    private useLatin: boolean = false;
+    private currentColor: number = 0xffffff;
+    private currentLabelColor: number = 0xffffff;
 
-    constructor(color: number, opacity: number) {
+    constructor(color: number, labelColor:number, opacity: number, showLabels: boolean, useLatin: boolean) {
+        this.currentColor = color;
+        this.currentLabelColor = labelColor;
+        this.showLabels = showLabels ?? true; 
+        this.useLatin = useLatin ?? true;
+
         const geo = this.buildGeometry();
 
         const mat = new THREE.LineBasicMaterial({
@@ -32,23 +50,38 @@ export class Constellations {
     }
 
     /**
-     * Parses the constellation catalog data to determine which stars connect to which.
-     * Allocates the necessary memory buffer for the vertex positions.
+     * Parses the constellation catalog to build connection lines and prepare labels.
      */
     private buildGeometry(): THREE.BufferGeometry {
         const pairs: string[] = [];
 
-        // Iterate through the catalog to build the connections
         catalogStore.constellations.forEach(constel => {
+            // 1. Build Lines
             constel.lines_indices.forEach(([idxA, idxB]) => {
                 const starIdA = constel.stars_ids[idxA];
                 const starIdB = constel.stars_ids[idxB];
                 
-                // Both stars exist in the catalog, add them as a pair
                 if (starIdA && starIdB) {
                     pairs.push(starIdA, starIdB);
                 }
             });
+
+            // 2. Prepare Labels (if it has stars to calculate a center)
+            if (constel.stars_ids.length > 0) {
+                const labelData = this.createLabelCanvas();
+                const labelObj: ConstellationLabel = {
+                    sprite: labelData.sprite,
+                    starsIds: constel.stars_ids,
+                    name: constel.name,
+                    latin: constel.latin,
+                    texture: labelData.texture,
+                    ctx: labelData.ctx
+                };
+                
+                this.updateLabelText(labelObj);
+                this.labels.push(labelObj);
+                this.group.add(labelData.sprite);
+            }
         });
 
         this.constellationPairs = pairs; 
@@ -61,14 +94,50 @@ export class Constellations {
     }
 
     /**
-     * Updates the XYZ coordinates of the line segments based on the current positions of the stars.
-     * Called continuously inside the render loop.
+     * Creates an empty Sprite and Canvas for a label, ready to be painted.
+     */
+    private createLabelCanvas() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024; canvas.height = 128;
+        const ctx = canvas.getContext('2d')!;
+        
+        const texture = new THREE.CanvasTexture(canvas);
+        const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false });
+        const sprite = new THREE.Sprite(mat);
+        
+        
+        sprite.scale.set(80, 10, 1); 
+
+        return { sprite, texture, ctx };
+    }
+
+    /**
+     * Redraws the text on the Canvas (used for init and when switching languages)
+     */
+    private updateLabelText(label: ConstellationLabel) {
+        const text = this.useLatin ? label.latin : label.name;
+        
+        label.ctx.clearRect(0, 0, 1024, 128);
+        label.ctx.font = 'bold 56px Inter, system-ui, sans-serif';
+        label.ctx.letterSpacing = '3px';
+        label.ctx.textAlign = 'center';
+        label.ctx.textBaseline = 'middle';
+
+
+        label.ctx.fillStyle = `#${new THREE.Color(this.currentLabelColor).getHexString()}`;
+        label.ctx.fillText(text.toUpperCase(), 512, 64);
+        
+        label.texture.needsUpdate = true;
+    }
+
+    /**
+     * Updates lines and calculates the centroid for each label.
      */
     update(positionsMap: Map<string, { alt: number, az: number }>) {
         if (this.constellationPairs.length === 0) return;
 
+        // --- UPDATE LINES ---
         const posArray = this.lines.geometry.attributes.position.array as Float32Array;
-
         for (let i = 0; i < this.constellationPairs.length; i++) {
             const starId = this.constellationPairs[i];
             const p = positionsMap.get(starId);
@@ -76,37 +145,93 @@ export class Constellations {
             if (p) {
                 altAzToXYZ(posArray, i, p.alt, p.az);
             } else {
-                // If fails, hide the line
-                posArray[i * 3] = 0; 
-                posArray[i * 3 + 1] = 0; 
-                posArray[i * 3 + 2] = 0;
+                posArray[i * 3] = 0; posArray[i * 3 + 1] = 0; posArray[i * 3 + 2] = 0;
             }
         }
         this.lines.geometry.attributes.position.needsUpdate = true;
+
+        // --- UPDATE LABELS ---
+        const tempVec = new THREE.Vector3();
+        const starPos = new Float32Array(3);
+
+        for (const label of this.labels) {
+            tempVec.set(0, 0, 0);
+            let validStars = 0;
+
+            // Add up all star coordinates
+            for (const starId of label.starsIds) {
+                const p = positionsMap.get(starId);
+                if (p) {
+                    altAzToXYZ(starPos, 0, p.alt, p.az);
+                    tempVec.x += starPos[0];
+                    tempVec.y += starPos[1];
+                    tempVec.z += starPos[2];
+                    validStars++;
+                }
+            }
+
+            if (validStars > 0) {
+                // Get mean
+                tempVec.divideScalar(validStars);
+                
+                // Normalise and multiply by the dome radius
+                tempVec.normalize().multiplyScalar(DOME_RADIUS);
+                
+                label.sprite.position.copy(tempVec);
+                label.sprite.visible = this.showLabels;
+            } else {
+                label.sprite.visible = false;
+            }
+        }
     }
 
     /**
-     * Dynamically updates the visual properties (visibility, color, opacity).
+     * Dynamically updates the visual properties and text settings.
      */
-    setProps(visible: boolean, color: number, opacity: number) {
-        if (visible !== undefined) {
-            this.group.visible = visible;
-        }
-
-        if (color !== undefined) {
+    setProps(visible: boolean, color: number, labelColor: number, opacity: number, showLabels?: boolean, useLatin?: boolean) {
+        if (visible !== undefined) this.group.visible = visible;
+        
+        // Line color
+        if (color !== undefined && color !== this.currentColor) {
+            this.currentColor = color;
             (this.lines.material as THREE.LineBasicMaterial).color.setHex(color);
         }
 
+        // Opacity
         if (opacity !== undefined) {
             (this.lines.material as THREE.LineBasicMaterial).opacity = opacity;
         }
+
+        // Label control
+        if (showLabels !== undefined && showLabels !== this.showLabels) {
+            this.showLabels = showLabels;
+            this.labels.forEach(l => l.sprite.visible = this.showLabels); 
+        }
+
+        // Language or color change
+        let needsRedraw = false;
+        
+        if (useLatin !== undefined && useLatin !== this.useLatin) {
+            this.useLatin = useLatin;
+            needsRedraw = true;
+        }
+
+        if (labelColor !== undefined && labelColor !== this.currentLabelColor) {
+            this.currentLabelColor = labelColor;
+            needsRedraw = true;
+        }
+
+        if (needsRedraw) {
+            this.labels.forEach(l => this.updateLabelText(l));
+        }
     }
 
-    /**
-     * Disposes of geometries and materials to prevent memory leaks.
-     */
     dispose() {
         this.lines.geometry.dispose();
         (this.lines.material as THREE.Material).dispose();
+        this.labels.forEach(l => {
+            l.texture.dispose();
+            l.sprite.material.dispose();
+        });
     }
 }

@@ -72,7 +72,7 @@ export class Planetary {
 
         const mat = new THREE.ShaderMaterial({
             uniforms: { zoom: { value: 1.0 }, opacity: { value: opacity } },
-            vertexShader, fragmentShader, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+            vertexShader, fragmentShader, transparent: true, blending: THREE.NormalBlending, depthWrite: false
         });
 
         this.points = new THREE.Points(geo, mat);

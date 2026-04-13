@@ -166,6 +166,24 @@ class CatalogStore {
                 }
             }
         }
+        // Constellation indexing
+        for (const constel of this.constellations) {
+            
+            const res = { id: constel.abbr, name: constel.name, type: 'Constellation', mag: null };
+
+            const possibleNames = [
+                constel.name,
+                constel.latin,
+                constel.abbr
+            ];
+
+            for (const name of possibleNames) {
+                if (name) {
+                    const searchKey = name.toLowerCase().replace(/\s+/g, '');
+                    this.searchIndex.push({ key: searchKey, result: res });
+                }
+            }
+        }
     }
 
     /**
@@ -175,19 +193,40 @@ class CatalogStore {
         const cleanQuery = query.toLowerCase().replace(/\s+/g, '');
         if (cleanQuery.length < 2) return [];
 
-        const matches = new Map<string, SearchResult>();
+        // Save result and relevance score (minor best)
+        const matches = new Map<string, { result: SearchResult, score: number }>();
 
         for (const item of this.searchIndex) {
             if (item.key.includes(cleanQuery)) {
+                
+                let score = 3; // Default coincidence
+                if (item.key === cleanQuery) {
+                    score = 1; // Exact coincidence
+                } else if (item.key.startsWith(cleanQuery)) {
+                    score = 2; // Starts with
+                }
+
                 if (!matches.has(item.result.id)) {
-                    matches.set(item.result.id, item.result);
+                    matches.set(item.result.id, { result: item.result, score });
+                } else {
+                    // If an object has multiple names, get the best score
+                    const existing = matches.get(item.result.id)!;
+                    if (score < existing.score) {
+                        existing.score = score;
+                    }
                 }
             }
         }
 
-        // Order by magnitude
+        // Sort by Score and magnitude
         return Array.from(matches.values())
-            .sort((a, b) => (a.mag ?? 99) - (b.mag ?? 99))
+            .sort((a, b) => {
+                if (a.score !== b.score) {
+                    return a.score - b.score;
+                }
+                return (a.result.mag ?? 99) - (b.result.mag ?? 99);
+            })
+            .map(item => item.result)
             .slice(0, limit);
     }
 

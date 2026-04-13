@@ -46,7 +46,7 @@ export class SelectionController {
         }
 
         // Second raycast. Sidereal
-        this.raycaster.params.Points.threshold = 8; // Smaller hitbox
+        this.raycaster.params.Points.threshold = 5; // Smaller hitbox
         intersects = this.raycaster.intersectObject(this.sidereal.getPointsMesh(), false);
         
         if (intersects.length > 0 && intersects[0].index !== undefined) {
@@ -68,7 +68,6 @@ export class SelectionController {
         const result = this.getHit();
 
         if (result) {
-            // Reutilizamos toda la magia visual que hicimos para el Buscador
             this.selectById(result.id);
         } else {
             // Void click -> clear selection
@@ -171,6 +170,17 @@ export class SelectionController {
         this.raycast(posX, posY)
     };
 
+    /**
+     * Clear actual selection and hide the reticle
+     */
+    public clearSelection() {
+        if (this.selectedId) {
+            this.selectedId = null;
+            this.targetReticle.hide();
+            selectionStore.clear();
+        }
+    }
+    
     dispose() {
         this.container.removeEventListener('pointerdown', this.onPointerDown);
         this.container.removeEventListener('pointermove', this.onPointerMove);

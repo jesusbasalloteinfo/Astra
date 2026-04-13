@@ -213,7 +213,19 @@
 
   "obs_sidedock_return": "Tornar a Sessions",
   "obs_sidedock_settings": "Configuració visual",
-  "obs_sidedock_constellations": "Constel·lacions",
+  "obs_sidedock_constellations_title": "Constel·lacions",
+  "obs_sidedock_constellations_show_label": "Etiquetes",
+  "obs_sidedock_constellations_language": "Idioma",
+  "obs_sidedock_constellations_language_options": [
+    {
+      "declarations": ["input latin"],
+			"selectors": ["latin"],
+      "match": {
+				"latin=true": "LAT",
+				"latin=false": "CAT"
+			}
+    }
+  ],
   "obs_sidedock_horizon": "Horitzó",
 
   "obs_targetinfo_title": "Objecte Sel·leccionat",
@@ -226,7 +238,7 @@
   "obs_timecontrol_back": "Restablir temps",
 
   "obs_skyfinder_close": "Tancar cercador",
-  "obs_skyfinder_placeholder": "Busca estrelles, DSO o planetari... (ex., M31, Polaris)",
+  "obs_skyfinder_placeholder": "Busca estrelles, DSO, constel·lacions o planetari... (ex., M31, Polaris)",
   "obs_skyfinder_type": "Escriu un objecte per a buscar",
   "obs_skyfinder_no_objects": "Cap objecte coincideix amb \"{query}\"",
   "obs_skyfinder_select": "Seleccionar",
