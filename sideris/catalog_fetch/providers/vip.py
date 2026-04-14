@@ -1,7 +1,7 @@
 from catalog_fetch.providers.base import BaseCatalogProvider
 from catalog_fetch.config import VIP_STARS, VIP_DSO, SIMBAD_VOTABLE_FIELDS
 from catalog_fetch.utils import NamingUtils, ParseUtils
-from models.CatalogSchemas import Star, DeepSky
+from models.catalog.sidereal import Star, DeepSky
 from astropy.coordinates import SkyCoord
 import astropy.units as u
 

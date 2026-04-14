@@ -10,6 +10,7 @@ import { Constellations } from '../entities/Constellations';
 import { FOV_DEFAULT } from '../utils/const';
 import { skyEngine } from '$lib/stores/skyEngine.svelte';
 import { TargetReticle } from '../entities/TargetReticle';
+import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
 /**
  * SkyMap3DEngine
@@ -50,7 +51,13 @@ export class SkyMap3DEngine {
         this.environment = new Environment(props.groundColor, props.cardinalColor);
         this.planetary = new Planetary(props.starOpacity);
         this.sidereal = new Sidereal(props.starOpacity);
-        this.constellations = new Constellations(props.constellationColor, props.constellationOpacity);
+        this.constellations = new Constellations(
+            props.constellationColor, 
+            props.constellationLabelColor,
+            props.constellationOpacity,
+            props.showConstellationLabels,
+            props.useLatinConstellations
+        );
         this.targetReticle = new TargetReticle();   
         
         // Initialize Controllers
@@ -69,6 +76,19 @@ export class SkyMap3DEngine {
         this.scene.add(this.planetary.group);
         this.scene.add(this.constellations.group);
         this.scene.add(this.targetReticle.sprite);
+
+        const applyRenderOrder = (obj: THREE.Object3D, order: number) => {
+            obj.traverse((child) => {
+                child.renderOrder = order;
+            });
+        };
+
+        applyRenderOrder(this.environment.group, 0);    // First the environment
+        applyRenderOrder(this.constellations.group, 1); // Second the constellations
+        applyRenderOrder(this.sidereal.group, 2);       // Third, stars/DSO
+        applyRenderOrder(this.planetary.group, 3);      // Fourth, planetary objects
+        
+        this.targetReticle.sprite.renderOrder = 4;
 
         // Apply initial visual properties
         this.updateProps(props); 
@@ -124,7 +144,10 @@ export class SkyMap3DEngine {
             this.constellations.setProps(
                 props.showConstellations, 
                 props.constellationColor, 
-                props.constellationOpacity
+                props.constellationLabelColor, 
+                props.constellationOpacity,
+                props.showConstellationLabels, 
+                props.useLatinConstellations   
             );
         }
     }
@@ -134,6 +157,51 @@ export class SkyMap3DEngine {
      */
     flyTo(alt: number, az: number, setReticle:boolean =false) {
         this.cameraCtrl.flyTo(alt, az);
+    }
+    
+    /**
+     * Calculates a constellation centroid and flies the camera to that constellation
+     */
+    flyToConstellation(abbr: string) {
+        const constel = catalogStore.constellations.find(c => c.abbr === abbr);
+        if (!constel || constel.stars_ids.length === 0) return;
+
+        let sumX = 0, sumY = 0, sumAlt = 0;
+        let count = 0;
+
+        let isDegrees = false;
+
+        for (const starId of constel.stars_ids) {
+            const p = skyEngine.positions.get(starId);
+            if (p) {
+                if (Math.abs(p.az) > Math.PI * 2) isDegrees = true;
+
+                // To radians
+                const azRad = isDegrees ? p.az * (Math.PI / 180) : p.az;
+                
+                sumX += Math.cos(azRad);
+                sumY += Math.sin(azRad);
+                
+                sumAlt += p.alt;
+                count++;
+            }
+        }
+
+        if (count > 0) {
+            // Altitude mean
+            const avgAlt = sumAlt / count;
+            
+            // Azimut circular mean
+            let avgAzRad = Math.atan2(sumY, sumX);
+            if (avgAzRad < 0) avgAzRad += Math.PI * 2;
+
+            // In degrees
+            const finalAz = isDegrees ? avgAzRad * (180 / Math.PI) : avgAzRad;
+            
+            this.selectionCtrl.clearSelection();
+            
+            this.cameraCtrl.flyTo(avgAlt, finalAz);
+        }
     }
 
     /**

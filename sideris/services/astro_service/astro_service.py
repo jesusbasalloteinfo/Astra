@@ -6,12 +6,14 @@ import pickle
 import time
 from typing import List, Optional, Tuple
 
-from models.ResponseSchemas import SiderealObjectMetadata, StarDataResponse, DSODataResponse, SiderealObjectDataResponse, ConstellationMetadata, MetadataCatalogPayload, SyncPayload
+from models.api.sidereal import SiderealObjectMetadata, StarDataResponse, DSODataResponse, SiderealObjectDataResponse, ConstellationMetadata
+from models.api.common import MetadataCatalogPayload, SyncPayload
 from services.astro_service.engines.SiderealEngine import SiderealEngine
 from services.astro_service.engines.PlanetaryEngine import PlanetaryEngine
-from models.CatalogSchemas import ConstellationCatalog, Star
+from models.catalog.constellations import ConstellationCatalog
+from models.catalog.sidereal import Star
 from core.logging import get_logger
-from models.PlanetarySchemas import PlanetaryObject
+from models.catalog.planetary import PlanetaryObject
 
 class AstroService:
     """Singleton class for astronomical calculations and data retrieval."""
@@ -75,7 +77,7 @@ class AstroService:
                 abs_mag=star.abs_mag,
                 b_v=star.b_v,
                 luminosity=getattr(star, 'luminosity', None),
-                distance_ly=star.dist_ly,
+                dist=star.dist_ly,
                 spectral_type=getattr(star, 'spectral_type', None),
                 size_arcmin=None
             )
@@ -92,7 +94,7 @@ class AstroService:
                 abs_mag=None,
                 b_v=None,
                 luminosity=None,
-                distance_ly=None,
+                dist=None,
                 spectral_type=None,
                 size_arcmin=ds.size_arcmin
             )
@@ -102,6 +104,7 @@ class AstroService:
             ui_constellations.append(ConstellationMetadata(
                 abbr=const.abbr,
                 name=const.full_name,
+                latin=const.full_name,
                 stars_ids=[str(sid) for sid in const.stars_ids],
                 lines_indices=const.lines_indices
             ))

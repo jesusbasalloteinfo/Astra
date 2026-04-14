@@ -21,7 +21,11 @@ class TimeEngine {
     // --- Controls ---
     setLive(val: boolean) {
         this.isLive = val;
-        if (val) { this.playbackRate = 1; if (!this.isPlaying) this.play(); }
+        if (val) { 
+            this.playbackRate = 1; 
+            this.targetTime = Date.now();
+            if (!this.isPlaying) this.play(); 
+        }
     }
 
     play() {
@@ -39,14 +43,17 @@ class TimeEngine {
 
     setTime(date: Date | string | number) {
         this.isLive = false;
+        this.playbackRate = 1;
         this.targetTime = new Date(date).getTime();
     }
 
     setRate(speed: number) {
         this.playbackRate = speed;
-        this.isLive=false;
-        if (speed!==1){
-            this.isLive=true;
+        if (speed !== 1) {
+            this.isLive = false;
+        }
+        if (!this.isPlaying) {
+            this.play();
         }
     }
 

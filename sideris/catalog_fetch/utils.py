@@ -5,7 +5,8 @@ from typing import Tuple, Set, List, Dict, Any, Type
 from astropy.coordinates import SkyCoord
 import astropy.units as u
 from catalog_fetch.config import IAU_CONSTELLATIONS, IMPORTANT_STAR_NAMES, OBJECT_TAGS, STAR_CATALOG_RANKING, DSO_CATALOG_RANKING
-from models.CatalogSchemas import ConstellationCatalog, Metadata, Star, DeepSky
+from models.catalog.sidereal import Metadata, Star, DeepSky
+from models.catalog.constellations import ConstellationCatalog
 
 class NamingUtils:
     @staticmethod

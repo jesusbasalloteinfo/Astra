@@ -6,7 +6,7 @@ from astropy.coordinates import SkyCoord, EarthLocation, AltAz
 from astropy.time import Time
 import astropy.units as u
 from typing import List, Tuple
-from models.ResponseSchemas import SyncPayload
+from models.api.common import SyncPayload
 
 class BaseEngine(ABC):
     

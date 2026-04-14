@@ -2,7 +2,7 @@ from catalog_fetch.config import SIMBAD_VOTABLE_FIELDS
 from catalog_fetch.providers.base import BaseCatalogProvider
 from catalog_fetch.utils import NamingUtils
 from catalog_fetch.physics import calculate_absolute_magnitude_and_luminosity, calculate_distance_ly
-from models.CatalogSchemas import Star
+from models.catalog.sidereal import Star
 import numpy as np
 from astropy.coordinates import SkyCoord
 import astropy.units as u
