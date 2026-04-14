@@ -25,8 +25,8 @@ export const siderisAPI = {
     /**
      * Get the constellations metadata
      */
-    async getConstellations() {
-        const { data } = await api.get(siderisEndpoints.sidereal.constellations);
+    async getConstellations(lang: string = 'en') {
+        const { data } = await api.get(siderisEndpoints.sidereal.constellations, {params: { lang } });
         return data;
     },
 
@@ -35,24 +35,24 @@ export const siderisAPI = {
      * 
      * Sidereal is static, Planetary requires observer context.
      */
-    async getMetadata(type: 'sidereal' | 'planetary', params?: SyncParams) {
+    async getMetadata(type: 'sidereal' | 'planetary', params?: SyncParams, lang: string = 'en') {
         const url = type === 'sidereal'
             ? siderisEndpoints.sidereal.metadata
             : siderisEndpoints.planetary.metadata;
 
         // Pasamos params solo si existen (para planetary)
-        const { data } = await api.get(url, { params });
+        const { data } = await api.get(url, { params: { ...params, lang } });
         return data;
     },
     /**
      * Get an object's detailed ephemeris
      */
-    async getObjectDetails(type: 'sidereal' | 'planetary', id: string, params: SyncParams) {
+    async getObjectDetails(type: 'sidereal' | 'planetary', id: string, params: SyncParams, lang: string = 'en') {
         const url = type === 'sidereal'
             ? siderisEndpoints.sidereal.object(id)
             : siderisEndpoints.planetary.object(id);
 
-        const { data } = await api.get(url, { params });
+        const { data } = await api.get(url, { params: { ...params, lang } });
         return data;
     }
 };

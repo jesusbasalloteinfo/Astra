@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Any, Tuple
+from typing import List, Optional, Dict, Any
 
 class Star(BaseModel):
     id: str
@@ -42,16 +42,3 @@ class CatalogData(BaseModel):
 class AstronomicalCatalog(BaseModel):
     metadata: Metadata
     data: CatalogData
-
-
-
-# Constellation metadata
-
-class Constellation(BaseModel):
-    abbr: str
-    full_name: str
-    stars_ids: List[int|str]
-    lines_indices: List[Tuple[int, int]]
-
-class ConstellationCatalog(BaseModel):
-    constellations: List[Constellation]

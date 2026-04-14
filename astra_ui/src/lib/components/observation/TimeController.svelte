@@ -85,7 +85,6 @@
             <button 
                 onclick={() => {
                     timeEngine.setLive(true);
-                    timeEngine.setRate(1)
                 }}
                 class="text-[9px] font-bold uppercase transition-all {timeEngine.isLive ? 'text-copy-muted' : 'text-accent hover:text-accent-hover drop-shadow-[0_0_5px_var(--color-accent-glow)]'}"
             >

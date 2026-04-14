@@ -211,7 +211,19 @@
 
   "obs_sidedock_return": "Volver a Sesiones",
   "obs_sidedock_settings": "Configuración visual",
-  "obs_sidedock_constellations": "Constelaciones",
+  "obs_sidedock_constellations_title": "Constelaciones",
+  "obs_sidedock_constellations_show_label": "Etiquetas",
+  "obs_sidedock_constellations_language": "Idioma",
+  "obs_sidedock_constellations_language_options": [
+    {
+      "declarations": ["input latin"],
+			"selectors": ["latin"],
+      "match": {
+				"latin=true": "LAT",
+				"latin=false": "ESP"
+			}
+    }
+  ],
   "obs_sidedock_horizon": "Horizonte",
 
   "obs_targetinfo_title": "Objeto Selecionado",
@@ -224,7 +236,7 @@
   "obs_timecontrol_back": "Restablecer tiempo",
 
   "obs_skyfinder_close": "Cerrar buscador",
-  "obs_skyfinder_placeholder": "Busca estrellas, DSO o planetaria... (ej., M31, Polaris)",
+  "obs_skyfinder_placeholder": "Busca estrellas, DSO, constelaciones o planetaria... (ej., M31, Polaris)",
   "obs_skyfinder_type": "Escribe un objeto para buscar",
   "obs_skyfinder_no_objects": "Ningun objeto coincide con \"{query}\"",
   "obs_skyfinder_select": "Seleccionar",

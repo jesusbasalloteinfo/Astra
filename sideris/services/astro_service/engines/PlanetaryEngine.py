@@ -5,8 +5,9 @@ from skyfield import almanac
 from skyfield.magnitudelib import planetary_magnitude
 from skyfield.trigonometry import position_angle_of
 from typing import Dict, Literal, Optional, List, Union, Tuple
-from models.ResponseSchemas import SyncPayload
-from models.PlanetarySchemas import *
+from models.api.common import SyncPayload, MetadataCatalogPayload
+from models.api.planetary import *
+from models.catalog.planetary import PlanetaryObject
 from services.astro_service.engines.BaseEngine import BaseEngine
 
 
@@ -268,6 +269,7 @@ class PlanetaryEngine(BaseEngine):
             objects[obj.name.lower()] = ObjectLightMetadata(
                 id=obj.name.lower(),
                 name=obj.name.capitalize(),
+                common_names=[obj.name.capitalize()],
                 dist=round(distance.au, 6),
                 mag=magnitude
             )
@@ -357,9 +359,10 @@ class PlanetaryEngine(BaseEngine):
             delta_dec=d_dec
         )
 
-        return ObjectMetadata(
+        return PlanetaryObjectMetadata(
             id=obj.name.lower(),
             name=obj.name.capitalize(),
+            common_names=[obj.name.capitalize()],
             dist=round(distance.au, 6),
             mag=magnitude,
             ang_diameter=ang_diameter,

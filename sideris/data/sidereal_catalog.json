@@ -157360,7 +157360,8 @@
                 "common_names": [],
                 "catalog_names": [
                     "NGC 526",
-                    "NGC 526A"
+                    "NGC 526A",
+                    "NGC 526a"
                 ],
                 "mag": 14.6,
                 "size_arcmin": null,
@@ -296498,7 +296499,7 @@
                 "catalog_names": [
                     "NGC 7163"
                 ],
-                "mag": 13.52,
+                "mag": 12.9,
                 "size_arcmin": 1.8,
                 "constellation": "PsA",
                 "ra_j2000": 21.98836,
@@ -296681,7 +296682,7 @@
                 "catalog_names": [
                     "NGC 7173"
                 ],
-                "mag": 12.1,
+                "mag": 12.9,
                 "size_arcmin": 1.3,
                 "constellation": "PsA",
                 "ra_j2000": 22.03336,
@@ -296751,7 +296752,7 @@
                 "catalog_names": [
                     "NGC 7176"
                 ],
-                "mag": 12.08,
+                "mag": 12.6,
                 "size_arcmin": 1.3,
                 "constellation": "PsA",
                 "ra_j2000": 22.035027,

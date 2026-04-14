@@ -21,6 +21,8 @@
     // Sky settings
     let showConstellations = $state(true);
     let showGround         = $state(true);
+    let showConstellationLabels = $state(true);
+    let useLatinConstellations = $state(true);
     
     // Panels
     let chatOpen       = $state(false);
@@ -47,12 +49,14 @@
             return {
                 ground: 0x160404,//1f0505,         
                 constellations: 0x991b1b, 
+                constellationLabelColor: 0xff4444,
                 cardinal: '#f87171'       
             };
         }
         return {
             ground: 0x02120a, //02170d, //0f172a         
             constellations: 0x30318e,//475569, 
+            constellationLabelColor: 0x7879c5,
             cardinal: '#94a3b8'       
         };
     });
@@ -78,9 +82,13 @@
                 bind:this={skyMap} 
                 {showGround} 
                 {showConstellations} 
+                {showConstellationLabels}
+                {useLatinConstellations}
                 groundColor={simColors.ground}
                 constellationColor={simColors.constellations}
+                constellationLabelColor={simColors.constellationLabelColor}
                 cardinalColor={simColors.cardinal}
+                
             />
         {:else}
             <div class="w-full h-full flex flex-col items-center justify-center gap-4 bg-black">
@@ -98,6 +106,8 @@
     <div class="absolute left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-auto">
         <SideDock 
             bind:showConstellations 
+            bind:showConstellationLabels
+            bind:useLatinConstellations
             bind:showGround 
             bind:searchOpen 
             bind:chatOpen 
@@ -120,6 +130,18 @@
     <Chat bind:open={chatOpen} />
 
     <!-- SkyFinder object searcher -->
-    <SkyFinder bind:open={searchOpen} onSelect={(id) => skyMap?.selectObject(id)} />
+    <SkyFinder 
+        bind:open={searchOpen} 
+        onSelect={(id) => {
+            // IS a constellation
+            const isConstellation = catalogStore.constellations.some(c => c.abbr === id);
+
+            if (isConstellation) {
+                skyMap?.flyToConstellation(id);
+            } else {
+                skyMap?.selectObject(id);
+            }
+        }} 
+    />  
 
 </div>

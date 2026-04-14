@@ -72,7 +72,7 @@ export class Planetary {
 
         const mat = new THREE.ShaderMaterial({
             uniforms: { zoom: { value: 1.0 }, opacity: { value: opacity } },
-            vertexShader, fragmentShader, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+            vertexShader, fragmentShader, transparent: true, blending: THREE.NormalBlending, depthWrite: false
         });
 
         this.points = new THREE.Points(geo, mat);
@@ -90,17 +90,20 @@ export class Planetary {
         const tmp = new THREE.Color();
 
         for (let i = 0; i < num; i++) {
-            const id = this.planetIds[i].toLowerCase();
-        
+            const id = this.planetIds[i];
+            const lowerId = id.toLowerCase();
             
-            sizes[i] = PLANET_VISUAL_SIZES[id] ?? PLANET_SIZE_BASE;
+            sizes[i] = PLANET_VISUAL_SIZES[lowerId] ?? PLANET_SIZE_BASE;
 
-            tmp.setHex(PLANET_COLORS[id] ?? 0xffffff);
+            tmp.setHex(PLANET_COLORS[lowerId] ?? 0xffffff);
             colors[i * 3]     = tmp.r;
             colors[i * 3 + 1] = tmp.g;
             colors[i * 3 + 2] = tmp.b;
 
-            const sprite = this.createLabel(id, tmp.getHex());
+            const planetData = catalogStore.planetaryData[id];
+            const displayName = planetData?.name || lowerId;
+
+            const sprite = this.createLabel(displayName, tmp.getHex());
             this.labels.push(sprite);
             this.group.add(sprite);
         }
@@ -127,8 +130,7 @@ export class Planetary {
         ctx.shadowColor = 'black';
         ctx.shadowBlur = 8;
         ctx.fillStyle = `#ffffff`;//`#${new THREE.Color(color).getHexString()}`;
-        const labelText = name.charAt(0).toUpperCase() + name.slice(1);
-        ctx.fillText(labelText, 256, 64);
+        ctx.fillText(name, 256, 64);
 
         const texture = new THREE.CanvasTexture(canvas);
         const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false });
