@@ -81,17 +81,17 @@ class EdgeClient:
                                 logger.info("Paired ✓")
                                 break
                 except Exception as e:
-                    logger.warning(f"Pairing error: {e} — retrying en 5s")
+                    logger.warning(f"Pairing error: {e} — retrying in 5s")
                     await asyncio.sleep(5)
 
     async def _tunnel(self):
         """
         Create a WS tunnel to the backend and handle all communications
         """
-        headers = {"Authorization": f"Bearer {self.token}"}
         async with aiohttp.ClientSession() as s:
             while True:
                 try:
+                    headers = {"Authorization": f"Bearer {self.token}"}
                     async with s.ws_connect(self.ws_url, headers=headers) as ws:
                         logger.info("Tunnel established!")
                         self._active_ws = ws
