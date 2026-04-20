@@ -62,7 +62,7 @@ class SlewCommandData(BaseModel):
     input_type: CoordinateTypes = CoordinateTypes.EQUATORIAL_J2000 
     mode: Literal["SLEW", "TRACK", "SYNC"] = "TRACK"
 
-    class Config:
+    class Config: # TODO: Maybe we should change to v2 model_config = ConfigDict(use_enum_values=True)
         # String-capable for coordinate types
         use_enum_values = True 
 

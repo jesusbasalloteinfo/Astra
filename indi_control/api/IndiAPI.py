@@ -2,7 +2,7 @@ import asyncio
 from typing import Literal
 import contextlib
 from datetime import datetime, timezone
-from IndiManager import IndiManager
+from api.IndiManager import IndiManager
 from utils.Clock import Clock
 from devices.Telescope import Telescope
 from utils.CoordinateHandler import CoordinateTypes
