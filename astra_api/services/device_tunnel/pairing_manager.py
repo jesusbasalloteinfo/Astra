@@ -16,8 +16,12 @@ class PairingManager:
         """
         Generate a new connection pin
         """
-        return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-
+        while True:
+            pin = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+            
+            if pin not in self._pin_to_device:
+                return pin
+            
     def _cleanup(self, device_id: str):
         """
         Remove the temporaly info of a device
