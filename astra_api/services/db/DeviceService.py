@@ -20,6 +20,17 @@ class DeviceService:
             raise ObjectNotFoundError(f"Device {device_id} not found")
         return device
 
+    async def get_user_device(self, device_id: str, requesting_user_id: str) -> Device:
+        """Get a device ensuring the requester has permissions to see it"""
+        device = await self.get_device(device_id)
+        
+        has_access = any(access.user_id == requesting_user_id for access in device.access_list)
+        
+        if not has_access:
+            raise ObjectNotFoundError(f"Device {device_id} not found")
+            
+        return device
+    
     async def get_user_devices(self, user_id: str) -> List[Device]:
         """Get all user allowed devices"""
         return await self.repo.find_by_user_id(user_id)
@@ -88,10 +99,8 @@ class DeviceService:
         Deletes a device
         """
         device = await self.get_device(device_id)
-        
-        owner_entry = device.owner
-        
-        if not owner_entry or owner_entry.user_id != requesting_user_id:
+                
+        if device.owner != requesting_user_id:
             raise PermissionError("Only owner can delete the device")
 
         return await self.repo.delete_one({"device_id": device_id})

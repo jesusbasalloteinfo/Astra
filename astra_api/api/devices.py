@@ -1,19 +1,18 @@
+from datetime import datetime
+from typing import List, Literal
+
+from pydantic import BaseModel
 import uvicorn
 from fastapi import APIRouter, Depends, WebSocket, HTTPException, Header
 from services.db import DeviceService
-from core.db_exceptions import ObjectAlreadyExistsError
+from core.db_exceptions import ObjectAlreadyExistsError, ObjectNotFoundError
 from core.dependencies import get_request_user
 from models.pairing import PairingRequest
 from services.device_tunnel.pairing_manager import pairing_manager
 from services.device_tunnel.tunnel import DeviceTunnel, tunnel_manager
 from models.device_messages import GetDevicesCommand, SlewCommand, SlewCommandData, AbortCommand, CoordinateTypes
-
-device_service = DeviceService()
+from models.device import DeviceAccess
 router = APIRouter()
-
-@router.websocket("/ws/pair")
-async def ws_pair_tunnel(ws: WebSocket, device_id: str):
-    await pairing_manager.register(device_id, ws)
 
 
 @router.post("/pair")
@@ -25,6 +24,10 @@ async def pair_device(req: PairingRequest, user_id: str = Depends(get_request_us
         raise HTTPException(400, detail=str(e))
     except ObjectAlreadyExistsError as e:
         raise HTTPException(409, detail=str(e))
+    
+@router.websocket("/ws/pair")
+async def ws_pair_tunnel(ws: WebSocket, device_id: str):
+    await pairing_manager.register(device_id, ws)
 
 @router.websocket("/ws/tunnel/{device_id}")
 async def ws_device_tunnel(
@@ -37,6 +40,7 @@ async def ws_device_tunnel(
         return
 
     token = authorization.removeprefix("Bearer ")
+    device_service = DeviceService()
 
     is_valid = await device_service.validate_tunnel_token(device_id, token)
     
@@ -54,9 +58,33 @@ async def ws_device_tunnel(
         tunnel_manager.unregister(device_id)
 
 
+# ── DEVICE MANAGEMENT ────────────────────────────────────────────
+class DeviceResponse(BaseModel):
+    device_id: str
+    device_token: str
+    name: str
+    owner: str
+    linked: datetime
 
+    access_list: list[DeviceAccess] 
 
+    model_config = {"from_attributes": True}
 
+@router.get("", response_model=List[DeviceResponse], response_model_by_alias=False)
+async def list_devices(username: str = Depends(get_request_user)):
+    service = DeviceService()
+    return await service.get_user_devices(username)
+
+@router.get("/{device_id}", response_model=DeviceResponse, response_model_by_alias=False)
+async def get_device_info(
+    device_id: str, 
+    username: str = Depends(get_request_user)
+):
+    service = DeviceService()
+    try:
+        return await service.get_user_device(device_id, username)
+    except ObjectNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
 
 
 
