@@ -1,4 +1,5 @@
 import asyncio
+import hashlib
 import json
 import logging
 import os
@@ -21,8 +22,34 @@ def get_serial() -> str:
                 return f.read().decode().strip('\x00').strip()
     return "dev-local"
 
+def get_serial() -> str:
+    hw_identifiers = []
 
+    # 1. SoC serial number. Fallback to instalation id
+    if os.path.exists('/proc/device-tree/serial-number'):
+        with open('/proc/device-tree/serial-number', 'rb') as f:
+            serial = f.read().decode().strip('\x00').strip()
+            if serial:
+                hw_identifiers.append(serial)
+    elif os.path.exists('/etc/machine-id'):
+        with open('/etc/machine-id', 'rb') as f:
+            serial = f.read().decode().strip('\x00').strip()
+            if serial:
+                hw_identifiers.append(serial)
+    
+    if not hw_identifiers:
+        # We are screwed if we are here!!
+        raise RuntimeError(
+            "No hardware serial found. "
+            "This device cannot be uniquely identified."
+        )
 
+    # 2. Merge the identifiers in a deterministic way
+    raw_hw_string = "-".join(hw_identifiers)
+    
+    unique_fingerprint = hashlib.sha256(raw_hw_string.encode()).hexdigest()[:32]
+    
+    return f"dev-{unique_fingerprint}"
 
 class EdgeClient:
     def __init__(self, server: str, indi_api: IndiTaskAPI):

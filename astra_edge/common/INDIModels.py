@@ -57,7 +57,7 @@ EventPayloadUnion = Annotated[
 
 # --- Command Data ---
 class SlewCommandData(BaseModel):
-    """Parámetros específicos para mover el telescopio"""
+    """Slew command parameters for telescope"""
     coord: tuple[float, float]
     input_type: CoordinateTypes = CoordinateTypes.EQUATORIAL_J2000 
     mode: Literal["SLEW", "TRACK", "SYNC"] = "TRACK"
@@ -67,6 +67,9 @@ class SlewCommandData(BaseModel):
         use_enum_values = True 
 
 # --- Command Payload ---
+class GetDevicesCommand(BaseModel):
+    action: Literal["get_devices"] = "get_devices"
+
 class SlewCommand(BaseModel):
     action: Literal["slew"] = "slew"
     lane: Literal["MOVEMENT"] = Field("MOVEMENT", frozen=True)
@@ -79,7 +82,7 @@ class AbortCommand(BaseModel):
     device: str
 
 CommandPayloadUnion = Annotated[
-    Union[SlewCommand, AbortCommand], 
+    Union[GetDevicesCommand, SlewCommand, AbortCommand], 
     Field(discriminator="action")
 ]
 

@@ -36,6 +36,7 @@ class IndiTaskAPI(IndiAPI):
         self._command_handlers = {
             "slew": self._handle_slew_cmd,
             "abort": self._handle_abort_cmd,
+            "get_devices": self._handle_get_devices,
         }
         
         self._initialized = True
@@ -87,8 +88,11 @@ class IndiTaskAPI(IndiAPI):
     async def _execute_with_safety_net(self, req_id, action, handler_func, payload, reply_callback):
         """Generic wrapper to handle exceptions"""
         try:
-            await handler_func(payload)
-            await reply_callback({"req_id": req_id, "type": "response", "status": "ok"})
+            result = await handler_func(payload)
+            response = {"req_id": req_id, "type": "response", "status": "ok"}
+            if result: 
+                response["data"] = result
+            await reply_callback(response)
             
         except asyncio.CancelledError:
             logger.warning(f"Command '{action}' has been cancelled")
@@ -103,8 +107,12 @@ class IndiTaskAPI(IndiAPI):
     # Extract pydantic data and use it
     # ==========================================
 
+    async def _handle_get_devices(self, payload):
+        """Handles a GetDevicesComand to the API method"""
+        return await self.get_devices()
+
     async def _handle_slew_cmd(self, payload):
-        """Traduce un SlewCommand a tu método slew_telescope."""
+        """Handles a SlewCommand to the API method"""
         await self.slew_telescope(
             telescope_name=payload.device, 
             coord=payload.data.coord, 
@@ -113,5 +121,5 @@ class IndiTaskAPI(IndiAPI):
         )
 
     async def _handle_abort_cmd(self, payload):
-        """Traduce un AbortCommand a tu método abort_slew_telescope."""
+        """Handles an AbortCommand to the API method"""
         await self.abort_slew_telescope(telescope_name=payload.device)
