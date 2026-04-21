@@ -12,6 +12,11 @@ export const endpoints = {
     observations: {
         base:   '/observations',
         detail: (id: string) => `/observations/${id}`,
+    },
+    devices:{
+        pairDevice: 'devices/pair',
+        getDevices: 'devices',
+        getDeviceInfo: (id: string) => `devices/${id}`
     }
 } as const;
 
