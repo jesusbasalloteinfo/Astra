@@ -70,21 +70,40 @@ class DeviceResponse(BaseModel):
 
     model_config = {"from_attributes": True}
 
+class DeviceComponents(BaseModel):
+    telescope: List[str]
+    camera: List[str]
+    focuser: List[str]
+    filter_wheel: List[str]
+    indi: List[str]
+
+class DeviceInfoResponse(DeviceResponse):
+    components: DeviceComponents
+    
+
 @router.get("", response_model=List[DeviceResponse], response_model_by_alias=False)
 async def list_devices(username: str = Depends(get_request_user)):
     service = DeviceService()
     return await service.get_user_devices(username)
 
-@router.get("/{device_id}", response_model=DeviceResponse, response_model_by_alias=False)
+@router.get("/{device_id}", response_model=DeviceInfoResponse, response_model_by_alias=False)
 async def get_device_info(
     device_id: str, 
     username: str = Depends(get_request_user)
 ):
     service = DeviceService()
     try:
-        return await service.get_user_device(device_id, username)
+        info: DeviceResponse = await service.get_user_device(device_id, username)
+        tunnel = tunnel_manager.get(device_id)
+        resp = await tunnel.send_command(GetDevicesCommand(), timeout=10)
+        return DeviceInfoResponse(
+            **info.model_dump(), 
+            components=resp.data
+        )
     except ObjectNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
+    except TimeoutError as e:
+        raise HTTPException(504, detail=str(e))
 
 
 
