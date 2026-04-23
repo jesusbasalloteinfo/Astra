@@ -58,6 +58,10 @@
     export const selectObject = (id: string) => {
         if (engine) engine.selectObject(id);
     };
+
+    export const clearSelection = () => {
+        if (engine) engine.clearSelection();
+    };
 </script>
 
 <div class="w-full h-full relative group">

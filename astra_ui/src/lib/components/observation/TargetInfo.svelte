@@ -8,7 +8,10 @@
 	import type { PlanetaryObjectMetadata, SiderealObjectMetadata } from '$lib/types/sideris';
 	import { m } from '$lib/paraglide/messages';
 
-    let { onFlyTo } = $props<{ onFlyTo: (alt: number, az: number) => void }>();
+    let { onFlyTo, onClear } = $props<{ 
+        onFlyTo: (alt: number, az: number) => void;
+        onClear: () => void; 
+    }>();
 
     const selectedInfo = $derived.by(() => {
         const id = selectionStore.targetId;
@@ -53,7 +56,12 @@
                 <h2 class="text-xl font-bold text-copy-primary leading-tight">{selectedInfo.name}</h2>
                 <p class="text-xs text-copy-muted mt-1">{selectedInfo.type}</p>
             </div>
-            <button onclick={() => selectionStore.clear()} class="cursor-pointer p-1 text-copy-muted hover:text-white rounded-full"><X size={16}/></button>
+
+            <div class="flex items-start justify-between mb-5">
+                <button onclick={onClear} class="cursor-pointer p-1 text-copy-muted hover:text-white rounded-full">
+                    <X size={16}/>
+                </button>
+            </div>
         </div>
 
         <div class="grid grid-cols-2 gap-3">

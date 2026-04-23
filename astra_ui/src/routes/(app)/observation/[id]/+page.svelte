@@ -117,7 +117,10 @@
     <!-- Target info -->
     <div class="absolute top-6 right-6 z-10 pointer-events-none">
         {#if !chatOpen}
-            <TargetInfo onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} />
+            <TargetInfo 
+                onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} 
+                onClear={() => skyMap?.clearSelection()}
+            />
         {/if}
     </div>
 

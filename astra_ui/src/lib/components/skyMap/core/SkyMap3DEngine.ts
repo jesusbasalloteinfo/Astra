@@ -198,7 +198,7 @@ export class SkyMap3DEngine {
             // In degrees
             const finalAz = isDegrees ? avgAzRad * (180 / Math.PI) : avgAzRad;
             
-            this.selectionCtrl.clearSelection();
+            this.clearSelection();
             
             this.cameraCtrl.flyTo(avgAlt, finalAz);
         }
@@ -209,6 +209,13 @@ export class SkyMap3DEngine {
      */
     selectObject(id: string) {
         this.selectionCtrl.selectById(id);
+    }
+
+    /**
+     * Clears the current selection and hides the reticle
+     */
+    clearSelection() {
+        this.selectionCtrl.clearSelection();
     }
 
     /**
