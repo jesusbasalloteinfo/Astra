@@ -15,12 +15,6 @@ TOKEN_STORAGE = "edge_auth.json"
 
 _adapter = TypeAdapter(GlobalMessage)
 
-def get_serial() -> str:
-    for path in ('/proc/device-tree/serial-number', '/etc/machine-id'):
-        if os.path.exists(path):
-            with open(path, 'rb') as f:
-                return f.read().decode().strip('\x00').strip()
-    return "dev-local"
 
 def get_serial() -> str:
     hw_identifiers = []
@@ -38,7 +32,7 @@ def get_serial() -> str:
                 hw_identifiers.append(serial)
     
     if not hw_identifiers:
-        # We are screwed if we are here!!
+        # If we're here, we're officially doomed.
         raise RuntimeError(
             "No hardware serial found. "
             "This device cannot be uniquely identified."
@@ -159,6 +153,7 @@ class EdgeClient:
         logger.info(f"Command: {msg.payload.action} (req_id={msg.req_id})")
 
         async def reply_to_backend(response_data: dict):
+            # Replies a response to the backend
             try:
                 status_map = {"ok": "OK", "error": "ERROR", "cancelled": "CANCELLED"}
                 
@@ -201,6 +196,8 @@ class EdgeClient:
 
 
 if __name__ == "__main__":
+    # Small testing main
+
     logging.basicConfig(level=logging.INFO)
     
     indi_api = IndiTaskAPI(host="localhost", port=7624)
