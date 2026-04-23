@@ -1,3 +1,4 @@
+<!-- src/lib/components/location/LocationCard.svelte -->
 <script lang="ts">
     import { locStore } from '$lib/stores/location.svelte';
     import { MapPin, Home, Plus, Trash2, X, Map as MapIcon, Globe, ChevronRight, House } from 'lucide-svelte';

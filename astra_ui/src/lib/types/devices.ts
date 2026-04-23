@@ -5,10 +5,10 @@ export interface DeviceAccess {
 
 export interface Device {
     device_id: string;
-    device_token: string;
     name: string;
     owner: string;
     linked: string; 
+    is_online: boolean;
     access_list: DeviceAccess[];
 }
 
