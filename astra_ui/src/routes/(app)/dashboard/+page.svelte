@@ -12,6 +12,7 @@
 	import { newObsStore } from '$lib/stores/newObservation.svelte';
 	import { locStore } from '$lib/stores/location.svelte';
     import { Globe } from 'lucide-svelte';
+	import DeviceWidget from '$lib/components/devices/DeviceWidget.svelte';
 
     // Dynamic greeting message
     type Period = 'morning' | 'afternoon' | 'evening' | 'night';
@@ -70,10 +71,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
     <!-- Widgets row -->
     {#if locStore.active}
-        <TelescopeStatus
-            connected={false}
-            name="Testing"
-            onconfig={() => telescopeModalOpen = true} />
+
+        <DeviceWidget/>
         <LocationWidget
             temperature={14}
             humidity={62}/>

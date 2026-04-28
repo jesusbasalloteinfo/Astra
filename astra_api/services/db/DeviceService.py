@@ -34,6 +34,24 @@ class DeviceService:
     async def get_user_devices(self, user_id: str) -> List[Device]:
         """Get all user allowed devices"""
         return await self.repo.find_by_user_id(user_id)
+    
+    async def update_device_info(self, device_id: str, requesting_user_id: str, **update_data) -> bool:
+        """Update only the fields provided of the device"""
+        device = await self.get_user_device(device_id, requesting_user_id)
+        
+        if device.owner != requesting_user_id:
+            raise ObjectNotFoundError(f"Device {device_id} not found")
+
+        # Clear null data
+        update_data = {k: v for k, v in update_data.items() if v is not None}
+        
+        if not update_data:
+            return False
+
+        return await self.repo.update_one(
+            {"device_id": device_id},
+            {"$set": update_data}
+        )
 
     async def link_device(self, device_id: str, user_id: str) -> str:
         """
@@ -101,6 +119,6 @@ class DeviceService:
         device = await self.get_device(device_id)
                 
         if device.owner != requesting_user_id:
-            raise PermissionError("Only owner can delete the device")
+            raise ObjectNotFoundError(f"Device {device_id} not found")
 
         return await self.repo.delete_one({"device_id": device_id})

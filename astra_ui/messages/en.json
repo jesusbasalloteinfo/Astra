@@ -121,6 +121,49 @@
   "dash_main_locationwidget_gps": "Configure GPS",
 
 
+  "-------------------------------------- DASHBOARD DEVICES -------------------------------------- ": "",
+  "dash_device_active": "ACTIVE",
+  "dash_device_online": "Online",
+  "dash_device_offline": "Offline",
+  "dash_device_telescope": "Telescope",
+  "dash_device_camera": "Camera",
+  "dash_device_no_components": "The hardware is powered on, but no connected components were detected.",
+  "dash_device_fetching": "Querying hardware...",
+  "dash_device_loading": "Loading...",
+  "dash_device_not_connected": "Not connected",
+  "dash_device_list_title": "Devices",
+  "dash_device_list_empty": "No devices linked yet.",
+  "dash_device_add": "Add Device",
+  "dash_device_status_fetching": "Getting status...",
+  "dash_device_disconnected": "Device disconnected from server.",
+  "dash_device_action_pair": "Pair Device",
+  "dash_device_new_pairing": "New Pairing",
+  "dash_device_token_label": "Pairing Token",
+  "dash_device_token_placeholder": "Enter the 8-character token",
+  "dash_device_pair_error": "Invalid token or device already linked.",
+  "dash_device_pairing": "Pairing...",
+  "dash_device_pair": "Pair",
+  "dash_device_edit_title": "Edit device",
+  "dash_device_edit_name_label": "Device name",
+  "dash_device_edit_name_placeholder": "e.g. My Telescope",
+  "dash_device_edit_cancel": "Cancel",
+  "dash_device_edit_save": "Save",
+  "dash_device_del_title": "Unpair Device",
+  "dash_device_del_confirm": "Are you sure you want to unpair \"{name}\"?",
+  "dash_device_del_warning": "You will lose access until you re-enter a token.",
+  "dash_device_del_action": "Unpair",
+  "dash_device_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 device found",
+				"countPlural=other": "{count} devices found"
+			}
+    }
+  ],
+
+
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
   "dash_observ_new_session": "New session",

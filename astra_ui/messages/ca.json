@@ -122,6 +122,49 @@
   "dash_main_locationwidget_gps": "Configurar GPS",
 
 
+  "-------------------------------------- DASHBOARD DEVICES -------------------------------------- ": "",
+  "dash_device_active": "ACTIU",
+  "dash_device_online": "Online",
+  "dash_device_offline": "Offline",
+  "dash_device_telescope": "Telescopi",
+  "dash_device_camera": "Càmera",
+  "dash_device_no_components": "El dispositiu està encès, però no s'han detectat components connectats.",
+  "dash_device_fetching": "Consultant dispositiu...",
+  "dash_device_loading": "Carregant...",
+  "dash_device_not_connected": "No connectat",
+  "dash_device_edit_title": "Editar dispositiu",
+  "dash_device_edit_name_label": "Nom del dispositiu",
+  "dash_device_edit_name_placeholder": "p. ex. El meu Telescopi",
+  "dash_device_edit_cancel": "Cancel·lar",
+  "dash_device_edit_save": "Desar",
+  "dash_device_list_title": "Dispositius",
+  "dash_device_list_empty": "No has vinculat cap dispositiu encara.",
+  "dash_device_add": "Afegir Dispositiu",
+  "dash_device_status_fetching": "Obtenint estat...",
+  "dash_device_disconnected": "Dispositiu desconnectat del servidor.",
+  "dash_device_action_pair": "Vincular Dispositiu",
+  "dash_device_new_pairing": "Nova Vinculació",
+  "dash_device_token_label": "Token de Vinculació",
+  "dash_device_token_placeholder": "Introdueix el tòquen de 8 caràcters",
+  "dash_device_pair_error": "Tòken invàlid o dispositiu ja vinculat.",
+  "dash_device_pairing": "Vinculant...",
+  "dash_device_pair": "Vincular",
+  "dash_device_del_title": "Desvincular Dispositiu",
+  "dash_device_del_confirm": "Estàs segur que vols desvincular \"{name}\"?",
+  "dash_device_del_warning": "Perdràs l'accés fins que tornis a introduir un tòquen.",
+  "dash_device_del_action": "Desvincular",
+  "dash_device_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 dispositiu trobat",
+				"countPlural=other": "{count} dispositius trobats"
+			}
+    }
+  ],
+
+
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
   "dash_observ_new_session": "Nova sessió",

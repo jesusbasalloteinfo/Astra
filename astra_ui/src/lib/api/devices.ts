@@ -15,5 +15,12 @@ export const deviceAPI = {
     getDeviceInfo: async (id: string): Promise<DeviceInfo> => {
         const response = await api.get<DeviceInfo>(endpoints.devices.getDeviceInfo(id));  
         return response.data
+    },
+    updateDevice: async (id: string, data: { name: string }): Promise<{success: boolean}> => {
+        const response = await api.patch(endpoints.devices.getDeviceInfo(id), data);  
+        return response.data;
+    },
+    deleteDevice: async (id: string): Promise<void> => {
+        await api.delete(endpoints.devices.getDeviceInfo(id));  
     }
 };

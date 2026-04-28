@@ -121,6 +121,50 @@
   "dash_main_locationwidget_no_location":"Ninguna ubicación disponible",
   "dash_main_locationwidget_gps": "Configurar GPS",
 
+
+  "-------------------------------------- DASHBOARD DEVICES -------------------------------------- ": "",
+  "dash_device_active": "ACTIVO",
+  "dash_device_online": "Online",
+  "dash_device_offline": "Offline",
+  "dash_device_telescope": "Telescopio",
+  "dash_device_camera": "Cámara",
+  "dash_device_no_components": "El hardware está encendido, pero no se han detectado componentes conectados.",
+  "dash_device_fetching": "Consultando hardware...",
+  "dash_device_loading": "Cargando...",
+  "dash_device_not_connected": "No conectado",
+  "dash_device_list_title": "Dispositivos",
+  "dash_device_list_empty": "No has vinculado ningún dispositivo aún.",
+  "dash_device_add": "Añadir Dispositivo",
+  "dash_device_status_fetching": "Obteniendo estado...",
+  "dash_device_disconnected": "Dispositivo desconectado del servidor.",
+  "dash_device_action_pair": "Vincular Dispositivo",
+  "dash_device_new_pairing": "Nueva Vinculación",
+  "dash_device_token_label": "Token de Vinculación",
+  "dash_device_token_placeholder": "Introduce el token de 8 caracteres",
+  "dash_device_pair_error": "Token inválido o dispositivo ya vinculado.",
+  "dash_device_pairing": "Vinculando...",
+  "dash_device_pair": "Vincular",  
+  "dash_device_edit_title": "Editar dispositivo",
+  "dash_device_edit_name_label": "Nombre del dispositivo",
+  "dash_device_edit_name_placeholder": "Ej. Mi Telescopio",
+  "dash_device_edit_cancel": "Cancelar",
+  "dash_device_edit_save": "Guardar",
+  "dash_device_del_title": "Desvincular Dispositivo",
+  "dash_device_del_confirm": "¿Estás seguro de que quieres desvincular \"{name}\"?",
+  "dash_device_del_warning": "Perderás el acceso hasta volver a introducir un token.",
+  "dash_device_del_action": "Desvincular",
+  "dash_device_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 dispositivo encontrado",
+				"countPlural=other": "{count} dispositivos encontrados"
+			}
+    }
+  ],
+
+
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sesiones",
   "dash_observ_new_session": "Nueva sesión",

@@ -25,6 +25,7 @@ async def pair_device(req: PairingRequest, user_id: str = Depends(get_request_us
     except ObjectAlreadyExistsError as e:
         raise HTTPException(409, detail=str(e))
     
+    
 @router.websocket("/ws/pair")
 async def ws_pair_tunnel(ws: WebSocket, device_id: str):
     await pairing_manager.register(device_id, ws)
@@ -79,7 +80,9 @@ class DeviceComponents(BaseModel):
 
 class DeviceInfoResponse(DeviceResponse):
     components: DeviceComponents
-    
+
+class DeviceUpdate(BaseModel):
+    name: str
 
 @router.get("", response_model=List[DeviceResponse], response_model_by_alias=False)
 async def list_devices(username: str = Depends(get_request_user)):
@@ -122,9 +125,34 @@ async def get_device_info(
     except TimeoutError as e:
         raise HTTPException(504, detail=str(e))
 
+@router.patch("/{device_id}")
+async def update_device(
+    device_id: str, 
+    data: DeviceUpdate, 
+    username: str = Depends(get_request_user)
+):
+    service = DeviceService()
+    try:
+        success = await service.update_device_info(
+            device_id, 
+            username, 
+            **data.model_dump(exclude_unset=True)
+        )
+        return {"success": success}
+    except ObjectNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
 
-
-
+@router.delete("/{device_id}", status_code=204)
+async def delete_device(
+    device_id: str, 
+    username: str = Depends(get_request_user)
+):
+    service = DeviceService()
+    try:
+        await service.unlink_device(device_id, username)
+        return None 
+    except ObjectNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
 
 # ── TESTING ENDPOINTS ────────────────────────────────────────────
 @router.post("/test/get/{device_id}")
