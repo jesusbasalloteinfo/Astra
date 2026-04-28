@@ -62,6 +62,10 @@
     export const clearSelection = () => {
         if (engine) engine.clearSelection();
     };
+
+    export const updateTelescopePosition = (alt: number | null, az: number | null) => {
+        if (engine) engine.setTelescopePosition(alt, az);
+    };
 </script>
 
 <div class="w-full h-full relative group">

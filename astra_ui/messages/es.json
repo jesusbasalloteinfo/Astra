@@ -285,6 +285,11 @@
   "obs_skyfinder_no_objects": "Ningun objeto coincide con \"{query}\"",
   "obs_skyfinder_select": "Seleccionar",
 
+  "obs_telescope_controller_title": "Control de Equipo",
+  "obs_telescope_controller_center": "Centrar vista en equipo",
+  "obs_telescope_controller_active_telescope": "Telescopio activo",
+  "obs_telescope_controller_active_camera": "Cámara activa",
+
   "obs_ai_title": "Astra AI"
 
 

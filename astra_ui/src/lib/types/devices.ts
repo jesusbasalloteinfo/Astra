@@ -32,3 +32,22 @@ export interface PairingResponse{
     device_id: string
 }
 
+
+
+// OPERATIONS
+
+interface Coordinates {
+  ra: number;
+  dec: number;
+}
+
+interface HorizontalCoordinates {
+  alt: number;
+  az: number;
+}
+
+export interface TelescopePosition {
+  equatorial_j2000: Coordinates;
+  equatorial_eod: Coordinates;
+  horizontal: HorizontalCoordinates;
+}

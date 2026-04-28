@@ -16,7 +16,8 @@ export const endpoints = {
     devices:{
         pairDevice: 'devices/pair',
         getDevices: 'devices',
-        getDeviceInfo: (id: string) => `devices/${id}`
+        getDeviceInfo: (id: string) => `devices/${id}`,
+        getTelescopePos: (id: string) => `devices/${id}/telescope/position`,
     }
 } as const;
 

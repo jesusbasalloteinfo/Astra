@@ -4,7 +4,6 @@
     import { onMount } from 'svelte';
     import { Plus } from 'lucide-svelte';
     import SessionCard from '$lib/components/session/SessionCard.svelte';
-    import TelescopeStatus from '$lib/components/telescope/TelescopeStatus.svelte';
     import LocationWidget from '$lib/components/location/LocationWidget.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
 	import { obsStore } from '$lib/stores/observations.svelte';

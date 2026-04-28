@@ -286,6 +286,11 @@
   "obs_skyfinder_no_objects": "Cap objecte coincideix amb \"{query}\"",
   "obs_skyfinder_select": "Seleccionar",
 
+  "obs_telescope_controller_title": "Control d'Equip",
+  "obs_telescope_controller_center": "Centrar vista a l'equip",
+  "obs_telescope_controller_active_telescope": "Telescopi actiu",
+  "obs_telescope_controller_active_camera": "Càmera activa",
+
   "obs_ai_title": "Astra AI"
 
 

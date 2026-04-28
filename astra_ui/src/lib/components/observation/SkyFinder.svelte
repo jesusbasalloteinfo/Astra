@@ -1,4 +1,4 @@
-<!-- src/lib/components/simulator/SpotlightSearch.svelte -->
+<!-- src/lib/components/simulator/SkyFinder.svelte -->
 <script lang="ts">
     import { fade } from 'svelte/transition';
     import { Search, Star, Globe, ChevronRight } from 'lucide-svelte';
