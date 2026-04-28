@@ -10,7 +10,7 @@ from core.dependencies import get_request_user
 from models.pairing import PairingRequest
 from services.device_tunnel.pairing_manager import pairing_manager
 from services.device_tunnel.tunnel import DeviceTunnel, tunnel_manager
-from models.device_messages import GetDevicesCommand, SlewCommand, SlewCommandData, AbortCommand, CoordinateTypes
+from models.device_messages import GetDevicesCommand, GetTelescopeLocationCommand, SlewCommand, SlewCommandData, AbortCommand, CoordinateTypes
 from models.device import DeviceAccess
 router = APIRouter()
 
@@ -153,6 +153,49 @@ async def delete_device(
         return None 
     except ObjectNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
+    
+
+# ── DEVICE OPERATION ────────────────────────────────────────────
+class Coordinates(BaseModel):
+    ra: float
+    dec: float
+
+class HorizontalCoordinates(BaseModel):
+    alt: float
+    az: float
+
+class TelescopePosition(BaseModel):
+    equatorial_j2000: Coordinates = Field(..., alias="equatorial_j2000")
+    equatorial_eod: Coordinates = Field(..., alias="equatorial_eod")
+    horizontal: HorizontalCoordinates = Field(..., alias="horizontal")
+
+    class Config:
+        populate_by_name = True
+
+@router.get("/{device_id}/telescope/position", response_model=TelescopePosition)
+async def get_telescope_position(device_id: str, 
+    telescope: str, 
+    username: str = Depends(get_request_user)):
+    """Get the current position of a telescope from the device"""
+    try:
+        service = DeviceService()
+        device = await service.get_user_device(device_id, username)
+        tunnel = tunnel_manager.get(device_id)
+        if not tunnel:
+            raise HTTPException(404, detail="Edge is not connected")
+    except ObjectNotFoundError as e:
+        raise HTTPException(404, detail=str(e))
+    payload = GetTelescopeLocationCommand(device=telescope)
+    try:
+        resp = await tunnel.send_command(payload, timeout=1000)
+        if resp.status == "ERROR":
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Error getting telescope position: {resp.reason}"
+            )
+        return TelescopePosition.model_validate(resp.data)
+    except TimeoutError as e:
+        raise HTTPException(504, detail=str(e))
 
 # ── TESTING ENDPOINTS ────────────────────────────────────────────
 @router.post("/test/get/{device_id}")

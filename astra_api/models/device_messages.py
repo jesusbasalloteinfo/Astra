@@ -106,6 +106,10 @@ class SlewCommandData(BaseModel):
 class GetDevicesCommand(BaseModel):
     action: Literal["get_devices"] = "get_devices"
 
+class GetTelescopeLocationCommand(BaseModel):
+    action: Literal["telescope_location"] = "telescope_location"
+    device: str
+
 class SlewCommand(BaseModel):
     action: Literal["slew"] = "slew"
     lane: Literal["MOVEMENT"] = Field("MOVEMENT", frozen=True)
@@ -118,7 +122,7 @@ class AbortCommand(BaseModel):
     device: str
 
 CommandPayloadUnion = Annotated[
-    Union[GetDevicesCommand, SlewCommand, AbortCommand], 
+    Union[GetDevicesCommand, GetTelescopeLocationCommand, SlewCommand, AbortCommand], 
     Field(discriminator="action")
 ]
 

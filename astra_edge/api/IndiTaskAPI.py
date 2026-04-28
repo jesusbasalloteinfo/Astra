@@ -37,6 +37,7 @@ class IndiTaskAPI(IndiAPI):
             "slew": self._handle_slew_cmd,
             "abort": self._handle_abort_cmd,
             "get_devices": self._handle_get_devices,
+            "telescope_location": self._handle_telescope_location,
         }
         
         self._initialized = True
@@ -110,6 +111,10 @@ class IndiTaskAPI(IndiAPI):
     async def _handle_get_devices(self, payload):
         """Handles a GetDevicesComand to the API method"""
         return await self.get_devices()
+    
+    async def _handle_telescope_location(self, payload: GetTelescopeLocationCommand):
+        """Handles a GetTelescopeLocationComand to the API method"""
+        return await self.position_telescope(telescope_name=payload.device)
 
     async def _handle_slew_cmd(self, payload):
         """Handles a SlewCommand to the API method"""
