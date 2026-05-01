@@ -3,7 +3,7 @@ from typing import List, Literal
 
 from pydantic import BaseModel, Field
 import uvicorn
-from fastapi import APIRouter, Depends, WebSocket, HTTPException, Header
+from fastapi import APIRouter, Depends, WebSocket, HTTPException, Header, status
 from services.db import DeviceService
 from core.db_exceptions import ObjectAlreadyExistsError, ObjectNotFoundError
 from core.dependencies import get_request_user
@@ -14,6 +14,17 @@ from models.device_messages import GetDevicesCommand, GetTelescopeLocationComman
 from models.device import DeviceAccess
 router = APIRouter()
 
+async def get_device_tunnel(device_id:str, username:str):
+    """ Get and validate that the user has permissions to operate the device"""
+    try:
+        service = DeviceService()
+        device = await service.get_user_device(device_id, username)
+        tunnel = tunnel_manager.get(device_id)
+        if not tunnel:
+            raise HTTPException(404, detail="Edge is not connected")
+        return tunnel
+    except ObjectNotFoundError as e:
+        raise HTTPException(404, detail=str(e))
 
 @router.post("/pair")
 async def pair_device(req: PairingRequest, user_id: str = Depends(get_request_user)):
@@ -177,17 +188,10 @@ async def get_telescope_position(device_id: str,
     telescope: str, 
     username: str = Depends(get_request_user)):
     """Get the current position of a telescope from the device"""
-    try:
-        service = DeviceService()
-        device = await service.get_user_device(device_id, username)
-        tunnel = tunnel_manager.get(device_id)
-        if not tunnel:
-            raise HTTPException(404, detail="Edge is not connected")
-    except ObjectNotFoundError as e:
-        raise HTTPException(404, detail=str(e))
+    tunnel = await get_device_tunnel(device_id, username)
     payload = GetTelescopeLocationCommand(device=telescope)
     try:
-        resp = await tunnel.send_command(payload, timeout=1000)
+        resp = await tunnel.send_command(payload, timeout=10)
         if resp.status == "ERROR":
             raise HTTPException(
                 status_code=400, 
@@ -196,63 +200,48 @@ async def get_telescope_position(device_id: str,
         return TelescopePosition.model_validate(resp.data)
     except TimeoutError as e:
         raise HTTPException(504, detail=str(e))
+    
+@router.post("/{device_id}/telescope/slew", status_code=status.HTTP_204_NO_CONTENT)
+async def slew_telescope(device_id: str, 
+    telescope: str, 
+    params: SlewCommandData,
+    username: str = Depends(get_request_user)):
+    """Set the telescope position by doing an slew the current position of a telescope from the device"""
 
-# ── TESTING ENDPOINTS ────────────────────────────────────────────
-@router.post("/test/get/{device_id}")
-async def test_get_devices(device_id: str):
-    tunnel = tunnel_manager.get(device_id)
-    if not tunnel:
-        raise HTTPException(404, detail="Edge is not connected")
-    
-    payload = GetDevicesCommand()
+    tunnel = await get_device_tunnel(device_id, username)
+    payload = SlewCommand(device=telescope, data=params)
     try:
-        resp = await tunnel.send_command(payload, timeout=1000)
-        return {"status": resp.status, "data": resp.data}
-    except TimeoutError as e:
-        raise HTTPException(504, detail=str(e))
-    
-@router.post("/test/slew/{device_id}")
-async def test_slew(device_id: str, device_name:str, params: SlewCommandData):
-    tunnel = tunnel_manager.get(device_id)
-    if not tunnel:
-        raise HTTPException(404, detail="Edge is not connected")
-    
-    payload = SlewCommand(
-        device=device_name,
-        data=params
-    )
-    try:
-        resp = await tunnel.send_command(payload, timeout=1000)
-        return {"status": resp.status, "data": resp.data}
-    except TimeoutError as e:
-        raise HTTPException(504, detail=str(e))
-    
-
-@router.post("/test/slew_horizontal/{device_id}")
-async def test_slew_horizontal(device_id: str, device_name:str, alt: float, az: float):
-    tunnel = tunnel_manager.get(device_id)
-    if not tunnel:
-        raise HTTPException(404, detail="Edge is not connected")
-    
-    payload = SlewCommand(
-        device=device_name,
-        data=SlewCommandData(coord=(alt, az), input_type=CoordinateTypes.HORIZONTAL)
-    )
-    try:
-        resp = await tunnel.send_command(payload, timeout=1000)
-        return {"status": resp.status, "data": resp.data}
+        resp = await tunnel.send_command(payload, timeout=1000) # big timeout for the slew movement
+        if resp.status == "ERROR":
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Error slewing telescope: {resp.reason}"
+            )
+        elif resp.status == "CANCELLED":
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail=f"Operation cancelled"
+            )
+        return None
     except TimeoutError as e:
         raise HTTPException(504, detail=str(e))
 
-@router.post("/test/abort/{device_id}")
-async def test_abort(device_id: str, telescope:str):
-    tunnel = tunnel_manager.get(device_id)
-    if not tunnel:
-        raise HTTPException(404, detail="Edge is not connected")
-    
+
+@router.post("/{device_id}/telescope/abort", status_code=status.HTTP_204_NO_CONTENT)
+async def abort_slew_telescope(device_id: str, 
+    telescope: str, 
+    username: str = Depends(get_request_user)):
+    """Abort the current telescope movement. Cancells all movements"""
+
+    tunnel = await get_device_tunnel(device_id, username)
     payload = AbortCommand(device=telescope)
     try:
-        resp = await tunnel.send_command(payload)
-        return {"status": resp.status}
+        resp = await tunnel.send_command(payload, timeout=10)
+        if resp.status == "ERROR":
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Error aborting telescope slew: {resp.reason}"
+            )
+        return None
     except TimeoutError as e:
         raise HTTPException(504, detail=str(e))
