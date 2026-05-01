@@ -21,9 +21,9 @@
         if (searchQuery) selectedIndex = 0;
     });
 
-    function selectObject(id: string) {
-        
-        selectionStore.targetId = id;
+    function selectObject(id: string, resultType: string) {
+        const type = resultType === 'Planetary' ? 'planetary' : 'sidereal';
+        selectionStore.select(id, type);
         
         if (onSelect) {
             onSelect(id);
@@ -54,7 +54,8 @@
             selectedIndex = Math.max(selectedIndex - 1, 0);
         } else if (e.key === 'Enter' && results.length > 0) {
             e.preventDefault();
-            selectObject(results[selectedIndex].id);
+            const result = results[selectedIndex];
+            selectObject(result.id, result.type);
         }
     }
 
@@ -101,7 +102,7 @@
                     <div class="p-2">
                         {#each results as result, i}
                             <button 
-                                onclick={() => selectObject(result.id)}
+                                onclick={() => selectObject(result.id, result.type)}
                                 onmouseover={() => selectedIndex = i}
                                 onfocus={() => selectedIndex = i}
                                 class="w-full flex items-center justify-between p-3 rounded-xl transition-all cursor-pointer border border-transparent

@@ -42,6 +42,57 @@ export interface MetadataCatalogPayload<T> {
     data: T;
 }
 
+// --- DETAILS & EPHEMERIS ---
+
+export interface EphemerisData {
+    alt: number;
+    az: number;
+    next_transit: string | null;
+    next_rise: string | null;
+    next_set: string | null;
+    is_circumpolar?: boolean;
+    never_rises?: boolean;
+}
+
+export interface SiderealObjectDetails extends SiderealObjectMetadata, EphemerisData {
+    description?: string;
+    fun_fact?: string;
+    visual_tip?: string;
+    wikipedia_qid?: string;
+}
+
+export interface RiseSetTransit {
+    is_visible: boolean;
+    next_rise: string | null;
+    next_transit: string | null;
+    next_set: string | null;
+    rise_az: number | null;
+    set_az: number | null;
+    transit_alt: number | null;
+    transit_visible: boolean;
+}
+
+export interface PlanetaryObjectDetails {
+    id: string;
+    name: string;
+    common_names: string[];
+    description?: string;
+    fun_fact?: string;
+    visual_tip?: string;
+    wikipedia_qid?: string;
+    dist: number; // AU
+    mag: number | null;
+    ang_diameter?: number | null;
+    alt: number;
+    az: number;
+    ra_j2000: number;
+    dec_j2000: number;
+    rise_set_transit: RiseSetTransit;
+    extra_details?: any;
+}
+
+// --- PAYLOADS ---
+
 export type SiderealCatalogResponse = MetadataCatalogPayload<Record<string, SiderealObjectMetadata>>;
 export type PlanetaryCatalogResponse = MetadataCatalogPayload<Record<string, PlanetaryObjectMetadata>>;
 export type ConstellationCatalogResponse = MetadataCatalogPayload<ConstellationMetadata[]>;
