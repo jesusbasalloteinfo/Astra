@@ -16,6 +16,7 @@
     import { deviceStore } from '$lib/stores/devices.svelte';
 
 	import TelescopeController from '$lib/components/observation/TelescopeController.svelte';
+	import { deviceAPI } from '$lib/api/devices';
 
     // So we can call fly whenever we want
     let skyMap = $state<ReturnType<typeof SkyMap3D>>();
@@ -75,7 +76,7 @@
 
         if (activeId && activeTelescope && isOnline) {
             try {
-                const pos = await deviceStore.getTelescopePos();
+                const pos = await deviceAPI.getTelescopePos(activeId, activeTelescope)
                 if (pos && pos.horizontal) {
                     skyMap?.updateTelescopePosition(pos.horizontal.alt, pos.horizontal.az);
                     telescopePos = { alt: pos.horizontal.alt, az: pos.horizontal.az };

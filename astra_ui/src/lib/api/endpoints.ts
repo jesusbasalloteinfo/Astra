@@ -18,6 +18,8 @@ export const endpoints = {
         getDevices: 'devices',
         getDeviceInfo: (id: string) => `devices/${id}`,
         getTelescopePos: (id: string) => `devices/${id}/telescope/position`,
+        slewTelescope: (id: string) => `devices/${id}/telescope/slew`,
+        abortTelescope: (id: string) => `devices/${id}/telescope/abort`,
     }
 } as const;
 

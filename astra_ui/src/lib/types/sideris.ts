@@ -17,6 +17,8 @@ export interface SiderealObjectMetadata {
     common_names: string[];
     catalog_names: string[];
     constellation: string;
+    ra_j2000: number;
+    dec_j2000: number;
     mag: number | null;
     abs_mag?: number | null;
     b_v?: number | null;

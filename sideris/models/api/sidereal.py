@@ -27,6 +27,8 @@ class SiderealObjectMetadata(BaseModel):
     common_names: List[str] = Field(default_factory=list)
     catalog_names: List[str] = Field(default_factory=list)
     constellation: str
+    ra_j2000: float
+    dec_j2000: float
     mag: Optional[float] = None
     abs_mag: Optional[float] = None
     b_v: Optional[float] = None

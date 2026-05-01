@@ -177,13 +177,6 @@ class DeviceStore {
         }
     }
 
-    async getTelescopePos(){
-        if (this.activeId !== null && this.activeComponents.telescope!==undefined){
-            return await deviceAPI.getTelescopePos(this.activeId, this.activeComponents.telescope)
-        }
-        return null
-    }
-
     async refreshAll() {
         await this.fetchAll(true);
     }

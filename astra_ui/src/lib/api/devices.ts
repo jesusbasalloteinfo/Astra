@@ -1,7 +1,7 @@
 // lib/api/devices.ts
 import { api } from './client';
 import { endpoints } from './endpoints';
-import type { Device, DeviceInfo, PairingRequest, PairingResponse, TelescopePosition} from '$lib/types/devices';
+import type { Device, DeviceInfo, PairingRequest, PairingResponse, TelescopePosition, SlewCommand} from '$lib/types/devices';
 
 export const deviceAPI = {
     pairDevice: async (data: PairingRequest): Promise<PairingResponse> =>{
@@ -26,5 +26,19 @@ export const deviceAPI = {
     getTelescopePos: async (id:string, telescope:string): Promise<TelescopePosition> => {
         const response = await api.get<TelescopePosition>(endpoints.devices.getTelescopePos(id), { params: { telescope } });  
         return response.data
+    },
+    slewTelescope: async (id: string, telescope: string, data: SlewCommand): Promise<void> => {
+        await api.post(endpoints.devices.slewTelescope(id),
+            data,
+            { 
+                params: { telescope }, 
+                timeout: 1000 * 1000, 
+            }
+        );
+    },
+    abortTelescope: async (id: string, telescope: string): Promise<void> => {
+        await api.post(endpoints.devices.abortTelescope(id), null, { 
+            params: { telescope } 
+        });
     }
 };
