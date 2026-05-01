@@ -1,0 +1,17 @@
+{
+    "s_J0645089-164258": {
+        "name": "Sirius"
+    },
+    "s_J1950469+085205": {
+        "name": "Altair"
+    },
+    "s_J0555103+072425": {
+        "name": "Betelgeuse"
+    },
+    "s_J0231490+891550": {
+        "name": "Polaris",
+        "common_names":[
+            "North Star"
+        ]
+    }
+}

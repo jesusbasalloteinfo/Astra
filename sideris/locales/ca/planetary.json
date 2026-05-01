@@ -1,0 +1,45 @@
+{
+    "sun": {
+        "name": "Sol"
+    },
+    "mercury": {
+        "name": "Mercuri"
+    },
+    "venus": {
+        "name": "Venus",
+        "common_names": [
+            "L'estel del matí",
+            "L'estel de la tarda"
+        ]
+    },
+    "earth": {
+        "name": "Terra"
+    },
+    "moon": {
+        "name": "Lluna"
+    },
+    "mars": {
+        "name": "Mart",
+        "common_names": [
+            "Planeta Vermell"
+        ]
+    },
+    "jupiter": {
+        "name": "Júpiter"
+    },
+    "saturn": {
+        "name": "Saturn",
+        "common_names": [
+            "Planeta dels anells"
+        ]
+    },
+    "uranus": {
+        "name": "Urà"
+    },
+    "neptune": {
+        "name": "Neptú"
+    },
+    "pluto": {
+        "name": "Plutó"
+    }
+}

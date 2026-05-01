@@ -1,0 +1,46 @@
+{
+    "sun": {
+        "name": "Sun",
+        "description": "The Sun is the heart of our solar system and our closest star, located about 150 million km (93 million miles) away. It is so massive that it contains 99.8% of all the matter in the entire solar system and is over 100 times the diameter of Earth. Its visible surface seethes at temperatures of 6,000 K, occasionally marked by dark sunspots that increase and decrease in a rhythmic 11-year cycle.",
+        "fun_fact": "Even though light is the fastest thing in the universe, it takes about 8 minutes and 20 seconds to travel from the Sun to Earth. This means if the Sun were to suddenly go out, we wouldn't know it for over eight minutes! Also, the energy produced in the Sun's core can take up to 100,000 years just to reach its surface before it can zoom toward us.",
+        "visual_tip": "WARNING: Never look at the Sun without a proper solar filter; doing so will cause permanent eye damage. When viewed safely through a professional solar filter, you can witness these sunspots—magnetic storms larger than our planet.",
+        "wikipedia_qid": "Q525"
+    },
+    "mercury": {
+        "name": "Mercury"
+    },
+    "venus": {
+        "name": "Venus"
+    },
+    "earth": {
+        "name": "Earth"
+    },
+    "moon": {
+        "name": "Moon"
+    },
+    "mars": {
+        "name": "Mars",
+        "common_names": [
+            "Red planet"
+        ]
+    },
+    "jupiter": {
+        "name": "Jupiter"
+    },
+    "saturn": {
+        "name": "Saturn",
+        "common_names": [
+            "Ringed planet"
+        ]
+    },
+    "uranus": {
+        "name": "Uranus"
+    },
+    "neptune": {
+        "name": "Neptune"
+    },
+    "pluto": {
+        "name": "Pluto"
+    }
+
+}

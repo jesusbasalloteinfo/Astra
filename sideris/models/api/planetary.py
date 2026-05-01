@@ -49,6 +49,11 @@ class PlanetaryObjectMetadata(BaseModel):
     id: str
     name: str
     common_names: List[str] = Field(default_factory=list)
+    description: Optional[str] = None
+    fun_fact: Optional[str] = None
+    visual_tip: Optional[str] = None
+    wikipedia_qid: Optional[str] = None
+    
     dist: float # AU
     mag: Optional[float] = None
     ang_diameter: Optional[float] = None # In arcmin
