@@ -25,10 +25,10 @@ class IndiTaskAPI(IndiAPI):
             cls._instance._initialized = False
         return cls._instance
 
-    def __init__(self, host="localhost", port=7624):
+    def __init__(self, host="localhost", port=7624, location:tuple[float, float]=(0,0), time:Clock=Clock()):
         if self._initialized: return 
 
-        super().__init__(host, port)
+        super().__init__(host, port, location, time)
         
         self.active_tasks: dict[str, asyncio.Task] = {}
         self.category_locks: dict[str, str] = {}

@@ -1,13 +1,17 @@
 import asyncio
+from datetime import datetime, timezone
 import hashlib
 import json
 import logging
 import os
 import aiohttp
+import argparse
 from pydantic import TypeAdapter
 from api.IndiTaskAPI import IndiTaskAPI
+from utils.Clock import Clock
 from common.comm_models import WsPairingCode, WsPairedSuccess
 from common.INDIModels import GlobalMessage, CommandMessage, ResponseMessage, EventMessage
+from dotenv import load_dotenv
 
 logger = logging.getLogger("edge")
 
@@ -195,18 +199,86 @@ class EdgeClient:
             logger.error(f"Error sending event to backend: {e}")
 
 
-if __name__ == "__main__":
-    # Small testing main
-
+async def main(args):
     logging.basicConfig(level=logging.INFO)
     
-    indi_api = IndiTaskAPI(host="localhost", port=7624)
-    
-    client = EdgeClient("localhost:8000/api", indi_api=indi_api)
-    
-    async def main():
-        await indi_api.start_indi_manager()
-        
-        await client.start()
+    clock = Clock()
+    if args.time:
+        try:
+            dt = datetime.fromisoformat(args.time)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            clock.set_time(dt)
+            logging.info(f"Clock set to: {clock.now}")
+        except ValueError:
+            logging.error("Invalid date format. Use YYYY-MM-DDTHH:MM:SS ISO 8601")
 
-    asyncio.run(main())
+    logging.info(f"Starting with location: {args.location}")
+
+    indi_api = IndiTaskAPI(
+        host=args.indi_host, 
+        port=args.indi_port, 
+        location=args.location, 
+        time=clock
+    )
+    
+    client = EdgeClient(
+        server=args.astra_url, 
+        indi_api=indi_api
+    )
+    
+    await indi_api.start_indi_manager()
+    await client.start()
+
+def valid_location(coords):
+    try:
+        lat, lon = map(float, coords)
+        if not (-90 <= lat <= 90):
+            raise argparse.ArgumentTypeError(f"Latitude must be between -90 and 90. Got: {lat}")
+        if not (-180 <= lon <= 180):
+            raise argparse.ArgumentTypeError(f"Longitude must be between -180 and 180. Got: {lon}")
+        return (lat, lon)
+    except ValueError:
+        raise argparse.ArgumentTypeError("Location must be two numbers (floats).")
+
+
+if __name__ == "__main__":
+    load_dotenv()
+    parser = argparse.ArgumentParser(description="Astra Edge CLI Client Runner")
+    
+    # IndiTaskAPI Parameters
+    parser.add_argument("--indi-host", 
+                        default=os.getenv("INDI_HOST", "localhost"), 
+                        help="Indi server host address")
+    
+    parser.add_argument("--indi-port", 
+                        type=int, 
+                        default=int(os.getenv("INDI_PORT", 7624)), 
+                        help="Indi server port number")
+    
+    # Edge Client Parameters
+    parser.add_argument("--astra-url",
+                        default=os.getenv("ASTRA_URL", "localhost:8000/api"),  
+                        help="Astra API URL")
+    
+    # Location Parameter (receives two floats)
+    parser.add_argument("--location", 
+                        type=float, 
+                        nargs=2, 
+                        metavar=('LAT', 'LON'),
+                        default=(float(os.getenv("LAT", 0.0)), float(os.getenv("LON", 0.0))),
+                        help="Latitude and Longitude (e.g. 40.41 -3.70)")
+    
+    # Time Parameter
+    parser.add_argument("--time", 
+                        default=os.getenv("START_TIME", None),
+                        help="Initial time ISO format")
+    
+    args = parser.parse_args()
+    
+    try:
+        args.location = valid_location(args.location)
+    except argparse.ArgumentTypeError as e:
+        parser.error(str(e))
+
+    asyncio.run(main(args))
