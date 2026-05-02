@@ -35,7 +35,7 @@
 
     function handleKeydown(e: KeyboardEvent) {
         // Open
-        if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'f') {
             e.preventDefault();
             open = true;
             return;

@@ -5,7 +5,7 @@ import { endpoints } from './endpoints';
 import { browser } from '$app/environment'; 
 
 export const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api',
+    baseURL: endpoints.apiBase,
     headers: { 'Content-Type': 'application/json' },
 });
 

@@ -10,7 +10,7 @@
     import { themeState } from '$lib/themes/themes.svelte';
 	import SideDock from '$lib/components/observation/SideDock.svelte';
 	import SkyFinder from '$lib/components/observation/SkyFinder.svelte';
-	import TargetInfo from '$lib/components/observation/TargetInfo.svelte';
+	import TargetDetailsPanel from '$lib/components/observation/TargetDetailsPanel.svelte';
 	import Chat from '$lib/components/observationAssistant/Chat.svelte';
 	import { activeObs } from '$lib/stores/activeObservation.svelte';
     import { deviceStore } from '$lib/stores/devices.svelte';
@@ -157,7 +157,7 @@
     <!-- Target info -->
     <div class="absolute top-6 right-6 z-10 pointer-events-none">
         {#if !chatOpen}
-            <TargetInfo 
+            <TargetDetailsPanel 
                 onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} 
                 onClear={() => skyMap?.clearSelection()}
             />

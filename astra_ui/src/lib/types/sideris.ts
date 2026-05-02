@@ -80,6 +80,7 @@ export interface PlanetaryObjectDetails {
     fun_fact?: string;
     visual_tip?: string;
     wikipedia_qid?: string;
+    image_url?: string;
     dist: number; // AU
     mag: number | null;
     ang_diameter?: number | null;

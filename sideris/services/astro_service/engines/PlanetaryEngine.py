@@ -127,7 +127,9 @@ class PlanetaryEngine(BaseEngine):
         """Calculates the rise-setting events of a planet"""
 
         body = self._eph[obj.value]
-        t_future = self._ts.from_datetime(t_now.utc_datetime() + timedelta(days=1))
+        # Search for upcoming events starting from now up to 36 hours ahead
+        t_start = t_now
+        t_end = self._ts.from_datetime(t_now.utc_datetime() + timedelta(hours=36))
         
         earth_obs = self._earth + topo_observer
         alt_now, _, _ = earth_obs.at(t_now).observe(body).apparent().altaz()
@@ -141,44 +143,53 @@ class PlanetaryEngine(BaseEngine):
 
         # Rise and Set
         f_rs = almanac.risings_and_settings(self._eph, body, topo_observer, horizon)
-        t_rs, v_rs = almanac.find_discrete(t_now, t_future, f_rs)
+        t_rs, v_rs = almanac.find_discrete(t_start, t_end, f_rs)
         
         next_rise, next_set = None, None
-        t_rise, t_set = None, None
+        t_rise_obj, t_set_obj = None, None
+        
         for t_evt, v_evt in zip(t_rs, v_rs):
-            if v_evt == 1 and not next_rise:
+            if v_evt == 1 and next_rise is None: # First upcoming Rise
                 next_rise = t_evt.utc_datetime()
-                t_rise= t_evt
-            elif v_evt == 0 and not next_set:
+                t_rise_obj = t_evt
+            elif v_evt == 0 and next_set is None: # First upcoming Set
                 next_set = t_evt.utc_datetime()
-                t_set=t_evt
+                t_set_obj = t_evt
+            if next_rise and next_set: break
 
-        # Transit
+        # Transit (Upper only)
         f_tr = almanac.meridian_transits(self._eph, body, topo_observer)
-        t_tr, v_tr = almanac.find_discrete(t_now, t_future, f_tr)
+        t_tr, v_tr = almanac.find_discrete(t_start, t_end, f_tr)
         
-      
-        next_transit = t_tr[0]
-        nxt_visible = v_tr[0]
+        next_transit = None
+        nxt_visible = False
+        t_transit_obj = None
         
-        # Rise/Set/Transit positions
-        astrometric = earth_obs.at(t_rise).observe(body).apparent()
-        _, r_az, _ = astrometric.altaz()
-
-        astrometric = earth_obs.at(t_set).observe(body).apparent()
-        _, s_az, _ = astrometric.altaz()
-
-        astrometric = earth_obs.at(next_transit).observe(body).apparent()
-        t_alt, _, _ = astrometric.altaz()
+        for t_evt, v_evt in zip(t_tr, v_tr):
+            if v_evt == 1: # Upper transit
+                next_transit = t_evt.utc_datetime()
+                t_transit_obj = t_evt
+                nxt_visible = True
+                break
+        
+        # Positions
+        r_az_deg, s_az_deg, t_alt_deg = None, None, None
+        
+        if t_rise_obj is not None:
+            r_az_deg = earth_obs.at(t_rise_obj).observe(body).apparent().altaz()[1].degrees
+        if t_set_obj is not None:
+            s_az_deg = earth_obs.at(t_set_obj).observe(body).apparent().altaz()[1].degrees
+        if t_transit_obj is not None:
+            t_alt_deg = earth_obs.at(t_transit_obj).observe(body).apparent().altaz()[0].degrees
         
         return RiseSetTransit(
             is_visible=is_visible,
             next_rise=next_rise,
             next_set=next_set,
-            next_transit=next_transit.utc_datetime(),
-            rise_az=round(r_az.degrees, 2) if r_az is not None else None,
-            set_az=round(s_az.degrees, 2) if s_az is not None else None,
-            transit_alt=round(t_alt.degrees, 2) if t_alt is not None else None,
+            next_transit=next_transit,
+            rise_az=round(r_az_deg, 2) if r_az_deg is not None else None,
+            set_az=round(s_az_deg, 2) if s_az_deg is not None else None,
+            transit_alt=round(t_alt_deg, 2) if t_alt_deg is not None else None,
             transit_visible=nxt_visible            
         )
 

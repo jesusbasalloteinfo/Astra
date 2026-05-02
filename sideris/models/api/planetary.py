@@ -53,6 +53,7 @@ class PlanetaryObjectMetadata(BaseModel):
     fun_fact: Optional[str] = None
     visual_tip: Optional[str] = None
     wikipedia_qid: Optional[str] = None
+    image_url: Optional[str] = None
     
     dist: float # AU
     mag: Optional[float] = None

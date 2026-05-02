@@ -98,18 +98,47 @@ class SiderealEngine(BaseEngine):
         current_alt = altaz.alt.degree
         current_az = altaz.az.degree
 
-        try:
-            next_transit = observer.target_meridian_transit_time(time_t0, target_coord, which='next').datetime.replace(tzinfo=timezone.utc)
-            next_rise = observer.target_rise_time(time_t0, target_coord, which='next').datetime.replace(tzinfo=timezone.utc)
-            next_set = observer.target_set_time(time_t0, target_coord, which='next').datetime.replace(tzinfo=timezone.utc)
-            is_circumpolar = False
-            never_rises = False
-        except TargetAlwaysUpWarning:
-            is_circumpolar = True
-            next_rise, next_set = None, None
-        except TargetNeverUpWarning:
-            never_rises = True
-            next_rise, next_set = None, None
+        # Manual circumpolar / never rises check (robust)
+        lat_deg = obs_loc.lat.degree
+        dec_deg = target_coord.dec.degree
+        
+        is_circumpolar = False
+        never_rises = False
+        if lat_deg > 0: # North
+            is_circumpolar = dec_deg > (90.0 - lat_deg)
+            never_rises = dec_deg < (lat_deg - 90.0)
+        else: # South
+            is_circumpolar = dec_deg < (-90.0 - lat_deg)
+            never_rises = dec_deg > (90.0 + lat_deg)
+
+        def safe_get_datetime(time_obj):
+            if time_obj is None:
+                return None
+            try:
+                # Time objects in astroplan might be masked arrays
+                dt = time_obj.datetime
+                if hasattr(dt, 'mask') and np.any(dt.mask):
+                    return None
+                if isinstance(dt, np.ndarray):
+                    # If it's an array but not masked, take the first element if it's 0-d or 1-d
+                    dt = dt.item() if dt.size == 1 else dt[0]
+                
+                return dt.replace(tzinfo=timezone.utc)
+            except Exception:
+                return None
+
+        # Always calculate transit
+        next_transit = safe_get_datetime(observer.target_meridian_transit_time(time_t0, target_coord, which='nearest'))
+        
+        next_rise = None
+        next_set = None
+
+        if not is_circumpolar and not never_rises:
+            import warnings
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", (TargetAlwaysUpWarning, TargetNeverUpWarning))
+                next_rise = safe_get_datetime(observer.target_rise_time(time_t0, target_coord, which='nearest'))
+                next_set = safe_get_datetime(observer.target_set_time(time_t0, target_coord, which='nearest'))
         
         return EphemerisMovementData(
             alt= current_alt,
