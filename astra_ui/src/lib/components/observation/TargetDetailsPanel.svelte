@@ -10,8 +10,12 @@
     import { deviceStore } from '$lib/stores/devices.svelte';
     import { deviceAPI } from '$lib/api/devices';
     import { CoordinateTypes } from '$lib/types/devices';
-	import { endpoints, siderisEndpoints } from '$lib/api/endpoints';
     import { getLocale } from '$lib/paraglide/runtime';
+    import { getImageUrl, buildDynamicStats, getWikipediaUrl } from '$lib/components/observation/targetDetailsPanelComponents/targetDetailsHelper';
+	import MoonInfoCard from './targetDetailsPanelComponents/MoonInfoCard.svelte';
+	import RiseSetCard from './targetDetailsPanelComponents/RiseSetCard.svelte';
+	import InfoBlockCard from './targetDetailsPanelComponents/InfoBlockCard.svelte';
+	import PlanetInfoCard from './targetDetailsPanelComponents/PlanetInfoCard.svelte';
 
     let { onFlyTo, onClear } = $props<{ 
         onFlyTo: (alt: number, az: number) => void;
@@ -35,92 +39,40 @@
     const selectedInfo = $derived.by(() => {
         const id = selectionStore.targetId;
         const details = selectionStore.targetDetails;
-        if (!id || !details) return null;
+        const dynamicData = skyEngine.positions.get(id || '');
 
-        const dynamicData = skyEngine.positions.get(id);
-        if (!dynamicData) return null;
+        if (!id || !details || !dynamicData) return null;
 
         const isPlanet = selectionStore.targetType === 'planetary';
-        let type = "Planetary";
-        let dist = null;
-        let distUnit = isPlanet ? "AU" : "LY";
-        
-        let rise = null;
-        let set = null;
-        let transit = null;
+        const type = isPlanet ? "Planetary" : (details as SiderealObjectDetails).type;
 
-        let imageUrl = null;
-        if (isPlanet) {
-            // Planetary image from static images
-            const planetaryDetails = details as PlanetaryObjectDetails;
-            
-            if (planetaryDetails.image_url) {                
-                imageUrl = `${endpoints.apiBase}${siderisEndpoints.base}${planetaryDetails.image_url}`;
-            }
-            
-        } else {
-            // Aladin HIPS image, generated on the go
-            
-            // Convert from hour format to 0..360
-            let ra = details.ra_j2000 * 15;             
-            const dec = details.dec_j2000;
-            
-            // FOV
-            // Object size or 30 as default (size of the Moon)
-            const sizeArcmin = (details as SiderealObjectDetails).size_arcmin || 30;
-            
-            // Convert to degrees and add a 1.5 spacing
-            let fov = (sizeArcmin / 60) * 1.5; 
-            
-            // Security FOV limits
-            if (fov < 0.1) fov = 0.1; // Max zoom
-            if (fov > 10) fov = 10;   // Min zoom
-            
-            imageUrl = `https://alasky.cds.unistra.fr/hips-image-services/hips2fits?hips=CDS%2FP%2FDSS2%2Fcolor&width=600&height=375&fov=${fov}&projection=TAN&coordsys=icrs&ra=${ra}&dec=${dec}&format=png`;
-        }
-        if (!isPlanet) {
-            const sidereal = details as SiderealObjectDetails;
-            type = sidereal.type;
-            type = type.charAt(0).toUpperCase() + type.slice(1);
-            dist = sidereal.distance_ly;
-            rise = sidereal.next_rise;
-            set = sidereal.next_set;
-            transit = sidereal.next_transit;
-        } else {
-            const planetary = details as PlanetaryObjectDetails;
-            dist = planetary.dist;
-            rise = planetary.rise_set_transit?.next_rise;
-            set = planetary.rise_set_transit?.next_set;
-            transit = planetary.rise_set_transit?.next_transit;
-        }
+        const imageUrl = getImageUrl(details, isPlanet);
+        const { stats, ephemeris } = buildDynamicStats(details, dynamicData, isPlanet);
+        const wikipediaUrl = getWikipediaUrl(details.wikipedia_qid);
 
-        let wikipediaUrl = null;
-        if (details.wikipedia_qid) {
-            const lang = getLocale();
-            wikipediaUrl = `https://www.wikidata.org/wiki/Special:GoToLinkedPage/${lang}wiki/${details.wikipedia_qid}`;
-        }
+
+        console.error(isPlanet ? (details as PlanetaryObjectDetails).extra_details.type : null )
         return {
-            id: id,
+            id,
             name: details.name || id,
-            type: type,
-            imageUrl: imageUrl,
-            wikipediaUrl: wikipediaUrl, 
+            type: type.charAt(0).toUpperCase() + type.slice(1),
+            imageUrl,
+            wikipediaUrl,
+            stats, 
             alt: dynamicData.alt,
             az: dynamicData.az,
             ra: details.ra_j2000,
             dec: details.dec_j2000,
-            magnitude: details.mag !== undefined && details.mag !== null ? details.mag : '—',
-            distance: dist ? `${dist.toFixed(isPlanet ? 2 : 1)} ${distUnit}` : '—',
-            rise: formatTime(rise),
-            set: formatTime(set),
-            transit: formatTime(transit),
+            rise: formatTime(ephemeris.rise),
+            set: formatTime(ephemeris.set),
+            transit: formatTime(ephemeris.transit),
             description: details.description,
             funFact: details.fun_fact,
-            visualTip: details.visual_tip
+            visualTip: details.visual_tip,
+            extraDetails: isPlanet ? (details as PlanetaryObjectDetails).extra_details : null 
         };
     });
-
-    // Reset error when changing target
+    
     $effect(() => {
         selectionStore.targetId;
         imageLoadError = false;
@@ -181,13 +133,13 @@
             <!-- --- Image --- -->
             {#if selectedInfo && selectedInfo.imageUrl && !imageLoadError}
                 <div class="aspect-16/10 w-full rounded-2xl border border-border/50 bg-panel/30 overflow-hidden relative shadow-inner group">
-                        <img 
-                            src={selectedInfo.imageUrl} 
-                            alt={selectedInfo.name}
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
-                            in:fade={{ duration: 400 }}
-                            onerror={() => imageLoadError = true}
-                        />
+                    <img 
+                        src={selectedInfo.imageUrl} 
+                        alt={selectedInfo.name}
+                        class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
+                        in:fade={{ duration: 400 }}
+                        onerror={() => imageLoadError = true}
+                    />
                 </div>
             {/if}
 
@@ -201,120 +153,80 @@
                         </div>
                     {/each}
                 {:else if selectedInfo}
-                    {#each [
-                        { label: m.obs_targetinfo_alt() , value: `${selectedInfo.alt.toFixed(1)}°` },
-                        { label: m.obs_targetinfo_az()  , value: `${selectedInfo.az.toFixed(1)}°`  },
-                        { label: m.obs_targetinfo_mag() , value: selectedInfo.magnitude },
-                        { label: m.obs_targetinfo_dist(), value: selectedInfo.distance },
-                    ] as stat}
-                        <div class="bg-panel/40 rounded-xl p-3 border shadow-inner transition-colors hover:bg-panel/60 border-transparent hover:border-border">
+                    {#each selectedInfo.stats as stat}
+                        <div class="rounded-xl p-3 border shadow-inner transition-colors bg-panel/40 hover:bg-panel/60 border-transparent hover:border-border">
                             <p class="text-[9px] uppercase tracking-wider text-copy-muted mb-1">{stat.label}</p>
                             <p class="text-sm font-semibold text-copy-primary font-mono tabular-nums">{stat.value}</p>
                         </div>
                     {/each}
                 {/if}
             </div>
+            <!-- Special cards -->
+            {#if selectedInfo?.extraDetails}
+                {#if selectedInfo.extraDetails.type === 'moon'}
+                    <MoonInfoCard 
+                        age={selectedInfo.extraDetails.age} 
+                        illuminationPct={selectedInfo.extraDetails.illumination_pct} 
+                        nextNewMoon={selectedInfo.extraDetails.next_new_moon}
+                        nextFullMoon={selectedInfo.extraDetails.next_full_moon}
+                    />
+                {/if}
+                <!-- WIDGET 2: PLANETAS (Ejemplo: Elongación y Fase) -->
+                 {#if selectedInfo.extraDetails.type === 'planet'}
+                    <PlanetInfoCard 
+                        id={selectedInfo.id}
+                        illuminationPct={selectedInfo.extraDetails.illumination_pct}
+                        elongationDeg={selectedInfo.extraDetails.elongation_deg}
+                    />
+                {/if}
+            {/if}
+            
 
             <!-- --- Rise-Set --- -->
             {#if selectedInfo}
-                <div class="bg-panel/20 rounded-xl p-3 border border-border/50">
-                    <h3 class="text-[10px] font-bold text-copy-muted uppercase tracking-widest mb-3">{m.obs_targetinfo_riseset_title()}</h3>
-                    
-                    <div class="grid grid-cols-3 items-center divide-x divide-border/50 text-copy-primary">
-                        
-                        <div class="flex flex-col items-center gap-1">
-                            <Sunrise size={16} class="text-orange-400/80" />
-                            <div class="flex flex-col items-center">
-                                <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5">{m.obs_targetinfo_riseset_rise()}</span>
-                                <span class="text-xs font-mono font-medium">{selectedInfo.rise}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex flex-col items-center gap-1 pl-1">
-                            <Navigation size={16} class="text-blue-400/80" />
-                            <div class="flex flex-col items-center">
-                                <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5">{m.obs_targetinfo_riseset_transit()}</span>
-                                <span class="text-xs font-mono font-medium">{selectedInfo.transit}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex flex-col items-center gap-1 pl-1">
-                            <Sunset size={16} class="text-purple-400/80" />
-                            <div class="flex flex-col items-center">
-                                <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5">{m.obs_targetinfo_riseset_set()}</span>
-                                <span class="text-xs font-mono font-medium">{selectedInfo.set}</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
+                <RiseSetCard 
+                    rise={selectedInfo.rise} 
+                    transit={selectedInfo.transit} 
+                    set={selectedInfo.set} 
+                />
 
                 <!-- Object Description -->
-                {#if selectedInfo.description || selectedInfo.funFact || selectedInfo.visualTip}
+                {#if selectedInfo.description || selectedInfo.funFact || selectedInfo.visualTip || selectedInfo.wikipediaUrl}
                     <div class="space-y-4 pt-2">
-                        {#if selectedInfo.description}
-                            <div class="space-y-2">
-                                <div class="flex items-center justify-between mb-1.5">
-                                    <div class="flex items-center gap-1.5 text-copy-muted">
-                                        <Info size={14} />
-                                        <h3 class="text-[10px] font-bold uppercase tracking-widest">{m.obs_targetinfo_description()}</h3>
-                                    </div>
-                                    
-                                    {#if selectedInfo.wikipediaUrl}
-                                        <a 
-                                            href={selectedInfo.wikipediaUrl} 
-                                            target="_blank" 
-                                            rel="noopener noreferrer" 
-                                            class="flex items-center gap-1 text-[9px] font-bold text-accent hover:text-accent-hover uppercase tracking-wider transition-colors"
-                                        >
-                                            Wikipedia <ExternalLink size={10} />
-                                        </a>
-                                    {/if}
-                                </div>
-                                <div class="relative overflow-hidden bg-panel/30 p-4 rounded-xl border border-border shadow-inner group transition-colors hover:bg-panel/50">
-                                    <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-700 text-copy-muted">
-                                        <Info size={64} strokeWidth={1} />
-                                    </div>
-                                    <p class="relative text-sm text-copy-primary/90 leading-relaxed whitespace-pre-wrap">
-                                        {selectedInfo.description}
-                                    </p>
-                                </div>
-                            </div>
-                        {/if}
                         
-                        {#if selectedInfo.funFact}
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-1.5 text-copy-muted">
-                                    <Lightbulb size={14} class="text-yellow-500/70" />
-                                    <h3 class="text-[10px] font-bold uppercase tracking-widest">{m.obs_targetinfo_fun_fact()}</h3>
-                                </div>
-                                <div class="relative overflow-hidden bg-yellow-500/5 p-4 rounded-xl border border-yellow-500/10 shadow-inner group">
-                                    <div class="absolute -right-4 -bottom-4 opacity-[0.07] group-hover:scale-110 transition-transform duration-700 text-yellow-500">
-                                        <Lightbulb size={64} strokeWidth={1} />
-                                    </div>
-                                    <p class="relative text-sm text-copy-primary/90 leading-relaxed">
-                                        {selectedInfo.funFact}
-                                    </p>
-                                </div>
-                            </div>
-                        {/if}
+                        <!-- Wikipedia link  button -->
+                        {#snippet wikiLink()}
+                            <a 
+                                href={selectedInfo.wikipediaUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="flex items-center gap-1 text-[9px] font-bold text-accent hover:text-accent-hover uppercase tracking-wider transition-colors"
+                            >
+                                Wikipedia <ExternalLink size={10} />
+                            </a>
+                        {/snippet}
 
-                        {#if selectedInfo.visualTip}
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-1.5 text-copy-muted">
-                                    <Eye size={14} class="text-blue-400/70" />
-                                    <h3 class="text-[10px] font-bold uppercase tracking-widest">{m.obs_targetinfo_visual_tip()}</h3>
-                                </div>
-                                <div class="relative overflow-hidden bg-blue-400/5 p-4 rounded-xl border border-blue-400/10 shadow-inner group">
-                                    <div class="absolute -right-4 -bottom-4 opacity-[0.07] group-hover:scale-110 transition-transform duration-700 text-blue-400">
-                                        <Eye size={64} strokeWidth={1} />
-                                    </div>
-                                    <p class="relative text-sm text-copy-primary/90 leading-relaxed">
-                                        {selectedInfo.visualTip}
-                                    </p>
-                                </div>
-                            </div>
-                        {/if}
+                        <InfoBlockCard 
+                            title={m.obs_targetinfo_description()} 
+                            text={selectedInfo.description} 
+                            icon={Info} 
+                            headerAction={selectedInfo.wikipediaUrl ? wikiLink : undefined} 
+                        />
+
+                        <InfoBlockCard 
+                            title={m.obs_targetinfo_fun_fact()} 
+                            text={selectedInfo.funFact} 
+                            icon={Lightbulb} 
+                            variant="funFact" 
+                        />
+
+                        <InfoBlockCard 
+                            title={m.obs_targetinfo_visual_tip()} 
+                            text={selectedInfo.visualTip} 
+                            icon={Eye} 
+                            variant="visualTip" 
+                        />
+                        
                     </div>
                 {/if}
             {/if}
