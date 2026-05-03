@@ -278,6 +278,9 @@
   "obs_targetinfo_az": "Azimuth",
   "obs_targetinfo_mag": "Magnitude",
   "obs_targetinfo_dist": "Distance",
+  "obs_targetinfo_const": "Constellation",
+  "obs_targetinfo_size": "Size",
+  "obs_targetinfo_sptype": "Spectral Type",
   "obs_targetinfo_riseset_title": "Rise & Set",
   "obs_targetinfo_riseset_rise": "Rise",
   "obs_targetinfo_riseset_transit": "Transit",
@@ -285,6 +288,28 @@
   "obs_targetinfo_description": "Overview",
   "obs_targetinfo_fun_fact": "Did you know?",
   "obs_targetinfo_visual_tip": "Visual Tip",
+
+  "obs_targetinfo_lunar_title": "Lunar Phase",
+  "obs_targetinfo_lunar_age": [
+      {
+          "declarations": ["input count", "local countPlural = count: plural"],
+          "selectors": ["countPlural"],
+          "match": {
+              "countPlural=one": "1 day old",
+              "countPlural=other": "{count} days old"
+          }
+      }
+  ],
+  "obs_targetinfo_lunar_next_new": "Next New",
+  "obs_targetinfo_lunar_next_full": "Next Full",
+
+  "obs_targetinfo_planetary_title": "Planetary Data",
+  "obs_targetinfo_planetary_ilum": "Illumination",
+  "obs_targetinfo_planetary_elong": "Elongation",
+  "obs_targetinfo_planetary_conjunction": "Conjunction",
+  "obs_targetinfo_planetary_max_elong": "Max Elongation",
+  "obs_targetinfo_planetary_opposition": "Opposition",
+
 
   "obs_timecontrol_real": "Real",
   "obs_timecontrol_time_travel": "Time Travel",
@@ -320,6 +345,15 @@
   "data_types_double_star": "Double Star",
   "data_types_star_system": "Star System",
   "data_types_unknown": "Unknown",
+
+  "data_moon_phase_new": "New Moon",
+  "data_moon_phase_full": "Full Moon",
+  "data_moon_phase_first_quarter": "First Quarter",
+  "data_moon_phase_last_quarter": "Last Quarter",
+  "data_moon_phase_waxing_crescent": "Waxing Crescent",
+  "data_moon_phase_waxing_gibbous": "Waxing Gibbous",
+  "data_moon_phase_waning_crescent": "Waning Crescent",
+  "data_moon_phase_waning_gibbous": "Waning Gibbous",
 
   "obs_ai_title": "Astra AI"
 

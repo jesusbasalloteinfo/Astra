@@ -4,6 +4,7 @@ import { m } from '$lib/paraglide/messages';
 import { endpoints, siderisEndpoints } from '$lib/api/endpoints';
 import type { PlanetaryObjectDetails, SiderealObjectDetails } from '$lib/types/sideris';
 import { formatNumber } from '$lib/utils/i18n';
+import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
 export function getImageUrl(details: PlanetaryObjectDetails | SiderealObjectDetails, isPlanet: boolean): string | null {
     if (isPlanet) {
@@ -37,14 +38,15 @@ export function buildDynamicStats(details: any, dynamicData: any, isPlanet: bool
     // 2. Get Rise/Set/Transit
     let ephemeris = { rise: null, transit: null, set: null };
 
-    // 3. Spesific Stadistics
+    // 3. Specific Stadistics
+
     if (!isPlanet) {
         const sidereal = details as SiderealObjectDetails;
         ephemeris = { rise: sidereal.next_rise, transit: sidereal.next_transit, set: sidereal.next_set };
         
-        if (sidereal.constellation) stats.push({ label: 'Constellation', value: sidereal.constellation });
-        if (sidereal.size_arcmin) stats.push({ label: 'Size', value: `${sidereal.size_arcmin}'` });
-        if (sidereal.spectral_type) stats.push({ label: 'Spectral', value: sidereal.spectral_type });
+        if (sidereal.constellation) stats.push({ label: m.obs_targetinfo_const(), value: catalogStore.getConstellationName(sidereal.constellation, true) });
+        if (sidereal.size_arcmin) stats.push({ label: m.obs_targetinfo_size(), value: `${sidereal.size_arcmin}'` });
+        if (sidereal.spectral_type) stats.push({ label: m.obs_targetinfo_sptype(), value: sidereal.spectral_type });
     } else {
         const planetary = details as PlanetaryObjectDetails;
         if (planetary.rise_set_transit) {

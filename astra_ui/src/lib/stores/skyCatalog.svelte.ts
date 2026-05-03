@@ -237,6 +237,15 @@ class CatalogStore {
     }
 
     /**
+     * Get a constellation name or in latin with an id
+     */
+    getConstellationName(abbr: string, latin:boolean=false): string | null {
+        const constellation = this.constellations.find(c => c.abbr === abbr);
+        return constellation && !latin ? constellation.name : latin && constellation?.latin ? constellation.latin : null;
+    }
+
+
+    /**
      * Clears the cache and resets the store
      */
     reset() {

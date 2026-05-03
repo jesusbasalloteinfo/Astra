@@ -279,6 +279,9 @@
   "obs_targetinfo_az": "Azimut",
   "obs_targetinfo_mag": "Magnitud",
   "obs_targetinfo_dist": "Distància",
+  "obs_targetinfo_const": "Constel·lació",
+  "obs_targetinfo_size": "Tamany",
+  "obs_targetinfo_sptype": "Tipus Espectral",
   "obs_targetinfo_riseset_title": "Sortida i Posta",
   "obs_targetinfo_riseset_rise": "Sortida",
   "obs_targetinfo_riseset_transit": "Trànsit",
@@ -286,6 +289,28 @@
   "obs_targetinfo_description": "Informació",
   "obs_targetinfo_fun_fact": "Sabies que...?",
   "obs_targetinfo_visual_tip": "Consell visual",
+
+  "obs_targetinfo_lunar_title": "Fase Lunar",
+  "obs_targetinfo_lunar_age": [
+      {
+          "declarations": ["input count", "local countPlural = count: plural"],
+          "selectors": ["countPlural"],
+          "match": {
+              "countPlural=one": "1 dia",
+              "countPlural=other": "{count} dies"
+          }
+      }
+  ],
+  "obs_targetinfo_lunar_next_new": "Següent Nova",
+  "obs_targetinfo_lunar_next_full": "Següent Plena",
+
+  "obs_targetinfo_planetary_title": "Dades Planetaries",
+  "obs_targetinfo_planetary_ilum": "Il·luminació",
+  "obs_targetinfo_planetary_elong": "Elongació",
+  "obs_targetinfo_planetary_conjunction": "Conjunció",
+  "obs_targetinfo_planetary_max_elong": "Max Elongació",
+  "obs_targetinfo_planetary_opposition": "Oposició",
+
 
   "obs_timecontrol_real": "Real",
   "obs_timecontrol_time_travel": "Viatge temporal",
@@ -321,6 +346,15 @@
   "data_types_double_star": "Estrella doble",
   "data_types_star_system": "Sistema estel·lar",
   "data_types_unknown": "Desconegut",
+
+  "data_moon_phase_new": "Lluna Nova",
+  "data_moon_phase_full": "Lluna Plena",
+  "data_moon_phase_first_quarter": "Quart Creixent",
+  "data_moon_phase_last_quarter": "Quart Minvant",
+  "data_moon_phase_waxing_crescent": "Luna Creixent",
+  "data_moon_phase_waxing_gibbous": "Gibosa Creixent",
+  "data_moon_phase_waning_crescent": "Lluna Minvant",
+  "data_moon_phase_waning_gibbous": "Gibosa Minvant",
 
   "obs_ai_title": "Astra AI"
 

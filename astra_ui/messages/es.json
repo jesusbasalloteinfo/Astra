@@ -278,6 +278,9 @@
   "obs_targetinfo_az": "Acimut",
   "obs_targetinfo_mag": "Magnitud",
   "obs_targetinfo_dist": "Distancia",
+  "obs_targetinfo_const": "Constelación",
+  "obs_targetinfo_size": "Tamaño",
+  "obs_targetinfo_sptype": "Tipo Espectral",
   "obs_targetinfo_riseset_title": "Salida y Ocaso",
   "obs_targetinfo_riseset_rise": "Salida",
   "obs_targetinfo_riseset_transit": "Tránsito",
@@ -285,6 +288,29 @@
   "obs_targetinfo_description": "Información",
   "obs_targetinfo_fun_fact": "¿Sabías que...?",
   "obs_targetinfo_visual_tip": "Consejo visual",
+
+  "obs_targetinfo_lunar_title": "Fase Lunar",
+  "obs_targetinfo_lunar_age": [
+      {
+          "declarations": ["input count", "local countPlural = count: plural"],
+          "selectors": ["countPlural"],
+          "match": {
+              "countPlural=one": "1 dia",
+              "countPlural=other": "{count} dias"
+          }
+      }
+  ],
+  "obs_targetinfo_lunar_next_new": "Siguiente Nueva",
+  "obs_targetinfo_lunar_next_full": "Siguiente Llena",
+
+  "obs_targetinfo_planetary_title": "Datos Planetarios",
+  "obs_targetinfo_planetary_ilum": "Iluminación",
+  "obs_targetinfo_planetary_elong": "Elongación",
+  "obs_targetinfo_planetary_conjunction": "Conjunción",
+  "obs_targetinfo_planetary_max_elong": "Max Elongación",
+  "obs_targetinfo_planetary_opposition": "Oposición",
+
+
 
   "obs_timecontrol_real": "Real",
   "obs_timecontrol_time_travel": "Viaje temporal",
@@ -320,6 +346,15 @@
   "data_types_double_star": "Estrella doble",
   "data_types_star_system": "Sistema estelar",
   "data_types_unknown": "Desconocido",
+
+  "data_moon_phase_new": "Luna Nueva",
+  "data_moon_phase_full": "Luna Llena",
+  "data_moon_phase_first_quarter": "Cuarto Creciente",
+  "data_moon_phase_last_quarter": "Cuarto Menguante",
+  "data_moon_phase_waxing_crescent": "Luna Creciente",
+  "data_moon_phase_waxing_gibbous": "Gibosa Creciente",
+  "data_moon_phase_waning_crescent": "Luna Menguante",
+  "data_moon_phase_waning_gibbous": "Gibosa Menguante",
 
   "obs_ai_title": "Astra AI"
 

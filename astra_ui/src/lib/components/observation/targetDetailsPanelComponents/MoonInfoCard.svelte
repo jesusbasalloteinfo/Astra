@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { m } from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
-	import { formatNumber } from "$lib/utils/i18n";
+	import { formatNumber, getMoonPhaseName } from "$lib/utils/i18n";
 
     let { 
         age = 0, 
@@ -24,18 +25,7 @@
     let glowOpacity = $derived((illuminationPct / 100) * 0.5);
     let glowBlur = $derived((illuminationPct / 100) * 12);
 
-    let phaseName = $derived.by(() => {
-        if (isNewMoon) return 'New Moon';
-        if (isFullMoon) return 'Full Moon';
-        
-        if (isWaxing) {
-            if (illuminationPct > 47 && illuminationPct < 53) return 'First Quarter';
-            return isCrescent ? 'Waxing Crescent' : 'Waxing Gibbous';
-        } else {
-            if (illuminationPct > 47 && illuminationPct < 53) return 'Last Quarter';
-            return isCrescent ? 'Waning Crescent' : 'Waning Gibbous';
-        }
-    });
+    let phaseName = $derived(getMoonPhaseName(isNewMoon, isFullMoon, isWaxing, isCrescent, illuminationPct));
 
     function formatPhaseDate(isoString: string | null | undefined) {
         if (!isoString) return '—';
@@ -48,6 +38,8 @@
         });
     }
 </script>
+
+
 <div class="bg-panel/30 rounded-xl p-4 border border-border shadow-inner flex flex-col gap-2.5 group">
     
     <!-- Upper part: Phase and SVG -->
@@ -59,7 +51,7 @@
                     <span class="text-xl font-bold text-white tabular-nums">{formatNumber(illuminationPct, 1)}%</span>
                     <span class="text-[10px] font-bold uppercase tracking-wider text-accent">{phaseName}</span>
                 </div>
-                <span class="text-[10px] text-copy-muted font-mono">{formatNumber(age, 1)} days old</span>
+                <span class="text-[10px] text-copy-muted font-mono">{m.obs_targetinfo_lunar_age({ count: age.toFixed(1) })}</span>
             </div>
         </div>
         
@@ -117,14 +109,14 @@
         <div class="grid grid-cols-2 gap-2 pt-3 border-t border-border/50">
             {#if nextNewMoon}
                 <div>
-                    <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5 block">Next New</span>
+                    <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5 block">{m.obs_targetinfo_lunar_next_new()}</span>
                     <span class="text-xs font-mono text-copy-primary">{formatPhaseDate(nextNewMoon)}</span>
                 </div>
             {/if}
             
             {#if nextFullMoon}
                 <div class="text-right">
-                    <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5 block">Next Full</span>
+                    <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5 block">{m.obs_targetinfo_lunar_next_new()}</span>
                     <span class="text-xs font-mono text-copy-primary">{formatPhaseDate(nextFullMoon)}</span>
                 </div>
             {/if}

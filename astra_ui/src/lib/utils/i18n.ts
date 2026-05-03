@@ -33,3 +33,22 @@ export const translateObjectType = (type: string): string => {
   // Execute the message function if found, otherwise fallback
   return (lookup[type] || m.data_types_unknown)();
 };
+
+export const getMoonPhaseName = (
+    isNewMoon: boolean, 
+    isFullMoon: boolean, 
+    isWaxing: boolean, 
+    isCrescent: boolean, 
+    illuminationPct: number
+): string => {
+    if (isNewMoon) return m.data_moon_phase_new();
+    if (isFullMoon) return m.data_moon_phase_full();
+    
+    if (isWaxing) {
+        if (illuminationPct > 47 && illuminationPct < 53) return m.data_moon_phase_first_quarter();
+        return isCrescent ? m.data_moon_phase_waxing_crescent() : m.data_moon_phase_waxing_gibbous();
+    } else {
+        if (illuminationPct > 47 && illuminationPct < 53) return m.data_moon_phase_last_quarter();
+        return isCrescent ? m.data_moon_phase_waning_crescent() : m.data_moon_phase_waning_gibbous();
+    }
+};
