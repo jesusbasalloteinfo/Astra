@@ -131,8 +131,7 @@ class CatalogStore {
             
             const displayName = data.name;
             
-            // TODO: Change internacionalisation to use Paraglide
-            const res = { id, name: displayName, type: 'Planetary', mag: data.mag };
+            const res = { id, name: displayName, type: data.type, mag: data.mag };
 
             const possibleNames = [
                 data.name,

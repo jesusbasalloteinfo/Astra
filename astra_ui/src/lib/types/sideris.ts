@@ -32,6 +32,7 @@ export interface PlanetaryObjectMetadata {
     id: string;
     name: string;
     common_names: string[];
+    type: string;
     dist: number; // AU
     mag: number | null;
 }
@@ -76,6 +77,7 @@ export interface PlanetaryObjectDetails {
     id: string;
     name: string;
     common_names: string[];
+    type: string;
     description?: string;
     fun_fact?: string;
     visual_tip?: string;

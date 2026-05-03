@@ -5,6 +5,7 @@
     import { catalogStore } from '$lib/stores/skyCatalog.svelte';
     import { selectionStore } from '$lib/stores/activeSelection.svelte';
 	import { m } from '$lib/paraglide/messages';
+	import { translateObjectType } from '$lib/utils/i18n';
 
     let { open = $bindable(), onSelect } = $props<{ 
         open: boolean;
@@ -110,7 +111,7 @@
                             >
                                 <div class="flex items-center gap-4">
                                     <div class="p-2 rounded-lg {selectedIndex === i ? 'bg-accent text-white shadow-[0_0_10px_var(--color-accent-glow)]' : 'bg-surface text-copy-muted'}">
-                                        {#if result.type === 'Planetary'}
+                                        {#if result.type === 'planetary' || result.type === "moon"}
                                             <Globe size={16} />
                                         {:else}
                                             <Star size={16} />
@@ -118,7 +119,7 @@
                                     </div>
                                     <div class="text-left">
                                         <h4 class="text-sm font-bold {selectedIndex === i ? 'text-accent' : 'text-copy-primary'}">{result.name}</h4>
-                                        <p class="text-[10px] text-copy-muted uppercase tracking-widest">{result.type} · Mag: {result.mag ?? 'N/A'}</p>
+                                        <p class="text-[10px] text-copy-muted uppercase tracking-widest">{translateObjectType(result.type)} · Mag: {result.mag ?? 'N/A'}</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2 text-copy-muted {selectedIndex === i ? 'opacity-100' : 'opacity-0'} transition-opacity">

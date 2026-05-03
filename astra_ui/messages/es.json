@@ -303,8 +303,24 @@
   "obs_telescope_controller_active_telescope": "Telescopio activo",
   "obs_telescope_controller_active_camera": "Cámara activa",
 
+  "====================================== OBJECT DATA ======================================": "",
+
+  "data_types_planetary": "Planeta",
+  "data_types_moon": "Luna",
+  "data_types_star": "Estrella",
+  "data_types_galaxy": "Galaxia",
+  "data_types_open_cluster": "Cúmulo abierto",
+  "data_types_globular_cluster": "Cúmulo globular",
+  "data_types_galactic_cluster": "Cúmulo galáctico",
+  "data_types_nebula": "Nebulosa",
+  "data_types_molecular_cloud": "Nube molecular",
+  "data_types_planetary_nebula": "Nebulosa planetaria",
+  "data_types_supernova_remnant": "Remanente de supernova",
+  "data_types_asterism": "Asterismo",
+  "data_types_double_star": "Estrella doble",
+  "data_types_star_system": "Sistema estelar",
+  "data_types_unknown": "Desconocido",
+
   "obs_ai_title": "Astra AI"
-
-
 
 }

@@ -16,6 +16,7 @@
 	import RiseSetCard from './targetDetailsPanelComponents/RiseSetCard.svelte';
 	import InfoBlockCard from './targetDetailsPanelComponents/InfoBlockCard.svelte';
 	import PlanetInfoCard from './targetDetailsPanelComponents/PlanetInfoCard.svelte';
+	import { translateObjectType } from '$lib/utils/i18n';
 
     let { onFlyTo, onClear } = $props<{ 
         onFlyTo: (alt: number, az: number) => void;
@@ -29,7 +30,8 @@
     );
     let isSlewing = $state(false);
 
-    let imageLoadError = $state(false);
+    let imageLoadError = $state(false); // Error during image load
+    let imageLoaded = $state(false); // Image succesfuly loaded
 
     function formatTime(isoString: string | null | undefined) {
         if (!isoString) return '—';
@@ -44,18 +46,16 @@
         if (!id || !details || !dynamicData) return null;
 
         const isPlanet = selectionStore.targetType === 'planetary';
-        const type = isPlanet ? "Planetary" : (details as SiderealObjectDetails).type;
-
+        
         const imageUrl = getImageUrl(details, isPlanet);
         const { stats, ephemeris } = buildDynamicStats(details, dynamicData, isPlanet);
         const wikipediaUrl = getWikipediaUrl(details.wikipedia_qid);
 
 
-        console.error(isPlanet ? (details as PlanetaryObjectDetails).extra_details.type : null )
         return {
             id,
             name: details.name || id,
-            type: type.charAt(0).toUpperCase() + type.slice(1),
+            type: details.type,
             imageUrl,
             wikipediaUrl,
             stats, 
@@ -76,6 +76,7 @@
     $effect(() => {
         selectionStore.targetId;
         imageLoadError = false;
+        imageLoaded = false;
     });
 
     async function handleSlewAndTrack() {
@@ -117,7 +118,7 @@
                         <div class="h-4 w-20 bg-panel rounded animate-pulse"></div>
                     {:else if selectedInfo}
                         <h2 class="text-xl font-bold text-copy-primary leading-tight truncate" title={selectedInfo.name}>{selectedInfo.name}</h2>
-                        <p class="text-xs text-copy-muted mt-1 truncate">{selectedInfo.type}</p>
+                        <p class="text-xs text-copy-muted mt-1 truncate">{translateObjectType(selectedInfo.type)}</p>
                     {/if}
                 </div>
 
@@ -133,11 +134,17 @@
             <!-- --- Image --- -->
             {#if selectedInfo && selectedInfo.imageUrl && !imageLoadError}
                 <div class="aspect-16/10 w-full rounded-2xl border border-border/50 bg-panel/30 overflow-hidden relative shadow-inner group">
+                    {#if !imageLoaded}
+                        <div class="absolute inset-0 flex flex-col items-center justify-center" out:fade={{ duration: 300 }}>
+                            <Image size={28} class="text-copy-muted/40 animate-pulse" />
+                        </div>
+                    {/if}
+
                     <img 
                         src={selectedInfo.imageUrl} 
                         alt={selectedInfo.name}
-                        class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
-                        in:fade={{ duration: 400 }}
+                        class="w-full h-full object-cover rounded-2xl transition-all duration-700 group-hover:scale-105 {imageLoaded ? 'opacity-100' : 'opacity-0'}"
+                        onload={() => imageLoaded = true}
                         onerror={() => imageLoadError = true}
                     />
                 </div>
@@ -171,8 +178,7 @@
                         nextFullMoon={selectedInfo.extraDetails.next_full_moon}
                     />
                 {/if}
-                <!-- WIDGET 2: PLANETAS (Ejemplo: Elongación y Fase) -->
-                 {#if selectedInfo.extraDetails.type === 'planet'}
+                {#if selectedInfo.extraDetails.type === 'planet'}
                     <PlanetInfoCard 
                         id={selectedInfo.id}
                         illuminationPct={selectedInfo.extraDetails.illumination_pct}

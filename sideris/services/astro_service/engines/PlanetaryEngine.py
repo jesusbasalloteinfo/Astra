@@ -266,8 +266,13 @@ class PlanetaryEngine(BaseEngine):
         t_now = self._ts.from_datetime(utc_time)
 
         for obj in PlanetaryObject:
+            object_type="planetary"
             if obj == PlanetaryObject.EARTH:
                 continue
+            elif obj == PlanetaryObject.SUN:
+                object_type="star"
+            elif obj == PlanetaryObject.MOON:
+                object_type="moon"
             
             body = self._eph[obj.value]
 
@@ -281,6 +286,7 @@ class PlanetaryEngine(BaseEngine):
                 id=obj.name.lower(),
                 name=obj.name.capitalize(),
                 common_names=[obj.name.capitalize()],
+                type=object_type,
                 dist=round(distance.au, 6),
                 mag=magnitude
             )
@@ -330,8 +336,13 @@ class PlanetaryEngine(BaseEngine):
         """
         Calculate an object movement and metadata
         """
+        object_type="planetary"
         try:
             obj = PlanetaryObject[target_id.upper()]
+            if obj == PlanetaryObject.SUN:
+                object_type="star"
+            elif obj == PlanetaryObject.MOON:
+                object_type="moon"
         except KeyError:
             raise ValueError(f"Object {target_id} not found!")
 
@@ -374,6 +385,7 @@ class PlanetaryEngine(BaseEngine):
             id=obj.name.lower(),
             name=obj.name.capitalize(),
             common_names=[obj.name.capitalize()],
+            type=object_type,
             dist=round(distance.au, 6),
             mag=magnitude,
             ang_diameter=ang_diameter,

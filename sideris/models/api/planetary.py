@@ -34,6 +34,7 @@ class ObjectLightMetadata(BaseModel):
     id: str
     name: str
     common_names: List[str] = Field(default_factory=list)
+    type: Literal["planetary", "star", "moon"] = "planetary"
     dist: float # AU
     mag: Optional[float]
 
@@ -49,6 +50,7 @@ class PlanetaryObjectMetadata(BaseModel):
     id: str
     name: str
     common_names: List[str] = Field(default_factory=list)
+    type: Literal["planetary", "star", "moon"] = "planetary"
     description: Optional[str] = None
     fun_fact: Optional[str] = None
     visual_tip: Optional[str] = None
