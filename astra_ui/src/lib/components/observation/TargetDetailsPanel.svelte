@@ -77,6 +77,7 @@
         selectionStore.targetId;
         imageLoadError = false;
         imageLoaded = false;
+        isSlewing = false;
     });
 
     async function handleSlewAndTrack() {

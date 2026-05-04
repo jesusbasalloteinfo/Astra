@@ -326,6 +326,8 @@
 
   "obs_telescope_controller_title": "Control de Equipo",
   "obs_telescope_controller_center": "Centrar vista en equipo",
+  "obs_telescope_controller_abort": "Abortar movimiento",
+  "obs_telescope_controller_aborting": "Abortando...",
   "obs_telescope_controller_active_telescope": "Telescopio activo",
   "obs_telescope_controller_active_camera": "Cámara activa",
 

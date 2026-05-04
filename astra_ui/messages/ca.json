@@ -326,6 +326,8 @@
 
   "obs_telescope_controller_title": "Control d'Equip",
   "obs_telescope_controller_center": "Centrar vista a l'equip",
+  "obs_telescope_controller_abort": "Avorta el moviment",
+  "obs_telescope_controller_aborting": "Avortant...",
   "obs_telescope_controller_active_telescope": "Telescopi actiu",
   "obs_telescope_controller_active_camera": "Càmera activa",
 

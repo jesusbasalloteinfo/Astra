@@ -1,7 +1,8 @@
 <script lang="ts">
     import { deviceStore } from '$lib/stores/devices.svelte';
-    import { SatelliteDish, LoaderCircle, Crosshair, Telescope, Camera, ChevronDown } from 'lucide-svelte';
+    import { SatelliteDish, LoaderCircle, Crosshair, Telescope, Camera, ChevronDown, OctagonAlert } from 'lucide-svelte';
     import * as m from '$lib/paraglide/messages.js';
+	import { deviceAPI } from '$lib/api/devices';
 
     let { 
         onCenter = () => {},
@@ -18,6 +19,24 @@
     );
 
     const activeComps = $derived(deviceStore.activeComponents);
+
+    let isAborting = $state(false);
+
+    async function handleAbort() {
+        const activeId = deviceStore.effectiveActiveId;
+        const activeTelescope = deviceStore.activeComponents?.telescope;
+        
+        if (!activeId || !activeTelescope) return;
+
+        isAborting = true;
+        try {
+            await deviceAPI.abortTelescope(activeId, activeTelescope);
+        } catch (e) {
+            console.error("Error aborting telescope movement:", e);
+        } finally {
+            isAborting = false;
+        }
+    }
 </script>
 
 <div class="relative group pointer-events-auto">
@@ -61,6 +80,22 @@
                     <Crosshair size={14} class={canCenter ? 'text-accent' : ''} />
                     {m.obs_telescope_controller_center()}
                 </button>
+
+                {#if activeComps?.telescope}
+                    <button
+                        onclick={handleAbort}
+                        disabled={isAborting}
+                        class="flex items-center gap-2 px-2 py-2 rounded-lg text-xs transition-colors text-danger hover:bg-danger/10 hover:text-danger-hover cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group/abort"
+                    >
+                        {#if isAborting}
+                            <LoaderCircle size={14} class="animate-spin" />
+                            {m.obs_telescope_controller_aborting()}
+                        {:else}
+                            <OctagonAlert size={14} class="group-hover/abort:fill-danger/20 transition-colors" />
+                            {m.obs_telescope_controller_abort()}
+                        {/if}
+                    </button>
+                {/if}
 
                 {#if activeComps.telescope || activeComps.camera}
                     <div class="flex flex-col gap-1.5 px-2.5 py-2 bg-panel/30 rounded-xl border border-border/50">

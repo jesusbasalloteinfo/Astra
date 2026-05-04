@@ -325,6 +325,8 @@
 
   "obs_telescope_controller_title": "Equipment Control",
   "obs_telescope_controller_center": "Center view on equipment",
+  "obs_telescope_controller_abort": "Abort Movement",
+  "obs_telescope_controller_aborting": "Aborting...",
   "obs_telescope_controller_active_telescope": "Active telescope",
   "obs_telescope_controller_active_camera": "Active camera",
 
