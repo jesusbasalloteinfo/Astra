@@ -11,6 +11,7 @@ import { FOV_DEFAULT } from '../utils/const';
 import { skyEngine } from '$lib/stores/skyEngine.svelte';
 import { TargetReticle } from '../entities/TargetReticle';
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
+import { TelescopePointer } from '../entities/TelescopePointer';
 
 /**
  * SkyMap3DEngine
@@ -36,6 +37,7 @@ export class SkyMap3DEngine {
     private sidereal: Sidereal;
     private constellations: Constellations;
     private targetReticle:TargetReticle;
+    private telescopePointer: TelescopePointer;
 
     constructor(private container: HTMLDivElement, props: any) {
         // Initialize Scene & Renderer
@@ -58,7 +60,8 @@ export class SkyMap3DEngine {
             props.showConstellationLabels,
             props.useLatinConstellations
         );
-        this.targetReticle = new TargetReticle();   
+        this.targetReticle = new TargetReticle();  
+        this.telescopePointer = new TelescopePointer(); 
         
         // Initialize Controllers
         this.cameraCtrl = new CameraController(container);
@@ -76,6 +79,7 @@ export class SkyMap3DEngine {
         this.scene.add(this.planetary.group);
         this.scene.add(this.constellations.group);
         this.scene.add(this.targetReticle.sprite);
+        this.scene.add(this.telescopePointer.sprite);
 
         const applyRenderOrder = (obj: THREE.Object3D, order: number) => {
             obj.traverse((child) => {
@@ -89,20 +93,19 @@ export class SkyMap3DEngine {
         applyRenderOrder(this.planetary.group, 3);      // Fourth, planetary objects
         
         this.targetReticle.sprite.renderOrder = 4;
+        this.telescopePointer.sprite.renderOrder = 5;
 
         // Apply initial visual properties
         this.updateProps(props); 
 
         this.resizeObserver = new ResizeObserver((entries) => {
             for (const entry of entries) {
-                // Le pasamos el ancho y alto real del div al hacer resize
                 const { width, height } = entry.contentRect;
                 if (width > 0 && height > 0) {
                     this.onResize(width, height);
                 }
             }
         });
-        // Ponemos al observador a vigilar tu div contenedor
         this.resizeObserver.observe(this.container);
         this.animate();
     }
@@ -124,6 +127,7 @@ export class SkyMap3DEngine {
             this.sidereal.update(skyEngine.positions, zoomFactor);
             this.constellations.update(skyEngine.positions);
             this.targetReticle.update(skyEngine.positions);
+            this.telescopePointer.update();
         }
 
         // Update camera damping/controls and render the scene
@@ -198,9 +202,21 @@ export class SkyMap3DEngine {
             // In degrees
             const finalAz = isDegrees ? avgAzRad * (180 / Math.PI) : avgAzRad;
             
-            this.selectionCtrl.clearSelection();
+            this.clearSelection();
             
             this.cameraCtrl.flyTo(avgAlt, finalAz);
+        }
+    }
+
+    /**
+     * Sets the telescope pointer inside the sky map
+     */
+    setTelescopePosition(alt: number | null, az: number | null) {
+        console.warn("AAAA:", alt, az);
+        if (alt !== null && az !== null) {
+            this.telescopePointer.updatePosition(alt, az);
+        } else {
+            this.telescopePointer.hide();
         }
     }
 
@@ -209,6 +225,13 @@ export class SkyMap3DEngine {
      */
     selectObject(id: string) {
         this.selectionCtrl.selectById(id);
+    }
+
+    /**
+     * Clears the current selection and hides the reticle
+     */
+    clearSelection() {
+        this.selectionCtrl.clearSelection();
     }
 
     /**
@@ -231,6 +254,7 @@ export class SkyMap3DEngine {
         this.sidereal.dispose();
         this.constellations.dispose();
         this.targetReticle.dispose();
+        this.telescopePointer.dispose();
 
         this.resizeObserver.disconnect();
         

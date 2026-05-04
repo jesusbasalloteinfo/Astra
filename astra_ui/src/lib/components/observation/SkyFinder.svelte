@@ -1,10 +1,11 @@
-<!-- src/lib/components/simulator/SpotlightSearch.svelte -->
+<!-- src/lib/components/simulator/SkyFinder.svelte -->
 <script lang="ts">
     import { fade } from 'svelte/transition';
     import { Search, Star, Globe, ChevronRight } from 'lucide-svelte';
     import { catalogStore } from '$lib/stores/skyCatalog.svelte';
     import { selectionStore } from '$lib/stores/activeSelection.svelte';
 	import { m } from '$lib/paraglide/messages';
+	import { translateObjectType } from '$lib/utils/i18n';
 
     let { open = $bindable(), onSelect } = $props<{ 
         open: boolean;
@@ -21,9 +22,19 @@
         if (searchQuery) selectedIndex = 0;
     });
 
-    function selectObject(id: string) {
+    function selectObject(id: string, resultType: string) {
+        const safeId = id.toLowerCase();
         
-        selectionStore.targetId = id;
+        const isSolarSystem = 
+            resultType === 'planetary' || 
+            resultType === 'moon' || 
+            safeId === 'sun'
+        
+        const isSidereal = resultType !== 'constellation'
+            
+        const type = isSolarSystem ? 'planetary' : isSidereal ? 'sidereal': 'constellation';
+
+        if (type !== 'constellation')  selectionStore.select(id, type);
         
         if (onSelect) {
             onSelect(id);
@@ -35,7 +46,7 @@
 
     function handleKeydown(e: KeyboardEvent) {
         // Open
-        if ((e.metaKey || e.ctrlKey) && e.key === 'f') {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'f') {
             e.preventDefault();
             open = true;
             return;
@@ -54,7 +65,8 @@
             selectedIndex = Math.max(selectedIndex - 1, 0);
         } else if (e.key === 'Enter' && results.length > 0) {
             e.preventDefault();
-            selectObject(results[selectedIndex].id);
+            const result = results[selectedIndex];
+            selectObject(result.id, result.type);
         }
     }
 
@@ -101,7 +113,7 @@
                     <div class="p-2">
                         {#each results as result, i}
                             <button 
-                                onclick={() => selectObject(result.id)}
+                                onclick={() => selectObject(result.id, result.type)}
                                 onmouseover={() => selectedIndex = i}
                                 onfocus={() => selectedIndex = i}
                                 class="w-full flex items-center justify-between p-3 rounded-xl transition-all cursor-pointer border border-transparent
@@ -109,7 +121,7 @@
                             >
                                 <div class="flex items-center gap-4">
                                     <div class="p-2 rounded-lg {selectedIndex === i ? 'bg-accent text-white shadow-[0_0_10px_var(--color-accent-glow)]' : 'bg-surface text-copy-muted'}">
-                                        {#if result.type === 'Planetary'}
+                                        {#if result.type === 'planetary' || result.type === "moon"}
                                             <Globe size={16} />
                                         {:else}
                                             <Star size={16} />
@@ -117,7 +129,7 @@
                                     </div>
                                     <div class="text-left">
                                         <h4 class="text-sm font-bold {selectedIndex === i ? 'text-accent' : 'text-copy-primary'}">{result.name}</h4>
-                                        <p class="text-[10px] text-copy-muted uppercase tracking-widest">{result.type} · Mag: {result.mag ?? 'N/A'}</p>
+                                        <p class="text-[10px] text-copy-muted uppercase tracking-widest">{translateObjectType(result.type)} · Mag: {result.mag ?? 'N/A'}</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2 text-copy-muted {selectedIndex === i ? 'opacity-100' : 'opacity-0'} transition-opacity">

@@ -131,8 +131,7 @@ class CatalogStore {
             
             const displayName = data.name;
             
-            // TODO: Change internacionalisation to use Paraglide
-            const res = { id, name: displayName, type: 'Planetary', mag: data.mag };
+            const res = { id, name: displayName, type: data.type, mag: data.mag };
 
             const possibleNames = [
                 data.name,
@@ -169,7 +168,7 @@ class CatalogStore {
         // Constellation indexing
         for (const constel of this.constellations) {
             
-            const res = { id: constel.abbr, name: constel.name, type: 'Constellation', mag: null };
+            const res = { id: constel.abbr, name: constel.name, type: 'constellation', mag: null };
 
             const possibleNames = [
                 constel.name,
@@ -236,6 +235,15 @@ class CatalogStore {
         if (objId in this.planetaryData) return this.planetaryData[objId];
         return null;        
     }
+
+    /**
+     * Get a constellation name or in latin with an id
+     */
+    getConstellationName(abbr: string, latin:boolean=false): string | null {
+        const constellation = this.constellations.find(c => c.abbr === abbr);
+        return constellation && !latin ? constellation.name : latin && constellation?.latin ? constellation.latin : null;
+    }
+
 
     /**
      * Clears the cache and resets the store

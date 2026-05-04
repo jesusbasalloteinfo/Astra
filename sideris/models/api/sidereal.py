@@ -25,8 +25,15 @@ class SiderealObjectMetadata(BaseModel):
     name: str
     type: str # "star", "galaxy", "nebula", etc.
     common_names: List[str] = Field(default_factory=list)
+    description: Optional[str] = None
+    fun_fact: Optional[str] = None
+    visual_tip: Optional[str] = None
+    wikipedia_qid: Optional[str] = None
+
     catalog_names: List[str] = Field(default_factory=list)
     constellation: str
+    ra_j2000: float
+    dec_j2000: float
     mag: Optional[float] = None
     abs_mag: Optional[float] = None
     b_v: Optional[float] = None

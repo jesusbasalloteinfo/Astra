@@ -1,0 +1,89 @@
+{
+    "sun": {
+        "name": "Sol",
+        "description": "El Sol es el corazón de nuestro sistema solar y nuestra estrella más cercana, situada a unos 150 millones de km de distancia. Es tan masivo que contiene el 99,8 % de toda la materia de todo el sistema solar y tiene un diámetro más de 100 veces superior al de la Tierra. Su superficie visible hierve a temperaturas de 6.000 K, marcada ocasionalmente por manchas solares oscuras que aumentan y disminuyen en un ciclo rítmico de 11 años.",
+        "fun_fact": "Aunque la luz es lo más rápido del universo, tarda unos 8 minutos y 20 segundos en viajar desde el Sol hasta la Tierra. ¡Esto significa que si el Sol se apagara de repente, no lo sabríamos hasta pasados más de ocho minutos! Además, la energía producida en el núcleo del Sol puede tardar hasta 100.000 años solo en llegar a su superficie antes de salir disparada hacia nosotros.",
+        "visual_tip": "ADVERTENCIA: No mires nunca al Sol sin un filtro solar adecuado; hacerlo causará daños oculares permanentes. Cuando se observa con seguridad a través de un filtro solar profesional, se pueden ver estas manchas solares: tormentas magnéticas más grandes que nuestro planeta.",
+        "wikipedia_qid": "Q525"
+    },
+    "mercury": {
+        "name": "Mercurio",
+        "description": "Mercurio es el planeta más pequeño de nuestro sistema solar y el más cercano al Sol, orbitando a una distancia de unos 58 millones de km. Al estar tan cerca del resplandor solar, es difícil de ver, y aparece solo brevemente cerca del horizonte justo después de la puesta de sol o antes del amanecer. Es un mundo de extremos feroces: aunque es solo un poco más grande que la Luna de la Tierra (4.878 km de diámetro), es increíblemente denso. Sin una atmósfera que atrape el calor, su superficie oscila entre unos abrasadores 430 °C durante el día y unos gélidos -180 °C por la noche.",
+        "fun_fact": "Mercurio es un amante de la velocidad. ¡Gira tan rápido alrededor del Sol que un solo año dura solo 88 días terrestres, aunque rota tan despacio sobre sí mismo que un ciclo día-noche tarda 176 días terrestres!",
+        "visual_tip": "Para localizar este escurridizo planeta, mira cerca del horizonte durante el crepúsculo, ya sea justo después de la puesta de sol o antes del amanecer. Debido a su proximidad al Sol, Mercurio a menudo se pierde en su resplandor y solo se hace visible cuando el Sol está bajo el horizonte de forma segura.",
+        "wikipedia_qid": "Q308"
+    },
+    "venus": {
+        "name": "Venus",
+        "common_names": [
+            "El lucero del alba",
+            "El lucero de la tarde"
+        ],
+        "description": "Venus es el objeto más brillante del cielo nocturno después de la Luna, a menudo llamado el «lucero del alba» o el «lucero de la tarde». Aunque tiene un tamaño similar al de la Tierra, se esconde bajo una atmósfera espesa y tóxica que crea un efecto invernadero desbocado, convirtiéndolo en el planeta más caluroso de nuestro sistema solar. Sus densas nubes de ácido sulfúrico reflejan la luz solar de forma brillante, dándole una magnitud de -4,4; lo suficientemente brillante como para proyectar sombras en las condiciones adecuadas.",
+        "fun_fact": "Venus es un rebelde: gira al revés (de este a oeste) y tan despacio que su día dura más que su año. Tarda 225 días terrestres en orbitar el Sol, pero 243 días terrestres en completar una sola rotación.",
+        "visual_tip": "Debido a su posición interior en el sistema solar, Venus muestra fases cambiantes a través de un telescopio, de forma muy parecida a la Luna, dependiendo de su alineación con la Tierra. Para encontrarlo, busca la «estrella» más brillante en el cielo occidental poco después de la puesta de sol o en el cielo oriental justo antes del amanecer.",
+        "wikipedia_qid": "Q313"
+    },
+    "earth": {
+        "name": "Tierra",
+        "description": "La Tierra es el tercer planeta desde el Sol, orbitando a una distancia media de 150 millones de km. Es el único mundo conocido en el universo que alberga vida y el único con agua líquida cubriendo el 70 % de su superficie. Desde el espacio, brilla como una «canica azul» radiante debido a sus vastos océanos y a una atmósfera de nitrógeno y oxígeno que nos protege de la radiación solar y de los meteoritos.",
+        "fun_fact": "¡La Tierra es el planeta más denso de todo el sistema solar! Además, aunque pensamos en ella como una esfera perfecta, en realidad es un «esferoide oblato», lo que significa que es ligeramente más gruesa alrededor del ecuador debido a su rotación. Si estuvieras en el centro de la Tierra, estarías unos 21 kilómetros más cerca de los polos que si estuvieras en el ecuador.",
+        "visual_tip": "Para ver la forma redonda de la Tierra por ti mismo sin moverte del suelo, observa un eclipse lunar. La sombra oscura y curvada que atraviesa la Luna es, en realidad, la silueta de nuestro planeta. También puedes ser testigo de la rotación terrestre haciendo una foto de larga exposición del cielo nocturno; las estrellas parecerán «moverse» en trazos circulares alrededor de los polos celestes.",
+        "wikipedia_qid": "Q2"
+    },
+    "moon": {
+        "name": "Luna",
+        "description": "La Luna es nuestro único satélite natural y el objeto más brillante de nuestro cielo nocturno, situado a unos 384.400 km de distancia. Tiene un diámetro que es más de una cuarta parte del de la Tierra, lo que la hace inusualmente grande en comparación con su planeta padre. Su superficie es un vasto paisaje de antiguos cráteres de impacto, cordilleras y llanuras oscuras y planas llamadas «maria» (latín para «mares»), que se formaron por antiguas coladas de lava volcánica hace miles de millones de años.",
+        "fun_fact": "¡La Luna se aleja lentamente de nosotros a un ritmo de unos 3,8 centímetros por año, aproximadamente! Además, como la Luna está en «rotación síncrona» con la Tierra, gira exactamente a la misma velocidad a la que orbita, lo que significa que desde nuestro planeta solo vemos siempre un lado de su superficie.",
+        "visual_tip": "El mejor momento para observar la Luna no es cuando está llena, sino durante sus fases parciales (como la luna creciente o el cuarto creciente). Es entonces cuando la luz solar incide en la superficie en ángulo, proyectando largas sombras a lo largo de la línea del «terminador», la frontera entre el día y la noche. Estas sombras hacen que los cráteres y las montañas destaquen en 3D, revelando detalles increíbles que desaparecen durante la luna llena.",
+        "wikipedia_qid": "Q405"
+    },
+    "mars": {
+        "name": "Marte",
+        "common_names": [
+            "Planeta Rojo"
+        ],
+        "description": "Marte, conocido como el «Planeta Rojo» debido al hierro oxidado de su suelo, es un mundo desértico y frío que tiene aproximadamente la mitad del tamaño de la Tierra. Orbita alrededor del Sol a una distancia de unos 228 millones de km. Para los observadores, su característico resplandor naranja rojizo lo convierte en una visión impactante en el cielo nocturno. Este mundo accidentado es el hogar del Olympus Mons, el volcán más grande del sistema solar, que es tres veces más alto que el Everest.",
+        "fun_fact": "Marte tiene dos lunas diminutas e irregulares llamadas Fobos (Miedo) y Deimos (Terror). Aunque un día en Marte (un «sol») tiene casi la misma duración que un día terrestre, ¡tarda casi dos años terrestres (687 días) en dar una vuelta completa al Sol!",
+        "visual_tip": "Cada 26 meses, Marte llega a la oposición, lo que significa que se encuentra directamente en el lado opuesto al Sol desde nuestra perspectiva. Durante este tiempo, el planeta se ve en su punto más grande y brillante. Con un telescopio de tamaño medio, incluso se pueden ver sus casquetes polares de hielo blanco y las características oscuras de la superficie que antiguamente llevaron a los primeros astrónomos a imaginar canales antiguos.",
+        "wikipedia_qid": "Q111"
+    },
+    "jupiter": {
+        "name": "Júpiter",
+        "description": "Júpiter es el rey indiscutible de los planetas: un gigante gaseoso tan masivo que podría contener a todos los demás planetas del sistema solar juntos. Situado a unos 778 millones de km del Sol, es famoso por su Gran Mancha Roja, una tormenta que ha estado girando durante siglos. Aunque antes era lo suficientemente ancha como para albergar tres Tierras, este vórtex icónico se ha ido reduciendo y actualmente tiene aproximadamente el tamaño de la propia Tierra. A través de un telescopio, sus coloridas bandas de nubes y sus cuatro lunas más grandes (Ío, Europa, Ganimedes y Calisto) son una visión espectacular.",
+        "fun_fact": "¡Júpiter es el que gira más rápido de todo el sistema solar; un solo día dura menos de 10 horas! A fecha de 2026, los astrónomos han confirmado 115 lunas orbitando el planeta gigante, incluyendo Ganimedes, que es la luna más grande del sistema solar e incluso mayor que el planeta Mercurio.",
+        "visual_tip": "No necesitas un telescopio potente para sentirte como Galileo; unos simples prismáticos astronómicos revelarán las cuatro «lunas galileanas» como pequeños puntos brillantes a los lados del planeta. Si las observas durante unas horas o días, realmente puedes ver cómo cambian de posición mientras danzan alrededor de Júpiter, demostrando en tiempo real que están en órbita.",
+        "wikipedia_qid": "Q319"
+    },
+    "saturn": {
+        "name": "Saturno",
+        "common_names": [
+            "Planeta de los anillos"
+        ],
+        "description": "Saturno es el planeta más distante visible a simple vista y es considerado por muchos la joya del sistema solar. Situado a unos 1.400 millones de km del Sol, es un gigante gaseoso nueve veces más ancho que la Tierra. Su magnífico sistema de anillos, formado por miles de millones de fragmentos de hielo y roca, se extiende por miles de kilómetros pero es increíblemente delgado: tiene un promedio de entre 10 y 100 metros de espesor.",
+        "fun_fact": "¡Saturno es tan ligero para su tamaño que, si tuvieras una bañera lo suficientemente grande, el planeta flotaría en el agua! Además, es el vigente «Rey de las Lunas» de nuestro sistema solar con 285 lunas confirmadas. La más grande, Titán, es la única luna conocida que tiene una atmósfera densa y un cicle líquido completo; sin embargo, en lugar de agua, Titán tiene nubes, lluvia y vastos mares de metano y etano líquidos.",
+        "visual_tip": "Incluso un telescopi pequeño revelará los anillos de Saturno, pero su apariencia cambia con los años. Debido a la inclinación del planeta, a veces los anillos se ven «de canto» desde la perspectiva de la Tierra, lo que hace que parezcan una línea finísima o que, incluso, desaparezcan durante un corto periodo de tiempo antes de volver a inclinarse hacia nuestra vista.",
+        "wikipedia_qid": "Q193"
+    },
+    "uranus": {
+        "name": "Urano",
+        "description": "Urano es un mundo frío y de color cian situado a unos 2.900 millones de km del Sol. Fue el primer planeta descubierto con un telescopio y aparece como un pequeño disco de color azul-verde pálido debido al metano de su atmósfera. A diferencia de cualquier otro planeta, Urano está tan inclinado que realmente orbita al Sol de lado, como una pelota que rueda. Es un «gigante de hielo», formado principalmente por materiales helados densos y calientes (agua, metano y amoníaco) sobre un pequeño núcleo rocoso.",
+        "fun_fact": "Debido a su inclinación extrema, las estaciones en Urano son salvajes: ¡cada polo recibe 42 años de luz solar continua, seguidos de 42 años de oscuridad total! Además, aunque Saturno es el más famoso por ello, Urano tiene su propio conjunto de 13 anillos oscuros y estrechos, y 28 lunas con nombres de personajes de las obras de William Shakespeare y Alexander Pope.",
+        "visual_tip": "Encontrar Urano requiere cielos oscuros y un poco de paciencia. A simple vista está justo al límite de la visibilidad, apareciendo como una «estrella» tenue y fija. Con un telescopio, la clave es su color único: busca un disco pequeño de color turquesa pálido y sin detalles que no parpadea como las estrellas de su alrededor.",
+        "wikipedia_qid": "Q324"
+    },
+    "neptune": {
+        "name": "Neptuno",
+        "description": "Neptuno es el planeta principal más distante de nuestro sistema solar, situado a la increíble distancia de 4.500 millones de km del Sol. Aunque a menudo se le ha representado de un azul profundo, estudios recientes han confirmado que en realidad es de un cian pálido, con un color muy similar al de su vecino Urano. Como está tan lejos, es el único planeta de nuestro sistema completamente invisible a simple vista, y a través de un telescopio aparece como una pequeña perla distante.",
+        "fun_fact": "¡Neptuno es el mundo con más viento del sistema solar, con vientos supersónicos que superan los 2.000 km/h! Tarda 165 años terrestres en completar una sola órbita; de hecho, desde su descubrimiento en 1846, solo ha completado un único «año de Neptuno» (en 2011). También tiene 16 lunas conocidas, incluyendo la gélida Tritón, que orbita el planeta al revés.",
+        "visual_tip": "Para localizar a Neptuno, necesitarás un telescopio o unos prismáticos de gran potencia y un buen mapa estelar. Está tan lejos que parece una estrella tenue de color azul grisáceo. La mejor manera de identificarlo es seguir su lento movimiento respecto al fondo de estrellas fijas durante varias noches; es la única forma de estar seguro de haber encontrado la frontera más lejana del sistema solar.",
+        "wikipedia_qid": "Q332"
+    },
+    "pluto": {
+        "name": "Plutón",
+        "description": "Plutón es el residente más famoso del cinturón de Kuiper, una región de objetos helados más allá de Neptuno. Situado a casi 6.000 millones de km del Sol, fue considerado el noveno planeta hasta 2006, cuando fue reclasificado como planeta enano. A través de un telescopio es extremadamente tenue y aparece solo como un minúsculo punto de luz debido a su gran distancia y su pequeño tamaño (es incluso más pequeño que la Luna de la Tierra).",
+        "fun_fact": "Lejos de ser una roca muerta, Plutón tiene montañas gigantes hechas de hielo de agua y un glaciar masivo de nitrógeno en forma de corazón llamado Tombaugh Regio. ¡Hace tanto frío que el aire puede congelarse y caer al suelo en forma de nieve! Plutón tarda 248 años terrestres en orbitar el Sol, y su luna más grande, Caronte, es tan grande que ambos orbitan entre sí como un sistema de planeta enano doble.",
+        "visual_tip": "Ver Plutón es el «desafío definitivo» para los astrónomos aficionados. Necesitarás un telescopio grande (de al menos 20 o 25 centímetros de diámetro) y cielos extremadamente oscuros, lejos de las luces de la ciudad. Como se ve exactamente igual que una estrella muy tenue, la única forma de confirmar que lo has visto es tomar fotos o hacer dibujos durante varias noches para localizar la pequeña «estrella» que ha cambiado de posición.",
+        "wikipedia_qid": "Q339"
+    }
+}

@@ -184403,7 +184403,7 @@
             {
                 "id": "d_J0519060-693900",
                 "name": "NGC 1918",
-                "type": "supernova_remmant",
+                "type": "supernova_remnant",
                 "common_names": [],
                 "catalog_names": [
                     "NGC 1918"
@@ -186232,7 +186232,7 @@
             {
                 "id": "d_J0534317+220102",
                 "name": "Crab Nebula",
-                "type": "supernova_remmant",
+                "type": "supernova_remnant",
                 "common_names": [
                     "Crab",
                     "Crab Nebula",
@@ -186416,7 +186416,7 @@
             {
                 "id": "d_J0535240-673259",
                 "name": "NGC 2029",
-                "type": "supernova_remmant",
+                "type": "supernova_remnant",
                 "common_names": [],
                 "catalog_names": [
                     "NGC 2029"
@@ -186861,7 +186861,7 @@
             {
                 "id": "d_J0537360-690959",
                 "name": "30 Dor B",
-                "type": "supernova_remmant",
+                "type": "supernova_remnant",
                 "common_names": [
                     "30 Dor B"
                 ],
@@ -189498,7 +189498,7 @@
             {
                 "id": "d_J0616540+224659",
                 "name": "Jellyfish Nebula",
-                "type": "supernova_remmant",
+                "type": "supernova_remnant",
                 "common_names": [
                     "Gem A",
                     "Jellyfish Nebula"

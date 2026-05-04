@@ -1,5 +1,6 @@
 import asyncio
 from datetime import datetime
+import os
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from services.astro_service.astro_service import AstroService
@@ -68,6 +69,16 @@ async def get_ephemeris(
         raw_data=service.get_planetary_object(object_id, target_time, lat, lon, elev, ttl=120)
         lang_dict = get_lang_dict("planetary", lang)
 
+        base_dir = "static/planetary"
+        valid_extensions = [".jpg", ".png", ".jpeg", ".webp"]
+        
+        safe_obj_id = object_id.lower() 
+        raw_data.image_url = None
+        
+        for ext in valid_extensions:
+            if os.path.exists(f"{base_dir}/{safe_obj_id}{ext}"):
+                raw_data.image_url = f"/static/planetary/{safe_obj_id}{ext}"
+                break 
         
         return localise_object(raw_data, lang_dict)
     except ValueError as e:

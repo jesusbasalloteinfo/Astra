@@ -1,3 +1,4 @@
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 from contextlib import asynccontextmanager
 import inspect
@@ -76,5 +77,7 @@ def health():
 app.include_router(sidereal_catalog_router, prefix=API_BASE_PATH+"/sidereal", tags=["Sidereal Catalog"])
 app.include_router(planetary_catalog_router, prefix=API_BASE_PATH+"/planetary", tags=["Planetary Catalog"])
 app.include_router(api)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 if __name__=="__main__":
     uvicorn.run("sideris:app", host="127.0.0.1", port=8624, reload=True)

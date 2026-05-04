@@ -16,7 +16,7 @@
     const navItems = [
         { href: '/dashboard',           icon: LayoutDashboard, label: m.dash_side_home() },
         { href: '/dashboard/sessions',  icon: History,         label: m.dash_side_sessions() },
-        { href: '/dashboard/telescope', icon: Telescope,       label: m.dash_side_telescope() },
+        { href: '/dashboard/devices',   icon: Telescope,       label: m.dash_side_telescope() },
         { href: '/dashboard/location',  icon: MapPin,          label: m.dash_side_location() },
     ];
 

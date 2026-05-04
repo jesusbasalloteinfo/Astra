@@ -26,7 +26,7 @@ TAGS = {
     'nebula': ['Nb', 'HII', 'Cld', 'RNe'],
     'molecular_cloud': ['MCl'],
     'planetary_nebula': ['Pl', 'PN'],
-    'supernova_remmant': ['SNR', 'SR'],
+    'supernova_remnant': ['SNR', 'SR'],
     'asterism': ['Ast', 'As', 'As*', 'err'],
     'double_star': ['**', 'D*', 'D*?'],
     'star_system': ['Double', '***'],

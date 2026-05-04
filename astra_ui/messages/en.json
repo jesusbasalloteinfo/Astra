@@ -121,6 +121,49 @@
   "dash_main_locationwidget_gps": "Configure GPS",
 
 
+  "-------------------------------------- DASHBOARD DEVICES -------------------------------------- ": "",
+  "dash_device_active": "ACTIVE",
+  "dash_device_online": "Online",
+  "dash_device_offline": "Offline",
+  "dash_device_telescope": "Telescope",
+  "dash_device_camera": "Camera",
+  "dash_device_no_components": "The hardware is powered on, but no connected components were detected.",
+  "dash_device_fetching": "Querying hardware...",
+  "dash_device_loading": "Loading...",
+  "dash_device_not_connected": "Not connected",
+  "dash_device_list_title": "Devices",
+  "dash_device_list_empty": "No devices linked yet.",
+  "dash_device_add": "Add Device",
+  "dash_device_status_fetching": "Getting status...",
+  "dash_device_disconnected": "Device disconnected from server.",
+  "dash_device_action_pair": "Pair Device",
+  "dash_device_new_pairing": "New Pairing",
+  "dash_device_token_label": "Pairing Token",
+  "dash_device_token_placeholder": "Enter the 8-character token",
+  "dash_device_pair_error": "Invalid token or device already linked.",
+  "dash_device_pairing": "Pairing...",
+  "dash_device_pair": "Pair",
+  "dash_device_edit_title": "Edit device",
+  "dash_device_edit_name_label": "Device name",
+  "dash_device_edit_name_placeholder": "e.g. My Telescope",
+  "dash_device_edit_cancel": "Cancel",
+  "dash_device_edit_save": "Save",
+  "dash_device_del_title": "Unpair Device",
+  "dash_device_del_confirm": "Are you sure you want to unpair \"{name}\"?",
+  "dash_device_del_warning": "You will lose access until you re-enter a token.",
+  "dash_device_del_action": "Unpair",
+  "dash_device_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 device found",
+				"countPlural=other": "{count} devices found"
+			}
+    }
+  ],
+
+
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
   "dash_observ_new_session": "New session",
@@ -229,6 +272,44 @@
 
   "obs_targetinfo_title": "Target Object",
   "obs_targetinfo_center": "Center object",
+  "obs_targetinfo_slew": "Slew & track object",
+  "obs_targetinfo_slewing": "Slewing...",
+  "obs_targetinfo_alt": "Altitude",
+  "obs_targetinfo_az": "Azimuth",
+  "obs_targetinfo_mag": "Magnitude",
+  "obs_targetinfo_dist": "Distance",
+  "obs_targetinfo_const": "Constellation",
+  "obs_targetinfo_size": "Size",
+  "obs_targetinfo_sptype": "Spectral Type",
+  "obs_targetinfo_riseset_title": "Rise & Set",
+  "obs_targetinfo_riseset_rise": "Rise",
+  "obs_targetinfo_riseset_transit": "Transit",
+  "obs_targetinfo_riseset_set": "Set",
+  "obs_targetinfo_description": "Overview",
+  "obs_targetinfo_fun_fact": "Did you know?",
+  "obs_targetinfo_visual_tip": "Visual Tip",
+
+  "obs_targetinfo_lunar_title": "Lunar Phase",
+  "obs_targetinfo_lunar_age": [
+      {
+          "declarations": ["input count", "local countPlural = count: plural"],
+          "selectors": ["countPlural"],
+          "match": {
+              "countPlural=one": "1 day old",
+              "countPlural=other": "{count} days old"
+          }
+      }
+  ],
+  "obs_targetinfo_lunar_next_new": "Next New",
+  "obs_targetinfo_lunar_next_full": "Next Full",
+
+  "obs_targetinfo_planetary_title": "Planetary Data",
+  "obs_targetinfo_planetary_ilum": "Illumination",
+  "obs_targetinfo_planetary_elong": "Elongation",
+  "obs_targetinfo_planetary_conjunction": "Conjunction",
+  "obs_targetinfo_planetary_max_elong": "Max Elongation",
+  "obs_targetinfo_planetary_opposition": "Opposition",
+
 
   "obs_timecontrol_real": "Real",
   "obs_timecontrol_time_travel": "Time Travel",
@@ -241,6 +322,41 @@
   "obs_skyfinder_type": "Type an object to search",
   "obs_skyfinder_no_objects": "No objects found matching \"{query}\"",
   "obs_skyfinder_select": "Select",
+
+  "obs_telescope_controller_title": "Equipment Control",
+  "obs_telescope_controller_center": "Center view on equipment",
+  "obs_telescope_controller_abort": "Abort Movement",
+  "obs_telescope_controller_aborting": "Aborting...",
+  "obs_telescope_controller_active_telescope": "Active telescope",
+  "obs_telescope_controller_active_camera": "Active camera",
+
+  "====================================== OBJECT DATA ======================================": "",
+
+  "data_types_planetary": "Planet",
+  "data_types_moon": "Moon",
+  "data_types_star": "Star",
+  "data_types_galaxy": "Galaxy",
+  "data_types_constellation": "Constellation",
+  "data_types_open_cluster": "Open Cluster",
+  "data_types_globular_cluster": "Globular Cluster",
+  "data_types_galactic_cluster": "Galactic Cluster",
+  "data_types_nebula": "Nebula",
+  "data_types_molecular_cloud": "Molecular Cloud",
+  "data_types_planetary_nebula": "Planetary Nebula",
+  "data_types_supernova_remnant": "Supernova Remnant",
+  "data_types_asterism": "Asterism",
+  "data_types_double_star": "Double Star",
+  "data_types_star_system": "Star System",
+  "data_types_unknown": "Unknown",
+
+  "data_moon_phase_new": "New Moon",
+  "data_moon_phase_full": "Full Moon",
+  "data_moon_phase_first_quarter": "First Quarter",
+  "data_moon_phase_last_quarter": "Last Quarter",
+  "data_moon_phase_waxing_crescent": "Waxing Crescent",
+  "data_moon_phase_waxing_gibbous": "Waxing Gibbous",
+  "data_moon_phase_waning_crescent": "Waning Crescent",
+  "data_moon_phase_waning_gibbous": "Waning Gibbous",
 
   "obs_ai_title": "Astra AI"
 

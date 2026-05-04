@@ -1,3 +1,4 @@
+<!-- src/lib/components/location/LocationWidget.svelte -->
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
     import { locStore } from '$lib/stores/location.svelte';

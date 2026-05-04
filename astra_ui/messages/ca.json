@@ -122,6 +122,49 @@
   "dash_main_locationwidget_gps": "Configurar GPS",
 
 
+  "-------------------------------------- DASHBOARD DEVICES -------------------------------------- ": "",
+  "dash_device_active": "ACTIU",
+  "dash_device_online": "Online",
+  "dash_device_offline": "Offline",
+  "dash_device_telescope": "Telescopi",
+  "dash_device_camera": "Càmera",
+  "dash_device_no_components": "El dispositiu està encès, però no s'han detectat components connectats.",
+  "dash_device_fetching": "Consultant dispositiu...",
+  "dash_device_loading": "Carregant...",
+  "dash_device_not_connected": "No connectat",
+  "dash_device_edit_title": "Editar dispositiu",
+  "dash_device_edit_name_label": "Nom del dispositiu",
+  "dash_device_edit_name_placeholder": "p. ex. El meu Telescopi",
+  "dash_device_edit_cancel": "Cancel·lar",
+  "dash_device_edit_save": "Desar",
+  "dash_device_list_title": "Dispositius",
+  "dash_device_list_empty": "No has vinculat cap dispositiu encara.",
+  "dash_device_add": "Afegir Dispositiu",
+  "dash_device_status_fetching": "Obtenint estat...",
+  "dash_device_disconnected": "Dispositiu desconnectat del servidor.",
+  "dash_device_action_pair": "Vincular Dispositiu",
+  "dash_device_new_pairing": "Nova Vinculació",
+  "dash_device_token_label": "Token de Vinculació",
+  "dash_device_token_placeholder": "Introdueix el tòquen de 8 caràcters",
+  "dash_device_pair_error": "Tòken invàlid o dispositiu ja vinculat.",
+  "dash_device_pairing": "Vinculant...",
+  "dash_device_pair": "Vincular",
+  "dash_device_del_title": "Desvincular Dispositiu",
+  "dash_device_del_confirm": "Estàs segur que vols desvincular \"{name}\"?",
+  "dash_device_del_warning": "Perdràs l'accés fins que tornis a introduir un tòquen.",
+  "dash_device_del_action": "Desvincular",
+  "dash_device_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 dispositiu trobat",
+				"countPlural=other": "{count} dispositius trobats"
+			}
+    }
+  ],
+
+
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
   "dash_observ_new_session": "Nova sessió",
@@ -228,8 +271,46 @@
   ],
   "obs_sidedock_horizon": "Horitzó",
 
-  "obs_targetinfo_title": "Objecte Sel·leccionat",
+  "obs_targetinfo_title": "Objecte seleccionat",
   "obs_targetinfo_center": "Centrar objecte",
+  "obs_targetinfo_slew": "Anar i seguir l'objecte",
+  "obs_targetinfo_slewing": "Movent cap a l'objete...",
+  "obs_targetinfo_alt": "Altitud",
+  "obs_targetinfo_az": "Azimut",
+  "obs_targetinfo_mag": "Magnitud",
+  "obs_targetinfo_dist": "Distància",
+  "obs_targetinfo_const": "Constel·lació",
+  "obs_targetinfo_size": "Tamany",
+  "obs_targetinfo_sptype": "Tipus Espectral",
+  "obs_targetinfo_riseset_title": "Sortida i Posta",
+  "obs_targetinfo_riseset_rise": "Sortida",
+  "obs_targetinfo_riseset_transit": "Trànsit",
+  "obs_targetinfo_riseset_set": "Posta",
+  "obs_targetinfo_description": "Informació",
+  "obs_targetinfo_fun_fact": "Sabies que...?",
+  "obs_targetinfo_visual_tip": "Consell visual",
+
+  "obs_targetinfo_lunar_title": "Fase Lunar",
+  "obs_targetinfo_lunar_age": [
+      {
+          "declarations": ["input count", "local countPlural = count: plural"],
+          "selectors": ["countPlural"],
+          "match": {
+              "countPlural=one": "1 dia",
+              "countPlural=other": "{count} dies"
+          }
+      }
+  ],
+  "obs_targetinfo_lunar_next_new": "Següent Nova",
+  "obs_targetinfo_lunar_next_full": "Següent Plena",
+
+  "obs_targetinfo_planetary_title": "Dades Planetaries",
+  "obs_targetinfo_planetary_ilum": "Il·luminació",
+  "obs_targetinfo_planetary_elong": "Elongació",
+  "obs_targetinfo_planetary_conjunction": "Conjunció",
+  "obs_targetinfo_planetary_max_elong": "Max Elongació",
+  "obs_targetinfo_planetary_opposition": "Oposició",
+
 
   "obs_timecontrol_real": "Real",
   "obs_timecontrol_time_travel": "Viatge temporal",
@@ -242,6 +323,41 @@
   "obs_skyfinder_type": "Escriu un objecte per a buscar",
   "obs_skyfinder_no_objects": "Cap objecte coincideix amb \"{query}\"",
   "obs_skyfinder_select": "Seleccionar",
+
+  "obs_telescope_controller_title": "Control d'Equip",
+  "obs_telescope_controller_center": "Centrar vista a l'equip",
+  "obs_telescope_controller_abort": "Avorta el moviment",
+  "obs_telescope_controller_aborting": "Avortant...",
+  "obs_telescope_controller_active_telescope": "Telescopi actiu",
+  "obs_telescope_controller_active_camera": "Càmera activa",
+
+  "====================================== OBJECT DATA ======================================": "",
+
+  "data_types_planetary": "Planeta",
+  "data_types_moon": "Lluna",
+  "data_types_star": "Estrella",
+  "data_types_galaxy": "Galàxia",
+  "data_types_constellation": "Constel·lació",
+  "data_types_open_cluster": "Cúmul obert",
+  "data_types_globular_cluster": "Cúmul globular",
+  "data_types_galactic_cluster": "Cúmul galàctic",
+  "data_types_nebula": "Nebulosa",
+  "data_types_molecular_cloud": "Núvol molecular",
+  "data_types_planetary_nebula": "Nebulosa planetària",
+  "data_types_supernova_remnant": "Restes de supernova",
+  "data_types_asterism": "Asterisme",
+  "data_types_double_star": "Estrella doble",
+  "data_types_star_system": "Sistema estel·lar",
+  "data_types_unknown": "Desconegut",
+
+  "data_moon_phase_new": "Lluna Nova",
+  "data_moon_phase_full": "Lluna Plena",
+  "data_moon_phase_first_quarter": "Quart Creixent",
+  "data_moon_phase_last_quarter": "Quart Minvant",
+  "data_moon_phase_waxing_crescent": "Luna Creixent",
+  "data_moon_phase_waxing_gibbous": "Gibosa Creixent",
+  "data_moon_phase_waning_crescent": "Lluna Minvant",
+  "data_moon_phase_waning_gibbous": "Gibosa Minvant",
 
   "obs_ai_title": "Astra AI"
 

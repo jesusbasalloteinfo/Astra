@@ -25,10 +25,10 @@ class IndiTaskAPI(IndiAPI):
             cls._instance._initialized = False
         return cls._instance
 
-    def __init__(self, host="localhost", port=7624):
+    def __init__(self, host="localhost", port=7624, location:tuple[float, float]=(0,0), time:Clock=Clock()):
         if self._initialized: return 
 
-        super().__init__(host, port)
+        super().__init__(host, port, location, time)
         
         self.active_tasks: dict[str, asyncio.Task] = {}
         self.category_locks: dict[str, str] = {}
@@ -37,6 +37,7 @@ class IndiTaskAPI(IndiAPI):
             "slew": self._handle_slew_cmd,
             "abort": self._handle_abort_cmd,
             "get_devices": self._handle_get_devices,
+            "telescope_location": self._handle_telescope_location,
         }
         
         self._initialized = True
@@ -110,6 +111,10 @@ class IndiTaskAPI(IndiAPI):
     async def _handle_get_devices(self, payload):
         """Handles a GetDevicesComand to the API method"""
         return await self.get_devices()
+    
+    async def _handle_telescope_location(self, payload: GetTelescopeLocationCommand):
+        """Handles a GetTelescopeLocationComand to the API method"""
+        return await self.position_telescope(telescope_name=payload.device)
 
     async def _handle_slew_cmd(self, payload):
         """Handles a SlewCommand to the API method"""

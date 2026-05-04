@@ -16,7 +16,7 @@ class IndiAPI:
     Class with state management and high-level methods to control the INDI devices
     """
 
-    def __init__(self, host="localhost", port=7624):
+    def __init__(self, host="localhost", port=7624, location:tuple[float, float]=(0,0), time:Clock=Clock()):
         
         self._observers = []
 
@@ -26,8 +26,8 @@ class IndiAPI:
             context_provider=self._get_context_logic,
             event_callback=self._notify_observers
         )
-        self._location:tuple[float, float]=(0,0)
-        self._time:Clock=Clock()
+        self._location:tuple[float, float]=location
+        self._time:Clock=time
 
 
     def _get_context_logic(self) -> tuple[tuple, callable]:

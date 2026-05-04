@@ -8,15 +8,19 @@
     import { catalogStore } from '$lib/stores/skyCatalog.svelte';
     import { timeEngine } from '$lib/stores/timeEngine.svelte';
     import { themeState } from '$lib/themes/themes.svelte';
-	import TelescopePill from '$lib/components/observation/TelescopePill.svelte';
 	import SideDock from '$lib/components/observation/SideDock.svelte';
 	import SkyFinder from '$lib/components/observation/SkyFinder.svelte';
-	import TargetInfo from '$lib/components/observation/TargetInfo.svelte';
+	import TargetDetailsPanel from '$lib/components/observation/TargetDetailsPanel.svelte';
 	import Chat from '$lib/components/observationAssistant/Chat.svelte';
 	import { activeObs } from '$lib/stores/activeObservation.svelte';
+    import { deviceStore } from '$lib/stores/devices.svelte';
+
+	import TelescopeController from '$lib/components/observation/TelescopeController.svelte';
+	import { deviceAPI } from '$lib/api/devices';
 
     // So we can call fly whenever we want
     let skyMap = $state<ReturnType<typeof SkyMap3D>>();
+    let telescopePos = $state<{alt: number, az: number} | null>(null);
 
     // Sky settings
     let showConstellations = $state(true);
@@ -61,9 +65,42 @@
         };
     });
 
+    // --- Real Time telescope ---
+    let posInterval: ReturnType<typeof setInterval>;
+
+    async function pollTelescopePosition() {
+        const activeId = deviceStore.effectiveActiveId;
+        const activeTelescope = deviceStore.activeComponents?.telescope;
+        
+        const isOnline = deviceStore.activeDetails?.is_online ?? deviceStore.activeBase?.is_online ?? false;
+
+        if (activeId && activeTelescope && isOnline) {
+            try {
+                const pos = await deviceAPI.getTelescopePos(activeId, activeTelescope)
+                if (pos && pos.horizontal) {
+                    skyMap?.updateTelescopePosition(pos.horizontal.alt, pos.horizontal.az);
+                    telescopePos = { alt: pos.horizontal.alt, az: pos.horizontal.az };
+                    return;
+                }
+            } catch (e) {
+                console.error("Error trying to ge telescope position:", e);
+            }
+        }
+        // Else hide the telescope pointer
+        telescopePos = null;
+        skyMap?.updateTelescopePosition(null, null);
+    }
+    function centerOnTelescope() {
+        if (telescopePos) {
+            skyMap?.flyTo(telescopePos.alt, telescopePos.az);
+        }
+    }
+
     onMount(() => {
+        posInterval = setInterval(pollTelescopePosition, 1000);
         return () => {
             if (!timeEngine.isLive) timeEngine.setLive(true);
+            if (posInterval) clearInterval(posInterval);
         };
     });
 </script>
@@ -97,9 +134,12 @@
         {/if}
     </div>
 
-    <!-- Telescope status -->
+    <!-- Telescope control -->
     <div class="absolute top-6 left-5 z-10 pointer-events-auto">
-        <TelescopePill/>
+        <TelescopeController
+            canCenter={telescopePos !== null} 
+            onCenter={centerOnTelescope} 
+        />
     </div>
 
     <!-- Options dock -->
@@ -117,7 +157,10 @@
     <!-- Target info -->
     <div class="absolute top-6 right-6 z-10 pointer-events-none">
         {#if !chatOpen}
-            <TargetInfo onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} />
+            <TargetDetailsPanel 
+                onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} 
+                onClear={() => skyMap?.clearSelection()}
+            />
         {/if}
     </div>
 

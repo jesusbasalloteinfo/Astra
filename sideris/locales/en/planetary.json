@@ -1,0 +1,87 @@
+{
+    "sun": {
+        "name": "Sun",
+        "description": "The Sun is the heart of our solar system and our closest star, located about 150 million km (93 million miles) away. It is so massive that it contains 99.8% of all the matter in the entire solar system and is over 100 times the diameter of Earth. Its visible surface seethes at temperatures of 6,000 K, occasionally marked by dark sunspots that increase and decrease in a rhythmic 11-year cycle.",
+        "fun_fact": "Even though light is the fastest thing in the universe, it takes about 8 minutes and 20 seconds to travel from the Sun to Earth. This means if the Sun were to suddenly go out, we wouldn't know it for over eight minutes! Also, the energy produced in the Sun's core can take up to 100,000 years just to reach its surface before it can zoom toward us.",
+        "visual_tip": "WARNING: Never look at the Sun without a proper solar filter; doing so will cause permanent eye damage. When viewed safely through a professional solar filter, you can witness these sunspots—magnetic storms larger than our planet.",
+        "wikipedia_qid": "Q525"
+    },
+    "mercury": {
+        "name": "Mercury",
+        "description": "Mercury is the smallest planet in our solar system and the closest to the Sun, orbiting at a distance of about 58 million km (36 million miles). Because it is so close to the solar glare, it is elusive to observers, appearing only briefly near the horizon just after sunset or before sunrise. It is a world of fierce extremes: while it is only slightly larger than Earth's Moon (4,878 km across), it is incredibly dense. With no atmosphere to trap heat, its surface swings from a baking 430°C (800°F) during the day to a freezing -180°C (-290°F) at night.",
+        "fun_fact": "Mercury is a speed demon. It zips around the Sun so fast that a single year lasts only 88 Earth days, though it rotates so slowly that one day-night cycle takes 176 Earth days!",
+        "visual_tip": "To spot this elusive planet, look near the horizon during twilight—either just after sunset or before sunrise. Because of its proximity to the Sun, Mercury is often lost in the glare and only becomes visible when the Sun is safely below the horizon.",
+        "wikipedia_qid": "Q308"
+    },
+    "venus": {
+        "name": "Venus",
+        "description": "Venus is the brightest object in the night sky after the Moon, often called the \"Morning Star\" or \"Evening Star.\" While it is similar in size to Earth, it is hidden beneath a thick, toxic atmosphere that creates a runaway greenhouse effect, making it the hottest planet in our solar system. Its dense clouds of sulfuric acid reflect sunlight brilliantly, giving it a magnitude of -4.4—bright enough to cast shadows under the right conditions.",
+        "fun_fact": "Venus is a rebel—it rotates backwards (East to West) and so slowly that its day lasts longer than its year! It takes 225 Earth days to orbit the Sun, but 243 Earth days to complete just one single rotation.",
+        "visual_tip": "Due to its inner position in the solar system, Venus reveals changing phases through a telescope, much like the Moon, depending on its alignment with Earth. To find it, look for the brightest \"star\" in the western sky shortly after sunset or in the eastern sky just before dawn.",
+        "wikipedia_qid": "Q313"
+    },
+    "earth": {
+        "name": "Earth",
+        "description": "Earth is the third planet from the Sun, orbiting at an average distance of 150 million km (93 million miles). It is the only known world in the universe to harbor life and the only one with liquid water covering 70% of its surface. From space, it shines as a brilliant \"Blue Marble\" due to its vast oceans and nitrogen-oxygen atmosphere that protects us from solar radiation and meteorites.",
+        "fun_fact": "Earth is the densest planet in the entire solar system! Also, while we think of it as a perfect sphere, it's actually an \"oblate spheroid,\" meaning it's slightly thicker around the equator due to its rotation. If you were standing at the center of the Earth, you would be about 21 kilometers (13 miles) closer to the poles than you would be if you stood on the equator.",
+        "visual_tip": "To see Earth's round shape for yourself without leaving the ground, watch a lunar eclipse. The dark, curved shadow falling across the Moon is actually the silhouette of our planet. You can also witness Earth's rotation by taking a long-exposure photo of the night sky; the stars will appear to \"move\" in circular trails around the celestial poles.",
+        "wikipedia_qid": "Q2"
+    },
+    "moon": {
+        "name": "Moon",
+        "description": "The Moon is our only natural satellite and the brightest object in our night sky, located about 384,400 km (238,855 miles) away. It is more than one-quarter the diameter of Earth, making it unusually large compared to its parent planet. Its surface is a vast landscape of ancient impact craters, mountain ranges, and dark, flat plains called \"maria\" (Latin for \"seas\"), which were formed by ancient volcanic lava flows billions of years ago.",
+        "fun_fact": "The Moon is slowly drifting away from us at a rate of about 3.8 centimeters (1.5 inches) per year—roughly! Also, because the Moon is \"tidally locked\" to Earth, it rotates at the exact same speed it orbits, meaning we only ever see one side of its surface from our planet.",
+        "visual_tip": "The best time to view the Moon is not when it's full, but during its partial phases (like a crescent or quarter moon). This is when sunlight hits the surface at an angle, casting long shadows along the \"terminator\" line—the boundary between day and night. These shadows make the craters and mountains pop in 3D, revealing incredible detail that disappears during a full moon.",
+        "wikipedia_qid": "Q405"
+    },
+    "mars": {
+        "name": "Mars",
+        "common_names": [
+            "Red planet"
+        ],
+        "description": "Mars, known as the \"Red Planet\" due to the rusted iron in its soil, is a cold desert world about half the size of Earth. It orbits the Sun at a distance of roughly 228 million km (142 million miles). For observers, its distinct orange-red glow makes it a striking sight in the night sky. This rugged world is home to Olympus Mons, the largest volcano in the solar system, which stands three times taller than Mount Everest.",
+        "fun_fact": "Mars has two tiny, lopsided moons named Phobos (Fear) and Deimos (Terror). Even though a day on Mars (a \"sol\") is nearly the same length as an Earth day, it takes almost two Earth years (687 days) to complete one trip around the Sun!",
+        "visual_tip": "Every 26 months, Mars reaches opposition, meaning it is directly opposite the Sun from our perspective. During this time, the planet appears at its biggest and brightest. Through a mid-sized telescope, you can even spot its white polar ice caps and dark surface features that once led early astronomers to imagine ancient canals.",
+        "wikipedia_qid": "Q111"
+    },
+    "jupiter": {
+        "name": "Jupiter",
+        "description": "Jupiter is the undisputed king of the planets—a gas giant so massive that it could contain all the other planets in the solar system combined. Located about 778 million km (484 million miles) from the Sun, it is famous for its Great Red Spot, a storm that has been swirling for centuries. While once wide enough to fit three Earths, this iconic vortex has been shrinking and is currently about the size of Earth itself. Through a telescope, its colorful cloud bands and its four largest moons—Io, Europa, Ganymede, and Callisto—are a spectacular sight",
+        "fun_fact": "Jupiter is the fastest spinner in the solar system; a single day lasts less than 10 hours! As of 2026, astronomers have confirmed 115 moons orbiting the giant planet, including Ganymede, which is the largest moon in the solar system and even bigger than the planet Mercury.",
+        "visual_tip": "You don't need a powerful telescope to feel like Galileo; a simple pair of astronomy binoculars will reveal the four \"Galilean moons\" as tiny bright dots flanking the planet. If you watch them over several hours or days, you can actually see them changing positions as they dance around Jupiter, proving in real-time that they are in orbit",
+        "wikipedia_qid": "Q319"
+    
+    },
+    "saturn": {
+        "name": "Saturn",
+        "common_names": [
+            "Ringed planet"
+        ],
+        "description": "Saturn is the most distant planet visible to the naked eye and is widely considered the jewel of the solar system. Located about 1.4 billion km (886 million miles) from the Sun, it is a gas giant nine times wider than Earth. Its magnificent ring system, made of billions of chunks of ice and rock, spans thousands of kilometers but is incredibly thin—averaging only about 10 to 100 meters in thickness.",
+        "fun_fact": "Saturn is so light for its size that if you had a bathtub big enough, the planet would float in water! Also, it is the reigning \"Moon King\" of our solar system with 285 confirmed moons. Its largest, Titan, is the only moon known to have a thick atmosphere and a complete liquid cycle; however, instead of water, Titan has clouds, rain, and vast seas of liquid methane and ethane.",
+        "visual_tip": "Even a small telescope will reveal Saturn's rings, but their appearance changes over the years. Because of the planet's tilt, the rings occasionally appear \"edge-on\" from Earth's perspective, making them look like a razor-thin line or even causing them to disappear for a short time before they tilt back into view.",
+        "wikipedia_qid": "Q193"
+    },
+    "uranus": {
+        "name": "Uranus",
+        "description": "Uranus is a cold, cyan-colored world located about 2.9 billion km (1.8 billion miles) from the Sun. It was the first planet discovered with a telescope and appears as a small, pale blue-green disk due to the methane in its atmosphere. Unlike any other planet, Uranus is tilted so far that it actually orbits the Sun on its side, like a rolling ball. It is an \"Ice Giant,\" made mostly of hot, dense icy materials—water, methane, and ammonia—above a small rocky core.",
+        "fun_fact": "Because of its extreme tilt, seasons on Uranus are wild—each pole gets 42 years of continuous sunlight, followed by 42 years of total darkness! Also, although Saturn is famous for them, Uranus has its own set of 13 dark, narrow rings and 28 moons named after characters from the works of William Shakespeare and Alexander Pope.",
+        "visual_tip": "Finding Uranus requires dark skies and a bit of patience. To the naked eye, it is just at the limit of visibility, appearing as a faint, steady \"star.\" Through a telescope, the giveaway is its unique color: look for a tiny, featureless pale-turquoise disk that doesn't twinkle like the stars around it.",
+        "wikipedia_qid": "Q324"
+    },
+    "neptune": {
+        "name": "Neptune",
+        "description": "Neptune is the most distant major planet in our solar system, located a staggering 4.5 billion km (2.8 billion miles) from the Sun. While often pictured as deep blue, recent studies have confirmed that it is actually a pale cyan, very similar in color to its neighbor Uranus. Because it is so far away, it is the only planet in our system that is completely invisible to the naked eye, appearing through a telescope as a tiny, distant pearl.",
+        "fun_fact": "Neptune is the windiest world in the solar system, with supersonic winds reaching over 2,000 km/h (1,200 mph)! It takes 165 Earth years to complete just one orbit; in fact, since its discovery in 1846, it has only finished one single \"Neptune year\" (back in 2011). It also has 16 known moons, including the freezing Triton, which orbits the planet backwards.",
+        "visual_tip": "To spot Neptune, you will need a telescope or high-powered binoculars and a good star map. It is so far away that it looks like a faint, bluish-grey star. The best way to identify it is to track its slow movement against the background of fixed stars over several nights—it is the only way to be sure you have found the solar system's most distant frontier.",
+        "wikipedia_qid": "Q332"
+    },
+    "pluto": {
+        "name": "Pluto",
+        "description": "Pluto is the most famous resident of the Kuiper Belt, a region of icy objects beyond Neptune. Located nearly 6 billion km (3.7 billion miles) from the Sun, it was considered the ninth planet until 2006, when it was reclassified as a dwarf planet. Through a telescope, it is extremely faint, appearing only as a tiny pinpoint of light due to its vast distance and small size—it is even smaller than Earth's Moon.",
+        "fun_fact": "Far from being a dead rock, Pluto has giant mountains made of water ice and a massive, heart-shaped glacier made of nitrogen called Tombaugh Regio. It is so cold there that the air can freeze and fall to the ground as snow! It takes Pluto 248 Earth years to orbit the Sun, and its largest moon, Charon, is so big that the two actually orbit each other like a double dwarf planet system.",
+        "visual_tip": "Seeing Pluto is the \"ultimate challenge\" for amateur astronomers. You will need a large telescope (at least 20 to 25 centimetres or 8 to 10 inches in diameter) and extremely dark skies away from city lights. Because it looks exactly like a very faint star, the only way to confirm you've seen it is to take photos or make sketches over several nights to spot the tiny \"star\" that has changed its position.",
+        "wikipedia_qid": "Q339"
+    }
+
+}

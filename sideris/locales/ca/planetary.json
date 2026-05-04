@@ -1,0 +1,89 @@
+{
+    "sun": {
+        "name": "Sol",
+        "description": "El Sol és el cor del nostre sistema solar i la nostra estrella més propera, situada a uns 150 milions de km de distància. És tan massiu que conté el 99,8% de tota la matèria de tot el sistema solar i té un diàmetre més de 100 vegades superior al de la Terra. La seva superfície visible bull a temperatures de 6.000 K, marcada ocasionalment per taques solars fosques que augmenten i disminueixen en un cicle rítmic d'11 anys.",
+        "fun_fact": "Tot i que la llum és la cosa més ràpida de l'univers, triga uns 8 minuts i 20 segons a viatjar des del Sol fins a la Terra. Això vol dir que si el Sol s'apagués de sobte, no ho sabríem fins al cap de més de vuit minuts! A més, l'energia produïda al nucli del Sol pot trigar fins a 100.000 anys només a arribar a la seva superfície abans de sortir disparada cap a nosaltres.",
+        "visual_tip": "ADVERTÈNCIA: No miris mai el Sol sense un filtre solar adequat; fer-ho causarà danys oculars permanents. Quan es mira amb seguretat a través d'un filtre solar professional, es poden observar aquestes taques solars: tempestes magnètiques més grans que el nostre planeta.",
+        "wikipedia_qid": "Q525"
+    },
+    "mercury": {
+        "name": "Mercuri",
+        "description": "Mercuri és el planeta més petit del nostre sistema solar i el més proper al Sol, orbitant a una distància d'uns 58 milions de km. Com que està tan a prop de la resplendor solar, és difícil de veure, i apareix només breument a prop de l'horitzó just després de la posta de sol o abans de la sortida. És un món d'extrems ferotges: tot i que és només una mica més gran que la Lluna de la Terra (4.878 km de diàmetre), és increïblement dens. Sense atmosfera que atrapi la calor, la seva superfície oscil·la entre uns abrasadors 430 °C durant el dia i uns gèlids -180 °C a la nit.",
+        "fun_fact": "Mercuri és un amant de la velocitat. Gira tan ràpid al voltant del Sol que un sol any dura només 88 dies terrestres, tot i que gira tan lentament sobre si mateix que un cicle dia-nit triga 176 dies terrestres!",
+        "visual_tip": "Per localitzar aquest planeta esquiu, mira a prop de l'horitzó durant el crepuscle, ja sigui just després de la posta de sol o abans de la sortida. A causa de la seva proximitat al Sol, Mercuri sovint es perd en la seva resplendor i només es fa visible quan el Sol està sota l'horitzó de forma segura.",
+        "wikipedia_qid": "Q308"
+    },
+    "venus": {
+        "name": "Venus",
+        "common_names": [
+            "L'estel del matí",
+            "L'estel de la tarda"
+        ],
+        "description": "Venus és l'objecte més brillant del cel nocturn després de la Lluna, sovint anomenat «l'estel del matí» o «l'estel de la tarda». Tot i que té una mida similar a la de la Terra, s'amaga sota una atmosfera espessa i tòxica que crea un efecte hivernacle desbocat, convertint-lo en el planeta més calent del nostre sistema solar. Els seus núvols densos d'àcid sulfúric reflecteixen la llum solar de manera brillant, donant-li una magnitud de -4,4, prou brillant com per projectar ombres en les condicions adequades.",
+        "fun_fact": "Venus és un rebel: gira al revés (d'est a oest) i tan lentament que el seu dia dura més que el seu any! Triga 225 dies terrestres a orbitar el Sol, però 243 dies terrestres a completar una sola rotació.",
+        "visual_tip": "A causa de la seva posició interior al sistema solar, Venus mostra fases canviants a través d'un telescopi, de manera molt semblant a la Lluna, depenent de la seva alineació amb la Terra. Per trobar-lo, busca l'«estrella» més brillant al cel occidental poc després de la posta de sol o al cel oriental just abans de l'alba.",
+        "wikipedia_qid": "Q313"
+    },
+    "earth": {
+        "name": "Terra",
+        "description": "La Terra és el tercer planeta des del Sol, orbitant a una distància mitjana de 150 milions de km. És l'únic món conegut a l'univers que acull vida i l'únic amb aigua líquida cobrint el 70% de la seva superfície. Des de l'espai, brilla com una «canica blava» radiant a causa dels seus vastos oceans i d'una atmosfera de nitrogen i oxigen que ens protegeix de la radiació solar i dels meteorits.",
+        "fun_fact": "La Terra és el planeta més dens de tot el sistema solar! A més, tot i que pensem que és una esfera perfecta, en realitat és un «esferoide oblat», la qual cosa significa que és lleugerament més gruixuda al voltant de l'equador a causa de la seva rotació. Si estiguessis al centre de la Terra, estaries uns 21 quilòmetres més a prop dels pols que si estiguessis a l'equador.",
+        "visual_tip": "Per veure la forma rodona de la Terra per tu mateix sense moure't de terra ferma, observa un eclipsi lunar. L'ombra fosca i corbada que travessa la Lluna és, en realitat, la silueta del nostre planeta. També pots ser testimoni de la rotació terrestre fent una foto de llarga exposició del cel nocturn; les estrelles semblaran «moure's» en traços circulars al voltant dels pols celestes.",
+        "wikipedia_qid": "Q2"
+    },
+    "moon": {
+        "name": "Lluna",
+        "description": "La Lluna és el nostre únic satèl·lit natural i l'objecte més brillant del nostre cel nocturn, situat a uns 384.400 km de distància. Té un diàmetre que és més d'una quarta part del de la Terra, cosa que la fa inusualment gran en comparació amb el seu planeta pare. La seva superfície és un vast paisatge d'antics cràters d'impacte, serralades i planes fosques i planes anomenades «maria» (llatí per a «mars»), que es van formar per antigues colades de lava volcànica fa milers de milions d'anys.",
+        "fun_fact": "La Lluna s'allunya lentament de nosaltres a un ritme d'uns 3,8 centímetres per any, aproximadament! A més, com que la Lluna està en «rotació síncrona» amb la Terra, gira exactament a la mateixa velocitat que orbita, la qual cosa significa que des del nostre planeta només en veiem sempre un costat.",
+        "visual_tip": "El millor moment per observar la Lluna no és quan està plena, sinó durant les seves fases parcials (com la lluna creixent o el quart creixent). És llavors quan la llum solar incideix a la superfície en angle, projectant llargues ombres al llarg de la línia del «terminador», la frontera entre el dia i la nit. Aquestes ombres fan que els cràters i les muntanyes destaquin en 3D, revelant detalls increïbles que desapareixen durant la lluna plena.",
+        "wikipedia_qid": "Q405"
+    },
+    "mars": {
+        "name": "Mart",
+        "common_names": [
+            "Planeta Vermell"
+        ],
+        "description": "Mart, conegut com el «Planeta Vermell» a causa del ferro rovellat del seu sòl, és un món desèrtic i fred que té aproximadament la meitat de la mida de la Terra. Orbita al voltant del Sol a una distància d'uns 228 milions de km. Per als observadors, la seva característica resplendor taronja-vermellosa el converteix en una visió impactant al cel nocturn. Aquest món accidentat és la llar de l'Olympus Mons, el volcà més gran del sistema solar, que és tres vegades més alt que l'Everest.",
+        "fun_fact": "Mart té dues llunes diminutes i irregulars anomenades Fobos (Por) i Deimos (Terror). Tot i que un dia a Mart (un «sol») té gairebé la mateixa durada que un dia terrestre, triga gairebé dos anys terrestres (687 dies) a fer una volta sencera al Sol!",
+        "visual_tip": "Cada 26 mesos, Mart arriba a l'oposició, cosa que significa que es troba directament al costat oposat al Sol des de la nostra perspectiva. Durant aquest temps, el planeta es veu en el seu punt més gran i brillant. Amb un telescopi de mida mitjana, fins i tot es poden veure els seus casquets polars de gel blanc i les característiques fosques de la superfície que antigament van portar els primers astrònoms a imaginar canals antics.",
+        "wikipedia_qid": "Q111"
+    },
+    "jupiter": {
+        "name": "Júpiter",
+        "description": "Júpiter és el rei indiscutible dels planetes: un gegant gasós tan massiu que podria contenir tots els altres planetes del sistema solar junts. Situat a uns 778 milions de km del Sol, és famós per la seva Gran Taca Vermella, una tempesta que ha estat girant durant segles. Tot i que abans era prou ampla com per encabir-hi tres Terres, aquest vòrtex icònic s'ha anat reduint i actualment té aproximadament la mida de la mateixa Terra. A través d'un telescopi, les seves bandes de núvols colorides i les seves quatre llunes més grans (Ío, Europa, Ganimedes i Cal·listo) són una visió espectacular.",
+        "fun_fact": "Júpiter és el que gira més ràpid de tot el sistema solar; un sol dia dura menys de 10 hores! A data de 2026, els astrònoms han confirmat 115 llunes orbitant el planeta gegant, incloent-hi Ganimedes, que és la lluna més gran del sistema solar i fins i tot més gran que el planeta Mercuri.",
+        "visual_tip": "No necessites un telescopi potent per sentir-te com Galileu; uns simples prismàtics astronòmics revelaran les quatre «llunes galileanes» com a petits punts brillants als costats del planeta. Si les observes durant unes hores o dies, realment pots veure com canvien de posició mentre dansen al voltant de Júpiter, demostrant en temps real que estan en òrbita.",
+        "wikipedia_qid": "Q319"
+    },
+    "saturn": {
+        "name": "Saturn",
+        "common_names": [
+            "Planeta dels anells"
+        ],
+        "description": "Saturn és el planeta més distant visible a ull nu i és considerat per molts com la joia del sistema solar. Situat a uns 1.400 milions de km del Sol, és un gegant gasós nou vegades més ample que la Terra. El seu magnífic sistema d'anells, format per milers de milions de fragments de gel i roca, s'estén per milers de quilòmetres però és increïblement prim: té una mitjana d'entre 10 i 100 metres de gruix.",
+        "fun_fact": "Saturn és tan lleuger per a la seva mida que, si tinguessis una banyera prou gran, el planeta suraria a l'aigua! A més, és el vigent «Rei de les Llunes» del nostre sistema solar, amb 285 llunes confirmades. La més gran, Tità, és l'única lluna coneguda que té una atmosfera densa i un cicle líquid complet; tanmateix, en lloc d'aigua, Tità té núvols, pluja i grans mars de metà i età líquids.",
+        "visual_tip": "Fins i tot un telescopi petit revelarà els anells de Saturn, però la seva aparença canvia amb els anys. A causa de la inclinació del planeta, de vegades els anells es veuen «de cantell» des de la perspectiva de la Terra, cosa que fa que semblin una línia finíssima o que, fins i tot, desapareguin durant un curt període de temps abans de tornar a inclinar-se cap a la nostra vista.",
+        "wikipedia_qid": "Q193"
+    },
+    "uranus": {
+        "name": "Urà",
+        "description": "Urà és un món fred i de color cian situat a uns 2.900 milions de km del Sol. Va ser el primer planeta descobert amb un telescopi i apareix com un petit disc de color blau-verd pàl·lid a causa del metà de la seva atmosfera. A diferència de qualsevol altre planeta, Urà està tan inclinat que realment orbita el Sol de costat, com una pilota que roda. És un «gegant de gel», format principalment per materials gelats densos i calents (aigua, metà i amoníac) sobre un petit nucli rocós.",
+        "fun_fact": "A causa de la seva inclinació extrema, les estacions a Urà són salvatges: cada pol rep 42 anys de llum solar contínua, seguits de 42 anys de foscor total! A més, tot i que Saturn n'és el més famós, Urà té el seu propi conjunt de 13 anells foscos i estrets, i 28 llunes amb noms de personatges de les obres de William Shakespeare i Alexander Pope.",
+        "visual_tip": "Trobar Urà requereix cels foscos i una mica de paciència. A ull nu, està just al límit de la visibilitat, apareixent com una «estrella» feble i fixa. Amb un telescopi, la clau és el seu color únic: busca un disc petit de color turquesa pàl·lid i sense detalls que no parpelleja com les estrelles del seu voltant.",
+        "wikipedia_qid": "Q324"
+    },
+    "neptune": {
+        "name": "Neptú",
+        "description": "Neptú és el planeta principal més distant del nostre sistema solar, situat a la increïble distància de 4.500 milions de km del Sol. Tot i que sovint se l'ha representat d'un blau profund, estudis recents han confirmat que en realitat és d'un cian pàl·lid, amb un color molt semblant al del seu veí Urà. Com que està tan lluny, és l'únic planeta del nostre sistema completament invisible a ull nu, i a través d'un telescopi apareix com una petita perla distant.",
+        "fun_fact": "Neptú és el món amb més vent del sistema solar, amb vents supersònics que superen els 2.000 km/h! Triga 165 anys terrestres a completar una sola òrbita; de fet, des del seu descobriment el 1846, només ha completat un únic «any de Neptú» (l'any 2011). També té 16 llunes conegudes, incloent-hi la gèlida Tritó, que orbita el planeta a l'inrevés.",
+        "visual_tip": "Per localitzar Neptú, necessitaràs un telescopi o uns prismàtics de gran potència i un bon mapa estel·lar. Està tan lluny que sembla una estrella tènue de color blau grisenc. La millor manera d'identificar-lo és seguir el seu lent moviment respecte al fons d'estrelles fixes durant diverses nits; és l'única manera d'estar segur que has trobat la frontera més llunyana del sistema solar.",
+        "wikipedia_qid": "Q332"
+    },
+    "pluto": {
+        "name": "Plutó",
+        "description": "Plutó és el resident més famós del cinturó de Kuiper, una regió d'objectes gelats més enllà de Neptú. Situat a gairebé 6.000 milions de km del Sol, va ser considerat el novè planeta fins al 2006, quan va ser reclassificat com a planeta nan. A través d'un telescopi és extremadament tènue i apareix només com un minúscul punt de llum a causa de la seva gran distància i la seva petita mida (és fins i tot més petit que la Lluna de la Terra).",
+        "fun_fact": "Lluny de ser una roca morta, Plutó té muntanyes gegants fetes de gel d'aigua i una glacera massiva de nitrogen en forma de cor anomenada Tombaugh Regio. Fa tant de fred que l'aire es pot congelar i caure a terra en forma de neu! Plutó triga 248 anys terrestres a orbitar el Sol, i la seva lluna més gran, Caront, és tan gran que tots dos orbiten l'un al voltant de l'altre com un sistema de planeta nan doble.",
+        "visual_tip": "Veure Plutó és el «repte definitiu» per als astrònoms aficionats. Necessitaràs un telescopi gran (d'almenys 20 o 25 centímetres de diàmetre) i cels extremadament foscos, lluny de les llums de la ciutat. Com que sembla exactament una estrella molt tènue, l'única manera de confirmar que l'has vist és fer fotos o dibuixos durant diverses nits per localitzar la petita «estrella» que ha canviat de posició.",
+        "wikipedia_qid": "Q339"
+    }
+}

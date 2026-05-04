@@ -121,6 +121,50 @@
   "dash_main_locationwidget_no_location":"Ninguna ubicación disponible",
   "dash_main_locationwidget_gps": "Configurar GPS",
 
+
+  "-------------------------------------- DASHBOARD DEVICES -------------------------------------- ": "",
+  "dash_device_active": "ACTIVO",
+  "dash_device_online": "Online",
+  "dash_device_offline": "Offline",
+  "dash_device_telescope": "Telescopio",
+  "dash_device_camera": "Cámara",
+  "dash_device_no_components": "El hardware está encendido, pero no se han detectado componentes conectados.",
+  "dash_device_fetching": "Consultando hardware...",
+  "dash_device_loading": "Cargando...",
+  "dash_device_not_connected": "No conectado",
+  "dash_device_list_title": "Dispositivos",
+  "dash_device_list_empty": "No has vinculado ningún dispositivo aún.",
+  "dash_device_add": "Añadir Dispositivo",
+  "dash_device_status_fetching": "Obteniendo estado...",
+  "dash_device_disconnected": "Dispositivo desconectado del servidor.",
+  "dash_device_action_pair": "Vincular Dispositivo",
+  "dash_device_new_pairing": "Nueva Vinculación",
+  "dash_device_token_label": "Token de Vinculación",
+  "dash_device_token_placeholder": "Introduce el token de 8 caracteres",
+  "dash_device_pair_error": "Token inválido o dispositivo ya vinculado.",
+  "dash_device_pairing": "Vinculando...",
+  "dash_device_pair": "Vincular",  
+  "dash_device_edit_title": "Editar dispositivo",
+  "dash_device_edit_name_label": "Nombre del dispositivo",
+  "dash_device_edit_name_placeholder": "Ej. Mi Telescopio",
+  "dash_device_edit_cancel": "Cancelar",
+  "dash_device_edit_save": "Guardar",
+  "dash_device_del_title": "Desvincular Dispositivo",
+  "dash_device_del_confirm": "¿Estás seguro de que quieres desvincular \"{name}\"?",
+  "dash_device_del_warning": "Perderás el acceso hasta volver a introducir un token.",
+  "dash_device_del_action": "Desvincular",
+  "dash_device_found": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+      "match": {
+				"countPlural=one": "1 dispositivo encontrado",
+				"countPlural=other": "{count} dispositivos encontrados"
+			}
+    }
+  ],
+
+
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sesiones",
   "dash_observ_new_session": "Nueva sesión",
@@ -228,6 +272,45 @@
 
   "obs_targetinfo_title": "Objeto Selecionado",
   "obs_targetinfo_center": "Centrar objeto",
+  "obs_targetinfo_slew": "Ir y seguir objeto",
+  "obs_targetinfo_slewing": "Moviendo al objeto...",
+  "obs_targetinfo_alt": "Altitud",
+  "obs_targetinfo_az": "Acimut",
+  "obs_targetinfo_mag": "Magnitud",
+  "obs_targetinfo_dist": "Distancia",
+  "obs_targetinfo_const": "Constelación",
+  "obs_targetinfo_size": "Tamaño",
+  "obs_targetinfo_sptype": "Tipo Espectral",
+  "obs_targetinfo_riseset_title": "Salida y Ocaso",
+  "obs_targetinfo_riseset_rise": "Salida",
+  "obs_targetinfo_riseset_transit": "Tránsito",
+  "obs_targetinfo_riseset_set": "Ocaso",
+  "obs_targetinfo_description": "Información",
+  "obs_targetinfo_fun_fact": "¿Sabías que...?",
+  "obs_targetinfo_visual_tip": "Consejo visual",
+
+  "obs_targetinfo_lunar_title": "Fase Lunar",
+  "obs_targetinfo_lunar_age": [
+      {
+          "declarations": ["input count", "local countPlural = count: plural"],
+          "selectors": ["countPlural"],
+          "match": {
+              "countPlural=one": "1 dia",
+              "countPlural=other": "{count} dias"
+          }
+      }
+  ],
+  "obs_targetinfo_lunar_next_new": "Siguiente Nueva",
+  "obs_targetinfo_lunar_next_full": "Siguiente Llena",
+
+  "obs_targetinfo_planetary_title": "Datos Planetarios",
+  "obs_targetinfo_planetary_ilum": "Iluminación",
+  "obs_targetinfo_planetary_elong": "Elongación",
+  "obs_targetinfo_planetary_conjunction": "Conjunción",
+  "obs_targetinfo_planetary_max_elong": "Max Elongación",
+  "obs_targetinfo_planetary_opposition": "Oposición",
+
+
 
   "obs_timecontrol_real": "Real",
   "obs_timecontrol_time_travel": "Viaje temporal",
@@ -241,8 +324,41 @@
   "obs_skyfinder_no_objects": "Ningun objeto coincide con \"{query}\"",
   "obs_skyfinder_select": "Seleccionar",
 
+  "obs_telescope_controller_title": "Control de Equipo",
+  "obs_telescope_controller_center": "Centrar vista en equipo",
+  "obs_telescope_controller_abort": "Abortar movimiento",
+  "obs_telescope_controller_aborting": "Abortando...",
+  "obs_telescope_controller_active_telescope": "Telescopio activo",
+  "obs_telescope_controller_active_camera": "Cámara activa",
+
+  "====================================== OBJECT DATA ======================================": "",
+
+  "data_types_planetary": "Planeta",
+  "data_types_moon": "Luna",
+  "data_types_star": "Estrella",
+  "data_types_galaxy": "Galaxia",
+  "data_types_constellation": "Constelación",
+  "data_types_open_cluster": "Cúmulo abierto",
+  "data_types_globular_cluster": "Cúmulo globular",
+  "data_types_galactic_cluster": "Cúmulo galáctico",
+  "data_types_nebula": "Nebulosa",
+  "data_types_molecular_cloud": "Nube molecular",
+  "data_types_planetary_nebula": "Nebulosa planetaria",
+  "data_types_supernova_remnant": "Remanente de supernova",
+  "data_types_asterism": "Asterismo",
+  "data_types_double_star": "Estrella doble",
+  "data_types_star_system": "Sistema estelar",
+  "data_types_unknown": "Desconocido",
+
+  "data_moon_phase_new": "Luna Nueva",
+  "data_moon_phase_full": "Luna Llena",
+  "data_moon_phase_first_quarter": "Cuarto Creciente",
+  "data_moon_phase_last_quarter": "Cuarto Menguante",
+  "data_moon_phase_waxing_crescent": "Luna Creciente",
+  "data_moon_phase_waxing_gibbous": "Gibosa Creciente",
+  "data_moon_phase_waning_crescent": "Luna Menguante",
+  "data_moon_phase_waning_gibbous": "Gibosa Menguante",
+
   "obs_ai_title": "Astra AI"
-
-
 
 }

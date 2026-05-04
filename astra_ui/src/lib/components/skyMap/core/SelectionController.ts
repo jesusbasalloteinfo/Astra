@@ -94,10 +94,9 @@ export class SelectionController {
         }
 
         this.selectedId = id;
-        selectionStore.targetId = id;
-
         const isPlanet = id in catalogStore.planetaryData;
-        
+        selectionStore.select(id, isPlanet ? 'planetary' : 'sidereal');
+
         let hexColor = '#ed1556'//isPlanet ? '#f59e0b' : '#38bdf8'; 
         let baseSize = isPlanet ? 4 : Math.max(1, 5 - (info.mag ?? 0));
 

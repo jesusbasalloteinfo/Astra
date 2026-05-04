@@ -1,4 +1,5 @@
 export const endpoints = {
+    apiBase: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api',
     auth: {
         login:   '/login',
         logout:  '/logout',
@@ -16,7 +17,10 @@ export const endpoints = {
     devices:{
         pairDevice: 'devices/pair',
         getDevices: 'devices',
-        getDeviceInfo: (id: string) => `devices/${id}`
+        getDeviceInfo: (id: string) => `devices/${id}`,
+        getTelescopePos: (id: string) => `devices/${id}/telescope/position`,
+        slewTelescope: (id: string) => `devices/${id}/telescope/slew`,
+        abortTelescope: (id: string) => `devices/${id}/telescope/abort`,
     }
 } as const;
 
