@@ -23,8 +23,18 @@
     });
 
     function selectObject(id: string, resultType: string) {
-        const type = resultType === 'Planetary' ? 'planetary' : 'sidereal';
-        selectionStore.select(id, type);
+        const safeId = id.toLowerCase();
+        
+        const isSolarSystem = 
+            resultType === 'planetary' || 
+            resultType === 'moon' || 
+            safeId === 'sun'
+        
+        const isSidereal = resultType !== 'constellation'
+            
+        const type = isSolarSystem ? 'planetary' : isSidereal ? 'sidereal': 'constellation';
+
+        if (type !== 'constellation')  selectionStore.select(id, type);
         
         if (onSelect) {
             onSelect(id);

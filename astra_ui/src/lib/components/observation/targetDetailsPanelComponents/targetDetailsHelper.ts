@@ -31,7 +31,7 @@ export function buildDynamicStats(details: any, dynamicData: any, isPlanet: bool
         { label: m.obs_targetinfo_mag(), value: details.mag != null ? formatNumber(details.mag, 2) : '—' },
         { 
             label: m.obs_targetinfo_dist(), 
-            value: dist ? `${formatNumber(dist, isPlanet ? 0 : 1)} ${distUnit}` : '—' 
+            value: dist ? `${formatNumber(dist, distUnit==="KM" ? 0 : 2)} ${distUnit}` : '—' 
         }
     ];
 

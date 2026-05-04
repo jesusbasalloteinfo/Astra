@@ -27,9 +27,10 @@ export const translateObjectType = (type: string): string => {
     "double_star": m.data_types_double_star,
     "star_system": m.data_types_star_system,
     "star": m.data_types_star,
+    "constellation": m.data_types_constellation,
     "unknown": m.data_types_unknown
   };
-
+  console.log(type)
   // Execute the message function if found, otherwise fallback
   return (lookup[type] || m.data_types_unknown)();
 };

@@ -168,7 +168,7 @@ class CatalogStore {
         // Constellation indexing
         for (const constel of this.constellations) {
             
-            const res = { id: constel.abbr, name: constel.name, type: 'Constellation', mag: null };
+            const res = { id: constel.abbr, name: constel.name, type: 'constellation', mag: null };
 
             const possibleNames = [
                 constel.name,
