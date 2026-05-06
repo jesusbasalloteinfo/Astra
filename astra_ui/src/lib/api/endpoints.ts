@@ -14,6 +14,10 @@ export const endpoints = {
         base:   '/observations',
         detail: (id: string) => `/observations/${id}`,
     },
+    chat: {
+        session: (observation_id: string) => `/chat/session/${observation_id}`,
+        stream: (session_id: string) => `/chat/stream/${session_id}`,
+    },
     devices:{
         pairDevice: 'devices/pair',
         getDevices: 'devices',
