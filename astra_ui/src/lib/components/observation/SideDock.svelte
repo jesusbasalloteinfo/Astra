@@ -97,7 +97,7 @@
 
     <div class="w-full h-px bg-border/50 my-1"></div>
 
-    <button title={m.obs_ai_title()} onclick={() => chatOpen = !chatOpen} class="cursor-pointer p-3 rounded-full transition-all shadow-inner {chatOpen ? 'bg-accent text-white shadow-[0_0_15px_var(--color-accent-glow)]' : 'hover:bg-panel/50 text-copy-muted hover:text-purple-400'}">
+    <button title={m.obs_assistant_title()} onclick={() => chatOpen = !chatOpen} class="cursor-pointer p-3 rounded-full transition-all shadow-inner {chatOpen ? 'bg-accent text-white shadow-[0_0_15px_var(--color-accent-glow)]' : 'hover:bg-panel/50 text-copy-muted hover:text-purple-400'}">
         <Sparkles size={20} />
     </button>
 </div>
