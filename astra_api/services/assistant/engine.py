@@ -1,7 +1,7 @@
 import os
 import json
 import asyncio
-from typing import List, Dict, Any, AsyncGenerator
+from typing import List, Dict, Any, AsyncGenerator, Optional
 from openai import AsyncOpenAI
 
 from .models import (
@@ -18,10 +18,14 @@ client = AsyncOpenAI(
 
 # --- Helper Functions ---
 
-def _prepare_openai_kwargs(history: ChatHistory, tools: List[CurriedTool], model: str) -> Dict[str, Any]:
+def _prepare_openai_kwargs(history: ChatHistory, tools: List[CurriedTool], model: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
     """Converts the ChatHistory models into the raw dictionaries expected by OpenAI and prepares the kwargs"""
 
     messages = [msg.model_dump(exclude_none=True) for msg in history.messages]
+    
+    if system_prompt:
+        messages.insert(0, {"role": "system", "content": system_prompt})
+        
     openai_tools = [tool.get_openai_tool_schema() for tool in tools]
     
     kwargs = {
@@ -86,7 +90,8 @@ async def _execute_tools_concurrently(assistant_tool_calls: List[ToolCall], tool
 async def stream_chat(
     history: ChatHistory,
     tools: List[CurriedTool],
-    model: str = "astra_ai"
+    model: str = "astra_ai",
+    system_prompt: Optional[str] = None
 ) -> AsyncGenerator[SSEEvent, None]:
     """
     The main chat orchestrator. Streams responses, intercepts tool requests, executes them,
@@ -94,7 +99,7 @@ async def stream_chat(
     """
     
     # 1. Setup the Network Request
-    kwargs = _prepare_openai_kwargs(history, tools, model)
+    kwargs = _prepare_openai_kwargs(history, tools, model, system_prompt)
     
     try:
         response = await client.chat.completions.create(**kwargs)
@@ -117,8 +122,7 @@ async def stream_chat(
                 yield TextEvent(text=delta.content)
 
             # Parse and buffer tool calls. Because tools can be streamed in chunks
-            # and multiple tools can be called in parallel, we use the `index` (idx)
-            # to group chunks belonging to the same tool invocation.
+            # and multiple tools can be called, we use idx to group chunks by tool.
             if delta.tool_calls:
                 for tc_chunk in delta.tool_calls:
                     idx = tc_chunk.index
@@ -148,8 +152,6 @@ async def stream_chat(
 
     except asyncio.CancelledError:
         # Handle client disconnects or explicitly cancelled tasks.
-        # We must re-raise the error so the web framework (FastAPI) can cleanly terminate
-        # the generator and clean up the connection without attempting to send further events.
         raise
     except Exception as e:
         # Handle Network, API, or general unexpected errors safely
@@ -186,7 +188,7 @@ async def stream_chat(
             ))
 
         # If not the end, recurse so the LLM can see the results and continue
-        async for event in stream_chat(history=history, tools=tools, model=model):
+        async for event in stream_chat(history=history, tools=tools, model=model, system_prompt=system_prompt):
             yield event
             
     else:

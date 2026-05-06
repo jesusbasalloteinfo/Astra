@@ -31,11 +31,11 @@ class ToolResult(BaseModel):
 
 class ChatMessage(BaseModel):
     role: Literal["system", "user", "assistant", "tool"]
+    name: Optional[str] = None
+    tool_call_id: Optional[str] = None
     reasoning_content: Optional[str] = None
     content: Optional[str] = None
     tool_calls: Optional[List[ToolCall]] = None
-    tool_call_id: Optional[str] = None
-    name: Optional[str] = None
 
 class ChatHistory(BaseModel):
     messages: List[ChatMessage] = Field(default_factory=list)
