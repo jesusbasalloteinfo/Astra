@@ -331,6 +331,27 @@
   "obs_telescope_controller_active_telescope": "Telescopio activo",
   "obs_telescope_controller_active_camera": "Cámara activa",
 
+  "obs_assistant_title": "Astra AI",
+  "obs_assistant_name": "Astra",
+  "obs_assistant_target": "Objecto Selecionado:",
+  "obs_assistant_empty": "Preparado para ayudarte con tus observaciones. Pídeme que busque objetos, explique fenómenos o controle el telescopio.",
+  "obs_assistant_input_placeholder": "Preguntar a Astra...",
+  "obs_assistant_loading": "Pensando...",
+  "obs_assistant_send": "Enviar",
+  "obs_assistant_abort": "Parar",
+  "obs_assistant_error": "Error: {reason}",
+  "obs_assistant_scrolldown": "Bajar al final",
+  "obs_assistant_thinking": [
+    {
+      "declarations": ["input thinking"],
+			"selectors": ["thinking"],
+      "match": {
+				"thinking=true": "Ocultar pensamiento",
+				"thinking=false": "Mostrar pensamiento"
+			}
+    }
+  ],
+
   "====================================== OBJECT DATA ======================================": "",
 
   "data_types_planetary": "Planeta",
@@ -357,8 +378,6 @@
   "data_moon_phase_waxing_crescent": "Luna Creciente",
   "data_moon_phase_waxing_gibbous": "Gibosa Creciente",
   "data_moon_phase_waning_crescent": "Luna Menguante",
-  "data_moon_phase_waning_gibbous": "Gibosa Menguante",
-
-  "obs_ai_title": "Astra AI"
+  "data_moon_phase_waning_gibbous": "Gibosa Menguante"
 
 }

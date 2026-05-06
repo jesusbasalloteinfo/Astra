@@ -48,7 +48,7 @@
                     <IconComponent size={64} strokeWidth={1} />
                 </div>
                 
-                <p class="relative text-sm text-copy-primary/90 leading-relaxed whitespace-pre-wrap {isExpanded ? '' : 'line-clamp-3'}">
+                <p class="relative text-sm text-copy-primary/90 text-justify leading-relaxed whitespace-pre-wrap {isExpanded ? '' : 'line-clamp-3'}">
                     {text}
                 </p>
 

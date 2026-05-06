@@ -331,6 +331,27 @@
   "obs_telescope_controller_active_telescope": "Telescopi actiu",
   "obs_telescope_controller_active_camera": "Càmera activa",
 
+  "obs_assistant_title": "Astra AI",
+  "obs_assistant_name": "Astra",
+  "obs_assistant_target": "Objecte seleccionat:",
+  "obs_assistant_empty": "Preparat per ajudar-te amb les teves observacions. Demana'm que busqui objectes, expliqui fenòmens o controli el telescopi.",
+  "obs_assistant_input_placeholder": "Preguntar a Astra...",
+  "obs_assistant_loading": "Pensant...",
+  "obs_assistant_send": "Enviar",
+  "obs_assistant_abort": "Aturar",
+  "obs_assistant_error": "Error: {reason}",
+  "obs_assistant_scrolldown": "Baixar al final",
+  "obs_assistant_thinking": [
+    {
+      "declarations": ["input thinking"],
+			"selectors": ["thinking"],
+      "match": {
+				"thinking=true": "Amagar pensament",
+				"thinking=false": "Mostrar pensament"
+			}
+    }
+  ],
+
   "====================================== OBJECT DATA ======================================": "",
 
   "data_types_planetary": "Planeta",
@@ -357,9 +378,6 @@
   "data_moon_phase_waxing_crescent": "Luna Creixent",
   "data_moon_phase_waxing_gibbous": "Gibosa Creixent",
   "data_moon_phase_waning_crescent": "Lluna Minvant",
-  "data_moon_phase_waning_gibbous": "Gibosa Minvant",
-
-  "obs_ai_title": "Astra AI"
-
+  "data_moon_phase_waning_gibbous": "Gibosa Minvant"
 
 }

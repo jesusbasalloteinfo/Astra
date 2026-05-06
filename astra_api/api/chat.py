@@ -9,6 +9,7 @@ from services.assistant import FinalEvent
 from core.dependencies import get_request_user
 from services.assistant import stream_chat, ChatHistory, ChatMessage
 from services.assistant.examples import create_get_user_profile_tool, create_weather_tool
+from services.tools.observation import fly_to_const_tool, select_object_element_tool
 
 from services.db.ChatSessionService import ChatSessionService
 
@@ -20,7 +21,7 @@ class StreamRequest(BaseModel):
 
 chat_service = ChatSessionService()
 
-SYSTEM_PROMPT = "You are Astra, an intelligent and helpful assistant for the Astra system. You have access to various tools."
+SYSTEM_PROMPT = "You are Astra, an intelligent and helpful assistant for the Astra system. You have access to various tools. ALWAYS tell the user what are you going to do BEFORE any toolcall that you want to call."
 
 @router.get("/session/{observation_id}")
 async def get_chat_session(observation_id: str, username: str = Depends(get_request_user)):
@@ -76,6 +77,8 @@ async def chat_stream(session_id: str, request: StreamRequest, username: str = D
     tools = [
         create_get_user_profile_tool(user_id="aaaa", db_connection="dummy-db"),
         create_weather_tool(location="Test, Testilandia"),
+        fly_to_const_tool(),
+        select_object_element_tool()
     ]
 
     # Return a StreamingResponse

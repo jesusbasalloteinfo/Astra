@@ -1,6 +1,6 @@
 <!-- src/routes/(app)/dashboard/observation/[id]/+page.svelte -->
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, untrack} from 'svelte'; 
     import { browser } from '$app/environment';
     import * as m from '$lib/paraglide/messages.js';
     import SkyMap3D from '$lib/components/skyMap/SkyMap3D.svelte';
@@ -17,6 +17,8 @@
 
 	import TelescopeController from '$lib/components/observation/TelescopeController.svelte';
 	import { deviceAPI } from '$lib/api/devices';
+	import { chatStore } from '$lib/stores/chat.svelte';
+	import { selectionStore } from '$lib/stores/activeSelection.svelte';
 
     // So we can call fly whenever we want
     let skyMap = $state<ReturnType<typeof SkyMap3D>>();
@@ -96,6 +98,26 @@
         }
     }
 
+
+    $effect(() => {
+        if (chatStore.pendingActions.length > 0) {
+            untrack(() => {
+                // Grab the oldest action off the queue
+                const action = chatStore.consumeAction();
+                console.log("[Observation Page] Consumed action from chatStore:", action);
+                
+                if (action?.type === 'fly_to_constellation') {
+                    skyMap?.flyToConstellation(action.abbr);
+                } 
+                else if (action?.type === 'select_object') {
+                    // Call the store
+                    selectionStore.select(action.id, action.objectType as 'sidereal' | 'planetary');
+                    skyMap?.selectObject(action.id);
+                }
+            });
+        }
+    });
+
     onMount(() => {
         posInterval = setInterval(pollTelescopePosition, 1000);
         return () => {
@@ -170,7 +192,9 @@
     </div>
 
     <!-- AI chat -->
-    <Chat bind:open={chatOpen} />
+    <Chat bind:open={chatOpen} 
+          onClear={() => skyMap?.clearSelection()}
+    />
 
     <!-- SkyFinder object searcher -->
     <SkyFinder 
