@@ -10,10 +10,18 @@ from core.dependencies import get_request_user
 from services.assistant import stream_chat, ChatHistory, ChatMessage
 from services.assistant.examples import create_get_user_profile_tool, create_weather_tool
 from services.tools.observation import fly_to_const_tool, select_object_element_tool
+from services.tools import (
+    WikiEngine,
+    create_search_article_tool,
+    create_get_article_intro_tool,
+    create_get_article_section_tool,
+    create_get_article_infotable_tool
+)
 
 from services.db.ChatSessionService import ChatSessionService
 
 router = APIRouter()
+wiki_instance=WikiEngine(lang="en")
 
 class StreamRequest(BaseModel):
     message: Optional[ChatMessage] = None
@@ -73,10 +81,19 @@ async def chat_stream(session_id: str, request: StreamRequest, username: str = D
     if request.message:
         history.add_message(request.message)
 
+    
     # Initialize tools
     tools = [
         create_get_user_profile_tool(user_id="aaaa", db_connection="dummy-db"),
         create_weather_tool(location="Test, Testilandia"),
+        
+        # WikiEngine
+        create_search_article_tool(wiki_instance),
+        create_get_article_intro_tool(wiki_instance),
+        create_get_article_section_tool(wiki_instance),
+        create_get_article_infotable_tool(wiki_instance),
+
+        # UI control
         fly_to_const_tool(),
         select_object_element_tool()
     ]

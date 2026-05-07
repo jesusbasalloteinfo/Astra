@@ -1,17 +1,12 @@
-# services/tools/__init__.py
+# services/tools/wikipedia/__init__.py
 
-from .wikipedia import (
-    WikiEngine,
-    WikiError,
-    WikiNotFoundError,
+from .WikiEngine import WikiEngine, WikiError, WikiNotFoundError
+from .tools import (
     create_search_article_tool,
     create_get_article_intro_tool,
     create_get_article_section_tool,
     create_get_article_infotable_tool
 )
-
-# Si en el futuro añades más APIs (ej. weather, calc), las importarías aquí:
-# from .weather import create_get_weather_tool
 
 __all__ = [
     "WikiEngine",
