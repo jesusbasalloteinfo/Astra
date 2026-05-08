@@ -15,14 +15,15 @@ def fly_to_const_tool() -> CurriedTool:
         frontend_only=True
     )
 
-class SelectObjectArgs(BaseModel):
+class FocusObjectArgs(BaseModel):
     id: str = Field(..., description="The id of the object to select.")
     type: Literal["sidereal", "planetary"] = Field(..., description="The object type (planetary for Solar System objects, sidereal for any other).")
 
-def select_object_element_tool() -> CurriedTool:
+def focus_object_element_tool() -> CurriedTool:
     return CurriedTool(
-        name="select_object",
-        description="Selects a celestial object in the user's UI",
-        args_model=SelectObjectArgs,
+        name="focus_object",
+        description="Centers a celestial object in the user's UI",
+        args_model=FocusObjectArgs,
         frontend_only=True
     )
+

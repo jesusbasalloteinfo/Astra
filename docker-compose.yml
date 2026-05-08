@@ -9,6 +9,8 @@ services:
     restart: unless-stopped
     # ports:
     #   - "5245:80"
+    environment:
+      SIDERIS_API_BASE: http://sideris:8624
     volumes:
       - ./astra_api:/app
     networks:
@@ -73,6 +75,7 @@ services:
     volumes:
       - ./sideris:/app
     networks:
+      - api-net
       - gateway-net
     expose:
       - 8624

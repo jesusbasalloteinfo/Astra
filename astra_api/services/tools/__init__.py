@@ -9,9 +9,13 @@ from .wikipedia import (
     create_get_article_section_tool,
     create_get_article_infotable_tool
 )
-
-# Si en el futuro añades más APIs (ej. weather, calc), las importarías aquí:
-# from .weather import create_get_weather_tool
+from .observation import (
+    fly_to_const_tool,
+    focus_object_element_tool,
+    search_object_tool,
+    get_object_details_tool,
+    slew_to_object_tool
+)
 
 __all__ = [
     "WikiEngine",
@@ -20,5 +24,10 @@ __all__ = [
     "create_search_article_tool",
     "create_get_article_intro_tool",
     "create_get_article_section_tool",
-    "create_get_article_infotable_tool"
+    "create_get_article_infotable_tool",
+    "fly_to_const_tool",
+    "focus_object_element_tool",
+    "search_object_tool",
+    "get_object_details_tool",
+    "slew_to_object_tool"
 ]

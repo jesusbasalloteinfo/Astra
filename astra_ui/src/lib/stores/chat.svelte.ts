@@ -2,9 +2,11 @@ import { chatAPI } from '$lib/api/chat';
 import type { ChatSession, ChatMessage, ToolCall, ToolCallDefinition } from '$lib/types/chat';
 import { selectionStore } from '$lib/stores/activeSelection.svelte';
 import { catalogStore } from './skyCatalog.svelte';
+import { locStore } from './location.svelte';
+import { deviceStore } from './devices.svelte';
 
 export type ChatAction = 
-    | { type: 'select_object', id: string, objectType: string }
+    | { type: 'focus_object', id: string, objectType: string }
     | { type: 'fly_to_constellation', abbr: string };
 
 class ChatStore {
@@ -57,7 +59,11 @@ class ChatStore {
             const stream = chatAPI.streamChat(
                 this.session._id, 
                 userMsg, 
-                "gemini-3.1-flash", 
+                "astra_ai",
+                selectionStore.targetId,
+                locStore.effectiveActiveId,
+                deviceStore.effectiveActiveId,
+                deviceStore.activeComponents.telescope,
                 this.abortController.signal
             );
 
@@ -143,18 +149,18 @@ class ChatStore {
             const parsedArgs = typeof args === 'string' ? JSON.parse(args) : args;
 
             switch (toolName) {
-                case 'select_object':
+                case 'focus_object':
                     if (parsedArgs && parsedArgs.id && parsedArgs.type) {
                         // Normalize planetary IDs to lowercase to bulletproof against LLM hallucinations
                         const objectId = parsedArgs.type === 'planetary' ? parsedArgs.id.toLowerCase() : parsedArgs.id;
                         
                         this.pendingActions.push({ 
-                            type: 'select_object', 
+                            type: 'focus_object', 
                             id: objectId, 
                             objectType: parsedArgs.type 
                         });
                     } else {
-                        console.warn("select_object tool called without valid id and type.", parsedArgs);
+                        console.warn("focus_object tool called without valid id and type.", parsedArgs);
                     }
                     break;
                 case 'fly_to_constellation':

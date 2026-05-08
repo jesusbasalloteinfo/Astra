@@ -10,9 +10,16 @@ export const chatAPI = {
     },
 
     // Stream chat response
-    streamChat: async function* (session_id: string, message: ChatMessage | null, model: string = "astra_ai", signal?: AbortSignal): AsyncGenerator<ChatSSEEvent, void, unknown> {
+    streamChat: async function* (session_id: string, 
+                                message: ChatMessage | null, 
+                                model: string = "astra_ai", 
+                                selected_obj: string | null = null,
+                                location_id: string | null = null,
+                                device_id: string | null = null,
+                                telescope: string | null = null,                               
+                                signal?: AbortSignal): AsyncGenerator<ChatSSEEvent, void, unknown> {
         const response = await api.post(endpoints.chat.stream(session_id), 
-            { message, model }, 
+            { message, model, selected_obj, location_id, device_id, telescope }, 
             {
                 responseType: 'stream',
                 signal: signal

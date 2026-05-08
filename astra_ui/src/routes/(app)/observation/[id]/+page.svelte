@@ -109,7 +109,7 @@
                 if (action?.type === 'fly_to_constellation') {
                     skyMap?.flyToConstellation(action.abbr);
                 } 
-                else if (action?.type === 'select_object') {
+                else if (action?.type === 'focus_object') {
                     // Call the store
                     selectionStore.select(action.id, action.objectType as 'sidereal' | 'planetary');
                     skyMap?.selectObject(action.id);

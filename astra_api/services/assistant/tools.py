@@ -62,3 +62,7 @@ class CurriedTool:
             return BaseToolResponse(status="success", data=raw_result)
         except Exception as e:
             return BaseToolResponse(status="error", message=f"Tool execution failed: {str(e)}")
+
+
+class EmptyArgs(BaseModel):
+    pass

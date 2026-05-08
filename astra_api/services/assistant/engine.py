@@ -4,6 +4,8 @@ import asyncio
 from typing import List, Dict, Any, AsyncGenerator, Optional
 from openai import AsyncOpenAI
 
+from core.logging_utils import get_logger
+
 from .models import (
     BaseToolResponse, ChatHistory, ChatMessage, ErrorEvent, ToolCall, ToolCallDefinition,
     ToolCallBuilder, ToolResult,
@@ -60,6 +62,7 @@ async def _execute_single_tool(tc: ToolCall, tools_by_name: Dict[str, CurriedToo
     tool_name = tc.function.name
     arguments_json = tc.function.arguments
     
+    get_logger("TOOLCALL").info(f"Executing tool call {tool_name} with {json.dumps(arguments_json)}")
     try:
         parsed_arguments = json.loads(arguments_json)
     except json.JSONDecodeError:
@@ -70,7 +73,8 @@ async def _execute_single_tool(tc: ToolCall, tools_by_name: Dict[str, CurriedToo
         result = await curried_tool.execute(arguments_json)
     else:
         result = BaseToolResponse(status="error", message=f"Error: Tool '{tool_name}' not found.")
-        
+    
+    get_logger("TOOLCALL").info(f"Tool call response: {result.model_dump_json()}")
     return ToolResult(
         tc_id=tc.id,
         tool_name=tool_name,

@@ -11,7 +11,7 @@ router = APIRouter()
 async def get_astro_service() -> AstroService:
     return await AstroService.get_instance()
 
-@router.get("/search", response_model=List[SearchResultItem], summary="Global catalog search")
+@router.get("", response_model=List[SearchResultItem], summary="Global catalog search")
 async def search_catalog(
     q: str = Query(..., min_length=2, description="Search query string"),
     limit: int = Query(10, ge=1, le=50, description="Max results limit"),
