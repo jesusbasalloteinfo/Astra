@@ -61,6 +61,7 @@ export interface ToolCallChunkEvent extends BaseSSEEvent {
 
 export interface ToolExecutionEvent extends BaseSSEEvent {
     event_type: "tool_execution";
+    tool_call_id: string;
     tool_name: string;
     arguments?: any;
     result: BaseToolResponse;

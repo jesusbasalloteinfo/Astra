@@ -108,7 +108,7 @@ class ChatStore {
                         const toolExecutionMsg: ChatMessage = {
                             role: 'tool',
                             name: event.tool_name,
-                            tool_call_id: event.arguments?.id,
+                            tool_call_id: event.tool_call_id,
                             content: JSON.stringify(event.result)
                         };
                         this.messages.push(toolExecutionMsg);

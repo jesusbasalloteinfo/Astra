@@ -67,6 +67,7 @@ class ToolCallChunkEvent(SSEEvent):
 
 class ToolExecutionEvent(SSEEvent):
     event_type: Literal["tool_execution"] = "tool_execution"
+    tool_call_id: str
     tool_name: str
     arguments: Any = None
     result: BaseToolResponse

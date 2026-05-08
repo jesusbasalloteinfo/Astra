@@ -180,6 +180,7 @@ async def stream_chat(
         # Process the results
         for result in execution_results:
             yield ToolExecutionEvent(
+                tool_call_id=result.tc_id,
                 tool_name=result.tool_name,
                 arguments=result.arguments,
                 result=result.result
