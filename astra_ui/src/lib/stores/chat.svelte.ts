@@ -150,6 +150,7 @@ class ChatStore {
 
             switch (toolName) {
                 case 'focus_object':
+                case 'slew_to_object':
                     if (parsedArgs && parsedArgs.id && parsedArgs.type) {
                         // Normalize planetary IDs to lowercase to bulletproof against LLM hallucinations
                         const objectId = parsedArgs.type === 'planetary' ? parsedArgs.id.toLowerCase() : parsedArgs.id;
@@ -160,7 +161,7 @@ class ChatStore {
                             objectType: parsedArgs.type 
                         });
                     } else {
-                        console.warn("focus_object tool called without valid id and type.", parsedArgs);
+                        console.warn(`${toolName} tool called without valid id and type.`, parsedArgs);
                     }
                     break;
                 case 'fly_to_constellation':

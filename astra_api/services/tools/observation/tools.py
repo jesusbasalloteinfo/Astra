@@ -29,7 +29,7 @@ def get_object_details_tool(location:Tuple[float, float]) -> CurriedTool:
     )
 
 class SlewToArgs(BaseModel):
-    object_id: str = Field(..., description="The unique ID of the target object.")
+    id: str = Field(..., description="The unique ID of the target object.")
     type: Literal["sidereal", "planetary"] = Field(..., description="The type of the object.")
     mode: Literal["TRACK", "SLEW", "SYNC"] = Field(..., description="The movement type. TRACK for slew and tracking, SLEW for movement and SYNC for syncing")
 
@@ -38,7 +38,8 @@ def slew_to_object_tool(tunnel:DeviceTunnel, telescope:str, location:Tuple[float
         name="slew_to_object",
         description="Commands the telescope to slew to a specific object.",
         args_model=SlewToArgs,
-        func=partial(slew_to_object_impl, tunnel=tunnel, telescope=telescope, location=location)
+        func=partial(slew_to_object_impl, tunnel=tunnel, telescope=telescope, location=location),
+        frontend_action=True
     )
 
 # def get_telescope_position_tool(tunnel:DeviceTunnel, telescope:str, location:Tuple[float, float]) -> CurriedTool:

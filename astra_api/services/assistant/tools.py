@@ -10,11 +10,12 @@ class CurriedTool:
     """
     A class that represents an assistant tool with or without partial arguments
     """
-    def __init__(self, name: str, description: str, args_model: Type[BaseModel], func: Callable = None, frontend_only: bool = False):
+    def __init__(self, name: str, description: str, args_model: Type[BaseModel], func: Callable = None, frontend_action: bool = False, frontend_only: bool = False):
         self.name = name
         self.description = description
         self.args_model = args_model
         self.func = func
+        self.frontend_action = frontend_action
         self.frontend_only = frontend_only
 
     def get_openai_tool_schema(self) -> Dict[str, Any]:
@@ -59,7 +60,7 @@ class CurriedTool:
             if isinstance(raw_result, BaseToolResponse):
                 # Do not wrap the response if is already a tool response
                 return raw_result
-            return BaseToolResponse(status="success", data=raw_result)
+            return BaseToolResponse(status="success", data=raw_result, frontend_action=self.frontend_action)
         except Exception as e:
             return BaseToolResponse(status="error", message=f"Tool execution failed: {str(e)}")
 

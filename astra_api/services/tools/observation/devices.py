@@ -41,12 +41,12 @@ async def get_object_details_impl(object_id: str, type: str, location:Tuple[floa
 async def slew_to_object_impl(tunnel: DeviceTunnel, 
                               telescope:str,
                               location:Tuple[float, float],
-                              object_id: str, 
+                              id: str, 
                               type: str, 
                               mode: str):
     try:
         # 1. Fetch object coordinates from sideris
-        details = await get_object_details_impl(object_id, type, location)
+        details = await get_object_details_impl(id, type, location)
         
         # 2. Extract coordinates based on exact models
         ra = details.get("ra_j2000")
