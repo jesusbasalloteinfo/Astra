@@ -8,6 +8,7 @@ from services.astro_service.astro_service import AstroService
 from core.logging import get_logger, setup_global_logging
 from api.sidereal_catalog import router as sidereal_catalog_router
 from api.planetary_catalog import router as planetary_catalog_router
+from api.search_catalog import router as search_catalog_router
 from core.translations import load_translations
 
 
@@ -73,7 +74,7 @@ api = APIRouter(prefix=API_BASE_PATH)
 def health():
     return {"status": "ok", "message": "Sideris Ephemerides API is running!"}
 
-
+app.include_router(search_catalog_router, prefix=API_BASE_PATH+"/search", tags=["Search Catalog"])
 app.include_router(sidereal_catalog_router, prefix=API_BASE_PATH+"/sidereal", tags=["Sidereal Catalog"])
 app.include_router(planetary_catalog_router, prefix=API_BASE_PATH+"/planetary", tags=["Planetary Catalog"])
 app.include_router(api)

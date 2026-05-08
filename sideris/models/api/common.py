@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
-from typing import List, Tuple, TypeVar, Generic
+from typing import List, Optional, Tuple, TypeVar, Generic
 
 T = TypeVar('T')
 
@@ -14,3 +14,8 @@ class MetadataCatalogPayload(BaseModel, Generic[T]):
     version: str = "1.0"
     total: int
     data: T
+
+class SearchResultItem(BaseModel):
+    id: str
+    name: str
+    type: str
