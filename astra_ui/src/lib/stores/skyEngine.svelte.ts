@@ -32,7 +32,13 @@ class SkyEngine {
         if (this.lastSyncTime === 0) return results;
 
         // Time delta in seconds since the last API fetch
-        const dt = (timeEngine.targetTime - this.lastSyncTime) / 1000;
+        let dt = (timeEngine.targetTime - this.lastSyncTime) / 1000;
+
+        // Prevent wild distortion on large time jumps
+        // If the user jumps far into the future/past, the sky will freeze at the TTL*10 edge until the new API sync completes.
+        if (Math.abs(dt) > this.ttlSeconds*10) {
+            dt = Math.sign(dt) * this.ttlSeconds;
+        }
 
         // Helper function for linear interpolation
         const interpolate = (data: Map<string, InterpolationData>) => {
