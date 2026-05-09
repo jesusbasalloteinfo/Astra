@@ -57,13 +57,12 @@ export class CameraController {
     }
 
     /**
-     * Starts a smooth movement to the coordinates.
+     * Caslculate the selected object's position
      */
-    flyTo(alt: number, az: number) {
+    private calculateFlightTarget(alt: number, az: number) {
         const altRad = alt * (Math.PI / 180);
         const azRad  = (180 - az) * (Math.PI / 180);
 
-        // Direction vector to where we want to look at
         const dirX = Math.cos(altRad) * Math.sin(azRad);
         const dirY = Math.sin(altRad);
         const dirZ = Math.cos(altRad) * Math.cos(azRad);
@@ -73,6 +72,13 @@ export class CameraController {
             this.controls.target.y - (dirY * 0.1),
             this.controls.target.z - (dirZ * 0.1)
         );
+    }
+
+    /**
+     * Starts a smooth movement to the coordinates.
+     */
+    flyTo(alt: number, az: number) {
+        this.calculateFlightTarget(alt, az);
         this.isFlying = true;
     }
 
@@ -83,6 +89,17 @@ export class CameraController {
         this.isFlying = false;
         this.isTracking = false;
     };
+
+    /**
+     * Follow a selected object
+     */
+    track(alt: number, az: number) {
+        this.calculateFlightTarget(alt, az);
+        
+        if (!this.isFlying) {
+            this.camera.position.copy(this.flightTarget);
+        }
+    }
 
 
     /**
@@ -169,15 +186,12 @@ export class CameraController {
             const currentOffset = this.camera.position.clone().sub(this.controls.target);
             const targetOffset = this.flightTarget.clone().sub(this.controls.target);
             
-            // Interpolate and force lenght at 0.1 to keep camera in place
-            currentOffset.lerp(targetOffset, 0.05).setLength(0.1);
-            
-            // Apply position
-            this.camera.position.copy(this.controls.target).add(currentOffset);
-            
-            // When near target, cancel flying
             if (currentOffset.distanceTo(targetOffset) < 0.001) {
                 this.isFlying = false;
+                this.camera.position.copy(this.flightTarget);
+            } else {
+                currentOffset.lerp(targetOffset, 0.05).setLength(0.1);
+                this.camera.position.copy(this.controls.target).add(currentOffset);
             }
         }
         this.controls.update();

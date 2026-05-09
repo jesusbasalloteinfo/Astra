@@ -121,7 +121,7 @@ export class SkyMap3DEngine {
             if (this.cameraCtrl.isTracking && this.selectionCtrl.selectedId) {
                 const pos = skyEngine.positions.get(this.selectionCtrl.selectedId);
                 if (pos) {
-                    this.cameraCtrl.flyTo(pos.alt, pos.az);
+                    this.cameraCtrl.track(pos.alt, pos.az);
                 }
             }
         }
