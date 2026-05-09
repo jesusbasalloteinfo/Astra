@@ -128,6 +128,13 @@ export class SkyMap3DEngine {
             this.constellations.update(skyEngine.positions);
             this.targetReticle.update(skyEngine.positions);
             this.telescopePointer.update();
+
+            if (this.cameraCtrl.isTracking && this.selectionCtrl.selectedId) {
+                const pos = skyEngine.positions.get(this.selectionCtrl.selectedId);
+                if (pos) {
+                    this.cameraCtrl.flyTo(pos.alt, pos.az);
+                }
+            }
         }
 
         // Update camera damping/controls and render the scene
@@ -207,12 +214,17 @@ export class SkyMap3DEngine {
             this.cameraCtrl.flyTo(avgAlt, finalAz);
         }
     }
+    
+    recenterSelected() {
+        if (this.selectionCtrl.selectedId) {
+            this.selectionCtrl.selectById(this.selectionCtrl.selectedId);
+        }
+    }
 
     /**
      * Sets the telescope pointer inside the sky map
      */
     setTelescopePosition(alt: number | null, az: number | null) {
-        console.warn("AAAA:", alt, az);
         if (alt !== null && az !== null) {
             this.telescopePointer.updatePosition(alt, az);
         } else {

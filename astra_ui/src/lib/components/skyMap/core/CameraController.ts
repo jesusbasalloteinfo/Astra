@@ -13,6 +13,7 @@ import { FOV_DEFAULT, FOV_MIN, FOV_MAX, ZOOM_SPEED, EYE_LEVEL, CAMERA_SPEED } fr
 export class CameraController {
     public camera: THREE.PerspectiveCamera;
     public controls: OrbitControls;
+    public isTracking: boolean = false; // Maintain always centered
 
     private initialPinchDistance: number | null = null;
     private container: HTMLElement;
@@ -51,7 +52,7 @@ export class CameraController {
         this.container.addEventListener('touchend', this.onTouchEnd);
 
         // Abort fly motion
-        this.container.addEventListener('pointerdown', this.cancelFlight);
+        this.container.addEventListener('pointerdown', this.onPointerDown);
 
     }
 
@@ -80,6 +81,7 @@ export class CameraController {
      */
     private cancelFlight = () => {
         this.isFlying = false;
+        this.isTracking = false;
     };
 
 
@@ -88,7 +90,6 @@ export class CameraController {
      */
     private onWheel = (e: WheelEvent) => {
         e.preventDefault();
-        this.cancelFlight();
         this.applyZoom(e.deltaY * ZOOM_SPEED);
     };
 
@@ -96,12 +97,13 @@ export class CameraController {
      * Initializes pinch distance when two fingers touch the screen (Mobile).
      */
     private onTouchStart = (e: TouchEvent) => {
-        this.cancelFlight();
         if (e.touches.length === 2) {
             e.preventDefault(); // Prevent accidental page scrolling
             const dx = e.touches[0].clientX - e.touches[1].clientX;
             const dy = e.touches[0].clientY - e.touches[1].clientY;
             this.initialPinchDistance = Math.hypot(dx, dy);
+        } else {
+            this.cancelFlight();
         }
     };
 
@@ -133,6 +135,15 @@ export class CameraController {
     private onTouchEnd = (e: TouchEvent) => {
         if (e.touches.length < 2) {
             this.initialPinchDistance = null;
+        }
+    };
+
+    /**
+     * Stop tracking if user makes a click
+     */
+    private onPointerDown = (e: PointerEvent) => {
+        if (e.pointerType !== 'touch') {
+            this.cancelFlight(); 
         }
     };
 
