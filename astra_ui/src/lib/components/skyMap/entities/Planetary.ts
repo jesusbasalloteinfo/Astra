@@ -183,19 +183,23 @@ export class Planetary {
         const canvas = document.createElement('canvas');
         canvas.width = 512; canvas.height = 128;
         const ctx = canvas.getContext('2d')!;
-        ctx.font = 'bold 64px Inter, system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
+        
+        ctx.font = '52px Inter, system-ui, sans-serif'; 
+        
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'bottom';
+        
         ctx.shadowColor = 'black';
-        ctx.shadowBlur = 8;
-        ctx.fillStyle = `#ffffff`;//`#${new THREE.Color(color).getHexString()}`;
-        ctx.fillText(name, 256, 64);
+        ctx.shadowBlur = 6;
+        ctx.fillStyle = '#ffffff'; 
+        
+        ctx.fillText(name, 16, 100);
 
         const texture = new THREE.CanvasTexture(canvas);
         const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false });
         const sprite = new THREE.Sprite(mat);
         
-        sprite.scale.set(32,8,1); 
+        sprite.scale.set(32, 8, 1); 
         return sprite;
     }
 
@@ -214,7 +218,6 @@ export class Planetary {
 
     /**
      * Updates the XYZ coordinates of all planets based on their current AltAz values.
-     * Called continuously inside the render loop.
      */
     update(positionsMap: PositionUpdates, zoomFactor: number) {
         (this.points.material as THREE.ShaderMaterial).uniforms.zoom.value = zoomFactor;
@@ -225,17 +228,28 @@ export class Planetary {
             const p = positionsMap.get(pId);
             if (p) {
                 altAzToXYZ(posArray, i, p.alt, p.az);
+                
                 if (this.labels[i]) {
                     const lowerId = pId.toLowerCase();
-                    const size = PLANET_VISUAL_SIZES[pId.toLowerCase()] ?? PLANET_SIZE_BASE;
-                    let offsetY = -3 - (size * 0.45);
+                    
+                    // Anchor to control the position
+                    let anchorX = 0.0;
+                    let anchorY = 0.0;
 
                     if (lowerId === 'sun') {
-                        offsetY -= 20.0; 
+                        anchorX = -0.65; // Right
+                        anchorY = -1.55; // Up
                     } else if (lowerId === 'moon') {
-                        offsetY -= 4.0; 
+                        anchorX = -0.25;
+                        anchorY = -0.45;
+                    } else {
+                        anchorX = -0.075;
+                        anchorY = -0.075;
                     }
-                    this.labels[i].position.set(posArray[i * 3], posArray[i * 3 + 1] + offsetY, posArray[i * 3 + 2]);
+
+                    this.labels[i].center.set(anchorX, anchorY);
+                    
+                    this.labels[i].position.set(posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2]);
                 }
             }
         }
