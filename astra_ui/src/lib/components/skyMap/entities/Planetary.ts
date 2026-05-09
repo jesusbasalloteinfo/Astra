@@ -13,47 +13,88 @@ import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 const vertexShader = `
     attribute float size;
     attribute vec3 color;
+    attribute float isSun; // 1.0 Sun, 0.0 others
+    
     varying vec3 vColor;
     varying float vAlphaFactor; 
+    varying float vIsSun;
+    
     uniform float zoom;
 
     void main() {
         vColor = color;
-        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        vIsSun = isSun;
         
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
         float actualSize = size * zoom;
 
-        // Minimum size of 2.5 for antialiasing
         gl_PointSize = max(2.5, actualSize);
-        
-        // Smaller real size than drawn, lower the intensity to compensate size
         vAlphaFactor = min(1.0, actualSize / gl_PointSize);
-
         gl_Position = projectionMatrix * mvPosition;
     }
 `;
 
 /**
  * Custom Fragment Shader
- * Converts the default square point into a smooth, circular dot using gl_PointCoord.
+ * With halo logic to the sun and planets.
  */
 const fragmentShader = `
     varying vec3 vColor;
     varying float vAlphaFactor;
+    varying float vIsSun;
     uniform float opacity;
 
     void main() {
-        // gl_PointCoord from 0.0 to 1.0 inside the point
-        float dist = distance(gl_PointCoord, vec2(0.5));
+        vec2 coord = gl_PointCoord - vec2(0.5);
+        float dist = length(coord);
         
-        // Create a circle
-        float alpha = smoothstep(0.5, 0.1, dist);
-        
-        // Scale factor for smaller stars
-        gl_FragColor = vec4(vColor, alpha * opacity * vAlphaFactor);
+        if (dist > 0.5) discard;
+
+        float alpha = 0.0;
+        vec3 finalColor = vec3(1.0);
+
+        if (vIsSun > 0.5) {
+            // === SUN ===
+            
+            float masterFade = smoothstep(0.5, 0.25, dist); 
+            
+            // 1. Light circle
+            float coreBurn = exp(-pow(dist * 25.0, 2.0)) * 2.5; 
+            float innerGlow = exp(-dist * 12.0) * 0.7;
+            float outerGlow = exp(-dist * 5.0) * 0.35;
+            float radialLight = (coreBurn + innerGlow + outerGlow) * masterFade;
+            
+            // 2. Diffraction sim
+            float spikeX = exp(-abs(coord.x) * 100.0);
+            float spikeY = exp(-abs(coord.y) * 100.0);
+            float crossShape = max(spikeX, spikeY);
+            
+            // Start drawing them later
+            float spikeStart = smoothstep(0.04, 0.15, dist);
+            
+            // Apply mask
+            float spikes = crossShape * exp(-dist * 4.0) * 0.8 * masterFade * spikeStart;
+            
+            float totalLight = radialLight + spikes;
+            
+            vec3 sunTint = vec3(1.0, 0.95, 0.85); 
+            finalColor = mix(sunTint, vec3(1.0), smoothstep(0.6, 1.5, totalLight));
+            
+            alpha = min(1.0, totalLight);
+            
+        } else {
+            // === PLANETS ===
+            float core = smoothstep(0.12, 0.0, dist);
+            float glowFade = smoothstep(0.5, 0.3, dist);
+            float glow = exp(-dist * 8.0) * 0.8 * glowFade; 
+            
+            finalColor = mix(vColor, vec3(1.0), min(1.0, core * 1.5));
+            alpha = core + glow;
+        }
+
+        gl_FragColor = vec4(finalColor, min(1.0, alpha) * opacity * vAlphaFactor);
     }
 `;
-
 /**
  * Planetary Entity
  * Manages the rendering and updating of the planetary objects.
@@ -87,15 +128,32 @@ export class Planetary {
         const positions = new Float32Array(num * 3);
         const colors = new Float32Array(num * 3);
         const sizes = new Float32Array(num);
+        const isSunArray = new Float32Array(num); 
         const tmp = new THREE.Color();
 
         for (let i = 0; i < num; i++) {
             const id = this.planetIds[i];
             const lowerId = id.toLowerCase();
             
-            sizes[i] = PLANET_VISUAL_SIZES[lowerId] ?? PLANET_SIZE_BASE;
+            let baseSize = PLANET_VISUAL_SIZES[lowerId] ?? PLANET_SIZE_BASE;
+            let finalColorHex = PLANET_COLORS[lowerId] ?? 0xffffff;
+            let isSun = 0.0;
 
-            tmp.setHex(PLANET_COLORS[lowerId] ?? 0xffffff);
+            if (lowerId === 'sun') {
+                isSun = 1.0;
+                baseSize *= 3.8; 
+
+                finalColorHex = 0xfffae6; 
+            } else if (lowerId === 'moon') {
+                baseSize *= 2.2;
+            } else {
+                baseSize *= 2.5; 
+            }
+
+            sizes[i] = baseSize;
+            isSunArray[i] = isSun;
+
+            tmp.setHex(finalColorHex);
             colors[i * 3]     = tmp.r;
             colors[i * 3 + 1] = tmp.g;
             colors[i * 3 + 2] = tmp.b;
@@ -112,6 +170,7 @@ export class Planetary {
         geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
         geo.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
         geo.setAttribute('size',     new THREE.BufferAttribute(sizes, 1));
+        geo.setAttribute('isSun',    new THREE.BufferAttribute(isSunArray, 1)); 
         geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 0), DOME_RADIUS);
         
         return geo;
@@ -167,8 +226,15 @@ export class Planetary {
             if (p) {
                 altAzToXYZ(posArray, i, p.alt, p.az);
                 if (this.labels[i]) {
+                    const lowerId = pId.toLowerCase();
                     const size = PLANET_VISUAL_SIZES[pId.toLowerCase()] ?? PLANET_SIZE_BASE;
-                    const offsetY = -3 - (size * 0.45);
+                    let offsetY = -3 - (size * 0.45);
+
+                    if (lowerId === 'sun') {
+                        offsetY -= 20.0; 
+                    } else if (lowerId === 'moon') {
+                        offsetY -= 4.0; 
+                    }
                     this.labels[i].position.set(posArray[i * 3], posArray[i * 3 + 1] + offsetY, posArray[i * 3 + 2]);
                 }
             }
