@@ -6,6 +6,7 @@
     let {
         showGround = true,
         groundColor = 0x0f172a,
+        solidGround = true,
         starOpacity = 0.8,
         cardinalColor = '#94a3b8',
         showConstellations = true,
@@ -24,6 +25,7 @@
         const currentProps = { 
             showGround, 
             groundColor, 
+            solidGround,
             showConstellations, 
             constellationColor,
             constellationLabelColor,
@@ -40,7 +42,7 @@
     onMount(() => {
         // Startup
         engine = new SkyMap3DEngine(container, {
-            groundColor, cardinalColor, starOpacity, constellationColor, constellationLabelColor, constellationOpacity, showConstellationLabels, useLatinConstellations
+            groundColor, solidGround, cardinalColor, starOpacity, constellationColor, constellationLabelColor, constellationOpacity, showConstellationLabels, useLatinConstellations
         });
 
         // Shutdown

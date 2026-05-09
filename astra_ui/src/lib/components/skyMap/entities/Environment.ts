@@ -16,12 +16,19 @@ export class Environment {
     constructor(groundColor: number, cardinalColor: string) {
         // Create the Ground
         const geo = new THREE.SphereGeometry(GROUND_RADIUS, 128, 128);
-        const mat = new THREE.MeshBasicMaterial({ color: groundColor, side: THREE.FrontSide, depthWrite: true });
+        const mat = new THREE.MeshBasicMaterial({
+            color: groundColor, 
+            side: THREE.FrontSide, 
+            depthWrite: true, 
+            depthTest: true });
         this.groundMesh = new THREE.Mesh(geo, mat);
 
         // Position is exactly below the camera eye level by its radius amount
         this.groundMesh.position.set(0, -GROUND_RADIUS, 0);
+        this.groundMesh.renderOrder = 10;
         this.group.add(this.groundMesh);
+
+        this.setGroundMode(false);
 
         // Create Cardinal Labels
         CARDINAL_LABELS.forEach(({ text, az }) => {
@@ -34,6 +41,26 @@ export class Environment {
             );
             this.group.add(sprite);
         });
+    }
+    /**
+     * Switches betweeen solid and translucid ground
+     */
+    setGroundMode(isSolid: boolean) {
+        const mat = this.groundMesh.material as THREE.MeshBasicMaterial;
+        
+        if (isSolid) {
+            mat.opacity = 1.0;
+            mat.transparent = false;
+            mat.depthWrite = true; 
+            this.groundMesh.renderOrder = 10; 
+        } else {
+            mat.opacity = 0.6; 
+            mat.transparent = true;
+            mat.depthWrite = false;
+            this.groundMesh.renderOrder = 10; 
+        }
+        
+        mat.needsUpdate = true;
     }
 
     /**

@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import { toInlangBool } from '$lib/utils/i18n';
-    import { ArrowLeft, Search, Settings2, GitBranch, MountainSnow, Sparkles, Tag, Languages, ChevronDown, ChevronUp } from 'lucide-svelte';
+    import { ArrowLeft, Search, Settings2, GitBranch, MountainSnow, Sparkles, Tag, Languages, ChevronDown, ChevronUp, Box, Layers } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 
     let {
@@ -10,11 +10,13 @@
         showConstellationLabels = $bindable(),
         useLatinConstellations = $bindable(),
         showGround = $bindable(),
+        solidGround = $bindable(),
         searchOpen = $bindable(),
         chatOpen = $bindable()
     } = $props();
 
     let showConstellationsMenu = $state(showConstellations);
+    let showGroundMenu = $state(solidGround);
 
     function toggleConstellations() {
         showConstellations = !showConstellations;
@@ -86,11 +88,36 @@
                         </button>
                     </div>
                 {/if}
-                
-                <button onclick={() => showGround = !showGround} 
-                    class="cursor-pointer flex items-center gap-2 px-2 py-1.5 rounded hover:bg-panel/40 text-xs {showGround ? 'text-accent' : 'text-copy-muted'}">
-                    <MountainSnow size={14}/> {m.obs_sidedock_horizon()}
-                </button>
+                <!-- Horizon Menu -->
+                <div class="flex items-center justify-between w-full">
+                    <button onclick={() => showGround = !showGround} 
+                        class="cursor-pointer flex items-center gap-2 px-2 py-1.5 rounded hover:bg-panel/40 text-xs flex-1 {showGround ? 'text-accent' : 'text-copy-muted'}">
+                        <MountainSnow size={14}/> {m.obs_sidedock_horizon()}
+                    </button>
+                    
+                    {#if showGround}
+                        <button onclick={() => showGroundMenu = !showGroundMenu} 
+                            class="p-1.5 text-copy-muted hover:text-white hover:bg-panel/40 rounded transition-all ml-1 cursor-pointer">
+                            {#if showGroundMenu}
+                                <ChevronUp size={14}/>
+                            {:else}
+                                <ChevronDown size={14}/>
+                            {/if}
+                        </button>
+                    {/if}
+                </div>
+
+                {#if showGround && showGroundMenu}
+                    <div transition:slide={{ duration: 200 }} class="flex flex-col ml-4 border-l border-border/50 pl-1 my-1 overflow-hidden">
+                        <button onclick={() => solidGround = !solidGround} 
+                            class="cursor-pointer flex items-center justify-between px-2 py-1.5 rounded text-[11px] hover:bg-panel/40 transition-colors">
+                            <div class="flex items-center gap-2 {solidGround ? 'text-accent' : 'text-copy-muted'}">
+                                <Layers size={12}/> 
+                                <span>{solidGround ? m.obs_sidedock_horizon_solid() : m.obs_sidedock_horizon_radar()}</span>
+                            </div>
+                        </button>
+                    </div>
+                {/if}
             </div>
         </div>
     </div>

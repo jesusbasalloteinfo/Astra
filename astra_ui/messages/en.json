@@ -269,6 +269,8 @@
     }
   ],
   "obs_sidedock_horizon": "Horizon",
+  "obs_sidedock_horizon_solid": "Solid",
+  "obs_sidedock_horizon_radar": "Translucent",
 
   "obs_targetinfo_title": "Target Object",
   "obs_targetinfo_center": "Center object",

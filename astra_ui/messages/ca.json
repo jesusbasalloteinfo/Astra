@@ -270,6 +270,8 @@
     }
   ],
   "obs_sidedock_horizon": "Horitzó",
+  "obs_sidedock_horizon_solid": "Sòlid",
+  "obs_sidedock_horizon_radar": "Translúcid",
 
   "obs_targetinfo_title": "Objecte seleccionat",
   "obs_targetinfo_center": "Centrar objecte",

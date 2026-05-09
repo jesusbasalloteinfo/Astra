@@ -27,6 +27,7 @@
     // Sky settings
     let showConstellations = $state(true);
     let showGround         = $state(true);
+    let solidGround        = $state(true);
     let showConstellationLabels = $state(true);
     let useLatinConstellations = $state(true);
     
@@ -140,6 +141,7 @@
             <SkyMap3D 
                 bind:this={skyMap} 
                 {showGround} 
+                {solidGround}
                 {showConstellations} 
                 {showConstellationLabels}
                 {useLatinConstellations}
@@ -171,6 +173,7 @@
             bind:showConstellationLabels
             bind:useLatinConstellations
             bind:showGround 
+            bind:solidGround
             bind:searchOpen 
             bind:chatOpen 
         />

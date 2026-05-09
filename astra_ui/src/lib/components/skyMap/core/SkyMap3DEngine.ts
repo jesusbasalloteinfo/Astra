@@ -137,6 +137,7 @@ export class SkyMap3DEngine {
      */
     updateProps(props: any) {
         if (props.showGround !== undefined) this.environment.setGroundVisible(props.showGround);
+        if (props.solidGround !== undefined) this.environment.setGroundMode(props.solidGround);
         if (props.groundColor !== undefined) this.environment.setGroundColor(props.groundColor);
         
         if (this.constellations && props.showConstellations !== undefined) {

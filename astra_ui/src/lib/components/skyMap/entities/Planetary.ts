@@ -120,7 +120,7 @@ export class Planetary {
             transparent: true, 
             blending: THREE.AdditiveBlending, 
             depthWrite: false,
-            depthTest: false
+            depthTest: true
         });
 
         this.points = new THREE.Points(geo, mat);
@@ -204,7 +204,7 @@ export class Planetary {
         ctx.fillText(name, 16, 100);
 
         const texture = new THREE.CanvasTexture(canvas);
-        const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false, depthTest: false });
+        const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false, depthTest: true });
         const sprite = new THREE.Sprite(mat);
         
         sprite.scale.set(32, 8, 1); 
