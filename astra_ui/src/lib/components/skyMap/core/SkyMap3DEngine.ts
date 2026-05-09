@@ -81,19 +81,8 @@ export class SkyMap3DEngine {
         this.scene.add(this.targetReticle.sprite);
         this.scene.add(this.telescopePointer.sprite);
 
-        const applyRenderOrder = (obj: THREE.Object3D, order: number) => {
-            obj.traverse((child) => {
-                child.renderOrder = order;
-            });
-        };
-
-        applyRenderOrder(this.environment.group, 0);    // First the environment
-        applyRenderOrder(this.constellations.group, 1); // Second the constellations
-        applyRenderOrder(this.sidereal.group, 2);       // Third, stars/DSO
-        applyRenderOrder(this.planetary.group, 3);      // Fourth, planetary objects
-        
-        this.targetReticle.sprite.renderOrder = 4;
-        this.telescopePointer.sprite.renderOrder = 5;
+        this.targetReticle.sprite.renderOrder = 5;
+        this.telescopePointer.sprite.renderOrder = 6;
 
         // Apply initial visual properties
         this.updateProps(props); 

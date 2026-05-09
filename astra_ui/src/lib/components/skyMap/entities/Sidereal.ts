@@ -124,6 +124,7 @@ export class Sidereal {
         });
 
         this.points = new THREE.Points(geo, mat);
+        this.points.renderOrder = 2;
         this.group.add(this.points);
     }
 

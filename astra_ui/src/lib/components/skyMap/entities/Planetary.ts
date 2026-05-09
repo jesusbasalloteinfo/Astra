@@ -84,15 +84,17 @@ const fragmentShader = `
             
         } else {
             // === PLANETS ===
-            float core = smoothstep(0.12, 0.0, dist);
-            float glowFade = smoothstep(0.5, 0.3, dist);
-            float glow = exp(-dist * 8.0) * 0.8 * glowFade; 
             
-            finalColor = mix(vColor, vec3(1.0), min(1.0, core * 1.5));
-            alpha = core + glow;
+            float core = exp(-pow(dist * 12.0, 2.0)) * 1.5; 
+
+            float halo = exp(-dist * 5.0) * 0.8;
+            
+            finalColor = mix(vColor, vec3(1.0), min(1.0, core * 1.2));
+            
+            alpha = (core + halo) * smoothstep(0.5, 0.2, dist);
         }
 
-        gl_FragColor = vec4(finalColor, min(1.0, alpha) * opacity * vAlphaFactor);
+        gl_FragColor = vec4(finalColor, alpha * opacity * vAlphaFactor);
     }
 `;
 /**
@@ -113,10 +115,16 @@ export class Planetary {
 
         const mat = new THREE.ShaderMaterial({
             uniforms: { zoom: { value: 1.0 }, opacity: { value: opacity } },
-            vertexShader, fragmentShader, transparent: true, blending: THREE.NormalBlending, depthWrite: false
+            vertexShader, 
+            fragmentShader, 
+            transparent: true, 
+            blending: THREE.AdditiveBlending, 
+            depthWrite: false,
+            depthTest: false
         });
 
         this.points = new THREE.Points(geo, mat);
+        this.points.renderOrder = 3;
         this.group.add(this.points);
     }
 
@@ -196,10 +204,11 @@ export class Planetary {
         ctx.fillText(name, 16, 100);
 
         const texture = new THREE.CanvasTexture(canvas);
-        const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false });
+        const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false, depthTest: false });
         const sprite = new THREE.Sprite(mat);
         
         sprite.scale.set(32, 8, 1); 
+        sprite.renderOrder = 4
         return sprite;
     }
 
