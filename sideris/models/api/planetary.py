@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import List, Literal, Optional, Union
 
 class MoonDetails(BaseModel):
-    type: Literal["moon"] = "moon"
+    category: Literal["moon"] = "moon"
     illumination_pct: float
     age: Optional[float]=0.0
     phase_angle_deg: float
@@ -12,7 +12,7 @@ class MoonDetails(BaseModel):
     next_full_moon: Optional[datetime] = None
 
 class PlanetDetails(BaseModel):
-    type: Literal["planet"] = "planet"
+    category: Literal["planet"] = "planet"
     elongation_deg: float
     phase_angle_deg: float
     illumination_pct: float
@@ -34,7 +34,8 @@ class ObjectLightMetadata(BaseModel):
     id: str
     name: str
     common_names: List[str] = Field(default_factory=list)
-    type: Literal["planetary", "star", "moon"] = "planetary"
+    type: Literal["planetary"] = "planetary"
+    category: str
     dist: float # AU
     mag: Optional[float]
 
@@ -50,7 +51,8 @@ class PlanetaryObjectMetadata(BaseModel):
     id: str
     name: str
     common_names: List[str] = Field(default_factory=list)
-    type: Literal["planetary", "star", "moon"] = "planetary"
+    type: Literal["planetary"] = "planetary"
+    category: str
     description: Optional[str] = None
     fun_fact: Optional[str] = None
     visual_tip: Optional[str] = None
@@ -68,4 +70,4 @@ class PlanetaryObjectMetadata(BaseModel):
     motion: MotionDelta
 
     rise_set_transit: RiseSetTransit
-    extra_details: Optional[ExtraDetails] = Field(default=None, discriminator='type')
+    extra_details: Optional[ExtraDetails] = Field(default=None, discriminator='category')

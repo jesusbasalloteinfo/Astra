@@ -131,7 +131,7 @@ class CatalogStore {
             
             const displayName = data.name;
             
-            const res = { id, name: displayName, type: data.type, mag: data.mag };
+            const res = { id, name: displayName, type: data.type, category: data.category, mag: data.mag };
 
             const possibleNames = [
                 data.name,
@@ -149,7 +149,7 @@ class CatalogStore {
         // Sidereal indexing
         for (const [id, data] of Object.entries(this.siderealData)) {
             const displayName = data.name || data.common_names?.[0] || data.catalog_names?.[0] || id;
-            const res = { id, name: displayName, type: data.type || 'Star', mag: data.mag };
+            const res = { id, name: displayName, type: data.type || 'sidereal', category: data.category || 'star', mag: data.mag };
 
             const possibleNames = [
                 data.name,
@@ -168,7 +168,7 @@ class CatalogStore {
         // Constellation indexing
         for (const constel of this.constellations) {
             
-            const res = { id: constel.abbr, name: constel.name, type: 'constellation', mag: null };
+            const res = { id: constel.abbr, name: constel.name, type: 'constellation', category: 'constellation', mag: null };
 
             const possibleNames = [
                 constel.name,

@@ -19,3 +19,4 @@ class SearchResultItem(BaseModel):
     id: str
     name: str
     type: str
+    category: str

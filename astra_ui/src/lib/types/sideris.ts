@@ -13,7 +13,8 @@ export interface ConstellationMetadata {
 export interface SiderealObjectMetadata {
     id: string;
     name: string;
-    type: string;
+    type: "sidereal" | "constellation";
+    category: string;
     common_names: string[];
     catalog_names: string[];
     constellation: string;
@@ -32,7 +33,8 @@ export interface PlanetaryObjectMetadata {
     id: string;
     name: string;
     common_names: string[];
-    type: string;
+    type: "planetary";
+    category: string;
     dist: number; // AU
     mag: number | null;
 }

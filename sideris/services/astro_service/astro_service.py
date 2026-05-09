@@ -69,7 +69,8 @@ class AstroService:
             ui_objects[star.id] = SiderealObjectMetadata(
                 id=star.id,
                 name=star.name if star.name else star.id,
-                type=star.type,
+                type="sidereal",
+                category=star.category,
                 common_names=star.common_names,
                 catalog_names=star.catalog_names,
                 constellation=star.constellation,
@@ -88,7 +89,8 @@ class AstroService:
             ui_objects[ds.id] = SiderealObjectMetadata(
                 id=ds.id,
                 name=ds.name if ds.name else ds.id,
-                type=ds.type,
+                type="sidereal",
+                category=ds.category,
                 common_names=ds.common_names,
                 catalog_names=ds.catalog_names,
                 constellation=ds.constellation,
@@ -133,8 +135,8 @@ class AstroService:
         # Sidereal indexing
         for obj_id, data in self._sidereal_metadata.data.items():
             possible_names = [data.name] + (data.common_names or []) + (data.catalog_names or []) + [obj_id]
-            res = {"id": obj_id, "name": data.name, "type": data.type or 'Star', "mag": data.mag}
-            
+            res = {"id": obj_id, "name": data.name, "type": "sidereal", "category": data.category or 'star', "mag": data.mag}
+
             for name in possible_names:
                 if name:
                     search_key = str(name).lower().replace(" ", "")
@@ -143,8 +145,7 @@ class AstroService:
         # Constellation indexing
         for const in self._constellations_metadata.data:
             possible_names = [const.name, const.latin, const.abbr]
-            res = {"id": const.abbr, "name": const.name, "type": 'constellation', "mag": None}
-            
+            res = {"id": const.abbr, "name": const.name, "type": 'constellation', "category": 'constellation', "mag": None}            
             for name in possible_names:
                 if name:
                     search_key = str(name).lower().replace(" ", "")
@@ -187,6 +188,9 @@ class AstroService:
                     if clean_query in key:
                         score = 1 if key == clean_query else (2 if key.startswith(clean_query) else 3)
                         if p_id not in matches or score < matches[p_id]["score"]:
+                            # Assume moon for "moon" and planet for the rest in search
+                            category = "moon" if p_id == "moon" else "planet"
+                            res = {"id": p_id, "name": name, "type": "planetary", "category": category, "mag": -99.0} 
                             matches[p_id] = {"result": res, "score": score}
 
         # Sort by Score and then by magnitude

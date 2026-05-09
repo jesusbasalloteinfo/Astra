@@ -129,7 +129,7 @@
                                     </div>
                                     <div class="text-left">
                                         <h4 class="text-sm font-bold {selectedIndex === i ? 'text-accent' : 'text-copy-primary'}">{result.name}</h4>
-                                        <p class="text-[10px] text-copy-muted uppercase tracking-widest">{translateObjectType(result.type)} · Mag: {result.mag ?? 'N/A'}</p>
+                                        <p class="text-[10px] text-copy-muted uppercase tracking-widest">{translateObjectType(result.category)} · Mag: {result.mag ?? 'N/A'}</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2 text-copy-muted {selectedIndex === i ? 'opacity-100' : 'opacity-0'} transition-opacity">
