@@ -46,7 +46,7 @@ export class Constellations {
         });
 
         this.lines = new THREE.LineSegments(geo, mat);
-        this.lines.renderOrder = 1;
+        this.lines.renderOrder = 0;
         this.group.add(this.lines);
     }
 

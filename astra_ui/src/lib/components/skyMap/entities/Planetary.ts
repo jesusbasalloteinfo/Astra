@@ -124,7 +124,7 @@ export class Planetary {
         });
 
         this.points = new THREE.Points(geo, mat);
-        this.points.renderOrder = 3;
+        this.points.renderOrder = 2;
         this.group.add(this.points);
     }
 
@@ -208,7 +208,7 @@ export class Planetary {
         const sprite = new THREE.Sprite(mat);
         
         sprite.scale.set(32, 8, 1); 
-        sprite.renderOrder = 4
+        sprite.renderOrder = 3
         return sprite;
     }
 

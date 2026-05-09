@@ -33,8 +33,8 @@ const vertexShader = `
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
         float actualSize = size * zoom;
 
-        // Minimum size of 2.5 for antialiasing
-        gl_PointSize = max(2.5, actualSize);
+        // Minimum size of 5 for antialiasing
+        gl_PointSize = max(5.0, actualSize);
         
         // Smaller real size than drawn, lower the intensity to compensate size
         vAlphaFactor = min(1.0, actualSize / gl_PointSize);
@@ -57,6 +57,7 @@ const fragmentShader = `
     void main() {
         vec2 coord = gl_PointCoord - vec2(0.5);
 
+        // Galaxy rotation
         if (vShapeType > 1.5) {
             float s = sin(vAngle);
             float c = cos(vAngle);
@@ -67,22 +68,36 @@ const fragmentShader = `
         }
 
         float dist = length(coord);
+        if (dist > 0.5) discard;
+
         float alpha = 0.0;
-        
-        if (vShapeType > 0.5) {
-            // Gaussian center
-            alpha = exp(-pow(dist * 3.5, 2.0));
+        vec3 finalColor = vColor;
+
+        if (vShapeType < 0.5) {
+            // === STARS ===
             
-            alpha *= smoothstep(0.5, 0.3, dist);
+            float core = exp(-pow(dist * 4.0, 2.0)); 
             
+            float halo = exp(-dist * 2.5) * 0.8;
+            
+            finalColor = mix(vColor, vec3(1.0), core * 0.5);
+            
+            alpha = (core + halo) * smoothstep(0.5, 0.1, dist);
+
         } else {
-            alpha = smoothstep(0.5, 0.1, dist);
-            if (dist > 0.5) discard;
+            // === DSOs ===
+            
+            float dsoCore = exp(-pow(dist * 8.0, 2.0));
+            float dsoHalo = exp(-dist * 4.0) * 0.5;
+            
+            finalColor = mix(vColor, vec3(1.0), dsoCore * 0.8);
+            
+            alpha = (dsoCore + dsoHalo) * smoothstep(0.5, 0.2, dist);
+            
+            alpha *= 0.85;
         }
-        
-        float dsoDimmer = vShapeType > 0.5 ? 0.8 : 1.0;
-        
-        gl_FragColor = vec4(vColor, alpha * opacity * vAlphaFactor * dsoDimmer);
+
+        gl_FragColor = vec4(finalColor, min(1.0, alpha) * opacity * vAlphaFactor);
     }
 `;
 
@@ -119,12 +134,13 @@ export class Sidereal {
             vertexShader, 
             fragmentShader, 
             transparent: true, 
-            blending: THREE.AdditiveBlending, 
-            depthWrite: false
+            blending: THREE.NormalBlending, 
+            depthWrite: false,
+            depthTest: true
         });
 
         this.points = new THREE.Points(geo, mat);
-        this.points.renderOrder = 2;
+        this.points.renderOrder = 1;
         this.group.add(this.points);
     }
 
