@@ -106,6 +106,206 @@
     --bg-danger-surface: rgba(255, 51, 51, 0.4);
 }
 
+/* ============================================================
+   ASTRA MARKDOWN STYLES
+   ============================================================ */
+.markdown-content { line-height: 1.5; }
+    
+/* Compact paragraphs */
+.markdown-content p { margin-bottom: 0.5rem; }
+.markdown-content p:last-child { margin-bottom: 0; }
+
+/* Titles */
+.markdown-content h1, 
+.markdown-content h2, 
+.markdown-content h3 {
+    color: var(--color-copy-primary); 
+    font-weight: 700;
+    margin-top: 1rem; margin-bottom: 0.5rem;
+}
+.markdown-content h1 { font-size: 1.15rem; }
+.markdown-content h2 { font-size: 1.05rem; }
+
+/* Lists */
+.markdown-content ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.5rem; }
+.markdown-content ol { list-style-type: decimal; padding-left: 1.25rem; margin-bottom: 0.5rem; }
+.markdown-content li { margin-bottom: 0.15rem; display: list-item; }
+
+/* Separators */
+.markdown-content hr { 
+    border: none;
+    border-top: 1px solid var(--color-border); 
+    margin: 0.75rem 0; 
+}
+
+/* Bolds and italics */
+.markdown-content strong { font-weight: 700; color: var(--color-copy-primary); }
+.markdown-content em { font-style: italic; }
+
+/* Code snippet */
+.markdown-content code { 
+    background-color: var(--color-surface); 
+    padding: 0.1rem 0.3rem; 
+    border-radius: 0.25rem; 
+    font-family: monospace; 
+    font-size: 0.9em; 
+    color: var(--color-accent); 
+}
+
+/* Code block */
+.markdown-content pre code { background-color: transparent; padding: 0; color: inherit; }
+.markdown-content pre { 
+    background-color: var(--color-secondary); 
+    padding: 0.75em; 
+    border-radius: 0.5rem; 
+    overflow-x: auto; 
+    margin-bottom: 0.75em; 
+    border: 1px solid var(--color-border); 
+}
+
+/* ==========================================
+    Links
+    ========================================== */
+.markdown-content a { 
+    color: var(--color-accent) !important; 
+    text-decoration: underline dashed !important; 
+    text-underline-offset: 4px !important;
+    text-decoration-thickness: 1px !important;
+    font-weight: 500;
+    transition: all 0.2s ease-out; 
+    word-break: break-all;
+}
+
+/* Decorative arrow */
+.markdown-content a::after {
+    content: ' \2197\FE0E';
+    font-family: monospace;
+    font-size: 1em;
+    opacity: 0.6;
+    display: inline-block;
+    margin-left: 2px;
+    transition: transform 0.2s ease-out, opacity 0.2s;
+}
+
+.markdown-content a:hover { 
+    color: var(--color-accent-hover) !important; 
+    text-decoration: underline solid !important; 
+    text-shadow: 0 0 8px var(--color-accent-glow); 
+}
+
+.markdown-content a:hover::after {
+    transform: translate(2px, -2px);
+    opacity: 1;
+}
+
+/* ==========================================
+    Tables
+    ========================================== */
+.markdown-content table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 1rem;
+    margin-bottom: 1rem; 
+    font-size: 0.85rem; 
+    /* Horizontal scroll */
+    display: block; 
+    overflow-x: auto; 
+}
+
+.markdown-content th, 
+.markdown-content td { 
+    border: 1px solid var(--color-border); 
+    padding: 0.5rem 0.75rem; 
+    text-align: left; 
+}
+
+.markdown-content th { 
+    background-color: var(--color-surface); 
+    color: var(--color-copy-primary); 
+    font-weight: 700; 
+    white-space: nowrap; 
+}
+/* ==========================================
+    OTHER MARKDOWN ELEMENTS
+    ========================================== */
+    
+/* Blockquote */
+.markdown-content blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--color-copy-secondary);
+    font-style: italic;
+    background-color: var(--color-surface);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Strikethrough */
+.markdown-content del {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Images */
+.markdown-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid var(--color-border);
+}
+    
+/* ==========================================
+    CHECKLISTS 
+    ========================================== */
+    
+.markdown-content li:has(input[type="checkbox"]) {
+    list-style-type: none;
+    margin-left: -1.25rem; 
+}
+
+.markdown-content input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25rem;
+    background-color: var(--color-surface);
+    margin-right: 0.5rem;
+    vertical-align: -0.28em; 
+    position: relative;
+    transition: all 0.2s ease;
+    opacity: 0.9 !important;
+}
+
+.markdown-content input[type="checkbox"]:checked {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent-glow);
+}
+
+.markdown-content input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.markdown-content tr:nth-child(even) {
+    background-color: var(--color-surface);
+}
+
+
 /* Other base styles */
 html {
   scroll-behavior: smooth;

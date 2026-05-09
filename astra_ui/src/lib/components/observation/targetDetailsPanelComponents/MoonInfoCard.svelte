@@ -116,7 +116,7 @@
             
             {#if nextFullMoon}
                 <div class="text-right">
-                    <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5 block">{m.obs_targetinfo_lunar_next_new()}</span>
+                    <span class="text-[8px] uppercase font-bold text-copy-muted mb-0.5 block">{m.obs_targetinfo_lunar_next_full()}</span>
                     <span class="text-xs font-mono text-copy-primary">{formatPhaseDate(nextFullMoon)}</span>
                 </div>
             {/if}

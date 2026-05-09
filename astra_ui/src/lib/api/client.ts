@@ -7,6 +7,7 @@ import { browser } from '$app/environment';
 export const api = axios.create({
     baseURL: endpoints.apiBase,
     headers: { 'Content-Type': 'application/json' },
+    adapter: 'fetch'
 });
 
 

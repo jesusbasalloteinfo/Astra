@@ -15,6 +15,8 @@ from core.dependencies import get_request_user
 from api.users import router as users_router
 from api.observations import router as obs_router
 from api.devices import router as devices_router
+from api.chat import router as chat_router
+
 # ================================================================================
 # API CONFIGURATION
 # ================================================================================
@@ -133,6 +135,7 @@ app.include_router(api, tags=["Main API"])
 app.include_router(users_router, prefix=API_BASE_PATH+"/users", tags=["User Management"])
 app.include_router(devices_router, prefix=API_BASE_PATH+"/devices", tags=["Device management"])
 app.include_router(obs_router, prefix=API_BASE_PATH+"/observations", tags=["Observations"])
+app.include_router(chat_router, prefix=API_BASE_PATH+"/chat", tags=["Chat"])
 
 
 

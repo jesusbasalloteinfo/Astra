@@ -69,7 +69,8 @@ class AstroService:
             ui_objects[star.id] = SiderealObjectMetadata(
                 id=star.id,
                 name=star.name if star.name else star.id,
-                type=star.type,
+                type="sidereal",
+                category=star.category,
                 common_names=star.common_names,
                 catalog_names=star.catalog_names,
                 constellation=star.constellation,
@@ -88,7 +89,8 @@ class AstroService:
             ui_objects[ds.id] = SiderealObjectMetadata(
                 id=ds.id,
                 name=ds.name if ds.name else ds.id,
-                type=ds.type,
+                type="sidereal",
+                category=ds.category,
                 common_names=ds.common_names,
                 catalog_names=ds.catalog_names,
                 constellation=ds.constellation,
@@ -123,8 +125,85 @@ class AstroService:
             total=len(ui_constellations),
             data=ui_constellations
         )
-        get_logger("Astroservice").debug("Metadata cache ready!")
+        self._build_search_index()
+        get_logger("Astroservice").debug("Metadata cache & Search index ready!")
         
+    def _build_search_index(self):
+        """Creates a fast search dictionary mimicking the frontend"""
+        self._search_index = []
+
+        # Sidereal indexing
+        for obj_id, data in self._sidereal_metadata.data.items():
+            possible_names = [data.name] + (data.common_names or []) + (data.catalog_names or []) + [obj_id]
+            res = {"id": obj_id, "name": data.name, "type": "sidereal", "category": data.category or 'star', "mag": data.mag}
+
+            for name in possible_names:
+                if name:
+                    search_key = str(name).lower().replace(" ", "")
+                    self._search_index.append({"key": search_key, "result": res})
+
+        # Constellation indexing
+        for const in self._constellations_metadata.data:
+            possible_names = [const.name, const.latin, const.abbr]
+            res = {"id": const.abbr, "name": const.name, "type": 'constellation', "category": 'constellation', "mag": None}            
+            for name in possible_names:
+                if name:
+                    search_key = str(name).lower().replace(" ", "")
+                    self._search_index.append({"key": search_key, "result": res})
+    
+    def search_objects(self, query: str, limit: int = 10, planetary_translations: dict = None) -> list:
+        """
+        Search objects applying the frontend scoring logic.
+        Uses static indexing for sidereal/constellations and dynamic injection for planets.
+        """
+        clean_query = query.lower().replace(" ", "")
+        if len(clean_query) < 2:
+            return []
+
+        matches = {}
+
+        # 1. Search in static index (Sidereal + Constellations)
+        for item in self._search_index:
+            if clean_query in item["key"]:
+                score = 1 if item["key"] == clean_query else (2 if item["key"].startswith(clean_query) else 3)
+                obj_id = item["result"]["id"]
+                
+                if obj_id not in matches or score < matches[obj_id]["score"]:
+                    matches[obj_id] = {"result": item["result"].copy(), "score": score}
+
+        # 2. Search in planetary
+        planetary_ids = ["sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"]
+        
+        for p_id in planetary_ids:
+            trans = planetary_translations.get(p_id) if planetary_translations else None
+            name = trans.name if trans else p_id.capitalize()
+            common = trans.common_names if trans else []
+            
+            possible_names = [name, p_id] + common
+            res = {"id": p_id, "name": name, "type": "planetary", "mag": -99.0} 
+            
+            for p_name in possible_names:
+                if p_name:
+                    key = str(p_name).lower().replace(" ", "")
+                    if clean_query in key:
+                        score = 1 if key == clean_query else (2 if key.startswith(clean_query) else 3)
+                        if p_id not in matches or score < matches[p_id]["score"]:
+                            # Assume moon for "moon" and planet for the rest in search
+                            category = "moon" if p_id == "moon" else "planet"
+                            res = {"id": p_id, "name": name, "type": "planetary", "category": category, "mag": -99.0} 
+                            matches[p_id] = {"result": res, "score": score}
+
+        # Sort by Score and then by magnitude
+        results = list(matches.values())
+        results.sort(key=lambda x: (
+            x["score"],
+            x["result"]["mag"] if x["result"]["mag"] is not None else 99.0
+        ))
+
+        for res in results:
+            del res["result"]["mag"]
+
+        return [item["result"] for item in results[:limit]]
     
     # Sidereal Object Handling
     def get_sidereal_metadata(self) -> MetadataCatalogPayload:

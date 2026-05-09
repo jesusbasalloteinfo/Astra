@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
-from typing import List, Optional, Tuple, Union
+from typing import List, Literal, Optional, Tuple, Union
 from models.catalog.sidereal import Star, DeepSky
 
 class EphemerisMovementData(BaseModel):
@@ -13,17 +13,18 @@ class EphemerisMovementData(BaseModel):
     never_rises: Optional[bool]= False
 
 class StarDataResponse(EphemerisMovementData, Star):
-    pass
+    type: Literal["sidereal"] = "sidereal"
 
 class DSODataResponse(EphemerisMovementData, DeepSky):
-    pass
+    type: Literal["sidereal"] = "sidereal"
 
 SiderealObjectDataResponse = Union[StarDataResponse, DSODataResponse]
 
 class SiderealObjectMetadata(BaseModel):
     id: str
     name: str
-    type: str # "star", "galaxy", "nebula", etc.
+    type: Literal["sidereal"] = "sidereal"
+    category: str # "star", "galaxy", "nebula", etc.
     common_names: List[str] = Field(default_factory=list)
     description: Optional[str] = None
     fun_fact: Optional[str] = None

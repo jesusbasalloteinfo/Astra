@@ -330,6 +330,27 @@
   "obs_telescope_controller_active_telescope": "Active telescope",
   "obs_telescope_controller_active_camera": "Active camera",
 
+  "obs_assistant_title": "Astra AI",
+  "obs_assistant_name": "Astra",
+  "obs_assistant_target": "Target Object:",
+  "obs_assistant_empty": "Ready to assist with your observations. Ask me to find objects, explain phenomena, or control the telescope.",
+  "obs_assistant_input_placeholder": "Ask Astra...",
+  "obs_assistant_loading": "Thinking...",
+  "obs_assistant_send": "Send",
+  "obs_assistant_abort": "Stop",
+  "obs_assistant_error": "Error: {reason}",
+  "obs_assistant_scrolldown": "Scroll down",
+  "obs_assistant_thinking": [
+    {
+      "declarations": ["input thinking"],
+			"selectors": ["thinking"],
+      "match": {
+				"thinking=true": "Hide thinking process",
+				"thinking=false": "Show thinking process"
+			}
+    }
+  ],
+
   "====================================== OBJECT DATA ======================================": "",
 
   "data_types_planetary": "Planet",
@@ -356,8 +377,7 @@
   "data_moon_phase_waxing_crescent": "Waxing Crescent",
   "data_moon_phase_waxing_gibbous": "Waxing Gibbous",
   "data_moon_phase_waning_crescent": "Waning Crescent",
-  "data_moon_phase_waning_gibbous": "Waning Gibbous",
+  "data_moon_phase_waning_gibbous": "Waning Gibbous"
 
-  "obs_ai_title": "Astra AI"
 
 }

@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     libxslt1-dev \
     gcc \
     g++ \
+    curl \
+    iputils-ping \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

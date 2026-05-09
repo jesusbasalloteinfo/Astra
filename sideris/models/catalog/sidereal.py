@@ -1,10 +1,9 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
-
 class Star(BaseModel):
     id: str
     name: str
-    type: str = "star"
+    category: str = Field(default="star", validation_alias="type")
     common_names: List[str] = Field(default_factory=list)
     catalog_names: List[str] = Field(default_factory=list)
     mag: Optional[float] = None
@@ -20,9 +19,10 @@ class Star(BaseModel):
     pmdec_mas: float
 
 class DeepSky(BaseModel):
+    model_config = {"populate_by_name": True}
     id: str
     name: str
-    type: str
+    category: str = Field(..., alias="type")
     common_names: List[str] = Field(default_factory=list)
     catalog_names: List[str] = Field(default_factory=list)
     mag: Optional[float] = None

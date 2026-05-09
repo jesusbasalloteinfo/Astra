@@ -55,7 +55,7 @@
         return {
             id,
             name: details.name || id,
-            type: details.type,
+            category: details.category,
             imageUrl,
             wikipediaUrl,
             stats, 
@@ -119,7 +119,7 @@
                         <div class="h-4 w-20 bg-panel rounded animate-pulse"></div>
                     {:else if selectedInfo}
                         <h2 class="text-xl font-bold text-copy-primary leading-tight truncate" title={selectedInfo.name}>{selectedInfo.name}</h2>
-                        <p class="text-xs text-copy-muted mt-1 truncate">{translateObjectType(selectedInfo.type)}</p>
+                        <p class="text-xs text-copy-muted mt-1 truncate">{translateObjectType(selectedInfo.category)}</p>
                     {/if}
                 </div>
 
@@ -171,7 +171,7 @@
             </div>
             <!-- Special cards -->
             {#if selectedInfo?.extraDetails}
-                {#if selectedInfo.extraDetails.type === 'moon'}
+                {#if selectedInfo.extraDetails.category === 'moon'}
                     <MoonInfoCard 
                         age={selectedInfo.extraDetails.age} 
                         illuminationPct={selectedInfo.extraDetails.illumination_pct} 
@@ -179,7 +179,7 @@
                         nextFullMoon={selectedInfo.extraDetails.next_full_moon}
                     />
                 {/if}
-                {#if selectedInfo.extraDetails.type === 'planet'}
+                {#if selectedInfo.extraDetails.category === 'planet'}
                     <PlanetInfoCard 
                         id={selectedInfo.id}
                         illuminationPct={selectedInfo.extraDetails.illumination_pct}

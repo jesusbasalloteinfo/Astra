@@ -286,7 +286,8 @@ class PlanetaryEngine(BaseEngine):
                 id=obj.name.lower(),
                 name=obj.name.capitalize(),
                 common_names=[obj.name.capitalize()],
-                type=object_type,
+                type="planetary",
+                category=object_type,
                 dist=round(distance.au, 6),
                 mag=magnitude
             )
@@ -385,7 +386,8 @@ class PlanetaryEngine(BaseEngine):
             id=obj.name.lower(),
             name=obj.name.capitalize(),
             common_names=[obj.name.capitalize()],
-            type=object_type,
+            type="planetary",
+            category=object_type,
             dist=round(distance.au, 6),
             mag=magnitude,
             ang_diameter=ang_diameter,
