@@ -69,5 +69,5 @@
 </script>
 
 <div class="w-full h-full relative group">
-    <div bind:this={container} class="w-full h-full bg-transparent rounded-3xl overflow-hidden"></div>
+    <div bind:this={container} class="w-full h-full bg-transparent overflow-hidden"></div>
 </div>

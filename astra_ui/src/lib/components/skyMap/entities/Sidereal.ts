@@ -15,14 +15,19 @@ import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 const vertexShader = `
     attribute float size;
     attribute vec3 color;
+    attribute float isDso; // 0.0 - stars, 1.0 - DSO
+
     varying vec3 vColor;
     varying float vAlphaFactor; 
+    varying float vIsDso;
+
     uniform float zoom;
 
     void main() {
         vColor = color;
+        vIsDso = isDso;
+
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-        
         float actualSize = size * zoom;
 
         // Minimum size of 2.5 for antialiasing
@@ -42,19 +47,40 @@ const vertexShader = `
 const fragmentShader = `
     varying vec3 vColor;
     varying float vAlphaFactor;
+    varying float vIsDso;
     uniform float opacity;
 
     void main() {
         // gl_PointCoord from 0.0 to 1.0 inside the point
         float dist = distance(gl_PointCoord, vec2(0.5));
-        
+        float alpha = 0.0;
+
         // Create a circle
-        float alpha = smoothstep(0.5, 0.1, dist);
+        if (vIsDso > 0.5) {
+            // DSOs  -> Smoother border
+            alpha = smoothstep(0.5, 0.0, dist);
+        } else {
+            // Stars -> Solid center with a smoothed border
+            alpha = smoothstep(0.5, 0.1, dist);
+        }
         
         // Scale factor for smaller stars
         gl_FragColor = vec4(vColor, alpha * opacity * vAlphaFactor);
     }
 `;
+
+
+/**
+ * Convert B-V temperature index to an RGB color
+ */
+function bvToRGB(bv: number): THREE.Color {
+    if (bv < -0.4) return new THREE.Color(0xcddcff); // Light blue
+    if (bv < 0.0) return new THREE.Color(0xe2ebff);  // Pale bluish white
+    if (bv < 0.4) return new THREE.Color(0xffffff);  // White
+    if (bv < 0.8) return new THREE.Color(0xfffaed);  // Pale yellowish white
+    if (bv < 1.2) return new THREE.Color(0xffe6cc);  // Pale orange
+    return new THREE.Color(0xffd2a8);                // Pale red
+}
 
 /**
  * Sidereal Entity
@@ -93,24 +119,55 @@ export class Sidereal {
         const positions = new Float32Array(num * 3);
         const sizes = new Float32Array(num);
         const colors = new Float32Array(num * 3);
+        const isDsoArray = new Float32Array(num); 
+        const starTags = ['star', 'double_star', 'star_system', 'asterism'];
 
         for (let i = 0; i < num; i++) {
             const id = this.starIds[i];
             const data = catalogStore.siderealData[id];
             
             const mag = (data && typeof data.mag === 'number') ? data.mag : 6.0;
-            sizes[i] = Math.max(0.8, (7.0 - mag) * 0.8);
+            const category = data?.category || 'unknown';
+            
+            let finalColor = new THREE.Color(0xffffff);
+            let sizeMultiplier = 1.0;
+            let isDsoFlag = 0.0;
 
-            // White colour 
-            colors[i * 3] = 1.0; 
-            colors[i * 3 + 1] = 1.0; 
-            colors[i * 3 + 2] = 1.0;
+            if (starTags.includes(category)) {
+                // Stars: B-V color if we have it
+                if (typeof data.b_v === 'number') {
+                    finalColor = bvToRGB(data.b_v);
+                }
+            } else if (category !== 'unknown') {
+                // DSOs: Smoother and bigger
+                isDsoFlag = 1.0;
+                sizeMultiplier = 2.0; 
+
+                // Slight tints over white to give some variety
+                if (['galaxy', 'galactic_cluster'].includes(category)) {
+                    finalColor.setHex(0xf0f4ff); // Blue tints
+                } else if (['nebula', 'planetary_nebula', 'molecular_cloud', 'supernova_remnant'].includes(category)) {
+                    finalColor.setHex(0xfff0f5); // Magenta tints
+                } else if (['open_cluster', 'globular_cluster'].includes(category)) {
+                    finalColor.setHex(0xfffbee); // Warm tints
+                }
+            }
+
+            // Size to be applied
+            sizes[i] = Math.max(0.8, (7.0 - mag) * 0.8) * sizeMultiplier;
+
+            colors[i * 3] = finalColor.r; 
+            colors[i * 3 + 1] = finalColor.g; 
+            colors[i * 3 + 2] = finalColor.b;
+            
+            isDsoArray[i] = isDsoFlag;
         }
 
         const geo = new THREE.BufferGeometry();
         geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
         geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
         geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        geo.setAttribute('isDso', new THREE.BufferAttribute(isDsoArray, 1));
         geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 0), DOME_RADIUS);
         
         return geo;
