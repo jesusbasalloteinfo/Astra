@@ -255,6 +255,7 @@
 
   "obs_sidedock_return": "Return to Sessions",
   "obs_sidedock_settings": "Visual settings",
+  "obs_sidedock_theme": "Theme settings",
   "obs_sidedock_constellations_title": "Constellations",
   "obs_sidedock_constellations_show_label": "Labels",
   "obs_sidedock_constellations_language": "Language",
@@ -268,6 +269,7 @@
 			}
     }
   ],
+  "obs_sidedock_atmosphere": "Atmosphere",
   "obs_sidedock_horizon": "Horizon",
   "obs_sidedock_horizon_solid": "Solid",
   "obs_sidedock_horizon_radar": "Translucent",
