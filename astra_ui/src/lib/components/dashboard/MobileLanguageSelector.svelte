@@ -1,0 +1,46 @@
+<!-- src/lib/components/dashboard/MobileLanguageSelector.svelte -->
+<script lang="ts">
+	import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
+	import { page } from '$app/state';
+    import { browser } from '$app/environment';
+	import { AVAILABLE_LANGUAGES, type LanguageCode } from '$lib/config/languages';
+
+	let currentLocale = $state(getLocale()); 
+
+	function switchLocale(newLocale: LanguageCode) {
+		if (newLocale === currentLocale) return;
+
+		setLocale(newLocale);
+		const segments = page.url.pathname.split('/');
+		const supportedCodes = AVAILABLE_LANGUAGES.map(l => l.code);
+		
+        if (supportedCodes.includes(segments[1] as LanguageCode)) {
+			segments[1] = newLocale;
+			const newPath = segments.join('/') + page.url.search;
+			window.location.replace(newPath);
+		} else {
+			window.location.reload();
+		}
+	}
+</script>
+
+<div class="flex flex-col gap-3">
+    <span class="text-[10px] font-bold text-copy-muted uppercase tracking-[0.2em] px-1">Language</span>
+    <div class="grid grid-cols-3 gap-2">
+        {#each AVAILABLE_LANGUAGES as { code, label, svg }}
+            {@const isActive = currentLocale === code}
+            <button
+                onclick={() => switchLocale(code)}
+                class="flex flex-col items-center justify-center gap-2 p-3 rounded-2xl border transition-all active:scale-95
+                       {isActive 
+                        ? 'bg-accent/10 border-accent text-accent shadow-lg shadow-accent/5' 
+                        : 'bg-surface border-border text-copy-secondary'}"
+            >
+                <div class="w-8 h-6 overflow-hidden rounded-md shadow-sm border border-white/10 [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover">
+                    {@html svg}
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-widest">{code}</span>
+            </button>
+        {/each}
+    </div>
+</div>

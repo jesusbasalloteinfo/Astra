@@ -55,11 +55,11 @@
             role="dialog"
             aria-modal="true"
             aria-labelledby={title ? 'modal-title' : undefined}
-            class="w-full {sizes[size]} bg-panel border border-border rounded-2xl shadow-2xl">
+            class="w-full {sizes[size]} bg-panel border border-border rounded-2xl shadow-2xl flex flex-col max-h-[95svh]">
 
             <!-- Header -->
             {#if title}
-                <div class="flex items-center justify-between px-6 py-4 border-b border-border">
+                <div class="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
                     <h2 class="text-base font-semibold text-copy-primary">{title}</h2>
                     <button
                         onclick={close}
@@ -68,17 +68,17 @@
                     </button>
                 </div>
             {:else}
-                <div class="flex justify-end px-4 pt-4">
+                <div class="flex justify-end px-4 pt-4 shrink-0 absolute right-0 top-0 z-10">
                     <button
                         onclick={close}
-                        class="text-copy-muted hover:text-copy-primary transition-colors p-1 rounded-lg hover:bg-surface">
+                        class="cursor-pointer text-copy-muted hover:text-copy-primary transition-colors p-1 rounded-lg bg-panel/50 backdrop-blur hover:bg-surface">
                         <X size={18} />
                     </button>
                 </div>
             {/if}
 
             <!-- Content -->
-            <div class="px-6 py-4">
+            <div class="px-6 py-4 overflow-y-auto flex-1 no-scrollbar">
                 {@render children()}
             </div>
         </div>

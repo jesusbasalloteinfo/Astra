@@ -2,16 +2,15 @@
 <script lang="ts">
     import * as m from '$lib/paraglide/messages.js';
     import { onMount } from 'svelte';
-    import { Plus } from 'lucide-svelte';
+    import { Plus, Globe } from 'lucide-svelte';
     import SessionCard from '$lib/components/session/SessionCard.svelte';
     import LocationWidget from '$lib/components/location/LocationWidget.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
+    import DeviceWidget from '$lib/components/devices/DeviceWidget.svelte';
 	import { obsStore } from '$lib/stores/observations.svelte';
 	import { authStore } from '$lib/stores/auth.svelte';
 	import { newObsStore } from '$lib/stores/newObservation.svelte';
 	import { locStore } from '$lib/stores/location.svelte';
-    import { Globe } from 'lucide-svelte';
-	import DeviceWidget from '$lib/components/devices/DeviceWidget.svelte';
 
     // Dynamic greeting message
     type Period = 'morning' | 'afternoon' | 'evening' | 'night';
@@ -39,15 +38,11 @@
     // Update time for greeting
     onMount(() => {
         now = new Date();
-
-        const interval = setInterval(() => {
-            now = new Date();
-        }, 60000); 
+        const interval = setInterval(() => { now = new Date(); }, 60000); 
         return () => clearInterval(interval);
     });
 
-    let telescopeModalOpen = $state(false);
-    let greetings = $derived(getGreeting(period, authStore.user?.username || ""));
+    let greetings = $derived(getGreeting(period, authStore.user?.username || "Explorer"));
     const recentSessions = $derived(obsStore.items.slice(0, 3));
 </script>
 
@@ -58,34 +53,26 @@
 
 <div class="max-w-4xl mx-auto transition-opacity duration-300 {now ? 'opacity-100' : 'opacity-0'}">
     <!-- Welcome -->
-    <div class="flex items-center justify-between mb-8">
-        <div>
-            <h1 class="text-2xl font-bold text-copy-primary">
-                {greetings.title}
-            </h1>
+    <div class="mb-6 md:mb-8">
+        <h1 class="text-2xl md:text-3xl font-bold text-copy-primary">{greetings.title}</h1>
             <p class="text-sm text-copy-muted mt-1">{greetings.subtitle}</p>
         </div>
         
-    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
     <!-- Widgets row -->
     {#if locStore.active}
-
         <DeviceWidget/>
-        <LocationWidget
-            temperature={14}
-            humidity={62}/>
+            <LocationWidget temperature={14} humidity={62} />
     {:else}
-        <!-- Zero State -->
-        <div class="col-span-full p-12 bg-panel border-2 border-dashed border-border rounded-3xl text-center">
-            <div class="w-16 h-16 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe size={32} />
+            <div class="col-span-1 md:col-span-2 p-6 md:p-12 landscape:p-6 bg-panel border border-dashed border-border rounded-2xl md:rounded-3xl text-center">
+                <div class="w-12 h-12 md:w-16 md:h-16 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Globe class="w-6 h-6 md:w-8 md:h-8" />
             </div>
-            <h2 class="text-xl font-bold text-copy-primary">{ m.dash_main_zeroconf_welcome() }</h2>
-            <p class="text-sm text-copy-muted max-w-sm mx-auto mt-2 mb-6">
+                <h2 class="text-lg md:text-xl font-bold text-copy-primary">{ m.dash_main_zeroconf_welcome() }</h2>
+                <p class="text-sm text-copy-muted max-w-md mx-auto mt-2 mb-6">
                 { m.dash_main_zeroconf_info() }
             </p>
-            <a href="/dashboard/location" class="px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-accent/20">
+                <a href="/dashboard/location" class="inline-block px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-accent/20 active:scale-95">
                 { m.dash_main_zeroconf_config() }
             </a>
         </div>
@@ -96,35 +83,26 @@
     <!-- Recent sessions -->
     <div>
         <div class="flex items-center justify-between mb-4">
-            <h2 class="text-sm font-semibold text-copy-muted uppercase tracking-wider">{m.dash_main_recent()}</h2>
-            <a href="/dashboard/sessions" class="text-xs text-accent hover:text-accent-hover transition-colors">
+            <h2 class="text-xs font-bold text-copy-muted uppercase tracking-widest">{m.dash_main_recent()}</h2>
+            <a href="/dashboard/sessions" class="text-xs font-bold text-accent hover:text-accent-hover transition-colors">
                 {m.dash_main_view_sessions()}
             </a>
         </div>
         <div class="flex flex-col gap-3">
             <button 
                 onclick={() => newObsStore.open()}
-                class="cursor-pointer w-1/4 flex items-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover
-                    text-white font-semibold transition-colors shadow-glow">
+                class="hidden md:flex cursor-pointer w-fit items-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-bold transition-all active:scale-95 shadow-lg shadow-accent/20">
                 <Plus size={18} />
                 {m.dash_main_new_session()}
             </button>
+            
             {#each recentSessions as session (session.id)}
-                <SessionCard 
-                    id={session.id}
-                    name={session.name}
-                    creation={session.creation}
-                />
+                <SessionCard id={session.id} name={session.name} creation={session.creation} />
             {:else}
-                <div class="text-center py-12 border-2 border-dashed border-border rounded-2xl">
-                    <p class="text-copy-muted">{m.dash_observ_not_found()}</p>
+                <div class="text-center py-10 md:py-12 border border-dashed border-border rounded-xl md:rounded-2xl bg-surface/50">
+                    <p class="text-sm text-copy-muted">{m.dash_observ_not_found()}</p>
                 </div>
             {/each}
         </div>
     </div>
 </div>
-
-<!-- Modals -->
-<Modal bind:open={telescopeModalOpen} title="Telescope configuration" size="md">
-    <p class="text-copy-secondary text-sm">Telescope config coming soon.</p>
-</Modal>
