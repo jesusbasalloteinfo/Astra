@@ -13,7 +13,7 @@ import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 const vertexShader = `
     attribute float size;
     attribute vec3 color;
-    attribute float isSun; // 1.0 Sun, 0.0 others
+    attribute float isSun; // 0.0 planets, 1.0 sun, 2.0 moon
     
     varying vec3 vColor;
     varying float vAlphaFactor; 
@@ -53,7 +53,7 @@ const fragmentShader = `
         float alpha = 0.0;
         vec3 finalColor = vec3(1.0);
 
-        if (vIsSun > 0.5) {
+        if (vIsSun > 0.5 && vIsSun < 1.5) {
             // === SUN ===
             
             float masterFade = smoothstep(0.5, 0.25, dist); 
@@ -82,6 +82,16 @@ const fragmentShader = `
             
             alpha = min(1.0, totalLight);
             
+        } else if (vIsSun > 1.5) {
+            // === MOON ===
+            
+            float core = exp(-pow(dist * 12.0, 2.0)) * 1.5; 
+            float halo = exp(-dist * 5.0) * 0.4;
+            
+            vec3 moonColor = vec3(1.0, 0.98, 0.92); 
+            finalColor = mix(moonColor, vec3(1.0), min(1.0, core * 1.2));
+            
+            alpha = (core + halo) * smoothstep(0.5, 0.2, dist);
         } else {
             // === PLANETS ===
             
@@ -153,6 +163,7 @@ export class Planetary {
 
                 finalColorHex = 0xfffae6; 
             } else if (lowerId === 'moon') {
+                isSun = 2.0; 
                 baseSize *= 2.2;
             } else {
                 baseSize *= 2.5; 
