@@ -114,8 +114,9 @@ const fragmentShader = `
 export class Planetary {
     public group = new THREE.Group();
     private points: THREE.Points;
-    private labels: THREE.Sprite[] = [];
+    private labels: { sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string }[] = [];
     private planetIds: string[];
+    private lastDayFactor: number = -1;
 
     constructor(opacity: number) {
         this.planetIds = Object.keys(catalogStore.planetaryData);
@@ -180,9 +181,9 @@ export class Planetary {
             const planetData = catalogStore.planetaryData[id];
             const displayName = planetData?.name || lowerId;
 
-            const sprite = this.createLabel(displayName, tmp.getHex());
-            this.labels.push(sprite);
-            this.group.add(sprite);
+            const labelObj = this.createLabel(displayName);
+            this.labels.push(labelObj);
+            this.group.add(labelObj.sprite);
         }
 
         const geo = new THREE.BufferGeometry();
@@ -198,29 +199,39 @@ export class Planetary {
     /**
      * Creates a label for the planets.
      */
-    private createLabel(name: string, color: number): THREE.Sprite {
+    private createLabel(name: string): { sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string } {
         const canvas = document.createElement('canvas');
         canvas.width = 512; canvas.height = 128;
         const ctx = canvas.getContext('2d')!;
-        
-        ctx.font = '52px Inter, system-ui, sans-serif'; 
-        
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'bottom';
-        
-        ctx.shadowColor = 'black';
-        ctx.shadowBlur = 6;
-        ctx.fillStyle = '#ffffff'; 
-        
-        ctx.fillText(name, 16, 100);
-
         const texture = new THREE.CanvasTexture(canvas);
+        
         const mat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false, depthTest: true });
         const sprite = new THREE.Sprite(mat);
         
         sprite.scale.set(32, 8, 1); 
-        sprite.renderOrder = 3
-        return sprite;
+        sprite.renderOrder = 3;
+
+        const labelObj = { sprite, ctx, texture, name };
+        this.updateLabelText(labelObj, 0xffffff); 
+        
+        return labelObj;
+    }
+
+    /**
+     * Redraws the text on the canvas
+     */
+    private updateLabelText(label: { sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string }, color: number) {
+        const { ctx, texture, name } = label;
+        ctx.clearRect(0, 0, 512, 128);
+        
+        ctx.font = '64px Inter, system-ui, sans-serif'; 
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'bottom';
+        
+        ctx.fillStyle = `#${new THREE.Color(color).getHexString()}`;
+        
+        ctx.fillText(name.toUpperCase(), 16, 100);
+        texture.needsUpdate = true;
     }
 
     getPointsMesh() {
@@ -239,9 +250,25 @@ export class Planetary {
     /**
      * Updates the XYZ coordinates of all planets based on their current AltAz values.
      */
-    update(positionsMap: PositionUpdates, zoomFactor: number) {
+    update(positionsMap: PositionUpdates, zoomFactor: number, daylightFade: number = 1.0) {
         (this.points.material as THREE.ShaderMaterial).uniforms.zoom.value = zoomFactor;
         const posArray = this.points.geometry.attributes.position.array as Float32Array;
+
+        const dayFactor = 1.0 - daylightFade; // 0 (night) to 1 (day)
+        const quantizedDayFactor = Math.round(dayFactor * 100) / 100;
+
+        if (quantizedDayFactor !== this.lastDayFactor) {
+            this.lastDayFactor = quantizedDayFactor;
+
+            const labelC = new THREE.Color(0xffffff);
+            if (quantizedDayFactor > 0) {
+
+                const daytimeBlue = new THREE.Color().setHSL(0.64, 1.0, 0.05);
+                labelC.lerp(daytimeBlue, quantizedDayFactor);
+            }
+            const colorNum = labelC.getHex();
+            this.labels.forEach(l => this.updateLabelText(l, colorNum));
+        }
 
         for (let i = 0; i < this.planetIds.length; i++) {
             const pId = this.planetIds[i];
@@ -250,6 +277,7 @@ export class Planetary {
                 altAzToXYZ(posArray, i, p.alt, p.az);
                 
                 if (this.labels[i]) {
+                    const sprite = this.labels[i].sprite;
                     const lowerId = pId.toLowerCase();
                     
                     // Anchor to control the position
@@ -267,9 +295,8 @@ export class Planetary {
                         anchorY = -0.075;
                     }
 
-                    this.labels[i].center.set(anchorX, anchorY);
-                    
-                    this.labels[i].position.set(posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2]);
+                    sprite.center.set(anchorX, anchorY);
+                    sprite.position.set(posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2]);
                 }
             }
         }
@@ -283,6 +310,9 @@ export class Planetary {
     dispose() {
         this.points.geometry.dispose();
         (this.points.material as THREE.Material).dispose();
-        this.labels.forEach(l => { l.material.map?.dispose(); l.material.dispose(); });
+        this.labels.forEach(l => { 
+            l.texture.dispose(); 
+            l.sprite.material.dispose(); 
+        });
     }
 }

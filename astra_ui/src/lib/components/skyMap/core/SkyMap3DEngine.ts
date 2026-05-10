@@ -118,6 +118,7 @@ export class SkyMap3DEngine {
             let daylightFade = 1.0; // Night time as default
 
             const sunPos = skyEngine.positions.get('sun');
+            const moonPos = skyEngine.positions.get('moon');
 
             if (sunPos) {
                 // 1. Update sky
@@ -136,7 +137,7 @@ export class SkyMap3DEngine {
                 daylightFade = this.environment.isAtmosphereEnabled() ? (1.0 - fade) : 1.0;
             }
             
-            this.planetary.update(skyEngine.positions, zoomFactor);
+            this.planetary.update(skyEngine.positions, zoomFactor, daylightFade);
             this.sidereal.update(skyEngine.positions, zoomFactor, daylightFade);
             this.environment.updateDaylight(daylightFade);
             this.constellations.update(skyEngine.positions, daylightFade);
