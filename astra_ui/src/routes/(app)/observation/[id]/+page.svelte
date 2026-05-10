@@ -30,7 +30,7 @@
     let showGround         = $state(true);
     let solidGround        = $state(true);
     let showAtmosphere     = $state(true);
-    let showConstellationLabels = $state(false);
+    let showConstellationLabels = $state(true);
     let useLatinConstellations = $state(true);
     
     // Panels
@@ -200,7 +200,7 @@
             bind:chatOpen 
         />
     </div>
-    
+
     <!-- Target info -->
     <div class="absolute top-6 right-6 z-10 pointer-events-none">
         {#if !chatOpen}
