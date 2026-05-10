@@ -2,7 +2,79 @@
 
 import * as THREE from 'three';
 import { DOME_RADIUS, GROUND_RADIUS, EYE_LEVEL, CARDINAL_LABELS } from '../utils/const';
+import { altAzToXYZ } from '../utils/coordinates';
 
+// --- Atmosphere Shaders ---
+const skyVertexShader = `
+    varying vec3 vWorldPosition;
+    void main() {
+        vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+        vWorldPosition = worldPosition.xyz;
+        gl_Position = projectionMatrix * viewMatrix * worldPosition;
+    }
+`;
+
+const skyFragmentShader = `
+    varying vec3 vWorldPosition;
+    uniform vec3 sunPosition;
+
+    void main() {
+        vec3 viewDir = normalize(vWorldPosition);
+        vec3 sunDir = sunPosition;
+
+        float viewAlt = max(0.0, viewDir.y);
+        float sunAlt = sunDir.y;
+        float cosTheta = dot(viewDir, sunDir);
+
+        // --- Base Colors ---
+        vec3 dayZenith = vec3(0.12, 0.28, 0.70);
+        vec3 dayHorizon = vec3(0.45, 0.65, 0.85);
+        
+        // Night with slight atmosphere brightness
+        // vec3 nightZenith = vec3(0.000, 0.001, 0.003);
+        // vec3 nightHorizon = vec3(0.002, 0.005, 0.015);
+
+        // Total dark night
+        vec3 nightZenith = vec3(0.0);
+        vec3 nightHorizon = vec3(0.0005, 0.001, 0.002);
+
+        // Day/Night transition
+        float dayFactor = smoothstep(-0.25, 0.1, sunAlt);
+        
+        vec3 zenithColor = mix(nightZenith, dayZenith, dayFactor);
+        vec3 horizonColor = mix(nightHorizon, dayHorizon, dayFactor);
+
+        // --- RAYLEIGH ---
+        float rayleighPhase = 0.75 * (1.0 + cosTheta * cosTheta);
+
+        // --- MIE (Solar Halo, unused) ---
+        float g = 0.98;
+        float miePhase = 1.0; // 1.5 * ((1.0 - g*g) / (2.0 + g*g)) * (1.0 + cosTheta*cosTheta) / pow(1.0 + g*g - 2.0*g*cosTheta, 1.5);
+
+        // --- Sunset ---
+        float sunsetFactor = smoothstep(0.15, 0.0, abs(sunAlt - 0.02)); 
+        vec3 sunsetColor = vec3(1.0, 0.45, 0.15) * sunsetFactor;
+        
+        float sunsetDirection = smoothstep(0.0, 1.0, cosTheta);
+        horizonColor = mix(horizonColor, sunsetColor, sunsetFactor * sunsetDirection);
+
+        
+        vec3 skyColor = mix(horizonColor, zenithColor, pow(viewAlt, 0.4));
+
+        skyColor *= rayleighPhase;
+
+        float sunVis = smoothstep(-0.05, 0.05, sunAlt);
+        skyColor += vec3(1.0, 0.9, 0.7) * miePhase * 0.01 * sunVis;
+
+        // Tone Mapping
+        skyColor = vec3(1.0) - exp(-skyColor * 2.5);
+
+        // Dark sky
+        skyColor = max(vec3(0.0), skyColor - 0.005);
+
+        gl_FragColor = vec4(skyColor, 1.0);
+    }
+`;
 
 /**
  * Environment Entity
@@ -12,8 +84,13 @@ import { DOME_RADIUS, GROUND_RADIUS, EYE_LEVEL, CARDINAL_LABELS } from '../utils
 export class Environment {
     public group = new THREE.Group(); // Acts as a container for multiple meshes/sprites that can be added to the main Scene together.
     private groundMesh: THREE.Mesh;
+    private skyMesh: THREE.Mesh;
+    private skyMaterial: THREE.ShaderMaterial; 
+    private baseGroundColor: number;
+    private lastDayFactor: number = -1;
 
     constructor(groundColor: number, cardinalColor: string) {
+        this.baseGroundColor = groundColor;
         // Create the Ground
         const geo = new THREE.SphereGeometry(GROUND_RADIUS, 128, 128);
         const mat = new THREE.MeshBasicMaterial({
@@ -29,6 +106,20 @@ export class Environment {
         this.group.add(this.groundMesh);
 
         this.setGroundMode(false);
+
+        const skyGeo = new THREE.SphereGeometry(DOME_RADIUS, 32, 32);
+        this.skyMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                sunPosition: { value: new THREE.Vector3(0, -1, 0).normalize() } // Night by default
+            },
+            vertexShader: skyVertexShader,
+            fragmentShader: skyFragmentShader,
+            side: THREE.BackSide,
+            depthWrite: false
+        });
+        this.skyMesh = new THREE.Mesh(skyGeo, this.skyMaterial);
+        this.skyMesh.renderOrder = 0; 
+        this.group.add(this.skyMesh);
 
         // Create Cardinal Labels
         CARDINAL_LABELS.forEach(({ text, az }) => {
@@ -64,6 +155,29 @@ export class Environment {
     }
 
     /**
+     * Update the atmosphere shader with the sun's position
+     */
+    updateSunPosition(alt: number, az: number) {
+        const pos = new Float32Array(3);
+        altAzToXYZ(pos, 0, alt, az);
+        this.skyMaterial.uniforms.sunPosition.value.set(pos[0], pos[1], pos[2]).normalize();
+    }
+
+    /**
+     * Toggles the visibility of the atmospheric Rayleigh simulation.
+     */
+    setAtmosphereEnabled(enabled: boolean) {
+        this.skyMesh.visible = enabled;
+    }
+
+    /**
+     * Returns whether the atmospheric Rayleigh simulation is currently visible.
+     */
+    isAtmosphereEnabled(): boolean {
+        return this.skyMesh.visible;
+    }
+    
+    /**
      * Generates a 2D Canvas-based text sprite for the cardinal directions.
      */
     createCardinalSprite(text: string, cardinalColor: string): THREE.Sprite {
@@ -93,7 +207,34 @@ export class Environment {
      * Dynamically updates the ground color
      */
     setGroundColor(color: number) {
+        this.baseGroundColor = color;
+        this.lastDayFactor = -1; // Reset to force updateDaylight calculation
         (this.groundMesh.material as THREE.MeshBasicMaterial).color.setHex(color);
+    }
+
+    /**
+     * Updates the ground color based on daylight to provide better contrast.
+     */
+    updateDaylight(daylightFade: number) {
+        if (!this.groundMesh) return;
+
+        const dayFactor = 1.0 - daylightFade; // 0 (night) to 1 (day)
+
+        // Update ground color every frame
+        const color = new THREE.Color(this.baseGroundColor);
+
+        // Only adjust if atmosphere is ON and it is currently daytime
+        if (this.isAtmosphereEnabled() && dayFactor > 0) {
+            const hsl = { h: 0, s: 0, l: 0 };
+            color.getHSL(hsl);
+
+            // Lighten the ground slightly
+            hsl.l = Math.min(0.7, hsl.l + (dayFactor * 0.03));
+
+            color.setHSL(hsl.h, hsl.s, hsl.l);
+        }
+
+        (this.groundMesh.material as THREE.MeshBasicMaterial).color.copy(color);
     }
 
     /**

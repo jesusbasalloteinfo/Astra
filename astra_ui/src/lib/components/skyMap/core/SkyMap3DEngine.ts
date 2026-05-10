@@ -7,7 +7,8 @@ import { Environment } from '../entities/Environment';
 import { Planetary } from '../entities/Planetary';
 import { Sidereal } from '../entities/Sidereal';
 import { Constellations } from '../entities/Constellations';
-import { FOV_DEFAULT } from '../utils/const';
+import { FOV_DEFAULT, DOME_RADIUS } from '../utils/const';
+import { altAzToXYZ } from '../utils/coordinates';
 import { skyEngine } from '$lib/stores/skyEngine.svelte';
 import { TargetReticle } from '../entities/TargetReticle';
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
@@ -111,10 +112,32 @@ export class SkyMap3DEngine {
             // New data update and new zoom
 
             const zoomFactor = FOV_DEFAULT / this.cameraCtrl.camera.fov;
+
+            let daylightFade = 1.0; // Night time as default
+
+            const sunPos = skyEngine.positions.get('sun');
+
+            if (sunPos) {
+                // 1. Update sky
+                this.environment.updateSunPosition(sunPos.alt, sunPos.az);
+                
+                // 2. Calculate star visibility
+                const tmp = new Float32Array(3);
+                altAzToXYZ(tmp, 0, sunPos.alt, sunPos.az);
+                const sunYNorm = tmp[1] / DOME_RADIUS; 
+                
+                // Smooth transition
+                let fade = (sunYNorm + 0.05) / 0.15; 
+                fade = Math.max(0.0, Math.min(1.0, fade)); 
+                
+                // Hide in daytime
+                daylightFade = this.environment.isAtmosphereEnabled() ? (1.0 - fade) : 1.0;
+            }
             
             this.planetary.update(skyEngine.positions, zoomFactor);
-            this.sidereal.update(skyEngine.positions, zoomFactor);
-            this.constellations.update(skyEngine.positions);
+            this.sidereal.update(skyEngine.positions, zoomFactor, daylightFade);
+            this.environment.updateDaylight(daylightFade);
+            this.constellations.update(skyEngine.positions, daylightFade);
             this.targetReticle.update(skyEngine.positions);
             this.telescopePointer.update();
 
@@ -139,6 +162,7 @@ export class SkyMap3DEngine {
         if (props.showGround !== undefined) this.environment.setGroundVisible(props.showGround);
         if (props.solidGround !== undefined) this.environment.setGroundMode(props.solidGround);
         if (props.groundColor !== undefined) this.environment.setGroundColor(props.groundColor);
+        if (props.showAtmosphere !== undefined) this.environment.setAtmosphereEnabled(props.showAtmosphere);
         
         if (this.constellations && props.showConstellations !== undefined) {
             console.log("show Constellations:", props.showConstellations)

@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
 	import { toInlangBool } from '$lib/utils/i18n';
-    import { ArrowLeft, Search, Settings2, GitBranch, MountainSnow, Sparkles, Tag, Languages, ChevronDown, ChevronUp, Box, Layers } from 'lucide-svelte';
+    import { ArrowLeft, Search, Settings2, GitBranch, MountainSnow, Sparkles, Tag, Languages, ChevronDown, ChevronUp, Box, Layers, Cloud } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 
     let {
@@ -11,6 +11,8 @@
         useLatinConstellations = $bindable(),
         showGround = $bindable(),
         solidGround = $bindable(),
+        showAtmosphere = $bindable(),
+        atmosphereLocked = false,
         searchOpen = $bindable(),
         chatOpen = $bindable()
     } = $props();
@@ -88,6 +90,16 @@
                         </button>
                     </div>
                 {/if}
+
+                <!-- Atmosphere Toggle -->
+                <button onclick={() => !atmosphereLocked && (showAtmosphere = !showAtmosphere)} 
+                    disabled={atmosphereLocked}
+                    class="cursor-pointer flex items-center justify-between px-2 py-1.5 rounded text-xs transition-opacity {atmosphereLocked ? 'opacity-40 cursor-not-allowed' : 'hover:bg-panel/40'} {showAtmosphere && !atmosphereLocked ? 'text-accent' : 'text-copy-muted'}">
+                    <div class="flex items-center gap-2">
+                        <Cloud size={14}/> Atmosphere
+                    </div>
+                </button>
+
                 <!-- Horizon Menu -->
                 <div class="flex items-center justify-between w-full">
                     <button onclick={() => showGround = !showGround} 

@@ -53,6 +53,7 @@ const fragmentShader = `
     varying float vShapeType;
     varying float vAngle;
     uniform float opacity;
+    uniform float daylightFade;
 
     void main() {
         vec2 coord = gl_PointCoord - vec2(0.5);
@@ -97,7 +98,7 @@ const fragmentShader = `
             alpha *= 0.85;
         }
 
-        gl_FragColor = vec4(finalColor, min(1.0, alpha) * opacity * vAlphaFactor);
+        gl_FragColor = vec4(finalColor, min(1.0, alpha) * opacity * vAlphaFactor * daylightFade);
     }
 `;
 
@@ -130,7 +131,7 @@ export class Sidereal {
 
         // Use ShaderMaterial to handle the custom scaling and circular rendering
         const mat = new THREE.ShaderMaterial({
-            uniforms: { zoom: { value: 1.0 }, opacity: { value: opacity } },
+            uniforms: { zoom: { value: 1.0 }, opacity: { value: opacity }, daylightFade: { value: 1.0 } },
             vertexShader, 
             fragmentShader, 
             transparent: true, 
@@ -241,9 +242,10 @@ export class Sidereal {
      * Updates the XYZ coordinates of all stars based on their current AltAz values.
      * Called continuously inside the render loop.
      */
-    update(positionsMap: PositionUpdates, zoomFactor: number) {
+    update(positionsMap: PositionUpdates, zoomFactor: number, daylightFade: number = 1.0) {
         // Update the shader uniform for zoom scaling
         (this.points.material as THREE.ShaderMaterial).uniforms.zoom.value = zoomFactor;
+        (this.points.material as THREE.ShaderMaterial).uniforms.daylightFade.value = daylightFade;
         const posArray = this.points.geometry.attributes.position.array as Float32Array;
 
         for (let i = 0; i < this.starIds.length; i++) {

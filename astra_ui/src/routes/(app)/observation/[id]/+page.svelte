@@ -19,21 +19,32 @@
 	import { deviceAPI } from '$lib/api/devices';
 	import { chatStore } from '$lib/stores/chat.svelte';
 	import { selectionStore } from '$lib/stores/activeSelection.svelte';
+	import { skyEngine } from '$lib/stores/skyEngine.svelte';
 
     // So we can call fly whenever we want
     let skyMap = $state<ReturnType<typeof SkyMap3D>>();
     let telescopePos = $state<{alt: number, az: number} | null>(null);
 
     // Sky settings
-    let showConstellations = $state(true);
+    let showConstellations = $state(false);
     let showGround         = $state(true);
     let solidGround        = $state(true);
-    let showConstellationLabels = $state(true);
+    let showAtmosphere     = $state(true);
+    let showConstellationLabels = $state(false);
     let useLatinConstellations = $state(true);
     
     // Panels
     let chatOpen       = $state(false);
     let searchOpen     = $state(false);
+
+    const effectiveShowAtmosphere = $derived(themeState.current === 'astronomical' ? false : showAtmosphere);
+
+    // Sun altitude for UI contrast
+    const isDaytime = $derived.by(() => {
+        if (!effectiveShowAtmosphere) return false;
+        const sunPos = skyEngine.positions.get('sun');
+        return sunPos ? sunPos.alt > -6.0 : false; // End of twilight threshold
+    });
 
     // Only dark themes
     $effect(() => {
@@ -44,9 +55,17 @@
         document.documentElement.setAttribute('data-theme', targetTheme);
         document.documentElement.style.colorScheme = 'dark';
 
+        // Apply daytime UI contrast
+        if (isDaytime) {
+            document.documentElement.classList.add('daytime-ui');
+        } else {
+            document.documentElement.classList.remove('daytime-ui');
+        }
+
         return () => {
             document.documentElement.setAttribute('data-theme', themeState.current);
             document.documentElement.style.colorScheme = '';
+            document.documentElement.classList.remove('daytime-ui');
         };
     });
 
@@ -145,6 +164,7 @@
                 {showConstellations} 
                 {showConstellationLabels}
                 {useLatinConstellations}
+                showAtmosphere={effectiveShowAtmosphere}
                 groundColor={simColors.ground}
                 constellationColor={simColors.constellations}
                 constellationLabelColor={simColors.constellationLabelColor}
@@ -174,11 +194,13 @@
             bind:useLatinConstellations
             bind:showGround 
             bind:solidGround
+            bind:showAtmosphere
+            atmosphereLocked={themeState.current === 'astronomical'}
             bind:searchOpen 
             bind:chatOpen 
         />
     </div>
-
+    
     <!-- Target info -->
     <div class="absolute top-6 right-6 z-10 pointer-events-none">
         {#if !chatOpen}

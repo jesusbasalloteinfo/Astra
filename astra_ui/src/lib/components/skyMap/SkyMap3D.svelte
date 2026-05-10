@@ -9,12 +9,13 @@
         solidGround = true,
         starOpacity = 0.8,
         cardinalColor = '#94a3b8',
-        showConstellations = true,
+        showConstellations = false,
         constellationColor = 0x475569,
         constellationLabelColor=0x7879c5,
         constellationOpacity = 0.4,
         showConstellationLabels = true,
-        useLatinConstellations = true 
+        useLatinConstellations = true,
+        showAtmosphere = true 
     } = $props();
 
     let container: HTMLDivElement;
@@ -31,7 +32,8 @@
             constellationLabelColor,
             constellationOpacity,
             showConstellationLabels,
-            useLatinConstellations  
+            useLatinConstellations,
+            showAtmosphere  
         };
 
         if (engine) {
@@ -42,7 +44,18 @@
     onMount(() => {
         // Startup
         engine = new SkyMap3DEngine(container, {
-            groundColor, solidGround, cardinalColor, starOpacity, constellationColor, constellationLabelColor, constellationOpacity, showConstellationLabels, useLatinConstellations
+            showGround,
+            groundColor, 
+            solidGround, 
+            cardinalColor, 
+            starOpacity, 
+            showConstellations,
+            constellationColor, 
+            constellationLabelColor, 
+            constellationOpacity, 
+            showConstellationLabels, 
+            useLatinConstellations,
+            showAtmosphere
         });
 
         // Shutdown
