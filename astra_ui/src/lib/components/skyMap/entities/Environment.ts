@@ -44,29 +44,25 @@ const skyFragmentShader = `
         vec3 zenithColor = mix(nightZenith, dayZenith, dayFactor);
         vec3 horizonColor = mix(nightHorizon, dayHorizon, dayFactor);
 
-        // --- RAYLEIGH ---
-        float rayleighPhase = 0.75 * (1.0 + cosTheta * cosTheta);
-
-        // --- MIE (Solar Halo, unused) ---
-        float g = 0.98;
-        float miePhase = 1.0; // 1.5 * ((1.0 - g*g) / (2.0 + g*g)) * (1.0 + cosTheta*cosTheta) / pow(1.0 + g*g - 2.0*g*cosTheta, 1.5);
-
-        // --- Sunset ---
-        float sunsetFactor = smoothstep(0.15, 0.0, abs(sunAlt - 0.02)); 
-        vec3 sunsetColor = vec3(1.0, 0.45, 0.15) * sunsetFactor;
-        
-        float sunsetDirection = smoothstep(0.0, 1.0, cosTheta);
-        horizonColor = mix(horizonColor, sunsetColor, sunsetFactor * sunsetDirection);
-
-        
+        // 2. Sky Simulation
+        // Pure, smooth gradient
         vec3 skyColor = mix(horizonColor, zenithColor, pow(viewAlt, 0.4));
 
-        skyColor *= rayleighPhase;
+        // 3. Sunset/sunrise
+        float sunsetIn = smoothstep(0.25, 0.0, sunAlt); 
+        float sunsetOut = smoothstep(-0.15, 0.0, sunAlt); 
+        float sunsetTime = sunsetIn * sunsetOut;
 
-        float sunVis = smoothstep(-0.05, 0.05, sunAlt);
-        skyColor += vec3(1.0, 0.9, 0.7) * miePhase * 0.01 * sunVis;
+        float sunProximity = max(0.0, cosTheta);
+        float radialGlow = pow(sunProximity, 4.0); 
 
-        // Tone Mapping
+        vec3 goldenColor = vec3(1.0, 0.6, 0.2);
+        vec3 deepOrange = vec3(1.0, 0.25, 0.05);
+        vec3 sunsetColor = mix(goldenColor, deepOrange, sunsetIn);
+
+        skyColor = mix(skyColor, sunsetColor, radialGlow * sunsetTime * 0.85);
+
+        // 4. Tone Mapping
         skyColor = vec3(1.0) - exp(-skyColor * 2.5);
 
         // Dark sky
