@@ -1,6 +1,8 @@
 <!-- src/lib/components/observation/skyFinderComponents/SkyFinderResult.svelte -->
 <script lang="ts">
-    import { Globe, Star, ChevronRight } from 'lucide-svelte';
+    import { Sun, ChevronRight } from 'lucide-svelte';
+    import Icon from '@iconify/svelte';
+    import NebulaIcon from './NebulaIcon.svelte';
     import { translateObjectType } from '$lib/utils/i18n';
     import { m } from '$lib/paraglide/messages';
 
@@ -15,6 +17,20 @@
         onclick: () => void;
         onHover: () => void;
     }>();
+
+    const iconMap = {
+        'planetary': 'tabler:planet',
+        'moon': 'tabler:moon',
+        'galaxy': 'hugeicons:galaxy',
+        'nebula': 'lucide:sparkles',
+        'constellation': 'hugeicons:constellation',
+        'star': 'tabler:star'
+    };
+
+    // Función para obtener el icono según el tipo
+    function getIcon(type: string) {
+        return iconMap[type as keyof typeof iconMap] || 'lucide:sparkles';
+    }
 </script>
 
 <button 
@@ -25,11 +41,13 @@
         {isSelected ? 'bg-accent/20 border-accent/50 shadow-inner' : 'hover:bg-panel/50'}"
 >
     <div class="flex items-center gap-4">
-        <div class="p-2 rounded-lg {isSelected ? 'bg-accent text-white shadow-[0_0_10px_var(--color-accent-glow)]' : 'bg-surface text-copy-muted'}">
-            {#if result.type === 'planetary' || result.type === "moon"}
-                <Globe size={16} />
+        <div class="p-2 shrink-0 flex items-center justify-center rounded-lg {isSelected ? 'bg-accent text-white shadow-[0_0_10px_var(--color-accent-glow)]' : 'bg-surface text-copy-muted'}">
+            {#if result.id === 'sun'}
+                <Sun size={16} />
+            {:else if result.category === 'nebula'}
+                <NebulaIcon size={16} class="scale-120" />
             {:else}
-                <Star size={16} />
+                <Icon icon={getIcon(result.category)} width={16} height={16} />
             {/if}
         </div>
         <div class="text-left">
