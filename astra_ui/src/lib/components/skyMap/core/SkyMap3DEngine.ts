@@ -39,8 +39,10 @@ export class SkyMap3DEngine {
     private constellations: Constellations;
     private targetReticle:TargetReticle;
     private telescopePointer: TelescopePointer;
+    private currentCardinalColor: string;
 
     constructor(private container: HTMLDivElement, props: any) {
+        this.currentCardinalColor = props.cardinalColor;
         // Initialize Scene & Renderer
         this.scene = new THREE.Scene();
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -51,7 +53,7 @@ export class SkyMap3DEngine {
         container.appendChild(this.renderer.domElement);
 
         // Instantiate Entities
-        this.environment = new Environment(props.groundColor, props.cardinalColor);
+        this.environment = new Environment(props.groundColor, props.cardinalColor, props.cardinalLabels);
         this.planetary = new Planetary(props.starOpacity);
         this.sidereal = new Sidereal(props.starOpacity);
         this.constellations = new Constellations(
@@ -162,10 +164,21 @@ export class SkyMap3DEngine {
         if (props.showGround !== undefined) this.environment.setGroundVisible(props.showGround);
         if (props.solidGround !== undefined) this.environment.setGroundMode(props.solidGround);
         if (props.groundColor !== undefined) this.environment.setGroundColor(props.groundColor);
+        
+        if (props.cardinalColor !== undefined) {
+            this.currentCardinalColor = props.cardinalColor;
+        }
+
+        if (props.cardinalColor !== undefined || props.cardinalLabels !== undefined) {
+            this.environment.updateCardinalLabels(
+                this.currentCardinalColor, 
+                props.cardinalLabels
+            );
+        }
+        
         if (props.showAtmosphere !== undefined) this.environment.setAtmosphereEnabled(props.showAtmosphere);
         
         if (this.constellations && props.showConstellations !== undefined) {
-            console.log("show Constellations:", props.showConstellations)
             this.constellations.setProps(
                 props.showConstellations, 
                 props.constellationColor, 

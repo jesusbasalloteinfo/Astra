@@ -88,8 +88,9 @@ export class Environment {
     private skyMaterial: THREE.ShaderMaterial; 
     private baseGroundColor: number;
     private lastDayFactor: number = -1;
+    private cardinalSprites: { sprite: THREE.Sprite, az: number, textKey: string }[] = [];
 
-    constructor(groundColor: number, cardinalColor: string) {
+    constructor(groundColor: number, cardinalColor: string, initialLabels?: Record<string, string>) {
         this.baseGroundColor = groundColor;
         // Create the Ground
         const geo = new THREE.SphereGeometry(GROUND_RADIUS, 128, 128);
@@ -122,8 +123,9 @@ export class Environment {
         this.group.add(this.skyMesh);
 
         // Create Cardinal Labels
-        CARDINAL_LABELS.forEach(({ text, az }) => {
-            const sprite = this.createCardinalSprite(text, cardinalColor)            
+        CARDINAL_LABELS.forEach(({ text: key, az }) => {
+            const labelText = initialLabels ? (initialLabels[key] || key) : key;
+            const sprite = this.createCardinalSprite(labelText, cardinalColor)            
             const azRad = (180 - az) * (Math.PI / 180);
             sprite.position.set(
                 (DOME_RADIUS - 20) * Math.sin(azRad),
@@ -131,6 +133,7 @@ export class Environment {
                 (DOME_RADIUS - 20) * Math.cos(azRad)
             );
             this.group.add(sprite);
+            this.cardinalSprites.push({ sprite, az, textKey: key });
         });
     }
     /**
@@ -178,22 +181,47 @@ export class Environment {
     }
     
     /**
+     * Updates the color and text of the cardinal direction labels.
+     */
+    updateCardinalLabels(color: string, labels?: Record<string, string>) {
+        this.cardinalSprites.forEach(item => {
+            const text = labels ? (labels[item.textKey] || item.textKey) : item.textKey;
+
+            // Dispose old texture
+            item.sprite.material.map?.dispose();
+
+            // Create new texture using the same logic
+            item.sprite.material.map = this.createCardinalTexture(text, color);
+            item.sprite.material.needsUpdate = true;
+        });
+    }
+    /**
      * Generates a 2D Canvas-based text sprite for the cardinal directions.
      */
     createCardinalSprite(text: string, cardinalColor: string): THREE.Sprite {
-        const canvas = document.createElement('canvas');
-        canvas.width  = 128; canvas.height = 128;
-        const ctx = canvas.getContext('2d')!;
-        ctx.fillStyle    = cardinalColor;
-        ctx.font         = 'bold 80px Inter, system-ui, sans-serif';
-        ctx.textAlign    = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(text, 64, 64);
-
-        const mat    = new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true, depthWrite: false});
+        const mat    = new THREE.SpriteMaterial({ 
+            map: this.createCardinalTexture(text, cardinalColor), 
+            transparent: true, 
+            depthWrite: false
+        });
         const sprite = new THREE.Sprite(mat);
         sprite.scale.set(20, 20, 1);
         return sprite;
+    }
+
+    /**
+     * Helper to create the canvas texture for a cardinal label.
+     */
+    private createCardinalTexture(text: string, color: string): THREE.CanvasTexture {
+        const canvas = document.createElement('canvas');
+        canvas.width  = 128; canvas.height = 128;
+        const ctx = canvas.getContext('2d')!;
+        ctx.fillStyle    = color;
+        ctx.font         = '72px Inter, system-ui, sans-serif';
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, 64, 64);
+        return new THREE.CanvasTexture(canvas);
     }
 
     /**

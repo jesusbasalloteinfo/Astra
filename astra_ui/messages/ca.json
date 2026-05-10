@@ -358,6 +358,15 @@
 
   "====================================== OBJECT DATA ======================================": "",
 
+  "cardinal_north": "N",
+  "cardinal_northeast": "NE",
+  "cardinal_east": "E",
+  "cardinal_southeast": "SE",
+  "cardinal_south": "S",
+  "cardinal_southwest": "SO",
+  "cardinal_west": "O",
+  "cardinal_northwest": "NO",
+
   "data_types_planetary": "Planeta",
   "data_types_moon": "Lluna",
   "data_types_star": "Estrella",

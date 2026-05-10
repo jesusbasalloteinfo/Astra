@@ -357,6 +357,15 @@
 
   "====================================== OBJECT DATA ======================================": "",
 
+  "cardinal_north": "N",
+  "cardinal_northeast": "NE",
+  "cardinal_east": "E",
+  "cardinal_southeast": "SE",
+  "cardinal_south": "S",
+  "cardinal_southwest": "SW",
+  "cardinal_west": "W",
+  "cardinal_northwest": "NW",
+
   "data_types_planetary": "Planet",
   "data_types_moon": "Moon",
   "data_types_star": "Star",
