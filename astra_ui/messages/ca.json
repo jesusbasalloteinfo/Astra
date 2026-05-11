@@ -256,6 +256,7 @@
 
   "obs_sidedock_return": "Tornar a Sessions",
   "obs_sidedock_settings": "Configuració visual",
+  "obs_sidedock_theme": "Configuració de tema",
   "obs_sidedock_constellations_title": "Constel·lacions",
   "obs_sidedock_constellations_show_label": "Etiquetes",
   "obs_sidedock_constellations_language": "Idioma",
@@ -269,7 +270,10 @@
 			}
     }
   ],
+  "obs_sidedock_atmosphere": "Atmosfera",
   "obs_sidedock_horizon": "Horitzó",
+  "obs_sidedock_horizon_solid": "Sòlid",
+  "obs_sidedock_horizon_radar": "Translúcid",
 
   "obs_targetinfo_title": "Objecte seleccionat",
   "obs_targetinfo_center": "Centrar objecte",
@@ -353,6 +357,15 @@
   ],
 
   "====================================== OBJECT DATA ======================================": "",
+
+  "cardinal_north": "N",
+  "cardinal_northeast": "NE",
+  "cardinal_east": "E",
+  "cardinal_southeast": "SE",
+  "cardinal_south": "S",
+  "cardinal_southwest": "SO",
+  "cardinal_west": "O",
+  "cardinal_northwest": "NO",
 
   "data_types_planetary": "Planeta",
   "data_types_moon": "Lluna",

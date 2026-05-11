@@ -6,14 +6,17 @@
     let {
         showGround = true,
         groundColor = 0x0f172a,
+        solidGround = true,
         starOpacity = 0.8,
         cardinalColor = '#94a3b8',
-        showConstellations = true,
+        cardinalLabels = null,
+        showConstellations = false,
         constellationColor = 0x475569,
         constellationLabelColor=0x7879c5,
         constellationOpacity = 0.4,
         showConstellationLabels = true,
-        useLatinConstellations = true 
+        useLatinConstellations = true,
+        showAtmosphere = true 
     } = $props();
 
     let container: HTMLDivElement;
@@ -24,12 +27,16 @@
         const currentProps = { 
             showGround, 
             groundColor, 
+            solidGround,
+            cardinalColor,
+            cardinalLabels,
             showConstellations, 
             constellationColor,
             constellationLabelColor,
             constellationOpacity,
             showConstellationLabels,
-            useLatinConstellations  
+            useLatinConstellations,
+            showAtmosphere  
         };
 
         if (engine) {
@@ -40,7 +47,19 @@
     onMount(() => {
         // Startup
         engine = new SkyMap3DEngine(container, {
-            groundColor, cardinalColor, starOpacity, constellationColor, constellationLabelColor, constellationOpacity, showConstellationLabels, useLatinConstellations
+            showGround,
+            groundColor, 
+            solidGround, 
+            cardinalColor, 
+            cardinalLabels,
+            starOpacity, 
+            showConstellations,
+            constellationColor, 
+            constellationLabelColor, 
+            constellationOpacity, 
+            showConstellationLabels, 
+            useLatinConstellations,
+            showAtmosphere
         });
 
         // Shutdown
@@ -69,5 +88,5 @@
 </script>
 
 <div class="w-full h-full relative group">
-    <div bind:this={container} class="w-full h-full bg-transparent rounded-3xl overflow-hidden"></div>
+    <div bind:this={container} class="w-full h-full bg-transparent overflow-hidden"></div>
 </div>

@@ -29,10 +29,13 @@ export class Constellations {
     private useLatin: boolean = false;
     private currentColor: number = 0xffffff;
     private currentLabelColor: number = 0xffffff;
+    private currentOpacity: number = 0.4;
+    private lastDayFactor: number = -1; // For tracking color changes
 
     constructor(color: number, labelColor:number, opacity: number, showLabels: boolean, useLatin: boolean) {
         this.currentColor = color;
         this.currentLabelColor = labelColor;
+        this.currentOpacity = opacity ?? 0.4;
         this.showLabels = showLabels ?? true; 
         this.useLatin = useLatin ?? true;
 
@@ -41,11 +44,12 @@ export class Constellations {
         const mat = new THREE.LineBasicMaterial({
             color: color,
             transparent: true,
-            opacity: opacity,
+            opacity: this.currentOpacity,
             depthWrite: false 
         });
 
         this.lines = new THREE.LineSegments(geo, mat);
+        this.lines.renderOrder = 0;
         this.group.add(this.lines);
     }
 
@@ -112,9 +116,9 @@ export class Constellations {
     }
 
     /**
-     * Redraws the text on the Canvas (used for init and when switching languages)
+     * Redraws the text on the Canvas (used for init and when switching languages/daytime)
      */
-    private updateLabelText(label: ConstellationLabel) {
+    private updateLabelText(label: ConstellationLabel, colorOverride?: number) {
         const text = this.useLatin ? label.latin : label.name;
         
         label.ctx.clearRect(0, 0, 1024, 128);
@@ -123,8 +127,8 @@ export class Constellations {
         label.ctx.textAlign = 'center';
         label.ctx.textBaseline = 'middle';
 
-
-        label.ctx.fillStyle = `#${new THREE.Color(this.currentLabelColor).getHexString()}`;
+        const color = colorOverride ?? this.currentLabelColor;
+        label.ctx.fillStyle = `#${new THREE.Color(color).getHexString()}`;
         label.ctx.fillText(text.toUpperCase(), 512, 64);
         
         label.texture.needsUpdate = true;
@@ -133,8 +137,47 @@ export class Constellations {
     /**
      * Updates lines and calculates the centroid for each label.
      */
-    update(positionsMap: Map<string, { alt: number, az: number }>) {
-        if (this.constellationPairs.length === 0) return;
+    update(positionsMap: Map<string, { alt: number, az: number }>, daylightFade: number = 1.0) {
+        if (!this.group.visible || this.constellationPairs.length === 0) return;
+
+        // --- DYNAMIC CONTRAST FOR DAYTIME ---
+        const dayFactor = 1.0 - daylightFade; // 0 (night) to 1 (day)
+        const mat = this.lines.material as THREE.LineBasicMaterial;
+
+        // Quantize dayFactor to update in 100 steps
+        const quantizedDayFactor = Math.round(dayFactor * 100) / 100;
+
+        if (quantizedDayFactor !== this.lastDayFactor) {
+            this.lastDayFactor = quantizedDayFactor;
+
+            // 1. Update Lines
+            const lineC = new THREE.Color(this.currentColor);
+            if (quantizedDayFactor > 0) {
+                const hsl = { h: 0, s: 0, l: 0 };
+                lineC.getHSL(hsl);
+                // Add slightly more saturation, slightly less darkness
+                hsl.s = Math.min(1.0, hsl.s + quantizedDayFactor * 0.15);
+                hsl.l = Math.max(0.05, hsl.l - quantizedDayFactor * 0.1);
+                lineC.setHSL(hsl.h, hsl.s, hsl.l);
+                // Moderate opacity increase
+                mat.opacity = this.currentOpacity + (quantizedDayFactor * 0.3);
+            } else {
+                mat.opacity = this.currentOpacity;
+            }
+            mat.color.copy(lineC);
+
+            // 2. Update Labels
+            const labelC = new THREE.Color(this.currentLabelColor);
+            if (quantizedDayFactor > 0) {
+                const hsl = { h: 0, s: 0, l: 0 };
+                labelC.getHSL(hsl);
+                hsl.s = Math.min(1.0, hsl.s + quantizedDayFactor * 0.15);
+                hsl.l = Math.max(0.05, hsl.l - quantizedDayFactor * 0.15);
+                labelC.setHSL(hsl.h, hsl.s, hsl.l);
+            }
+            const labelColorNum = labelC.getHex();
+            this.labels.forEach(l => this.updateLabelText(l, labelColorNum));
+        }
 
         // --- UPDATE LINES ---
         const posArray = this.lines.geometry.attributes.position.array as Float32Array;
@@ -191,14 +234,18 @@ export class Constellations {
     setProps(visible: boolean, color: number, labelColor: number, opacity: number, showLabels?: boolean, useLatin?: boolean) {
         if (visible !== undefined) this.group.visible = visible;
         
+        let needsRedraw = false;
+
         // Line color
         if (color !== undefined && color !== this.currentColor) {
             this.currentColor = color;
             (this.lines.material as THREE.LineBasicMaterial).color.setHex(color);
+            this.lastDayFactor = -1; // Force color recalculation in update()
         }
 
         // Opacity
-        if (opacity !== undefined) {
+        if (opacity !== undefined && opacity !== this.currentOpacity) {
+            this.currentOpacity = opacity;
             (this.lines.material as THREE.LineBasicMaterial).opacity = opacity;
         }
 
@@ -209,8 +256,6 @@ export class Constellations {
         }
 
         // Language or color change
-        let needsRedraw = false;
-        
         if (useLatin !== undefined && useLatin !== this.useLatin) {
             this.useLatin = useLatin;
             needsRedraw = true;
@@ -222,6 +267,7 @@ export class Constellations {
         }
 
         if (needsRedraw) {
+            this.lastDayFactor = -1; // Force label redraw in update()
             this.labels.forEach(l => this.updateLabelText(l));
         }
     }

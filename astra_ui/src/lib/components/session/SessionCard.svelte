@@ -26,38 +26,38 @@
 
 <div class="group relative flex items-center">
     <a href="/observation/{id}"
-       class="flex flex-1 items-center gap-4 p-4 bg-panel border border-border rounded-xl
-              hover:bg-surface transition-all cursor-pointer pr-12">
+       class="flex flex-1 items-center gap-3 md:gap-4 p-3 md:p-4 bg-panel border border-border rounded-xl
+              hover:bg-surface transition-all cursor-pointer pr-20 md:pr-12">
         
         <div class="w-1 self-stretch rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"></div>
 
-        <div class="flex-1 min-w-0 space-y-2">
-            <div class="text-sm font-semibold text-copy-primary truncate">{name}</div>
+        <div class="flex-1 min-w-0 space-y-1.5 md:space-y-2">
+            <div class="text-sm font-bold text-copy-primary truncate">{name}</div>
             {#if description!=null}
-                <div class="text-xs text-copy-muted">{description || m.dash_observ_no_description()}</div>
+                <div class="text-[11px] md:text-xs text-copy-muted line-clamp-1">{description || m.dash_observ_no_description()}</div>
             {/if}
-            <div class="flex items-center gap-4 text-xs text-copy-muted">
+            <div class="flex items-center gap-3 md:gap-4 text-[10px] md:text-xs text-copy-muted">
                 <span class="flex items-center gap-1"><Calendar size={11} /> {formattedDate}</span>
                 <span class="flex items-center gap-1"><Telescope size={11} /> {telescope}</span>
             </div>
         </div>
 
         <!-- Hidden when inside -->
-        <div class="transition-opacity duration-200 group-hover:opacity-0">
+        <div class="transition-opacity duration-200 group-hover:opacity-0 hidden md:block">
             <ChevronRight size={16} class="text-copy-muted" />
         </div>
     </a>
 
     <!-- Action buttons -->
-    <div class="absolute right-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
+    <div class="absolute right-3 flex items-center gap-1.5 md:opacity-0 md:group-hover:opacity-100 transition-all md:translate-x-2 md:group-hover:translate-x-0">
         <button 
             onclick={() => showEditModal = true}
-            class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-accent hover:border-accent/30 transition-all shadow-sm">
+            class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-accent hover:border-accent/30 transition-all shadow-sm active:scale-90">
             <Pencil size={14} />
         </button>
         <button 
             onclick={() => showDeleteModal = true}
-            class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-danger hover:border-danger/30 transition-all shadow-sm">
+            class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-danger hover:border-danger/30 transition-all shadow-sm active:scale-90">
             <Trash2 size={14} />
         </button>
     </div>

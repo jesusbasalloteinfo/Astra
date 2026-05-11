@@ -15,18 +15,26 @@ import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 const vertexShader = `
     attribute float size;
     attribute vec3 color;
+    attribute float shapeType; // 0.0: star 1.0: Fuzz (Cluster/Neb), 2.0: Elipse (Galaxy)
+    attribute float angle;     // Rotation in radians for galaxies
+
     varying vec3 vColor;
     varying float vAlphaFactor; 
+    varying float vShapeType;
+    varying float vAngle;
+
     uniform float zoom;
 
     void main() {
         vColor = color;
+        vShapeType = shapeType;
+        vAngle = angle;
+
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-        
         float actualSize = size * zoom;
 
-        // Minimum size of 2.5 for antialiasing
-        gl_PointSize = max(2.5, actualSize);
+        // Minimum size of 5 for antialiasing
+        gl_PointSize = max(5.0, actualSize);
         
         // Smaller real size than drawn, lower the intensity to compensate size
         vAlphaFactor = min(1.0, actualSize / gl_PointSize);
@@ -42,19 +50,70 @@ const vertexShader = `
 const fragmentShader = `
     varying vec3 vColor;
     varying float vAlphaFactor;
+    varying float vShapeType;
+    varying float vAngle;
     uniform float opacity;
+    uniform float daylightFade;
 
     void main() {
-        // gl_PointCoord from 0.0 to 1.0 inside the point
-        float dist = distance(gl_PointCoord, vec2(0.5));
-        
-        // Create a circle
-        float alpha = smoothstep(0.5, 0.1, dist);
-        
-        // Scale factor for smaller stars
-        gl_FragColor = vec4(vColor, alpha * opacity * vAlphaFactor);
+        vec2 coord = gl_PointCoord - vec2(0.5);
+
+        // Galaxy rotation
+        if (vShapeType > 1.5) {
+            float s = sin(vAngle);
+            float c = cos(vAngle);
+            mat2 rot = mat2(c, -s, s, c);
+            coord = rot * coord;
+            
+            coord.y *= 1.5; 
+        }
+
+        float dist = length(coord);
+        if (dist > 0.5) discard;
+
+        float alpha = 0.0;
+        vec3 finalColor = vColor;
+
+        if (vShapeType < 0.5) {
+            // === STARS ===
+            
+            float core = exp(-pow(dist * 4.0, 2.0)); 
+            
+            float halo = exp(-dist * 2.5) * 0.8;
+            
+            finalColor = mix(vColor, vec3(1.0), core * 0.5);
+            
+            alpha = (core + halo) * smoothstep(0.5, 0.1, dist);
+
+        } else {
+            // === DSOs ===
+            
+            float dsoCore = exp(-pow(dist * 8.0, 2.0));
+            float dsoHalo = exp(-dist * 4.0) * 0.5;
+            
+            finalColor = mix(vColor, vec3(1.0), dsoCore * 0.8);
+            
+            alpha = (dsoCore + dsoHalo) * smoothstep(0.5, 0.2, dist);
+            
+            alpha *= 0.85;
+        }
+
+        gl_FragColor = vec4(finalColor, min(1.0, alpha) * opacity * vAlphaFactor * daylightFade);
     }
 `;
+
+
+/**
+ * Convert B-V temperature index to an RGB color
+ */
+function bvToRGB(bv: number): THREE.Color {
+    if (bv < -0.4) return new THREE.Color(0xcddcff); // Light blue
+    if (bv < 0.0) return new THREE.Color(0xe2ebff);  // Pale bluish white
+    if (bv < 0.4) return new THREE.Color(0xffffff);  // White
+    if (bv < 0.8) return new THREE.Color(0xfffaed);  // Pale yellowish white
+    if (bv < 1.2) return new THREE.Color(0xffe6cc);  // Pale orange
+    return new THREE.Color(0xffd2a8);                // Pale red
+}
 
 /**
  * Sidereal Entity
@@ -72,15 +131,17 @@ export class Sidereal {
 
         // Use ShaderMaterial to handle the custom scaling and circular rendering
         const mat = new THREE.ShaderMaterial({
-            uniforms: { zoom: { value: 1.0 }, opacity: { value: opacity } },
+            uniforms: { zoom: { value: 1.0 }, opacity: { value: opacity }, daylightFade: { value: 1.0 } },
             vertexShader, 
             fragmentShader, 
             transparent: true, 
-            blending: THREE.AdditiveBlending, 
-            depthWrite: false
+            blending: THREE.NormalBlending, 
+            depthWrite: false,
+            depthTest: true
         });
 
         this.points = new THREE.Points(geo, mat);
+        this.points.renderOrder = 1;
         this.group.add(this.points);
     }
 
@@ -93,24 +154,71 @@ export class Sidereal {
         const positions = new Float32Array(num * 3);
         const sizes = new Float32Array(num);
         const colors = new Float32Array(num * 3);
+        
+        const shapeTypes = new Float32Array(num);
+        const angles = new Float32Array(num);
+
+        const starTags = ['star', 'double_star', 'star_system', 'asterism'];
 
         for (let i = 0; i < num; i++) {
             const id = this.starIds[i];
             const data = catalogStore.siderealData[id];
             
             const mag = (data && typeof data.mag === 'number') ? data.mag : 6.0;
-            sizes[i] = Math.max(0.8, (7.0 - mag) * 0.8);
+            const category = data?.category || 'unknown';
+            
+            let finalColor = new THREE.Color(0xffffff);
+            let finalSize = 1.0;
+            let shape = 0.0;
+            let angle = 0.0;
 
-            // White colour 
-            colors[i * 3] = 1.0; 
-            colors[i * 3 + 1] = 1.0; 
-            colors[i * 3 + 2] = 1.0;
+            if (starTags.includes(category)) {
+                // 1. Stars
+                shape = 0.0;
+                finalSize = Math.max(0.8, (7.0 - mag) * 0.8);
+                if (typeof data.b_v === 'number') finalColor = bvToRGB(data.b_v);
+
+            } else if (category !== 'unknown') {
+                // 2. DSOs
+                const arcmin = data.size_arcmin || 1.0; 
+                
+                // Bigger size
+                finalSize = Math.min(12.0, Math.max(1.5, Math.sqrt(arcmin) * 1.2));
+
+                if (mag > 6.0) {
+                    finalSize *= 0.6;
+                }
+
+                // Slight tints over white to give some variety
+                if (['galaxy'].includes(category)) {
+                    shape = 2.0; 
+                    angle = (i * 0.384) % Math.PI; 
+                    finalColor.setHex(0xf0f4ff); // Blue tints
+                } else {
+                    shape = 1.0; 
+                    if (['nebula', 'planetary_nebula', 'molecular_cloud', 'supernova_remnant'].includes(category)) {
+                        finalColor.setHex(0xfff0f5); // Magenta tints
+                    } else if (['open_cluster', 'globular_cluster', 'galactic_cluster'].includes(category)) {
+                        finalColor.setHex(0xfffbee); // Warm tints
+                    }
+                }
+            }
+
+            sizes[i] = finalSize;
+            shapeTypes[i] = shape;
+            angles[i] = angle;
+
+            colors[i * 3] = finalColor.r; 
+            colors[i * 3 + 1] = finalColor.g; 
+            colors[i * 3 + 2] = finalColor.b;
         }
 
         const geo = new THREE.BufferGeometry();
         geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
         geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
         geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        geo.setAttribute('shapeType', new THREE.BufferAttribute(shapeTypes, 1));
+        geo.setAttribute('angle', new THREE.BufferAttribute(angles, 1));
         geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, 0), DOME_RADIUS);
         
         return geo;
@@ -134,9 +242,10 @@ export class Sidereal {
      * Updates the XYZ coordinates of all stars based on their current AltAz values.
      * Called continuously inside the render loop.
      */
-    update(positionsMap: PositionUpdates, zoomFactor: number) {
+    update(positionsMap: PositionUpdates, zoomFactor: number, daylightFade: number = 1.0) {
         // Update the shader uniform for zoom scaling
         (this.points.material as THREE.ShaderMaterial).uniforms.zoom.value = zoomFactor;
+        (this.points.material as THREE.ShaderMaterial).uniforms.daylightFade.value = daylightFade;
         const posArray = this.points.geometry.attributes.position.array as Float32Array;
 
         for (let i = 0; i < this.starIds.length; i++) {

@@ -255,6 +255,7 @@
 
   "obs_sidedock_return": "Return to Sessions",
   "obs_sidedock_settings": "Visual settings",
+  "obs_sidedock_theme": "Theme settings",
   "obs_sidedock_constellations_title": "Constellations",
   "obs_sidedock_constellations_show_label": "Labels",
   "obs_sidedock_constellations_language": "Language",
@@ -268,7 +269,10 @@
 			}
     }
   ],
+  "obs_sidedock_atmosphere": "Atmosphere",
   "obs_sidedock_horizon": "Horizon",
+  "obs_sidedock_horizon_solid": "Solid",
+  "obs_sidedock_horizon_radar": "Translucent",
 
   "obs_targetinfo_title": "Target Object",
   "obs_targetinfo_center": "Center object",
@@ -352,6 +356,15 @@
   ],
 
   "====================================== OBJECT DATA ======================================": "",
+
+  "cardinal_north": "N",
+  "cardinal_northeast": "NE",
+  "cardinal_east": "E",
+  "cardinal_southeast": "SE",
+  "cardinal_south": "S",
+  "cardinal_southwest": "SW",
+  "cardinal_west": "W",
+  "cardinal_northwest": "NW",
 
   "data_types_planetary": "Planet",
   "data_types_moon": "Moon",

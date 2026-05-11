@@ -93,6 +93,12 @@ export class SelectionController {
             return;
         }
 
+        if (id === this.selectedId) {
+            this.cameraCtrl.isTracking = true;
+            this.cameraCtrl.flyTo(pos.alt, pos.az);
+            return; 
+        }
+
         this.selectedId = id;
         const isPlanet = id in catalogStore.planetaryData;
         selectionStore.select(id, isPlanet ? 'planetary' : 'sidereal');
@@ -119,6 +125,7 @@ export class SelectionController {
         }
 
         this.targetReticle.lockOn(isPlanet, hexColor, baseSize);
+        this.cameraCtrl.isTracking = true;
         this.cameraCtrl.flyTo(pos.alt, pos.az);
     }
     /** Save the initial position for pointer */
@@ -177,6 +184,7 @@ export class SelectionController {
             this.selectedId = null;
             this.targetReticle.hide();
             selectionStore.clear();
+            this.cameraCtrl.isTracking = false; 
         }
     }
     

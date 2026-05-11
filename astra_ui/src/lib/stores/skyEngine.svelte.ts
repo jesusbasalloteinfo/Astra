@@ -35,8 +35,8 @@ class SkyEngine {
         let dt = (timeEngine.targetTime - this.lastSyncTime) / 1000;
 
         // Prevent wild distortion on large time jumps
-        // If the user jumps far into the future/past, the sky will freeze at the TTL*10 edge until the new API sync completes.
-        if (Math.abs(dt) > this.ttlSeconds*10) {
+        // If the user jumps far into the future/past, the sky will freeze at the TTL*45 (max 90m) edge until the new API sync completes.
+        if (Math.abs(dt) > this.ttlSeconds*45) {
             dt = Math.sign(dt) * this.ttlSeconds;
         }
 

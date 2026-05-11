@@ -19,20 +19,32 @@
 	import { deviceAPI } from '$lib/api/devices';
 	import { chatStore } from '$lib/stores/chat.svelte';
 	import { selectionStore } from '$lib/stores/activeSelection.svelte';
+	import { skyEngine } from '$lib/stores/skyEngine.svelte';
 
     // So we can call fly whenever we want
     let skyMap = $state<ReturnType<typeof SkyMap3D>>();
     let telescopePos = $state<{alt: number, az: number} | null>(null);
 
     // Sky settings
-    let showConstellations = $state(true);
+    let showConstellations = $state(false);
     let showGround         = $state(true);
+    let solidGround        = $state(true);
+    let showAtmosphere     = $state(true);
     let showConstellationLabels = $state(true);
     let useLatinConstellations = $state(true);
     
     // Panels
     let chatOpen       = $state(false);
     let searchOpen     = $state(false);
+
+    const effectiveShowAtmosphere = $derived(themeState.current === 'astronomical' ? false : showAtmosphere);
+
+    // Sun altitude for UI contrast
+    const isDaytime = $derived.by(() => {
+        if (!effectiveShowAtmosphere) return false;
+        const sunPos = skyEngine.positions.get('sun');
+        return sunPos ? sunPos.alt > -6.0 : false; // End of twilight threshold
+    });
 
     // Only dark themes
     $effect(() => {
@@ -43,9 +55,17 @@
         document.documentElement.setAttribute('data-theme', targetTheme);
         document.documentElement.style.colorScheme = 'dark';
 
+        // Apply daytime UI contrast
+        if (isDaytime) {
+            document.documentElement.classList.add('daytime-ui');
+        } else {
+            document.documentElement.classList.remove('daytime-ui');
+        }
+
         return () => {
             document.documentElement.setAttribute('data-theme', themeState.current);
             document.documentElement.style.colorScheme = '';
+            document.documentElement.classList.remove('daytime-ui');
         };
     });
 
@@ -56,15 +76,27 @@
                 ground: 0x160404,//1f0505,         
                 constellations: 0x991b1b, 
                 constellationLabelColor: 0xff4444,
-                cardinal: '#f87171'       
+                cardinal: '#ff0000' //'#f87171'       
             };
         }
         return {
             ground: 0x02120a, //02170d, //0f172a         
             constellations: 0x30318e,//475569, 
             constellationLabelColor: 0x7879c5,
-            cardinal: '#94a3b8'       
+            cardinal: '#ff0000' //'#94a3b8'       
         };
+    });
+
+    // Cardinal translations
+    const cardinalLabels = $derived({
+        'N' : m.cardinal_north(),
+        'NE': m.cardinal_northeast(),
+        'E' : m.cardinal_east(),
+        'SE': m.cardinal_southeast(),
+        'S' : m.cardinal_south(),
+        'SW': m.cardinal_southwest(),
+        'W' : m.cardinal_west(),
+        'NW': m.cardinal_northwest()
     });
 
     // --- Real Time telescope ---
@@ -85,7 +117,7 @@
                     return;
                 }
             } catch (e) {
-                console.error("Error trying to ge telescope position:", e);
+                console.error("Error trying to get telescope position:", e);
             }
         }
         // Else hide the telescope pointer
@@ -140,14 +172,16 @@
             <SkyMap3D 
                 bind:this={skyMap} 
                 {showGround} 
+                {solidGround}
                 {showConstellations} 
                 {showConstellationLabels}
                 {useLatinConstellations}
+                showAtmosphere={effectiveShowAtmosphere}
                 groundColor={simColors.ground}
                 constellationColor={simColors.constellations}
                 constellationLabelColor={simColors.constellationLabelColor}
                 cardinalColor={simColors.cardinal}
-                
+                {cardinalLabels}
             />
         {:else}
             <div class="w-full h-full flex flex-col items-center justify-center gap-4 bg-black">
@@ -157,7 +191,7 @@
     </div>
 
     <!-- Telescope control -->
-    <div class="absolute top-6 left-5 z-10 pointer-events-auto">
+    <div class="absolute top-4 left-4 md:top-6 md:left-5 z-30 pointer-events-auto scale-90 md:scale-100 origin-top-left transition-transform">
         <TelescopeController
             canCenter={telescopePos !== null} 
             onCenter={centerOnTelescope} 
@@ -165,19 +199,22 @@
     </div>
 
     <!-- Options dock -->
-    <div class="absolute left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-auto">
+    <div class="absolute left-2 md:left-4 top-1/3 md:top-1/2 -translate-y-1/2 z-20 pointer-events-auto scale-90 md:scale-100 origin-left transition-transform">
         <SideDock 
             bind:showConstellations 
             bind:showConstellationLabels
             bind:useLatinConstellations
             bind:showGround 
+            bind:solidGround
+            bind:showAtmosphere
+            atmosphereLocked={themeState.current === 'astronomical'}
             bind:searchOpen 
             bind:chatOpen 
         />
     </div>
 
     <!-- Target info -->
-    <div class="absolute top-6 right-6 z-10 pointer-events-none">
+    <div class="absolute top-4 right-4 md:top-6 md:right-6 z-10 pointer-events-none scale-90 md:scale-100 origin-top-right transition-transform max-w-[60vw] md:max-w-none">
         {#if !chatOpen}
             <TargetDetailsPanel 
                 onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} 
@@ -187,7 +224,7 @@
     </div>
 
     <!-- Time control -->
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex justify-center w-full pointer-events-none">
+    <div class="absolute bottom-2 md:bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 z-10 flex justify-center w-[96%] md:w-max max-w-full pointer-events-none transition-all scale-90 lg:scale-100 origin-bottom">
         <TimeController />
     </div>
 
@@ -200,9 +237,7 @@
     <SkyFinder 
         bind:open={searchOpen} 
         onSelect={(id) => {
-            // IS a constellation
             const isConstellation = catalogStore.constellations.some(c => c.abbr === id);
-
             if (isConstellation) {
                 skyMap?.flyToConstellation(id);
             } else {

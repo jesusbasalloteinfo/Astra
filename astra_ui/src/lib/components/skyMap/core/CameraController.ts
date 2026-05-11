@@ -13,6 +13,7 @@ import { FOV_DEFAULT, FOV_MIN, FOV_MAX, ZOOM_SPEED, EYE_LEVEL, CAMERA_SPEED } fr
 export class CameraController {
     public camera: THREE.PerspectiveCamera;
     public controls: OrbitControls;
+    public isTracking: boolean = false; // Maintain always centered
 
     private initialPinchDistance: number | null = null;
     private container: HTMLElement;
@@ -51,18 +52,17 @@ export class CameraController {
         this.container.addEventListener('touchend', this.onTouchEnd);
 
         // Abort fly motion
-        this.container.addEventListener('pointerdown', this.cancelFlight);
+        this.container.addEventListener('pointerdown', this.onPointerDown);
 
     }
 
     /**
-     * Starts a smooth movement to the coordinates.
+     * Caslculate the selected object's position
      */
-    flyTo(alt: number, az: number) {
+    private calculateFlightTarget(alt: number, az: number) {
         const altRad = alt * (Math.PI / 180);
         const azRad  = (180 - az) * (Math.PI / 180);
 
-        // Direction vector to where we want to look at
         const dirX = Math.cos(altRad) * Math.sin(azRad);
         const dirY = Math.sin(altRad);
         const dirZ = Math.cos(altRad) * Math.cos(azRad);
@@ -72,6 +72,13 @@ export class CameraController {
             this.controls.target.y - (dirY * 0.1),
             this.controls.target.z - (dirZ * 0.1)
         );
+    }
+
+    /**
+     * Starts a smooth movement to the coordinates.
+     */
+    flyTo(alt: number, az: number) {
+        this.calculateFlightTarget(alt, az);
         this.isFlying = true;
     }
 
@@ -80,7 +87,19 @@ export class CameraController {
      */
     private cancelFlight = () => {
         this.isFlying = false;
+        this.isTracking = false;
     };
+
+    /**
+     * Follow a selected object
+     */
+    track(alt: number, az: number) {
+        this.calculateFlightTarget(alt, az);
+        
+        if (!this.isFlying) {
+            this.camera.position.copy(this.flightTarget);
+        }
+    }
 
 
     /**
@@ -88,7 +107,6 @@ export class CameraController {
      */
     private onWheel = (e: WheelEvent) => {
         e.preventDefault();
-        this.cancelFlight();
         this.applyZoom(e.deltaY * ZOOM_SPEED);
     };
 
@@ -96,12 +114,13 @@ export class CameraController {
      * Initializes pinch distance when two fingers touch the screen (Mobile).
      */
     private onTouchStart = (e: TouchEvent) => {
-        this.cancelFlight();
         if (e.touches.length === 2) {
             e.preventDefault(); // Prevent accidental page scrolling
             const dx = e.touches[0].clientX - e.touches[1].clientX;
             const dy = e.touches[0].clientY - e.touches[1].clientY;
             this.initialPinchDistance = Math.hypot(dx, dy);
+        } else {
+            this.cancelFlight();
         }
     };
 
@@ -137,6 +156,15 @@ export class CameraController {
     };
 
     /**
+     * Stop tracking if user makes a click
+     */
+    private onPointerDown = (e: PointerEvent) => {
+        if (e.pointerType !== 'touch') {
+            this.cancelFlight(); 
+        }
+    };
+
+    /**
      * Modifies the camera's Field of View (FOV) instead of moving its Z position.
      * Shared logic for both Mouse Wheel and Touch Pinch.
      */
@@ -158,15 +186,12 @@ export class CameraController {
             const currentOffset = this.camera.position.clone().sub(this.controls.target);
             const targetOffset = this.flightTarget.clone().sub(this.controls.target);
             
-            // Interpolate and force lenght at 0.1 to keep camera in place
-            currentOffset.lerp(targetOffset, 0.05).setLength(0.1);
-            
-            // Apply position
-            this.camera.position.copy(this.controls.target).add(currentOffset);
-            
-            // When near target, cancel flying
             if (currentOffset.distanceTo(targetOffset) < 0.001) {
                 this.isFlying = false;
+                this.camera.position.copy(this.flightTarget);
+            } else {
+                currentOffset.lerp(targetOffset, 0.05).setLength(0.1);
+                this.camera.position.copy(this.controls.target).add(currentOffset);
             }
         }
         this.controls.update();

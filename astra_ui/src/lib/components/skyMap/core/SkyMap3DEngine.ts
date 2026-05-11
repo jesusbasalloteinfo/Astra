@@ -7,7 +7,8 @@ import { Environment } from '../entities/Environment';
 import { Planetary } from '../entities/Planetary';
 import { Sidereal } from '../entities/Sidereal';
 import { Constellations } from '../entities/Constellations';
-import { FOV_DEFAULT } from '../utils/const';
+import { FOV_DEFAULT, DOME_RADIUS } from '../utils/const';
+import { altAzToXYZ } from '../utils/coordinates';
 import { skyEngine } from '$lib/stores/skyEngine.svelte';
 import { TargetReticle } from '../entities/TargetReticle';
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
@@ -38,8 +39,10 @@ export class SkyMap3DEngine {
     private constellations: Constellations;
     private targetReticle:TargetReticle;
     private telescopePointer: TelescopePointer;
+    private currentCardinalColor: string;
 
     constructor(private container: HTMLDivElement, props: any) {
+        this.currentCardinalColor = props.cardinalColor;
         // Initialize Scene & Renderer
         this.scene = new THREE.Scene();
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -50,7 +53,7 @@ export class SkyMap3DEngine {
         container.appendChild(this.renderer.domElement);
 
         // Instantiate Entities
-        this.environment = new Environment(props.groundColor, props.cardinalColor);
+        this.environment = new Environment(props.groundColor, props.cardinalColor, props.cardinalLabels);
         this.planetary = new Planetary(props.starOpacity);
         this.sidereal = new Sidereal(props.starOpacity);
         this.constellations = new Constellations(
@@ -81,19 +84,8 @@ export class SkyMap3DEngine {
         this.scene.add(this.targetReticle.sprite);
         this.scene.add(this.telescopePointer.sprite);
 
-        const applyRenderOrder = (obj: THREE.Object3D, order: number) => {
-            obj.traverse((child) => {
-                child.renderOrder = order;
-            });
-        };
-
-        applyRenderOrder(this.environment.group, 0);    // First the environment
-        applyRenderOrder(this.constellations.group, 1); // Second the constellations
-        applyRenderOrder(this.sidereal.group, 2);       // Third, stars/DSO
-        applyRenderOrder(this.planetary.group, 3);      // Fourth, planetary objects
-        
-        this.targetReticle.sprite.renderOrder = 4;
-        this.telescopePointer.sprite.renderOrder = 5;
+        this.targetReticle.sprite.renderOrder = 5;
+        this.telescopePointer.sprite.renderOrder = 6;
 
         // Apply initial visual properties
         this.updateProps(props); 
@@ -122,12 +114,42 @@ export class SkyMap3DEngine {
             // New data update and new zoom
 
             const zoomFactor = FOV_DEFAULT / this.cameraCtrl.camera.fov;
+
+            let daylightFade = 1.0; // Night time as default
+
+            const sunPos = skyEngine.positions.get('sun');
+            const moonPos = skyEngine.positions.get('moon');
+
+            if (sunPos) {
+                // 1. Update sky
+                this.environment.updateSunPosition(sunPos.alt, sunPos.az);
+                
+                // 2. Calculate star visibility
+                const tmp = new Float32Array(3);
+                altAzToXYZ(tmp, 0, sunPos.alt, sunPos.az);
+                const sunYNorm = tmp[1] / DOME_RADIUS; 
+                
+                // Smooth transition
+                let fade = (sunYNorm + 0.05) / 0.15; 
+                fade = Math.max(0.0, Math.min(1.0, fade)); 
+                
+                // Hide in daytime
+                daylightFade = this.environment.isAtmosphereEnabled() ? (1.0 - fade) : 1.0;
+            }
             
-            this.planetary.update(skyEngine.positions, zoomFactor);
-            this.sidereal.update(skyEngine.positions, zoomFactor);
-            this.constellations.update(skyEngine.positions);
+            this.planetary.update(skyEngine.positions, zoomFactor, daylightFade);
+            this.sidereal.update(skyEngine.positions, zoomFactor, daylightFade);
+            this.environment.updateDaylight(daylightFade);
+            this.constellations.update(skyEngine.positions, daylightFade);
             this.targetReticle.update(skyEngine.positions);
             this.telescopePointer.update();
+
+            if (this.cameraCtrl.isTracking && this.selectionCtrl.selectedId) {
+                const pos = skyEngine.positions.get(this.selectionCtrl.selectedId);
+                if (pos) {
+                    this.cameraCtrl.track(pos.alt, pos.az);
+                }
+            }
         }
 
         // Update camera damping/controls and render the scene
@@ -141,10 +163,23 @@ export class SkyMap3DEngine {
      */
     updateProps(props: any) {
         if (props.showGround !== undefined) this.environment.setGroundVisible(props.showGround);
+        if (props.solidGround !== undefined) this.environment.setGroundMode(props.solidGround);
         if (props.groundColor !== undefined) this.environment.setGroundColor(props.groundColor);
         
+        if (props.cardinalColor !== undefined) {
+            this.currentCardinalColor = props.cardinalColor;
+        }
+
+        if (props.cardinalColor !== undefined || props.cardinalLabels !== undefined) {
+            this.environment.updateCardinalLabels(
+                this.currentCardinalColor, 
+                props.cardinalLabels
+            );
+        }
+        
+        if (props.showAtmosphere !== undefined) this.environment.setAtmosphereEnabled(props.showAtmosphere);
+        
         if (this.constellations && props.showConstellations !== undefined) {
-            console.log("show Constellations:", props.showConstellations)
             this.constellations.setProps(
                 props.showConstellations, 
                 props.constellationColor, 
@@ -207,12 +242,17 @@ export class SkyMap3DEngine {
             this.cameraCtrl.flyTo(avgAlt, finalAz);
         }
     }
+    
+    recenterSelected() {
+        if (this.selectionCtrl.selectedId) {
+            this.selectionCtrl.selectById(this.selectionCtrl.selectedId);
+        }
+    }
 
     /**
      * Sets the telescope pointer inside the sky map
      */
     setTelescopePosition(alt: number | null, az: number | null) {
-        console.warn("AAAA:", alt, az);
         if (alt !== null && az !== null) {
             this.telescopePointer.updatePosition(alt, az);
         } else {
