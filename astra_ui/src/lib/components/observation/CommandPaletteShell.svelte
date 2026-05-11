@@ -19,8 +19,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if open}
-    <div transition:fade={{ duration: 150 }} class="absolute inset-0 z-50 flex items-start justify-center pt-32 pointer-events-auto">
-        <!-- Backdrop -->
+    <div transition:fade={{ duration: 150 }} class="absolute inset-0 z-50 flex items-start justify-center pt-16 md:pt-32 px-4 md:px-0 pointer-events-auto">
         <button 
             class="absolute inset-0 w-full h-full bg-black/60 backdrop-blur-sm cursor-default appearance-none border-none focus:outline-none" 
             onclick={() => open = false} 
@@ -28,8 +27,7 @@
             tabindex="-1"
         ></button>
 
-        <!-- Container -->
-        <div class="relative z-10 w-full {maxWidth} bg-surface backdrop-blur-xl border border-border rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
+        <div class="relative z-10 w-full {maxWidth} max-h-[80vh] md:max-h-[60vh] bg-surface backdrop-blur-xl border border-border rounded-2xl md:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
             {@render children()}
         </div>
     </div>

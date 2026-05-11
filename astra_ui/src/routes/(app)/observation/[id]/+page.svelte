@@ -191,7 +191,7 @@
     </div>
 
     <!-- Telescope control -->
-    <div class="absolute top-6 left-5 z-10 pointer-events-auto">
+    <div class="absolute top-4 left-4 md:top-6 md:left-5 z-30 pointer-events-auto scale-90 md:scale-100 origin-top-left transition-transform">
         <TelescopeController
             canCenter={telescopePos !== null} 
             onCenter={centerOnTelescope} 
@@ -199,7 +199,7 @@
     </div>
 
     <!-- Options dock -->
-    <div class="absolute left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-auto">
+    <div class="absolute left-2 md:left-4 top-1/3 md:top-1/2 -translate-y-1/2 z-20 pointer-events-auto scale-90 md:scale-100 origin-left transition-transform">
         <SideDock 
             bind:showConstellations 
             bind:showConstellationLabels
@@ -214,7 +214,7 @@
     </div>
 
     <!-- Target info -->
-    <div class="absolute top-6 right-6 z-10 pointer-events-none">
+    <div class="absolute top-4 right-4 md:top-6 md:right-6 z-10 pointer-events-none scale-90 md:scale-100 origin-top-right transition-transform max-w-[60vw] md:max-w-none">
         {#if !chatOpen}
             <TargetDetailsPanel 
                 onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} 
@@ -224,7 +224,7 @@
     </div>
 
     <!-- Time control -->
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex justify-center w-full pointer-events-none">
+    <div class="absolute bottom-2 md:bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 z-10 flex justify-center w-[96%] md:w-max max-w-full pointer-events-none transition-all scale-90 lg:scale-100 origin-bottom">
         <TimeController />
     </div>
 
@@ -237,9 +237,7 @@
     <SkyFinder 
         bind:open={searchOpen} 
         onSelect={(id) => {
-            // IS a constellation
             const isConstellation = catalogStore.constellations.some(c => c.abbr === id);
-
             if (isConstellation) {
                 skyMap?.flyToConstellation(id);
             } else {
