@@ -45,6 +45,30 @@ services:
       retries: 3
       start_period: 40s
 
+  astra_auth:
+    container_name: astra_auth
+    build:
+      context: ./astra_auth
+    env_file:
+      - .env
+    environment:
+      DB_NAME: astra_auth
+      DB_HOST: astra_api_db
+    restart: unless-stopped
+    volumes:
+      - ./astra_auth:/app
+      - astra_auth_keys:/app/keys
+      - astra_auth_uploads:/app/uploads
+    networks:
+      - gateway-net
+      - api-net
+    expose:
+      - 80
+    depends_on:
+      astra_api_db:
+        condition: service_healthy
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 80
+
   astra_ui:
     container_name: astra_ui
     restart: always
@@ -157,3 +181,5 @@ networks:
 volumes:
   mongodb_data:
   mongodb_init:
+  astra_auth_keys:
+  astra_auth_uploads:
