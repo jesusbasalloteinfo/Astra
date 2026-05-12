@@ -19,6 +19,8 @@ export interface LocationCreate {
 
 export interface User {
     username: string;
+    email: string;
+    profile_picture_url?: string;
     locations: UserLocation[];
     creation: string;
 }

@@ -8,6 +8,7 @@ import { obsStore } from './observations.svelte';
 class AuthStore {
     user = $state<User | null>(null);
     isLoading = $state(true);
+    isLoggingOut = $state(false);
 
     async init() {
         if (!browser) return;
@@ -38,10 +39,13 @@ class AuthStore {
     }
 
     async logout() {
+        this.isLoggingOut = true;
         try {
             await authAPI.logout();
-            this.user = null;
         } finally {
+            localStorage.removeItem('auth');
+            this.user = null;
+            this.isLoggingOut = false;
             deviceStore.clear();
             locStore.clear();
             obsStore.reset();

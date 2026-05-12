@@ -23,10 +23,12 @@
     let profileOpen = $state(false);
 
     async function handleLogout() {
-        await authStore.logout()
-        await obsStore.reset()
         const destination = '/';
-        goto(destination);
+        // Start navigation first
+        const nav = goto(destination);
+        // Then perform logout cleanup
+        await authStore.logout();
+        await nav;
     }
 </script>
 
@@ -81,7 +83,11 @@
             onclick={() => profileOpen = true}
             class="cursor-pointer flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
                    text-copy-secondary hover:text-copy-primary hover:bg-surface transition-colors w-full text-left">
-            <User size={17} />
+            {#if authStore.user?.profile_picture_url}
+                <img src={authStore.user.profile_picture_url} alt="Profile" class="w-[17px] h-[17px] rounded-full object-cover" />
+            {:else}
+                <User size={17} />
+            {/if}
             {m.dash_side_profile()}
         </button>
         <button

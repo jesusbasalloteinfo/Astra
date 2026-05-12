@@ -5,21 +5,22 @@ import { browser } from '$app/environment';
 import type { User } from '$lib/types/user';
 
 export const authAPI = {
-    login: async (token: string): Promise<void> => {
-        const response = await api.post(endpoints.auth.login, { token:token });
+    login: async (username: string, password: string): Promise<void> => {
+        const response = await api.post(endpoints.auth.login, { username, password });
         
         if (browser && response.data.access_token) {
             localStorage.setItem('auth', response.data.access_token);
         }
     },
 
+    register: async (username: string, email: string, password: string): Promise<void> => {
+        await api.post(endpoints.auth.register, { username, email, password });
+    },
+
     logout: async (): Promise<void> => {
-        try {
-            await api.post(endpoints.auth.logout);
-        } finally {
-            if (browser) {
-                localStorage.removeItem('auth');
-            }
+        // Since we use JWT, logout is primarily local removal, 
+        if (browser) {
+            localStorage.removeItem('auth');
         }
     },
 
@@ -37,5 +38,13 @@ export const authAPI = {
         return response.data;
     },
 
+    uploadProfilePicture: async (file: File): Promise<string> => {
+        const formData = new FormData();
+        formData.append('file', file);
+        const response = await api.post(endpoints.auth.upload_picture, formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        });
+        return response.data.url;
+    }
 };
 
