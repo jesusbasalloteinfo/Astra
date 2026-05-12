@@ -29,7 +29,7 @@ async def login(data: UserLogin):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid username or password")
     
-    token = create_access_token(data={"sub": user.username, "email": user.email})
+    token = create_access_token(username=user.username, email=user.email)
     return TokenResponse(access_token=token)
 
 @router.get("/public-key")

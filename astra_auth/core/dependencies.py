@@ -28,10 +28,7 @@ async def get_request_user(
     if token:
         try:
             payload = decode_access_token(token)
-            username: str = payload.get("sub")
-            if username is None:
-                raise HTTPException(status_code=401, detail="Invalid token: missing sub")
-            return username
+            return payload.sub
         except Exception as e:
             raise HTTPException(status_code=401, detail=f"Invalid token: {str(e)}")
 

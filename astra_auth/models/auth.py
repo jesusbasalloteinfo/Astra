@@ -31,3 +31,9 @@ class UserProfile(BaseModel):
     email: str
     profile_picture_url: Optional[str] = None
     creation: datetime
+
+class JWTPayload(BaseModel):
+    sub: str  # Username
+    email: str
+    exp: datetime
+    iat: datetime

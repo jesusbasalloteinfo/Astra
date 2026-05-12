@@ -54,6 +54,8 @@ services:
     environment:
       DB_NAME: astra_auth
       DB_HOST: astra_api_db
+      KEYS_DIR: keys
+      UPLOADS_DIR: uploads
     restart: unless-stopped
     volumes:
       - ./astra_auth:/app

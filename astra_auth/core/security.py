@@ -6,6 +6,8 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend
 from core.logging_utils import get_logger
+from models.auth import JWTPayload
+
 
 LOG = get_logger("AUTH-KEYS")
 
@@ -67,21 +69,27 @@ def get_public_key():
     with open(PUBLIC_KEY_PATH, 'rb') as f:
         return f.read()
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
-    """Create a signed RS256 JWT."""
-    to_encode = data.copy()
+def create_access_token(username: str, email: str, expires_delta: Optional[timedelta] = None) -> str:
+    """Create a signed RS256 JWT using JWTPayload model."""
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
         expire = datetime.now(timezone.utc) + timedelta(days=7)
-    
-    to_encode.update({"iat": datetime.now(timezone.utc), "exp": expire})
-    
+
+    payload = JWTPayload(
+        sub=username,
+        email=email,
+        iat=datetime.now(timezone.utc),
+        exp=expire
+    )
+
     private_key = get_private_key()
-    encoded_jwt = jwt.encode(to_encode, private_key, algorithm=ALGORITHM)
+    encoded_jwt = jwt.encode(payload.model_dump(), private_key, algorithm=ALGORITHM)
     return encoded_jwt
 
-def decode_access_token(token: str) -> dict:
-    """Decode and validate a JWT using the public key."""
+def decode_access_token(token: str) -> JWTPayload:
+    """Decode and validate a JWT returning a JWTPayload object."""
     public_key = get_public_key()
-    return jwt.decode(token, public_key, algorithms=[ALGORITHM])
+    decoded = jwt.decode(token, public_key, algorithms=[ALGORITHM])
+    return JWTPayload(**decoded)
+
