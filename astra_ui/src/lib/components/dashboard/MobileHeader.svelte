@@ -9,6 +9,7 @@
     import { obsStore } from '$lib/stores/observations.svelte';
     import { goto } from '$app/navigation';
     import { fade, fly } from 'svelte/transition';
+	import ProfileSettings from './ProfileSettings.svelte';
 
     let isSettingsOpen = $state(false);
     let profileOpen = $state(false);
@@ -103,5 +104,5 @@
 {/if}
 
 <Modal bind:open={profileOpen} title={m.dash_side_profile()} size="sm">
-    <p class="text-copy-secondary text-sm">Profile settings coming soon.</p>
+    <ProfileSettings />
 </Modal>

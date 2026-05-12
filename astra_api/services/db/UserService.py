@@ -29,6 +29,10 @@ class UserService:
         except ObjectAlreadyExistsError:
             return username
     
+    async def update_user(self, username: str, data: dict) -> bool:
+        """Update user profile details."""
+        return await self.repo.update_one({"username": username}, {"$set": data})
+
     async def add_location(self, username: str, location: Location) -> bool:
 
         if location.is_default:

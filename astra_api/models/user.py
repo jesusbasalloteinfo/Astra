@@ -19,6 +19,8 @@ class User(BaseModel):
     
     id:  SkipJsonSchema[Optional[str]] = Field(alias="_id", default=None, exclude=True)# Mongo ids to string id
     username: str
+    full_name: Optional[str] = None
+    bio: Optional[str] = None
 
     locations: list[Location] = []
     

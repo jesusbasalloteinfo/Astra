@@ -107,6 +107,23 @@
   "dash_side_logout": "Cerrar sesión",
 
 
+  "-------------------------------------- PROFILE SETTINGS -------------------------------------- ": "",
+  "profile_settings_title": "Información del perfil",
+  "profile_settings_change_photo": "Cambiar foto",
+  "profile_settings_full_name": "Nombre completo",
+  "profile_settings_full_name_placeholder": "Introduce tu nombre completo",
+  "profile_settings_bio": "Biografía",
+  "profile_settings_bio_placeholder": "Cuéntanos sobre ti",
+  "profile_settings_save": "Guardar cambios",
+  "profile_settings_account_info": "Información de la cuenta",
+  "profile_settings_member_since": "Miembro desde",
+  "profile_settings_photo_success": "¡Foto de perfil actualizada con éxito!",
+  "profile_settings_photo_error": "Error al subir la foto de perfil.",
+  "profile_settings_details_success": "¡Detalles del perfil actualizados con éxito!",
+  "profile_settings_details_error": "Error al actualizar los detalles del perfil.",
+  "profile_settings_image_validation": "Por favor, selecciona un archivo de imagen.",
+
+
   "-------------------------------------- DASHBOARD -------------------------------------- ": "",
   "dash_main_greeting_morning": "¡Buenos días, {user}! ☀️",
   "dash_main_sub_morning_morning": "¿Planificando la sesión solar de hoy?",

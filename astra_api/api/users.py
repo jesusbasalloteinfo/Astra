@@ -2,6 +2,7 @@ import httpx
 import os
 from typing import Optional
 from fastapi import Cookie, FastAPI, APIRouter, HTTPException, Header, Request, Depends, Response
+from pydantic import BaseModel
 from models.user import Location, User
 from services.db.UserService import UserService
 from core.db_exceptions import ObjectNotFoundError
@@ -15,6 +16,10 @@ AUTH_ME_URL = os.getenv("AUTH_ME_URL", "http://astra_auth:80/api/auth/me")
 class UserEnriched(User):
     email: Optional[str] = None
     profile_picture_url: Optional[str] = None
+
+class UserUpdate(BaseModel):
+    full_name: Optional[str] = None
+    bio: Optional[str] = None
 
 @router.get("/me", response_model=UserEnriched)
 async def get_user(
@@ -47,6 +52,18 @@ async def get_user(
     except ObjectNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+@router.put("/me")
+async def update_user(data: UserUpdate, username: str = Depends(get_request_user)):
+    service = UserService()
+    # Filter out None values
+    update_data = {k: v for k, v in data.model_dump().items() if v is not None}
+    if not update_data:
+        return {"status": "success", "message": "No changes to apply"}
+        
+    success = await service.update_user(username, update_data)
+    if not success:
+        raise HTTPException(status_code=400, detail="Could not update user profile")
+    return {"status": "success"}
 
 @router.post("/me/locations")
 async def add_location(location: Location, user: str = Depends(get_request_user)):

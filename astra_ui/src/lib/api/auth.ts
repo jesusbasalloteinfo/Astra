@@ -38,6 +38,10 @@ export const authAPI = {
         return response.data;
     },
 
+    updateProfile: async (data: { full_name?: string; bio?: string }): Promise<void> => {
+        await api.put(endpoints.user.update, data);
+    },
+
     uploadProfilePicture: async (file: File): Promise<string> => {
         const formData = new FormData();
         formData.append('file', file);

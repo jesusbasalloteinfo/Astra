@@ -2,7 +2,7 @@
     import { goto } from '$app/navigation';
     import { page } from '$app/state';
     import * as m from '$lib/paraglide/messages.js';
-    import { authAPI } from '$lib/api/auth';
+    import { authStore } from '$lib/stores/auth.svelte';
 
     let { onToggleMode } = $props<{ onToggleMode: () => void }>();
 
@@ -26,7 +26,7 @@
         error = '';
 
         try {
-            await authAPI.login(username.trim(), password);
+            await authStore.login(username.trim(), password);
             const destination = page.url.searchParams.get('goto') ?? '/dashboard';
             goto(destination);
         } catch (e) {
@@ -76,7 +76,7 @@
     <button
         onclick={handleLogin}
         disabled={loading}
-        class="w-full py-3.5 mt-2 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 active:scale-[0.98] flex justify-center items-center h-[52px]">
+        class="w-full py-3.5 mt-2 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/30 active:scale-[0.98] flex justify-center items-center h-13">
         {#if loading}
             <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

@@ -109,6 +109,23 @@
   "dash_side_logout": "Tancar sessió",
 
 
+  "-------------------------------------- PROFILE SETTINGS -------------------------------------- ": "",
+  "profile_settings_title": "Informació del perfil",
+  "profile_settings_change_photo": "Canviar foto",
+  "profile_settings_full_name": "Nom complet",
+  "profile_settings_full_name_placeholder": "Introdueix el teu nom complet",
+  "profile_settings_bio": "Biografia",
+  "profile_settings_bio_placeholder": "Explica'ns sobre tu",
+  "profile_settings_save": "Desar canvis",
+  "profile_settings_account_info": "Informació del compte",
+  "profile_settings_member_since": "Membre des de",
+  "profile_settings_photo_success": "Foto de perfil actualitzada correctament!",
+  "profile_settings_photo_error": "Error en pujar la foto de perfil.",
+  "profile_settings_details_success": "Detalls del perfil actualitzats correctament!",
+  "profile_settings_details_error": "Error en actualitzar els detalls del perfil.",
+  "profile_settings_image_validation": "Si us plau, selecciona un fitxer d'imatge.",
+
+
   "-------------------------------------- DASHBOARD -------------------------------------- ": "",
   "dash_main_greeting_morning": "Bon dia, {user} ☀️",
   "dash_main_sub_morning_morning": "Planificant la sessió solar d'avui?",

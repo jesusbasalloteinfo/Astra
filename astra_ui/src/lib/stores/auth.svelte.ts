@@ -28,10 +28,10 @@ class AuthStore {
         }
     }
 
-    async login(token: string) {
+    async login(username: string, password: string) {
         this.isLoading = true;
         try {
-            await authAPI.login(token);
+            await authAPI.login(username, password);
             await this.refreshProfile();
         } finally {
             this.isLoading = false;

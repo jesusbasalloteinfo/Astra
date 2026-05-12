@@ -6,6 +6,7 @@
     import ThemeSelector from '$lib/themes/ThemeSelector.svelte';
     import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
+    import ProfileSettings from '$lib/components/dashboard/ProfileSettings.svelte';
     import { LayoutDashboard, History, Telescope, MapPin, User, Plus, LogOut } from 'lucide-svelte';
     import { authStore } from '$lib/stores/auth.svelte';
 	import { page } from '$app/state';
@@ -32,7 +33,7 @@
     }
 </script>
 
-<aside class="w-70 flex-shrink-0 flex flex-col border-r border-border bg-secondary h-screen sticky top-0">
+<aside class="w-70 shrink-0 flex flex-col border-r border-border bg-secondary h-screen sticky top-0">
 
     <!-- Logo -->
     <div class="px-5 py-5 border-b border-border">
@@ -84,7 +85,7 @@
             class="cursor-pointer flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
                    text-copy-secondary hover:text-copy-primary hover:bg-surface transition-colors w-full text-left">
             {#if authStore.user?.profile_picture_url}
-                <img src={authStore.user.profile_picture_url} alt="Profile" class="w-[17px] h-[17px] rounded-full object-cover" />
+                <img src={authStore.user.profile_picture_url} alt="Profile" class="w-4.25 h-4.25 rounded-full object-cover" />
             {:else}
                 <User size={17} />
             {/if}
@@ -103,5 +104,5 @@
 
 <!-- Profile modal -->
 <Modal bind:open={profileOpen} title={m.dash_side_profile()} size="sm">
-    <p class="text-copy-secondary text-sm">Profile settings coming soon.</p>
+    <ProfileSettings />
 </Modal>

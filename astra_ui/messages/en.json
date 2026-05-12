@@ -106,6 +106,23 @@
   "dash_side_logout": "Logout",
 
 
+  "-------------------------------------- PROFILE SETTINGS -------------------------------------- ": "",
+  "profile_settings_title": "Profile Information",
+  "profile_settings_change_photo": "Change Photo",
+  "profile_settings_full_name": "Full Name",
+  "profile_settings_full_name_placeholder": "Enter your full name",
+  "profile_settings_bio": "Bio",
+  "profile_settings_bio_placeholder": "Tell us about yourself",
+  "profile_settings_save": "Save Changes",
+  "profile_settings_account_info": "Account Info",
+  "profile_settings_member_since": "Member Since",
+  "profile_settings_photo_success": "Profile picture updated successfully!",
+  "profile_settings_photo_error": "Failed to upload profile picture.",
+  "profile_settings_details_success": "Profile details updated successfully!",
+  "profile_settings_details_error": "Failed to update profile details.",
+  "profile_settings_image_validation": "Please select an image file.",
+
+
   "-------------------------------------- DASHBOARD MAIN -------------------------------------- ": "",
   "dash_main_greeting_morning": "Good morning, {user} ☀️",
   "dash_main_sub_morning_morning": "Planning today's solar session?",

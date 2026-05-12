@@ -9,6 +9,7 @@ export const endpoints = {
         upload_picture: 'auth/me/picture'
     },
     user:{
+        update: 'users/me',
         locations: 'users/me/locations',
         location_get: (id: string) => `users/me/locations/${id}`,
     },
