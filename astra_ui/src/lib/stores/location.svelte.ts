@@ -112,6 +112,13 @@ class LocationStore {
             this.isSyncing = false;
         }
     }
+
+    clear() {
+        this.activeId = null;
+        if (browser) {
+            localStorage.removeItem('active_location_id');
+        }
+    }
 }
 
 export const locStore = new LocationStore();

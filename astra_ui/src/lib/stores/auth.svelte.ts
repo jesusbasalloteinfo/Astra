@@ -1,6 +1,9 @@
 import { authAPI } from '$lib/api/auth';
 import { browser } from '$app/environment';
 import type { User } from '$lib/types/user';
+import { deviceStore } from './devices.svelte';
+import { locStore } from './location.svelte';
+import { obsStore } from './observations.svelte';
 
 class AuthStore {
     user = $state<User | null>(null);
@@ -35,8 +38,14 @@ class AuthStore {
     }
 
     async logout() {
-        await authAPI.logout();
-        this.user = null;
+        try {
+            await authAPI.logout();
+            this.user = null;
+        } finally {
+            deviceStore.clear();
+            locStore.clear();
+            obsStore.reset();
+        }
     }
 
     isAuthenticated = $derived(this.user !== null);
