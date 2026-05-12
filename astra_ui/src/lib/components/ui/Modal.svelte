@@ -68,7 +68,7 @@
                     </button>
                 </div>
             {:else}
-                <div class="flex justify-end px-4 pt-4 shrink-0 absolute right-0 top-0 z-10">
+                <div class="flex items-center justify-end px-6 py-4 shrink-0">
                     <button
                         onclick={close}
                         class="cursor-pointer text-copy-muted hover:text-copy-primary transition-colors p-1 rounded-lg bg-panel/50 backdrop-blur hover:bg-surface">
