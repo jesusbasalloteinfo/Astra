@@ -42,7 +42,7 @@
         return () => clearInterval(interval);
     });
 
-    let greetings = $derived(getGreeting(period, authStore.user?.username || "Explorer"));
+    let greetings = $derived(getGreeting(period, authStore.user?.username || (authStore.isLoggingOut ? "" : "Explorer")));
     const recentSessions = $derived(obsStore.items.slice(0, 3));
 </script>
 
