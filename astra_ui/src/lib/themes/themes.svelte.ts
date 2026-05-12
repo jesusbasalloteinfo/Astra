@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { Monitor, Moon, Sun, Telescope } from 'lucide-svelte';
+import { authStore } from '$lib/stores/auth.svelte';
 
 
 export type ThemeId = 'standard' | 'dark' | 'light' | 'astronomical';
@@ -36,6 +37,11 @@ function createThemeState() {
             if (browser) {
                 localStorage.setItem(STORAGE_KEY, theme);
                 document.documentElement.setAttribute('data-theme', theme);
+
+                // Persist to backend if logged in
+                if (authStore.isAuthenticated && authStore.user?.settings.theme !== theme) {
+                    authStore.updateSettings({ theme });
+                }
             }
         }
     };

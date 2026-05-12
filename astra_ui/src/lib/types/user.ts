@@ -17,8 +17,18 @@ export interface LocationCreate {
     is_default: boolean;
 }
 
+export interface UserSettings {
+    theme: string;
+    language: string;
+}
+
 export interface User {
     username: string;
+    email: string;
+    full_name?: string;
+    bio?: string;
+    profile_picture_url?: string;
+    settings: UserSettings;
     locations: UserLocation[];
     creation: string;
 }

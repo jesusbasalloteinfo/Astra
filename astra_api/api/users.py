@@ -1,21 +1,86 @@
+import httpx
+import os
+from typing import Optional
 from fastapi import Cookie, FastAPI, APIRouter, HTTPException, Header, Request, Depends, Response
+from pydantic import BaseModel
 from models.user import Location, User
 from services.db.UserService import UserService
 from core.db_exceptions import ObjectNotFoundError
-from core.dependencies import get_request_user
+from core.dependencies import get_request_user, bearer_scheme
+from fastapi.security import HTTPAuthorizationCredentials
 
 router = APIRouter()
 
+AUTH_ME_URL = os.getenv("AUTH_ME_URL", "http://astra_auth:80/api/auth/me")
 
-@router.get("/me", response_model=User)
-async def get_user(user: str = Depends(get_request_user)):
-    user_service:UserService = UserService()
+class UserEnriched(User):
+    email: Optional[str] = None
+    profile_picture_url: Optional[str] = None
+
+class UserUpdate(BaseModel):
+    full_name: Optional[str] = None
+    bio: Optional[str] = None
+
+class SettingsUpdate(BaseModel):
+    theme: Optional[str] = None
+    language: Optional[str] = None
+
+@router.get("/me", response_model=UserEnriched)
+async def get_user(
+    username: str = Depends(get_request_user),
+    auth: HTTPAuthorizationCredentials = Depends(bearer_scheme)
+):
+    user_service: UserService = UserService()
 
     try:
-        return await user_service.get_user(user)
+        # Get app data (locations) from local DB
+        user_data = await user_service.get_user(username)
+        
+        # Create enriched response
+        enriched_user = UserEnriched(**user_data.model_dump())
+        
+        # Enrich with identity data from astra_auth
+        try:
+            async with httpx.AsyncClient() as client:
+                headers = {"Authorization": f"Bearer {auth.credentials}"}
+                response = await client.get(AUTH_ME_URL, headers=headers)
+                if response.status_code == 200:
+                    auth_info = response.json()
+                    enriched_user.email = auth_info.get("email")
+                    enriched_user.profile_picture_url = auth_info.get("profile_picture_url")
+        except Exception:
+            # Fallback: return what we have from local DB
+            pass
+
+        return enriched_user
     except ObjectNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
 
+@router.put("/me")
+async def update_user(data: UserUpdate, username: str = Depends(get_request_user)):
+    service = UserService()
+    # Filter out None values
+    update_data = {k: v for k, v in data.model_dump().items() if v is not None}
+    if not update_data:
+        return {"status": "success", "message": "No changes to apply"}
+        
+    success = await service.update_user(username, update_data)
+    if not success:
+        raise HTTPException(status_code=400, detail="Could not update user profile")
+    return {"status": "success"}
+
+@router.put("/me/settings")
+async def update_settings(data: SettingsUpdate, username: str = Depends(get_request_user)):
+    service = UserService()
+    # Use dot notation for nested update to avoid overwriting other settings
+    update_data = {f"settings.{k}": v for k, v in data.model_dump().items() if v is not None}
+    if not update_data:
+        return {"status": "success", "message": "No changes to apply"}
+        
+    success = await service.update_user(username, update_data)
+    if not success:
+        raise HTTPException(status_code=400, detail="Could not update settings")
+    return {"status": "success"}
 
 @router.post("/me/locations")
 async def add_location(location: Location, user: str = Depends(get_request_user)):

@@ -42,7 +42,7 @@
         return () => clearInterval(interval);
     });
 
-    let greetings = $derived(getGreeting(period, authStore.user?.username || "Explorer"));
+    let greetings = $derived(getGreeting(period, authStore.user?.username || (authStore.isLoggingOut ? "" : "Explorer")));
     const recentSessions = $derived(obsStore.items.slice(0, 3));
 </script>
 
@@ -97,7 +97,12 @@
             </button>
             
             {#each recentSessions as session (session.id)}
-                <SessionCard id={session.id} name={session.name} creation={session.creation} />
+                <SessionCard 
+                    id={session.id} 
+                    name={session.name} 
+                    description={session.description}
+                    creation={session.creation} 
+                />
             {:else}
                 <div class="text-center py-10 md:py-12 border border-dashed border-border rounded-xl md:rounded-2xl bg-surface/50">
                     <p class="text-sm text-copy-muted">{m.dash_observ_not_found()}</p>

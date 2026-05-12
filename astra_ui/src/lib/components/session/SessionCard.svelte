@@ -10,6 +10,7 @@
     let showDeleteModal = $state(false);
     let showEditModal = $state(false);
     let editName = $state(name);
+    let editDescription = $state(description || '');
 
     const formattedDate = $derived(formatDate(creation));
 
@@ -19,7 +20,10 @@
     }
 
     async function handleUpdate() {
-        await obsStore.update(id, { name: editName });
+        await obsStore.update(id, { 
+            name: editName,
+            description: editDescription 
+        });
         showEditModal = false;
     }
 </script>
@@ -75,6 +79,16 @@
                 bind:value={editName}
                 class="w-full px-4 py-2 bg-secondary border border-border rounded-xl text-copy-primary focus:outline-none focus:border-accent transition-colors"
             />
+        </div>
+        <div class="flex flex-col gap-2">
+            <label for="edit-description" class="text-sm font-medium text-copy-muted">{m.dash_observ_edit_description_title()}</label>
+            <textarea
+                id="edit-description"
+                rows="3"
+                placeholder={m.dash_observ_edit_description_title()}
+                bind:value={editDescription}
+                class="w-full px-4 py-2 bg-secondary border border-border rounded-xl text-copy-primary focus:outline-none focus:border-accent transition-colors resize-none"
+            ></textarea>
         </div>
         <div class="flex justify-end gap-3 mt-4">
             <button onclick={() => showEditModal = false} class="cursor-pointer px-4 py-2 text-sm font-medium text-copy-muted">

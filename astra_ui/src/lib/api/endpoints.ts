@@ -1,12 +1,16 @@
 export const endpoints = {
     apiBase: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api',
     auth: {
-        login:   '/login',
-        logout:  '/logout',
-        session: '/session',
-        user_details: 'users/me'
+        login:   'auth/login',
+        register: 'auth/register',
+        logout:  'auth/logout',
+        session: 'auth/session',
+        user_details: 'users/me',
+        upload_picture: 'auth/me/picture'
     },
     user:{
+        update: 'users/me',
+        updateSettings: 'users/me/settings',
         locations: 'users/me/locations',
         location_get: (id: string) => `users/me/locations/${id}`,
     },

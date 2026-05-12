@@ -9,14 +9,15 @@
     import { obsStore } from '$lib/stores/observations.svelte';
     import { goto } from '$app/navigation';
     import { fade, fly } from 'svelte/transition';
+	import ProfileSettings from './ProfileSettings.svelte';
 
     let isSettingsOpen = $state(false);
     let profileOpen = $state(false);
 
     async function handleLogout() {
+        const nav = goto('/');
         await authStore.logout();
-        await obsStore.reset();
-        goto('/');
+        await nav;
     }
 </script>
 
@@ -34,8 +35,12 @@
         class="flex items-center gap-2 p-1.5 pl-3 bg-surface border border-border rounded-full active:scale-95 transition-all"
     >
         <span class="text-xs font-bold text-copy-primary truncate max-w-20">{authStore.user?.username || 'User'}</span>
-        <div class="w-8 h-8 landscape:w-7 landscape:h-7 rounded-full bg-accent/10 flex items-center justify-center text-accent border border-accent/20">
-            <User class="w-4 h-4 landscape:w-3.5 landscape:h-3.5" />
+        <div class="w-8 h-8 landscape:w-7 landscape:h-7 rounded-full bg-accent/10 flex items-center justify-center text-accent border border-accent/20 overflow-hidden">
+            {#if authStore.user?.profile_picture_url}
+                <img src={authStore.user.profile_picture_url} alt="Profile" class="w-full h-full object-cover" />
+            {:else}
+                <User class="w-4 h-4 landscape:w-3.5 landscape:h-3.5" />
+            {/if}
         </div>
     </button>
 </header>
@@ -54,8 +59,12 @@
     >
         <div class="p-6 pb-4 border-b border-border flex items-center justify-between shrink-0">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center text-white shadow-lg shadow-accent/20">
-                    <User size={24} />
+                <div class="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center text-white shadow-lg shadow-accent/20 overflow-hidden">
+                    {#if authStore.user?.profile_picture_url}
+                        <img src={authStore.user.profile_picture_url} alt="Profile" class="w-full h-full object-cover" />
+                    {:else}
+                        <User size={24} />
+                    {/if}
                 </div>
                 <div>
                     <h3 class="text-lg font-bold text-copy-primary">{authStore.user?.username}</h3>
@@ -95,5 +104,5 @@
 {/if}
 
 <Modal bind:open={profileOpen} title={m.dash_side_profile()} size="sm">
-    <p class="text-copy-secondary text-sm">Profile settings coming soon.</p>
+    <ProfileSettings />
 </Modal>

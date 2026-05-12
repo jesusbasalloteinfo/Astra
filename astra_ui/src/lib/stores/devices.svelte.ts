@@ -202,6 +202,20 @@ class DeviceStore {
             this.#refreshInterval = null;
         }
     }
+
+
+    clear() {
+        this.stopAutoRefresh();
+        this.all = [];
+        this.activeId = null;
+        this.activeDetails = null;
+        this.selectedComponents = {};
+        if (browser) {
+            localStorage.removeItem('active_device_id');
+            localStorage.removeItem('device_list_cache');
+            localStorage.removeItem('device_selected_components');
+        }
+    }
 }
 
 export const deviceStore = new DeviceStore();

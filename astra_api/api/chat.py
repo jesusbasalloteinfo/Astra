@@ -8,7 +8,6 @@ from pydantic import BaseModel
 from services.assistant import FinalEvent
 from core.dependencies import get_request_user
 from services.assistant import stream_chat, ChatHistory, ChatMessage
-from services.assistant.examples import create_get_user_profile_tool, create_weather_tool
 from services.tools.observation import fly_to_const_tool, focus_object_element_tool
 from services.tools import *
 from services.device_tunnel.tunnel import DeviceTunnel, tunnel_manager
@@ -109,11 +108,7 @@ async def chat_stream(session_id: str, request: StreamRequest, username: str = D
 
     
     # Initialize tools
-    tools = [
-        # Examples
-        create_get_user_profile_tool(user_id="aaaa", db_connection="dummy-db"),
-        create_weather_tool(location="Test, Testilandia"),
-        
+    tools = [       
         # WikiEngine
         create_search_article_tool(wiki_instance),
         create_get_article_intro_tool(wiki_instance),

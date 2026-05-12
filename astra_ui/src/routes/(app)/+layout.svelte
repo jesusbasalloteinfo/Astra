@@ -35,8 +35,9 @@
 
 </script>
 
-{#if !isAppReady}
+{#if !isAppReady || authStore.isLoggingOut}
     <div 
+        in:fade={{ duration: 150 }}
         out:fade={{ duration: 800 }} 
         class="fixed inset-0 z-9999"
     >
