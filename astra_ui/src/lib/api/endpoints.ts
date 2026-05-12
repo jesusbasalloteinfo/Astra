@@ -10,6 +10,7 @@ export const endpoints = {
     },
     user:{
         update: 'users/me',
+        updateSettings: 'users/me/settings',
         locations: 'users/me/locations',
         location_get: (id: string) => `users/me/locations/${id}`,
     },

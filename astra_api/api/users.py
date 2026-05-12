@@ -21,6 +21,10 @@ class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     bio: Optional[str] = None
 
+class SettingsUpdate(BaseModel):
+    theme: Optional[str] = None
+    language: Optional[str] = None
+
 @router.get("/me", response_model=UserEnriched)
 async def get_user(
     username: str = Depends(get_request_user),
@@ -63,6 +67,19 @@ async def update_user(data: UserUpdate, username: str = Depends(get_request_user
     success = await service.update_user(username, update_data)
     if not success:
         raise HTTPException(status_code=400, detail="Could not update user profile")
+    return {"status": "success"}
+
+@router.put("/me/settings")
+async def update_settings(data: SettingsUpdate, username: str = Depends(get_request_user)):
+    service = UserService()
+    # Use dot notation for nested update to avoid overwriting other settings
+    update_data = {f"settings.{k}": v for k, v in data.model_dump().items() if v is not None}
+    if not update_data:
+        return {"status": "success", "message": "No changes to apply"}
+        
+    success = await service.update_user(username, update_data)
+    if not success:
+        raise HTTPException(status_code=400, detail="Could not update settings")
     return {"status": "success"}
 
 @router.post("/me/locations")

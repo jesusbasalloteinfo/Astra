@@ -42,6 +42,10 @@ export const authAPI = {
         await api.put(endpoints.user.update, data);
     },
 
+    updateSettings: async (data: { theme?: string; language?: string }): Promise<void> => {
+        await api.put(endpoints.user.updateSettings, data);
+    },
+
     uploadProfilePicture: async (file: File): Promise<string> => {
         const formData = new FormData();
         formData.append('file', file);

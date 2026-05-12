@@ -51,8 +51,8 @@
 
         try {
             await authAPI.register(username.trim(), email.trim(), password);
-            // Auto-login after register
-            await authStore.login(username.trim(), password);
+            // Auto-login after register, syncing current UI settings
+            await authStore.login(username.trim(), password, true);
             
             const destination = page.url.searchParams.get('goto') ?? '/dashboard';
             goto(destination);

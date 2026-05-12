@@ -4,6 +4,7 @@
 	import { page } from '$app/state';
 	import { fade } from 'svelte/transition';
 	import { ChevronDown } from 'lucide-svelte';
+    import { authStore } from '$lib/stores/auth.svelte';
 
 	import { AVAILABLE_LANGUAGES, type LanguageCode } from '$lib/config/languages';
 
@@ -21,7 +22,7 @@
 
 	let activeLanguage = $derived(AVAILABLE_LANGUAGES.find((l) => l.code === currentLocale) || AVAILABLE_LANGUAGES[0]);
 
-	function switchLocale(newLocale: LanguageCode) {
+	async function switchLocale(newLocale: LanguageCode) {
 		if (newLocale === currentLocale) {
 			isOpen = false;
 			return;
@@ -29,6 +30,12 @@
 
 		setLocale(newLocale);
         currentLocale = newLocale;
+
+        // Persist to backend if logged in
+        if (authStore.isAuthenticated && authStore.user?.settings.language !== newLocale) {
+            await authStore.updateSettings({ language: newLocale });
+        }
+
 		console.log('currentLocale set to:', currentLocale, 'activeLanguage:', activeLanguage.label);
 
 		const segments = page.url.pathname.split('/');

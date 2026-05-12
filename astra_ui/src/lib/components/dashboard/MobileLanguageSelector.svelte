@@ -3,14 +3,21 @@
 	import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
 	import { page } from '$app/state';
     import { browser } from '$app/environment';
+    import { authStore } from '$lib/stores/auth.svelte';
 	import { AVAILABLE_LANGUAGES, type LanguageCode } from '$lib/config/languages';
 
 	let currentLocale = $state(getLocale()); 
 
-	function switchLocale(newLocale: LanguageCode) {
+	async function switchLocale(newLocale: LanguageCode) {
 		if (newLocale === currentLocale) return;
 
 		setLocale(newLocale);
+
+        // Persist to backend if logged in
+        if (authStore.isAuthenticated && authStore.user?.settings.language !== newLocale) {
+            await authStore.updateSettings({ language: newLocale });
+        }
+
 		const segments = page.url.pathname.split('/');
 		const supportedCodes = AVAILABLE_LANGUAGES.map(l => l.code);
 		

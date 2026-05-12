@@ -14,6 +14,9 @@ class Location(BaseModel):
     timezone: float = 0.0
     is_default: Optional[bool] = False
 
+class UserSettings(BaseModel):
+    theme: str = "standard"
+    language: str = "en"
 
 class User(BaseModel):
     
@@ -21,6 +24,8 @@ class User(BaseModel):
     username: str
     full_name: Optional[str] = None
     bio: Optional[str] = None
+    
+    settings: UserSettings = Field(default_factory=UserSettings)
 
     locations: list[Location] = []
     
