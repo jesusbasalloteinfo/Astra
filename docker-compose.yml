@@ -120,51 +120,6 @@ services:
     networks:
       - litellm-net
 
-  keycloak_db:
-    image: postgres:16-alpine
-    container_name: keycloak_db
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: ${KC_DB_NAME}
-      POSTGRES_USER: ${KC_DB_USERNAME}
-      POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${KC_DB_USERNAME} -d ${KC_DB_NAME}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    volumes:
-      - keycloak_data:/var/lib/postgresql/data
-    networks:
-      - api-net
-
-  keycloak:
-    image: quay.io/keycloak/keycloak:24.0
-    container_name: keycloak
-    restart: unless-stopped
-    environment:
-      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
-      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-      KC_DB: postgres
-      KC_DB_URL: ${KC_DB_URL}
-      KC_DB_USERNAME: ${KC_DB_USERNAME}
-      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
-      KC_HOSTNAME_STRICT: "false"
-      KC_HTTP_ENABLED: "true"
-      KC_HOSTNAME_URL: "http://localhost:8000/auth"
-      KC_HOSTNAME_ADMIN_URL: "http://localhost:8000/auth"
-      KC_HTTP_RELATIVE_PATH: "/auth"
-      KC_PROXY: "edge"
-    depends_on:
-      keycloak_db:
-        condition: service_healthy
-    command: start-dev
-    ports:
-      - "8080:8080"
-    networks:
-      - gateway-net
-      - api-net
-
   kong_gateway:
     container_name: kong_gateway
     image: kong:3.6
@@ -202,4 +157,3 @@ networks:
 volumes:
   mongodb_data:
   mongodb_init:
-  keycloak_data:

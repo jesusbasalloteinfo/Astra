@@ -40,15 +40,3 @@ services:
         paths:
           - /
         strip_path: false
-
-  # ════════════════════════════════════════════════════════════════════════════════
-  #                                 KEYCLOAK
-  # ════════════════════════════════════════════════════════════════════════════════
-
-  - name: keycloak
-    url: http://keycloak:8080
-    routes:
-      - name: keycloak-route
-        paths:
-          - /auth
-        strip_path: false
