@@ -10,7 +10,7 @@ class SearchObjectArgs(BaseModel):
 
 def search_object_tool() -> CurriedTool:
     return CurriedTool(
-        name="search_object",
+        name="sideris_search_object",
         description="Searches for celestial objects in the catalog.",
         args_model=SearchObjectArgs,
         func=search_object_impl
@@ -22,7 +22,7 @@ class GetDetailsArgs(BaseModel):
 
 def get_object_details_tool(location:Tuple[float, float]) -> CurriedTool:
     return CurriedTool(
-        name="get_object_details",
+        name="sideris_get_object_details",
         description="Fetches detailed information about a specific celestial object.",
         args_model=GetDetailsArgs,
         func=partial(get_object_details_impl, location=location)

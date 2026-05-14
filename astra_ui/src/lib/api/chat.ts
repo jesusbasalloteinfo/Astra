@@ -18,6 +18,7 @@ export const chatAPI = {
                                 device_id: string | null = null,
                                 telescope: string | null = null,                               
                                 signal?: AbortSignal): AsyncGenerator<ChatSSEEvent, void, unknown> {
+        console.log("Sending message to LLM with: ", { message, model, selected_obj, location_id, device_id, telescope })
         const response = await api.post(endpoints.chat.stream(session_id), 
             { message, model, selected_obj, location_id, device_id, telescope }, 
             {

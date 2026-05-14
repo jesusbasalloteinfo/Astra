@@ -63,7 +63,7 @@
                     <span class="text-base lg:text-xl font-mono font-bold text-copy-primary tabular-nums tracking-tight">
                         {formatTime(timeEngine.local)}
                     </span>
-                    <span class="text-[9px] bg-panel/50 border border-border px-1.5 py-0.5 rounded-md text-copy-muted uppercase font-bold hidden xs:inline-block">
+                    <span class="text-[9px] bg-panel/50 border border-border px-1.5 py-0.5 rounded-md text-copy-muted uppercase font-bold xs:inline-block">
                         {locStore.active?.timezone ? `UTC${locStore.active.timezone > 0 ? '+' : ''}${locStore.active.timezone}` : 'SYS'}
                     </span>
                 </div>
