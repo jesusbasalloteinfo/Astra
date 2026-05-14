@@ -35,7 +35,7 @@ class SlewToArgs(BaseModel):
 
 def slew_to_object_tool(tunnel:DeviceTunnel, telescope:str, location:Tuple[float, float]) -> CurriedTool:
     return CurriedTool(
-        name="slew_to_object",
+        name="slew_telescope",
         description="Commands the telescope to slew to a specific object.",
         args_model=SlewToArgs,
         func=partial(slew_to_object_impl, tunnel=tunnel, telescope=telescope, location=location),

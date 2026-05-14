@@ -32,7 +32,7 @@
 </script>
 
 {#if open}
-    <div transition:slide={{ axis: 'x', duration: 300 }} class="absolute top-0 right-0 h-full w-[24rem] bg-surface/90 backdrop-blur-2xl border-l border-border shadow-[-10px_0_30px_rgba(0,0,0,0.5)] z-30 pointer-events-auto flex flex-col">
+    <div transition:slide={{ axis: 'x', duration: 300 }} class="absolute top-0 right-0 h-full w-120 bg-surface/90 backdrop-blur-2xl border-l border-border shadow-[-10px_0_30px_rgba(0,0,0,0.5)] z-30 pointer-events-auto flex flex-col">        
         
         <!-- HEADER -->
         <div class="h-16 flex items-center justify-between px-5 border-b border-border/50 shrink-0">
