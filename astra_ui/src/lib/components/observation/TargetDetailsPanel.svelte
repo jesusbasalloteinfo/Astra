@@ -89,8 +89,8 @@
         isSlewing = true;
         try {
             await deviceAPI.slewTelescope(deviceId, telescopeId, {
-                coord: [selectedInfo.ra, selectedInfo.dec],
-                input_type: CoordinateTypes.EQUATORIAL_J2000,
+                coord: [selectedInfo.alt, selectedInfo.az],
+                input_type: CoordinateTypes.HORIZONTAL,
                 mode: "TRACK" 
             });
         } catch (error) {

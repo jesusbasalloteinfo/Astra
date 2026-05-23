@@ -49,16 +49,16 @@ async def slew_to_object_impl(tunnel: DeviceTunnel,
         details = await get_object_details_impl(id, type, location)
         
         # 2. Extract coordinates based on exact models
-        ra = details.get("ra_j2000")
-        dec = details.get("dec_j2000")
+        alt = details.get("alt")
+        az = details.get("az")
         
-        if ra is None or dec is None:
-            raise ValueError("Could not retrieve RA/Dec coordinates for the object.")
+        if alt is None or az is None:
+            raise ValueError("Could not retrieve ALT/AZ coordinates for the object.")
         
         # 3. Send SlewCommand
         params = SlewCommandData(
-            coord=(ra, dec),
-            input_type=CoordinateTypes.EQUATORIAL_J2000,
+            coord=(alt, az),
+            input_type=CoordinateTypes.HORIZONTAL,
             mode=mode
         )
         payload = SlewCommand(device=telescope, data=params)
