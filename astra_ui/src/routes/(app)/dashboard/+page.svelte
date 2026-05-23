@@ -62,7 +62,7 @@
     <!-- Widgets row -->
     {#if locStore.active}
         <DeviceWidget/>
-            <LocationWidget temperature={14} humidity={62} />
+            <LocationWidget/>
     {:else}
             <div class="col-span-1 md:col-span-2 p-6 md:p-12 landscape:p-6 bg-panel border border-dashed border-border rounded-2xl md:rounded-3xl text-center">
                 <div class="w-12 h-12 md:w-16 md:h-16 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto mb-4">

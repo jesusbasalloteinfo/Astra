@@ -49,7 +49,7 @@
                 <span>{active.elevation}m</span>
             </div>
 
-            <div class="grid grid-cols-2 gap-4 pt-3 md:pt-4 border-t border-border/40">
+            <!-- <div class="grid grid-cols-2 gap-4 pt-3 md:pt-4 border-t border-border/40">
                 <div class="flex items-center gap-2 md:gap-3">
                     <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-secondary/50 flex items-center justify-center text-copy-muted group-hover:text-accent transition-colors">
                         <Thermometer size={14} class="md:w-3.75" />
@@ -69,7 +69,7 @@
                         <p class="text-xs md:text-sm font-mono text-copy-primary leading-none">{humidity}%</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     {:else}
         <div class="py-4 md:py-6 text-center border-2 border-dashed border-border/50 rounded-xl bg-secondary/20">

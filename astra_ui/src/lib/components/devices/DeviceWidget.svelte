@@ -92,14 +92,14 @@
             </div>
 
             {#if isOnline && details?.components}
-                <div class="grid grid-cols-2 gap-4 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/40">
+                <!-- <div class="grid grid-cols-2 gap-4 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/40">
                     <div>
                         <p class="text-[8px] md:text-[9px] uppercase font-black text-copy-muted leading-none mb-1">Placeholder</p>
                         <p class="text-xs md:text-sm font-mono text-copy-primary leading-none">
                             placeholder
                         </p>
                     </div>
-                </div>
+                </div> -->
             {:else if !isOnline}
                 <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/40 flex items-center gap-2 text-warning">
                     <CircleAlert size={12} class="shrink-0 md:w-14" />
