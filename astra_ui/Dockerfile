@@ -21,6 +21,7 @@ WORKDIR /app
 COPY --from=build-step /app/build ./build
 COPY --from=build-step /app/package*.json ./
 RUN npm install --omit=dev
-EXPOSE 3000
+EXPOSE 5173
 ENV NODE_ENV=production
+ENV PORT=5173
 CMD ["node", "build/index.js"]
