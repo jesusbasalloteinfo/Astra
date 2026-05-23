@@ -27,13 +27,10 @@ export class TelescopePointer {
     private createTexture(): THREE.Texture {
         const svg = `
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <!-- Circunferencia aprox 251. 251 / 4 = 62.7 -->
-                <!-- Usamos 40 de línea y 22.7 de espacio -->
                 <circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="4" 
                         stroke-dasharray="40 22.75" 
                         transform="rotate(-72 50 50)" />
 
-                <!-- Miras -->
                 <line x1="50" y1="5" x2="50" y2="20" stroke="white" stroke-width="4" />
                 <line x1="50" y1="80" x2="50" y2="95" stroke="white" stroke-width="4" />
                 <line x1="5" y1="50" x2="20" y2="50" stroke="white" stroke-width="4" />
