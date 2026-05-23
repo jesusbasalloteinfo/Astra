@@ -31,7 +31,7 @@ class BaseMongoRepository(Generic[T]):
         """Update an element inside the collection"""
         # update_data must include the Mongo operators like $set, $push, etc.
         result = await self.collection.update_one(query, update_data)
-        return result.modified_count > 0
+        return result.matched_count > 0
     
     async def find_one(self, query: dict) -> Optional[T]:
         """Find an element inside the collection"""

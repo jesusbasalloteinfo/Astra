@@ -1,5 +1,5 @@
 export const endpoints = {
-    apiBase: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api',
+    apiBase: import.meta.env.VITE_API_URL ?? '/api',
     auth: {
         login:   'auth/login',
         register: 'auth/register',
