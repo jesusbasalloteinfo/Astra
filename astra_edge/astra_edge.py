@@ -6,6 +6,7 @@ import logging
 import os
 import aiohttp
 import argparse
+import urllib.parse
 from pydantic import TypeAdapter
 from api.IndiTaskAPI import IndiTaskAPI
 from utils.Clock import Clock
@@ -51,7 +52,13 @@ def get_serial() -> str:
 
 class EdgeClient:
     def __init__(self, server: str, indi_api: IndiTaskAPI):
-        self.server = server.rstrip('/')
+        # Ensure URL has a scheme for urlparse if missing
+        if "://" not in server:
+            server = f"http://{server}"
+        
+        parsed = urllib.parse.urlparse(server)
+        self.server = f"{parsed.netloc}{parsed.path}".rstrip('/')
+        
         self.device_id = get_serial()
         self.token: str | None = None
         self.ws_url: str | None = None
@@ -215,20 +222,56 @@ async def main(args):
 
     logging.info(f"Starting with location: {args.location}")
 
-    indi_api = IndiTaskAPI(
-        host=args.indi_host, 
-        port=args.indi_port, 
-        location=args.location, 
-        time=clock
-    )
-    
-    client = EdgeClient(
-        server=args.astra_url, 
-        indi_api=indi_api
-    )
-    
-    await indi_api.start_indi_manager()
-    await client.start()
+    indi_process = None
+
+    log_file = open("indiserver.log", "a", encoding="utf-8")
+
+    if args.indi_host in ("localhost", "127.0.0.1") and args.drivers:
+        comm = ["indiserver", "-p", str(args.indi_port), "-v"] + args.drivers
+        logging.info(f"Starting INDI subprocess: {' '.join(comm)}")
+
+        # Subprocess start
+        indi_process = await asyncio.create_subprocess_exec(
+            *comm,
+            stdout=log_file,
+            stderr=log_file
+        )
+        logging.info(f"indiserver started with PID {indi_process.pid}")
+
+        # Wait a second to let indi load
+        await asyncio.sleep(1)
+    elif args.drivers:
+        logging.warning("No local INDI host. INDI subprocess will not start.")
+
+
+    try:
+        indi_api = IndiTaskAPI(
+            host=args.indi_host,
+            port=args.indi_port,
+            location=args.location,
+            time=clock
+        )
+
+        client = EdgeClient(
+            server=args.astra_url,
+            indi_api=indi_api
+        )
+
+        await indi_api.start_indi_manager()
+        await client.start()
+
+    finally:
+        if indi_process:
+            logging.info("Shutting down...")
+            try:
+                indi_process.terminate()
+                await asyncio.wait_for(indi_process.wait(), timeout=3.0)
+                logging.info("indiserver closed!")
+            except asyncio.TimeoutError:
+                logging.warning("indiserver killed!")
+                indi_process.kill()
+            finally:
+                log_file.close()
 
 def valid_location(coords):
     try:
@@ -273,7 +316,13 @@ if __name__ == "__main__":
     parser.add_argument("--time", 
                         default=os.getenv("START_TIME", None),
                         help="Initial time ISO format")
-    
+
+    # INDI drivers to be used
+    parser.add_argument("--drivers",
+                        nargs="*",
+                        default=os.getenv("INDI_DRIVERS", "").split(),
+                        help="INDI driver list to be used (e.g. indi_celestron_gps indi_asi_ccd)")
+
     args = parser.parse_args()
     
     try:
