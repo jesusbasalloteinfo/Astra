@@ -1,5 +1,6 @@
 <!-- src/lib/components/observation/sideDockComponents/DockPopover.svelte -->
 <script lang="ts">
+    import { onMount } from 'svelte';
 
     let { 
         icon: IconComponent, 
@@ -9,25 +10,47 @@
         activeClass = 'bg-accent text-white shadow-[0_0_15px_var(--color-accent-glow)]',
         children 
     } = $props();
+
+    let isOpen = $state(false);
+    let container: HTMLElement;
+
+    function toggle() {
+        isOpen = !isOpen;
+    }
+
+    function handleClickOutside(event: MouseEvent) {
+        if (container && !container.contains(event.target as Node)) {
+            isOpen = false;
+        }
+    }
+
+    onMount(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    });
 </script>
 
-<div class="relative group">
+<div class="relative group" bind:this={container}>
     <!-- Trigger Button -->
     <button 
+        onclick={toggle}
         title={buttonTitle}
-        class="cursor-pointer p-3 rounded-full transition-all shadow-inner 
-               {active 
+        class="flex items-center justify-center cursor-pointer p-3 max-lg:landscape:p-2 rounded-full transition-all shadow-inner 
+               {active || isOpen
                 ? activeClass 
                 : 'hover:bg-panel/50 text-copy-muted hover:text-white'}"
     >
         {#if IconComponent}
-            <IconComponent size={20} />
+            <IconComponent size={20} class="max-lg:landscape:w-4 max-lg:landscape:h-4" />
         {/if}
     </button>
 
     <!-- Popover Menu -->
-    <div class="absolute left-full top-1/2 -translate-y-1/2 pl-4 opacity-0 pointer-events-none 
-                group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50">
+    <div class="absolute left-full top-1/2 -translate-y-1/2 pl-4 transition-all z-50
+                {isOpen ? 'opacity-100 pointer-events-auto visible' : 'opacity-0 pointer-events-none invisible'}
+                group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
         <div class="p-3 bg-surface backdrop-blur-xl border border-border rounded-2xl w-52 shadow-xl flex flex-col gap-2">
             {#if title}
                 <span class="text-[10px] font-bold text-accent px-2 pb-1.5 mb-1 border-b border-border/50 uppercase tracking-widest leading-tight">

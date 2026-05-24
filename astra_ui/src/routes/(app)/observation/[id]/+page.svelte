@@ -199,7 +199,7 @@
     </div>
 
     <!-- Options dock -->
-    <div class="absolute left-2 md:left-4 top-1/3 md:top-1/2 -translate-y-1/2 z-20 pointer-events-auto scale-90 md:scale-100 origin-left transition-transform">
+    <div class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-auto scale-90 md:scale-100 origin-left transition-transform">
         <SideDock 
             bind:showConstellations 
             bind:showConstellationLabels
