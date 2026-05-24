@@ -57,7 +57,9 @@
         </div>
     </button>
 
-    <div class="absolute right-3 opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
+    <div class="absolute right-3 transition-all
+                opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0
+                [@media(hover:none)]:opacity-100 [@media(hover:none)]:translate-x-0">
         <button 
             // onclick={(e) => { e.stopPropagation(); locStore.deleteLocation(id); }}
             onclick={() => showDeleteModal = true}

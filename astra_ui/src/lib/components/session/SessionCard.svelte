@@ -31,7 +31,7 @@
 <div class="group relative flex items-center">
     <a href="/observation/{id}"
        class="flex flex-1 items-center gap-3 md:gap-4 p-3 md:p-4 bg-panel border border-border rounded-xl
-              hover:bg-surface transition-all cursor-pointer pr-20 md:pr-12">
+              hover:bg-surface transition-all cursor-pointer pr-24 md:pr-12 [@media(hover:none)]:pr-24">
         
         <div class="w-1 self-stretch rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"></div>
 
@@ -53,7 +53,10 @@
     </a>
 
     <!-- Action buttons -->
-    <div class="absolute right-3 flex items-center gap-1.5 md:opacity-0 md:group-hover:opacity-100 transition-all md:translate-x-2 md:group-hover:translate-x-0">
+    <div class="absolute right-3 flex items-center gap-1.5 transition-all
+                md:opacity-0 md:group-hover:opacity-100 
+                md:translate-x-2 md:group-hover:translate-x-0
+                [@media(hover:none)]:opacity-100 [@media(hover:none)]:translate-x-0">
         <button 
             onclick={() => showEditModal = true}
             class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-accent hover:border-accent/30 transition-all shadow-sm active:scale-90">
