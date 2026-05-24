@@ -13,7 +13,9 @@
         showGround = $bindable(),
         solidGround = $bindable(),
         showAtmosphere = $bindable(),
-        atmosphereLocked = false
+        atmosphereLocked = false,
+        isOpen = $bindable(false),
+        allowHover = true
     } = $props();
 
     let showConstellationsMenu = $state(showConstellations);
@@ -29,6 +31,8 @@
     icon={Settings2} 
     title={m.obs_sidedock_settings()} 
     buttonTitle={m.obs_sidedock_settings()}
+    bind:isOpen
+    {allowHover}
 >
     <!-- Constellations -->
     <ConfigEntry 

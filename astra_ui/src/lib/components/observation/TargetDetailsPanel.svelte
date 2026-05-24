@@ -146,7 +146,7 @@
         transition:fly={isPortrait ? { y: 200, duration: 300 } : (isMobileLandscape ? { scale: 0.9, duration: 300 } : { x: 50, duration: 300 })} 
         class="flex flex-col bg-surface backdrop-blur-xl border border-border transition-all duration-300 pointer-events-auto overflow-hidden
                {isPortrait ? (viewMode === 'expanded' ? 'h-[90dvh]' : 'h-[55dvh]') : 'h-full landscape:h-full md:landscape:h-auto'}
-               {isPortrait ? 'w-full rounded-t-3xl rounded-b-none' : 'landscape:w-full md:landscape:w-100 lg:w-100 landscape:rounded-none md:landscape:rounded-3xl lg:rounded-3xl'}
+               {isPortrait ? 'w-full rounded-t-3xl rounded-b-none' : 'landscape:w-full md:landscape:w-100 lg:w-100 rounded-3xl md:landscape:rounded-3xl lg:rounded-3xl'}
                {isPortrait ? 'shadow-[0_-8px_32px_rgba(0,0,0,0.3)]' : 'shadow-[0_8px_32px_rgba(0,0,0,0.3)]'}
                {isPortrait ? '' : 'landscape:max-h-[80vh] md:landscape:max-h-[70vh] 2xl:landscape:max-h-[92vh]'}
                {!isPortrait && !isMobileLandscape ? 'border-border/60' : ''}"

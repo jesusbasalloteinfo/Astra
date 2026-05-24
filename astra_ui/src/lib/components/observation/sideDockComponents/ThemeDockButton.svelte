@@ -5,12 +5,16 @@
     import DockPopover from './DockPopover.svelte';
 	import { m } from '$lib/paraglide/messages';
 
+    let { isOpen = $bindable(false), allowHover = true } = $props();
+
 </script>
 
 <DockPopover 
     icon={Palette} 
     title={m.obs_sidedock_theme()}
     buttonTitle={m.obs_sidedock_theme()}
+    bind:isOpen
+    {allowHover}
 >
     <div class="grid grid-cols-2 gap-2">
         {#each THEMES as t}
