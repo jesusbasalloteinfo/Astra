@@ -214,7 +214,11 @@
     </div>
 
     <!-- Target info -->
-    <div class="absolute top-4 right-4 md:top-6 md:right-6 z-10 pointer-events-none scale-90 md:scale-100 origin-top-right transition-transform max-w-[60vw] md:max-w-none">
+    <div class="fixed inset-x-0 bottom-0 z-40 w-full 
+                landscape:inset-0 landscape:h-[100dvh] landscape:bottom-auto landscape:z-50 
+                md:landscape:absolute md:landscape:inset-auto md:landscape:top-6 md:landscape:right-6 md:landscape:bottom-auto md:landscape:z-10 md:landscape:w-auto
+                lg:absolute lg:inset-auto lg:top-6 lg:right-6 lg:bottom-auto lg:h-auto lg:z-10 lg:w-auto
+                pointer-events-none scale-90 lg:scale-100 origin-bottom landscape:origin-center lg:origin-top-right transition-all">
         {#if !chatOpen}
             <TargetDetailsPanel 
                 onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} 
