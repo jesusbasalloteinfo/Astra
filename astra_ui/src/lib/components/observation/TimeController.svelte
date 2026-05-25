@@ -107,7 +107,7 @@
 
         <button 
             onclick={() => timeEngine.isPlaying ? timeEngine.pause() : timeEngine.play()}
-            class="w-9 h-9 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl flex items-center justify-center shrink-0 transition-all {!timeEngine.isPlaying ? 'bg-panel/40 border border-border text-copy-primary hover:bg-surface' : 'bg-accent text-white shadow-[0_0_20px_var(--color-accent-glow)]'}">
+            class="w-9 h-9 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl cursor-pointer flex items-center justify-center shrink-0 transition-all {!timeEngine.isPlaying ? 'bg-panel/40 border border-border text-copy-primary hover:bg-surface' : 'bg-accent text-white shadow-[0_0_20px_var(--color-accent-glow)]'}">
             {#if !timeEngine.isPlaying} 
                 <Play size={18} fill="currentColor" class="ml-1 lg:w-5.5 lg:h-5.5" /> 
             {:else} 

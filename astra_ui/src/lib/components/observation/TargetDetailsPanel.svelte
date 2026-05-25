@@ -158,7 +158,7 @@
             onpointermove={handlePointerMove}
             onpointerup={handlePointerUp}
             onpointercancel={handlePointerUp}
-            class="shrink-0 cursor-grab active:cursor-grabbing touch-none select-none"
+            class="shrink-0 touch-none select-none"
         >
             <!-- Visual Handle -->
             <div class="w-full flex justify-center pt-3 pb-1 landscape:hidden shrink-0">

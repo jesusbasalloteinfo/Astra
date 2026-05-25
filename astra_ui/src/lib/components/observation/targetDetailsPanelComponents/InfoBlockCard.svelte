@@ -42,7 +42,7 @@
         {#if text}
             <button 
                 onclick={() => isExpanded = !isExpanded}
-                class="w-full text-left relative overflow-hidden {theme.bg} p-4 rounded-xl border {theme.border} shadow-inner group transition-all duration-300"
+                class="w-full text-left relative overflow-hidden {theme.bg} p-4 rounded-xl border {theme.border} shadow-inner group transition-all duration-300 cursor-pointer"
             >
                 <div class="absolute -right-4 -bottom-4 {theme.largeIcon} group-hover:scale-110 transition-transform duration-700">
                     <IconComponent size={64} strokeWidth={1} />
