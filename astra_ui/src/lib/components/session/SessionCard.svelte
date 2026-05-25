@@ -3,17 +3,20 @@
     import { obsStore } from '$lib/stores/observations.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
 	import { m } from '$lib/paraglide/messages';
-    import { formatDate } from '$lib/utils/date';
+	import { formatDate } from '$lib/utils/date';
+	import { locStore } from '$lib/stores/location.svelte';
+	import { authStore } from '$lib/stores/auth.svelte';
 
-    let { id, name, creation, telescope = 'Generic', description= null } = $props();
+	let { id, name, creation, telescope = 'Generic', description= null } = $props();
 
-    let showDeleteModal = $state(false);
-    let showEditModal = $state(false);
-    let editName = $state(name);
-    let editDescription = $state(description || '');
+	let showDeleteModal = $state(false);
+	let showEditModal = $state(false);
+	let editName = $state(name);
+	let editDescription = $state(description || '');
 
-    const formattedDate = $derived(formatDate(creation));
-
+	const formattedDate = $derived(formatDate(creation));
+	const hasLocation = $derived(locStore.all.length > 0);
+	const isReady = $derived(!authStore.isLoading);
     async function handleDelete() {
         await obsStore.remove(id);
         showDeleteModal = false;
@@ -29,14 +32,15 @@
 </script>
 
 <div class="group relative flex items-center">
-    <a href="/observation/{id}"
+    <a href={(hasLocation && isReady) ? `/observation/${id}` : undefined}
        class="flex flex-1 items-center gap-3 md:gap-4 p-3 md:p-4 bg-panel border border-border rounded-xl
-              hover:bg-surface transition-all cursor-pointer pr-24 md:pr-12 [@media(hover:none)]:pr-24">
+              transition-all pr-24 md:pr-12 [@media(hover:none)]:pr-24
+              {(hasLocation && isReady) ? 'hover:bg-surface cursor-pointer' : 'opacity-60 cursor-not-allowed'}">
         
-        <div class="w-1 self-stretch rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"></div>
+        <div class="w-1 self-stretch rounded-full shadow-[0_0_10px_var(--color-accent-glow)] {(hasLocation && isReady) ? 'bg-accent' : 'bg-copy-muted'}"></div>
 
         <div class="flex-1 min-w-0 space-y-1.5 md:space-y-2">
-            <div class="text-sm font-bold text-copy-primary truncate">{name}</div>
+            <div class="text-sm font-bold text-copy-primary truncate {(hasLocation && isReady) ? '' : 'text-copy-muted'}">{name}</div>
             {#if description!=null}
                 <div class="text-[11px] md:text-xs text-copy-muted line-clamp-1">{description || m.dash_observ_no_description()}</div>
             {/if}
@@ -48,7 +52,9 @@
 
         <!-- Hidden when inside -->
         <div class="transition-opacity duration-200 group-hover:opacity-0 hidden md:block">
-            <ChevronRight size={16} class="text-copy-muted" />
+            {#if hasLocation && isReady}
+                <ChevronRight size={16} class="text-copy-muted" />
+            {/if}
         </div>
     </a>
 

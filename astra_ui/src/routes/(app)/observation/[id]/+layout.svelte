@@ -7,11 +7,21 @@
     import { skyEngine } from '$lib/stores/skyEngine.svelte';
     import { timeEngine } from '$lib/stores/timeEngine.svelte';
     import { selectionStore } from '$lib/stores/activeSelection.svelte';
+    import { locStore } from '$lib/stores/location.svelte';
+    import { authStore } from '$lib/stores/auth.svelte';
+    import { goto } from '$app/navigation';
 	import { m } from '$lib/paraglide/messages';
 
     let { children } = $props();
 
     $effect(() => {
+        if (authStore.isLoading) return;
+
+        if (locStore.all.length === 0) {
+            goto('/dashboard/sessions');
+            return;
+        }
+
         const id = page.params.id;
         if (id) {
             catalogStore.isRunning = true;

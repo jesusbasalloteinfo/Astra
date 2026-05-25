@@ -197,7 +197,8 @@
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
   "dash_observ_new_session": "New session",
-
+  "dash_observ_no_location_title": "Location Required",
+  "dash_observ_no_location_desc": "You need to configure at least one location to start observing.",
   "dash_observ_found": [
     {
       "declarations": ["input count", "local countPlural = count: plural"],
