@@ -68,7 +68,11 @@ class LocationStore {
                     this.isDetecting = false;
                     reject(err);
                 },
-                { timeout: 10000 }
+                { 
+                    enableHighAccuracy: true,
+                    timeout: 30000,
+                    maximumAge: 60000 
+                }
             );
         });
     }

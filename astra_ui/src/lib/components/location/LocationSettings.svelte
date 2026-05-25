@@ -141,7 +141,7 @@
                     <button 
                         onclick={handleGPS}
                         disabled={locStore.isDetecting}
-                        class="w-full flex items-center justify-center gap-2 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-secondary/30 hover:bg-secondary/60 border border-border rounded-xl transition-all">
+                        class="w-full flex items-center justify-center cursor-pointer gap-2 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-secondary/30 hover:bg-secondary/60 border border-border rounded-xl transition-all">
                         <Navigation size={14} class={locStore.isDetecting ? 'animate-spin text-accent' : ''} />
                         {locStore.isDetecting ? m.dash_location_new_gps_detect() : m.dash_location_new_gps()}
                     </button>
@@ -163,7 +163,7 @@
                     <button 
                         onclick={save}
                         disabled={!isValid || locStore.isSyncing}
-                        class="w-full py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/20 disabled:opacity-30 transition-all active:scale-[0.98]">
+                        class="w-full cursor-pointer py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/20 disabled:opacity-30 transition-all active:scale-[0.98]">
                         {locStore.isSyncing ? m.dash_location_action_saving() : m.dash_location_action_add()}
                     </button>
                 </div>
