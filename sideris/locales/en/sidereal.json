@@ -1,17 +1,179 @@
 {
     "s_J0645089-164258": {
-        "name": "Sirius"
+        "name": "Sirius",
+        "common_names": [
+            "Dog Star"
+        ],
+        "description": "Sirius is the absolute brightest star in the entire night sky, blazing with a staggering apparent magnitude of -1.46. Located just 8.6 light-years (81 trillion km / 51 trillion miles) away in the constellation Canis Major, it is a hot, main-sequence white star nearly twice as massive as our Sun and 25 times more luminous. Through binoculars or any telescope, it presents a brilliant, diamond-blue beacon that often flashes with vibrant, rainbow-like colors due to atmospheric turbulence near the horizon.",
+        "fun_fact": "Sirius is actually a stealthy double star system! Orbiting the brilliant main star is Sirius B, nicknamed 'the Pup'—the very first white dwarf star ever discovered. Though it has compressed the mass of our entire Sun into a sphere just slightly smaller than Earth, it glows so dimly at magnitude 8.5 that it was completely lost in the blinding glare of its massive companion until telescopes advanced enough to separate them.",
+        "visual_tip": "To spot Sirius, simply locate the three stars of Orion's Belt and draw an imaginary line straight down and to the left. As the winter sky's crown jewel, it is easily visible to the naked eye even from heavily light-polluted city centers, though you will need exceptional atmospheric stability and a 200 mm (8-inch) telescope with high magnification to split the blinding main star from its tiny white dwarf companion.",
+        "wikipedia_qid": "Q3409"
     },
     "s_J1950469+085205": {
-        "name": "Altair"
+        "name": "Altair",
+        "description": "Altair is a brilliant, hot white A-type star shining as the twelfth-brightest star in the night sky with an apparent magnitude of 0.76. Located a mere 16.7 light-years (158 trillion km / 98 trillion miles) away in the constellation Aquila, it is a close cosmic neighbor that anchors the southern point of the famous Summer Triangle asterism. Through binoculars or a small telescope, it resolves as a piercing, steady white point of light that anchors the celestial Eagle's neck.",
+        "fun_fact": "Altair is a cosmic speed demon that is physically flattening itself! It spins on its axis at a blistering 860,000 km/h (530,000 mph), completing a full rotation in just 9 hours compared to our Sun's sluggish 25 days. This extreme centrifugal force stretches the star's equator outward so violently that its equatorial diameter is over 20 percent wider than its poles, turning the star into a flattened, oval-shaped pumpkin.",
+        "visual_tip": "To locate Altair, look high overhead during summer and autumn nights to find the Summer Triangle; Altair is the brightest star marking the lower, southern apex of the trio. It is flanked closely on either side by two fainter stars, Alshain and Tarazed, forming a distinctive three-star line that makes the constellation of Aquila immediately recognizable to the naked eye from anywhere.",
+        "wikipedia_qid": "Q12975"
     },
     "s_J0555103+072425": {
-        "name": "Betelgeuse"
+        "name": "Betelgeuse",
+        "description": "Betelgeuse is a monstrous red supergiant star marking the eastern shoulder of Orion, shining as one of the most luminous stars visible to the naked eye with a variable apparent magnitude around 0.5. Located roughly 550 to 650 light-years (5.2 to 6.1 quadrillion km / 3.2 to 3.8 quadrillion miles) away, it is so staggeringly vast that if placed at the center of our solar system, its physical boundary would swallow Mercury, Venus, Earth, Mars, and stretch all the way out to the orbit of Jupiter. Through binoculars or a telescope, it boasts a deeply rich, warm cinnamon-orange hue that contrasts beautifully against the icy blue stars of winter.",
+        "fun_fact": "Betelgeuse is a ticking cosmic time bomb! It has burned through its core fuel so quickly that it is already in the final, volatile stages of its life and is guaranteed to explode as a spectacular supernova. When it finally detonates, the explosion will be so intense that it will shine as bright as a full Moon in our night sky, remaining completely visible in broad daylight for several months before slowly fading away forever.",
+        "visual_tip": "To spot Betelgeuse, simply look up at the famous constellation of Orion during winter nights to find the bright, distinct orange-red star marking his upper left shoulder. Because it is a semi-regular variable star, its brightness constantly fluctuates over cycles of several hundred days; try comparing it with nearby Rigel or Aldebaran to see if it is currently dimming or brightening.",
+        "wikipedia_qid": "Q12124"
     },
     "s_J0231490+891550": {
         "name": "Polaris",
-        "common_names":[
-            "North Star"
-        ]
+        "common_names": [
+            "North Star",
+            "Pole Star"
+        ],
+        "description": "Polaris is the legendary North Star, shining with a steady apparent magnitude of 2.0 as the brightest star in the constellation Ursa Minor. Located approximately 433 light-years (4.1 quadrillion km / 2.5 quadrillion miles) away, it holds a unique position in celestial mechanics because it sits almost perfectly aligned with Earth's northern rotational axis. While the rest of the entire night sky appears to wheel around it in vast circles over the hours, Polaris remains virtually motionless, acting as an unwavering cosmic compass for northern observers.",
+        "fun_fact": "Polaris is not a single star at all, but a complex triple star system hidden in plain sight! The bright point we see with the naked eye is a massive yellow supergiant star flanked closely by a tight companion, Polaris Ab, which orbits so close that it was only captured directly by the Hubble Space Telescope. Meanwhile, a third star, Polaris B, orbits much further out and has been quietly humming along in its wide path since ancient times.",
+        "visual_tip": "To easily locate Polaris, find the famous bowl of the Big Dipper and follow the two outer 'pointer' stars (Merak and Dubhe) upward in a straight line for about five times the distance between them. It marks the very tip of the Little Dipper's handle, and its altitude above your local northern horizon will always match your exact geographical latitude on Earth.",
+        "wikipedia_qid": "Q12980"
+    },
+    "d_J0534317+220102":{
+        "name": "Crab Nebula",
+        "common_names": [
+            "Crab",
+            "Tau A",
+            "Taurus A"
+        ],
+        "description": "The Crab Nebula (M1) is a spectacular supernova remnant spanning 11 light-years (104 trillion km / 65 trillion miles) across, representing the shattered remains of a massive star. Located about 6,500 light-years away in the constellation of Taurus, it shines at an apparent magnitude of 8.4 and appears through a small telescope as a faint, oval-shaped cloud. At its heart lies the Crab Pulsar—a super-dense neutron star compressed to a diameter of just 20 km (12 miles) but packing the mass of two suns—spinning 30 times per second to power the nebula's eerie, radiation-driven glow.",
+        "fun_fact": "We can track this nebula growing in real time! Recent space telescope data confirms its outer gas filaments are still blasting outward into deep space at a blistering 5.5 million km/h (3.4 million mph). This massive cloud expands so quickly that changes in its structure can be noticed in photographs taken just a few decades apart.",
+        "visual_tip": "To spot this historic cosmic cloud, look roughly 1 degree northwest of the star Zeta Tauri, which marks the southern horn of the bull. While 10x50 binoculars can reveal it as a dim, ghostly smudge under pristine dark skies, using a 150 mm (6-inch) or larger telescope with a UHC or OIII nebula filter will significantly sharpen its irregular boundaries and ragged edges.",
+        "wikipedia_qid": "Q10934"
+    },
+    "d_J1818451-134731":{
+        "name": "Eagle Nebula",
+        "common_names": [
+            "Star Queen",
+            "Pillars of Creation"
+        ],
+        "description": "The Eagle Nebula (M16) is a colossal emission nebula and active stellar nursery spanning roughly 70 by 55 light-years (660 trillion km / 410 trillion miles) across. Located 7,000 light-years away in the constellation Serpens, it shines with an apparent magnitude of 6.0 and appears through binoculars as a faint, glowing patch surrounding a compact cluster of newborn stars. At its core lies an intense star-forming environment illuminated by the ultraviolet radiation of the young open cluster NGC 6611, which sculpts and ionizes the surrounding clouds of cosmic hydrogen gas.",
+        "fun_fact": "This nebula houses the famous 'Pillars of Creation,' towering columns of cold gas and dust that stretch over 4 to 5 light-years (38 to 47 trillion km / 24 to 29 trillion miles) high. Recent high-resolution infrared analysis from space telescopes reveals that these monumental structures are actively being hollowed out and evaporated from within by the very proto-stars forming inside them, meaning the pillars are caught in a relentless, cosmic tug-of-war between creation and destruction.",
+        "visual_tip": "To spot M16, look in the southern sky near the borders of the constellations Serpens, Sagittarius, and Scutum. While binoculars and small 100 mm (4-inch) telescopes easily reveal the bright embedded star cluster, resolving the dark silhouettes of the central pillars requires a larger aperture telescope of 200 mm (8-inch) or more, paired with pristine dark skies and a UHC or OIII nebula filter to maximize gas cloud contrast.",
+        "wikipedia_qid": "Q11349"
+    },
+    "d_J1959363+224316":{
+        "name": "Dumbbell Nebula",
+        "common_names": [
+            "Diabolo Nebula"
+        ],
+        "description": "The Dumbbell Nebula (M27) is a massive planetary nebula spanning roughly 2.9 light-years (27.4 trillion km / 17.1 trillion miles) across, formed as an aging star shed its outer layers into deep space. Located 1,360 light-years away in the faint northern constellation Vulpecula, it shines with a relatively bright combined apparent magnitude of 7.5. Through standard binoculars under dark skies, it appears as a conspicuous, glowing misty patch, while a small 100 mm (4-inch) telescope transforms this cloud into an unmistakable, dual-lobed shape resembling a weights dumbbell or an apple core, illuminated by one of the largest known white dwarf stellar remnants.",
+        "fun_fact": "This object is a monumental first in scientific history! Discovered by Charles Messier in 1764, M27 was the very first planetary nebula ever observed in human history. Its misleading historical category name, 'planetary,' was coined later by astronomers who thought its green-blue glowing disc in primitive telescopes resembled gas giant planets like Uranus, even though it is actually a massive star's explosive gravstone.",
+        "visual_tip": "To spot M27, find the distinct arrow shape of the constellation Sagitta; the nebula sits roughly 3 degrees due north of the tip star, Gamma Sagittae. Because it possesses an unusually high surface brightness for a deep-sky gas cloud, it remains highly visible even under mild city light pollution, though threading an OIII nebula filter into your eyepiece will dramatically isolate its glowing oxygen gas structure and sharpen its iconic hourglass silhouette.",
+        "wikipedia_qid": "Q13628"
+    },
+    "d_J0042443+411607":{
+        "name": "Andromeda Galaxy",
+        "common_names": [
+            "And Nebula",
+            "Andromeda",
+            "Andromeda Nebula"
+        ],
+        "description": "The Andromeda Galaxy (M31) is a colossal spiral galaxy spanning roughly 220,000 light-years (2.1 sextillion km / 1.3 sextillion miles) across, making it the largest member of our Local Group. Located 2.5 million light-years away in the constellation Andromeda, it glows with a bright apparent magnitude of 3.4, making it easily visible to the naked eye under dark skies as a milky, elongated smudge. Through small telescopes or binoculars, observers can easily resolve its brilliant, condensed galactic core and trace the soft, sweeping glow of its inner disc structure, which is flanked by two prominent satellite dwarf galaxies, M32 and M110.",
+        "fun_fact": "Andromeda and the Milky Way are locked in a high-speed gravitational dance! Recent astrophysical data confirms that Andromeda is hurtling toward us at approximately 400,000 km/h (250,000 mph). In about 4.5 billion years, our two galaxies will violently collide and merge into a single, massive elliptical galaxy, completely reshaping the night sky and rearranging our solar system's galactic neighborhood.",
+        "visual_tip": "To spot M31, look for the 'Great Square of Pegasus' and follow the stars of Andromeda upward to Mirach, then hop slightly northwest to find the galaxy. Because M31 spans an immense area in the sky—nearly six times the width of a full Moon—it actually looks best through wide-field 10x50 binoculars or low-magnification small telescopes, as high magnification will narrow your field of view so much that you will only see its bright core and miss the outer spiral disc entirely.",
+        "wikipedia_qid": "Q2469"
+    },
+    "d_J0133508+303936":{
+        "name": "Triangulum Galaxy",
+        "common_names": [
+            "Triangulum Pinwheel"
+        ],
+         "description": "The Triangulum Galaxy (M33) is a majestic spiral galaxy spanning roughly 60,000 light-years (570 trillion km / 350 trillion miles) across, making it the third-largest member of our Local Group behind Andromeda and the Milky Way. Located 2.7 million light-years away in the small constellation Triangulum, it glows with a total integrated apparent magnitude of 5.7, putting it right on the edge of naked-eye visibility under exceptional dark skies. Through standard binoculars, it surfaces as a wide, ghostly oval smudge, while a small telescope reveals a bright, distinct core flanked by loose, expansive spiral arms that host some of the largest star-forming regions in the known universe.",
+        "fun_fact": "This galaxy contains a cosmic monster called NGC 604, a stellar nursery so insanely huge that it completely dwarfs our own Orion Nebula. Spanning an mind-boggling 1,500 light-years across, this single emission nebula inside M33 is over 60 times larger than M42 and is powered by a central cluster of more than 200 massive, newborn stars, making it one of the most violent and active starburst hubs in our entire galactic neighborhood.",
+        "visual_tip": "To easily find M33, look roughly halfway between the bright star Mirach in Andromeda and Hamal in Aries. Because its massive physical size is spread across an area of sky nearly four times larger than a full Moon, its surface brightness is extremely low and easily washed out by city lights; you must observe from a pristine, moonless dark-sky site using low-magnification wide-field binoculars or a small telescope to keep its faint, delicate spiral disks from disappearing into the background.",
+        "wikipedia_qid": "Q13724"
+    },
+    "d_J0535168-052315":{
+        "name": "Great Orion Nebula",
+        "common_names": [
+            "Ori Nebula",
+            "Orion Nebula"
+        ],
+        "description": "The Orion Nebula (M42) is a massive, blisteringly bright stellar nursery spanning 24 light-years (227 trillion km / 141 trillion miles) across, where hundreds of new stars are currently bursting into life. Located 1,350 light-years away in the constellation Orion, it shines at a magnificent apparent magnitude of 4.0, making it clearly visible to the naked eye as a fuzzy star in Orion's Sword. Through binoculars or a small telescope, it transforms into a breathtaking, sweeping bat-winged canopy of glowing gas and dust centered around the Trapezium—a tight, brilliant cluster of four newborn supermassive stars whose intense ultraviolet light illuminates the entire complex.",
+        "fun_fact": "This cosmic cradle is actually a major chemistry lab! High-resolution infrared sweeps from modern space telescopes have detected massive quantities of complex organic molecules—including carbon compounds, water vapor, and precursor ingredients for life—swirling inside the planetary disks around these infant stars. This means that as we look at M42, we are watching the chemical seeds of future planetary systems being actively brewed in real time.",
+        "visual_tip": "To easily locate M42, look directly below Orion's famous three-star belt to find the vertical line of stars making up his sword—the nebula is the middle 'star' of the blade. Because it is so bright, you can easily enjoy its ghostly, fan-shaped glow even from a suburban backyard, but using a 100 mm (4-inch) or larger telescope under dark skies with an OIII or UHC filter will dramatically reveal the intricate dark dust lanes cutting through its glowing core.",
+        "wikipedia_qid": "Q13903"
+    },
+    "d_J0346379+241041":{
+        "name": "Pleiades",
+        "common_names": [
+            "Seven Sisters"
+        ],
+        "description": "The Pleiades (M45), also known as the Seven Sisters, is a spectacular open star cluster dominating a core physical radius of 8 light-years (75 trillion km / 47 trillion miles), with its gravitational tidal footprint stretching out to 43 light-years. Located roughly 444 light-years away in the constellation Taurus, it is the closest Messier object to Earth and burns with a brilliant combined apparent magnitude of 1.6. To the unaided eye under dark skies, it resembles a tiny, glittering dipper of six to seven hot, blue-white B-type stars, which explode into a dense field of over 1,000 stellar members when viewed through standard binoculars or low-magnification telescopes.",
+        "fun_fact": "For decades, astronomers were locked in a fierce cosmic mystery known as the 'Pleiades Distance Controversy' because the Hipparcos satellite incorrectly measured the cluster as much closer than it actually was. High-precision mapping from the recent ESA Gaia mission finally settled the historic debate, utilizing pinpoint geometric parallax to solidly fix the distance at 444 light-years, which proved the satellite's calibrations were flawed and fundamentally saved our standard models of how young stars evolve.",
+        "visual_tip": "To easily find M45, look above the constellation Orion or follow a straight line through the three stars of Orion's Belt upward past the bright orange star Aldebaran. Because this immense star cluster covers more than 2 degrees of the night sky—which is roughly four times the diameter of a full Moon—it will quickly spill out of your view at high power; it is best observed through wide-field 10x50 binoculars or low-magnification small telescopes, where you can also search for the faint, ghostly blue glow of the Merope Reflection Nebula enveloping the stars.",
+        "wikipedia_qid": "Q13423"
+    },
+    "d_J1329526+471142":{
+        "name": "Whirlpool Galaxy",
+        "common_names": [
+            "Question Mark Galaxy",
+            "Whirlpool"
+        ],
+        "description": "The Whirlpool Galaxy (M51) is a classic, grand-design spiral galaxy spanning roughly 76,000 light-years (720 trillion km / 450 trillion miles) across, famously locked in a cosmic tug-of-war with a smaller companion galaxy, NGC 5195. Located 23 million light-years away in the constellation Canes Venatici, it glows at an apparent magnitude of 8.4 and looks like a soft, dual-headed smudge through small binoculars under pristine conditions. A small 100 mm (4-inch) telescope clearly separates the two galactic cores, while mid-sized instruments reveal the faint, ethereal bridge of tidal stars and gas connecting them.",
+        "fun_fact": "This object is a historic milestone in astronomy! In 1845, William Parsons (the 3rd Earl of Rosse) used his monstrous 1.83m (72-inch) telescope to sketch M51, making it the very first celestial object ever recognized to possess a spiral structure. Long before anyone knew 'galaxies' existed outside our own, his famous drawings of M51's whirlpool-like arms provided the foundational visual proof that directly inspired our modern understanding of the sprawling, spinning universe.",
+        "visual_tip": "To spot M51, locate Alkaid—the star at the very tip of the Big Dipper's handle—and look roughly 3.5 degrees to the southwest. While it can be glimpsed as a ghostly cloud in 10x50 binoculars on an ink-black, moonless night, you will need a 200 mm (8-inch) or larger telescope paired with high magnification to clearly resolve the grand-design spiral arms curling away from its bright core.",
+        "wikipedia_qid": "Q13957"
+    },
+    "d_J1853350+330144":{
+        "name": "Ring Nebula",
+        "description": "The Ring Nebula (M57) is a quintessential planetary nebula representing the shell of ionized gas cast off by a dying, sun-like star, stretching roughly 1.3 light-years (12.3 trillion km / 7.6 trillion miles) in diameter. Located 2,300 light-years away in the northern constellation Lyra, it glows at an apparent magnitude of 8.8 and appears through binoculars or a very small telescope as a small, ghostly green-gray disc that is easily mistaken for a distant planet. A moderate 150 mm (6-inch) telescope under dark skies beautifully transforms this smudge into a distinct, hollow cosmic smoke ring floating against the backdrop of deep space, illuminated from within by a fiercely hot white dwarf star.",
+        "fun_fact": "The Ring Nebula is actually a massive cosmic illusion! High-resolution three-dimensional mapping combining visible light and infrared data shows that M57 is not a simple hollow bubble or circle at all, but rather a elongated, barrel-shaped cylinder of gas seen almost directly down its open end. As we look at the nebula from Earth, we are peering straight down the pipe of a stellar barrel, catching the violent geometric expansion of a star's final death throes from a front-row perspective.",
+        "visual_tip": "To easily find M57, locate the bright star Vega and trace the small, distinct parallelogram of stars that forms the body of Lyra; the nebula sits almost perfectly halfway between the two bottom stars, Sheliak and Sulafat. While a 100 mm (4-inch) telescope will readily reveal the dark-centered ring shape, you will need a large 250 mm (10-inch) or bigger instrument pushed to exceptionally high magnification on a steady, moonless night to catch a glimpse of the incredibly faint magnitude 15.7 white dwarf star resting at its absolute center."
+
+    },
+    "d_J1315492+420145": {
+        "name": "Sunflower Galaxy",
+        "description": "The Sunflower Galaxy (M63) is a striking flocculent spiral galaxy spanning roughly 98,000 light-years (930 trillion km / 580 trillion miles) across, characterized by a tightly wound, patch-like arrangement of star-forming arms. Located 27 million light-years away in the constellation Canes Venatici, it glows with an apparent magnitude of 8.6 and appears through small telescopes as a bright, compact oval haze with a highly condensed core. Medium-sized instruments of 150 mm (6 inches) or more beautifully reveal the grainy, multi-armed texture surrounding its nucleus, which visually mimics the dense arrangement of seeds in a sunflower.",
+        "fun_fact": "This galaxy is an outstanding example of a 'flocculent' spiral, meaning its spiral arms are patchy and discontinuous rather than long and sweeping. Recent deep-field imaging and space telescope studies have mapped an immense, looping system of faint stellar tidal streams wrapping around M63, which are the ghostly structural remnants of a smaller satellite galaxy that the Sunflower Galaxy completely tore apart and cannibalized roughly 5 billion years ago.",
+        "visual_tip": "To easily locate M63, trace a path roughly one-third of the way from Cor Caroli (Alpha Canum Venaticorum) to Alkaid at the tip of the Big Dipper's handle. Because of its high surface brightness, it stands up better to light pollution than the nearby Whirlpool Galaxy, but you will need a 200 mm (8-inch) or larger telescope paired with low-magnification, wide-field eyepieces to discern where its bright core ends and its delicate, mottled outer fringes begin.",
+        "wikipedia_qid": "Q13981"
+    },
+    "d_J1256436+214057": {
+        "name": "Black Eye Galaxy",
+        "common_names": [
+            "Sleeping Beauty",
+            "Black Eye Galaxy",
+            "Evil Eye Galaxy"
+        ],
+        "description": "The Black Eye Galaxy (M64) is an extraordinary spiral galaxy spanning roughly 54,000 light-years (510 trillion km / 320 trillion miles) across, instantly recognizable by the massive, sweeping silhouette of dark interstellar dust obscuring its brilliant core. Located 17 million light-years away in the constellation Coma Berenices, it glows with an apparent magnitude of 8.5 and can be easily glimpsed through large binoculars as a soft, bright oval under dark skies. A small 100 mm (4-inch) telescope beautifully isolates its high-contrast nucleus, revealing the prominent, dark-lidded band of cosmic dust that gives the galaxy its iconic, bruised appearance.",
+        "fun_fact": "This galaxy possesses one of the most bizarre internal dynamics in the universe—it rotates in two opposite directions at once! While the stars and inner molecular gas disk spin clockwise out to a radius of 3,000 light-years, the massive cloud of hydrogen gas in its outer disk spins completely counterclockwise. Breakthrough deep-field imaging confirmed that this violent atmospheric clash was caused by M64 entirely swallowing a hydrogen-rich satellite dwarf galaxy over a billion years ago, turning their boundary zone into a highly compressed, turbulent starburst factory.",
+        "visual_tip": "To locate M64, sweep your telescope roughly 5 degrees northwest of the star Diadem (Alpha Comae Berenices). Because its core structure has an unusually high surface brightness, it is a remarkably resilient target that stands up well against moderate city light pollution. However, to clearly resolve the delicate space between the glowing central core and the deep, ink-black dust lane wrapped around it, you will need a 150 mm (6-inch) or larger telescope paired with steady, high-magnification viewing on a moonless night.",
+        "wikipedia_qid": "Q13983"
+    },
+    "d_J0955331+690355": {
+        "name": "Bode's Galaxy",
+        "description": "Bode's Galaxy (M81) is a magnificent grand-design spiral galaxy spanning roughly 90,000 light-years (850 trillion km / 530 trillion miles) across, boasting nearly perfect, symmetric star-forming arms. Located 12 million light-years away in the northern constellation Ursa Major, it shines with a brilliant combined apparent magnitude of 6.9, making it one of the brightest galaxies in the night sky. Through standard binoculars, it is easily visible as a bright, distinct oval haze with a highly condensed core, while small telescopes under dark skies begin to map out the glowing envelope of its majestic outer disk.",
+        "fun_fact": "Bode's Galaxy is currently locked in a violent gravitational dance with its close neighbor, the Cigar Galaxy (M82). Roughly 300 million years ago, the two galaxies executed a close flyby that triggered massive tidal shockwaves through both systems. This cosmic encounter stripped gas away to form an immense hydrogen bridge connecting them, while simultaneously funneling vast amounts of raw material into M81's core, feeding its central supermassive black hole—which weighs a staggering 70 million times the mass of our Sun.",
+        "visual_tip": "To easily find M81, locate the two pointer stars of the Big Dipper's bowl (Merak and Dubhe) and draw an imaginary line through them, continuing it out into deep space for roughly an equal distance to the northwest. Because it has an exceptionally high surface brightness, it is a fantastic target for city-dwellers and can be viewed together with the Cigar Galaxy in a single low-magnification eyepiece field, though a 200 mm (8-inch) telescope under ink-black skies is needed to trace the intricate spiral patterns curling away from its core.",
+        "wikipedia_qid": "Q81102410"
+    },
+    "d_J1239594-113722": {
+        "name": "Sombrero Galaxy",
+        "common_names": [
+            "Sombrero"
+        ],
+        "description": "The Sombrero Galaxy (M104) is a breathtaking, unbarred spiral galaxy spanning roughly 50,000 light-years (470 trillion km / 290 trillion miles) across, instantly recognizable by its massive central bulge and a thick, dark rim of obscuring dust. Located 28 million light-years away in the constellation Virgo, it shines with a brilliant apparent magnitude of 8.0, making it an easy target for small instruments. Through standard binoculars under dark skies, it appears as a sharp, elongated needle of light, while a small 100 mm (4-inch) telescope clearly separates its brilliant core from the sweeping hat-like brim of its outer edge.",
+        "fun_fact": "This galaxy is an absolute cosmic heavyweight wrapped in a mystery! Modern space telescope surveys have revealed that the Sombrero Galaxy does not just have a normal cluster system, but hosts an astonishing swarm of nearly 2,000 globular clusters orbiting its nucleus—nearly ten times more than our entire Milky Way galaxy. Furthermore, precise orbital velocity tracking shows its central supermassive black hole is an absolute monster, packing the mass of one billion suns, making it one of the most massive black holes ever found in a nearby galaxy.",
+        "visual_tip": "To spot M104, look roughly 11 degrees due west of Spica, the brightest star in Virgo, or use the distinct four-star quadrilateral of Corvus the Crow to hop just across the border to the northeast. Because the galaxy is tilted nearly face-edge to our line of sight (just 6 degrees off), its surface brightness is extremely concentrated and stands up well to suburban light pollution, though a 200 mm (8-inch) or larger telescope paired with high magnification is required to visually slice its bright core with the ink-black lane of cosmic dust.",
+        "wikipedia_qid": "Q91461627"
+    },
+    "d_J0040220+414107": {
+        "description": "Messier 110 (M110) is a smooth, structured dwarf elliptical galaxy spanning roughly 17,000 light-years (160 trillion km / 100 trillion miles) across, acting as the largest satellite companion to the massive Andromeda Galaxy. Located 2.7 million light-years away in the constellation Andromeda, it glows at an apparent magnitude of 8.1. Through small binoculars or low-magnification telescopes, it surfaces as a distinct, elongated ghostly oval drifting quietly just northwest of Andromeda's brilliant central core, showing a gradually brightening nucleus with no visible spiral arms.",
+        "fun_fact": "Despite being an ancient elliptical galaxy—a class normally considered 'dead' and devoid of star formation—M110 is keeping a hidden secret. Recent high-resolution interstellar gas mapping from space telescopes has detected a collection of young, hot blue stars nestled right at its center, alongside a surprising pair of dark cosmic dust clouds. This proves that this tiny companion galaxy has somehow retained enough raw materials to continuously birth brand-new stars within its core over the last few hundred million years.",
+        "visual_tip": "To spot M110, you must first center your telescope on the bright core of the Andromeda Galaxy (M31). Sweep your eyepiece roughly 35 arcminutes northwest of M31's nucleus to find this smooth oval cloud. Because it has a lower surface brightness than Andromeda's other prominent companion, M32, you will need a moonless night and a small 100 mm (4-inch) or larger telescope to clearly separate its soft outer boundaries from the glowing background light of the Andromeda system.",
+        "wikipedia_qid": "Q4662"
     }
+
+
+
+
+
+
 }

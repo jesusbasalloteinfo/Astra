@@ -11,6 +11,11 @@ class EphemerisMovementData(BaseModel):
     next_set: Optional[datetime] = None
     is_circumpolar: Optional[bool]= False
     never_rises: Optional[bool]= False
+    description: Optional[str] = None
+    fun_fact: Optional[str] = None
+    visual_tip: Optional[str] = None
+    wikipedia_qid: Optional[str] = None
+
 
 class StarDataResponse(EphemerisMovementData, Star):
     type: Literal["sidereal"] = "sidereal"
@@ -26,11 +31,7 @@ class SiderealObjectMetadata(BaseModel):
     type: Literal["sidereal"] = "sidereal"
     category: str # "star", "galaxy", "nebula", etc.
     common_names: List[str] = Field(default_factory=list)
-    description: Optional[str] = None
-    fun_fact: Optional[str] = None
-    visual_tip: Optional[str] = None
-    wikipedia_qid: Optional[str] = None
-
+    
     catalog_names: List[str] = Field(default_factory=list)
     constellation: str
     ra_j2000: float

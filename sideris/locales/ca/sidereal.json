@@ -1,20 +1,173 @@
 {
     "s_J0645089-164258": {
-        "name": "Sírius"
+        "name": "Sírius",
+        "common_names": [
+            "Estrella Gos"
+        ],
+        "description": "Sírius és l'estrella absolutament més brillant de tot el cel nocturn, brillant amb una sorprenent magnitud aparent de -1,46. Situada a només 8,6 anys llum (81 bilions de km) de distància a la constel·lació del Canis Major, és una estrella blanca calenta de la seqüència principal gairebé el doble de massiva que el nostre Sol i 25 vegades més lluminosa. A través de prismàtics o de qualsevol telescopi, es presenta com un brillant far blau diamant que sovint centelleja amb colors vibrants semblants als de l'arc de Sant Martí a causa de la turbulència atmosfèrica prop de l'horitzó.",
+        "fun_fact": "Sírius és en realitat un silenciós sistema estel·lar doble! Orbitant l'estrella principal brillant hi ha Sírius B, anomenada «el Cadell», la primera estrella nana blanca mai descoberta. Tot i que ha comprimit la massa de tot el nostre Sol en una esfera només lleugerament més petita que la Terra, brilla tan feblement a magnitud 8,5 que es perdia completament en la resplendor encegadora de la seva companya massiva fins que els telescopis van avançar prou per separar-les.",
+        "visual_tip": "Per localitzar Sírius, simplement troba les tres estrelles del Cinturó d'Orió i traça una línia imaginària recta cap avall i a l'esquerra. Com a joia de la corona del cel d'hivern, és fàcilment visible a ull nu fins i tot des de centres urbans amb molta contaminació lluminosa, tot i que necessitaràs una estabilitat atmosfèrica excepcional i un telescopi de 200 mm amb molts augments per separar l'encegadora estrella principal de la seva diminuta companya nana blanca.",
+        "wikipedia_qid": "Q3409"
     },
     "s_J1950469+085205": {
         "name": "Altair",
-        "common_names": [
-            "Altair"
-        ]
+        "description": "Altair és una estrella blanca brillant i calenta de tipus A que brilla com la dotzena estrella més brillant del cel nocturn amb una magnitud aparent de 0,76. Situada a només 16,7 anys llum (158 bilions de km) de distància a la constel·lació de l'Àguila, és un veí còmic proper que ancora el punt sud del famós asterisme del Triangle d'Estiu. A través de prismàtics o d'un telescopi petit, es resol com un punt de llum blanca penetrant i constant que ancora el coll de l'Àguila celestial.",
+        "fun_fact": "Altair és un dimoni de la velocitat còsmica que s'està aixafant físicament a si mateix! Gira sobre el seu eix a uns vertiginosos 860.000 km/h, completant una rotació completa en només 9 hores, comparat amb els lents 25 dies del nostre Sol. Aquesta força centrífuga extrema estira l'equador de l'estrella cap a fora de forma tan violenta que el seu diàmetre equatorial és més d'un 20 % més ample que els seus pols, convertint l'estrella en una «carbassa» aplanada de forma ovalada.",
+        "visual_tip": "Per localitzar Altair, mira ben amunt durant les nits d'estiu i tardor per trobar el Triangle d'Estiu; Altair és l'estrella més brillant que marca el vèrtex inferior, el més meridional del trio. Està flanquejada de prop a banda i banda per dues estrelles més febles, Alshain i Tarazed, formant una línia distintiva de tres estrelles que fa que la constel·lació de l'Àguila sigui immediatament reconeixible a ull nu des de qualsevol lloc.",
+        "wikipedia_qid": "Q12975"
     },
     "s_J0555103+072425": {
-        "name": "Betelgeuse"
+        "name": "Betelgeuse",
+        "description": "Betelgeuse és una monstruosa estrella supergegant vermella que marca l'espatlla oriental d'Orió, brillant com una de les estrelles més lluminoses visibles a ull nu amb una magnitud aparent variable al voltant de 0,5. Situada a uns 550 o 650 anys llum (entre 5,2 i 6,1 quatrilions de km) de distància, és tan sorprenentment vasta que, si es col·loqués al centre del nostre sistema solar, la seva frontera física s'empassaria Mercuri, Venus, la Terra, Mart i arribaria fins a l'òrbita de Júpiter. A través de prismàtics o d'un telescopi, presumeix d'un to taronja canella càlid i profundament ric que contrasta bellament amb les estrelles blau gel de l'hivern.",
+        "fun_fact": "Betelgeuse és una bomba de rellotgeria còsmica! Ha consumit el combustible del seu nucli tan ràpidament que ja es troba en les etapes finals i volàtils de la seva vida i està garantit que explotarà com una espectacular supernova. Quan finalment detoni, l'explosió serà tan intensa que brillarà tant com una Lluna plena al nostre cel nocturn, romanent completament visible a plena llum del dia durant diversos mesos abans de desvair-se lentament per sempre.",
+        "visual_tip": "Per albirar Betelgeuse, només cal que miris la famosa constel·lació d'Orió durant les nits d'hivern per trobar la brillant i característica estrella de color taronja vermellós que marca la seva espatlla superior esquerra. Com que és una estrella variable semirregular, la seva brillantor fluctua constantment en cicles de diversos centenars de dies; intenta comparar-la amb les properes Rígel o Aldebaran per veure si actualment s'està atenuant o brillant.",
+        "wikipedia_qid": "Q12124"
     },
     "s_J0231490+891550": {
         "name": "Polaris",
-        "common_names":[
+        "common_names": [
+            "Estrella del Nord",
             "Estrella Polar"
-        ]
+        ],
+        "description": "Polaris és la llegendària Estrella del Nord, que brilla amb una magnitud aparent constant de 2,0 com l'estrella més brillant de la constel·lació de l'Ossa Menor. Situada a uns 433 anys llum (4,1 quatrilions de km) de distància, ocupa una posició única en la mecànica celeste perquè es troba gairebé perfectament alineada amb l'eix de rotació septentrional de la Terra. Mentre que la resta de tot el cel nocturn sembla girar al seu voltant en vastos cercles al llarg de les hores, Polaris roman pràcticament immòbil, actuant com una brúixola còsmica inquebrantable per als observadors del nord.",
+        "fun_fact": "Polaris no és en absolut una estrella única, sinó un complex sistema estel·lar triple ocult a plena vista! El punt brillant que veiem a ull nu és una enorme estrella supergegant groga flanquejada de prop per una companya propera, Polaris Ab, que orbita tan a prop que només va ser captada directament pel telescopi espacial Hubble. Mentrestant, una tercera estrella, Polaris B, orbita molt més lluny i ha seguit brunzint silenciosament en la seva àmplia trajectòria des de l'antiguitat.",
+        "visual_tip": "Per localitzar fàcilment Polaris, busca el famós «bol» del Carro Gran i segueix les dues estrelles «punteres» exteriors (Merak i Dubhe) cap amunt en línia recta durant unes cinc vegades la distància entre elles. Marca l'extrem mateix del mànec del Carro Petit, i la seva altitud sobre el teu horitzó septentrional local coincidirà sempre amb la teva latitud geogràfica exacta a la Terra.",
+        "wikipedia_qid": "Q12980"
+    },
+    "d_J0534317+220102":{
+        "name": "Nebulosa del Cranc",
+        "common_names": [
+            "Cranc",
+            "Tau A",
+            "Taurus A"
+        ],
+        "description": "La Nebulosa del Cranc (M1) és un espectacular romanent de supernova que s'estén al llarg d'11 anys llum (104 bilions de km), i representa les restes destrossades d'una estrella massiva. Situada a uns 6.500 anys llum de distància, a la constel·lació de Taure, brilla with una magnitud aparent de 8,4 i apareix a través d'un telescopi petit com un tènue núvol de forma ovalada. Al seu cor es troba el Púlsar del Cranc —una estrella de neutrons superdensa comprimida fins a un diàmetre de només 20 km però amb la massa de dos sols— que gira 30 vegades per segon per alimentar la inquietant resplendor de la nebulosa impulsada per la radiació.",
+        "fun_fact": "Podem seguir el creixement d'aquesta nebulosa en temps real! Dades recents de telescopis espacials confirmen que els seus filaments gasosos exteriors segueixen llançant-se cap a l'espai profund a uns vertiginosos 5,5 milions de km/h. Aquest enorme núvol s'expandeix tan ràpidament que els canvis en la seva estructura es poden notar en fotografies preses amb només unes poques dècades de diferència.",
+        "visual_tip": "Per albirar aquest històric núvol còsmic, mira aproximadament 1 grau al nord-oest de l'estrella Zeta Tauri, que marca la banya sud del toro. Tot i que uns prismàtics de 10x50 poden revelar-la com una taca feble i fantasmal sota cels foscs prístins, l'ús d'un telescopi de 150 mm o superior amb un filtre de nebulosa UHC o OIII perfilarà significativament els seus límits irregulars i les vores dentades.",
+        "wikipedia_qid": "Q10934"
+    },
+    "d_J1818451-134731":{
+        "name": "Nebulosa de l'Àliga",
+        "common_names": [
+            "Reina de les Estrelles",
+            "Pilars de la Creació"
+        ],
+        "description": "La Nebulosa de l'Àliga (M16) és una colossal nebulosa d'emissió i viver estel·lar actiu que abasta aproximadament 70 per 55 anys llum (660 bilions de km). Situada a 7.000 anys llum de distància, a la constel·lació de la Serpent, brilla amb una magnitud aparent de 6,0 i apareix a través de prismàtics com una taca feble i brillant que envolta un cúmul compacte d'estrelles acabades de néixer. Al seu nucli es troba un intens entorn de formació estel·lar il·luminat per la radiació ultraviolada del jove cúmul obert NGC 6611, que esclupeix i ionitza els núvols circumdants de gas hidrogen còsmic.",
+        "fun_fact": "Aquesta nebulosa allotja els famosos «Pilars de la Creació», imponents columnes de gas fred i pols que arriben de 4 a 5 anys llum (entre 38 i 47 bilions de km) d'alçada. Anàlisis recents d'infrarojos d'alta resolució procedents de telescopis espacials revealen que aquestes monumentals estructures estan sent excavades i evaporades activament des del seu interior per les pròpies protoestrelles que es formen al seu interior, cosa que significa que els pilars es troben en un implacable estira-i-arronsa còsmic entre la creació i la destrucció.",
+        "visual_tip": "Per albirar la M16, busca al cel meridional, prop dels límits de les constel·lacions de la Serpent, Sagitari i l'Escut. Tot i que els prismàtics i els telescopis petits de 100 mm revealen fàcilment el brillant cúmul estel·lar incrustat, la resolució de les siluetes fosques dels pilars centrals requereix un telescopi de major obertura, de 200 mm o més, juntament amb cels foscs prístins i un filtre de nebulosa UHC o OIII per maximitzar el contrast dels núvols de gas.",
+        "wikipedia_qid": "Q11349"
+    },
+    "d_J1959363+224316":{
+        "name": "Nebulosa Dumbbell",
+        "common_names": [
+            "Nebulosa de l'Haltera",
+            "Nebulosa de les Peses"
+        ],
+        "description": "La Nebulosa Dumbbell (M27) és una enorme nebulosa planetària que abasta uns 2,9 anys llum (27,4 bilions de km), formada quan una estrella que envellia va desprendre les seves capes exteriors cap a l'espai profund. Situada a 1.360 anys llum de distància, a la tènue constel·lació septentrional de la Guineu (Vulpecula), brilla amb una magnitud aparent combinada relativament brillant de 7,5. A través de prismàtics estàndard sota cels foscs, apareix com una taca brumosa conspicua i brillant, mentre que un telescopi petit de 100 mm transforma aquest núvol en una inconfusible forma bilobulada que recorda una pesa de gimnàs o el cor d'una poma, il·luminada per un dels majors romanents estel·lars de nana blanca coneguts.",
+        "fun_fact": "Aquest objecte és una fita monumental en la història de la ciència! Descoberta per Charles Messier el 1764, la M27 va ser la primera nebulosa planetària observada en la història de la humanitat. El seu enganyós nom històric de categoria, «planetària», va ser encunyat més tard per astrònoms que pensaven que el seu disc brillant verd-blau en els primitius telescopis s'assemblava a planetes gegants gasosos com Urà, tot i que en realitat és l'explosiva tomba d'una estrella massiva.",
+        "visual_tip": "Per localitzar la M27, busca la característica forma de fletxa de la constel·lació de la Sageta; la nebulosa es troba aproximadament 3 graus al nord de l'estrella de la punta, Gamma Sagittae. Com que posseeix una brillantor superficial inusualment alta per ser un núvol de gas de cel profund, continua sent molt visible fins i tot sota una lleugera contaminació lluminosa urbana, tot i que enroscar un filtre de nebulosa OIII a l'ocular aïllarà dràsticament la seva estructura de gas oxigen brillant i afilarà la seva icònica silueta de rellotge de sorra.",
+        "wikipedia_qid": "Q13628"
+    },
+    "d_J0042443+411607":{
+        "name": "Galàxia d'Andròmeda",
+        "common_names": [
+            "Nebulosa d'Andròmeda",
+            "Andròmeda"
+        ],
+        "description": "La Galàxia d'Andròmeda (M31) és una colossal galàxia espiral que abasta aproximadament 220.000 anys llum (2,1 sextilions de km), cosa que la converteix en el membre més gran del nostre Grup Local. Situada a 2,5 milions d'anys llum, a la constel·lació d'Andròmeda, brilla amb una magnitud aparent de 3,4, la qual cosa la fa fàcilment visible a ull nu sota cels foscs com una taca lleitosa i allargada. A través de telescopis petits o prismàtics, els observadors poden resoldre fàcilment el seu brillant i condensat nucli galàctic i traçar la suau i àmplia resplendor de la seva estructura de disc interior, flanquejat per dues prominents galàxies nanes satèl·lit, M32 i M110.",
+        "fun_fact": "Andròmeda i la Via Làctia estan tancades en una dansa gravitatòria a alta velocitat! Dades astrofísiques recents confirmen que Andròmeda es precipita cap a nosaltres a uns 400.000 km/h. En uns 4.500 milions d'anys, les nostres dues galàxies col·lidiran violentament i es fusionaran en una única i massiva galàxia el·líptica, remodelant per complet el cel nocturn i reordenant el veïnat galàctic del nostre sistema solar.",
+        "visual_tip": "Per albirar la M31, busca el «Gran Quadrat de Pegàs» i segueix les estrelles d'Andròmeda cap amunt fins a Mirach, després salta lleugerament cap al nord-oest per trobar la galàxia. Com que la M31 abasta una àrea immensa al cel —gairebé sis vegades l'amplada d'una Lluna plena— es veu millor a través de prismàtics de camp ampli de 10x50 o de telescopis petits de pocs augments, ja que els augments alts estrenyeran tant el seu camp de visió que només en veureu el nucli brillant i us perdreu completament el disc espiral exterior.",
+        "wikipedia_qid": "Q2469"
+    },
+    "d_J0133508+303936":{
+        "name": "Galàxia del Triangle",
+        "common_names": [
+            "Triangle"
+        ],
+         "description": "La Galàxia del Triangle (M33) és una majestuosa galàxia espiral que abasta aproximadament 60.000 anys llum (570 bilions de km), cosa que la converteix en el tercer membre més gran del nostre Grup Local, per darrere d'Andròmeda i la Via Làctia. Situada a 2,7 milions d'anys llum, a la petita constel·lació del Triangle, brilla amb una magnitud aparent integrada total de 5,7, la qual cosa la situa just al límit de la visibilitat a ull nu sota cels excepcionalment foscs. A través de prismàtics estàndard, sorgeix com una taca ovalada, àmplia i fantasmal, mentre que un telescopi petit revela un nucli brillant i nítid flanquejat per braços espirals laxos i expansius que allotgen algunes de les majors regions de formació estelar de l'univers conegut.",
+        "fun_fact": "Aquesta galàxia conté un monstre còsmic anomenat NGC 604, un viver estelar tan increïblement enorme que empetiteix per complet la nostra pròpia Nebulosa d'Orió. Amb una extensió sorprenent de 1.500 anys llum, aquesta única nebulosa d'emissió dins de la M33 és més de 60 vegades més gran que la M42 i està alimentada per un cúmulo central de més de 200 estrelles massives acabades de néixer, cosa que la converteix en un dels centres d'esclat estelar més violents i actius de tot el nostre veïnat galàctic.",
+        "visual_tip": "Per trobar fàcilment la M33, mira aproximadament a mig camí entre la brillant estrella Mirach a Andròmeda i Hamal en Àries. Com que la seva enorme mida física s'estén per una àrea de cel gairebé quatre vegades més gran que una Lluna plena, la seva brillantor superficial és extremadament baixa i s'esvaeix fàcilment amb les llums de la ciutat; has d'observar des d'un lloc prístí de cel fosc i sense lluna utilitzant prismàtics de camp ampli de pocs augments o un telescopi petit per evitar que els seus febles i delicats discs espirals desapareguin en el fons.",
+        "wikipedia_qid": "Q13724"
+    },
+    "d_J0535168-052315":{
+        "name": "Gran Nebulosa d'Orió",
+        "common_names": [
+            "Nebulosa d'Orió"
+        ],
+        "description": "La Nebulosa d'Orió (M42) és un viver estelar massiu i d'una brillantor encegadora que s'estén al llarg de 24 anys llum (227 bilions de km), on centenars de noves estrelles estan nacent en l'actualitat. Situada a 1.350 anys llum de distància, a la constel·lació d'Orió, brilla amb una magnífica magnitud aparent de 4,0, la qual cosa la fa clarament visible a ull nu com una estrella borrosa a l'Espasa d'Orió. A través de prismàtics o d'un telescopi petit, es transforma en un impressionant i ampli doser de gas i pols brillants amb forma d'ala de ratpenat, centrat en el Trapezi —un cúmul atapeït i brillant de quatre estrelles supermassives acabades de néixer la intensa llum ultraviolada de les quals il·lumina tot el complex.",
+        "fun_fact": "Aquest bressol còsmic és en realitat un important laboratori químic! Els escombratges infrarojos d'alta resolució dels telescopis espacials moderns han detectat quantitats massives de molècules orgàniques complexes —inclosos compostos de carboni, vapor d'aigua i ingredients precursors de la vida— arremolinant-se a l'interior dels discs planetaris que envolten aquestes estrelles infantils. Això significa que en observar la M42, estem veient com es cuinen activament i en temps real les llavors químiques de futurs sistemes planetaris.",
+        "visual_tip": "Per localitzar fàcilment la M42, mira directament sota el famós cinturó de tres estrelles d'Orió per trobar la línia vertical d'estrelles que formen la seva espasa; la nebulosa és l'«estrella» central de la fulla. Com que és tan brillant, podràs gaudir fàcilment de la seva fantasmal resplendor en forma d'aballot fins i tot des del jardí d'una urbanització, però l'ús d'un telescopi de 100 mm o superior sota cels foscs amb un filtre OIII o UHC revelarà de forma espectacular les intricades bandes de pols fosca que tallen el seu nucli brillant.",
+        "wikipedia_qid": "Q13903"
+    },
+    "d_J0346379+241041":{
+        "name": "Plèiades",
+        "common_names": [
+            "Set Germanes"
+        ],
+        "description": "Les Plèiades (M45), també conegudes com les Set Germanes, és un espectacular cúmul estelar obert que domina un radi físic central de 8 anys llum (75 bilions de km), amb la seva petjada gravitatòria de marea estenent-se fins als 43 anys llum. Situat a uns 444 anys llum de distància, a la constel·lació de Taure, és l'objecte Messier més proper a la Terra i crema amb una brillant magnitud aparent combinada d'1,6. Per a l'ull nu sota cels foscs, s'assembla a un petit i centellejant «carro» de sis a set estrelles calentes de tipus B, de color blanc i blau, que esclaten en un dens field de més de 1.000 membres estelars quan es veuen a través de prismàtics estàndard o telescopis de pocs augments.",
+        "fun_fact": "Durant dècades, els astrònoms es van veure immersos en un feroç misteri còsmic conegut com la «Controvèrsia de la distància a les Plèiades», ja que el satèl·lit Hipparcos va mesurar incorrectament el cúmul com a molt més proper del que realment estava. El cartografiat d'alta precisió de la recent missió Gaia de l'ESA va tancar finalment l'històric debat, utilitzant una paral·laxi geomètrica mil·limètrica per fixar sòlidament la distància en 444 anys llum, cosa que va demostrar que les calibracions del satèl·lit eren defectuoses i va salvar fonamentalment els nostres models estàndard de com evolucionen les estrelles joves.",
+        "visual_tip": "Per trobar fàcilment la M45, mira per sobre de la constel·lació d'Orió o segueix una línia recta a través de les tres estrelles del Cinturó d'Orió cap amunt, passant per la brillant estrella taronja Aldebaran. Com que aquest immens cúmul estelar cobreix més de 2 graus del cel nocturn —el que equival aproximadament a quatre vegades el diàmetre d'una Lluna plena— se sortirà ràpidament de la teva vista a molts augments; és millor observar-lo a través de prismàtics de camp ampli de 10x50 o de telescopis petits de pocs augments, on també podràs buscar la feble i fantasmal resplendor blava de la nebulosa de reflexió de Mèrope que envolta les estrelles.",
+        "wikipedia_qid": "Q13423"
+    },
+    "d_J1329526+471142":{
+        "name": "Galàxia del Remolí",
+        "common_names": [
+            "Galàxia del Signe d'Interrogació",
+            "Remolí"
+        ],
+        "description": "La Galàxia del Remolí (M51) és una clàssica galàxia espiral de gran disseny que abasta uns 76.000 anys llum (720 bilions de km), famosament tancada en un estira-i-arronsa còsmic amb una galàxia companya més petita, la NGC 5195. Situada a 23 milions d'anys llum de distància, a la constel·lació de Canes Venatici, brilla amb una magnitud aparent de 8,4 i sembla una taca suau de dos caps a través de prismàtics petits en condicions prístines. Un telescopi petit de 100 mm separa clarament els dos nuclei galàctics, mentre que els instruments de mida mitjana revealen el feble i eteri pont d'estrelles de marea i gas que els connecta.",
+        "fun_fact": "Aquest objecte és una fita històrica en l'astronomia! El 1845, William Parsons (el tercer comte de Rosse) va utilitzar el seu monstruós telescopi d'1,83 m per dibuixar la M51, convertint-la en el primer objecte celeste reconegut amb una estructura en espiral. Molt abans que ningú sabés que existien «galàxies» fora de la nostra, els seus famosos dibuixos dels braços en forma de remolí de la M51 van proporcionar la prova visual fonamental que va inspirar directament la nostra comprensió moderna de l'univers en expansió i rotació.",
+        "visual_tip": "Per localitzar la M51, situa Alkaid —l'estrella situada a l'extrem mateix del mànec del Carro Gran— i mira aproximadament 3,5 graus cap al sud-oest. Tot i que es pot albirar com un núvol fantasmal amb prismàtics de 10x50 en una nit negra com la tinta i sense lluna, necessitaràs un telescopi de 200 mm o superior, juntament amb grans augments, per resoldre clarament els braços espirals de gran disseny que es curven des del seu brillant nucli.",
+        "wikipedia_qid": "Q13957"
+    },
+    "d_J1853350+330144":{
+        "name": "Nebulosa de l'Anell",
+        "description": "La Nebulosa de l'Anell (M57) és una nebulosa planetària per excel·lència que representa la càscara de gas ionitzat expulsada per una estrella moribunda similar al sol, que s'estén aproximadament 1,3 anys llum (12,3 bilions de km) de diàmetre. Situada a 2,300 anys llum de distància, a la constel·lació septentrional de la Lira, brilla amb una magnitud aparent de 8,8 i apareix a través de prismàtics o d'un telescopi molt petit com un disc petit, de color verd grisenc fantasmal, que es confon fàcilment amb un planeta llunyà. Un telescopi moderat de 150 mm sota cels foscs transforma bellament aquesta taca en un distintiu i buit anell de fum còsmic que flota contra el teló de fons de l'espai profund, il·luminat des de l'interior per una estrella nana blanca feroçment calenta.",
+        "fun_fact": "La Nebulosa de l'Anell és en realitat una enorme il·lusió còsmica! El cartografiat tridimensional d'alta resolució que combina llum visible i dades infraroges mostra que la M57 no és en absolut una simple bombolla buida o un cercle, sinó més aviat un cilindre de gas allargat amb forma de barril vist gairebé directament pel seu extrem obert. En mirar la nebulosa des de la Terra, estàs mirant directament pel tube d'un barril estelar, captant la violenta expansió geomètrica dels últims gests de la mort d'una estrella des d'una perspectiva de primera fila.",
+        "visual_tip": "Per trobar fàcilment la M57, localitza la brillant estrella Vega i traça el petit i característic paral·lelogram d'estrelles que forma el cos de la Lira; la nebulosa es troba gairebé perfectament a mig camí entre les dues estrelles inferiors, Sheliak i Sulafat. Tot i que un telescopi de 100 mm revelarà fàcilment la forma d'anell amb centre fosc, necessitaràs un instrument gran de 250 mm o superior forçat a augments excepcionalment alts en una nit estable i sense lluna per albirar l'increïblement feble estrella nana blanca de magnitud 15,7 que descansa al seu centre absolut.",
+        "wikipedia_qid": "Q13628"
+    },
+    "d_J1315492+420145": {
+        "name": "Galàxia del Gira-sol",
+        "description": "La Galàxia del Gira-sol (M63) és una cridanera galàxia espiral floculenta que abasta aproximadament 98.000 anys llum (930 bilions de km), caracteritzada per una disposició de braços de formació estelar atapeïts i en forma de pegats. Situada a 27 milions d'anys llum de distància, a la constel·lació de Canes Venatici, brilla amb una magnitud aparent de 8,6 i apareix a través de telescopis petits com una bruma ovalada brillant i compacta amb un nucli molt condensat. Els instruments de mida mitjana, de 150 mm o més, revealen bellament la textura granulada i multibraç que envolta el seu nucli, que imita visualment la densa disposició de les llavors en un gira-sol.",
+        "fun_fact": "Aquesta galàxia és un exemple sobresortint d'espiral «floculenta», el que significa que els seus braços espirals són irregulars i discontinus en lloc de llargs i amplis. Estudis recents de telescopis espacials i d'imatges de camp profund han cartografiat un inmens sistema de bucles de febles corrents de marea estelars que envolten la M63, que són les restes estructurals fantasmals d'una galàxia satèl·lit més petita que la Galàxia del Gira-sol va trossejar per complet i va canibalitzar fa uns 5.000 milions d'anys.",
+        "visual_tip": "Per localitzar fàcilment la M63, traça una trajectòria aproximadament a un terç del camí des de Cor Caroli (Alpha Canum Venaticorum) fins a Alkaid, a l'extrem del mànec del Carro Gran. A causa de la seva elevada brillantor superficial, resisteix millor la contaminació lluminosa que la propera Galàxia del Remolí, però necessitaràs un telescopi de 200 mm o superior, combinat amb oculars de camp ampli i pocs augments, per discernir on acaba el seu nucli brillant i on comencen els seus delicats i clapejats serrells exteriors.",
+        "wikipedia_qid": "Q13981"
+    },
+    "d_J1256436+214057": {
+        "name": "Galàxia de l'Ull Negre",
+        "common_names": [
+            "Bella Dorment",
+            "Ull Negre",
+            "Ull del Diable"
+        ],
+        "description": "La Galàxia de l'Ull Negre (M64) és una extraordinària galàxia espiral que abasta aproximadament 54.000 anys llum (510 bilions de km), reconeixible a l'instant per l'enorme i àmplia silueta de pols interestelar fosca que enfosqueix el seu brillant nucli. Situada a 17 milions d'anys llum de distància, a la constel·lació de la Cabellera de Berenice, brilla amb una magnitud aparent de 8,5 i es pot albirar fàcilment a través de prismàtics grans com un òval suau i brillant sota cels foscs. Un telescopi petit de 100 mm aïlla bellament el seu nucli d'alt contrast, revelant la prominent banda de pols còsmica que dóna a la galàxia la seva icònica aparença de morat.",
+        "fun_fact": "Aquesta galàxia posseeix una de les dinàmiques internes més estranyes de l'univers: gira en dues direccions oposades alhora! Mentre que les estrelles i el disc de gas molecular interior giren en el sentit de les agulles del rellotge fins a un radi de 3.000 anys llum, l'enorme núvol de gas hidrogen del seu disc exterior gira completament en sentit contrari. Les revolucionàries imatges de camp profund van confirmar que aquest violent xoc atmosfèric va ser causat per la M64 en engolir per complet una galàxia nana satèl·lit rica en hidrogen fa més de mil milions d'anys, convertint la seva zona fronterera en una fàbrica de brots estelars altament comprimida i turbulenta.",
+        "visual_tip": "Per localitzar la M64, desplaça el teu telescopi aproximadament 5 graus al nord-oest de l'estrella Diadem (Alpha Comae Berenices). A causa que la seva estructura central té una brillantor superficial inusualment alta, és un objectiu notablement resistent que suporta bé la contaminació lluminosa urbana moderada. No obstant això, per resoldre clarament el delicat espai entre el brillant nucli central i la profunda banda de pols negre com la tinta que l'envolta, necessitaràs un telescopi de 150 mm o superior juntament amb una visió estable de grans augments en una nit sense lluna.",
+        "wikipedia_qid": "Q13983"
+    },
+    "d_J0955331+690355": {
+        "name": "Galàxia de Bode",
+        "description": "La Galàxia de Bode (M81) és una magnífica galàxia espiral de gran disseny que abasta aproximadament 90.000 anys llum (850 bilions de km), amb braços de formation estel·lar gairebé perfectament simètrics. Situada a 12 milions d'anys llum de distància, a la constel·lació septentrional de l'Ossa Major, brilla amb una magnífica magnitud aparent combinada de 6,9, la qual cosa la converteix en una de les galàxies més brillants del cel nocturn. A través de prismàtics estàndard, és fàcilment visible com una bruma ovalada brillant i nítida amb un nucli molt condensat, mentre que els telescopis petits sota cels foscs comencen a cartografiar l'embolcall brillant del seu majestuós disc exterior.",
+        "fun_fact": "La Galàxia de Bode es troba actualment tancada en una violenta dansa gravitatòria amb la seva veïna propera, la Galàxia del Cigar (M82). Fa uns 300 milions d'anys, les dues galàxies van executar un sobrevol proper que va desencadenar massives ones de xoc de marea a través de tots dos sistemes. Aquesta trobada còsmica va arrencar gas per formar un inmens pont d'hidrogen que les connecta, alhora que canalitzava vastes quantitats de matèria primera cap al nucli de la M81, alimentant el seu forat negre supermassiu central, que pesa la sorprenent xifra de 70 milions de vegades la massa del nostre Sol.",
+        "visual_tip": "Per trobar fàcilment la M81, localitza les dues estrelles indicadores del «bol» del Carro Gran (Merak i Dubhe) i traça una línia imaginària a través d'elles, continuant-la en l'espai profund una distància aproximadament igual cap al nord-oest. En posseir una brillantor superficial excepcionalment alta, és un objectiu fantàstic per als habitants de les ciutats i es pot veure juntament amb la Galàxia del Cigar en un únic camp d'ocular de pocs augments, tot i que es necessita un telescopi de 200 mm sota cels negres com la tinta per trazar els intricats patrons espirals que es curven des del seu nucli.",
+        "wikipedia_qid": "Q81102410"
+    },
+    "d_J1239594-113722": {
+        "name": "Galàxia del Sombrero",
+        "common_names": [
+            "Sombrero"
+        ],
+        "description": "La Galàxia del Sombrero (M104) és una impressionant galàxia espiral no barrada que abasta uns 50.000 anys llum (470 bilions de km), reconeixible a l'instant per la seva enorme protuberància central i una gruixuda i fosca vora de pols que l'enfosqueix. Situada a 28 milions d'anys llum de distància, a la constel·lació de la Verge, brilla amb una magnífica magnitud aparent de 8,0, la qual cosa la converteix en un objectiu fàcil per a instruments petits. A través de prismàtics estàndard sota cels foscs, apareix com una agulla de llum afilada i allargada, mentre que un telescopi petit de 100 mm separa clarament el seu nucli brillant de l'àmplia «ala de barret» de la seva vora exterior.",
+        "fun_fact": "Aquesta galàxia és un peso pesat còsmic absolut envoltat en un misteri! Els estudis dels telescopis espacials moderns han revealat que la Galàxia del Sombrero no només té un sistema de cúmuls normal, sinó que allotja un asombrós eixam de gairebé 2.000 cúmuls globulars orbitant el seu nucli, gairebé deu vegades més que tota la nostra Via Làctia. A més, el seguiment precís de la velocitat orbital mostra que el seu forat negre supermassiu central és un autèntic monstre, amb una massa de mil milions de sols, cosa que el converteix en un dels forats negres més massius mai trobats en una galàxia propera.",
+        "visual_tip": "Per albirar la M104, mira aproximadament 11 graus a l'oest d'Espiga, l'estrella més brillant de la Verge, o utilitza el característic quadrilàter de quatre estrelles del Corb per saltar just a l'altre costat de la frontera cap al nord-est. A causa que la galàxia està inclinada gairebé de cantell respecte a la nostra línia de visió (a només 6 graus), la seva brillantor superficial està extremadament concentrada i suporta bé la contaminació lluminosa suburbana, tot i que es requereix un telescopi de 200 mm o superior combinat amb grans augments per rebanar visualment el seu nucli brillant amb la banda de pols còsmica negra com la tinta.",
+        "wikipedia_qid": "Q91461627"
+    },
+    "d_J0040220+414107": {
+        "name": "Messier 110",
+        "description": "Messier 110 (M110) és una galàxia el·líptica nana, estructurada i suau, que abasta aproximadament 17.000 anys llum (160 bilions de km), i actua com la major companya satèl·lit de la massiva Galàxia d'Andròmeda. Situada a 2,7 milions d'anys llum, a la constel·lació d'Andròmeda, brilla amb una magnitud aparent de 8,1. A través de prismàtics petits o telescopis de pocs augments, sorgeix com un òval fantasmal nítid i allargat que deriva silenciosament just al nord-oest del brillant nucli central d'Andròmeda, mostrant un nucli que s'il·lumina gradualment sense braços espirals visibles.",
+        "fun_fact": "Tot i ser una galàxia el·líptica antiga —una classe que normalment es considera «morta» i mancada de formació estel·lar— la M110 guarda un secret ocult. El recent cartografiat de gas interestel·lar d'alta resolució realitzat per telescopis espacials ha detectat una col·lecció d'estrelles blaves joves i calentes niuades just al seu centre, juntament amb un sorprenent parell de núvols de pols còsmica fosca. Això demostra que aquesta diminuta galàxia companya ha conservat d'alguna manera matèries primeres suficients per donar a llum contínuament estrelles noves al seu nucli al llarg dels últims centenars de milions d'anys.",
+        "visual_tip": "Per albirar la M110, primer has de centrar el teu telescopi en el brillant nucli de la Galàxia d'Andròmeda (M31). Desplaça l'ocular aproximadament 35 minuts d'arc al nord-oest del nucli de la M31 per trobar aquest suau núvol ovalat. A causa que té una brillantor superficial inferior a la de l'altra companya destacada d'Andròmeda, la M32, necessitaràs una nit sense lluna i un telescopi petit de 100 mm o superior per separar clarament els seus suaus límits exteriors de la llum de fons brillant del sistema d'Andròmeda.",
+        "wikipedia_qid": "Q4662"
     }
 }

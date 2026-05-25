@@ -1,20 +1,173 @@
 {
     "s_J0645089-164258": {
-        "name": "Sirio"
+        "name": "Sirio",
+        "common_names": [
+            "Estrella Perro",
+            "Estrella del Perro"
+        ],
+        "description": "Sirio es la estrella absolutamente más brillante de todo el cielo nocturno, brillando con una asombrosa magnitud aparente de -1,46. Situada a solo 8,6 años luz (81 billones de km) de distancia en la constelación de Canis Major, es una estrella blanca caliente de la secuencia principal casi el doble de masiva que nuestro Sol y 25 veces más luminosa. A través de prismáticos o de cualquier telescopio, se presenta como un brillante faro azul diamante que a menudo centellea con vibrantes colores parecidos a los del arco iris debido a la turbulencia atmosférica cerca del horizonte.",
+        "fun_fact": "¡Sirio es en realidad un sigiloso sistema estelar doble! Orbitando a la brillante estrella principal se encuentra Sirio B, apodada «el Cachorro», la primera estrella enana blanca jamás descubierta. Aunque ha comprimido la masa de todo nuestro Sol en una esfera solo ligeramente más pequeña que la Tierra, brilla tan tenuemente a magnitud 8,5 que se perdía por completo en el resplandor cegador de su compañera masiva hasta que los telescopios avanzaron lo suficiente como para separarlas.",
+        "visual_tip": "Para localizar a Sirio, simplemente encuentra las tres estrellas del Cinturón de Orión y traza una línea imaginaria recta hacia abajo y hacia la izquierda. Como joya de la corona del cielo invernal, es fácilmente visible a simple vista incluso desde centros urbanos con gran contaminación lumínica, aunque necesitarás una estabilidad atmosférica excepcional y un telescopio de 200 mm con gran aumento para separar la cegadora estrella principal de su diminuta compañera enana blanca.",
+        "wikipedia_qid": "Q3409"
     },
     "s_J1950469+085205": {
         "name": "Altair",
-        "common_names": [
-            "Altair"
-        ]
+        "description": "Altair es una brillante y caliente estrella blanca de tipo A que brilla como la duodécima estrella más brillante del cielo nocturno con una magnitud aparente de 0,76. Situada a solo 16,7 años luz (158 billones de km) de distancia en la constelación de Aquila, es un vecino cósmico cercano que ancla el punto sur del famoso asterismo del Triángulo de Verano. A través de prismáticos o de un pequeño telescopio, se resuelve como un punto de luz blanca penetrante y constante que ancla el cuello del Águila celestial.",
+        "fun_fact": "¡Altair es un demonio de la velocidad cósmica que se está aplastando físicamente a sí mismo! Gira sobre su eje a unos vertiginosos 860.000 km/h, completando una rotación completa en solo 9 horas, frente a los lentos 25 días de nuestro Sol. Esta fuerza centrífuga extrema estira el ecuador de la estrella hacia fuera de forma tan violenta que su diámetro ecuatorial es más de un 20 % más ancho que sus polos, convirtiendo a la estrella en una «calabaza» aplanada de forma ovalada.",
+        "visual_tip": "Para localizar Altair, mira a lo alto durante las noches de verano y otoño para encontrar el Triángulo de Verano; Altair es la estrella más brillante que marca el vértice inferior, el más meridional del trío. Está flanqueada de cerca a ambos lados por dos estrellas más tenues, Alshain y Tarazed, formando una distintiva línea de tres estrellas que hace que la constelación de Aquila sea inmediatamente reconocible a simple vista desde cualquier lugar.",
+        "wikipedia_qid": "Q12975"
     },
     "s_J0555103+072425": {
-        "name": "Betelgeuse"
+        "name": "Betelgeuse",
+        "description": "Betelgeuse es una monstruosa estrella supergigante roja que marca el hombro oriental de Orión, brillando como una de las estrellas más luminosas visibles a simple vista con una magnitud aparente variable en torno a 0,5. Situada a unos 550 o 650 años luz (entre 5,2 y 6,1 cuatrillones de km) de distancia, es tan asombrosamente vasta que, si se colocara en el centro de nuestro sistema solar, su frontera física se tragaría a Mercurio, Venus, la Tierra, Marte y llegaría hasta la órbita de Júpiter. A través de prismáticos o de un telescopio, presume de un tono naranja canela cálido y profundamente rico que contrasta bellamente con las estrellas azul hielo del invierno.",
+        "fun_fact": "¡Betelgeuse es una bomba de relojería cósmica! Ha consumido el combustible de su núcleo tan rápidamente que ya se encuentra en las etapas finales y volátiles de su vida y está garantizado que explotará como una espectacular supernova. Cuando finalmente detone, la explosión será tan intensa que brillará tanto como una Luna llena en nuestro cielo nocturno, permaneciendo completamente visible a plena luz del día durante varios meses antes de desvanecerse lentamente para siempre.",
+        "visual_tip": "Para avistar Betelgeuse, basta con mirar a la famosa constelación de Orión durante las noches de invierno para encontrar la brillante y característica estrella de color naranja rojizo que marca su hombro superior izquierdo. Debido a que es una estrella variable semirregular, su brillo fluctúa constantemente en ciclos de varios cientos de días; intenta compararla con las cercanas Rígel o Aldebarán para ver si actualmente se está atenuando o abrillantando.",
+        "wikipedia_qid": "Q12124"
     },
     "s_J0231490+891550": {
         "name": "Polaris",
-        "common_names":[
+        "common_names": [
+            "Estrella del Norte",
             "Estrella Polar"
-        ]
+        ],
+        "description": "Polaris es la legendaria Estrella del Norte, que brilla con una magnitud aparente constante de 2,0 como la estrella más brillante de la constelación de la Osa Menor. Situada a unos 433 años luz (4,1 cuatrillones de km) de distancia, ocupa una posición única en la mecánica celeste porque se encuentra casi perfectamente alineada con el eje de rotación septentrional de la Tierra. Mientras que el resto de todo el cielo nocturno parece girar a su alrededor en vastos círculos a lo largo de las horas, Polaris permanece virtualmente inmóvil, actuando como una inquebrantable brújula cósmica para los observadores del norte.",
+        "fun_fact": "¡Polaris no es en absoluto una estrella única, sino un complejo sistema estelar triple oculto a plena vista! El punto brillante que vemos a simple vista es una enorme estrella supergigante amarilla flanqueada de cerca por una compañera cercana, Polaris Ab, que orbita tan cerca que solo fue captada directamente por el telescopio espacial Hubble. Mientras tanto, una tercera estrella, Polaris B, orbita mucho más lejos y ha seguido zumbando silenciosamente en su amplia trayectoria desde la antigüedad.",
+        "visual_tip": "Para localizar fácilmente a Polaris, busca el famoso «cuenco» de la Osa Mayor y sigue las dos estrellas «punteras» exteriores (Merak y Dubhe) hacia arriba en línea recta durante unas cinco veces la distancia entre ellas. Marca el extremo mismo del mango de la Osa Menor, y su altitud sobre tu horizonte septentrional local coincidirá siempre con tu latitud geográfica exacta en la Tierra.",
+        "wikipedia_qid": "Q12980"
+    },
+    "d_J0534317+220102":{
+        "name": "Nebulosa del Cangrejo",
+        "common_names": [
+            "Cangrejo",
+            "Tau A",
+            "Taurus A"
+        ],
+        "description": "La Nebulosa del Cangrejo (M1) es un espectacular remanente de supernova que se extiende a lo largo de 11 años luz (104 billones de km), y representa los restos destrozados de una estrella masiva. Situada a unos 6.500 años luz de distancia, en la constelación de Tauro, brilla con una magnitud aparente de 8,4 y aparece a través de un pequeño telescopio como una tenue nube de forma ovalada. En su corazón se encuentra el Púlsar del Cangrejo —una estrella de neutrones superdensa comprimida hasta un diámetro de solo 20 km pero con la masa de dos soles— que gira 30 veces por segundo para alimentar el inquietante resplandor de la nebulosa impulsado por la radiación.",
+        "fun_fact": "¡Podemos seguir el crecimiento de esta nebulosa en tiempo real! Datos recientes de telescopios espaciales confirman que sus filamentos gaseosos exteriores siguen lanzándose hacia el espacio profundo a unos vertiginosos 5,5 millones de km/h. Esta enorme nube se expande tan rápidamente que los cambios en su estructura pueden notarse en fotografías tomadas con solo unas pocas décadas de diferencia.",
+        "visual_tip": "Para avistar esta histórica nube cósmica, mire aproximadamente 1 grado al noroeste de la estrella Zeta Tauri, que marca el cuerno sur del toro. Aunque unos prismáticos de 10x50 pueden revelarla como una mancha tenue y fantasmal bajo cielos oscuros prístinos, el uso de un telescopio de 150 mm o mayor con un filtro de nebulosa UHC o OIII perfilará significativamente sus límites irregulares y bordes dentados.",
+        "wikipedia_qid": "Q10934"
+    },
+    "d_J1818451-134731":{
+        "name": "Nebulosa del Águila",
+        "common_names": [
+            "Reina de las Estrellas",
+            "Pilares de la Creación"
+        ],
+        "description": "La Nebulosa del Águila (M16) es una colosal nebulosa de emisión y vivero estelar activo que abarca aproximadamente 70 por 55 años luz (660 billones de km). Situada a 7.000 años luz de distancia, en la constelación de Serpens, brilla con una magnitud aparente de 6,0 y aparece a través de prismáticos como una mancha tenue y brillante que rodea un cúmulo compacto de estrellas recién nacidas. En su núcleo se encuentra un intenso entorno de formación estelar iluminado por la radiación ultravioleta del joven cúmulo abierto NGC 6611, que esculpe e ioniza las nubes circundantes de gas hidrógeno cósmico.",
+        "fun_fact": "Esta nebulosa alberga los famosos «Pilares de la Creación», imponentes columnas de gas frío y polvo que alcanzan de 4 a 5 años luz (entre 38 y 47 billones de km) de altura. Análisis recientes de infrarrojos de alta resolución procedentes de telescopios espaciales revelan que estas monumentales estructuras están siendo excavadas y evaporadas activamente desde su interior por las propias protoestrellas que se forman en su interior, lo que significa que los pilares se encuentran en un implacable tira y afloja cósmico entre la creación y la destrucción.",
+        "visual_tip": "Para avistar la M16, busque en el cielo meridional, cerca de los límites de las constelaciones de Serpens, Sagitario y Scutum. Aunque los prismáticos y los pequeños telescopios de 100 mm revelan fácilmente el brillante cúmulo estelar incrustado, la resolución de las siluetas oscuras de los pilares centrales requiere un telescopio de mayor apertura, de 200 mm o más, junto con cielos oscuros prístinos y un filtro de nebulosa UHC o OIII para maximizar el contraste de las nubes de gas.",
+        "wikipedia_qid": "Q11349"
+    },
+    "d_J1959363+224316":{
+        "name": "Nebulosa Dumbbell",
+        "common_names": [
+            "Nebulosa de la Haltera",
+            "Nebulosa de las Pesas"
+        ],
+        "description": "La Nebulosa Dumbbell (M27) es una enorme nebulosa planetaria que abarca unos 2,9 años luz (27,4 billones de km), formada cuando una estrella que envejecía desprendió sus capas exteriores hacia el espacio profundo. Situada a 1.360 años luz de distancia, en la tenue constelación septentrional de Vulpecula, brilla con una magnitud aparente combinada relativamente brillante de 7,5. A través de prismáticos estándar bajo cielos oscuros, aparece como una mancha brumosa conspicua y brillante, mientras que un pequeño telescopio de 100 mm transforma esta nube en una inconfundible forma bilobulada que recuerda a una pesa de gimnasio o al corazón de una manzana, iluminada por uno de los mayores remanentes estelares de enana blanca conocidos.",
+        "fun_fact": "¡Este objeto es un hito monumental en la historia de la ciencia! Descubierta por Charles Messier in 1764, la M27 fue la primera nebulosa planetaria observada en la historia de la humanidad. Su engañoso nombre histórico de categoría, «planetaria», fue acuñado más tarde por astrónomos que pensaban que su disco brillante verde-azulado en los primitivos telescopios se parecía a planetas gigantes gaseosos como Urano, a pesar de que en realidad es la explosiva tumba de una estrella masiva.",
+        "visual_tip": "Para localizar la M27, busque la característica forma de flecha de la constelación de Sagitta; la nebulosa se encuentra aproximadamente 3 grados al norte de la estrella de la punta, Gamma Sagittae. Debido a que posee un brillo superficial inusualmente alto para ser una nube de gas de cielo profundo, sigue siendo muy visible incluso bajo una ligera contaminación lumínica urbana, aunque enroscar un filtro de nebulosa OIII en su ocular aislará drásticamente su estructura de gas oxígeno brillante y afilará su icónica silueta de reloj de arena.",
+        "wikipedia_qid": "Q13628"
+    },
+    "d_J0042443+411607":{
+        "name": "Galaxia de Andrómeda",
+        "common_names": [
+            "Nebulosa de Andrómeda",
+            "Andrómeda"
+        ],
+        "description": "La Galaxia de Andrómeda (M31) es una colosal galaxia espiral que abarca aproximadamente 220.000 años luz (2,1 sextillones de km), lo que la convierte en el miembro más grande de nuestro Grupo Local. Situada a 2,5 millones de años luz, en la constelación de Andrómeda, brilla con una magnitud aparente de 3,4, lo que la hace fácilmente visible a simple vista bajo cielos oscuros como una mancha lechosa y alargada. A través de pequeños telescopios o prismáticos, los observadores pueden resolver fácilmente su brillante y condensado núcleo galáctico y trazar el suave y amplio resplandor de su estructura de disco interior, flanqueado por dos prominentes galaxias enanas satélites, M32 y M110.",
+        "fun_fact": "¡Andrómeda y la Vía Láctea están enzarzadas en una danza gravitatoria a alta velocidad! Datos astrofísicos recientes confirman que Andrómeda se precipita hacia nosotros a unos 400.000 km/h. En unos 4.500 millones de años, nuestras dos galaxias colisionarán violentamente y se fusionarán en una única y masiva galaxia elíptica, remodelando por completo el cielo nocturno y reordenando la vecindad galáctica de nuestro sistema solar.",
+        "visual_tip": "Para avistar la M31, busque el «Gran Cuadrante de Pegaso» y siga las estrellas de Andrómeda hacia arriba hasta Mirach, luego salte ligeramente hacia el noroeste para encontrar la galaxia. Debido a que la M31 abarca un área inmensa en el cielo —casi seis veces la anchura de una Luna llena— se ve mejor a través de prismáticos de campo amplio de 10x50 o de pequeños telescopios de pocos aumentos, ya que los aumentos altos estrecharán tanto su campo de visión que solo verá su núcleo brillante y se perderá por completo el disco espiral exterior.",
+        "wikipedia_qid": "Q2469"
+    },
+    "d_J0133508+303936":{
+        "name": "Galaxia del Triángulo",
+        "common_names": [
+            "Triangulo"
+        ],
+         "description": "La Galaxia del Triángulo (M33) es una majestuosa galaxia espiral que abarca aproximadamente 60.000 años luz (570 billones de km), lo que la convierte en el tercer miembro más grande de nuestro Grupo Local, por detrás de Andrómeda y la Vía Láctea. Situada a 2,7 millones de años luz, en la pequeña constelación del Triángulo, brilla con una magnitud aparente integrada total de 5,7, lo que la sitúa justo en el límite de la visibilidad a simple vista bajo cielos excepcionalmente oscuros. A través de prismáticos estándar, surge como una mancha ovalada, amplia y fantasmal, mientras que un pequeño telescopio revela un núcleo brillante y nítido flanqueado por brazos espirales sueltos y expansivos que albergan algunas de las mayores regiones de formación estelar del universo conocido.",
+        "fun_fact": "Esta galaxia contiene un monstruo cósmico llamado NGC 604, un vivero estelar tan increíblemente enorme que empequeñece por completo a nuestra propia Nebulosa de Orión. Con una extensión asombrosa de 1.500 años luz, esta única nebulosa de emisión dentro de la M33 es más de 60 veces mayor que la M42 y está alimentada por un cúmulo central de más de 200 estrellas masivas recién nacidas, lo que la convierte en uno de los centros de estallido estelar más violentos y activos de toda nuestra vecindad galáctica.",
+        "visual_tip": "Para encontrar fácilmente la M33, mire aproximadamente a mitad de camino entre la brillante estrella Mirach en Andrómeda y Hamal en Aries. Debido a que su enorme tamaño físico se extiende por un área de cielo casi cuatro veces mayor que una Luna llena, su brillo superficial es extremadamente bajo y se desvanece fácilmente con las luces de la ciudad; debe observar desde un lugar prístino de cielo oscuro y sin luna utilizando prismáticos de campo amplio de pocos aumentos o un telescopio pequeño para evitar que sus tenues y delicados discos espirales desaparezcan en el fondo.",
+        "wikipedia_qid": "Q13724"
+    },
+    "d_J0535168-052315":{
+        "name": "Gran Nebulosa de Orión",
+        "common_names": [
+            "Nebulosa de Orión"
+        ],
+        "description": "La Nebulosa de Orión (M42) es un vivero estelar masivo y de un brillo cegador que se extiende a lo largo de 24 años luz (227 billones de km), donde cientos de nuevas estrellas están naciendo en la actualidad. Situada a 1.350 años luz de distancia, en la constelación de Orión, brilla con una magnífica magnitud aparente de 4,0, lo que la hace claramente visible a simple vista como una estrella borrosa en la Espada de Orión. A través de prismáticos o de un pequeño telescopio, se transforma en un impresionante y amplio dosel de gas y polvo brillantes con forma de ala de murciélago, centrado en el Trapecio, un cúmulo apretado y brillante de cuatro estrellas supermasivas recién nacidas cuya intensa luz ultravioleta ilumina todo el complejo.",
+        "fun_fact": "¡Esta cuna cósmica es en realidad un importante laboratorio químico! Los barridos infrarrojos de alta resolución de los telescopios espaciales modernos han detectado cantidades masivas de moléculas orgánicas complejas —incluidos compuestos de carbono, vapor de agua e ingredientes precursores de la vida— arremolinándose en el interior de los discos planetarios que rodean a estas estrellas infantiles. Esto significa que al observar la M42, estamos viendo cómo se cocinan activamente y en tiempo real las semillas químicas de futuros sistemas planetarios.",
+        "visual_tip": "Para localizar fácilmente la M42, mire directamente debajo del famoso cinturón de tres estrellas de Orión para encontrar la línea vertical de estrellas que forman su espada; la nebulosa es la «estrella» central de la hoja. Al ser tan brillante, podrá disfrutar fácilmente de su fantasmal resplandor en forma de abanico incluso desde el jardín de una urbanización, pero el uso de un telescopio de 100 mm o mayor bajo cielos oscuros con un filtro OIII o UHC revelará de forma espectacular las intrincadas bandas de polvo oscuro que cortan su núcleo brillante.",
+        "wikipedia_qid": "Q13903"
+    },
+    "d_J0346379+241041":{
+        "name": "Pléyades",
+        "common_names": [
+            "Siete Hermanas"
+        ],
+        "description": "Las Pléyades (M45), también conocidas como las Siete Hermanas, es un espectacular cúmulo estelar abierto que domina un radio físico central de 8 años luz (75 billones de km), con su huella gravitatoria de marea extendiéndose hasta los 43 años luz. Situado a unos 444 años luz de distancia, en la constelación de Tauro, es el objeto Messier más cercano a la Tierra y arde con una brillante magnitud aparente combinada de 1,6. Para el ojo desnudo bajo cielos oscuros, se asemeja a un pequeño y centelleante «carro» de seis a siete estrellas calientes de tipo B, de color blanco azulado, que estallan en un denso campo de más de 1.000 miembros estelares cuando se ven a través de prismáticos estándar o telescopios de pocos aumentos.",
+        "fun_fact": "Durante décadas, los astrónomos se vieron inmersos en un feroz misterio cósmico conocido como la «Controversia de la distancia a las Pléyades», ya que el satélite Hipparcos midió incorrectamente el cúmulo como mucho más cercano de lo que realmente estaba. El cartografiado de alta precisión de la reciente misión Gaia de la ESA zanjó finalmente el histórico debate, utilizando una paralaje geométrica milimétrica para fijar sólidamente la distancia en 444 años luz, lo que demostró que las calibraciones del satélite eran defectuosas y salvó fundamentalmente nuestros modelos estándar de cómo evolucionan las estrellas jóvenes.",
+        "visual_tip": "Para encontrar fácilmente la M45, mire por encima de la constelación de Orión o siga una línea recta a través de las tres estrellas del Cinturón de Orión hacia arriba, pasando por la brillante estrella naranja Aldebarán. Debido a que este inmenso cúmulo estelar cubre más de 2 grados del cielo nocturno —lo que equivale aproximadamente a cuatro veces el diámetro de una Luna llena— se saldrá rápidamente de su vista a gran potencia; es mejor observarlo a través de prismáticos de campo amplio de 10x50 o de pequeños telescopios de pocos aumentos, donde también podrá buscar el tenue y fantasmal resplandor azul de la nebulosa de reflexión de Mérope que envuelve a las estrellas.",
+        "wikipedia_qid": "Q13423"
+    },
+    "d_J1329526+471142":{
+        "name": "Galaxia del Remolino",
+        "common_names": [
+            "Remolino"
+        ],
+        "description": "La Galaxia del Remolino (M51) es una clásica galaxia espiral de gran diseño que abarca unos 76.000 años luz (720 billones de km), famosamente encerrada en un tira y afloja cósmico con una galaxia compañera más pequeña, la NGC 5195. Situada a 23 millones de años luz de distancia, en la constelación de Canes Venatici, brilla con una magnitud aparente de 8,4 y parece una mancha suave de dos cabezas a través de prismáticos pequeños en condiciones prístinas. Un pequeño telescopio de 100 mm separa claramente los dos núcleos galácticos, mientras que los instrumentos de tamaño medio revelan el tenue y etéreo puente de estrellas de marea y gas que los conecta.",
+        "fun_fact": "¡Este objeto es un hito histórico en la astronomía! En 1845, William Parsons (el tercer conde de Rosse) utilizó su monstruoso telescopio de 1,83 m para dibujar la M51, convirtiéndola en el primer objeto celeste reconocido con una estructura en espiral. Mucho antes de que nadie supiera que existían «galaxias» fuera de la nuestra, sus famosos dibujos de los brazos en forma de remolino de la M51 proporcionaron la prueba visual fundamental que inspiró directamente nuestra comprensión moderna del universo en expansión y rotación.",
+        "visual_tip": "Para localizar la M51, sitúa Alkaid —la estrella situada en el extremo mismo del mango de la Osa Mayor— y mira aproximadamente 3,5 grados hacia el suroeste. Aunque puede vislumbrarse como una nube fantasmal con prismáticos de 10x50 en una noche negra como la tinta y sin luna, necesitará un telescopio de 200 mm o mayor, junto con grandes aumentos, para resolver claramente los brazos espirales de gran diseño que se curvan desde su brillante núcleo.",
+        "wikipedia_qid": "Q13957"
+    },
+    "d_J1853350+330144":{
+        "name": "Nebulosa del Anillo",
+        "description": "La Nebulosa del Anillo (M57) es una nebulosa planetaria por excelencia que representa la cáscara de gas ionizado expulsada por una estrella moribunda similar al sol, que se extiende aproximadamente 1,3 años luz (12,3 billones de km) de diámetro. Situada a 2.300 años luz de distancia, en la constelación septentrional de Lyra, brilla con una magnitud aparente de 8,8 y aparece a través de prismáticos o de un telescopio muy pequeño como un disco pequeño, de color verde grisáceo fantasmal, que se confunde fácilmente con un planeta lejano. Un telescopio moderado de 150 mm bajo cielos oscuros transforma bellamente esta mancha en un distintivo y hueco anillo de humo cósmico que flota contra el telón de fondo del espacio profundo, iluminado desde el interior por una estrella enana blanca ferozmente caliente.",
+        "fun_fact": "¡La Nebulosa del Anillo es en realidad una enorme ilusión cósmica! El cartografiado tridimensional de alta resolución que combina luz visible y datos infrarrojos muestra que la M57 no es en absoluto una simple burbuja hueca o un círculo, sino más bien un cilindro de gas alargado con forma de barril visto casi directamente por su extremo abierto. Al mirar la nebulosa desde la Tierra, estamos mirando directamente por el tubo de un barril estelar, captando la violenta expansión geométrica de los últimos estertores de la muerte de una estrella desde una perspectiva de primera fila.",
+        "visual_tip": "Para encontrar fácilmente la M57, localice la brillante estrella Vega y trace el pequeño y característico paralelogramo de estrellas que forma el cuerpo de Lyra; la nebulosa se encuentra casi perfectamente a mitad de camino entre las dos estrellas inferiores, Sheliak y Sulafat. Aunque un telescopio de 100 mm revelará fácilmente la forma de anillo con centro oscuro, necesitará un instrumento grande de 250 mm o mayor forzado a aumentos excepcionalmente altos en una noche estable y sin luna para vislumbrar la increíblemente tenue estrella enana blanca de magnitud 15,7 que descansa en su centro absoluto.",
+        "wikipedia_qid": "Q13628"
+    },
+    "d_J1315492+420145": {
+        "name": "Galaxia del Girasol",
+        "description": "La Galaxia del Girasol (M63) es una llamativa galaxia espiral floculenta que abarca aproximadamente 98.000 años luz (930 billones de km), caracterizada por una disposición de brazos de formación estelar apretados y en forma de parches. Situada a 27 millones de años luz de distancia, en la constelación de Canes Venatici, brilla con una magnitud aparente de 8,6 y aparece a través de pequeños telescopios como una bruma ovalada brillante y compacta con un núcleo muy condensado. Los instrumentos de tamaño medio, de 150 mm o más, revelan bellamente la textura granulada y multibrazo que rodea su núcleo, que imita visualmente la densa disposición de las semillas en un girasol.",
+        "fun_fact": "Esta galaxia es un ejemplo sobresaliente de espiral «floculenta», lo que significa que sus brazos espirales son irregulares y discontinuos en lugar de largos y amplios. Estudios recientes de telescopios espaciales y de imágenes de campo profundo han cartografiado un inmenso sistema de bucles de tenues corrientes de marea estelares que envuelven a la M63, que son los restos estructurales fantasmales de una galaxia satélite más pequeña que la Galaxia del Girasol despedazó por completo y canibalizó hace unos 5.000 millones de años.",
+        "visual_tip": "Para localizar fácilmente la M63, trace una trayectoria aproximadamente a un tercio del camino desde Cor Caroli (Alpha Canum Venaticorum) hasta Alkaid, en el extremo del mango de la Osa Mayor. Debido a su elevado brillo superficial, resiste mejor la contaminación lumínica que la cercana Galaxia del Remolino, pero necesitará un telescopio de 200 mm o mayor, combinado con oculares de campo amplio y pocos aumentos, para discernir dónde termina su núcleo brillante y dónde comienzan sus delicados y moteados flecos exteriores.",
+        "wikipedia_qid": "Q13981"
+    },
+    "d_J1256436+214057": {
+        "name": "Galaxia del Ojo Negro",
+        "common_names": [
+            "Bella Durmiente",
+            "Ojo Negro",
+            "Ojo del Diablo"
+        ],
+        "description": "La Galaxia del Ojo Negro (M64) es una extraordinaria galaxia espiral que abarca aproximadamente 54.000 años luz (510 billones de km), reconocible al instante por la enorme y amplia silueta de polvo interestelar oscuro que oscurece su brillante núcleo. Situada a 17 millones de años luz de distancia, en la constelación de Coma Berenices, brilla con una magnitud aparente de 8,5 y puede vislumbrarse fácilmente a través de prismáticos grandes como un óvalo suave y brillante bajo cielos oscuros. Un pequeño telescopio de 100 mm aísla bellamente su núcleo de alto contraste, revelando la prominente banda de polvo cósmico que da a la galaxia su icónica apariencia de moretón.",
+        "fun_fact": "Esta galaxia posee una de las dinámicas internas más extrañas del universo: ¡gira en dos direcciones opuestas a la vez! Mientras que las estrellas y el disco de gas molecular interior giran en el sentido de las agujas del reloj hasta un radio de 3.000 años luz, la enorme nube de gas hidrógeno de su disco exterior gira completamente en sentido contrario. Las revolucionarias imágenes de campo profundo confirmaron que este violento choque atmosférico fue causado por la M64 al engullir por completo una galaxia enana satélite rica en hidrógeno hace más de mil millones de años, convirtiendo su zona fronterera en una fábrica de brotes estelares altamente comprimida y turbulenta.",
+        "visual_tip": "Para localizar la M64, desplace su telescopio aproximadamente 5 grados al noroeste de la estrella Diadem (Alpha Comae Berenices). Debido a que su estructura central tiene un brillo superficial inusualmente alto, es un objetivo notablemente resistente que soporta bien la contaminación lumínica urbana moderada. Sin embargo, para resolver claramente el delicado espacio entre el brillante núcleo central y la profunda banda de polvo negro como la tinta que lo envuelve, necesitará un telescopio de 150 mm o mayor junto con una visión estable de grandes aumentos en una noche sin luna.",
+        "wikipedia_qid": "Q13983"
+    },
+    "d_J0955331+690355": {
+        "name": "Galaxia de Bode",
+        "description": "La Galaxia de Bode (M81) es una magnífica galaxia espiral de gran diseño que abarca aproximadamente 90.000 años luz (850 billones de km), con brazos de formación estelar casi perfectamente simétricos. Situada a 12 millones de años luz de distancia, en la constelación septentrional de la Osa Mayor, brilla con una magnífica magnitud aparente combinada de 6,9, lo que la convierte en una de las galaxias más brillantes del cielo nocturno. A través de prismáticos estándar, es fácilmente visible como una bruma ovalada brillante y nítida con un núcleo muy condensado, mientras que los pequeños telescopios bajo cielos oscuros comienzan a cartografiar la envoltura brillante de su majestuoso disco exterior.",
+        "fun_fact": "La Galaxia de Bode se encuentra actualmente encerrada en una violenta danza gravitatoria con su vecina cercana, la Galaxia del Cigarro (M82). Hace unos 300 millones de años, las dos galaxias ejecutaron un sobrevuelo cercano que desencadenó masivas ondas de choque de marea a través de ambos sistemas. Este encuentro cósmico arrancó gas para formar un inmenso puente de hidrógeno que las conecta, al tiempo que canalizaba vastas cantidades de materia prima hacia el núcleo de la M81, alimentando su agujero negro supermasivo central, que pesa la asombrosa cifra de 70 millones de veces la masa de nuestro Sol.",
+        "visual_tip": "Para encontrar fácilmente la M81, localice las dos estrellas indicadoras del «cuenco» de la Osa Mayor (Merak y Dubhe) y trace una línea imaginaria a través de ellas, continuándola en el espacio profundo una distancia aproximadamente igual hacia el noroeste. Al poseer un brillo superficial excepcionalmente alto, es un objetivo fantástico para los habitantes de las ciudades y puede verse junto a la Galaxia del Cigarro en un único campo de ocular de pocos aumentos, aunque se necesita un telescopio de 200 mm bajo cielos negros como la tinta para trazar los intrincados patrones espirales que se curvan desde su núcleo.",
+        "wikipedia_qid": "Q81102410"
+    },
+    "d_J1239594-113722": {
+        "name": "Galaxia del Sombrero",
+        "common_names": [
+            "Sombrero"
+        ],
+        "description": "La Galaxia del Sombrero (M104) es una impresionante galaxia espiral no barrada que abarca unos 50.000 años luz (470 billones de km), reconocible al instante por su enorme protuberancia central y un grueso y oscuro borde de polvo que la oscurece. Situada a 28 millones de años luz de distancia, en la constelación de Virgo, brilla con una magnífica magnitud aparente de 8,0, lo que la convierte en un objetivo fácil para instrumentos pequeños. A través de prismáticos estándar bajo cielos oscuros, aparece como una aguja de luz afilada y alargada, mientras que un pequeño telescopio de 100 mm separa claramente su núcleo brillante del amplio «ala de sombrero» de su borde exterior.",
+        "fun_fact": "¡Esta galaxia es un peso pesado cósmico absoluto envuelto en un misterio! Los estudios de los telescopios espaciales modernos han revelado que la Galaxia del Sombrero no solo tiene un sistema de cúmulos normal, sino que alberga un asombroso enjambre de casi 2.000 cúmulos globulares orbitando su núcleo, casi diez veces más que toda nuestra Vía Láctea. Además, el seguimiento preciso de la velocidad orbital muestra que su agujero negro supermasivo central es un auténtico monstruo, con una masa de mil millones de soles, lo que lo convierte en uno de los agujeros negros más masivos jamás hallados en una galaxia cercana.",
+        "visual_tip": "Para avistar la M104, mire aproximadamente 11 grados al oeste de Spica, la estrella más brillante de Virgo, o utilice el característico cuadrilátero de cuatro estrellas de Corvus el Cuervo para saltar justo al otro lado de la frontera hacia el noreste. Debido a que la galaxia está inclinada casi de canto con respecto a nuestra línea de visión (a solo 6 grados), su brillo superficial está extremadamente concentrado y soporta bien la contaminación lumínica suburbana, aunque se requiere un telescopio de 200 mm o mayor combinado con grandes aumentos para rebanar visualmente su núcleo brillante con la banda de polvo cósmico negra como la tinta.",
+        "wikipedia_qid": "Q91461627"
+    },
+    "d_J0040220+414107": {
+        "name": "Messier 110",
+        "description": "Messier 110 (M110) es una galaxia elíptica enana, estructurada y suave, que abarca aproximadamente 17.000 años luz (160 billones de km), y actúa como la mayor compañera satélite de la masiva Galaxia de Andrómeda. Situada a 2,7 millones de años luz, en la constelación de Andrómeda, brilla con una magnitud aparente de 8,1. A través de prismáticos pequeños o telescopios de pocos aumentos, surge como un óvalo fantasmal nítido y alargado que deriva silenciosamente justo al noroeste del brillante núcleo central de Andrómeda, mostrando un núcleo que se ilumina gradualmente sin brazos espirales visibles.",
+        "fun_fact": "A pesar de ser una galaxia elíptica antigua —una clase que normalmente se considera «muerta» y carente de formación estelar— la M110 guarda un secreto oculto. El reciente cartografiado de gas interestelar d'alta resolución realizado por telescopios espaciales ha detectado una colección de estrellas azules jóvenes y calientes anidadas justo en su centro, junto con un sorprendente par de nubes de polvo cósmico oscuro. Esto demuestra que esta diminuta galaxia compañera ha conservado de algún modo materias primas suficientes para dar a luz continuamente a estrellas nuevas en su núcleo a lo largo de los últimos cientos de millones de años.",
+        "visual_tip": "Para avistar la M110, primero debe centrar su telescopio en el brillante núcleo de la Galaxia de Andrómeda (M31). Desplace su ocular aproximadamente 35 minutos de arco al noroeste del núcleo de la M31 para encontrar esta suave nube ovalada. Debido a que tiene un brillo superficial inferior al de la otra compañera destacada de Andrómeda, la M32, necesitará una noche sin luna y un pequeño telescopio de 100 mm o mayor para separar claramente sus suaves límites exteriores de la luz de fondo brillante del sistema de Andrómeda.",
+        "wikipedia_qid": "Q4662"
     }
 }
