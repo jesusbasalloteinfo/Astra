@@ -28,13 +28,19 @@
 			return;
 		}
 
-		setLocale(newLocale);
-        currentLocale = newLocale;
-
-        // Persist to backend if logged in
+        // 1. Persist to backend if logged in and wait for it
+        // This avoids race conditions where the page reloads before the backend is updated
         if (authStore.isAuthenticated && authStore.user?.settings.language !== newLocale) {
             await authStore.updateSettings({ language: newLocale });
         }
+
+        // 2. Update local state and cookie
+		setLocale(newLocale);
+        if (browser) {
+            document.cookie = `PARAGLIDE_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+        }
+        currentLocale = newLocale;
+        isOpen = false;
 
 		console.log('currentLocale set to:', currentLocale, 'activeLanguage:', activeLanguage.label);
 

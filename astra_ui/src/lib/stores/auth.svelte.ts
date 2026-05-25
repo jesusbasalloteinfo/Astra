@@ -55,6 +55,11 @@ class AuthStore {
             await authAPI.updateSettings(settings);
             if (this.user) {
                 this.user.settings = { ...this.user.settings, ...settings };
+                
+                // If language changed, sync the cookie for the next page reload
+                if (settings.language && browser) {
+                    document.cookie = `PARAGLIDE_LOCALE=${settings.language}; path=/; max-age=31536000; SameSite=Lax`;
+                }
             }
         } catch (e) {
             console.error("Failed to update settings:", e);
