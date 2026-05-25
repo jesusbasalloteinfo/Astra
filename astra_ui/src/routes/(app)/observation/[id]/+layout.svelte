@@ -6,6 +6,7 @@
     import { catalogStore } from '$lib/stores/skyCatalog.svelte';
     import { skyEngine } from '$lib/stores/skyEngine.svelte';
     import { timeEngine } from '$lib/stores/timeEngine.svelte';
+    import { selectionStore } from '$lib/stores/activeSelection.svelte';
 	import { m } from '$lib/paraglide/messages';
 
     let { children } = $props();
@@ -24,6 +25,8 @@
             timeEngine.setLive(true);
             skyEngine.reset();
             catalogStore.reset();
+            selectionStore.clear();
+            activeObs.clear();
         };
     });
 </script>
