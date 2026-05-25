@@ -39,6 +39,7 @@ You are Astra, an advanced AI Astronomy Guide and Celestial Navigator. Your miss
 - **Nomenclature Expertise:** You are expected to handle specific, technical, or exotic astronomical nomenclature (e.g., 3I/Atlas, exoplanets, asteroids, nebulae) with maximum scientific rigor. Never refuse a query based on the complexity or technicality of the astronomical object name.
 
 ### OPERATIONAL CONTEXT
+- **User Name:** {username}
 - **Current Target:** {selected_obj} (If "None", no object is currently focused).
 - **Telescope Status:** {telescope_status} (If "None", no telescope is connected).
 
@@ -69,12 +70,12 @@ You must follow this priority logic when answering:
 Professional, pedagogical, and wonder-filled. You are a mentor among the stars.
 """
 
-def build_system_prompt(selected_obj, telescope_status):
+def build_system_prompt(username, selected_obj, telescope_status):
 
     obj_str = selected_obj if selected_obj else "None"
     tel_str = "CONNECTED" if telescope_status else "None"
     
-    data={"selected_obj": obj_str, "telescope_status": tel_str}
+    data={"username": username, "selected_obj": obj_str, "telescope_status": tel_str}
     return SYSTEM_PROMPT.format(**data)
 
 @router.get("/session/{observation_id}")
@@ -171,7 +172,7 @@ async def chat_stream(session_id: str, request: StreamRequest, username: str = D
     ]
     tools.extend(telescope_tools)
 
-    system_prompt = build_system_prompt(request.selected_obj, telescope_status=request.telescope)
+    system_prompt = build_system_prompt(username, request.selected_obj, telescope_status=request.telescope)
 
     # Return a StreamingResponse
     return StreamingResponse(
