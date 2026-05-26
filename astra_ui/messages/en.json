@@ -421,7 +421,9 @@
   "data_moon_phase_waxing_crescent": "Waxing Crescent",
   "data_moon_phase_waxing_gibbous": "Waxing Gibbous",
   "data_moon_phase_waning_crescent": "Waning Crescent",
-  "data_moon_phase_waning_gibbous": "Waning Gibbous"
+  "data_moon_phase_waning_gibbous": "Waning Gibbous",
 
-
+  "error_title_404": "Page Not Found",
+  "error_title_unexpected": "Something went wrong",
+  "error_desc_default": "We couldn't find the page you were looking for or an unexpected error occurred."
 }

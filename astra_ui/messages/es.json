@@ -422,6 +422,9 @@
   "data_moon_phase_waxing_crescent": "Luna Creciente",
   "data_moon_phase_waxing_gibbous": "Gibosa Creciente",
   "data_moon_phase_waning_crescent": "Luna Menguante",
-  "data_moon_phase_waning_gibbous": "Gibosa Menguante"
+  "data_moon_phase_waning_gibbous": "Gibosa Menguante",
 
+  "error_title_404": "Página no encontrada",
+  "error_title_unexpected": "Algo ha ido mal",
+  "error_desc_default": "No hemos podido encontrar la página que buscas o ha ocurrido un error inesperado."
 }
