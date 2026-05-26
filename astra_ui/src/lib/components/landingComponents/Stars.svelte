@@ -1,19 +1,34 @@
 <script lang="ts">
-	let stars = $state<{id: number, top: string, left: string, size: number, delay: string, duration: string, opacity: number}[]>([]);
+    import { page } from '$app/state';
 
-	// $effect only runs in browser for good hidration
-	$effect(() => {
-		const starCount = 75; 
-		stars = Array.from({ length: starCount }).map((_, i) => ({
-			id: i,
-			top: `${Math.random() * 100}%`,
-			left: `${Math.random() * 100}%`,
-			size: Math.random() * 3 + 1,
-			delay: `${Math.random() * 5}s`,
-			duration: `${Math.random() * 3 + 2}s`,
-			opacity: Math.random() * 0.7 + 0.3
-		}));
-	});
+    // Seeded random number generator to ensure SSR and Client match
+    // while still being "random" on every refresh
+    function seededRandom(seed: number) {
+        return function() {
+            seed = (seed * 9301 + 49297) % 233280;
+            return seed / 233280;
+        };
+    }
+
+	// Get the seed from the server load function
+    const seedValue = $derived(page.data.starSeed || 0.12345);
+    
+    const STAR_COUNT = 75;
+    
+    // We use a derived to recalculate stars if the seed changes (e.g. navigation)
+    // and to ensure the random generator starts fresh with the same seed
+    const stars = $derived.by(() => {
+        const rnd = seededRandom(seedValue * 10000);
+        return Array.from({ length: STAR_COUNT }).map((_, i) => ({
+            id: i,
+            top: `${rnd() * 100}%`,
+            left: `${rnd() * 100}%`,
+            size: (rnd() * 3) + 1,
+            delay: `${rnd() * 5}s`,
+            duration: `${rnd() * 3 + 2}s`,
+            opacity: rnd() * 0.7 + 0.3
+        }));
+    });
 </script>
 
 <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">

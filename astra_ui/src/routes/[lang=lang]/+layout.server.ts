@@ -9,6 +9,8 @@ export const load: LayoutServerLoad = ({ params }) => {
     if (!SUPPORTED_LOCALES.includes(params.lang as LanguageCode)) {
         redirect(302, `/${baseLocale}`);
     }
+
+    return {
+        starSeed: Math.random()
+    };
 };
-
-
