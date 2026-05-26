@@ -75,11 +75,7 @@
 		<span
 			class="flex h-3.5 w-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-xs [&>svg]:h-full [&>svg]:w-full [&>svg]:object-cover"
 		>
-			{#if browser}
-                {@html activeLanguage.svg}
-            {:else}
-                <span class="h-full w-full bg-slate-200 rounded-xs"></span>
-            {/if}
+			{@html activeLanguage.svg}
 		</span>
 
 		<span class="mt-[1px] text-xs leading-none font-bold tracking-wider uppercase"
