@@ -132,6 +132,8 @@ services:
       KONG_NGINX_PROXY_PROXY_BUFFER_SIZE: 160k
       KONG_NGINX_PROXY_PROXY_BUFFERS: 8 160k
       KONG_NGINX_PROXY_PROXY_BUSY_BUFFERS_SIZE: 160k
+      KONG_TRUSTED_IPS: "0.0.0.0/0,::/0" # Cloudflare headers
+      KONG_REAL_IP_HEADER: "X-Forwarded-For"
     volumes:
       - ./gateway/config.yml:/kong/kong.yml:ro
       - ./gateway:/var/log/kong/logs
