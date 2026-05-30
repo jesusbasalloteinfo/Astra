@@ -8,6 +8,15 @@ const SUPPORTED_LOCALES = AVAILABLE_LANGUAGES.map(l => l.code);
 export const handle: Handle = async ({ event, resolve }) => {
     const urlLang = event.url.pathname.split('/')[1] as LanguageCode;
     let locale: LanguageCode;
+    
+    // Logging
+    const userIP = event.request.headers.get('x-forwarded-for') || 
+        event.request.headers.get('x-real-ip') ||
+        event.getClientAddress();
+    const method = event.request.method;
+    const path = event.url.pathname;
+
+    console.log(`[${new Date().toISOString()}] IP: ${userIP} -> ${method} ${path}`);
 
     if (SUPPORTED_LOCALES.includes(urlLang)) {
         locale = urlLang;
@@ -34,6 +43,9 @@ export const handle: Handle = async ({ event, resolve }) => {
         httpOnly: false, // Allow client-side access
         sameSite: 'lax'
     }));
+
+
+    console.log(`[${new Date().toISOString()}] IP: ${userIP} <- ${response.status}`);
 
     return response;
 };
