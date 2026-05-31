@@ -16,6 +16,7 @@ from api.auth import router as auth_router
 # ================================================================================
 
 setup_global_logging(file_path=f".tmp/log-{datetime.now(timezone.utc)}.log")
+DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 
 API_BASE_PATH="/api/auth"
 
@@ -53,9 +54,9 @@ app=FastAPI(
     title="Astra Auth API",
     description="Identity and Authentication Service for Astra",
     lifespan=lifespan,
-    docs_url=API_BASE_PATH+"/docs",
-    redoc_url=API_BASE_PATH+"/redoc",
-    openapi_url=API_BASE_PATH+"/openapi.json",
+    docs_url=API_BASE_PATH+"/docs" if DEBUG else None,
+    redoc_url=API_BASE_PATH+"/redoc" if DEBUG else None,
+    openapi_url=API_BASE_PATH+"/openapi.json" if DEBUG else None,
     swagger_ui_parameters={"defaultModelsExpandDepth": -1}
 )
 

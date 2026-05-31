@@ -66,7 +66,7 @@ services:
       context: ./astra_ui
       target: prod
     environment:
-      VITE_API_URL: ${VITE_API_URL}
+      VITE_API_URL: /api
       PORT: 5173
     networks:
       - gateway-net

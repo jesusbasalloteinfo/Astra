@@ -22,6 +22,7 @@ from api.chat import router as chat_router
 # ================================================================================
 
 setup_global_logging(file_path=f".tmp/log-{datetime.now(timezone.utc)}.log")
+DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 
 
 API_BASE_PATH="/api"
@@ -61,9 +62,9 @@ app=FastAPI(
     title="Astra Backend API",
     description="Documentation for the Astra Backend API",
     lifespan=lifespan,
-    docs_url=API_BASE_PATH+"/docs",
-    redoc_url=API_BASE_PATH+"/redoc",
-    openapi_url=API_BASE_PATH+"/openapi.json",
+    docs_url=API_BASE_PATH+"/docs" if DEBUG else None,
+    redoc_url=API_BASE_PATH+"/redoc" if DEBUG else None,
+    openapi_url=API_BASE_PATH+"/openapi.json" if DEBUG else None,
     swagger_ui_parameters={"defaultModelsExpandDepth": -1} # Hide the schemas section
 )
 

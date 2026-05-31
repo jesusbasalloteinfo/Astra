@@ -1,3 +1,4 @@
+import os
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 from contextlib import asynccontextmanager
@@ -15,6 +16,7 @@ from core.translations import load_translations
 
 
 setup_global_logging()
+DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 
 API_BASE_PATH=""
 
@@ -56,9 +58,9 @@ app=FastAPI(
     title="Sideris Ephemerides API",
     description="Documentation for Sideris Ephemerides API",
     lifespan=lifespan,
-    docs_url=API_BASE_PATH+"/docs",
-    redoc_url=API_BASE_PATH+"/redoc",
-    openapi_url=API_BASE_PATH+"/openapi.json",
+    docs_url=API_BASE_PATH+"/docs" if DEBUG else None,
+    redoc_url=API_BASE_PATH+"/redoc" if DEBUG else None,
+    openapi_url=API_BASE_PATH+"/openapi.json" if DEBUG else None,
     swagger_ui_parameters={"defaultModelsExpandDepth": -1} # Hide the schemas section
 )
 
