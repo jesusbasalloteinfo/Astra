@@ -1,6 +1,6 @@
 <div align="center">
   <img src="assets/astra_main.svg" alt="ASTRA Logo" width="300">  
-  <p><strong>Automated Smart Telescope Remote Assistant</strong></p>
+  <h3><strong>Automated Smart Telescope Remote Assistant</strong></h3>
 
   <p>
     <img src="https://img.shields.io/badge/License-AGPL_v3-orange.svg" alt="License: AGPL v3">
@@ -16,12 +16,15 @@
 
 ## 🌌 What is ASTRA?
 
-**ASTRA** is an open-source **Unified Astronomy Platform** that bridges the gap between complex astronomical hardware and the modern web. It provides a complete ecosystem for remote observatory management, celestial discovery, and automated equipment control.
+**ASTRA** is an open-source **Unified Astronomy Platform** designed to bridge the gap between complex astronomical hardware and the modern web. It provides a complete ecosystem for remote observatory management, real-time celestial navigation, and automated equipment control.
 
-**Why was ASTRA built?**
-Traditional astronomy setups often require a dedicated Windows (ASCOM) or Linux laptop running heavy desktop software (like KStars or Stellarium) right next to the telescope, filled with overwhelming buttons and complex configurations. ASTRA solves this by decoupling the hardware from the interface. 
+Traditional astronomy setups often require a dedicated, heavy desktop computer application tethered directly to the telescope, filled with overwhelming menus and complex configurations for amateurs. 
 
-With ASTRA, your equipment runs via a lightweight edge node, while you control everything from a clean, web-based dashboard on any device. More importantly, it features an integrated AI assistant designed for occasional observers: instead of fighting with menus or wondering what's up in the sky tonight, you can simply ask the assistant to find targets for you.
+**ASTRA breaks this barrier by decoupling the hardware from the interface.** By using a distributed architecture, it allows you to run your equipment via a lightweight edge node while you control everything from a clean, high-performance web dashboard. Whether you are a seasoned astrophotographer or an occasional observer, ASTRA ensures you spend less time fighting with settings and more time discovering the wonders of the night sky.
+
+<div align="center">
+  <img src="assets/sim_ui.png" alt="ASTRA Simulation Interface" width="100%" style="border-radius: 10px; margin-top: 20px; border: 1px solid #1e293b;">
+</div>
 
 
 ## ✨ Key Features
@@ -56,11 +59,48 @@ An optional, model-agnostic layer to simplify complex workflows.
 
 ASTRA uses a containerized microservices architecture:
 
-- **astra_ui:** Modern Svelte 5 frontend with real-time 3D visualizations.
+- **astra_ui:** Svelte 5 frontend with real-time 3D visualizations.
 - **astra_api:** Central coordinator, session manager, and AI router.
 - **astra_auth:** Secure JWT-based authentication and access control.
-- **sideris:** High-performance celestial physics engine.
+- **astra_edge:** Hardware abstraction layer (INDI).
+- **sideris:** Specialized service for catalog lookups and ephemerides.
 - **Kong Gateway:** Unified entry point and secure routing.
+
+## 🚀 Getting Started
+
+For detailed deployment instructions and technical overview, please refer to the documentation:
+
+- [🏗️ Architecture Overview](docs/ARCHITECTURE.md)
+- [🚀 Detailed Deployment Guide](docs/DEPLOY_GUIDE.md)
+- [🛰️ Edge Node (Hardware) Guide](docs/EDGE_GUIDE.md)
+- [📖 User Guide](docs/user_guide/USER_GUIDE.md)
+
+### Prerequisites
+- Docker and Docker Compose.
+- (Optional) An INDI-compatible telescope or simulator.
+
+### Quick Start
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/jesusbasalloteinfo/Astra.git
+   cd Astra
+   ```
+
+2. **Setup environment:**
+   ```bash
+   cp example.env .env
+   # Edit .env and add your AI_API_KEY for the assistant
+   ```
+
+3. **Launch the platform:**
+   ```bash
+   docker compose up -d
+   ```
+
+4. **Access the UI:**
+   Open your browser and navigate to `http://localhost:8000`.
+
+
 
 
 ## 🛠️ Tech Stack
@@ -70,61 +110,27 @@ ASTRA uses a containerized microservices architecture:
 - **Protocols:** INDI (Hardware), WebSockets (Real-time), REST (API).
 - **DevOps:** Docker, Docker Compose, Kong Gateway.
 
-
-
-## 🚀 Getting Started
-
-For detailed deployment instructions and technical overview, please refer to the documentation:
-
-- [🚀 Deployment Guide](docs/DEPLOY_GUIDE.md)
-- [🏗️ Architecture Guide](docs/ARCHITECTURE.md)
-- [🛰️ Edge Node (Hardware) Guide](docs/EDGE_GUIDE.md)
-- [📖 User Guide](docs/user_guide/USER_GUIDE.md)
-
-
-
-1. **Clone & Setup environment:**
-   ```bash
-   git clone https://github.com/your-username/astra-project.git
-   cd astra-project
-   cp example.env .env
-   ```
-
-2. **Launch:**
-   ```bash
-   docker compose up -d
-   ```
-
-3. **Explore:**
-    Navigate to `http://localhost:8000` to access the unified dashboard.
-
-
 ## 📁 Project Structure
 
 ```text
-├── astra_api/      # Core Backend (FastAPI)
-├── astra_auth/     # Authentication Service
-├── astra_edge/     # Hardware Abstraction Layer (INDI)
+├── astra_api/      # Core Coordination API
+├── astra_auth/     # Authentication & User Service
+├── astra_edge/     # INDI Hardware Node
 ├── astra_ui/       # Svelte 5 Frontend
-├── sideris/        # Catalog & Ephemerides Service
-├── gateway/        # Kong Gateway Configuration
-├── assets/         # Project Branding & Logos
-└── docker-compose.yml
+├── sideris/        # Physics & Catalog Engine
+└── gateway/        # Kong API Gateway
 ```
-
 
 ## 🌱 Project Status
 
-ASTRA is a new project currently in active development! I am focusing on building the core features and am not quite ready to accept pull requests just yet. However, feel free to open an issue to share your feedback or report bugs.
-
-
+ASTRA is currently in active development! I am focusing on core features and stability. While I am not accepting major pull requests just yet, your feedback is highly valuable. Please feel free to open an **Issue** to report bugs or suggest enhancements.
 
 ## 📜 License
 
-This project is licensed under the **AGPL v3 License** - see the [LICENSE](LICENSE) file for details.
+Distributed under the **AGPL v3 License**. See [LICENSE](LICENSE) for more information.
 
-
+---
 
 <div align="center">
-  <p>Clear skies and happy observing! 🔭</p>
+  <p><strong>Clear skies and happy observing! 🔭</strong></p>
 </div>
