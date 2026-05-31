@@ -3,12 +3,23 @@
 import * as THREE from 'three';
 import { DOME_RADIUS } from '../utils/const';
 
+/**
+ * TelescopePointer Entity
+ * 
+ * Manages the rendering and animation of a visual pointer that indicates the telescope's current pointing position in the sky.
+ */
 export class TelescopePointer {
+    /** The Three.js sprite used for visual representation. */
     public sprite: THREE.Sprite;
 
+    /** The target position to interpolate towards. */
     private targetPos: THREE.Vector3 | null = null;
+    /** Flag to handle initial positioning without interpolation. */
     private isFirstPosition: boolean = true;
 
+    /**
+     * Creates an instance of TelescopePointer.
+     */
     constructor() {
         const mat = new THREE.SpriteMaterial({ 
             transparent: true, 
@@ -24,6 +35,11 @@ export class TelescopePointer {
         this.sprite.scale.set(18, 18, 1);
     }
 
+    /**
+     * Creates the SVG-based texture for the telescope pointer.
+     * @returns {THREE.Texture} The generated texture.
+     * @private
+     */
     private createTexture(): THREE.Texture {
         const svg = `
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -42,10 +58,12 @@ export class TelescopePointer {
     }
 
     /**
-     * Update the telescope pointer position
+     * Updates the target telescope position in the sky.
+     * Converts altitude and azimuth to Cartesian coordinates.
+     * @param {number} alt - Telescope altitude in degrees.
+     * @param {number} az - Telescope azimuth in degrees.
      */
     updatePosition(alt: number, az: number) {
-        console.warn(alt,az)
         const altRad = alt * (Math.PI / 180);
         const azRad  = (180 - az) * (Math.PI / 180);
         
@@ -64,6 +82,10 @@ export class TelescopePointer {
         }
     }
 
+    /**
+     * Updates the pointer's animation (rotation/pulsing) and interpolates its position.
+     * Should be called in the main render loop.
+     */
     update(){
         this.sprite.material.rotation += 0.008;
         const time = performance.now() * 0.003;
@@ -78,12 +100,18 @@ export class TelescopePointer {
         }
     }
 
+    /**
+     * Hides the telescope pointer and resets its state.
+     */
     hide() {
         this.sprite.visible = false;
         this.isFirstPosition = true; 
         this.targetPos = null;
     }
 
+    /**
+     * Cleans up Three.js resources used by the pointer.
+     */
     dispose() {
         if (this.sprite.material.map) this.sprite.material.map.dispose();
         this.sprite.material.dispose();

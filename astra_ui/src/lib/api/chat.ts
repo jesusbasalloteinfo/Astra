@@ -2,14 +2,33 @@ import { api } from './client';
 import { endpoints } from './endpoints';
 import type { ChatSession, ChatMessage, ChatSSEEvent } from '../types/chat';
 
+/**
+ * Chat API module for managing chat sessions and streaming AI responses.
+ */
 export const chatAPI = {
-    // Get or create a chat session for a given observation
+    /**
+     * Retrieves or creates a chat session for a specific observation.
+     * @param {string} observation_id - The unique identifier of the observation.
+     * @returns {Promise<ChatSession>} The retrieved or newly created chat session.
+     */
     getSession: async (observation_id: string): Promise<ChatSession> => {
         const response = await api.get<ChatSession>(endpoints.chat.session(observation_id));
         return response.data;
     },
 
-    // Stream chat response
+    /**
+     * Streams a chat response from the AI assistant using Server-Sent Events (SSE).
+     * @param {string} session_id - The unique identifier of the chat session.
+     * @param {ChatMessage | null} message - The message object to send to the AI.
+     * @param {string} [model="astra_ai"] - The AI model to use for the response.
+     * @param {string | null} [selected_obj=null] - Optional ID of a selected astronomical object.
+     * @param {string | null} [location_id=null] - Optional ID of the user's location.
+     * @param {string | null} [device_id=null] - Optional ID of the connected device.
+     * @param {string | null} [telescope=null] - Optional name or ID of the telescope.
+     * @param {AbortSignal} [signal] - Optional signal to abort the streaming request.
+     * @yields {ChatSSEEvent} A stream of chat events including content chunks and status updates.
+     * @returns {AsyncGenerator<ChatSSEEvent, void, unknown>}
+     */
     streamChat: async function* (session_id: string, 
                                 message: ChatMessage | null, 
                                 model: string = "astra_ai", 

@@ -4,6 +4,10 @@ import { goto } from '$app/navigation';
 import { endpoints } from './endpoints';
 import { browser } from '$app/environment'; 
 
+/**
+ * Axios instance configured for the Astra API.
+ * Includes base URL, common headers, and fetch adapter.
+ */
 export const api = axios.create({
     baseURL: endpoints.apiBase,
     headers: { 'Content-Type': 'application/json' },
@@ -11,7 +15,11 @@ export const api = axios.create({
 });
 
 
-// Redirects to /login saving the destination route as ?goto=
+/**
+ * Redirects the user to the login page while preserving the current route for post-login redirection.
+ * Handles locale-prefixed routes automatically.
+ * @returns {void}
+ */
 const redirectToLogin = () => {
     if (!browser) return; // Avoid Node.js execution
     

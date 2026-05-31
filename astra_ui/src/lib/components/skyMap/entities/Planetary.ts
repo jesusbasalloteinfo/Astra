@@ -7,8 +7,8 @@ import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 
 /**
- * Custom Vertex Shader
- * Adjusts the size of the planets based on the camera zoom and their normal size.
+ * Custom Vertex Shader for Planetary entities.
+ * Adjusts the size of the planets based on the camera zoom and their base size.
  */
 const vertexShader = `
     attribute float size;
@@ -35,8 +35,8 @@ const vertexShader = `
 `;
 
 /**
- * Custom Fragment Shader
- * With halo logic to the sun and planets.
+ * Custom Fragment Shader for Planetary entities.
+ * Implements specific halo and diffraction effects for the Sun, Moon, and planets.
  */
 const fragmentShader = `
     varying vec3 vColor;
@@ -107,17 +107,29 @@ const fragmentShader = `
         gl_FragColor = vec4(finalColor, alpha * opacity * vAlphaFactor);
     }
 `;
+
 /**
  * Planetary Entity
- * Manages the rendering and updating of the planetary objects.
+ * 
+ * Manages the rendering and updating of solar system objects (Sun, Moon, and Planets).
+ * Uses custom shaders for realistic visual representation and handles labels.
  */
 export class Planetary {
+    /** Container for the planets mesh and their labels. */
     public group = new THREE.Group();
+    /** The Points mesh containing all planetary objects. */
     private points: THREE.Points;
+    /** Array of label objects for the planets. */
     private labels: { sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string }[] = [];
+    /** List of IDs for the planets currently being managed. */
     private planetIds: string[];
+    /** Factor used to track daylight changes for optimization. */
     private lastDayFactor: number = -1;
 
+    /**
+     * Creates an instance of Planetary.
+     * @param {number} opacity - Initial opacity for the planetary objects.
+     */
     constructor(opacity: number) {
         this.planetIds = Object.keys(catalogStore.planetaryData);
         
@@ -141,6 +153,8 @@ export class Planetary {
 
     /**
      * Constructs the initial geometry buffer for the planets.
+     * @returns {THREE.BufferGeometry} The generated geometry.
+     * @private
      */
     private buildGeometry(): THREE.BufferGeometry {
         const num = this.planetIds.length;
@@ -197,7 +211,10 @@ export class Planetary {
     }
 
     /**
-     * Creates a label for the planets.
+     * Creates a text label sprite for a planet.
+     * @param {string} name - The name of the planet to display.
+     * @returns {{ sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string }} Label resources.
+     * @private
      */
     private createLabel(name: string): { sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string } {
         const canvas = document.createElement('canvas');
@@ -218,7 +235,10 @@ export class Planetary {
     }
 
     /**
-     * Redraws the text on the canvas
+     * Redraws the text on the label's canvas.
+     * @param {{ sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string }} label - Label object.
+     * @param {number} color - Hex color for the text.
+     * @private
      */
     private updateLabelText(label: { sprite: THREE.Sprite, ctx: CanvasRenderingContext2D, texture: THREE.CanvasTexture, name: string }, color: number) {
         const { ctx, texture, name } = label;
@@ -234,21 +254,38 @@ export class Planetary {
         texture.needsUpdate = true;
     }
 
+    /**
+     * Returns the Points mesh used for rendering.
+     * @returns {THREE.Points}
+     */
     getPointsMesh() {
         return this.points;
     }
 
+    /**
+     * Gets the planet ID corresponding to a vertex index.
+     * @param {number} index - The vertex index in the Points mesh.
+     * @returns {string | null} The planet ID or null if not found.
+     */
     getIdByIndex(index: number): string | null {
         return this.planetIds[index] || null; 
     }
     
+    /**
+     * Gets the vertex index for a given planet ID.
+     * @param {string} id - The planet ID.
+     * @returns {number | undefined} The vertex index or undefined if not found.
+     */
     getIndexById(id: string): number | undefined {
         const index = this.planetIds.indexOf(id); 
         return index !== -1 ? index : undefined;
     }
 
     /**
-     * Updates the XYZ coordinates of all planets based on their current AltAz values.
+     * Updates the position and visual state of all planets.
+     * @param {PositionUpdates} positionsMap - Map containing the current Alt/Az positions.
+     * @param {number} zoomFactor - Current camera zoom factor.
+     * @param {number} [daylightFade=1.0] - Fade factor for daytime (1.0 = night, 0.0 = day).
      */
     update(positionsMap: PositionUpdates, zoomFactor: number, daylightFade: number = 1.0) {
         (this.points.material as THREE.ShaderMaterial).uniforms.zoom.value = zoomFactor;
@@ -305,7 +342,7 @@ export class Planetary {
     
 
     /**
-     * Disposes of geometries and materials to prevent memory leaks.
+     * Cleans up Three.js resources used by planetary entities.
      */
     dispose() {
         this.points.geometry.dispose();

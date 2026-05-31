@@ -7,11 +7,21 @@ import { obsStore } from './observations.svelte';
 import { themeState } from '$lib/themes/themes.svelte';
 import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
 
+/**
+ * Store for managing user authentication and profile settings.
+ */
 class AuthStore {
+    /** The currently authenticated user, or null if not logged in. */
     user = $state<User | null>(null);
+    /** Loading state for authentication processes. */
     isLoading = $state(true);
+    /** Indicates if a logout process is currently in progress. */
     isLoggingOut = $state(false);
 
+    /**
+     * Initializes the auth store by checking for an existing session in localStorage.
+     * @returns A promise that resolves when initialization is complete.
+     */
     async init() {
         if (!browser) return;
         
@@ -22,6 +32,10 @@ class AuthStore {
         this.isLoading = false;
     }
 
+    /**
+     * Refreshes the user's profile and synchronizes settings like theme and language.
+     * @returns A promise that resolves when the profile is refreshed.
+     */
     async refreshProfile() {
         try {
             this.user = await authAPI.getUser();
@@ -49,6 +63,11 @@ class AuthStore {
         }
     }
 
+    /**
+     * Updates the user's settings (theme, language) on the server and locally.
+     * @param settings - The settings to update.
+     * @returns A promise that resolves when the settings are updated.
+     */
     async updateSettings(settings: { theme?: string; language?: string }) {
         if (!this.isAuthenticated) return;
         try {
@@ -66,6 +85,14 @@ class AuthStore {
         }
     }
 
+    /**
+     * Logs the user in with the provided credentials.
+     * 
+     * @param username - The user's username.
+     * @param password - The user's password.
+     * @param syncSettings - Whether to sync local settings to the server after login.
+     * @returns A promise that resolves when the login process is complete.
+     */
     async login(username: string, password: string, syncSettings = false) {
         this.isLoading = true;
         try {
@@ -88,6 +115,10 @@ class AuthStore {
         }
     }
 
+    /**
+     * Logs the user out, clears local data and resets related stores.
+     * @returns A promise that resolves when the logout process is complete.
+     */
     async logout() {
         this.isLoggingOut = true;
         try {
@@ -102,7 +133,13 @@ class AuthStore {
         }
     }
 
+    /**
+     * Computed property that indicates if the user is currently authenticated.
+     */
     isAuthenticated = $derived(this.user !== null);
 }
 
+/**
+ * Singleton instance of AuthStore.
+ */
 export const authStore = new AuthStore();

@@ -9,11 +9,15 @@ import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 /**
  * TargetReticle Entity
  * 
- * Manages the rendering of a target reticle across a selected object.
+ * Manages the rendering and animation of a target reticle that follows the currently selected celestial object.
  */
 export class TargetReticle {
+    /** The Three.js sprite used for visual representation. */
     public sprite: THREE.Sprite;
 
+    /**
+     * Creates an instance of TargetReticle.
+     */
     constructor() {
         const mat = new THREE.SpriteMaterial({ 
             transparent: true, 
@@ -26,7 +30,11 @@ export class TargetReticle {
     }
 
     /**
-     * Locks the reticle onto a new target, generating the appropriate SVG and scale.
+     * Locks the reticle onto a new target.
+     * Generates a new texture based on the object type and scales it appropriately.
+     * @param {boolean} isPlanet - Whether the target is a planetary object.
+     * @param {string} hexColor - Color hex string for the reticle.
+     * @param {number} baseSize - Base size of the target object for scaling.
      */
     lockOn(isPlanet: boolean, hexColor: string, baseSize: number) {
         // Clean up old texture to prevent memory leaks
@@ -50,15 +58,17 @@ export class TargetReticle {
     }
 
     /**
-     * Hides the reticle (e.g., when clicking on empty space).
+     * Hides the reticle (e.g., when the selection is cleared).
      */
     hide() {
         this.sprite.visible = false;
     }
 
     /**
-     * Updates the 3D position and handles rotation/pulsing animations.
+     * Updates the 3D position based on the selected object's coordinates.
+     * Handles rotation and pulsing (opacity) animations.
      * Should be called in the main render loop.
+     * @param {PositionUpdates} updates - Current celestial positions.
      */
     update(updates: PositionUpdates) {
         if (!this.sprite.visible || !selectionStore.targetId) return;
@@ -82,7 +92,7 @@ export class TargetReticle {
     }
 
     /**
-     * Disposes of materials and textures.
+     * Cleans up Three.js resources used by the reticle.
      */
     dispose() {
         if (this.sprite.material.map) {

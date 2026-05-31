@@ -3,25 +3,35 @@ import { browser } from '$app/environment';
 import { deviceAPI } from '$lib/api/devices';
 import type { Device, DeviceInfo } from '$lib/types/devices';
 
+/**
+ * Store for managing astronomical devices (telescopes, cameras, focusers).
+ * Handles device list, active device details, component selection, and auto-refresh.
+ */
 class DeviceStore {
+    /** ID of the currently active device. */
     activeId = $state<string | null>(browser ? localStorage.getItem('active_device_id') : null);
 
+    /** List of all discovered devices. */
     all = $state<Device[]>(
         browser ? JSON.parse(localStorage.getItem('device_list_cache') || '[]') : []
     );
+    /** Detailed information about the active device. */
     activeDetails = $state<DeviceInfo | null>(null);
 
+    /** Indicates if the store is loading the device list. */
     isLoading = $state(false);
+    /** Indicates if the store is fetching details for the active device. */
     isFetchingDetails = $state(false);
 
+    /** Map of selected components for each device. */
     selectedComponents = $state<Record<string, { telescope?: string, camera?: string, focuser?: string }>>(
         browser ? JSON.parse(localStorage.getItem('device_selected_components') || '{}') : {}
     );
 
-    // Polling interval
+    /** Polling interval reference for auto-refresh. */
     #refreshInterval: ReturnType<typeof setInterval> | null = null;
 
-    // Active first
+    /** Computed property that returns the active device object. */
     activeBase = $derived.by(() => {
         if (this.all.length === 0) return null;
         
@@ -31,15 +41,23 @@ class DeviceStore {
         return this.all[0];
     });
 
+    /** Returns the device_id of the effective active device. */
     get effectiveActiveId() {
         return this.activeBase?.device_id || null;
     }
 
+    /** Computed property that returns the selected components for the active device. */
     activeComponents = $derived.by(() => {
         if (!this.effectiveActiveId) return {};
         return this.selectedComponents[this.effectiveActiveId] || {};
     });
 
+    /**
+     * Fetches all devices from the API.
+     * 
+     * @param silent - If true, prevents setting the global isLoading state.
+     * @returns A promise that resolves when the fetch is complete.
+     */
     async fetchAll(silent = false) {
         if (!silent) this.isLoading = true;
         
@@ -63,6 +81,11 @@ class DeviceStore {
         }
     }
 
+    /**
+     * Selects a device as the active one.
+     * 
+     * @param id - The ID of the device to select, or null to deselect.
+     */
     select(id: string | null) {
         if (id === this.activeId && id !== null) {
             this.fetchDetails(id, true);
@@ -82,6 +105,13 @@ class DeviceStore {
         }
     }
     
+    /**
+     * Sets a specific component (telescope, camera, focuser) for a device.
+     * 
+     * @param deviceId - The ID of the device.
+     * @param type - The type of component.
+     * @param value - The name of the component, or undefined to clear.
+     */
     setComponent(deviceId: string, type: 'telescope' | 'camera' | 'focuser', value: string | undefined) {
         if (!this.selectedComponents[deviceId]) {
             this.selectedComponents[deviceId] = {};
@@ -98,6 +128,13 @@ class DeviceStore {
         }
     }
 
+    /**
+     * Fetches detailed information for a specific device.
+     * 
+     * @param id - The ID of the device.
+     * @param silent - If true, prevents setting the fetching state.
+     * @returns A promise that resolves when the fetch is complete.
+     */
     async fetchDetails(id: string, silent = false) {
         if (!silent) this.isFetchingDetails = true;
         
@@ -144,6 +181,13 @@ class DeviceStore {
         }
     }
 
+    /**
+     * Updates device information.
+     * 
+     * @param id - The ID of the device to update.
+     * @param data - The new data for the device.
+     * @returns A promise that resolves when the update is complete.
+     */
     async update(id: string, data: { name: string }) {
         this.isLoading = true;
         try {
@@ -162,6 +206,12 @@ class DeviceStore {
         }
     }
 
+    /**
+     * Deletes a device.
+     * 
+     * @param id - The ID of the device to delete.
+     * @returns A promise that resolves when the deletion is complete.
+     */
     async deleteDevice(id: string) {
         this.isLoading = true;
         try {
@@ -177,17 +227,27 @@ class DeviceStore {
         }
     }
 
+    /**
+     * Refreshes the device list silently.
+     */
     async refreshAll() {
         await this.fetchAll(true);
     }
 
+    /**
+     * Refreshes the details of the active device silently.
+     */
     async refreshActiveDetails() {
         if (this.effectiveActiveId) {
             await this.fetchDetails(this.effectiveActiveId, true);
         }
     }
 
-    // Global reloading
+    /**
+     * Starts the auto-refresh cycle for the device list.
+     * 
+     * @param intervalMs - The interval in milliseconds.
+     */
     startAutoRefresh(intervalMs = 10000) {
         if (this.#refreshInterval) return; 
         
@@ -196,6 +256,9 @@ class DeviceStore {
         }, intervalMs);
     }
 
+    /**
+     * Stops the auto-refresh cycle.
+     */
     stopAutoRefresh() {
         if (this.#refreshInterval) {
             clearInterval(this.#refreshInterval);
@@ -204,6 +267,9 @@ class DeviceStore {
     }
 
 
+    /**
+     * Clears all device data and resets the store.
+     */
     clear() {
         this.stopAutoRefresh();
         this.all = [];
@@ -218,4 +284,7 @@ class DeviceStore {
     }
 }
 
+/**
+ * Singleton instance of DeviceStore.
+ */
 export const deviceStore = new DeviceStore();

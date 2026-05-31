@@ -5,24 +5,41 @@ import { catalogStore } from './skyCatalog.svelte';
 import { locStore } from './location.svelte';
 import { deviceStore } from './devices.svelte';
 
+/**
+ * Represents an action triggered by the AI that needs to be handled by the UI.
+ */
 export type ChatAction = 
     | { type: 'focus_object', id: string, objectType: string }
     | { type: 'fly_to_constellation', abbr: string };
 
+/**
+ * Store for managing chat sessions, messages, and AI tool integrations.
+ * Handles real-time streaming of messages and tool execution.
+ */
 class ChatStore {
-    // State runes
+    /** The currently active chat session. */
     session = $state<ChatSession | null>(null);
+    /** List of messages in the current session. */
     messages = $state<ChatMessage[]>([]);
+    /** Indicates if a message response is currently being streamed. */
     isStreaming = $state(false);
+    /** Indicates if the store is currently loading session data. */
     isLoading = $state(false);
+    /** Error message if an operation fails. */
     error = $state<string | null>(null);
     
-    // Command queue for UI components (like the 3D SkyMap) to consume
+    /** Queue of actions for UI components (like the 3D SkyMap) to consume. */
     pendingActions = $state<ChatAction[]>([]);
 
-    // Private state for stream cancellation
+    /** AbortController for cancelling the active stream. */
     private abortController: AbortController | null = null;
 
+    /**
+     * Loads a chat session associated with a specific observation.
+     * 
+     * @param observation_id - The ID of the observation session.
+     * @returns A promise that resolves when the session is loaded.
+     */
     async loadSession(observation_id: string) {
         this.isLoading = true;
         this.error = null;
@@ -39,6 +56,13 @@ class ChatStore {
         }
     }
 
+    /**
+     * Sends a message to the AI assistant and processes the resulting stream.
+     * Handles text, reasoning, tool calls, and tool execution events.
+     * 
+     * @param content - The text content of the user message.
+     * @returns A promise that resolves when the response stream ends.
+     */
     async sendMessage(content: string) {
         if (!this.session) {
             this.error = "No active chat session.";
@@ -140,7 +164,10 @@ class ChatStore {
     }
 
     /**
-     * Queues actions for the UI components to consume.
+     * Processes frontend actions triggered by AI tools and queues them for consumption by UI components.
+     * 
+     * @param toolName - The name of the tool that triggered the action.
+     * @param args - The arguments passed to the tool.
      */
     private handleFrontendAction(toolName: string, args: any) {
         console.info(`[Frontend Action Triggered]: ${toolName}`, args);
@@ -180,10 +207,18 @@ class ChatStore {
         }
     }
 
+    /**
+     * Consumes (removes and returns) the next pending frontend action from the queue.
+     * 
+     * @returns The next ChatAction, or undefined if the queue is empty.
+     */
     consumeAction() {
         return this.pendingActions.shift();
     }
 
+    /**
+     * Aborts the currently active chat stream.
+     */
     abortStream() {
         if (this.abortController) {
             this.abortController.abort();
@@ -192,6 +227,9 @@ class ChatStore {
         }
     }
 
+    /**
+     * Resets the chat store to its initial state, clearing all messages and sessions.
+     */
     reset() {
         this.abortStream();
         this.session = null;
@@ -202,4 +240,7 @@ class ChatStore {
     }
 }
 
+/**
+ * Singleton instance of ChatStore.
+ */
 export const chatStore = new ChatStore();

@@ -1,7 +1,17 @@
+// src/lib/components/skyMap/utils/crosshair.ts
+/**
+ * @fileoverview Utility for generating crosshair textures used in the SkyMap.
+ */
+
 import * as THREE from 'three';
 
 /**
- * Create an svg texture for a crosshair
+ * Creates an SVG-based texture for a crosshair.
+ * Supports different styles: 'sidereal' (circular target) or 'focus' (corner brackets).
+ * 
+ * @param {('sidereal' | 'focus')} type - The style of the crosshair.
+ * @param {string} color - The CSS color string (e.g., '#ffffff', 'red') for the crosshair.
+ * @returns {THREE.Texture} A Three.js texture containing the SVG crosshair.
  */
 export function createCrosshairTexture(type: 'sidereal' | 'focus', color: string): THREE.Texture {
     let svg = '';

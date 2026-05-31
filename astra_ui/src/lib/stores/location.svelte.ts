@@ -4,16 +4,25 @@ import { userAPI } from '$lib/api/user';
 import type { LocationCreate } from '$lib/types/user';
 import { browser } from '$app/environment';
 
+/**
+ * Store for managing user locations.
+ * Handles location selection, GPS detection, and adding/deleting locations.
+ */
 class LocationStore {
+    /** ID of the currently active location. */
     activeId = $state<string | null>(browser ? localStorage.getItem('active_location_id') : null);
 
+    /** Indicates if the store is syncing with the server. */
     isSyncing = $state(false);
+    /** Indicates if GPS detection is in progress. */
     isDetecting = $state(false);
+    /** Indicates if the add location form is visible. */
     isAdding = $state(false); // UI control
 
-    
+    /** Computed property that returns all available locations for the user. */
     all = $derived(authStore.user?.locations || []);
     
+    /** Computed property that returns the effective active location object. */
     active = $derived.by(() => {
         if (this.all.length === 0) return null;
 
@@ -29,13 +38,21 @@ class LocationStore {
         return this.all[0];
     });
 
+    /** Shows the add location form. */
     showForm() { this.isAdding = true; }
+    /** Hides the add location form. */
     hideForm() { this.isAdding = false; }
 
+    /** Returns the ID of the effective active location. */
     get effectiveActiveId() {
         return this.active?.id || null;
     }
 
+    /**
+     * Selects a location as the active one.
+     * 
+     * @param id - The ID of the location to select, or null to deselect.
+     */
     select(id: string | null) {
         this.activeId = id;
         if (browser) {
@@ -44,6 +61,11 @@ class LocationStore {
         }
     }
 
+    /**
+     * Detects the user's current GPS position.
+     * 
+     * @returns A promise that resolves with the detected location coordinates.
+     */
     async detectGPS(): Promise<Partial<LocationCreate>> {
         this.isDetecting = true;
         
@@ -77,6 +99,12 @@ class LocationStore {
         });
     }
 
+    /**
+     * Adds a new location to the user's profile.
+     * 
+     * @param data - The location data to add.
+     * @returns A promise that resolves when the location is added.
+     */
     async addLocation(data: LocationCreate) {
         if (data.lat < -90 || data.lat > 90) throw new Error("Invalid latitude");
         if (data.lng < -180 || data.lng > 180) throw new Error("Invalid longitude");
@@ -104,6 +132,12 @@ class LocationStore {
         }
     }
 
+    /**
+     * Deletes a location from the user's profile.
+     * 
+     * @param id - The ID of the location to delete.
+     * @returns A promise that resolves when the location is deleted.
+     */
     async deleteLocation(id: string) {
         this.isSyncing = true;
         try {
@@ -117,6 +151,9 @@ class LocationStore {
         }
     }
 
+    /**
+     * Clears the active location and resets the store.
+     */
     clear() {
         this.activeId = null;
         if (browser) {
@@ -125,4 +162,7 @@ class LocationStore {
     }
 }
 
+/**
+ * Singleton instance of LocationStore.
+ */
 export const locStore = new LocationStore();

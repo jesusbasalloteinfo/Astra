@@ -5,6 +5,7 @@ import { DOME_RADIUS, GROUND_RADIUS, EYE_LEVEL, CARDINAL_LABELS } from '../utils
 import { altAzToXYZ } from '../utils/coordinates';
 
 // --- Atmosphere Shaders ---
+/** Vertex shader for the atmospheric Rayleigh scattering effect. */
 const skyVertexShader = `
     varying vec3 vWorldPosition;
     void main() {
@@ -14,6 +15,7 @@ const skyVertexShader = `
     }
 `;
 
+/** Fragment shader for the atmospheric Rayleigh scattering effect. */
 const skyFragmentShader = `
     varying vec3 vWorldPosition;
     uniform vec3 sunPosition;
@@ -74,18 +76,32 @@ const skyFragmentShader = `
 
 /**
  * Environment Entity
+ * 
  * Responsible for rendering non-celestial static elements, such as the 
- * ground sphere and the cardinal direction markers on the horizon.
+ * ground sphere, atmospheric Rayleigh simulation, and cardinal direction markers on the horizon.
  */
 export class Environment {
-    public group = new THREE.Group(); // Acts as a container for multiple meshes/sprites that can be added to the main Scene together.
+    /** Container for all environment-related meshes and sprites. */
+    public group = new THREE.Group();
+    /** The mesh representing the ground. */
     private groundMesh: THREE.Mesh;
+    /** The mesh representing the sky dome for atmospheric effects. */
     private skyMesh: THREE.Mesh;
+    /** Shader material for the atmosphere. */
     private skyMaterial: THREE.ShaderMaterial; 
+    /** Base color of the ground before daylight adjustments. */
     private baseGroundColor: number;
+    /** Factor used to track daylight changes for optimization. */
     private lastDayFactor: number = -1;
+    /** Array of sprites for cardinal direction labels. */
     private cardinalSprites: { sprite: THREE.Sprite, az: number, textKey: string }[] = [];
 
+    /**
+     * Creates an instance of Environment.
+     * @param {number} groundColor - Initial ground color hex value.
+     * @param {string} cardinalColor - CSS color string for cardinal direction text.
+     * @param {Record<string, string>} [initialLabels] - Map of direction keys to localized labels.
+     */
     constructor(groundColor: number, cardinalColor: string, initialLabels?: Record<string, string>) {
         this.baseGroundColor = groundColor;
         // Create the Ground
@@ -132,8 +148,10 @@ export class Environment {
             this.cardinalSprites.push({ sprite, az, textKey: key });
         });
     }
+
     /**
-     * Switches betweeen solid and translucid ground
+     * Switches between solid and translucent ground modes.
+     * @param {boolean} isSolid - If true, ground is opaque; otherwise, it's translucent.
      */
     setGroundMode(isSolid: boolean) {
         const mat = this.groundMesh.material as THREE.MeshBasicMaterial;
@@ -154,7 +172,9 @@ export class Environment {
     }
 
     /**
-     * Update the atmosphere shader with the sun's position
+     * Updates the atmosphere shader with the sun's altitude and azimuth.
+     * @param {number} alt - Sun altitude in degrees.
+     * @param {number} az - Sun azimuth in degrees.
      */
     updateSunPosition(alt: number, az: number) {
         const pos = new Float32Array(3);
@@ -164,6 +184,7 @@ export class Environment {
 
     /**
      * Toggles the visibility of the atmospheric Rayleigh simulation.
+     * @param {boolean} enabled - Whether to enable the atmosphere.
      */
     setAtmosphereEnabled(enabled: boolean) {
         this.skyMesh.visible = enabled;
@@ -171,13 +192,16 @@ export class Environment {
 
     /**
      * Returns whether the atmospheric Rayleigh simulation is currently visible.
+     * @returns {boolean} True if the atmosphere is enabled.
      */
     isAtmosphereEnabled(): boolean {
         return this.skyMesh.visible;
     }
     
     /**
-     * Updates the color and text of the cardinal direction labels.
+     * Updates the color and localized text of the cardinal direction labels.
+     * @param {string} color - CSS color string for the text.
+     * @param {Record<string, string>} [labels] - Map of direction keys to new localized labels.
      */
     updateCardinalLabels(color: string, labels?: Record<string, string>) {
         this.cardinalSprites.forEach(item => {
@@ -191,8 +215,12 @@ export class Environment {
             item.sprite.material.needsUpdate = true;
         });
     }
+
     /**
-     * Generates a 2D Canvas-based text sprite for the cardinal directions.
+     * Generates a 2D Canvas-based text sprite for a cardinal direction.
+     * @param {string} text - The direction text (e.g., 'N', 'S').
+     * @param {string} cardinalColor - CSS color string for the text.
+     * @returns {THREE.Sprite} The generated sprite.
      */
     createCardinalSprite(text: string, cardinalColor: string): THREE.Sprite {
         const mat    = new THREE.SpriteMaterial({ 
@@ -206,7 +234,11 @@ export class Environment {
     }
 
     /**
-     * Helper to create the canvas texture for a cardinal label.
+     * Creates a canvas texture containing the specified text.
+     * @param {string} text - The text to render.
+     * @param {string} color - CSS color string for the text.
+     * @returns {THREE.CanvasTexture} The generated texture.
+     * @private
      */
     private createCardinalTexture(text: string, color: string): THREE.CanvasTexture {
         const canvas = document.createElement('canvas');
@@ -222,13 +254,15 @@ export class Environment {
 
     /**
      * Toggles the visibility of the ground plane.
+     * @param {boolean} visible - Whether the ground should be visible.
      */
     setGroundVisible(visible: boolean) {
         this.groundMesh.visible = visible;
     }
 
     /**
-     * Dynamically updates the ground color
+     * Dynamically updates the ground base color.
+     * @param {number} color - Hex color value for the ground.
      */
     setGroundColor(color: number) {
         this.baseGroundColor = color;
@@ -238,6 +272,7 @@ export class Environment {
 
     /**
      * Updates the ground color based on daylight to provide better contrast.
+     * @param {number} daylightFade - Fade factor for daylight (1.0 = night, 0.0 = day).
      */
     updateDaylight(daylightFade: number) {
         if (!this.groundMesh) return;
@@ -262,8 +297,7 @@ export class Environment {
     }
 
     /**
-     * Iterates through the group and safely disposes of geometries, 
-     * materials, and canvas textures to prevent memory leaks.
+     * Safely disposes of geometries, materials, and textures to prevent memory leaks.
      */
     dispose() {
         this.group.children.forEach(child => {

@@ -2,16 +2,29 @@
 import { api } from './client'; 
 import { siderisEndpoints } from './endpoints';
 
+/**
+ * Parameters for synchronizing astronomical object positions with a specific observer context.
+ */
 export interface SyncParams {
+    /** The target date and time in ISO format. */
     target_time: string;
+    /** Observer's latitude in degrees. */
     lat: number;
+    /** Observer's longitude in degrees. */
     lon: number;
+    /** Observer's elevation in meters. */
     elev: number;
 }
 
+/**
+ * Sideris API module for astronomical calculations, catalog lookups, and ephemeris data.
+ */
 export const siderisAPI = {
     /**
-     * Sync the sidereal or planetary positions
+     * Synchronizes the positions of sidereal or planetary objects based on observer context.
+     * @param {'sidereal' | 'planetary'} type - The catalog type to synchronize.
+     * @param {SyncParams} params - The observer's location and target time.
+     * @returns {Promise<any>} The synchronized position data.
      */
     async syncSky(type: 'sidereal' | 'planetary', params: SyncParams) {
         const url = type === 'sidereal' 
@@ -23,7 +36,9 @@ export const siderisAPI = {
     },
 
     /**
-     * Get the constellations metadata
+     * Retrieves constellations metadata.
+     * @param {string} [lang='en'] - The preferred language for metadata.
+     * @returns {Promise<any>} Constellation information.
      */
     async getConstellations(lang: string = 'en') {
         const { data } = await api.get(siderisEndpoints.sidereal.constellations, {params: { lang } });
@@ -31,9 +46,12 @@ export const siderisAPI = {
     },
 
     /**
-     * Get metadata from sidereal or planetary objects
-     * 
-     * Sidereal is static, Planetary requires observer context.
+     * Retrieves metadata for sidereal or planetary objects.
+     * Sidereal metadata is generally static, while planetary metadata requires observer context.
+     * @param {'sidereal' | 'planetary'} type - The catalog type.
+     * @param {SyncParams} [params] - Optional observer context (required for planetary).
+     * @param {string} [lang='en'] - The preferred language for metadata.
+     * @returns {Promise<any>} The object metadata.
      */
     async getMetadata(type: 'sidereal' | 'planetary', params?: SyncParams, lang: string = 'en') {
         const url = type === 'sidereal'
@@ -44,8 +62,14 @@ export const siderisAPI = {
         const { data } = await api.get(url, { params: { ...params, lang } });
         return data;
     },
+
     /**
-     * Get an object's detailed ephemeris
+     * Retrieves detailed ephemeris information for a specific astronomical object.
+     * @param {'sidereal' | 'planetary'} type - The catalog type.
+     * @param {string} id - The unique identifier of the object.
+     * @param {SyncParams} params - The observer's location and target time.
+     * @param {string} [lang='en'] - The preferred language for details.
+     * @returns {Promise<any>} Detailed ephemeris data for the object.
      */
     async getObjectDetails(type: 'sidereal' | 'planetary', id: string, params: SyncParams, lang: string = 'en') {
         const url = type === 'sidereal'

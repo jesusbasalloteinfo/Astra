@@ -22,25 +22,40 @@ import { TelescopePointer } from '../entities/TelescopePointer';
  * updates for all astronomical entities (stars, planets, constellations, etc.).
  */
 export class SkyMap3DEngine {
-    // Core Three.js components
+    /** The main Three.js scene. */
     private scene: THREE.Scene;
+    /** The WebGL renderer. */
     private renderer: THREE.WebGLRenderer;
+    /** Observer to handle container resizing. */
     private resizeObserver: ResizeObserver; 
+    /** ID of the current requestAnimationFrame. */
     private animationId: number = 0;
 
-    // Controllers
+    /** Controller for camera movement and zooming. */
     private cameraCtrl: CameraController;
+    /** Controller for object selection and raycasting. */
     private selectionCtrl: SelectionController;
     
-    // Scene entities
+    /** Ground, horizon, and atmospheric effects. */
     private environment: Environment;
+    /** Planetary objects (Sun, Moon, Planets). */
     private planetary: Planetary;
+    /** Sidereal objects (Stars, Deep Sky Objects). */
     private sidereal: Sidereal;
+    /** Constellation lines and labels. */
     private constellations: Constellations;
+    /** Visual reticle for the selected object. */
     private targetReticle:TargetReticle;
+    /** Visual pointer for the telescope's current position. */
     private telescopePointer: TelescopePointer;
+    /** Current color used for cardinal direction labels. */
     private currentCardinalColor: string;
 
+    /**
+     * Creates an instance of SkyMap3DEngine.
+     * @param {HTMLDivElement} container - The HTML element to mount the renderer.
+     * @param {any} props - Initial configuration properties.
+     */
     constructor(private container: HTMLDivElement, props: any) {
         this.currentCardinalColor = props.cardinalColor;
         // Initialize Scene & Renderer
@@ -106,6 +121,7 @@ export class SkyMap3DEngine {
      * Main animation loop.
      * Updates entity positions based on the current time/location store
      * and renders the frame.
+     * @private
      */
     private animate = () => {
         this.animationId = requestAnimationFrame(this.animate);
@@ -160,6 +176,7 @@ export class SkyMap3DEngine {
     /**
      * Updates the visual properties of the scene entities.
      * Called directly by Svelte when props change.
+     * @param {any} props - Updated configuration properties.
      */
     updateProps(props: any) {
         if (props.showGround !== undefined) this.environment.setGroundVisible(props.showGround);
@@ -193,13 +210,17 @@ export class SkyMap3DEngine {
     
     /**
      * Commands the camera controller to fly towards specific celestial coordinates.
+     * @param {number} alt - Target altitude in degrees.
+     * @param {number} az - Target azimuth in degrees.
+     * @param {boolean} [setReticle=false] - Whether to show the reticle.
      */
     flyTo(alt: number, az: number, setReticle:boolean =false) {
         this.cameraCtrl.flyTo(alt, az);
     }
     
     /**
-     * Calculates a constellation centroid and flies the camera to that constellation
+     * Calculates a constellation centroid and flies the camera to that constellation.
+     * @param {string} abbr - The abbreviation of the constellation (e.g., 'Ori').
      */
     flyToConstellation(abbr: string) {
         const constel = catalogStore.constellations.find(c => c.abbr === abbr);
@@ -243,6 +264,9 @@ export class SkyMap3DEngine {
         }
     }
     
+    /**
+     * Recenters the camera on the currently selected object.
+     */
     recenterSelected() {
         if (this.selectionCtrl.selectedId) {
             this.selectionCtrl.selectById(this.selectionCtrl.selectedId);
@@ -250,7 +274,9 @@ export class SkyMap3DEngine {
     }
 
     /**
-     * Sets the telescope pointer inside the sky map
+     * Sets the telescope pointer inside the sky map.
+     * @param {number | null} alt - Telescope altitude.
+     * @param {number | null} az - Telescope azimuth.
      */
     setTelescopePosition(alt: number | null, az: number | null) {
         if (alt !== null && az !== null) {
@@ -262,13 +288,14 @@ export class SkyMap3DEngine {
 
     /**
      * Programmatically selects an object, turns on the reticle, and flies to it.
+     * @param {string} id - The ID of the object to select.
      */
     selectObject(id: string) {
         this.selectionCtrl.selectById(id);
     }
 
     /**
-     * Clears the current selection and hides the reticle
+     * Clears the current selection and hides the reticle.
      */
     clearSelection() {
         this.selectionCtrl.clearSelection();
@@ -276,6 +303,9 @@ export class SkyMap3DEngine {
 
     /**
      * Handles browser window resizing to maintain correct aspect ratio.
+     * @param {number} width - New container width.
+     * @param {number} height - New container height.
+     * @private
      */
     private onResize = (width: number, height: number) => {
         this.cameraCtrl.resize(width, height);
