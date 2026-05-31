@@ -1,3 +1,6 @@
+"""
+Manager for the device pairing process via WebSockets.
+"""
 import asyncio
 import random
 import string
@@ -7,14 +10,24 @@ from services.db import DeviceService
 device_service = DeviceService()
 
 class PairingManager:
+    """
+    Manages the lifecycle of device pairing requests.
+
+    Handles PIN generation, temporary WebSocket connections for devices awaiting
+    pairing, and notifying devices when a user successfully pairs with them.
+    """
     def __init__(self):
+        """Initializes the PairingManager."""
         self._pin_to_device: dict[str, str] = {}
         self._device_to_pin: dict[str, str] = {}
         self._pending_ws: dict[str, WebSocket] = {}
 
     def _new_pin(self) -> str:
         """
-        Generate a new connection pin
+        Generates a new unique 8-character connection PIN.
+
+        Returns:
+            str: The generated PIN.
         """
         while True:
             pin = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
@@ -24,7 +37,10 @@ class PairingManager:
             
     def _cleanup(self, device_id: str):
         """
-        Remove the temporaly info of a device
+        Removes temporary pairing information for a device.
+
+        Args:
+            device_id (str): The identifier of the device.
         """
         pin = self._device_to_pin.pop(device_id, None)
         if pin:
@@ -33,7 +49,14 @@ class PairingManager:
 
     async def register(self, device_id: str, ws: WebSocket):
         """
-        Register a new pending pair request
+        Registers a new device awaiting pairing.
+
+        Accepts the WebSocket connection, generates a PIN, and waits for a pairing
+        confirmation.
+
+        Args:
+            device_id (str): The identifier of the device.
+            ws (WebSocket): The active WebSocket connection.
         """
         await ws.accept()
         # Remove older pending pair requests
@@ -60,7 +83,17 @@ class PairingManager:
 
     async def pair_device(self, pin: str, user_id: str) -> str:
         """
-        Pairs a new device
+        Processes a user's request to pair with a device using a PIN.
+
+        Args:
+            pin (str): The PIN provided by the user.
+            user_id (str): The ID of the user performing the pairing.
+
+        Returns:
+            str: The device ID that was paired.
+
+        Raises:
+            ValueError: If the PIN is invalid or expired.
         """
         device_id = self._pin_to_device.get(pin)
         if not device_id:
@@ -84,7 +117,12 @@ class PairingManager:
 
     async def _notify_pair(self, ws: WebSocket, token: str, ws_url: str):
         """
-        Sends the newly assigned device token to the edge device
+        Sends the newly assigned device token to the edge device.
+
+        Args:
+            ws (WebSocket): The device's pairing WebSocket.
+            token (str): The generated access token.
+            ws_url (str): The WebSocket tunnel URL for the device.
         """
         try:
             msg = WsPairedSuccess(token=token, ws_url=ws_url)

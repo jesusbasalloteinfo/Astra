@@ -1,24 +1,46 @@
+"""
+Implementation logic for observation tools interacting with external services and devices.
+"""
 from typing import Tuple
 
 import httpx
 import os
 from datetime import datetime, timezone
-from api.devices import get_device_tunnel
 from services.device_tunnel.tunnel import DeviceTunnel
 from models.device_messages import SlewCommand, SlewCommandData, CoordinateTypes
 
 SIDERIS_URL = os.getenv("SIDERIS_API_BASE", "http://sideris:8624")
 
 async def search_object_impl(query: str):
-    print("\n\n")
-    print(f"{SIDERIS_URL}/search")
-    print("\n\n")
+    """
+    Implementation for searching celestial objects via the Sideris API.
+
+    Args:
+        query (str): The search term.
+
+    Returns:
+        dict: The search results from Sideris.
+    """
     async with httpx.AsyncClient() as client:
         response = await client.get(f"{SIDERIS_URL}/search", params={"q": query})
         response.raise_for_status()
         return response.json()
 
-async def get_object_details_impl(object_id: str, type: str, location:Tuple[float, float]):
+async def get_object_details_impl(object_id: str, type: str, location: Tuple[float, float]):
+    """
+    Implementation for fetching detailed object ephemerides via the Sideris API.
+
+    Args:
+        object_id (str): The identifier of the celestial object.
+        type (str): The type ('sidereal' or 'planetary').
+        location (Tuple[float, float]): The observer's location [lat, lon].
+
+    Returns:
+        dict: The object details including current coordinates.
+
+    Raises:
+        ValueError: If an invalid object type is provided.
+    """
     async with httpx.AsyncClient() as client:
         # Both sidereal and planetary ephemeris endpoints require target_time, lat, lon
         
@@ -39,11 +61,32 @@ async def get_object_details_impl(object_id: str, type: str, location:Tuple[floa
         return response.json()
 
 async def slew_to_object_impl(tunnel: DeviceTunnel, 
-                              telescope:str,
-                              location:Tuple[float, float],
+                              telescope: str,
+                              location: Tuple[float, float],
                               id: str, 
                               type: str, 
                               mode: str):
+    """
+    Implementation for commanding a telescope to slew to a specific object.
+
+    Fetches the current horizontal coordinates of the object from Sideris
+    and sends a movement command through the device tunnel.
+
+    Args:
+        tunnel (DeviceTunnel): The active tunnel to the Edge device.
+        telescope (str): The name of the telescope device.
+        location (Tuple[float, float]): The observer's location [lat, lon].
+        id (str): The target object identifier.
+        type (str): The target object type.
+        mode (str): The slew mode ('TRACK', 'SLEW', or 'SYNC').
+
+    Returns:
+        str: Success message.
+
+    Raises:
+        ValueError: If coordinates cannot be retrieved.
+        Exception: If the device command fails or is cancelled.
+    """
     try:
         # 1. Fetch object coordinates from sideris
         details = await get_object_details_impl(id, type, location)

@@ -1,3 +1,9 @@
+"""
+Main entry point for the Astra API service.
+
+Initializes the FastAPI application, configures logging, establishes database
+connections, and registers all API routers.
+"""
 import os
 import asyncio
 import inspect
@@ -28,6 +34,9 @@ DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 API_BASE_PATH="/api"
 
 async def init_db():
+    """
+    Initializes the database connection and sets up collection indexes.
+    """
     await db_connector.connect()
 
     user_service = UserService()
@@ -35,9 +44,12 @@ async def init_db():
 
 
 @asynccontextmanager
-async def lifespan(app:FastAPI):
+async def lifespan(app: FastAPI):
     """
-    App lifespan with async context manager
+    Manages the application lifecycle.
+
+    Connects to the database on startup and ensures a clean disconnection
+    on shutdown.
     """
 
     LOG = get_logger("ASTRA API")
@@ -82,6 +94,7 @@ api=APIRouter(prefix=API_BASE_PATH)
 
 @api.get("")
 def health():
+    """Health check endpoint."""
     return {"status": "ok", "message": "Astra API is running!"}
 
 
@@ -91,8 +104,3 @@ app.include_router(users_router, prefix=API_BASE_PATH+"/users", tags=["User Mana
 app.include_router(devices_router, prefix=API_BASE_PATH+"/devices", tags=["Device management"])
 app.include_router(obs_router, prefix=API_BASE_PATH+"/observations", tags=["Observations"])
 app.include_router(chat_router, prefix=API_BASE_PATH+"/chat", tags=["Chat"])
-
-
-
-
-

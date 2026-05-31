@@ -1,3 +1,6 @@
+"""
+Manager for WebSocket tunnels between the Astra API and Edge devices.
+"""
 import asyncio
 import uuid
 from typing import Callable, Awaitable
@@ -17,9 +20,19 @@ EventListener = Callable[[EventMessage], Awaitable[None]]
 
 class DeviceTunnel:
     """
-    Represents an edge device connection through a tunnel
+    Represents an active WebSocket connection to an Edge device.
+
+    Handles message dispatching, command transmission with response tracking,
+    and event notification for registered listeners.
     """
     def __init__(self, device_id: str, ws: WebSocket):
+        """
+        Initializes the DeviceTunnel.
+
+        Args:
+            device_id (str): The identifier of the Edge device.
+            ws (WebSocket): The active WebSocket connection.
+        """
         self.device_id = device_id
         self._ws = ws
         self._pending: dict[str, asyncio.Future[ResponseMessage]] = {}
@@ -27,7 +40,7 @@ class DeviceTunnel:
 
     async def listen(self):
         """
-        Main device tunnel loop receiving event data
+        Main tunnel loop that asynchronously receives and dispatches device messages.
         """
         try:
             while True:
@@ -41,12 +54,15 @@ class DeviceTunnel:
 
     async def _dispatch(self, raw: str):
         """
-        Parse the received info
+        Parses and routes an incoming message from the device.
+
+        Args:
+            raw (str): The raw JSON message string.
         """
         try:
             # Check if is a valid response
             msg = _adapter.validate_json(raw)
-        except Exception as e:
+        except Exception:
             return  # Malformed message, ignore
         
         if isinstance(msg, ResponseMessage):
@@ -67,7 +83,17 @@ class DeviceTunnel:
 
     async def send_command(self, payload: CommandPayloadUnion, timeout: float = 10.0) -> ResponseMessage:
         """
-        Sends a command through the tunnel to the edge device
+        Sends a command to the Edge device and waits for a response.
+
+        Args:
+            payload (CommandPayloadUnion): The command to send.
+            timeout (float): Max seconds to wait for a response.
+
+        Returns:
+            ResponseMessage: The response from the device.
+
+        Raises:
+            TimeoutError: If the device does not respond within the timeout period.
         """
         req_id = str(uuid.uuid4())
         msg = CommandMessage(req_id=req_id, payload=payload)
@@ -87,14 +113,18 @@ class DeviceTunnel:
 
 class TunnelManager:
     """
-    Manages a collection of device tunnels
+    Central manager for all active Edge device tunnels.
     """
     def __init__(self):
+        """Initializes the TunnelManager."""
         self._tunnels: dict[str, DeviceTunnel] = {}
 
     def register(self, tunnel: DeviceTunnel):
         """
-        Adds a tunnel to the managed collection
+        Registers a new tunnel and inherits listeners from previous connections if any.
+
+        Args:
+            tunnel (DeviceTunnel): The tunnel instance to register.
         """
         old = self._tunnels.get(tunnel.device_id)
         if old:
@@ -103,13 +133,22 @@ class TunnelManager:
 
     def unregister(self, device_id: str):
         """
-        Remove a tunnel connection
+        Removes a tunnel registration.
+
+        Args:
+            device_id (str): The device identifier.
         """
         self._tunnels.pop(device_id, None)
 
     def get(self, device_id: str) -> DeviceTunnel | None:
         """
-        Returns a tunnel connection
+        Retrieves an active tunnel by device ID.
+
+        Args:
+            device_id (str): The device identifier.
+
+        Returns:
+            Optional[DeviceTunnel]: The tunnel instance if active, None otherwise.
         """
         return self._tunnels.get(device_id)
     

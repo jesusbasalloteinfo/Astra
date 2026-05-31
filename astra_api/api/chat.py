@@ -1,3 +1,6 @@
+"""
+FastAPI router for AI assistant chat operations in astra_api.
+"""
 import json
 import asyncio
 from typing import List, Optional
@@ -19,6 +22,17 @@ router = APIRouter()
 wiki_instance=WikiEngine(lang="en")
 
 class StreamRequest(BaseModel):
+    """
+    Request model for the chat streaming endpoint.
+
+    Attributes:
+        message (Optional[ChatMessage]): The new message from the user.
+        model (str): The LLM model to use.
+        selected_obj (Optional[str]): The name of the object currently focused in the UI.
+        location_id (Optional[str]): The ID of the user's location to use for context.
+        device_id (Optional[str]): The ID of the connected Edge device.
+        telescope (Optional[str]): The name of the telescope driver.
+    """
     message: Optional[ChatMessage] = None
     model: str = "astra_ai"
     selected_obj: Optional[str] = None
@@ -70,7 +84,18 @@ You must follow this priority logic when answering:
 Professional, pedagogical, and wonder-filled. You are a mentor among the stars.
 """
 
-def build_system_prompt(username, selected_obj, telescope_status):
+def build_system_prompt(username: str, selected_obj: Optional[str], telescope_status: Optional[str]) -> str:
+    """
+    Fills the system prompt template with the current operational context.
+
+    Args:
+        username (str): The user's name.
+        selected_obj (Optional[str]): The currently focused object.
+        telescope_status (Optional[str]): Connection status or driver name.
+
+    Returns:
+        str: The formatted system prompt.
+    """
 
     obj_str = selected_obj if selected_obj else "None"
     tel_str = "CONNECTED" if telescope_status else "None"
@@ -81,16 +106,34 @@ def build_system_prompt(username, selected_obj, telescope_status):
 @router.get("/session/{observation_id}")
 async def get_chat_session(observation_id: str, username: str = Depends(get_request_user)):
     """
-    Retrieves the active chat session for a given observation, 
-    creating it if it doesn't exist.
+    Retrieves the active chat session for a given observation.
+
+    Args:
+        observation_id (str): The identifier of the observation.
+        username (str): The authenticated username.
+
+    Returns:
+        ChatSession: The chat session object.
     """
     session = await chat_service.get_or_create_session(observation_id, username)
     return session
 
 async def sse_event_generator(history: ChatHistory, tools: list, model: str, session_id: str, system_prompt: str):
     """
-    Consumes the internal stream_chat generator and formats the 
-    internal SSEEvent objects into Server-Sent Events text chunks.
+    Generator for Server-Sent Events (SSE).
+
+    Converts internal engine events into the SSE text format and handles 
+    final history persistence.
+
+    Args:
+        history (ChatHistory): Current conversation history.
+        tools (list): Available tools for the assistant.
+        model (str): The LLM model name.
+        session_id (str): The chat session identifier.
+        system_prompt (str): The system prompt to use.
+
+    Yields:
+        str: SSE data chunks.
     """
     try:
         async for event in stream_chat(history=history, tools=tools, model=model, system_prompt=system_prompt):
@@ -113,9 +156,18 @@ async def sse_event_generator(history: ChatHistory, tools: list, model: str, ses
 @router.post("/stream/{session_id}")
 async def chat_stream(session_id: str, request: StreamRequest, username: str = Depends(get_request_user)):
     """
-    Endpoint for streaming LLM chat.
-    Accepts a session ID and a new message, appending it to the history 
-    and streaming back the assistant's response.
+    Endpoint for streaming LLM chat responses.
+
+    Initializes the chat environment, resolves user location, prepares tools,
+    and returns a StreamingResponse.
+
+    Args:
+        session_id (str): The identifier of the chat session.
+        request (StreamRequest): The request parameters.
+        username (str): The authenticated username.
+
+    Returns:
+        StreamingResponse: An SSE stream of assistant events.
     """
     
     # 1. Fetch the existing session

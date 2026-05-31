@@ -1,3 +1,6 @@
+"""
+Database connector for MongoDB using AsyncMongoClient.
+"""
 import logging
 import os
 from pymongo import AsyncMongoClient
@@ -9,6 +12,12 @@ load_dotenv()
 logging.getLogger("pymongo").setLevel(logging.INFO)
 
 class MongoDBConnector:
+    """
+    Handles connections to a MongoDB instance.
+
+    Provides methods to establish, close, and retrieve database and collection
+    references asynchronously.
+    """
     def __init__(self):
         """Initialize the MongoDB connector."""
         self.host = os.getenv("DB_HOST", "localhost")
@@ -20,7 +29,12 @@ class MongoDBConnector:
         self.logger = get_logger("MongoDBConnector")
 
     async def connect(self):
-        """Establish connection to MongoDB."""
+        """
+        Establish connection to MongoDB.
+
+        Raises:
+            Exception: If the connection fails.
+        """
         if self.client is None:
             try:
                 if self.user and self.pswd:
@@ -44,13 +58,29 @@ class MongoDBConnector:
             self.client = None
 
     def get_db(self):
-        """Get a MongoDB database instance."""
+        """
+        Get a MongoDB database instance.
+
+        Returns:
+            Database: The MongoDB database instance.
+
+        Raises:
+            RuntimeError: If the client is not connected.
+        """
         if self.client is None:
             raise RuntimeError("DB connection not found")
         return self.client[self.db_name]
 
     def get_collection(self, collection_name: str):
-        """Get a MongoDB collection"""
+        """
+        Get a MongoDB collection.
+
+        Args:
+            collection_name (str): Name of the collection to retrieve.
+
+        Returns:
+            Collection: The MongoDB collection instance.
+        """
         return self.get_db()[collection_name]
 
 # Module Singleton

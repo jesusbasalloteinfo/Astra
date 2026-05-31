@@ -1,3 +1,6 @@
+"""
+FastAPI router for astronomical observation management in astra_api.
+"""
 from datetime import datetime
 
 from fastapi import APIRouter, HTTPException, Depends, status
@@ -14,6 +17,7 @@ router = APIRouter()
 # --- Request Schemas ---
 
 class ObservationResponse(BaseModel):
+    """Data model for observation listing and detail responses."""
     id: str
     name: str
     description: Optional[str] = None
@@ -24,10 +28,12 @@ class ObservationResponse(BaseModel):
     model_config = {"from_attributes": True} # Read the atributes from DB
 
 class ObservationCreate(BaseModel):
+    """Request model for creating a new observation."""
     name: str
     description: Optional[str] = None
 
 class ObservationUpdate(BaseModel):
+    """Request model for updating observation details."""
     name: Optional[str] = None
     description: Optional[str] = None
 
@@ -35,6 +41,15 @@ class ObservationUpdate(BaseModel):
 
 @router.get("", response_model=List[ObservationResponse], response_model_by_alias=False)
 async def list_obs(username: str = Depends(get_request_user)):
+    """
+    Lists all active observations belonging to the authenticated user.
+
+    Args:
+        username (str): The authenticated username.
+
+    Returns:
+        List[ObservationResponse]: The list of user observations.
+    """
     service = ObservationService()
     return await service.get_owner_observations(username)
 
@@ -44,6 +59,19 @@ async def get_obs(
     obs_id: str, 
     username: str = Depends(get_request_user)
 ):
+    """
+    Retrieves detailed information for a specific observation.
+
+    Args:
+        obs_id (str): The observation ID.
+        username (str): The authenticated username.
+
+    Returns:
+        ObservationResponse: The observation details.
+
+    Raises:
+        HTTPException: If the observation is not found or access is denied.
+    """
     service = ObservationService()
     try:
         return await service.get_observation(obs_id, username)
@@ -56,6 +84,19 @@ async def create_obs(
     data: ObservationCreate, 
     username: str = Depends(get_request_user)
 ):
+    """
+    Creates a new astronomical observation session.
+
+    Args:
+        data (ObservationCreate): The observation data.
+        username (str): The authenticated username.
+
+    Returns:
+        dict: The identifier of the created observation and a success message.
+
+    Raises:
+        HTTPException: If an observation with the same name already exists.
+    """
     service = ObservationService()
     try:
         # Create Observation from the schema
@@ -73,6 +114,20 @@ async def update_obs(
     data: ObservationUpdate, 
     username: str = Depends(get_request_user)
 ):
+    """
+    Updates the name or description of an existing observation.
+
+    Args:
+        obs_id (str): The observation ID.
+        data (ObservationUpdate): The update fields.
+        username (str): The authenticated username.
+
+    Returns:
+        dict: Success status.
+
+    Raises:
+        HTTPException: If the observation is not found.
+    """
     service = ObservationService()
     try:
         success = await service.update_observation_info(
@@ -90,6 +145,19 @@ async def delete_obs(
     obs_id: str, 
     username: str = Depends(get_request_user)
 ):
+    """
+    Soft-deletes an astronomical observation.
+
+    Args:
+        obs_id (str): The observation ID.
+        username (str): The authenticated username.
+
+    Returns:
+        None
+
+    Raises:
+        HTTPException: If the observation is not found or access is denied.
+    """
     service = ObservationService()
     try:
         await service.delete_observation(obs_id, username)

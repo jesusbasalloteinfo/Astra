@@ -14,7 +14,20 @@ class WikiNotFoundError(WikiError):
 
 
 class WikiEngine:
+    """
+    Engine for interacting with the Wikipedia and Wikidata APIs.
+
+    Provides high-level methods to search for articles, fetch introductions,
+    parse tables of contents, and extract structured infobox data as Markdown.
+    """
     def __init__(self, lang="en", user_agent="WikiBot/1.0 (contact: email@example.com)"):
+        """
+        Initializes the WikiEngine.
+
+        Args:
+            lang (str): The language code for Wikipedia (e.g., 'en', 'es').
+            user_agent (str): The User-Agent header to use for API requests.
+        """
         self.lang = lang
         self.headers = {"User-Agent": user_agent, "Accept": "application/json"}
         self.wiki_api_base = f"https://{lang}.wikipedia.org/w/api.php"
@@ -298,8 +311,21 @@ class WikiEngine:
     # PUBLIC METHODS (Tools)
     # ==========================================
 
-    async def search_articles(self, query: str, limit:int=10) -> list[dict]:
-        """Search for articles with a query, returning QIDs and summaries."""
+    async def search_articles(self, query: str, limit: int = 10) -> list[dict]:
+        """
+        Searches for Wikipedia articles matching a query.
+
+        Args:
+            query (str): The search term.
+            limit (int): Maximum number of results to return.
+
+        Returns:
+            list[dict]: A list of dictionaries containing 'qid', 'title', 
+                'description', and 'url'.
+
+        Raises:
+            WikiNotFoundError: If no matching articles are found.
+        """
         
         data = await self._request_search_article(query, limit)
         
@@ -324,7 +350,15 @@ class WikiEngine:
         return response
 
     async def get_intro_toc(self, qid: str) -> str:
-        """Get an article's introduction and a parsed Table of Contents."""
+        """
+        Retrieves an article's introduction and its Table of Contents.
+
+        Args:
+            qid (str): The Wikidata QID of the article.
+
+        Returns:
+            str: A Markdown-formatted string containing the summary and TOC.
+        """
 
         title = await self._get_title(qid)
 
@@ -335,7 +369,7 @@ class WikiEngine:
 
         # 1. Parse Introduction
         html_intro = data_intro["parse"]["text"]["*"]
-        clean=self._clean_html(html_intro)
+        clean = self._clean_html(html_intro)
         intro_md = markdownify.markdownify(clean, heading_style="ATX").strip()
 
         # 2. Parse Table of Contents
@@ -365,7 +399,19 @@ class WikiEngine:
         return final_message
 
     async def get_section(self, qid: str, section_index: str) -> str:
-        """Get a specific article section formated."""
+        """
+        Retrieves and formats a specific section of a Wikipedia article.
+
+        Args:
+            qid (str): The Wikidata QID of the article.
+            section_index (str): The index of the section to retrieve.
+
+        Returns:
+            str: The Markdown-formatted content of the section.
+
+        Raises:
+            WikiNotFoundError: If the section content is missing.
+        """
         title = await self._get_title(qid)
         raw_data = await self._request_article_section(title, section_index)
 
@@ -373,11 +419,19 @@ class WikiEngine:
         if not html_content:
             raise WikiNotFoundError(f"Section {section_index} not found")
 
-        clean=self._clean_html(html_content)
+        clean = self._clean_html(html_content)
         return markdownify.markdownify(clean, heading_style="ATX").strip()
 
     async def get_infotable(self, qid: str) -> dict:
-        """Extract the structured Infobox data parsed into logical Markdown tables."""
+        """
+        Extracts structured Infobox data from an article as Markdown tables.
+
+        Args:
+            qid (str): The Wikidata QID of the article.
+
+        Returns:
+            dict: A dictionary mapping section headers to Markdown tables.
+        """
         title = await self._get_title(qid)
         raw_data = await self._request_article_section(title, 0)
         html_content = raw_data["parse"]["text"]["*"]
