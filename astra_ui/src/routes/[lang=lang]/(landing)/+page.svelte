@@ -125,7 +125,7 @@
                     {m.landing_badge()}
                 </div>
 
-                <h1 class="text-4xl sm:text-6xl md:text-8xl landscape:text-5xl font-bold text-white mb-6 md:mb-8 tracking-tight leading-[1.1]">
+                <h1 class="text-4xl sm:text-6xl md:text-8xl landscape:text-6xl font-bold text-white mb-6 md:mb-8 tracking-tight leading-[1.1]">
                     {m.landing_hero_prefix()}<br />
                     <span class="inline-block pr-2 pb-1 text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-indigo-400 to-purple-500">
                         {m.name().toUpperCase()}
@@ -225,7 +225,7 @@
                             {m.landing_cta()}
                         </a>
                         <a href="https://github.com/jesusbasalloteinfo/Astra" class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm flex items-center justify-center">
-                            {m.landing_cta_gallery()}
+                            {m.landing_cta_repo()}
                         </a>
                     </div>
                     
