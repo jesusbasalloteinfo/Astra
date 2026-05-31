@@ -3,10 +3,24 @@
     import Stars from '$lib/components/landingComponents/Stars.svelte';
     import AppLogo from '$lib/components/AppLogo.svelte';
     import * as m from '$lib/paraglide/messages.js';
+    import { browser } from '$app/environment';
+    import { goto } from '$app/navigation';
 
     let lang = $derived(page.params.lang ?? '');
     let status = $derived(page.status);
     let message = $derived(page.error?.message);
+
+    /**
+     * Returns to the previous page or falls back to the dashboard/home
+     */
+    function handleBack() {
+        if (browser && document.referrer && document.referrer.includes(window.location.host)) {
+            window.history.back();
+        } else {
+            // Default fallback: Dashboard if possible (it will redirect to landing if not logged in)
+            goto('/dashboard');
+        }
+    }
 </script>
 
 <svelte:head>
@@ -44,10 +58,17 @@
                     {/if}
                 </p>
 
-                <div class="flex justify-center">
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <button 
+                        onclick={handleBack} 
+                        class="inline-flex items-center px-6 py-3 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 text-blue-400 font-medium transition-all cursor-pointer outline-none"
+                    >
+                        {m.obs_sidedock_return()}
+                    </button>
+                    
                     <a 
                         href="/{lang}" 
-                        class="inline-flex items-center px-6 py-3 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 text-blue-400 font-medium transition-all"
+                        class="inline-flex items-center px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 font-medium transition-all"
                     >
                         {m.login_return_home()}
                     </a>

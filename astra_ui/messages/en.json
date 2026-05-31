@@ -314,7 +314,7 @@
   "obs_error_load_title": "Error loading observation",
   "obs_error_load_btn": "Return to Dashboard",
 
-  "obs_sidedock_return": "Return to Sessions",
+  "obs_sidedock_return": "Go Back",
   "obs_sidedock_settings": "Visual settings",
   "obs_sidedock_theme": "Theme settings",
   "obs_sidedock_constellations_title": "Constellations",

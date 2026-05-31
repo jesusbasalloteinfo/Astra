@@ -10,6 +10,7 @@
     import { locStore } from '$lib/stores/location.svelte';
     import { authStore } from '$lib/stores/auth.svelte';
     import { goto } from '$app/navigation';
+    import { browser } from '$app/environment';
 	import { m } from '$lib/paraglide/messages';
 
     let { children } = $props();
@@ -39,6 +40,17 @@
             activeObs.clear();
         };
     });
+
+    /**
+     * Returns to the previous page or falls back to the dashboard
+     */
+    function handleBack() {
+        if (browser && document.referrer && document.referrer.includes(window.location.host)) {
+            window.history.back();
+        } else {
+            goto('/dashboard');
+        }
+    }
 </script>
 
 {#if activeObs.isLoading}
@@ -75,12 +87,12 @@
             <p class="text-sm text-copy-muted max-w-sm mx-auto mt-2 mb-8">
                 {activeObs.error || 'The requested observation is not available.'}
             </p>
-            <a 
-                href="/dashboard/sessions" 
-                class="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-accent/20"
+            <button 
+                onclick={handleBack} 
+                class="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-accent/20 cursor-pointer outline-none"
             >
                 {m.obs_error_load_btn()}
-            </a>
+            </button>
         </div>
     </div>
 

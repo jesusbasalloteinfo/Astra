@@ -2,6 +2,8 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
     import { ArrowLeft, Search, Sparkles } from 'lucide-svelte';
+    import { browser } from '$app/environment';
+    import { goto } from '$app/navigation';
     import ThemeDockButton from './sideDockComponents/ThemeDockButton.svelte';
     import SettingsDockButton from './sideDockComponents/SettingsDockButton.svelte';
 
@@ -71,14 +73,25 @@
         if (themeOpen) closeOtherMenus('theme');
     });
 
+    /**
+     * Returns to the previous page or falls back to the dashboard
+     */
+    function handleBack() {
+        if (browser && document.referrer && document.referrer.includes(window.location.host)) {
+            window.history.back();
+        } else {
+            goto('/dashboard');
+        }
+    }
+
 </script>
 
 <div class="bg-surface backdrop-blur-xl border border-border rounded-3xl p-2 max-lg:landscape:p-1.5 flex flex-col items-center gap-3 max-lg:landscape:gap-1 shadow-[0_8px_32px_rgba(0,0,0,0.3)] pointer-events-auto">
 
     <!-- Return to dashboard -->
-    <a href="/dashboard/sessions" title="Return" class="flex items-center justify-center p-3 max-lg:landscape:p-2 rounded-full hover:bg-panel/50 text-copy-muted hover:text-white transition-all">
+    <button title={m.obs_sidedock_return()} onclick={handleBack} class="flex items-center justify-center p-3 max-lg:landscape:p-2 rounded-full hover:bg-panel/50 text-copy-muted hover:text-white transition-all cursor-pointer outline-none">
         <ArrowLeft size={20} class="max-lg:landscape:w-4 max-lg:landscape:h-4" />
-    </a>
+    </button>
 
     <div class="w-full h-px bg-border/50 my-1 max-lg:landscape:my-0.5"></div>
 

@@ -313,7 +313,7 @@
   "obs_error_load_title": "Error cargando observación",
   "obs_error_load_btn": "Volver al Panel de control",
 
-  "obs_sidedock_return": "Volver a Sesiones",
+  "obs_sidedock_return": "Volver",
   "obs_sidedock_settings": "Configuración visual",
   "obs_sidedock_theme": "Configuración de tema",
   "obs_sidedock_constellations_title": "Constelaciones",
