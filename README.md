@@ -74,9 +74,12 @@ ASTRA uses a containerized microservices architecture:
 
 ## 🚀 Getting Started
 
-For detailed deployment instructions, please refer to the [Deployment Guide](DEPLOY_GUIDE.md).
+For detailed deployment instructions and technical overview, please refer to the documentation:
 
-1. **Clone & Setup:**
+- [🚀 Deployment Guide](docs/DEPLOY_GUIDE.md)
+- [🏗️ Architecture Guide](docs/ARCHITECTURE.md)
+
+1. **Clone & Setup environment:**
    ```bash
    git clone https://github.com/your-username/astra-project.git
    cd astra-project
@@ -89,7 +92,7 @@ For detailed deployment instructions, please refer to the [Deployment Guide](DEP
    ```
 
 3. **Explore:**
-   Navigate to `http://localhost:8000` to access the unified dashboard.
+    Navigate to `http://localhost:8000` to access the unified dashboard.
 
 
 ## 📁 Project Structure
