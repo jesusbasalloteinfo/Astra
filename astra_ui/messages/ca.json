@@ -258,6 +258,9 @@
   "dash_observ_action_save": "Desar canvis",
   "dash_observ_action_delete": "Esborrar",
   "dash_observ_action_cancel": "Cancel·lar",
+  "dash_observ_error_exists": "Ja existeix una sessió amb aquest nom",
+  "dash_observ_creation_date": "Data de creació",
+  "dash_observ_last_activity": "Última activitat",
 
 
   "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",

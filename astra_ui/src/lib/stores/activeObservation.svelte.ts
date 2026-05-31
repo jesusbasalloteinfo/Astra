@@ -26,16 +26,12 @@ class ActiveObservationStore {
         this.error = null;
 
         try {
-            // Search in observation storage
-            let found = obsStore.items.find(o => o.id === id);
+            // Load from API
+            const data = await observationAPI.get(id); 
+            this.current = data;
 
-            if (found) {
-                this.current = found;
-            } else {
-                // Load from API
-                const data = await observationAPI.get(id); 
-                this.current = data;
-            }
+            // Sync with local list store to trigger automatic re-sort
+            obsStore.updateItem(data);
         } catch (e) {
             console.error("Error loading active session:", e);
             this.error = "Could not synchronize with the observatory";

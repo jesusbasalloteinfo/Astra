@@ -258,6 +258,9 @@
   "dash_observ_action_save": "Save changes",
   "dash_observ_action_delete": "Delete",
   "dash_observ_action_cancel": "Cancel",
+  "dash_observ_error_exists": "A session with this name already exists",
+  "dash_observ_creation_date": "Creation date",
+  "dash_observ_last_activity": "Last activity",
 
   "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
   "dash_location_title": "Observing Locations",

@@ -179,7 +179,8 @@
                     id={session.id} 
                     name={session.name} 
                     description={session.description}
-                    creation={session.creation} 
+                    creation={session.creation}
+                    lastUsed={session.last_used} 
                 />
             {:else}
                 <div class="text-center py-10 md:py-12 border border-dashed border-border rounded-xl md:rounded-2xl bg-surface/50">

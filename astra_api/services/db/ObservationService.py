@@ -2,6 +2,7 @@
 Service for managing astronomical observation business logic in astra_api.
 """
 from typing import List, Optional
+from datetime import datetime, timezone
 
 from bson import ObjectId
 from models.observation import Observation
@@ -57,6 +58,15 @@ class ObservationService:
         observation = await self.repo.find_one({"_id": ObjectId(obs_id)})
         if not observation or observation.deleted or observation.owner != user:
             raise ObjectNotFoundError(f"Observation with id {obs_id} not found")
+        
+        # Update last_used
+        now = datetime.now(timezone.utc)
+        await self.repo.update_one(
+            {"_id": ObjectId(obs_id)},
+            {"$set": {"last_used": now}}
+        )
+        observation.last_used = now
+
         return observation
 
     async def get_owner_observations(self, owner: str) -> List[Observation]:
@@ -86,13 +96,15 @@ class ObservationService:
         Raises:
             ObjectNotFoundError: If access is denied or the observation is not found.
         """
-        await self.get_observation(obs_id, user) # Checks ownership
+        await self.get_observation(obs_id, user) # Checks ownership and updates last_used
 
         # Clean None values
         update_data = {k: v for k, v in update_data.items() if v is not None}
         
         if not update_data:
             return False
+
+        update_data["last_used"] = datetime.now(timezone.utc)
 
         return await self.repo.update_one(
             {"_id": ObjectId(obs_id)},

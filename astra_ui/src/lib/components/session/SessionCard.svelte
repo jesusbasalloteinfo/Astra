@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Calendar, Telescope, ChevronRight, Trash2, Pencil } from 'lucide-svelte';
+    import { Calendar, History, ChevronRight, Trash2, Pencil } from 'lucide-svelte';
     import { obsStore } from '$lib/stores/observations.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
 	import { m } from '$lib/paraglide/messages';
@@ -9,14 +9,15 @@
 
     /**
      * Component props
-     * @type {{ id: string, name: string, creation: string, telescope?: string, description?: string | null }}
+     * @type {{ id: string, name: string, creation: string, lastUsed: string, telescope?: string, description?: string | null }}
      * @property {string} id - The unique ID of the observation session
      * @property {string} name - The name of the session
      * @property {string} creation - ISO date string of session creation
+     * @property {string} lastUsed - ISO date string of last session activity
      * @property {string} [telescope='Generic'] - Name of the telescope used
      * @property {string|null} [description=null] - Optional description of the session
      */
-	let { id, name, creation, telescope = 'Generic', description= null } = $props();
+	let { id, name, creation, lastUsed, telescope = 'Generic', description= null } = $props();
 
     /** Whether the delete confirmation modal is visible */
 	let showDeleteModal = $state(false);
@@ -31,7 +32,9 @@
 	let editDescription = $state(description || '');
 
     /** Formatted creation date string */
-	const formattedDate = $derived(formatDate(creation));
+	const formattedCreation = $derived(formatDate(creation));
+    /** Formatted last activity date string */
+	const formattedActivity = $derived(formatDate(lastUsed));
 
     /** Whether there is at least one location available in the store */
 	const hasLocation = $derived(locStore.all.length > 0);
@@ -73,8 +76,9 @@
                 <div class="text-[11px] md:text-xs text-copy-muted line-clamp-1">{description || m.dash_observ_no_description()}</div>
             {/if}
             <div class="flex items-center gap-3 md:gap-4 text-[10px] md:text-xs text-copy-muted">
-                <span class="flex items-center gap-1"><Calendar size={11} /> {formattedDate}</span>
-                <span class="flex items-center gap-1"><Telescope size={11} /> {telescope}</span>
+                <span class="flex items-center gap-1" title="Creation Date"><Calendar size={11} /> {formattedCreation}</span>
+                <span class="flex items-center gap-1" title="Last Activity"><History size={11} /> {formattedActivity}</span>
+                <!-- <span class="flex items-center gap-1"><Telescope size={11} /> {telescope}</span> -->
             </div>
         </div>
 

@@ -64,6 +64,7 @@
                     name={session.name}
                     description={session.description}
                     creation={session.creation}
+                    lastUsed={session.last_used}
                 />
             {:else}
                 <div class="text-center py-12 border-2 border-dashed border-border rounded-2xl">

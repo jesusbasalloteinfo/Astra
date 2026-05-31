@@ -7,8 +7,14 @@ import { authStore } from './auth.svelte';
  * Handles loading, creating, updating, and deleting observations.
  */
 class ObservationStore {
-    /** List of all observation sessions. */
-    items = $state<Observation[]>([]);
+    /** Raw list of observation sessions. */
+    private _items = $state<Observation[]>([]);
+    /** List of all observation sessions, automatically sorted by last activity. */
+    items = $derived(
+        this._items.toSorted((a, b) => 
+            new Date(b.last_used).getTime() - new Date(a.last_used).getTime()
+        )
+    );
     /** ID of the currently selected observation. */
     selectedId = $state<string | null>(null);
     /** Indicates if the store is loading observations. */
@@ -21,15 +27,6 @@ class ObservationStore {
     
     /** Computed property that returns the total count of observations. */
     count = $derived(this.items.length);
-    
-    /**
-     * Sorts observations by creation date in descending order.
-     */
-    private sortItems() {
-        this.items.sort((a, b) => 
-            new Date(b.creation).getTime() - new Date(a.creation).getTime()
-        );
-    }
 
     /**
      * Loads all observations for the authenticated user from the API.
@@ -42,10 +39,22 @@ class ObservationStore {
 
         this.isLoading = true;
         try {
-            this.items = await observationAPI.list();
-            this.sortItems();
+            this._items = await observationAPI.list();
         } finally {
             this.isLoading = false;
+        }
+    }
+
+    /**
+     * Updates an item in the internal state.
+     * Useful for synchronization from other stores.
+     */
+    updateItem(data: Observation) {
+        const index = this._items.findIndex(o => o.id === data.id);
+        if (index !== -1) {
+            this._items[index] = data;
+        } else {
+            this._items.push(data);
         }
     }
 
@@ -72,7 +81,7 @@ class ObservationStore {
                 last_used: new Date().toISOString(),
             };
 
-            this.items.unshift(newObs); // Add as most recent
+            this._items.push(newObs); 
             return id;
         } catch (error) {
             console.error("Error creating observation:", error);
@@ -91,8 +100,8 @@ class ObservationStore {
         // Updates a concrete observation and does an optimistic observation update
         const success = await observationAPI.update(id, data);
         if (success) {
-            this.items = this.items.map(item => 
-                item.id === id ? { ...item, ...data } : item
+            this._items = this._items.map(item => 
+                item.id === id ? { ...item, ...data, last_used: new Date().toISOString() } : item
             );
         }
     }
@@ -106,7 +115,7 @@ class ObservationStore {
     async remove(id: string) {
         // Deletes an observation from the DB and from the store
         await observationAPI.delete(id);
-        this.items = this.items.filter(i => i.id !== id);
+        this._items = this._items.filter(i => i.id !== id);
         if (this.selectedId === id) this.selectedId = null;
     }
 
@@ -124,7 +133,7 @@ class ObservationStore {
      * Resets the store to its initial state.
      */
     reset() {
-        this.items = [];
+        this._items = [];
         this.selectedId = null;
         this.isLoading = false;
     }
