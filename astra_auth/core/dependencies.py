@@ -11,9 +11,21 @@ async def get_request_user(
     auth_header: Optional[HTTPAuthorizationCredentials] = Depends(bearer_scheme),
     x_user_id: Optional[str] = Header(None, alias="X-User-Id")
 ) -> str:
-    """
-    Gets the user from token validation or headers.
-    Supports X-User-Id as a token or as a raw username in DEBUG mode.
+    """Gets the user from token validation or headers.
+
+    This dependency supports extracting the user identity from either the
+    standard Authorization bearer token or a custom X-User-Id header.
+    In DEBUG mode, X-User-Id can be treated as a raw username.
+
+    Args:
+        auth_header (Optional[HTTPAuthorizationCredentials]): The bearer token credentials.
+        x_user_id (Optional[str]): The user ID or token from the X-User-Id header.
+
+    Returns:
+        str: The username (subject) of the authenticated user.
+
+    Raises:
+        HTTPException: If the token is invalid or no authentication is provided.
     """
     token = None
 

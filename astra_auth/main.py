@@ -21,14 +21,28 @@ DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 API_BASE_PATH="/api/auth"
 
 async def init_db():
+    """Initialize the MongoDB connection and setup required indexes.
+    
+    This function connects to the database using the global db_connector and
+    ensures that the AuthRepository has its indexes (username, email) configured.
+    """
     await db_connector.connect()
     auth_repo = AuthRepository()
     await auth_repo.setup_indexes() 
 
 @asynccontextmanager
-async def lifespan(app:FastAPI):
-    """
-    App lifespan with async context manager
+async def lifespan(app: FastAPI):
+    """Manage the application lifespan events.
+
+    This async context manager handles the startup and shutdown phases of the
+    FastAPI application, including key generation, database initialization,
+    and connection teardown.
+
+    Args:
+        app (FastAPI): The FastAPI application instance.
+
+    Raises:
+        HTTPException: If an error occurs during the startup phase.
     """
     LOG = get_logger("ASTRA AUTH")
     LOG.debug("Starting Astra Auth Service...")
@@ -68,6 +82,11 @@ api=APIRouter(prefix=API_BASE_PATH)
 
 @api.get("/health")
 def health():
+    """Service health check endpoint.
+
+    Returns:
+        dict: A status message indicating the service is running.
+    """
     return {"status": "ok", "message": "Astra Auth Service is running!"}
 
 app.include_router(api, tags=["Main"])

@@ -9,8 +9,10 @@ load_dotenv()
 logging.getLogger("pymongo").setLevel(logging.INFO)
 
 class MongoDBConnector:
+    """Manages the asynchronous connection to a MongoDB database."""
+
     def __init__(self):
-        """Initialize the MongoDB connector."""
+        """Initialize the MongoDB connector with environment variables."""
         self.host = os.getenv("DB_HOST", "localhost")
         self.port = int(os.getenv("DB_PORT", "27017"))
         self.user = os.getenv("DB_USER", None)
@@ -20,7 +22,11 @@ class MongoDBConnector:
         self.logger = get_logger("MongoDBConnector")
 
     async def connect(self):
-        """Establish connection to MongoDB."""
+        """Establish an asynchronous connection to the MongoDB server.
+
+        Raises:
+            Exception: If the connection to MongoDB fails.
+        """
         if self.client is None:
             try:
                 if self.user and self.pswd:
@@ -37,20 +43,34 @@ class MongoDBConnector:
                 raise
 
     async def disconnect(self):
-        """Close MongoDB connection."""
+        """Close the asynchronous MongoDB connection if it exists."""
         if self.client is not None:
             self.logger.debug("Closing MongoDB connection...")
             await self.client.close()
             self.client = None
 
     def get_db(self):
-        """Get a MongoDB database instance."""
+        """Get a MongoDB database instance.
+
+        Returns:
+            Database: The MongoDB database object.
+
+        Raises:
+            RuntimeError: If the database client is not connected.
+        """
         if self.client is None:
             raise RuntimeError("DB connection not found")
         return self.client[self.db_name]
 
     def get_collection(self, collection_name: str):
-        """Get a MongoDB collection"""
+        """Get a specific collection from the database.
+
+        Args:
+            collection_name (str): The name of the collection to retrieve.
+
+        Returns:
+            Collection: The requested MongoDB collection object.
+        """
         return self.get_db()[collection_name]
 
 # Module Singleton

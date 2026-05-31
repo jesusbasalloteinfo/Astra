@@ -18,6 +18,17 @@ if not os.path.exists(PROFILES_DIR):
 
 @router.post("/register")
 async def register(data: UserRegister):
+    """Register a new user in the system.
+
+    Args:
+        data (UserRegister): The registration data containing username, email, and password.
+
+    Returns:
+        dict: A success message if registration is successful.
+
+    Raises:
+        HTTPException: If the username or email already exists.
+    """
     success = await auth_service.register(data)
     if not success:
         raise HTTPException(status_code=400, detail="Username or email already exists")
@@ -25,6 +36,17 @@ async def register(data: UserRegister):
 
 @router.post("/login", response_model=TokenResponse)
 async def login(data: UserLogin):
+    """Authenticate a user and return an access token.
+
+    Args:
+        data (UserLogin): The login credentials (username and password).
+
+    Returns:
+        TokenResponse: An object containing the access token.
+
+    Raises:
+        HTTPException: If authentication fails due to invalid credentials.
+    """
     user = await auth_service.authenticate(data)
     if not user:
         raise HTTPException(status_code=401, detail="Invalid username or password")
@@ -34,10 +56,26 @@ async def login(data: UserLogin):
 
 @router.get("/public-key")
 async def public_key():
+    """Retrieve the RS256 public key for token verification.
+
+    Returns:
+        Response: The public key in PEM format.
+    """
     return Response(content=get_public_key(), media_type="application/x-pem-file")
 
 @router.get("/me", response_model=UserProfile)
 async def get_me(username: str = Depends(get_request_user)):
+    """Retrieve the profile of the currently authenticated user.
+
+    Args:
+        username (str): The username extracted from the JWT token.
+
+    Returns:
+        UserProfile: The profile information of the user.
+
+    Raises:
+        HTTPException: If the user profile is not found.
+    """
     profile = await auth_service.get_profile(username)
     if not profile:
         raise HTTPException(status_code=404, detail="User not found")
@@ -48,6 +86,18 @@ async def upload_picture(
     file: UploadFile = File(...),
     username: str = Depends(get_request_user)
 ):
+    """Upload and update the profile picture for the authenticated user.
+
+    Args:
+        file (UploadFile): The image file to be uploaded.
+        username (str): The username of the user performing the upload.
+
+    Returns:
+        dict: A dictionary containing the URL of the uploaded profile picture.
+
+    Raises:
+        HTTPException: If the uploaded file is not an image.
+    """
     # Validate file type
     if not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
@@ -69,6 +119,17 @@ async def upload_picture(
 
 @router.get("/static/profiles/{filename}")
 async def get_profile_picture(filename: str):
+    """Serve a user's profile picture.
+
+    Args:
+        filename (str): The name of the profile picture file to retrieve.
+
+    Returns:
+        FileResponse: The requested image file.
+
+    Raises:
+        HTTPException: If the image file is not found.
+    """
     file_path = os.path.join(PROFILES_DIR, filename)
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="Image not found")
