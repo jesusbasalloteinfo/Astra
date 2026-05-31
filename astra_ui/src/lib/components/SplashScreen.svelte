@@ -5,13 +5,13 @@
     import { onMount } from 'svelte';
 
     /** List of status messages displayed during initialization */
-    const statusSteps = [
-        "Initializing core...",
-        "Connecting to Astra interface...",
-        "Fetching encrypted sessions...",
-        "Synchronizing observer state...",
-        "Rendering interface..."
-    ];
+    const statusSteps = $derived([
+        m.splash_status_core(),
+        m.splash_status_interface(),
+        m.splash_status_sessions(),
+        m.splash_status_sync(),
+        m.splash_status_render()
+    ]);
     
     /** Current step index of the status message sequence */
     let currentStep = $state(0);

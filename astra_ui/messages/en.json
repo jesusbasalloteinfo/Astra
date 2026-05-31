@@ -91,6 +91,13 @@
   "login_register_error": "Registration failed. Username or email might be taken.",
   "login_return_home": "← Back to home",
 
+  "-------------------------------------- SPLASH SECTION -------------------------------------- ": "",
+  "splash_status_core": "Initializing core...",
+  "splash_status_interface": "Connecting to Astra interface...",
+  "splash_status_sessions": "Fetching encrypted sessions...",
+  "splash_status_sync": "Synchronizing observer state...",
+  "splash_status_render": "Rendering interface...",
+
   "====================================== DASHBOARD ======================================": "",
   "dash_title": "Dashboard - {name}",
 

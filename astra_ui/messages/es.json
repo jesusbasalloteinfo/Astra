@@ -91,6 +91,12 @@
   "login_register_error": "Error al registrarse. El usuario o el correo podrían estar en uso.",
   "login_return_home": "← Volver al inicio",
 
+  "-------------------------------------- SPLASH SECTION -------------------------------------- ": "",
+  "splash_status_core": "Inicializando núcleo...",
+  "splash_status_interface": "Conectando con la interfaz Astra...",
+  "splash_status_sessions": "Obteniendo sesiones cifradas...",
+  "splash_status_sync": "Sincronizando estado del observador...",
+  "splash_status_render": "Renderizando interfaz...",
 
   "====================================== DASHBOARD ======================================": "",
   "dash_title": "Panel de control - {name}",

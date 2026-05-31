@@ -91,7 +91,13 @@
   "login_register_error": "Error al registrar-se. L'usuari o el correu podrien estar en ús.",
   "login_return_home": "← Torna a l'inici",
 
-
+  
+  "-------------------------------------- SPLASH SECTION -------------------------------------- ": "",
+  "splash_status_core": "Inicialitzant el nucli...",
+  "splash_status_interface": "Connectant amb la interfície Astra...",
+  "splash_status_sessions": "Obtenint sessions xifrades...",
+  "splash_status_sync": "Sincronitzant l'estat de l'observador...",
+  "splash_status_render": "Renderitzant la interfície...",
 
   "====================================== DASHBOARD ======================================": "",
   "dash_title": "Taulell de control - {name}",

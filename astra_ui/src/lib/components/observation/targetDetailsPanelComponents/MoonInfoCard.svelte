@@ -70,7 +70,7 @@
     <!-- Upper part: Phase and SVG -->
     <div class="flex items-center justify-between">
         <div>
-            <h4 class="text-[10px] uppercase tracking-wider text-copy-muted mb-1">Lunar Phase</h4>
+            <h4 class="text-[10px] uppercase tracking-wider text-copy-muted mb-1">{m.obs_targetinfo_lunar_title()}</h4>
             <div class="flex flex-col gap-2">
                 <div class="flex items-baseline gap-2">
                     <span class="text-xl font-bold text-white tabular-nums">{formatNumber(illuminationPct, 1)}%</span>
