@@ -33,32 +33,35 @@
     const navLinks = $derived([
         { name: m.landing_nav_features(),   href: '#features' },
         { name: m.landing_nav_technology(), href: '#technology' },
-        { name: m.landing_nav_docs(),       href: '#' }
+        { name: m.landing_nav_docs(),       href: 'https://github.com/jesusbasalloteinfo/Astra/tree/main/docs' }
     ]);
 
     // Tecnology data
     const stats = $derived([
         { label: m.landing_stat_telescopes(),  value: m.landing_stat_indi() },
-        { label: m.landing_stat_objects(),     value: "18K+" },
-        { label: m.landing_stat_guiding(),     value: "99.9%" },
-        { label: m.landing_stat_satisfaction(),value: "4.9/5" }
+        { label: m.landing_stat_objects(),     value: "16K+" },
+        { label: m.landing_stat_architecture(),value: "Distributed" },
+        { label: m.landing_stat_license(),     value: "AGPL v3" }
     ]);
 
     // Footer Product Links
     const footerProductLinks = $derived([
         { name: m.landing_footer_feat(), href: '#features' },
-        { name: m.landing_footer_tele(), href: "#" },
-        { name: m.landing_footer_docs(), href: "#" },
-        { name: m.landing_footer_log(),  href: "#" }
+        { name: m.landing_footer_tele(), href: "https://github.com/jesusbasalloteinfo/Astra/blob/main/docs/EDGE_GUIDE.md" },
+        { name: m.landing_footer_docs(), href: "https://github.com/jesusbasalloteinfo/Astra/tree/main/docs" },
+        { name: m.landing_footer_log(),  href: "https://github.com/jesusbasalloteinfo/Astra/commits/main" }
     ]);
 
     // Footer Community Links
     const footerCommunityLinks = $derived([
-        { name: m.landing_footer_cont(),   href: "#" },
-        { name: m.landing_footer_contact(),href: "#" }
+        { name: m.landing_footer_cont(),   href: "https://github.com/jesusbasalloteinfo/Astra/blob/main/CONTRIBUTING.md" },
+        { name: m.landing_footer_contact(),href: "mailto:jesusbasalloteinfo" }
     ]);
 
-    const socialLinks = ["GitHub", "Twitter", "Discord", "Instagram"];
+    const socialLinks = [
+        { name: "GitHub", href: "https://github.com/jesusbasalloteinfo/Astra" }
+    ];
+
     const currentYear = new Date().getFullYear();
 </script>
 
@@ -138,9 +141,9 @@
                         {m.landing_cta()}
                         <ChevronRight class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
-                    <button class="w-full sm:w-auto cursor-pointer px-8 md:px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all backdrop-blur-md">
+                    <a href="https://github.com/jesusbasalloteinfo/Astra/tree/main/docs" class="w-full sm:w-auto px-8 md:px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all backdrop-blur-md flex items-center justify-center">
                         {m.landing_cta_docs()}
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -221,9 +224,9 @@
                         <a href="/dashboard" class="w-full sm:w-auto px-8 py-4 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30">
                             {m.landing_cta()}
                         </a>
-                        <button class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm">
+                        <a href="https://github.com/jesusbasalloteinfo/Astra" class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm flex items-center justify-center">
                             {m.landing_cta_gallery()}
-                        </button>
+                        </a>
                     </div>
                     
                     <p class="mt-6 text-xs md:text-sm text-slate-400">
@@ -287,8 +290,8 @@
                 </p>
                 <div class="flex flex-wrap justify-center space-x-4 md:space-x-6">
                     {#each socialLinks as social}
-                        <a href="#" class="text-slate-500 hover:text-blue-300 transition-colors text-xs md:text-sm">
-                            {social}
+                        <a href={social.href} class="text-slate-500 hover:text-blue-300 transition-colors text-xs md:text-sm">
+                            {social.name}
                         </a>
                     {/each}
                 </div>

@@ -50,7 +50,6 @@ export const translateObjectType = (type: string): string => {
     "unknown": m.data_types_unknown
   };
   
-  console.log(type)
   // Execute the message function if found, otherwise fallback
   return (lookup[type] || m.data_types_unknown)();
 };

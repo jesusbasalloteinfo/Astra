@@ -44,8 +44,8 @@
   "landing_stat_indi": "Protocol INDI",
   "landing_stat_telescopes": "Suportat",
   "landing_stat_objects": "Objectes Celestials",
-  "landing_stat_guiding": "Precició de l'Auto Guiatge",
-  "landing_stat_satisfaction": "Satisfacció d'Usuaris",
+  "landing_stat_architecture": "Arquitectura",
+  "landing_stat_license": "Llicència",
 
   "landing_end_cta_title": "Estàs preparat per explorar el Cosmos?",
   "landing_end_cta_desc": "Uneix-te a milers d'aficionats que fan servir ASTRA per descobrir les meravelles de l'univers. Disponible a la web.",

@@ -44,8 +44,8 @@
   "landing_stat_indi": "Protocolo INDI",
   "landing_stat_telescopes": "Soportado",
   "landing_stat_objects": "Objetos Celestiales",
-  "landing_stat_guiding": "Precisión del Auto-Guiado",
-  "landing_stat_satisfaction": "Satisfacción de Usuarios",
+  "landing_stat_architecture": "Arquitectura",
+  "landing_stat_license": "Licencia",
 
   "landing_end_cta_title": "¿Estás preparado para explorar el Cosmos?",
   "landing_end_cta_desc": "Únete a miles de aficionados que utilizan ASTRA para descubrir las maravillas del universo. Disponible en la web.",
