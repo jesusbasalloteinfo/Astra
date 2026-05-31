@@ -78,6 +78,10 @@ For detailed deployment instructions and technical overview, please refer to the
 
 - [🚀 Deployment Guide](docs/DEPLOY_GUIDE.md)
 - [🏗️ Architecture Guide](docs/ARCHITECTURE.md)
+- [🛰️ Edge Node (Hardware) Guide](docs/EDGE_GUIDE.md)
+- [📖 User Guide](docs/user_guide/USER_GUIDE.md)
+
+
 
 1. **Clone & Setup environment:**
    ```bash
