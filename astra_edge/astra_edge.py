@@ -1,3 +1,9 @@
+"""
+Main entry point for the Astra Edge client.
+
+Handles device identification, pairing with the Astra backend, 
+establishing a WebSocket tunnel, and managing local INDI subprocesses.
+"""
 import asyncio
 from datetime import datetime, timezone
 import hashlib
@@ -11,7 +17,7 @@ from pydantic import TypeAdapter
 from api.IndiTaskAPI import IndiTaskAPI
 from utils.Clock import Clock
 from common.comm_models import WsPairingCode, WsPairedSuccess
-from common.INDIModels import GlobalMessage, CommandMessage, ResponseMessage, EventMessage
+from common.INDIModels import GlobalMessage, CommandMessage, ResponseMessage
 from dotenv import load_dotenv
 
 logger = logging.getLogger("edge")
@@ -22,9 +28,21 @@ _adapter = TypeAdapter(GlobalMessage)
 
 
 def get_serial() -> str:
+    """
+    Generates a unique hardware fingerprint for the device.
+
+    Attempts to read the SoC serial number or machine ID to create a 
+    deterministic device identifier.
+
+    Returns:
+        str: A unique device ID string (e.g., 'dev-xxxx').
+
+    Raises:
+        RuntimeError: If no hardware identifiers are found.
+    """
     hw_identifiers = []
 
-    # 1. SoC serial number. Fallback to instalation id
+    # 1. SoC serial number. Fallback to installation id
     if os.path.exists('/proc/device-tree/serial-number'):
         with open('/proc/device-tree/serial-number', 'rb') as f:
             serial = f.read().decode().strip('\x00').strip()
@@ -51,7 +69,20 @@ def get_serial() -> str:
     return f"dev-{unique_fingerprint}"
 
 class EdgeClient:
+    """
+    Client for managing communication between local INDI devices and the Astra API.
+
+    Handles authentication (pairing), maintaining a persistent WebSocket tunnel,
+    and routing commands/events.
+    """
     def __init__(self, server: str, indi_api: IndiTaskAPI):
+        """
+        Initializes the EdgeClient.
+
+        Args:
+            server (str): The Astra API server address.
+            indi_api (IndiTaskAPI): The local INDI task API instance.
+        """
         # Ensure URL has a scheme for urlparse if missing
         if "://" not in server:
             server = f"http://{server}"
@@ -67,6 +98,7 @@ class EdgeClient:
 
     # ───────────────────────── Token Storage ───────────────────────────────────────────────────────────
     def _load(self):
+        """Loads authentication tokens from local storage."""
         if os.path.exists(TOKEN_STORAGE):
             try:
                 data = json.load(open(TOKEN_STORAGE))
@@ -76,9 +108,11 @@ class EdgeClient:
                 pass
 
     def _save(self):
+        """Saves authentication tokens to local storage."""
         json.dump({"token": self.token, "ws_url": self.ws_url}, open(TOKEN_STORAGE, "w"))
 
     def _clear(self):
+        """Clears authentication tokens from local storage."""
         self.token = self.ws_url = None
         if os.path.exists(TOKEN_STORAGE):
             os.remove(TOKEN_STORAGE)
@@ -86,12 +120,22 @@ class EdgeClient:
     # ───────────────────────── Startup and Pairing ───────────────────────────────────────────────────────────
 
     async def start(self):
+        """
+        Starts the client lifecycle: subscribes to events, pairs if needed, 
+        and opens the communication tunnel.
+        """
         self.indi_api.subscribe(self._on_indi_event)
         if not self.token:
             await self._pairing()
         await self._tunnel()
 
     async def _pairing(self):
+        """
+        Initiates the device pairing process via WebSocket.
+
+        Waits for a pairing code to be issued and then for a success message 
+        containing the authentication token.
+        """
         url = f"ws://{self.server}/devices/ws/pair?device_id={self.device_id}"
         async with aiohttp.ClientSession() as s:
             while not self.token:
@@ -118,7 +162,9 @@ class EdgeClient:
 
     async def _tunnel(self):
         """
-        Create a WS tunnel to the backend and handle all communications
+        Establishes and maintains a persistent WebSocket tunnel to the Astra backend.
+
+        Automatically reconnects on failure and handles token expiration.
         """
         async with aiohttp.ClientSession() as s:
             while True:
@@ -149,9 +195,12 @@ class EdgeClient:
     # ───────────────────────── Command and Event handling ───────────────────────────────────────────────────────────
     async def _handle(self, ws, raw: str):
         """
-        Handles a backend sent message and queues to IndiTask API
+        Handles an incoming command from the backend.
+
+        Args:
+            ws (ClientWebSocketResponse): The active WebSocket connection.
+            raw (str): The raw JSON message string.
         """
-        # TODO: Should we send an error message acknowledging the error?
         try:
             msg = _adapter.validate_json(raw)
         except Exception:
@@ -164,7 +213,7 @@ class EdgeClient:
         logger.info(f"Command: {msg.payload.action} (req_id={msg.req_id})")
 
         async def reply_to_backend(response_data: dict):
-            # Replies a response to the backend
+            """Internal helper to send command responses back to the API."""
             try:
                 status_map = {"ok": "OK", "error": "ERROR", "cancelled": "CANCELLED"}
                 
@@ -188,7 +237,12 @@ class EdgeClient:
 
     async def _on_indi_event(self, pydantic_packet):
         """
-        Callback: Sends an event message to the backend when and event has happened
+        Callback triggered when a local INDI event occurs.
+
+        Sends the event data through the WebSocket tunnel to the backend.
+
+        Args:
+            pydantic_packet (EventMessage): The event message to send.
         """
         if not self.ws_url:
             # No tunel, so no event
@@ -207,6 +261,12 @@ class EdgeClient:
 
 
 async def main(args):
+    """
+    Main application loop.
+
+    Sets up the environment, starts local INDI subprocesses, and 
+    initializes the Edge client and API.
+    """
     logging.basicConfig(level=logging.INFO)
     
     clock = Clock()
@@ -274,6 +334,18 @@ async def main(args):
                 log_file.close()
 
 def valid_location(coords):
+    """
+    Validates the provided location coordinates.
+
+    Args:
+        coords (list[float]): A list containing [lat, lon].
+
+    Returns:
+        tuple[float, float]: Validated (lat, lon) tuple.
+
+    Raises:
+        argparse.ArgumentTypeError: If coordinates are out of valid ranges.
+    """
     try:
         lat, lon = map(float, coords)
         if not (-90 <= lat <= 90):

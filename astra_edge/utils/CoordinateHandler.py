@@ -1,56 +1,93 @@
-from astropy.coordinates import SkyCoord, AltAz, FK5, ICRS, EarthLocation, Angle
+"""
+Utility for handling astronomical coordinate transformations.
+"""
+from astropy.coordinates import SkyCoord, AltAz, FK5, ICRS, EarthLocation
 from astropy import units as u
 from astropy.time import Time
 from enum import Enum
-from datetime import datetime, timezone
-import asyncio
 
 class CoordinateTypes(Enum):
-    EQUATORIAL_J2000 = "EQUATORIAL_COORD" # Equatorial coordinats at J2000 frame (at 2000)
+    """
+    Enumeration of coordinate frames supported by INDI and Astra.
+    """
+    EQUATORIAL_J2000 = "EQUATORIAL_COORD" # Equatorial coordinates at J2000 frame (at 2000)
     EQUATORIAL_EOD = "EQUATORIAL_EOD_COORD" # Equatorial coordinates at Equinox of Date (at this moment)
     HORIZONTAL = "HORIZONTAL_COORD" # Horizontal coordinates with the observer position and date
 
     @classmethod
     def from_str(cls, value: str):
-        """Get the type from a string"""
+        """
+        Returns the matching CoordinateTypes for a given string.
+
+        Args:
+            value (str): The string representation of the coordinate type.
+
+        Returns:
+            CoordinateTypes: The matching enum member, or EQUATORIAL_EOD if no match is found.
+        """
         try:
             return cls(value.lower())
         except ValueError:
             return cls.EQUATORIAL_EOD
 
     def __str__(self):
-        """Get the device value"""
+        """
+        Returns the INDI property name for the coordinate type.
+
+        Returns:
+            str: The property name (e.g., 'EQUATORIAL_COORD').
+        """
         return self.value
     
     def get_properties(self) -> tuple[str, str]:
-        properties=("ra", "dec")
+        """
+        Returns the property keys (axis names) for this coordinate type.
+
+        Returns:
+            tuple[str, str]: ('ra', 'dec') or ('alt', 'az').
+        """
+        properties = ("ra", "dec")
         if self == CoordinateTypes.HORIZONTAL:
-            properties=("alt", "az")
+            properties = ("alt", "az")
         return properties
     
     @classmethod
     def list(cls):
-        """Returns a list with the enum"""
+        """
+        Returns a list of all enum members.
+
+        Returns:
+            list[CoordinateTypes]: All members of the enum.
+        """
         return [item for item in cls]
     
     @classmethod
     def list_values(cls):
-        """Returns a list with the enum values"""
+        """
+        Returns a list of all enum member values.
+
+        Returns:
+            list[str]: All property names of the enum.
+        """
         return [item.value for item in cls]
 
 
 
 class CoordinateHandler:
     """
-    Coordinate handler that manages coordinate conversions for telescope slewing
+    Manager for coordinate conversions for telescope slewing and positioning.
+
+    Automatically identifies the best coordinate frame supported by a device
+    and provides methods to convert between different systems using Astropy.
     """
     
-    def __init__(self, device_data: dict=None):
+    def __init__(self, device_data: dict = None):
         """
-        Initialize coordinate handler with device capabilities and location data
-        
+        Initializes the coordinate handler.
+
         Args:
-            device_data: Dictionary containing device properties from INDI
+            device_data (dict, optional): Dictionary containing device properties from INDI 
+                to determine supported coordinate frames.
         """
         priority_types = [
             CoordinateTypes.EQUATORIAL_EOD,
@@ -67,27 +104,40 @@ class CoordinateHandler:
 
     def get_converter_type(self) -> CoordinateTypes:
         """
-        Get the conversion type of the device
-        
+        Gets the primary coordinate type supported by the device.
+
         Returns:
-            Coordinate Converter type of the configured type
+            CoordinateTypes: The configured coordinate frame.
         """
         return self.converter_type
     
     def get_converter_type_value(self) -> str:
         """
-        Get the appropriate slew command name for the device
-        
+        Gets the INDI property name for the primary coordinate type.
+
         Returns:
-            String with the command name
+            str: The INDI property name.
         """
         return self.converter_type.value
     
     @staticmethod
-    def convert_coord(time:Time, coord:tuple[float, float], location_in:tuple[float, float]|None, 
+    def convert_coord(time: Time, coord: tuple[float, float], location_in: tuple[float, float] | None, 
                        convert_from: CoordinateTypes, convert_to: CoordinateTypes):
         """
-        Convert coordinates between different systems
+        Converts coordinates between different astronomical systems.
+
+        Args:
+            time (Time): The observation time.
+            coord (tuple[float, float]): The input coordinates [ra/alt, dec/az].
+            location_in (tuple[float, float] | None): Observer location [lat, lon].
+            convert_from (CoordinateTypes): Input coordinate frame.
+            convert_to (CoordinateTypes): Output coordinate frame.
+
+        Returns:
+            map: A map object yielding two floats (the converted coordinates).
+
+        Raises:
+            ValueError: If location is missing for horizontal conversions or if coordinates are invalid.
         """
 
         coord_1, coord_2 = coord
@@ -97,25 +147,25 @@ class CoordinateHandler:
             raise ValueError("Latitude and longitude needed for Horizontal conversions")
 
         location = None   
-        coord = None     
+        coord_obj = None     
         try:
             if lat is not None and lon is not None:
-                location = EarthLocation(lat=lat *u.deg, lon=lon*u.deg)
+                location = EarthLocation(lat=lat * u.deg, lon=lon * u.deg)
         
             if convert_from == CoordinateTypes.EQUATORIAL_J2000:
-                coord = SkyCoord(
+                coord_obj = SkyCoord(
                     ra=coord_1 * u.hourangle,
                     dec=coord_2 * u.deg,
                     frame=ICRS()
                 )
             elif convert_from == CoordinateTypes.EQUATORIAL_EOD:
-                coord = SkyCoord(
+                coord_obj = SkyCoord(
                     ra=coord_1 * u.hourangle,
                     dec=coord_2 * u.deg,
                     frame=FK5(equinox=time)
                 )
             else:  # Horizontal
-                coord = SkyCoord(
+                coord_obj = SkyCoord(
                     alt=coord_1 * u.deg,
                     az=coord_2 * u.deg,
                     frame=AltAz(obstime=time, location=location)
@@ -125,43 +175,59 @@ class CoordinateHandler:
 
         ret_coords = None
         if convert_to == CoordinateTypes.EQUATORIAL_J2000:
-            aux = coord.transform_to(ICRS())
+            aux = coord_obj.transform_to(ICRS())
             ret_coords = aux.ra.hour, aux.dec.deg
         elif convert_to == CoordinateTypes.EQUATORIAL_EOD:
-            aux = coord.transform_to(FK5(equinox=time))
+            aux = coord_obj.transform_to(FK5(equinox=time))
             ret_coords = aux.ra.hour, aux.dec.deg
         else:
-            aux = coord.transform_to(AltAz(obstime=time, location=location))
+            aux = coord_obj.transform_to(AltAz(obstime=time, location=location))
             ret_coords = aux.alt.deg, aux.az.deg
             
         return map(float, ret_coords)
 
-    def convert_from(self, time:Time, coord:tuple, location:tuple[float, float]|None, convert_from: CoordinateTypes):
+    def convert_from(self, time: Time, coord: tuple, location: tuple[float, float] | None, convert_from: CoordinateTypes):
         """
-        Convert coordinates between different systems
+        Converts coordinates from an external frame to the device's native frame.
+
+        Args:
+            time (Time): The observation time.
+            coord (tuple): Input coordinates.
+            location (tuple[float, float] | None): Observer location.
+            convert_from (CoordinateTypes): Input coordinate frame.
+
+        Returns:
+            dict: Dictionary with axis names ('RA', 'DEC' or 'ALT', 'AZ') as keys.
         """
         result1, result2 = CoordinateHandler.convert_coord(time, coord, location, convert_from=convert_from, convert_to=self.converter_type)
         
-        if self.converter_type==CoordinateTypes.HORIZONTAL:
-            return {"ALT": result1,"AZ":result2}
+        if self.converter_type == CoordinateTypes.HORIZONTAL:
+            return {"ALT": result1, "AZ": result2}
         else:
             return {"RA": result1, "DEC": result2}
         
 
-    def convert_to(self, time:Time, coord:dict, location:tuple[float, float]|None, convert_to: CoordinateTypes):
+    def convert_to(self, time: Time, coord: dict, location: tuple[float, float] | None, convert_to: CoordinateTypes):
         """
-        Convert coordinates between different systems
+        Converts coordinates from the device's native frame to an external frame.
+
+        Args:
+            time (Time): The observation time.
+            coord (dict): Input coordinates in native frame.
+            location (tuple[float, float] | None): Observer location.
+            convert_to (CoordinateTypes): Target coordinate frame.
+
+        Returns:
+            dict: Dictionary with axis names as keys.
         """
-        if self.converter_type==CoordinateTypes.HORIZONTAL:
+        if self.converter_type == CoordinateTypes.HORIZONTAL:
             coords = map(float, (coord["ALT"], coord["AZ"]))
         else:
             coords = map(float, (coord["RA"], coord["DEC"]))
         
         result1, result2 = CoordinateHandler.convert_coord(time, coords, location, convert_to=convert_to, convert_from=self.converter_type)
 
-        if convert_to==CoordinateTypes.HORIZONTAL:
-            return {"ALT": result1,"AZ":result2}
+        if convert_to == CoordinateTypes.HORIZONTAL:
+            return {"ALT": result1, "AZ": result2}
         else:
             return {"RA": result1, "DEC": result2}
-        
-        #TODO: MIRAR SI JSON KEYS EN MAJUSCULES SEMPRE

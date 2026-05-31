@@ -1,26 +1,55 @@
+"""
+Telescope device implementation with coordinate transformation support.
+"""
 import asyncio
-from enum import Enum
-import json
 from typing import Literal
+from datetime import datetime
 from devices.INDIDevice import INDIDevice, INDIDeviceType
 from utils.CoordinateHandler import CoordinateHandler, CoordinateTypes
 from utils.logging import get_logger
-from datetime import datetime, timezone
 
-LOGGER=get_logger("INDITelescope")
+LOGGER = get_logger("INDITelescope")
 
 class Telescope(INDIDevice):
+    """
+    Proxy for an INDI Telescope device.
+
+    Provides high-level methods for positioning, slewing, and motion control,
+    automatically handling coordinate transformations between different frames.
+
+    Attributes:
+        _converter (CoordinateHandler): Utility for handling coordinate conversions.
+    """
 
     def __init__(self, client, device_name):
-        super().__init__(client, device_name)
-        self._type:INDIDeviceType = INDIDeviceType.TELESCOPE
+        """
+        Initializes the Telescope proxy.
 
-        self._converter:CoordinateHandler=CoordinateHandler(self._device_data)
+        Args:
+            client (IPyClient): The INDI client instance.
+            device_name (str): The unique name of the telescope.
+        """
+        super().__init__(client, device_name)
+        self._type: INDIDeviceType = INDIDeviceType.TELESCOPE
+        self._converter: CoordinateHandler = CoordinateHandler(self._device_data)
         
     def get_position(self, 
-                     location:tuple[float, float], 
-                     time:datetime)-> dict:
-        """Gets the position of the telescope in diferent coordinate systems"""
+                     location: tuple[float, float], 
+                     time: datetime) -> dict:
+        """
+        Gets the current position of the telescope in multiple coordinate systems.
+
+        Args:
+            location (tuple[float, float]): The observer's location (latitude, longitude).
+            time (datetime): The current observation time.
+
+        Returns:
+            dict: A dictionary containing 'equatorial_j2000', 'equatorial_eod', 
+                and 'horizontal' coordinates.
+
+        Raises:
+            ValueError: If no coordinate data is available for the device.
+        """
         command_type = self._converter.get_converter_type()
         vector = self._device_data.get(command_type.value)
 
@@ -45,12 +74,21 @@ class Telescope(INDIDevice):
         return result
 
     
-    async def slew(self, input_type:CoordinateTypes, 
-                   mode:Literal["SLEW", "TRACK", "SYNC"], 
-                   coord :tuple[float, float], 
-                   location:tuple[float, float], 
-                   time:datetime):
-        """Move the telescope"""
+    async def slew(self, input_type: CoordinateTypes, 
+                   mode: Literal["SLEW", "TRACK", "SYNC"], 
+                   coord: tuple[float, float], 
+                   location: tuple[float, float], 
+                   time: datetime):
+        """
+        Moves the telescope to the specified coordinates.
+
+        Args:
+            input_type (CoordinateTypes): The coordinate frame of the input coordinates.
+            mode (Literal["SLEW", "TRACK", "SYNC"]): The operation mode.
+            coord (tuple[float, float]): Target coordinates [ra/alt, dec/az].
+            location (tuple[float, float]): The observer's location (latitude, longitude).
+            time (datetime): The current observation time.
+        """
         
         # Handle SLEW/SYNC 
         if "ON_COORD_SET" in self._device_data:
@@ -59,13 +97,21 @@ class Telescope(INDIDevice):
             switch_states[mode] = "On"
             await self._client.send_newVector(self.name, "ON_COORD_SET", members=switch_states)
 
-        members=self._converter.convert_from(time, coord, location, input_type)
+        members = self._converter.convert_from(time, coord, location, input_type)
         LOGGER.info(f"Slewing to {coord} in {input_type} to {self._converter.get_converter_type()}", details=members)
         # Send movement command
         await self._client.send_newVector(self.name, self._converter.get_converter_type_value(), members=members)
 
-    def is_slewing(self):
-        """Check if the telescope is moving"""
+    def is_slewing(self) -> bool:
+        """
+        Checks if the telescope is currently moving.
+
+        Returns:
+            bool: True if the device state is 'Busy', False otherwise.
+
+        Raises:
+            ValueError: If no coordinate data is available for the device.
+        """
         command_type = self._converter.get_converter_type()
         vector = self._device_data.get(command_type.value)
 
@@ -76,7 +122,12 @@ class Telescope(INDIDevice):
         
 
     async def abort_motion(self):
-        """Cancel movement"""
+        """
+        Cancels any ongoing movement or tracking.
+
+        Raises:
+            ValueError: If the abort command results in an unexpected device state.
+        """
         
         vector = self._device_data["TELESCOPE_ABORT_MOTION"]
         property = list(vector.keys())[0]
@@ -90,5 +141,3 @@ class Telescope(INDIDevice):
         
         if vector.state != "Ok":
             raise ValueError(f"Unexpected state at abort for {self.name}: {vector.state}")
-
-    

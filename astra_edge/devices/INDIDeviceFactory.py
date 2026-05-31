@@ -1,23 +1,37 @@
+"""
+Factory for creating specialized INDI device proxies.
+"""
 import asyncio
+from indipyclient import IPyClient
 
-from devices.INDITypes import *
-from devices.INDIDevice import *
+from devices.INDITypes import INDIDeviceType
+from devices.INDIDevice import INDIDevice
 from devices.Telescope import Telescope
 from devices.Camera import Camera
 from utils.logging import get_logger
 
-LOGGER=get_logger("INDIDeviceFactory")
+LOGGER = get_logger("INDIDeviceFactory")
 
 class INDIDeviceFactory:
     """
-    Factory Pattern to create instances of the INDI devices.
-    Includes logic to probe and identify devices.
+    Factory Pattern to create instances of specialized INDI devices.
+
+    Includes logic to probe and identify device types based on their
+    exposed INDI properties (fingerprinting).
     """
 
     @staticmethod
     def identify(client: IPyClient, device_name: str) -> INDIDevice:
         """
-        Analize the device and create the specific device proxy
+        Analyzes the device properties and creates the specific device proxy.
+
+        Args:
+            client (IPyClient): The INDI client instance.
+            device_name (str): The unique name of the device.
+
+        Returns:
+            INDIDevice: A specialized instance (Telescope, Camera, etc.) or 
+                a generic INDIDevice if no specific type is identified.
         """
 
         device_data = client[device_name]
@@ -48,13 +62,23 @@ class INDIDeviceFactory:
 
 
     @staticmethod
-    async def create(client:IPyClient, device_name: str) -> INDIDevice:
+    async def create(client: IPyClient, device_name: str) -> INDIDevice:
         """
-        Analize the device and create the specific device proxy, awaiting the key values
+        Analyzes the device and creates the specific device proxy, awaiting property discovery.
+
+        This method will attempt to connect to the device if it's not connected,
+        to ensure all properties are sent by the INDI server for identification.
+
+        Args:
+            client (IPyClient): The INDI client instance.
+            device_name (str): The unique name of the device.
+
+        Returns:
+            INDIDevice: The identified specialized device proxy.
         """
         # Create as generic
-        temp_device:INDIDevice= INDIDevice(client, device_name)
-        was_connected=temp_device.is_connected()
+        temp_device: INDIDevice = INDIDevice(client, device_name)
+        was_connected = temp_device.is_connected()
 
         if not was_connected:
             LOGGER.debug(f"Connecting {device_name}...")
@@ -85,4 +109,3 @@ class INDIDeviceFactory:
             await asyncio.sleep(0.2) 
         
         return proxy
-
