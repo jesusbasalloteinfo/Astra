@@ -79,6 +79,7 @@ services:
       target: dev
     environment:
       VITE_API_URL: /api
+      VITE_USER_DEBUG: ${USER_DEBUG:-true}
     ports:
       - "4000:5173"
     volumes:

@@ -67,6 +67,7 @@ services:
       target: prod
     environment:
       VITE_API_URL: /api
+      VITE_USER_DEBUG: ${USER_DEBUG:-false}
       PORT: 5173
     networks:
       - gateway-net

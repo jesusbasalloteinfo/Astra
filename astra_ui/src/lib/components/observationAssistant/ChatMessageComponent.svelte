@@ -34,7 +34,7 @@
     let isReasoningOpen = $state(false);
 
     /** Whether to show tool debugging information */
-    let enableToolDebug = $state(true);
+    let enableToolDebug = $derived(import.meta.env.VITE_USER_DEBUG === 'true');
 
     // Marked config
     marked.use({ breaks: true, gfm: true });
