@@ -5,6 +5,12 @@
     import DockPopover from './DockPopover.svelte';
 	import { m } from '$lib/paraglide/messages';
 
+    /**
+     * Component props
+     * @type {{ isOpen: boolean, allowHover?: boolean }}
+     * @property {boolean} isOpen - Whether the theme selection popover is open (bindable)
+     * @property {boolean} [allowHover=true] - Whether to allow opening the popover on hover
+     */
     let { isOpen = $bindable(false), allowHover = true } = $props();
 
 </script>

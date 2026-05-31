@@ -96,7 +96,10 @@
         return () => window.removeEventListener("resize", updateMedia);
     });
 
-    // -- Gestures --
+    /**
+     * Handles the start of a pointer gesture for swiping the panel
+     * @param {PointerEvent} e - The pointer down event
+     */
     function handlePointerDown(e: PointerEvent) {
         if (!isPortrait) return; // Only gestures on portrait
         isDragging = true;
@@ -104,11 +107,18 @@
         (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     }
 
+    /**
+     * Handles pointer movement during a swipe gesture
+     * @param {PointerEvent} e - The pointer move event
+     */
     function handlePointerMove(e: PointerEvent) {
         if (!isDragging) return;
         dragY = e.clientY - startY;
     }
 
+    /**
+     * Handles the end of a pointer gesture and determines swipe actions
+     */
     function handlePointerUp() {
         if (!isDragging) return;
         isDragging = false;
@@ -122,6 +132,9 @@
         dragY = 0;
     }
 
+    /**
+     * Sends a command to the active telescope to slew to and track the selected target
+     */
     async function handleSlewAndTrack() {
         if (!isTelescopeReady || !selectedInfo) return;
         const deviceId = deviceStore.effectiveActiveId!;

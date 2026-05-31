@@ -1,4 +1,8 @@
 <script lang="ts">
+    /**
+     * @typedef {Object} Props
+     * @property {string} [class] - Additional CSS classes for the SVG element
+     */
 	let { class: className = "w-12 h-12" } = $props();
 </script>
 

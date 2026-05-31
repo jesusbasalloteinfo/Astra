@@ -6,10 +6,19 @@
     import { m } from '$lib/paraglide/messages';
     import { Telescope, Sparkles, TextAlignStart } from 'lucide-svelte';
 
+    /** The name of the session being created */
     let name = $state('');
+
+    /** The optional description of the session being created */
     let description = $state('');
+
+    /** Whether the creation process is currently in progress */
     let isSubmitting = $state(false);
 
+    /**
+     * Handles the creation of a new session
+     * Validates input, creates the session in the store, and redirects to the new session page
+     */
     async function handleSubmit() {
         if (!name.trim() || isSubmitting) return;
         

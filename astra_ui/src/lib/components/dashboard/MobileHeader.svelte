@@ -11,9 +11,14 @@
     import { fade, fly } from 'svelte/transition';
 	import ProfileSettings from './ProfileSettings.svelte';
 
+    /** Whether the mobile settings/profile overlay is open */
     let isSettingsOpen = $state(false);
+    /** Whether the profile settings modal is open */
     let profileOpen = $state(false);
 
+    /**
+     * Logs out the current user and redirects to the landing page
+     */
     async function handleLogout() {
         const nav = goto('/');
         await authStore.logout();

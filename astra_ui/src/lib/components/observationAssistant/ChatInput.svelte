@@ -4,14 +4,22 @@
     import { chatStore } from '$lib/stores/chat.svelte';
 	import { m } from '$lib/paraglide/messages';
 
+    /** The current message being typed by the user */
     let inputMessage = $state('');
 
+    /**
+     * Sends the current input message to the chat store
+     */
     function handleSend() {
         if (!inputMessage.trim() || chatStore.isStreaming) return;
         chatStore.sendMessage(inputMessage.trim());
         inputMessage = '';
     }
 
+    /**
+     * Handles keyboard events in the input field, specifically for sending on Enter
+     * @param {KeyboardEvent} e - The keyboard event object
+     */
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();

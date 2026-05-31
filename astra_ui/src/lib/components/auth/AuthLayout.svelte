@@ -4,10 +4,15 @@
     import * as m from '$lib/paraglide/messages.js';
 
     let { 
+        /** Content to be rendered inside the layout card */
         children, 
+        /** Primary title for the authentication screen */
         title, 
+        /** Descriptive subtitle under the title */
         subtitle, 
+        /** URL for the back navigation link */
         backLink = "/", 
+        /** Text to display for the back navigation link at the bottom */
         backText 
     } = $props();
 </script>

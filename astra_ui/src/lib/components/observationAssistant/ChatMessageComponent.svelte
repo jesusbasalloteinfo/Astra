@@ -10,6 +10,14 @@
 	import { m } from '$lib/paraglide/messages';
 	import { toInlangBool } from '$lib/utils/i18n';
 
+    /**
+     * Component props
+     * @type {{ msg: ChatMessage, isFirstInTurn: boolean, isStreaming: boolean, messagesContext: ChatMessage[] }}
+     * @property {ChatMessage} msg - The message object to display
+     * @property {boolean} isFirstInTurn - Whether this message is the first in an assistant's turn
+     * @property {boolean} isStreaming - Whether the message content is currently being streamed
+     * @property {ChatMessage[]} messagesContext - The full message history for context (e.g., finding tool results)
+     */
     let { 
         msg, 
         isFirstInTurn, 
@@ -22,7 +30,10 @@
         messagesContext: ChatMessage[] // Check the tools
     }>();
 
+    /** Whether the assistant's reasoning block is expanded */
     let isReasoningOpen = $state(false);
+
+    /** Whether to show tool debugging information */
     let enableToolDebug = $state(true);
 
     // Marked config
@@ -35,19 +46,33 @@
         }
     });
 
+    /**
+     * Renders Markdown text into sanitized HTML
+     * @param {string | undefined} text - The Markdown text to render
+     * @returns {string} The sanitized HTML string
+     */
     function renderMD(text: string | undefined) {
         if (!text) return '';
         const rawHtml = marked.parse(text, { async: false }) as string;
         return DOMPurify.sanitize(rawHtml);
     }
     
-    // Tool output debug tools
+    /** Tracking which tool debug panels are open by their tool call ID */
     let openDebugTools = $state<Record<string, boolean>>({});
 
+    /**
+     * Toggles the visibility of a tool's debug information
+     * @param {string} toolId - The unique ID of the tool call
+     */
     function toggleToolDebug(toolId: string) {
         openDebugTools[toolId] = !openDebugTools[toolId];
     }
 
+    /**
+     * Parses a tool response string as JSON
+     * @param {string} content - The raw string content from a tool message
+     * @returns {any|null} The parsed object or null if parsing fails
+     */
     function parseToolResponse(content: string) {
         try {
             return JSON.parse(content);

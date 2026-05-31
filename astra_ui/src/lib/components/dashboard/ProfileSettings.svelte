@@ -4,14 +4,24 @@
     import * as m from '$lib/paraglide/messages.js';
     import { User as UserIcon, Camera, LoaderCircle, CircleCheck, Save } from 'lucide-svelte';
 
+    /** Whether a profile picture upload is in progress */
     let uploading = $state(false);
+    /** Whether a profile update request is in progress */
     let saving = $state(false);
+    /** Success message to display after a successful operation */
     let successMessage = $state('');
+    /** Error message to display if an operation fails */
     let errorMessage = $state('');
 
+    /** Input value for the user's full name */
     let fullName = $state(authStore.user?.full_name ?? '');
+    /** Input value for the user's bio */
     let bio = $state(authStore.user?.bio ?? '');
 
+    /**
+     * Handles profile picture file selection and upload
+     * @param {Event} event - The file input change event
+     */
     async function handleFileChange(event: Event) {
         const input = event.target as HTMLInputElement;
         if (!input.files || input.files.length === 0) return;

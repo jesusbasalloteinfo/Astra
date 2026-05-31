@@ -4,6 +4,7 @@
     import { LayoutDashboard, History, Telescope, MapPin } from 'lucide-svelte';
     import { page } from '$app/state';
 
+    /** Navigation items configuration for the bottom bar */
     const navItems = $derived([
         { href: '/dashboard',           icon: LayoutDashboard, label: m.dash_side_home() },
         { href: '/dashboard/sessions',  icon: History,         label: m.dash_side_sessions() },

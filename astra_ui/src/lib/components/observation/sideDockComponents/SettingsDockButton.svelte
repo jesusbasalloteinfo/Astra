@@ -6,6 +6,19 @@
     import DockPopover from './DockPopover.svelte';
     import ConfigEntry from './ConfigEntry.svelte';
 
+    /**
+     * Component props
+     * @type {{ showConstellations: boolean, showConstellationLabels: boolean, useLatinConstellations: boolean, showGround: boolean, solidGround: boolean, showAtmosphere: boolean, atmosphereLocked?: boolean, isOpen?: boolean, allowHover?: boolean }}
+     * @property {boolean} showConstellations - Whether constellation lines are visible (bindable)
+     * @property {boolean} showConstellationLabels - Whether constellation labels are visible (bindable)
+     * @property {boolean} useLatinConstellations - Whether to use Latin names for constellations (bindable)
+     * @property {boolean} showGround - Whether the ground visualization is visible (bindable)
+     * @property {boolean} solidGround - Whether the ground is rendered as a solid surface or radar (bindable)
+     * @property {boolean} showAtmosphere - Whether atmospheric effects are visible (bindable)
+     * @property {boolean} [atmosphereLocked=false] - Whether the atmosphere setting is locked
+     * @property {boolean} [isOpen=false] - Whether the settings popover is open (bindable)
+     * @property {boolean} [allowHover=true] - Whether the popover can be opened via hover
+     */
     let {
         showConstellations = $bindable(),
         showConstellationLabels = $bindable(),
@@ -18,9 +31,15 @@
         allowHover = true
     } = $props();
 
+    /** Whether the constellations sub-menu is expanded */
     let showConstellationsMenu = $state(showConstellations);
+
+    /** Whether the ground settings sub-menu is expanded */
     let showGroundMenu = $state(solidGround);
 
+    /**
+     * Toggles the constellations visibility and updates the menu state
+     */
     function toggleConstellations() {
         showConstellations = !showConstellations;
         showConstellationsMenu = showConstellations;

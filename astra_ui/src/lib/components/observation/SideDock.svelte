@@ -6,22 +6,38 @@
     import SettingsDockButton from './sideDockComponents/SettingsDockButton.svelte';
 
     let {
+        /** Whether constellation lines are visible (bindable) */
         showConstellations = $bindable(),
+        /** Whether constellation labels are visible (bindable) */
         showConstellationLabels = $bindable(),
+        /** Whether to use Latin names for constellations (bindable) */
         useLatinConstellations = $bindable(),
+        /** Whether the ground plane is visible (bindable) */
         showGround = $bindable(),
+        /** Whether the ground is rendered as solid or wireframe (bindable) */
         solidGround = $bindable(),
+        /** Whether the atmospheric effect is visible (bindable) */
         showAtmosphere = $bindable(),
+        /** Whether atmosphere settings are locked (e.g. forced by sun position) */
         atmosphereLocked = false,
+        /** Whether the search/finder palette is open (bindable) */
         searchOpen = $bindable(),
+        /** Whether the AI assistant chat is open (bindable) */
         chatOpen = $bindable()
     } = $props();
 
+    /** Whether the internal settings menu is open */
     let settingsOpen = $state(false);
+    /** Whether the internal theme selection menu is open */
     let themeOpen = $state(false);
 
+    /** Whether any overlay menu or palette is currently active */
     const isAnyMenuLockedOpen = $derived(searchOpen || chatOpen || settingsOpen || themeOpen);
 
+    /**
+     * Closes all overlay menus except the one specified
+     * @param {'search' | 'settings' | 'theme' | 'chat'} except - The menu to keep open
+     */
     function closeOtherMenus(except: 'search' | 'settings' | 'theme' | 'chat') {
         if (except !== 'search') searchOpen = false;
         if (except !== 'settings') settingsOpen = false;
@@ -29,12 +45,18 @@
         if (except !== 'chat') chatOpen = false;
     }
 
+    /**
+     * Toggles the visibility of the search/finder palette
+     */
     function toggleSearch() {
         const nextState = !searchOpen;
         if (nextState) closeOtherMenus('search');
         searchOpen = nextState;
     }
 
+    /**
+     * Toggles the visibility of the AI assistant chat
+     */
     function toggleChat() {
         const nextState = !chatOpen;
         if (nextState) closeOtherMenus('chat');

@@ -3,6 +3,10 @@
     import { themeState, THEMES, type ThemeId } from '$lib/themes/themes.svelte';
     import { fade } from 'svelte/transition';
 
+    /**
+     * Updates the application theme
+     * @param {ThemeId} id - The unique identifier of the selected theme
+     */
     function select(id: ThemeId) {
         themeState.set(id);
     }

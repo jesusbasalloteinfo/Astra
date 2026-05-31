@@ -5,12 +5,26 @@
     import LanguageSelector from '$lib/components/LanguageSwitcher.svelte';
     import AppLogo from '../AppLogo.svelte';
 
-    let { isOpen = $bindable(), navLinks, onNavigate = () => {} } = $props();
+    let { 
+        /** Whether the menu is currently open (bindable) */
+        isOpen = $bindable(), 
+        /** Array of navigation link objects */
+        navLinks, 
+        /** Callback function triggered upon navigation */
+        onNavigate = () => {} 
+    } = $props();
 
+    /**
+     * Closes the mobile menu
+     */
     function close() {
         isOpen = false;
     }
 
+    /**
+     * Handles navigation when a menu link is clicked
+     * @param {string} href - The destination URL
+     */
     function handleNavigate(href: string) {
         onNavigate?.(href);
         close();

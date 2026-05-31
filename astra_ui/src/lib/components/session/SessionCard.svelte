@@ -7,21 +7,49 @@
 	import { locStore } from '$lib/stores/location.svelte';
 	import { authStore } from '$lib/stores/auth.svelte';
 
+    /**
+     * Component props
+     * @type {{ id: string, name: string, creation: string, telescope?: string, description?: string | null }}
+     * @property {string} id - The unique ID of the observation session
+     * @property {string} name - The name of the session
+     * @property {string} creation - ISO date string of session creation
+     * @property {string} [telescope='Generic'] - Name of the telescope used
+     * @property {string|null} [description=null] - Optional description of the session
+     */
 	let { id, name, creation, telescope = 'Generic', description= null } = $props();
 
+    /** Whether the delete confirmation modal is visible */
 	let showDeleteModal = $state(false);
+
+    /** Whether the edit session modal is visible */
 	let showEditModal = $state(false);
+
+    /** The name value currently being edited in the modal */
 	let editName = $state(name);
+
+    /** The description value currently being edited in the modal */
 	let editDescription = $state(description || '');
 
+    /** Formatted creation date string */
 	const formattedDate = $derived(formatDate(creation));
+
+    /** Whether there is at least one location available in the store */
 	const hasLocation = $derived(locStore.all.length > 0);
+
+    /** Whether the application state is ready (auth not loading) */
 	const isReady = $derived(!authStore.isLoading);
+
+    /**
+     * Deletes the session from the store and closes the modal
+     */
     async function handleDelete() {
         await obsStore.remove(id);
         showDeleteModal = false;
     }
 
+    /**
+     * Updates the session details in the store and closes the modal
+     */
     async function handleUpdate() {
         await obsStore.update(id, { 
             name: editName,

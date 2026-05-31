@@ -4,26 +4,49 @@
     import Modal from '../ui/Modal.svelte';
     import * as m from '$lib/paraglide/messages.js';
 
-    let { id, name, owner, isOnline } = $props(); 
+    let { 
+        /** Unique identifier for the device */
+        id, 
+        /** Display name of the device */
+        name, 
+        /** Owner of the device */
+        owner, 
+        /** Whether the device is currently online */
+        isOnline 
+    } = $props(); 
 
+    /** Whether the deletion confirmation modal is visible */
     let showDeleteModal = $state(false);
+    /** Whether the name editing modal is visible */
     let showEditModal = $state(false);
+    /** Temporary name value used during editing */
     let editName = $state(name);
 
+    /** Whether this device is the currently selected active device */
     const isActive = $derived(deviceStore.effectiveActiveId === id);
+    /** Detailed status of the device if it's active */
     const details = $derived(isActive ? deviceStore.activeDetails : null);
 
+    /**
+     * Attempts to delete the device after confirmation
+     */
     async function handleDelete() {
         await deviceStore.deleteDevice(id);
         showDeleteModal = false;
     }
 
+    /**
+     * Attempts to update the device's display name
+     */
     async function handleUpdate() {
         if (!editName.trim()) return;
         await deviceStore.update(id, { name: editName });
         showEditModal = false;
     }
 
+    /**
+     * Initializes the edit state and opens the edit modal
+     */
     function openEdit() {
         editName = name;
         showEditModal = true;

@@ -6,8 +6,13 @@
     import { authStore } from '$lib/stores/auth.svelte';
 	import { AVAILABLE_LANGUAGES, type LanguageCode } from '$lib/config/languages';
 
+    /** Current active locale code */
 	let currentLocale = $state(getLocale()); 
 
+    /**
+     * Switches the application locale and reloads the page
+     * @param {LanguageCode} newLocale - The locale code to switch to
+     */
 	async function switchLocale(newLocale: LanguageCode) {
 		if (newLocale === currentLocale) return;
 

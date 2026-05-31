@@ -3,6 +3,13 @@
     import { formatNumber } from '$lib/utils/i18n';
     import { Eclipse, Orbit } from 'lucide-svelte';
 
+    /**
+     * Component props
+     * @type {{ id: string, illuminationPct: number, elongationDeg: number }}
+     * @property {string} id - The ID of the planetary object
+     * @property {number} [illuminationPct=0] - The percentage of the planet that is illuminated
+     * @property {number} [elongationDeg=0] - The angular separation from the Sun in degrees
+     */
     let {
         id, 
         illuminationPct = 0,
@@ -13,18 +20,23 @@
         elongationDeg: number;
     }>();
 
-    // 1. Determine the limit for an object
+    /** Lowercase ID for safe comparisons */
     let safeId = $derived(id.toLowerCase());
+
+    /** Whether the planet is an inferior planet (Mercury or Venus) */
     let isInferior = $derived(['mercury', 'venus'].includes(safeId));
     
+    /** Maximum possible elongation for the current object */
     let maxElongation = $derived.by(() => {
         if (safeId === 'mercury') return 28;
         if (safeId === 'venus') return 48;
         return 180; // For the rest
     });
 
+    /** Progress percentage of the current elongation relative to the maximum */
     let elongationProgress = $derived(Math.min(100, (elongationDeg / maxElongation) * 100));
     
+    /** Translated label for specific astronomical events (Conjunction, Opposition, etc.) */
     let elongationLabel = $derived.by(() => {
         if (elongationDeg < 10) return m.obs_targetinfo_planetary_conjunction(); 
 

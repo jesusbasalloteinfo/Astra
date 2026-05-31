@@ -4,13 +4,24 @@
     import * as m from '$lib/paraglide/messages.js';
     import { authStore } from '$lib/stores/auth.svelte';
 
-    let { onToggleMode } = $props<{ onToggleMode: () => void }>();
+    let { 
+        /** Callback function to toggle between login and register modes */
+        onToggleMode 
+    } = $props<{ onToggleMode: () => void }>();
 
+    /** Input value for the username field */
     let username = $state('');
+    /** Input value for the password field */
     let password = $state('');
+    /** Whether a login request is currently in progress */
     let loading = $state(false);
+    /** Error message to display if login fails */
     let error = $state('');
 
+    /**
+     * Validates input and attempts to log in the user
+     * Redirects to dashboard upon success
+     */
     async function handleLogin() {
         if (!username.trim()) {
             error = m.login_no_user();

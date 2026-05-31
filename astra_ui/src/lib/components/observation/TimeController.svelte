@@ -8,6 +8,7 @@
     import { getLocale } from '$lib/paraglide/runtime.js';
 	import { m } from '$lib/paraglide/messages';
 
+    /** Available playback speed options */
     const speeds = [
         { label: '-1h/s', v: -3600 },
         { label: '-10m/s', v: -600 },
@@ -18,9 +19,24 @@
         { label: '1h/s', v: 3600 }
     ];
 
+    /**
+     * Formats a date object into a localized time string
+     * @param {Date} date - The date to format
+     * @returns {string} Formatted time string
+     */
     const formatTime = (date: Date) => date.toLocaleTimeString(getLocale(), { hour12: false, timeZone: 'UTC'});
+    /**
+     * Formats a date object into a localized date string
+     * @param {Date} date - The date to format
+     * @returns {string} Formatted date string
+     */
     const formatDate = (date: Date) => date.toLocaleDateString(getLocale(), { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
+    /**
+     * Formats a date into a string suitable for a datetime-local input
+     * @param {Date} date - The date to format
+     * @returns {string} Formatted input value string
+     */
     const getLocalInputValue = (date: Date) => {
         const y = date.getUTCFullYear();
         const m = String(date.getUTCMonth() + 1).padStart(2, '0');
@@ -31,6 +47,10 @@
         return `${y}-${m}-${d}T${h}:${min}`;
     };
 
+    /**
+     * Handles manual time selection from the datetime-local input
+     * @param {Event} e - The input change event
+     */
     const handleTimeChange = (e: Event) => {
         const value = (e.currentTarget as HTMLInputElement).value;
         if (!value) return;

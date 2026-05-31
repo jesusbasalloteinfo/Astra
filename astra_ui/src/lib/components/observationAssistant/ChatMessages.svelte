@@ -6,15 +6,25 @@
     import ChatMessageComponent from './ChatMessageComponent.svelte';
 	import { m } from '$lib/paraglide/messages';
 
+    /** Reference to the scrollable container for chat messages */
     let chatContainer = $state<HTMLElement>();
+
+    /** Whether the user has scrolled up away from the bottom of the chat */
     let isScrolledUp = $state(false);
 
+    /**
+     * Handles the scroll event to determine if the user has scrolled up
+     */
     function handleScroll() {
         if (!chatContainer) return;
         const distanceToBottom = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
         isScrolledUp = distanceToBottom > 50;
     }
 
+    /**
+     * Scrolls the chat container to the very bottom
+     * @param {boolean} [smooth=true] - Whether to use smooth scrolling behavior
+     */
     function scrollToBottom(smooth = true) {
         if (!chatContainer) return;
         chatContainer.scrollTo({

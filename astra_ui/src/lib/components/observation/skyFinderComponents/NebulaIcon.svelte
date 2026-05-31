@@ -1,6 +1,11 @@
 <!-- src/lib/components/observation/skyFinderComponents/NebulaIcon.svelte -->
 <script lang="ts">
-    // Accept standard icon props to match Lucide/Iconify components
+    /**
+     * Component props
+     * @type {{ size?: number | string, class?: string }}
+     * @property {number|string} [size=16] - The size of the icon (width and height)
+     * @property {string} [class=''] - Additional CSS classes for the SVG element
+     */
     let { size = 16, class: className = '' } = $props();
 </script>
 

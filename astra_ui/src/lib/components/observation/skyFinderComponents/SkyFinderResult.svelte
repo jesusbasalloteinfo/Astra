@@ -6,6 +6,14 @@
     import { translateObjectType } from '$lib/utils/i18n';
     import { m } from '$lib/paraglide/messages';
 
+    /**
+     * Component props
+     * @type {{ result: any, isSelected?: boolean, onclick: () => void, onHover: () => void }}
+     * @property {any} result - The search result object containing object details
+     * @property {boolean} [isSelected=false] - Whether this result is currently selected/highlighted
+     * @property {() => void} onclick - Function called when the result is clicked
+     * @property {() => void} onHover - Function called when the result is hovered
+     */
     let { 
         result, 
         isSelected = false, 
@@ -18,6 +26,7 @@
         onHover: () => void;
     }>();
 
+    /** Mapping of object categories to Iconify icon names */
     const iconMap = {
         'planetary': 'tabler:planet',
         'moon': 'tabler:moon',
@@ -27,7 +36,11 @@
         'star': 'tabler:star'
     };
 
-    // Función para obtener el icono según el tipo
+    /**
+     * Returns the appropriate icon name for a given object type
+     * @param {string} type - The category/type of the astronomical object
+     * @returns {string} The Iconify icon identifier
+     */
     function getIcon(type: string) {
         return iconMap[type as keyof typeof iconMap] || 'lucide:sparkles';
     }

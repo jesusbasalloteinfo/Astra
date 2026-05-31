@@ -6,8 +6,13 @@
     import * as m from '$lib/paraglide/messages.js';
 	import LocationCard from './LocationCard.svelte';
 
+    /**
+     * Calculates the local timezone offset in hours
+     * @returns {number} Timezone offset from UTC
+     */
     const getLocalTimezone = () => -(new Date().getTimezoneOffset() / 60);
 
+    /** State for the new location being created */
     let newLoc = $state<LocationCreate>({ 
         label: '', 
         lat: 0, 
@@ -17,7 +22,7 @@
         is_default: false 
     });
 
-    // Validación reactiva
+    /** Whether the current newLoc state is valid for submission */
     const isValid = $derived(
         newLoc.label.trim() !== '' &&
         newLoc.lat >= -90 && newLoc.lat <= 90 &&
@@ -26,6 +31,9 @@
         newLoc.timezone >= -12 && newLoc.timezone <= 14
     );
 
+    /**
+     * Attempts to detect the user's current GPS location and update newLoc
+     */
     async function handleGPS() {
         try {
             const coords = await locStore.detectGPS();
@@ -38,6 +46,9 @@
         }
     }
 
+    /**
+     * Saves the new location to the store and resets the form
+     */
     async function save() {
         await locStore.addLocation(newLoc);
         locStore.hideForm();

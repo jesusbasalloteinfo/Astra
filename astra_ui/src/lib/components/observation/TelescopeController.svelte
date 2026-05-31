@@ -5,26 +5,34 @@
     import { deviceAPI } from '$lib/api/devices';
 
     let { 
+        /** Callback function to center the view on the telescope's current target */
         onCenter = () => {},
+        /** Whether the centering action is currently allowed */
         canCenter = false
     }: {
         onCenter?: () => void,
         canCenter?: boolean
     } = $props();
 
+    /** Whether the active telescope is currently online */
     const isOnline = $derived(
         deviceStore.activeDetails?.is_online ?? 
         deviceStore.activeBase?.is_online ?? 
         false
     );
 
+    /** List of active components for the current device */
     const activeComps = $derived(deviceStore.activeComponents);
 
+    /** Whether a telescope movement abort operation is in progress */
     let isAborting = $state(false);
     
-    // Nuevo estado para controlar el menú en móviles (y PC)
+    /** Whether the controller dropdown menu is open */
     let isOpen = $state(false);
 
+    /**
+     * Attempts to abort all current telescope movement
+     */
     async function handleAbort() {
         const activeId = deviceStore.effectiveActiveId;
         const activeTelescope = deviceStore.activeComponents?.telescope;
@@ -41,7 +49,10 @@
         }
     }
     
-    // Función para manejar clics fuera del menú y cerrarlo
+    /**
+     * Closes the dropdown menu when clicking outside the component
+     * @param {MouseEvent} e - The click event
+     */
     function handleOutsideClick(e: MouseEvent) {
         if (isOpen && !(e.target as Element).closest('.telescope-controller-container')) {
             isOpen = false;

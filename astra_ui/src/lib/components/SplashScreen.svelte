@@ -4,7 +4,7 @@
     import * as m from '$lib/paraglide/messages.js';
     import { onMount } from 'svelte';
 
-    // Dummy cool messages
+    /** List of status messages displayed during initialization */
     const statusSteps = [
         "Initializing core...",
         "Connecting to Astra interface...",
@@ -13,6 +13,7 @@
         "Rendering interface..."
     ];
     
+    /** Current step index of the status message sequence */
     let currentStep = $state(0);
 
     onMount(() => {

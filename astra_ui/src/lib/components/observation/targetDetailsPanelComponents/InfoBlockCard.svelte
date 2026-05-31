@@ -3,6 +3,15 @@
     import type { Snippet } from 'svelte';
     import { ChevronDown } from 'lucide-svelte';
 
+    /**
+     * Component props
+     * @type {{ title: string, text?: string | null, icon: any, variant?: 'default' | 'funFact' | 'visualTip', headerAction?: Snippet }}
+     * @property {string} title - The title of the information block
+     * @property {string|null} [text=null] - The main content text (optional)
+     * @property {any} icon - The Lucide icon component to display
+     * @property {'default'|'funFact'|'visualTip'} [variant='default'] - Visual style variant
+     * @property {Snippet} [headerAction] - Optional Svelte 5 snippet for an action in the header
+     */
     let {
         title,
         text = null,
@@ -17,8 +26,10 @@
         headerAction?: Snippet; // Svelte 5 Snippet
     }>();
 
+    /** Whether the text content is expanded to show all lines */
     let isExpanded = $state(false);
 
+    /** Theme configuration derived from the variant prop */
     const theme = $derived.by(() => {
         if (variant === 'funFact') return { icon: 'text-yellow-500/70', bg: 'bg-yellow-500/5', border: 'border-yellow-500/10', largeIcon: 'text-yellow-500 opacity-[0.07]' };
         if (variant === 'visualTip') return { icon: 'text-blue-400/70', bg: 'bg-blue-400/5', border: 'border-blue-400/10', largeIcon: 'text-blue-400 opacity-[0.07]' };

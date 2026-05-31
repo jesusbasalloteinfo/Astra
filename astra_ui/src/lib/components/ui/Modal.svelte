@@ -3,6 +3,15 @@
     import { X } from 'lucide-svelte';
     import { fade, scale } from 'svelte/transition';
 
+    /**
+     * Component props
+     * @type {{ open: boolean, title?: string, size?: 'sm' | 'md' | 'lg' | 'xl', onclose?: () => void, children: any }}
+     * @property {boolean} open - Whether the modal is currently open (bindable)
+     * @property {string} [title=''] - Optional title to display in the modal header
+     * @property {'sm'|'md'|'lg'|'xl'} [size='md'] - The size constraint of the modal
+     * @property {() => void} [onclose] - Optional callback triggered when the modal closes
+     * @property {any} children - The content to be rendered inside the modal
+     */
     let {
         open = $bindable(false),
         title = '',
@@ -24,15 +33,26 @@
         xl: 'max-w-2xl',
     };
 
+    /**
+     * Closes the modal and calls the onclose callback if provided
+     */
     function close() {
         open = false;
         onclose?.();
     }
 
+    /**
+     * Handles backdrop clicks to close the modal
+     * @param {MouseEvent} e - The mouse event
+     */
     function handleBackdrop(e: MouseEvent) {
         if (e.target === e.currentTarget) close();
     }
 
+    /**
+     * Handles keyboard events to close the modal (e.g., Escape key)
+     * @param {KeyboardEvent} e - The keyboard event
+     */
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') close();
     }

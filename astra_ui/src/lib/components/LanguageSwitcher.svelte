@@ -56,6 +56,10 @@
 		}
 	}
 
+    /**
+     * Handles clicks outside the component to close the dropdown
+     * @param {MouseEvent} event - The click event
+     */
 	function handleOutsideClick(event: MouseEvent) {
 		const target = event.target as HTMLElement;
 		if (!target.closest('.lang-switcher-container')) {

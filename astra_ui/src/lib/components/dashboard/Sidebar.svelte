@@ -14,6 +14,7 @@
 	import { obsStore } from '$lib/stores/observations.svelte';
 	import { newObsStore } from '$lib/stores/newObservation.svelte';
 
+    /** Sidebar navigation items configuration */
     const navItems = [
         { href: '/dashboard',           icon: LayoutDashboard, label: m.dash_side_home() },
         { href: '/dashboard/sessions',  icon: History,         label: m.dash_side_sessions() },
@@ -21,8 +22,12 @@
         { href: '/dashboard/location',  icon: MapPin,          label: m.dash_side_location() },
     ];
 
+    /** Whether the profile settings modal is open */
     let profileOpen = $state(false);
 
+    /**
+     * Logs out the current user and redirects to the landing page
+     */
     async function handleLogout() {
         const destination = '/';
         // Start navigation first

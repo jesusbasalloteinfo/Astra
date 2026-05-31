@@ -7,15 +7,33 @@
     import * as m from '$lib/paraglide/messages.js';
 	import Modal from '../ui/Modal.svelte';
 
-    let { id, label, lat, lng, tz, elevation } = $props();
+    let { 
+        /** Unique identifier for the location */
+        id, 
+        /** Display label for the location */
+        label, 
+        /** Latitude in decimal degrees */
+        lat, 
+        /** Longitude in decimal degrees */
+        lng, 
+        /** Timezone offset from UTC */
+        tz, 
+        /** Elevation above sea level in meters */
+        elevation 
+    } = $props();
 
+    /** Whether the deletion confirmation modal is visible */
     let showDeleteModal = $state(false);
 
+    /**
+     * Attempts to delete the location after confirmation
+     */
     async function handleDelete() {
         locStore.deleteLocation(id);
         showDeleteModal = false;
     }
     
+    /** Formatted timezone string (e.g., "+1" or "-5") */
     const formattedTZ = $derived(tz >= 0 ? `+${tz}` : `${tz}`);
 </script>
 

@@ -2,6 +2,18 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
+    /**
+     * Component props
+     * @type {{ icon?: any, title?: string, buttonTitle?: string, active?: boolean, activeClass?: string, isOpen: boolean, allowHover?: boolean, children: Snippet }}
+     * @property {any} [icon] - Optional icon component for the trigger button
+     * @property {string} [title=''] - Title displayed inside the popover
+     * @property {string} [buttonTitle=''] - Tooltip title for the trigger button
+     * @property {boolean} [active=false] - Whether the button should show active styling
+     * @property {string} [activeClass] - CSS classes to apply when active or open
+     * @property {boolean} isOpen - Whether the popover is open (bindable)
+     * @property {boolean} [allowHover=true] - Whether to allow opening the popover on hover (on supported devices)
+     * @property {Snippet} children - Snippet for the popover content
+     */
     let { 
         icon: IconComponent, 
         title = '', 
@@ -13,12 +25,20 @@
         children 
     } = $props();
 
+    /** Reference to the container element for outside click detection */
     let container: HTMLElement;
 
+    /**
+     * Toggles the open state of the popover
+     */
     function toggle() {
         isOpen = !isOpen;
     }
 
+    /**
+     * Handles clicks outside the component to close the popover
+     * @param {PointerEvent} event - The pointer event
+     */
     function handleClickOutside(event: PointerEvent) {
         if (container && !container.contains(event.target as Node)) {
             isOpen = false;

@@ -2,6 +2,13 @@
     import { Sunrise, Sunset, Navigation } from 'lucide-svelte';
     import { m } from '$lib/paraglide/messages';
 
+    /**
+     * Component props
+     * @type {{ rise?: string, transit?: string, set?: string }}
+     * @property {string} [rise='—'] - Local time of the object's rise
+     * @property {string} [transit='—'] - Local time of the object's transit (highest point)
+     * @property {string} [set='—'] - Local time of the object's set
+     */
     let { 
         rise = '—', 
         transit = '—', 

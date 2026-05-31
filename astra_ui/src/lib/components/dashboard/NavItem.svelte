@@ -4,8 +4,11 @@
     import type { Component } from 'svelte';
 
     let {
+        /** Destination URL for the navigation link */
         href,
+        /** Icon component to display */
         icon: Icon,
+        /** Text label for the navigation link */
         label,
     }: {
         href: string;
@@ -13,6 +16,7 @@
         label: string;
     } = $props();
 
+    /** Whether the navigation item is currently active based on the URL path */
     let active = $derived(page.url.pathname === href);
 </script>
 

@@ -6,13 +6,21 @@
     import * as m from '$lib/paraglide/messages.js';
     import DeviceCard from './DeviceCard.svelte';
 
+    /** Whether the "Add Device" (pairing) section is visible */
     let isAdding = $state(false);
+    /** Input value for the device pairing token/PIN */
     let pairingToken = $state('');
+    /** Whether a pairing request is currently in progress */
     let isPairing = $state(false);
+    /** Error message to display if pairing fails */
     let pairingError = $state<string | null>(null);
 
+    /** Whether the current pairing token input is valid */
     const isValid = $derived(pairingToken.trim().length > 0);
 
+    /**
+     * Attempts to pair a new device using the provided token
+     */
     async function handlePair() {
         if (!isValid) return;
         

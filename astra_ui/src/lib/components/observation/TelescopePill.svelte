@@ -3,6 +3,7 @@
     import { SatelliteDish, LoaderCircle } from 'lucide-svelte';
     import * as m from '$lib/paraglide/messages.js';
 
+    /** Whether the active telescope is currently online */
     const isOnline = $derived(
         deviceStore.activeDetails?.is_online ?? 
         deviceStore.activeBase?.is_online ?? 

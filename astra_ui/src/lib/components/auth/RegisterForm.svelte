@@ -5,17 +5,31 @@
     import { authStore } from '$lib/stores/auth.svelte';
     import { authAPI } from '$lib/api/auth';
 
-    let { onToggleMode } = $props<{ onToggleMode: () => void }>();
+    let { 
+        /** Callback function to toggle between login and register modes */
+        onToggleMode 
+    } = $props<{ onToggleMode: () => void }>();
 
+    /** Input value for the username field */
     let username = $state('');
+    /** Input value for the email field */
     let email = $state('');
+    /** Input value for the password field */
     let password = $state('');
+    /** Input value for the password confirmation field */
     let confirmPassword = $state('');
+    /** Whether a registration request is currently in progress */
     let loading = $state(false);
+    /** Error message to display if registration fails */
     let error = $state('');
 
+    /** Regular expression for basic email validation */
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    /**
+     * Validates input and attempts to register a new user
+     * Auto-logs in the user and redirects to dashboard upon success
+     */
     async function handleRegister() {
         // Validations
         if (!username.trim()) {

@@ -7,15 +7,26 @@
     import SkyFinderResult from './skyFinderComponents/SkyFinderResult.svelte';
     import { createSkySearch } from './skyFinderComponents/useSkySearch.svelte';
 
-    let { open = $bindable(), onSelect } = $props<{ 
+    let { 
+        /** Whether the finder palette is currently open (bindable) */
+        open = $bindable(), 
+        /** Callback function triggered when a search result is selected */
+        onSelect 
+    } = $props<{ 
         open: boolean;
         onSelect: (id: string) => void;
     }>();
 
+    /** Search logic rune for handling queries and results */
     const search = createSkySearch((id, type) => {
         selectObject(id, type);
     });
 
+    /**
+     * Selects an object from the search results, updates the store, and closes the finder
+     * @param {string} id - The ID of the selected object
+     * @param {string} type - The type of the selected object
+     */
     function selectObject(id: string, type: string) {
         if (type !== 'constellation') {
             selectionStore.select(id, type as 'sidereal' | 'planetary');
@@ -29,6 +40,10 @@
         open = false;
     }
 
+    /**
+     * Handles keyboard shortcuts (e.g. Ctrl+F) and navigation within search results
+     * @param {KeyboardEvent} e - The keydown event
+     */
     function handleKeydown(e: KeyboardEvent) {
         // Open
         if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'f') {

@@ -1,8 +1,11 @@
 <script lang="ts">
     import { page } from '$app/state';
 
-    // Seeded random number generator to ensure SSR and Client match
-    // while still being "random" on every refresh
+    /**
+     * Creates a seeded pseudo-random number generator
+     * @param {number} seed - The seed value to initialize the generator
+     * @returns {() => number} A function that returns a pseudo-random number between 0 and 1
+     */
     function seededRandom(seed: number) {
         return function() {
             seed = (seed * 9301 + 49297) % 233280;
@@ -10,13 +13,13 @@
         };
     }
 
-	// Get the seed from the server load function
+	/** Seed value derived from server data to ensure hydration match */
     const seedValue = $derived(page.data.starSeed || 0.12345);
     
+    /** Total number of stars to render */
     const STAR_COUNT = 75;
     
-    // We use a derived to recalculate stars if the seed changes (e.g. navigation)
-    // and to ensure the random generator starts fresh with the same seed
+    /** Derived array of star properties generated from the seed */
     const stars = $derived.by(() => {
         const rnd = seededRandom(seedValue * 10000);
         return Array.from({ length: STAR_COUNT }).map((_, i) => ({

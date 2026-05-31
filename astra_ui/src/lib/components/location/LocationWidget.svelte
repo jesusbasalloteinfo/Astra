@@ -6,10 +6,13 @@
     import { fade } from 'svelte/transition';
 
     let {
+        /** Current temperature to display */
         temperature = 12, 
+        /** Current humidity percentage to display */
         humidity = 65,
     } = $props();
 
+    /** The currently active location from the location store */
     const active = $derived(locStore.active);
 </script>
 

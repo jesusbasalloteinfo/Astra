@@ -12,11 +12,18 @@
     import ChatInput from './ChatInput.svelte';
 	import { untrack, onMount } from 'svelte';
 
+    /**
+     * Component props
+     * @type {{ open: boolean, onClear: () => void }}
+     * @property {boolean} open - Whether the chat drawer is open (bindable)
+     * @property {() => void} onClear - Callback to clear the active selection
+     */
     let { open = $bindable(), onClear  } = $props<{ 
         open: boolean; 
         onClear: () => void; 
     }>();
 
+    /** Whether the screen is in portrait orientation */
     let isPortrait = $state(false);
 
     $effect(() => {

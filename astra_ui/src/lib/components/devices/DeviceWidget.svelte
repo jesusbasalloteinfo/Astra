@@ -6,14 +6,20 @@
     import * as m from '$lib/paraglide/messages.js';
 
     let {
+        /** Callback function triggered for configuration actions */
         onconfig = () => {}
     } = $props();
 
+    /** Base information of the active device */
     const base = $derived(deviceStore.activeBase);
+    /** Detailed status and components of the active device */
     const details = $derived(deviceStore.activeDetails);
+    /** Whether device details are currently being fetched */
     const isLoading = $derived(deviceStore.isFetchingDetails);
 
+    /** Whether the active device is currently online */
     const isOnline = $derived(details?.is_online ?? false);
+    /** Timer interval for periodic status refreshes */
     let interval: ReturnType<typeof setInterval>;
 
 
