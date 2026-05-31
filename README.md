@@ -18,7 +18,10 @@
 
 **ASTRA** is an open-source **Unified Astronomy Platform** that bridges the gap between complex astronomical hardware and the modern web. It provides a complete ecosystem for remote observatory management, celestial discovery, and automated equipment control.
 
-ASTRA is built on a **distributed architecture** that decouples the user interface from the hardware, allowing you to control your telescope from your living room while the equipment is under the stars.
+**Why was ASTRA built?**
+Traditional astronomy setups often require a dedicated Windows (ASCOM) or Linux laptop running heavy desktop software (like KStars or Stellarium) right next to the telescope, filled with overwhelming buttons and complex configurations. ASTRA solves this by decoupling the hardware from the interface. 
+
+With ASTRA, your equipment runs via a lightweight edge node, while you control everything from a clean, web-based dashboard on any device. More importantly, it features an integrated AI assistant designed for occasional observers: instead of fighting with menus or wondering what's up in the sky tonight, you can simply ask the assistant to find targets for you.
 
 
 ## ✨ Key Features
