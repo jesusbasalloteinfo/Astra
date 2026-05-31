@@ -76,8 +76,8 @@
                 <div class="text-[11px] md:text-xs text-copy-muted line-clamp-1">{description || m.dash_observ_no_description()}</div>
             {/if}
             <div class="flex items-center gap-3 md:gap-4 text-[10px] md:text-xs text-copy-muted">
-                <span class="flex items-center gap-1" title="Creation Date"><Calendar size={11} /> {formattedCreation}</span>
-                <span class="flex items-center gap-1" title="Last Activity"><History size={11} /> {formattedActivity}</span>
+                <span class="flex items-center gap-1" title={m.dash_observ_creation_date()}><Calendar size={11} /> {formattedCreation}</span>
+                <span class="flex items-center gap-1" title={m.dash_observ_last_activity()}><History size={11} /> {formattedActivity}</span>
                 <!-- <span class="flex items-center gap-1"><Telescope size={11} /> {telescope}</span> -->
             </div>
         </div>
