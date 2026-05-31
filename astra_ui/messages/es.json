@@ -132,14 +132,33 @@
 
 
   "-------------------------------------- DASHBOARD -------------------------------------- ": "",
-  "dash_main_greeting_morning": "¡Buenos días, {user}! ☀️",
-  "dash_main_sub_morning_morning": "¿Planificando la sesión solar de hoy?",
-  "dash_main_greeting_afternoon": "Buenas tardes, {user} 🌤️",
-  "dash_main_sub_morning_afternoon": "¿Listo para la transición al crepúsculo?",
-  "dash_main_greeting_evening": "Buenas noches, {user} 🌙",
-  "dash_main_sub_morning_evening": "¿Todo preparado para la sesión de esta noche?",
-  "dash_main_greeting_night": "Buenas noches, {user} 🌌",
-  "dash_main_sub_morning_night": "¿Cuál es el objetivo de esta noche?",
+  "dash_main_greeting_morning_0": "Buenos días, {user}",
+  "dash_main_greeting_morning_1": "¿Preparado para explorar, {user}?",
+  "dash_main_greeting_morning_2": "Sistemas listos, {user}.",
+  "dash_main_sub_morning_morning_0": "¿Planificando la sesión solar de hoy?",
+  "dash_main_sub_morning_morning_1": "¿Cuál es el objetivo de esta mañana?",
+  "dash_main_sub_morning_morning_2": "Un buen momento para revisar el equipo.",
+
+  "dash_main_greeting_afternoon_0": "Buenas tardes, {user}",
+  "dash_main_greeting_afternoon_1": "Bienvenido de nuevo, {user}",
+  "dash_main_greeting_afternoon_2": "¿Listo para la transición, {user}?",
+  "dash_main_sub_morning_afternoon_0": "¿Listo para la transición al crepúsculo?",
+  "dash_main_sub_morning_afternoon_1": "El cielo se está preparando para esta noche.",
+  "dash_main_sub_morning_afternoon_2": "Buena hora para empezar a enfriar las cámaras.",
+
+  "dash_main_greeting_evening_0": "Buenas noches, {user}",
+  "dash_main_greeting_evening_1": "Empieza el espectáculo, {user}",
+  "dash_main_greeting_evening_2": "El cielo se oscurece, {user}",
+  "dash_main_sub_morning_evening_0": "¿Todo preparado para la sesión de esta noche?",
+  "dash_main_sub_morning_evening_1": "Las primeras estrellas ya son visibles.",
+  "dash_main_sub_morning_evening_2": "Hora de conectar el equipo e iniciar la alineación.",
+
+  "dash_main_greeting_night_0": "Buenas noches, {user}",
+  "dash_main_greeting_night_1": "Buena caza, {user}",
+  "dash_main_greeting_night_2": "El universo te espera, {user}",
+  "dash_main_sub_morning_night_0": "¿Cuál es el objetivo de esta noche?",
+  "dash_main_sub_morning_night_1": "Ideal para planificar la sesión de espacio profundo.",
+  "dash_main_sub_morning_night_2": "El asistente Astra está listo para seguir tus objetivos.",
 
   "dash_main_new_session": "Nueva sesión",
 
