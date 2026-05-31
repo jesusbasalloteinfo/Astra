@@ -9,28 +9,52 @@ from typing import List, Tuple
 from models.api.common import SyncPayload
 
 class BaseEngine(ABC):
+    """Abstract base class for astronomical calculation engines.
+
+    Defines common utilities and the standard interface for engines that calculate 
+    the positions and movements of astronomical objects.
+    """
     
-    # @abstractmethod
-    # def get_metadata(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0):
-    #     """
-    #     Returns all the objects metadata for a time and location
-    #     """
-    #     pass
     @staticmethod
     def _circular_diff(a: float, b: float, max_val: float = 360.0) -> float:
-        """Handles wrap-around differences (e.g., 359 degrees to 1 degree)."""
+        """Handles wrap-around differences for angular values.
+
+        Args:
+            a (float): The first angle.
+            b (float): The second angle.
+            max_val (float): The maximum value for wrap-around (e.g., 360.0 for degrees).
+
+        Returns:
+            float: The signed difference between the two angles.
+        """
         return (a - b + max_val / 2) % max_val - max_val / 2
     
     @abstractmethod
-    def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0) -> SyncPayload:
-        """
-        Calculates the sky and its movement for a time and location
+    def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl: float = 120.0) -> SyncPayload:
+        """Calculates the movement of a full catalog of objects.
+
+        Args:
+            t0_dt (datetime): The target UTC time for calculation.
+            lat (float): Observer's latitude in decimal degrees.
+            lon (float): Observer's longitude in decimal degrees.
+            elev_m (float): Observer's elevation in meters. Defaults to 0.0.
+            ttl (float): Movement window in seconds. Defaults to 120.0.
+
+        Returns:
+            SyncPayload: Computed positions for all relevant objects.
         """
         pass
     
     @abstractmethod
-    def get_object_movement(self, target_id:str, target_time: datetime, lat: float, lon: float, elev_m: float = 0.0):
+    def get_object_movement(self, target_id: str, target_time: datetime, lat: float, lon: float, elev_m: float = 0.0):
+        """Calculates detailed movement and data for a single object.
+
+        Args:
+            target_id (str): The identifier of the object.
+            target_time (datetime): The target UTC time for calculation.
+            lat (float): Observer's latitude.
+            lon (float): Observer's longitude.
+            elev_m (float): Observer's elevation.
         """
-        Calculate an object movement and metadata
-        """
+        pass
 

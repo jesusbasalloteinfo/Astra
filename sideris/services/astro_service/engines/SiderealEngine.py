@@ -14,15 +14,29 @@ from models.api.common import SyncPayload
 from core.logging import get_logger
 
 class SiderealEngine(BaseEngine):
-    def __init__(self, catalog:AstronomicalCatalog, constellations:ConstellationCatalog):
-        """
-        Starts the engine with the catalog data
+    """Engine for calculating positions of sidereal objects (stars and DSOs).
+
+    Uses Astropy to perform bulk transformations of catalog coordinates into 
+    horizontal AltAz coordinates for synchronization, and Astroplan for 
+    high-precision rise/set/transit events.
+    """
+
+    def __init__(self, catalog: AstronomicalCatalog, constellations: ConstellationCatalog):
+        """Initialize the SiderealEngine with catalog data.
+
+        Extracts positions and proper motions from the catalog and creates a 
+        cached SkyCoord object for fast vector-based transformations.
+
+        Args:
+            catalog (AstronomicalCatalog): The astronomical catalog containing stars and DSOs.
+            constellations (ConstellationCatalog): The catalog of constellation definitions.
         """
         super().__init__()
         get_logger("SiderealEngine").debug("Starting Sidereal Engine...")
         ras, decs, pm_ras, pm_decs, self.ids = [], [], [], [], []
-        self._sidereal_catalog:AstronomicalCatalog=catalog
-        self._constellations:ConstellationCatalog=constellations
+        self._sidereal_catalog: AstronomicalCatalog = catalog
+        self._constellations: ConstellationCatalog = constellations
+        
         # Extract Stars
         for star in catalog.data.stars:
             self.ids.append(star.id)
@@ -54,9 +68,21 @@ class SiderealEngine(BaseEngine):
         get_logger("SiderealEngine").info(f"Sidereal engine started: Loaded {len(self.ids)} objects.")
     
 
-    def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0) -> SyncPayload:
-        """
-        Calculates the sky and its movement for a time and location
+    def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl: float = 120.0) -> SyncPayload:
+        """Calculates current Altitude/Azimuth and drifts for all sidereal objects.
+
+        Performs vector-based coordinate transformations for the entire catalog 
+        at once to compute real-time positions and velocities.
+
+        Args:
+            t0_dt (datetime): Target UTC time.
+            lat (float): Observer latitude.
+            lon (float): Observer longitude.
+            elev_m (float): Observer elevation in meters. Defaults to 0.0.
+            ttl (float): Movement window in seconds for drift calculation. Defaults to 120.0.
+
+        Returns:
+            SyncPayload: Collection of computed horizontal positions and drifts.
         """
         obs_loc = EarthLocation(lat=lat * u.deg, lon=lon * u.deg, height=elev_m * u.m)
         
@@ -82,8 +108,22 @@ class SiderealEngine(BaseEngine):
         )
   
 
-    def get_object_movement(self, target_id:str, target_time: datetime, lat: float, lon: float, elev_m: float = 0.0):
-        
+    def get_object_movement(self, target_id: str, target_time: datetime, lat: float, lon: float, elev_m: float = 0.0):
+        """Calculates movement data and rise/set events for a specific object.
+
+        Args:
+            target_id (str): The identifier of the sidereal object.
+            target_time (datetime): Target UTC time.
+            lat (float): Observer latitude.
+            lon (float): Observer longitude.
+            elev_m (float): Observer elevation. Defaults to 0.0.
+
+        Returns:
+            EphemerisMovementData: Computed horizontal coordinates and visibility events.
+
+        Raises:
+            ValueError: If the object ID is not found in the catalog.
+        """
         id = self._id_to_idx.get(target_id)
         if id is None:
             raise ValueError(f"Object {target_id} not found!")
@@ -112,6 +152,7 @@ class SiderealEngine(BaseEngine):
             never_rises = dec_deg > (90.0 + lat_deg)
 
         def safe_get_datetime(time_obj):
+            """Safely extracts a UTC datetime from an Astropy Time object."""
             if time_obj is None:
                 return None
             try:

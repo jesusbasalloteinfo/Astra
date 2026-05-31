@@ -13,22 +13,28 @@ from api.search_catalog import router as search_catalog_router
 from core.translations import load_translations
 
 
-
-
 setup_global_logging()
 DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 
-API_BASE_PATH=""
+API_BASE_PATH = ""
 
-CATALOG_FILE="data/sidereal_catalog.pkl"
-CONST_CATALOG= "data/constellationship.json"
+CATALOG_FILE = "data/sidereal_catalog.pkl"
+CONST_CATALOG = "data/constellationship.json"
 
         
 
 @asynccontextmanager
-async def lifespan(app:FastAPI):
-    """
-    App lifespan with async context manager
+async def lifespan(app: FastAPI):
+    """Manages the application lifespan events for Sideris.
+
+    Handles the initialization of the AstroService singleton (loading catalogs 
+    into memory) and the loading of localized translation files during startup.
+
+    Args:
+        app (FastAPI): The FastAPI application instance.
+
+    Raises:
+        HTTPException: If an error occurs during the catalog or translation loading.
     """
 
     LOG = get_logger("Ephem API")
@@ -36,7 +42,7 @@ async def lifespan(app:FastAPI):
     LOG.debug("Starting Sideris Ephemerides API...")
 
     try:
-        app.state.logger=LOG
+        app.state.logger = LOG
 
         await AstroService.get_instance(CATALOG_FILE, CONST_CATALOG)
 
@@ -54,13 +60,13 @@ async def lifespan(app:FastAPI):
             detail="Error during lifespan"
             ) from e
     
-app=FastAPI(
+app = FastAPI(
     title="Sideris Ephemerides API",
     description="Documentation for Sideris Ephemerides API",
     lifespan=lifespan,
-    docs_url=API_BASE_PATH+"/docs" if DEBUG else None,
-    redoc_url=API_BASE_PATH+"/redoc" if DEBUG else None,
-    openapi_url=API_BASE_PATH+"/openapi.json" if DEBUG else None,
+    docs_url=API_BASE_PATH + "/docs" if DEBUG else None,
+    redoc_url=API_BASE_PATH + "/redoc" if DEBUG else None,
+    openapi_url=API_BASE_PATH + "/openapi.json" if DEBUG else None,
     swagger_ui_parameters={"defaultModelsExpandDepth": -1} # Hide the schemas section
 )
 
@@ -74,13 +80,18 @@ api = APIRouter(prefix=API_BASE_PATH)
 
 @api.get("/")
 def health():
+    """Service health check endpoint.
+
+    Returns:
+        dict: A status message indicating the service is running.
+    """
     return {"status": "ok", "message": "Sideris Ephemerides API is running!"}
 
-app.include_router(search_catalog_router, prefix=API_BASE_PATH+"/search", tags=["Search Catalog"])
-app.include_router(sidereal_catalog_router, prefix=API_BASE_PATH+"/sidereal", tags=["Sidereal Catalog"])
-app.include_router(planetary_catalog_router, prefix=API_BASE_PATH+"/planetary", tags=["Planetary Catalog"])
+app.include_router(search_catalog_router, prefix=API_BASE_PATH + "/search", tags=["Search Catalog"])
+app.include_router(sidereal_catalog_router, prefix=API_BASE_PATH + "/sidereal", tags=["Sidereal Catalog"])
+app.include_router(planetary_catalog_router, prefix=API_BASE_PATH + "/planetary", tags=["Planetary Catalog"])
 app.include_router(api)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-if __name__=="__main__":
+if __name__ == "__main__":
     uvicorn.run("sideris:app", host="127.0.0.1", port=8624, reload=True)
