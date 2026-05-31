@@ -12,8 +12,8 @@
 </script>
 
 <svelte:head>
-    <title>{m.login_title({name: m.name().toUpperCase()})}</title>
-    <meta name="description" content={m.login_title({name: m.name().toUpperCase()})} />
+    <title>{isRegister ? m.register_title({name: m.name().toUpperCase()}) : m.login_title({name: m.name().toUpperCase()})}</title>
+    <meta name="description" content={isRegister ? m.register_title({name: m.name().toUpperCase()}) : m.login_title({name: m.name().toUpperCase()})} />
 </svelte:head>
 
 <AuthLayout 

@@ -55,7 +55,7 @@
     // Footer Community Links
     const footerCommunityLinks = $derived([
         { name: m.landing_footer_cont(),   href: "https://github.com/jesusbasalloteinfo/Astra/blob/main/CONTRIBUTING.md" },
-        { name: m.landing_footer_contact(),href: "mailto:jesusbasalloteinfo" }
+        { name: m.landing_footer_contact(),href: "https://github.com/jesusbasalloteinfo/Astra/issues" }
     ]);
 
     const socialLinks = [

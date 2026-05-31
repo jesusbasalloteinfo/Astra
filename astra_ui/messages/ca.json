@@ -69,6 +69,7 @@
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
   "login_title": "Iniciar sessió - {name}",
+  "register_title": "Registrar-se - {name}",
   "login_welcome": "Benvingut",
   "login_input_msg": "Inicia sessió per a continuar",
   "login_username_input": "Usuari",

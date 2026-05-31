@@ -69,6 +69,7 @@
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
   "login_title": "Login - {name}",
+  "register_title": "Register - {name}",
   "login_welcome": "Welcome back",
   "login_input_msg": "Login to continue",
   "login_username_input": "Username",
