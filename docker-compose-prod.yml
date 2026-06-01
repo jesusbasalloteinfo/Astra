@@ -91,7 +91,7 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: "postgresql://llm_user:llm_password@litellm_db:5432/litellm"
+      DATABASE_URL: "postgresql://${LLM_DB_USER}:${LLM_DB_PASSWORD}@litellm_db:5432/${LLM_DB_NAME}"
       STORE_MODEL_IN_DB: True
     depends_on:
       litellm_db:
@@ -106,13 +106,13 @@ services:
     container_name: litellm_db
     restart: always
     environment:
-      POSTGRES_DB: litellm
-      POSTGRES_USER: llm_user
-      POSTGRES_PASSWORD: llm_password
+      POSTGRES_DB: ${LLM_DB_NAME}
+      POSTGRES_USER: ${LLM_DB_USER}
+      POSTGRES_PASSWORD: ${LLM_DB_PASSWORD}
     volumes:
       - litellm_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U llm_user -d litellm"]
+      test: ["CMD-SHELL", "pg_isready -U ${LLM_DB_USER} -d ${LLM_DB_NAME}"]
       interval: 5s
       timeout: 5s
       retries: 5
