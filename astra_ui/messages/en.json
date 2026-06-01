@@ -11,7 +11,7 @@
   
   "landing_cta": "Start Exploring!",
   "landing_cta_docs": "View Documentation",
-  "landing_cta_gallery": "View Gallery",
+  "landing_cta_repo": "View Code",
 
   "landing_nav_features": "Features",
   "landing_nav_technology": "Technology",
@@ -44,8 +44,8 @@
   "landing_stat_indi": "INDI Protocol",
   "landing_stat_telescopes": "Supported",
   "landing_stat_objects": "Celestial Objects",
-  "landing_stat_guiding": "Auto Guiding Accuracy",
-  "landing_stat_satisfaction": "User Satisfaction",
+  "landing_stat_architecture": "Architecture",
+  "landing_stat_license": "License",
 
   "landing_end_cta_title": "Ready to Explore the Cosmos?",
   "landing_end_cta_desc": "Join thousands of amateur and professional astronomers who use ASTRA to discover the wonders of the universe. Available on the web.",
@@ -69,6 +69,7 @@
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
   "login_title": "Login - {name}",
+  "register_title": "Register - {name}",
   "login_welcome": "Welcome back",
   "login_input_msg": "Login to continue",
   "login_username_input": "Username",
@@ -91,6 +92,13 @@
   "login_register_error": "Registration failed. Username or email might be taken.",
   "login_return_home": "← Back to home",
 
+  "-------------------------------------- SPLASH SECTION -------------------------------------- ": "",
+  "splash_status_core": "Initializing core...",
+  "splash_status_interface": "Connecting to Astra interface...",
+  "splash_status_sessions": "Fetching encrypted sessions...",
+  "splash_status_sync": "Synchronizing observer state...",
+  "splash_status_render": "Rendering interface...",
+
   "====================================== DASHBOARD ======================================": "",
   "dash_title": "Dashboard - {name}",
 
@@ -100,7 +108,7 @@
   "dash_side_new_session": "New session",
   "dash_side_home": "Home",
   "dash_side_sessions": "Sessions",
-  "dash_side_telescope": "Telescopes",
+  "dash_side_devices": "Devices",
   "dash_side_location": "Location",
   "dash_side_profile": "Profile",
   "dash_side_logout": "Logout",
@@ -124,14 +132,33 @@
 
 
   "-------------------------------------- DASHBOARD MAIN -------------------------------------- ": "",
-  "dash_main_greeting_morning": "Good morning, {user} ☀️",
-  "dash_main_sub_morning_morning": "Planning today's solar session?",
-  "dash_main_greeting_afternoon": "Good afternoon, {user} 🌤️",
-  "dash_main_sub_morning_afternoon": "Ready for the twilight transition?",
-  "dash_main_greeting_evening": "Good evening, {user} 🌙",
-  "dash_main_sub_morning_evening": "Ready for tonight's session?",
-  "dash_main_greeting_night": "Good night, {user} 🌌",
-  "dash_main_sub_morning_night": "What's the target for tonight?",
+  "dash_main_greeting_morning_0": "Good morning, {user}",
+  "dash_main_greeting_morning_1": "Ready to explore, {user}?",
+  "dash_main_greeting_morning_2": "Systems ready, {user}.",
+  "dash_main_sub_morning_morning_0": "Planning today's solar session?",
+  "dash_main_sub_morning_morning_1": "What's the target for this morning?",
+  "dash_main_sub_morning_morning_2": "A great time to check your equipment.",
+
+  "dash_main_greeting_afternoon_0": "Good afternoon, {user}",
+  "dash_main_greeting_afternoon_1": "Welcome back, {user}",
+  "dash_main_greeting_afternoon_2": "Ready for the transition, {user}?",
+  "dash_main_sub_morning_afternoon_0": "Ready for the twilight transition?",
+  "dash_main_sub_morning_afternoon_1": "The sky is preparing for tonight.",
+  "dash_main_sub_morning_afternoon_2": "Good time to start cooling down your cameras.",
+
+  "dash_main_greeting_evening_0": "Good evening, {user}",
+  "dash_main_greeting_evening_1": "The show begins, {user}",
+  "dash_main_greeting_evening_2": "The sky is darkening, {user}",
+  "dash_main_sub_morning_evening_0": "Ready for tonight's session?",
+  "dash_main_sub_morning_evening_1": "The first stars are already visible.",
+  "dash_main_sub_morning_evening_2": "Time to connect your gear and start alignment.",
+
+  "dash_main_greeting_night_0": "Good night, {user}",
+  "dash_main_greeting_night_1": "Clear skies, {user}",
+  "dash_main_greeting_night_2": "The universe awaits you, {user}",
+  "dash_main_sub_morning_night_0": "What's the target for tonight?",
+  "dash_main_sub_morning_night_1": "Perfect for planning a deep sky session.",
+  "dash_main_sub_morning_night_2": "Astra Assistant is ready to track your targets.",
 
   "dash_main_new_session": "New session",
 
@@ -197,7 +224,8 @@
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
   "dash_observ_new_session": "New session",
-
+  "dash_observ_no_location_title": "Location Required",
+  "dash_observ_no_location_desc": "You need to configure at least one location to start observing.",
   "dash_observ_found": [
     {
       "declarations": ["input count", "local countPlural = count: plural"],
@@ -230,6 +258,9 @@
   "dash_observ_action_save": "Save changes",
   "dash_observ_action_delete": "Delete",
   "dash_observ_action_cancel": "Cancel",
+  "dash_observ_error_exists": "A session with this name already exists",
+  "dash_observ_creation_date": "Creation date",
+  "dash_observ_last_activity": "Last activity",
 
   "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
   "dash_location_title": "Observing Locations",
@@ -283,7 +314,7 @@
   "obs_error_load_title": "Error loading observation",
   "obs_error_load_btn": "Return to Dashboard",
 
-  "obs_sidedock_return": "Return to Sessions",
+  "obs_sidedock_return": "Go Back",
   "obs_sidedock_settings": "Visual settings",
   "obs_sidedock_theme": "Theme settings",
   "obs_sidedock_constellations_title": "Constellations",
@@ -420,7 +451,9 @@
   "data_moon_phase_waxing_crescent": "Waxing Crescent",
   "data_moon_phase_waxing_gibbous": "Waxing Gibbous",
   "data_moon_phase_waning_crescent": "Waning Crescent",
-  "data_moon_phase_waning_gibbous": "Waning Gibbous"
+  "data_moon_phase_waning_gibbous": "Waning Gibbous",
 
-
+  "error_title_404": "Page Not Found",
+  "error_title_unexpected": "Something went wrong",
+  "error_desc_default": "We couldn't find the page you were looking for or an unexpected error occurred."
 }

@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/components/skyMap/entities/Sidereal.ts
 
 import * as THREE from 'three';
@@ -7,7 +25,7 @@ import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 
 /**
- * Custom Vertex Shader
+ * Custom Vertex Shader for Sidereal entities.
  * Adjusts the size of the stars based on the camera zoom and their magnitude.
  * If a star gets too small, it stops shrinking physically
  * and instead reduces its alpha (opacity) to simulate being fainter.
@@ -44,8 +62,8 @@ const vertexShader = `
 `;
 
 /**
- * Custom Fragment Shader
- * Converts the default square point into a smooth, circular dot.
+ * Custom Fragment Shader for Sidereal entities.
+ * Handles shape rendering (stars, nebulae, galaxies) with rotation and distance-based alpha.
  */
 const fragmentShader = `
     varying vec3 vColor;
@@ -104,7 +122,10 @@ const fragmentShader = `
 
 
 /**
- * Convert B-V temperature index to an RGB color
+ * Converts a B-V (Blue minus Visual) color index to a Three.js Color object.
+ * Provides an approximation of star color based on surface temperature.
+ * @param {number} bv - The B-V temperature index.
+ * @returns {THREE.Color} The resulting RGB color.
  */
 function bvToRGB(bv: number): THREE.Color {
     if (bv < -0.4) return new THREE.Color(0xcddcff); // Light blue
@@ -117,13 +138,22 @@ function bvToRGB(bv: number): THREE.Color {
 
 /**
  * Sidereal Entity
- * Manages the rendering and updating of the background stars/DSO
+ * 
+ * Manages the rendering and updating of background stars and Deep Sky Objects (DSOs).
+ * Optimizes large numbers of stars using a single Points mesh and a custom shader.
  */
 export class Sidereal {
+    /** Container for the stars mesh. */
     public group = new THREE.Group();
+    /** The Points mesh containing all sidereal objects. */
     private points: THREE.Points;
+    /** List of IDs for the stars and DSOs currently being managed. */
     private starIds: string[];
 
+    /**
+     * Creates an instance of Sidereal.
+     * @param {number} opacity - Initial opacity for the sidereal objects.
+     */
     constructor(opacity: number) {
         this.starIds = Object.keys(catalogStore.siderealData);
         
@@ -147,7 +177,9 @@ export class Sidereal {
 
     /**
      * Constructs the initial geometry buffer for the stars.
-     * Calculates base sizes depending on the star's magnitude.
+     * Calculates base sizes and shapes depending on the object's magnitude and category.
+     * @returns {THREE.BufferGeometry} The generated geometry.
+     * @private
      */
     private buildGeometry(): THREE.BufferGeometry {
         const num = this.starIds.length;
@@ -224,14 +256,28 @@ export class Sidereal {
         return geo;
     }
 
+    /**
+     * Returns the Points mesh used for rendering stars and DSOs.
+     * @returns {THREE.Points}
+     */
     getPointsMesh() {
         return this.points;
     }
 
+    /**
+     * Gets the sidereal object ID corresponding to a vertex index.
+     * @param {number} index - The vertex index in the Points mesh.
+     * @returns {string | null} The object ID or null if not found.
+     */
     getIdByIndex(index: number): string | null {
         return this.starIds[index] || null; 
     }
     
+    /**
+     * Gets the vertex index for a given sidereal object ID.
+     * @param {string} id - The object ID.
+     * @returns {number | undefined} The vertex index or undefined if not found.
+     */
     getIndexById(id: string): number | undefined {
         const index = this.starIds.indexOf(id); 
         return index !== -1 ? index : undefined;
@@ -240,7 +286,10 @@ export class Sidereal {
     
     /**
      * Updates the XYZ coordinates of all stars based on their current AltAz values.
-     * Called continuously inside the render loop.
+     * Handles zoom scaling and daylight fading through shader uniforms.
+     * @param {PositionUpdates} positionsMap - Map containing current Alt/Az positions.
+     * @param {number} zoomFactor - Current camera zoom factor.
+     * @param {number} [daylightFade=1.0] - Fade factor for daytime (1.0 = night, 0.0 = day).
      */
     update(positionsMap: PositionUpdates, zoomFactor: number, daylightFade: number = 1.0) {
         // Update the shader uniform for zoom scaling
@@ -260,7 +309,7 @@ export class Sidereal {
     }
 
     /**
-     * Disposes of geometries and materials to prevent memory leaks.
+     * Cleans up Three.js resources used by sidereal entities.
      */
     dispose() {
         this.points.geometry.dispose();

@@ -11,7 +11,7 @@
   
   "landing_cta": "Empieza a Explorar",
   "landing_cta_docs": "Ver Documentación",
-  "landing_cta_gallery": "Ver Galería",
+  "landing_cta_repo": "Ver Código",
 
   "landing_nav_features": "Características",
   "landing_nav_technology": "Tecnología",
@@ -44,8 +44,8 @@
   "landing_stat_indi": "Protocolo INDI",
   "landing_stat_telescopes": "Soportado",
   "landing_stat_objects": "Objetos Celestiales",
-  "landing_stat_guiding": "Precisión del Auto-Guiado",
-  "landing_stat_satisfaction": "Satisfacción de Usuarios",
+  "landing_stat_architecture": "Arquitectura",
+  "landing_stat_license": "Licencia",
 
   "landing_end_cta_title": "¿Estás preparado para explorar el Cosmos?",
   "landing_end_cta_desc": "Únete a miles de aficionados que utilizan ASTRA para descubrir las maravillas del universo. Disponible en la web.",
@@ -69,6 +69,7 @@
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
   "login_title": "Iniciar sesión - {name}",
+  "register_title": "Registrarse - {name}",
   "login_welcome": "Bienvenido",
   "login_input_msg": "Inicia sesión para continuar",
   "login_username_input": "Usuario",
@@ -91,6 +92,12 @@
   "login_register_error": "Error al registrarse. El usuario o el correo podrían estar en uso.",
   "login_return_home": "← Volver al inicio",
 
+  "-------------------------------------- SPLASH SECTION -------------------------------------- ": "",
+  "splash_status_core": "Inicializando núcleo...",
+  "splash_status_interface": "Conectando con la interfaz Astra...",
+  "splash_status_sessions": "Obteniendo sesiones cifradas...",
+  "splash_status_sync": "Sincronizando estado del observador...",
+  "splash_status_render": "Renderizando interfaz...",
 
   "====================================== DASHBOARD ======================================": "",
   "dash_title": "Panel de control - {name}",
@@ -101,7 +108,7 @@
   "dash_side_new_session": "Nueva sesión",
   "dash_side_home": "Inicio",
   "dash_side_sessions": "Sesiones",
-  "dash_side_telescope": "Telescopios",
+  "dash_side_devices": "Dispositivos",
   "dash_side_location": "Ubicación",
   "dash_side_profile": "Perfil",
   "dash_side_logout": "Cerrar sesión",
@@ -125,14 +132,33 @@
 
 
   "-------------------------------------- DASHBOARD -------------------------------------- ": "",
-  "dash_main_greeting_morning": "¡Buenos días, {user}! ☀️",
-  "dash_main_sub_morning_morning": "¿Planificando la sesión solar de hoy?",
-  "dash_main_greeting_afternoon": "Buenas tardes, {user} 🌤️",
-  "dash_main_sub_morning_afternoon": "¿Listo para la transición al crepúsculo?",
-  "dash_main_greeting_evening": "Buenas noches, {user} 🌙",
-  "dash_main_sub_morning_evening": "¿Todo preparado para la sesión de esta noche?",
-  "dash_main_greeting_night": "Buenas noches, {user} 🌌",
-  "dash_main_sub_morning_night": "¿Cuál es el objetivo de esta noche?",
+  "dash_main_greeting_morning_0": "Buenos días, {user}",
+  "dash_main_greeting_morning_1": "¿Preparado para explorar, {user}?",
+  "dash_main_greeting_morning_2": "Sistemas listos, {user}.",
+  "dash_main_sub_morning_morning_0": "¿Planificando la sesión solar de hoy?",
+  "dash_main_sub_morning_morning_1": "¿Cuál es el objetivo de esta mañana?",
+  "dash_main_sub_morning_morning_2": "Un buen momento para revisar el equipo.",
+
+  "dash_main_greeting_afternoon_0": "Buenas tardes, {user}",
+  "dash_main_greeting_afternoon_1": "Bienvenido de nuevo, {user}",
+  "dash_main_greeting_afternoon_2": "¿Listo para la transición, {user}?",
+  "dash_main_sub_morning_afternoon_0": "¿Listo para la transición al crepúsculo?",
+  "dash_main_sub_morning_afternoon_1": "El cielo se está preparando para esta noche.",
+  "dash_main_sub_morning_afternoon_2": "Buena hora para empezar a enfriar las cámaras.",
+
+  "dash_main_greeting_evening_0": "Buenas noches, {user}",
+  "dash_main_greeting_evening_1": "Empieza el espectáculo, {user}",
+  "dash_main_greeting_evening_2": "El cielo se oscurece, {user}",
+  "dash_main_sub_morning_evening_0": "¿Todo preparado para la sesión de esta noche?",
+  "dash_main_sub_morning_evening_1": "Las primeras estrellas ya son visibles.",
+  "dash_main_sub_morning_evening_2": "Hora de conectar el equipo e iniciar la alineación.",
+
+  "dash_main_greeting_night_0": "Buenas noches, {user}",
+  "dash_main_greeting_night_1": "Buena caza, {user}",
+  "dash_main_greeting_night_2": "El universo te espera, {user}",
+  "dash_main_sub_morning_night_0": "¿Cuál es el objetivo de esta noche?",
+  "dash_main_sub_morning_night_1": "Ideal para planificar la sesión de espacio profundo.",
+  "dash_main_sub_morning_night_2": "El asistente Astra está listo para seguir tus objetivos.",
 
   "dash_main_new_session": "Nueva sesión",
 
@@ -198,7 +224,8 @@
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sesiones",
   "dash_observ_new_session": "Nueva sesión",
-  
+  "dash_observ_no_location_title": "Ubicación Requerida",
+  "dash_observ_no_location_desc": "Necesitas configurar al menos una ubicación para empezar a observar.",
   "dash_observ_found": [
     {
       "declarations": ["input count", "local countPlural = count: plural"],
@@ -230,6 +257,9 @@
   "dash_observ_action_save": "Guardar cambios",
   "dash_observ_action_delete": "Eliminar",
   "dash_observ_action_cancel": "Cancelar",
+  "dash_observ_error_exists": "Ya existe una sessión con este nombre",
+  "dash_observ_creation_date": "Fecha de creación",
+  "dash_observ_last_activity": "Última actividad",
 
   "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
   "dash_location_title": "Ubicaciones de observación",
@@ -283,7 +313,7 @@
   "obs_error_load_title": "Error cargando observación",
   "obs_error_load_btn": "Volver al Panel de control",
 
-  "obs_sidedock_return": "Volver a Sesiones",
+  "obs_sidedock_return": "Volver",
   "obs_sidedock_settings": "Configuración visual",
   "obs_sidedock_theme": "Configuración de tema",
   "obs_sidedock_constellations_title": "Constelaciones",
@@ -421,6 +451,9 @@
   "data_moon_phase_waxing_crescent": "Luna Creciente",
   "data_moon_phase_waxing_gibbous": "Gibosa Creciente",
   "data_moon_phase_waning_crescent": "Luna Menguante",
-  "data_moon_phase_waning_gibbous": "Gibosa Menguante"
+  "data_moon_phase_waning_gibbous": "Gibosa Menguante",
 
+  "error_title_404": "Página no encontrada",
+  "error_title_unexpected": "Algo ha ido mal",
+  "error_desc_default": "No hemos podido encontrar la página que buscas o ha ocurrido un error inesperado."
 }

@@ -9,7 +9,7 @@
     "mercury": {
         "name": "Mercuri",
         "description": "Mercuri és el planeta més petit del nostre sistema solar i el més proper al Sol, orbitant a una distància d'uns 58 milions de km. Com que està tan a prop de la resplendor solar, és difícil de veure, i apareix només breument a prop de l'horitzó just després de la posta de sol o abans de la sortida. És un món d'extrems ferotges: tot i que és només una mica més gran que la Lluna de la Terra (4.878 km de diàmetre), és increïblement dens. Sense atmosfera que atrapi la calor, la seva superfície oscil·la entre uns abrasadors 430 °C durant el dia i uns gèlids -180 °C a la nit.",
-        "fun_fact": "Mercuri és un amant de la velocitat. Gira tan ràpid al voltant del Sol que un sol any dura només 88 dies terrestres, tot i que gira tan lentament sobre si mateix que un cicle dia-nit triga 176 dies terrestres!",
+        "fun_fact": "Mercuri és un amant de la velocitat. Gira tan de pressa al voltant del Sol que el seu any dura només 88 dies terrestres, tot i que gira tan lentament sobre si mateix que un cicle dia-nit triga 176 dies terrestres!",
         "visual_tip": "Per localitzar aquest planeta esquiu, mira a prop de l'horitzó durant el crepuscle, ja sigui just després de la posta de sol o abans de la sortida. A causa de la seva proximitat al Sol, Mercuri sovint es perd en la seva resplendor i només es fa visible quan el Sol està sota l'horitzó de forma segura.",
         "wikipedia_qid": "Q308"
     },
@@ -19,14 +19,14 @@
             "L'estel del matí",
             "L'estel de la tarda"
         ],
-        "description": "Venus és l'objecte més brillant del cel nocturn després de la Lluna, sovint anomenat «l'estel del matí» o «l'estel de la tarda». Tot i que té una mida similar a la de la Terra, s'amaga sota una atmosfera espessa i tòxica que crea un efecte hivernacle desbocat, convertint-lo en el planeta més calent del nostre sistema solar. Els seus núvols densos d'àcid sulfúric reflecteixen la llum solar de manera brillant, donant-li una magnitud de -4,4, prou brillant com per projectar ombres en les condicions adequades.",
+        "description": "Venus és l'objecte més brillant del cel nocturn després de la Lluna, sovint anomenat «l'estel del matí» o «l'estel de la tarda». Tot i que té una mida similar a la de la Terra, s'amaga sota una atmosfera espessa i tòxica que crea un efecte hivernacle desbocat, convertint-lo en el planeta més calent del nostre sistema solar. Els seus núvols densos d'àcid sulfúric reflecteixen la llum solar de manera brillant, donant-li una magnitud de -4,4, prou brillant per a projectar ombres en les condicions adequades.",
         "fun_fact": "Venus és un rebel: gira al revés (d'est a oest) i tan lentament que el seu dia dura més que el seu any! Triga 225 dies terrestres a orbitar el Sol, però 243 dies terrestres a completar una sola rotació.",
         "visual_tip": "A causa de la seva posició interior al sistema solar, Venus mostra fases canviants a través d'un telescopi, de manera molt semblant a la Lluna, depenent de la seva alineació amb la Terra. Per trobar-lo, busca l'«estrella» més brillant al cel occidental poc després de la posta de sol o al cel oriental just abans de l'alba.",
         "wikipedia_qid": "Q313"
     },
     "earth": {
         "name": "Terra",
-        "description": "La Terra és el tercer planeta des del Sol, orbitant a una distància mitjana de 150 milions de km. És l'únic món conegut a l'univers que acull vida i l'únic amb aigua líquida cobrint el 70% de la seva superfície. Des de l'espai, brilla com una «canica blava» radiant a causa dels seus vastos oceans i d'una atmosfera de nitrogen i oxigen que ens protegeix de la radiació solar i dels meteorits.",
+        "description": "La Terra és el tercer planeta des del Sol, orbitant a una distància mitjana de 150 milions de km. És l'únic món conegut a l'univers que acull vida i l'únic amb aigua líquida cobrint el 70% de la seva superfície. Des de l'espai, brilla com una «bala blava» radiant a causa dels seus vastos oceans i d'una atmosfera de nitrogen i oxigen que ens protegeix de la radiació solar i dels meteorits.",
         "fun_fact": "La Terra és el planeta més dens de tot el sistema solar! A més, tot i que pensem que és una esfera perfecta, en realitat és un «esferoide oblat», la qual cosa significa que és lleugerament més gruixuda al voltant de l'equador a causa de la seva rotació. Si estiguessis al centre de la Terra, estaries uns 21 quilòmetres més a prop dels pols que si estiguessis a l'equador.",
         "visual_tip": "Per veure la forma rodona de la Terra per tu mateix sense moure't de terra ferma, observa un eclipsi lunar. L'ombra fosca i corbada que travessa la Lluna és, en realitat, la silueta del nostre planeta. També pots ser testimoni de la rotació terrestre fent una foto de llarga exposició del cel nocturn; les estrelles semblaran «moure's» en traços circulars al voltant dels pols celestes.",
         "wikipedia_qid": "Q2"
@@ -50,8 +50,8 @@
     },
     "jupiter": {
         "name": "Júpiter",
-        "description": "Júpiter és el rei indiscutible dels planetes: un gegant gasós tan massiu que podria contenir tots els altres planetes del sistema solar junts. Situat a uns 778 milions de km del Sol, és famós per la seva Gran Taca Vermella, una tempesta que ha estat girant durant segles. Tot i que abans era prou ampla com per encabir-hi tres Terres, aquest vòrtex icònic s'ha anat reduint i actualment té aproximadament la mida de la mateixa Terra. A través d'un telescopi, les seves bandes de núvols colorides i les seves quatre llunes més grans (Ío, Europa, Ganimedes i Cal·listo) són una visió espectacular.",
-        "fun_fact": "Júpiter és el que gira més ràpid de tot el sistema solar; un sol dia dura menys de 10 hores! A data de 2026, els astrònoms han confirmat 115 llunes orbitant el planeta gegant, incloent-hi Ganimedes, que és la lluna més gran del sistema solar i fins i tot més gran que el planeta Mercuri.",
+        "description": "Júpiter és el rei indiscutible dels planetes: un gegant gasós tan massiu que podria contenir tots els altres planetes del sistema solar junts. Situat a uns 778 milions de km del Sol, és famós per la seva Gran Taca Vermella, una tempesta que ha estat girant durant segles. Tot i que abans era prou ampla per encabir-hi tres Terres, aquest vòrtex icònic s'ha anat reduint i actualment té aproximadament la mida de la mateixa Terra. A través d'un telescopi, les seves bandes de núvols acolorides i les seves quatre llunes més grans (Io, Europa, Ganimedes i Cal·listo) són una visió espectacular.",
+        "fun_fact": "Júpiter és planeta que gira més ràpidament de tot el sistema solar; un sol dia dura menys de 10 hores! En data de 2026, els astrònoms han confirmat 115 llunes orbitant el planeta gegant, incloent-hi Ganimedes, que és la lluna més gran del sistema solar i fins i tot més gran que el planeta Mercuri.",
         "visual_tip": "No necessites un telescopi potent per sentir-te com Galileu; uns simples prismàtics astronòmics revelaran les quatre «llunes galileanes» com a petits punts brillants als costats del planeta. Si les observes durant unes hores o dies, realment pots veure com canvien de posició mentre dansen al voltant de Júpiter, demostrant en temps real que estan en òrbita.",
         "wikipedia_qid": "Q319"
     },
@@ -75,7 +75,7 @@
     "neptune": {
         "name": "Neptú",
         "description": "Neptú és el planeta principal més distant del nostre sistema solar, situat a la increïble distància de 4.500 milions de km del Sol. Tot i que sovint se l'ha representat d'un blau profund, estudis recents han confirmat que en realitat és d'un cian pàl·lid, amb un color molt semblant al del seu veí Urà. Com que està tan lluny, és l'únic planeta del nostre sistema completament invisible a ull nu, i a través d'un telescopi apareix com una petita perla distant.",
-        "fun_fact": "Neptú és el món amb més vent del sistema solar, amb vents supersònics que superen els 2.000 km/h! Triga 165 anys terrestres a completar una sola òrbita; de fet, des del seu descobriment el 1846, només ha completat un únic «any de Neptú» (l'any 2011). També té 16 llunes conegudes, incloent-hi la gèlida Tritó, que orbita el planeta a l'inrevés.",
+        "fun_fact": "Neptú és el món amb més vent del sistema solar, amb vents supersònics que superen els 2.000 km/h! Triga 165 anys terrestres a completar una sola òrbita; de fet, des del seu descobriment el 1846, només ha completat un únic «any de Neptú» (l'any 2011). També té 16 llunes conegudes, incloent-hi al gèlid Tritó, que orbita el planeta a l'inrevés.",
         "visual_tip": "Per localitzar Neptú, necessitaràs un telescopi o uns prismàtics de gran potència i un bon mapa estel·lar. Està tan lluny que sembla una estrella tènue de color blau grisenc. La millor manera d'identificar-lo és seguir el seu lent moviment respecte al fons d'estrelles fixes durant diverses nits; és l'única manera d'estar segur que has trobat la frontera més llunyana del sistema solar.",
         "wikipedia_qid": "Q332"
     },

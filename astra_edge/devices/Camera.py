@@ -1,9 +1,39 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+"""
+Camera device implementation.
+"""
 from devices.INDIDevice import INDIDevice, INDIDeviceType
 
 
 class Camera(INDIDevice):
+    """
+    Proxy for an INDI Camera device.
+    """
 
     def __init__(self, client, device_name):
-        super().__init__(client, device_name)
-        self._type:INDIDeviceType = INDIDeviceType.CAMERA
+        """
+        Initializes the Camera proxy.
 
+        Args:
+            client (IPyClient): The INDI client instance.
+            device_name (str): The unique name of the camera.
+        """
+        super().__init__(client, device_name)
+        self._type: INDIDeviceType = INDIDeviceType.CAMERA

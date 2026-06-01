@@ -1,32 +1,73 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/stores/skyEngine.svelte.ts
 import { siderisAPI } from '$lib/api/sideris';
 import { timeEngine } from './timeEngine.svelte';
 import { locStore } from './location.svelte';
 
+/**
+ * Data structure for linear interpolation of celestial object positions.
+ */
 interface InterpolationData {
-    baseAlt: number; // Starting Altitude (degrees)
-    baseAz: number;  // Starting Azimuth (degrees)
-    dAlt: number;    // Altitude velocity (degrees per second)
-    dAz: number;     // Azimuth velocity (degrees per second)
+    /** Starting Altitude (degrees) */
+    baseAlt: number;
+    /** Starting Azimuth (degrees) */
+    baseAz: number;
+    /** Altitude velocity (degrees per second) */
+    dAlt: number;
+    /** Azimuth velocity (degrees per second) */
+    dAz: number;
 }
 
+/**
+ * Map of object IDs to their calculated altitude and azimuth.
+ */
 export type PositionUpdates = Map<string, { alt: number, az: number }>
+
+/**
+ * SkyEngine handles the real-time calculation and synchronization of celestial object positions.
+ * It uses linear interpolation (kinematics) between API syncs to provide smooth, high-frequency updates.
+ */
 class SkyEngine {
 
     // --- State & Cache ---
-    // Fast storage for kinematics
+    /** Fast storage for sidereal object kinematics data. */
     private siderealSync = $state<Map<string, InterpolationData>>(new Map());
+    /** Fast storage for planetary object kinematics data. */
     private planetarySync = $state<Map<string, InterpolationData>>(new Map());
     
     // Time tracking and lifecycle management
+    /** Whether the engine is currently active and updating positions. */
     isRunning = $state(false);
+    /** The simulation time (ms) of the last successful API synchronization. */
     private lastSyncTime = $state<number>(0);
-    private ttlSeconds = $state<number>(120); // Time-To-Live for the current vectors
+    /** Time-To-Live for the current vectors in seconds. */
+    private ttlSeconds = $state<number>(120);
     
+    /** Whether an API synchronization is currently in progress. */
     isSyncing = $state(false);
 
     // --- REAL-TIME POSITIONS ---
-    // Automatically recalculates all object positions for every clock tick, using the delta positions
+    /**
+     * Automatically recalculates all object positions for every clock tick, using the delta positions.
+     * Derived from the current simulation time and cached interpolation data.
+     */
     positions = $derived.by(() => {
         const results: PositionUpdates = new Map();
         if (this.lastSyncTime === 0) return results;
@@ -40,7 +81,10 @@ class SkyEngine {
             dt = Math.sign(dt) * this.ttlSeconds;
         }
 
-        // Helper function for linear interpolation
+        /**
+         * Helper function for linear interpolation
+         * @param data The map of interpolation data to process
+         */
         const interpolate = (data: Map<string, InterpolationData>) => {
             data.forEach((obj, id) => {
                 let newAlt = obj.baseAlt + (obj.dAlt * dt);
@@ -64,7 +108,10 @@ class SkyEngine {
 
     // --- AUTO-REFRESH LOGIC ---
 
-    // Monitors if the vectors have reached the ttl
+    /**
+     * Monitors if the vectors have reached the TTL and need synchronization.
+     * Returns true if a new sync is required.
+     */
     private needsSync = $derived.by(() => {
         if (!locStore.active) return false;
         if (this.lastSyncTime === 0) return true; // Initial boot
@@ -77,6 +124,9 @@ class SkyEngine {
         return ageSeconds >= (this.ttlSeconds * 0.9); 
     });
 
+    /**
+     * Initializes the SkyEngine and sets up reactive effects for location changes and auto-sync.
+     */
     constructor() {
         // In Svelte 5, the store monitors its own reactivity in an isolated root.
         if (typeof window !== 'undefined') {
@@ -102,7 +152,8 @@ class SkyEngine {
     }
 
     /**
-     * Fetches new Base Positions and Velocities from Sideris API
+     * Fetches new Base Positions and Velocities from Sideris API.
+     * Updates internal interpolation maps and establishes a new time baseline.
      */
     private async performSync() {
         this.isSyncing = true;
@@ -149,7 +200,7 @@ class SkyEngine {
     }
 
     /**
-     * Clears physical data cache
+     * Clears physical data cache and resets the synchronization timer.
      */
     reset() {
         this.siderealSync.clear();
@@ -158,4 +209,7 @@ class SkyEngine {
     }
 }
 
+/**
+ * Singleton instance of the SkyEngine.
+ */
 export const skyEngine = new SkyEngine();

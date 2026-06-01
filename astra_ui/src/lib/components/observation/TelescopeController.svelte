@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { deviceStore } from '$lib/stores/devices.svelte';
     import { SatelliteDish, LoaderCircle, Crosshair, Telescope, Camera, ChevronDown, OctagonAlert } from 'lucide-svelte';
@@ -5,26 +23,34 @@
     import { deviceAPI } from '$lib/api/devices';
 
     let { 
+        /** Callback function to center the view on the telescope's current target */
         onCenter = () => {},
+        /** Whether the centering action is currently allowed */
         canCenter = false
     }: {
         onCenter?: () => void,
         canCenter?: boolean
     } = $props();
 
+    /** Whether the active telescope is currently online */
     const isOnline = $derived(
         deviceStore.activeDetails?.is_online ?? 
         deviceStore.activeBase?.is_online ?? 
         false
     );
 
+    /** List of active components for the current device */
     const activeComps = $derived(deviceStore.activeComponents);
 
+    /** Whether a telescope movement abort operation is in progress */
     let isAborting = $state(false);
     
-    // Nuevo estado para controlar el menú en móviles (y PC)
+    /** Whether the controller dropdown menu is open */
     let isOpen = $state(false);
 
+    /**
+     * Attempts to abort all current telescope movement
+     */
     async function handleAbort() {
         const activeId = deviceStore.effectiveActiveId;
         const activeTelescope = deviceStore.activeComponents?.telescope;
@@ -41,7 +67,10 @@
         }
     }
     
-    // Función para manejar clics fuera del menú y cerrarlo
+    /**
+     * Closes the dropdown menu when clicking outside the component
+     * @param {MouseEvent} e - The click event
+     */
     function handleOutsideClick(e: MouseEvent) {
         if (isOpen && !(e.target as Element).closest('.telescope-controller-container')) {
             isOpen = false;

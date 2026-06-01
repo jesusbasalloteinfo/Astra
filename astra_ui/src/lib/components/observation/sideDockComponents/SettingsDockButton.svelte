@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observation/sideDockComponents/SettingsDockButton.svelte -->
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
@@ -6,6 +24,19 @@
     import DockPopover from './DockPopover.svelte';
     import ConfigEntry from './ConfigEntry.svelte';
 
+    /**
+     * Component props
+     * @type {{ showConstellations: boolean, showConstellationLabels: boolean, useLatinConstellations: boolean, showGround: boolean, solidGround: boolean, showAtmosphere: boolean, atmosphereLocked?: boolean, isOpen?: boolean, allowHover?: boolean }}
+     * @property {boolean} showConstellations - Whether constellation lines are visible (bindable)
+     * @property {boolean} showConstellationLabels - Whether constellation labels are visible (bindable)
+     * @property {boolean} useLatinConstellations - Whether to use Latin names for constellations (bindable)
+     * @property {boolean} showGround - Whether the ground visualization is visible (bindable)
+     * @property {boolean} solidGround - Whether the ground is rendered as a solid surface or radar (bindable)
+     * @property {boolean} showAtmosphere - Whether atmospheric effects are visible (bindable)
+     * @property {boolean} [atmosphereLocked=false] - Whether the atmosphere setting is locked
+     * @property {boolean} [isOpen=false] - Whether the settings popover is open (bindable)
+     * @property {boolean} [allowHover=true] - Whether the popover can be opened via hover
+     */
     let {
         showConstellations = $bindable(),
         showConstellationLabels = $bindable(),
@@ -13,12 +44,20 @@
         showGround = $bindable(),
         solidGround = $bindable(),
         showAtmosphere = $bindable(),
-        atmosphereLocked = false
+        atmosphereLocked = false,
+        isOpen = $bindable(false),
+        allowHover = true
     } = $props();
 
+    /** Whether the constellations sub-menu is expanded */
     let showConstellationsMenu = $state(showConstellations);
+
+    /** Whether the ground settings sub-menu is expanded */
     let showGroundMenu = $state(solidGround);
 
+    /**
+     * Toggles the constellations visibility and updates the menu state
+     */
     function toggleConstellations() {
         showConstellations = !showConstellations;
         showConstellationsMenu = showConstellations;
@@ -29,6 +68,8 @@
     icon={Settings2} 
     title={m.obs_sidedock_settings()} 
     buttonTitle={m.obs_sidedock_settings()}
+    bind:isOpen
+    {allowHover}
 >
     <!-- Constellations -->
     <ConfigEntry 

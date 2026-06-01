@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observation/skyFinderComponents/SkyFinderResult.svelte -->
 <script lang="ts">
     import { Sun, ChevronRight } from 'lucide-svelte';
@@ -6,6 +24,14 @@
     import { translateObjectType } from '$lib/utils/i18n';
     import { m } from '$lib/paraglide/messages';
 
+    /**
+     * Component props
+     * @type {{ result: any, isSelected?: boolean, onclick: () => void, onHover: () => void }}
+     * @property {any} result - The search result object containing object details
+     * @property {boolean} [isSelected=false] - Whether this result is currently selected/highlighted
+     * @property {() => void} onclick - Function called when the result is clicked
+     * @property {() => void} onHover - Function called when the result is hovered
+     */
     let { 
         result, 
         isSelected = false, 
@@ -18,6 +44,7 @@
         onHover: () => void;
     }>();
 
+    /** Mapping of object categories to Iconify icon names */
     const iconMap = {
         'planetary': 'tabler:planet',
         'moon': 'tabler:moon',
@@ -27,7 +54,11 @@
         'star': 'tabler:star'
     };
 
-    // Función para obtener el icono según el tipo
+    /**
+     * Returns the appropriate icon name for a given object type
+     * @param {string} type - The category/type of the astronomical object
+     * @returns {string} The Iconify icon identifier
+     */
     function getIcon(type: string) {
         return iconMap[type as keyof typeof iconMap] || 'lucide:sparkles';
     }

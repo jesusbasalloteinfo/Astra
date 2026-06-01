@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
 	import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
     import { browser } from '$app/environment';
@@ -28,13 +46,19 @@
 			return;
 		}
 
-		setLocale(newLocale);
-        currentLocale = newLocale;
-
-        // Persist to backend if logged in
+        // 1. Persist to backend if logged in and wait for it
+        // This avoids race conditions where the page reloads before the backend is updated
         if (authStore.isAuthenticated && authStore.user?.settings.language !== newLocale) {
             await authStore.updateSettings({ language: newLocale });
         }
+
+        // 2. Update local state and cookie
+		setLocale(newLocale);
+        if (browser) {
+            document.cookie = `PARAGLIDE_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+        }
+        currentLocale = newLocale;
+        isOpen = false;
 
 		console.log('currentLocale set to:', currentLocale, 'activeLanguage:', activeLanguage.label);
 
@@ -50,6 +74,10 @@
 		}
 	}
 
+    /**
+     * Handles clicks outside the component to close the dropdown
+     * @param {MouseEvent} event - The click event
+     */
 	function handleOutsideClick(event: MouseEvent) {
 		const target = event.target as HTMLElement;
 		if (!target.closest('.lang-switcher-container')) {
@@ -69,11 +97,7 @@
 		<span
 			class="flex h-3.5 w-5 flex-shrink-0 items-center justify-center overflow-hidden rounded-xs [&>svg]:h-full [&>svg]:w-full [&>svg]:object-cover"
 		>
-			{#if browser}
-                {@html activeLanguage.svg}
-            {:else}
-                <span class="h-full w-full bg-slate-200 rounded-xs"></span>
-            {/if}
+			{@html activeLanguage.svg}
 		</span>
 
 		<span class="mt-[1px] text-xs leading-none font-bold tracking-wider uppercase"

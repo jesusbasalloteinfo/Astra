@@ -1,3 +1,27 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+"""
+Main entry point for the Astra Edge client.
+
+Handles device identification, pairing with the Astra backend, 
+establishing a WebSocket tunnel, and managing local INDI subprocesses.
+"""
 import asyncio
 from datetime import datetime, timezone
 import hashlib
@@ -6,11 +30,12 @@ import logging
 import os
 import aiohttp
 import argparse
+import urllib.parse
 from pydantic import TypeAdapter
 from api.IndiTaskAPI import IndiTaskAPI
 from utils.Clock import Clock
 from common.comm_models import WsPairingCode, WsPairedSuccess
-from common.INDIModels import GlobalMessage, CommandMessage, ResponseMessage, EventMessage
+from common.INDIModels import GlobalMessage, CommandMessage, ResponseMessage
 from dotenv import load_dotenv
 
 logger = logging.getLogger("edge")
@@ -21,9 +46,21 @@ _adapter = TypeAdapter(GlobalMessage)
 
 
 def get_serial() -> str:
+    """
+    Generates a unique hardware fingerprint for the device.
+
+    Attempts to read the SoC serial number or machine ID to create a 
+    deterministic device identifier.
+
+    Returns:
+        str: A unique device ID string (e.g., 'dev-xxxx').
+
+    Raises:
+        RuntimeError: If no hardware identifiers are found.
+    """
     hw_identifiers = []
 
-    # 1. SoC serial number. Fallback to instalation id
+    # 1. SoC serial number. Fallback to installation id
     if os.path.exists('/proc/device-tree/serial-number'):
         with open('/proc/device-tree/serial-number', 'rb') as f:
             serial = f.read().decode().strip('\x00').strip()
@@ -50,8 +87,27 @@ def get_serial() -> str:
     return f"dev-{unique_fingerprint}"
 
 class EdgeClient:
+    """
+    Client for managing communication between local INDI devices and the Astra API.
+
+    Handles authentication (pairing), maintaining a persistent WebSocket tunnel,
+    and routing commands/events.
+    """
     def __init__(self, server: str, indi_api: IndiTaskAPI):
-        self.server = server.rstrip('/')
+        """
+        Initializes the EdgeClient.
+
+        Args:
+            server (str): The Astra API server address.
+            indi_api (IndiTaskAPI): The local INDI task API instance.
+        """
+        # Ensure URL has a scheme for urlparse if missing
+        if "://" not in server:
+            server = f"http://{server}"
+        
+        parsed = urllib.parse.urlparse(server)
+        self.server = f"{parsed.netloc}{parsed.path}".rstrip('/')
+        
         self.device_id = get_serial()
         self.token: str | None = None
         self.ws_url: str | None = None
@@ -60,6 +116,7 @@ class EdgeClient:
 
     # ───────────────────────── Token Storage ───────────────────────────────────────────────────────────
     def _load(self):
+        """Loads authentication tokens from local storage."""
         if os.path.exists(TOKEN_STORAGE):
             try:
                 data = json.load(open(TOKEN_STORAGE))
@@ -69,9 +126,11 @@ class EdgeClient:
                 pass
 
     def _save(self):
+        """Saves authentication tokens to local storage."""
         json.dump({"token": self.token, "ws_url": self.ws_url}, open(TOKEN_STORAGE, "w"))
 
     def _clear(self):
+        """Clears authentication tokens from local storage."""
         self.token = self.ws_url = None
         if os.path.exists(TOKEN_STORAGE):
             os.remove(TOKEN_STORAGE)
@@ -79,12 +138,22 @@ class EdgeClient:
     # ───────────────────────── Startup and Pairing ───────────────────────────────────────────────────────────
 
     async def start(self):
+        """
+        Starts the client lifecycle: subscribes to events, pairs if needed, 
+        and opens the communication tunnel.
+        """
         self.indi_api.subscribe(self._on_indi_event)
         if not self.token:
             await self._pairing()
         await self._tunnel()
 
     async def _pairing(self):
+        """
+        Initiates the device pairing process via WebSocket.
+
+        Waits for a pairing code to be issued and then for a success message 
+        containing the authentication token.
+        """
         url = f"ws://{self.server}/devices/ws/pair?device_id={self.device_id}"
         async with aiohttp.ClientSession() as s:
             while not self.token:
@@ -111,7 +180,9 @@ class EdgeClient:
 
     async def _tunnel(self):
         """
-        Create a WS tunnel to the backend and handle all communications
+        Establishes and maintains a persistent WebSocket tunnel to the Astra backend.
+
+        Automatically reconnects on failure and handles token expiration.
         """
         async with aiohttp.ClientSession() as s:
             while True:
@@ -142,9 +213,12 @@ class EdgeClient:
     # ───────────────────────── Command and Event handling ───────────────────────────────────────────────────────────
     async def _handle(self, ws, raw: str):
         """
-        Handles a backend sent message and queues to IndiTask API
+        Handles an incoming command from the backend.
+
+        Args:
+            ws (ClientWebSocketResponse): The active WebSocket connection.
+            raw (str): The raw JSON message string.
         """
-        # TODO: Should we send an error message acknowledging the error?
         try:
             msg = _adapter.validate_json(raw)
         except Exception:
@@ -157,7 +231,7 @@ class EdgeClient:
         logger.info(f"Command: {msg.payload.action} (req_id={msg.req_id})")
 
         async def reply_to_backend(response_data: dict):
-            # Replies a response to the backend
+            """Internal helper to send command responses back to the API."""
             try:
                 status_map = {"ok": "OK", "error": "ERROR", "cancelled": "CANCELLED"}
                 
@@ -181,7 +255,12 @@ class EdgeClient:
 
     async def _on_indi_event(self, pydantic_packet):
         """
-        Callback: Sends an event message to the backend when and event has happened
+        Callback triggered when a local INDI event occurs.
+
+        Sends the event data through the WebSocket tunnel to the backend.
+
+        Args:
+            pydantic_packet (EventMessage): The event message to send.
         """
         if not self.ws_url:
             # No tunel, so no event
@@ -200,6 +279,12 @@ class EdgeClient:
 
 
 async def main(args):
+    """
+    Main application loop.
+
+    Sets up the environment, starts local INDI subprocesses, and 
+    initializes the Edge client and API.
+    """
     logging.basicConfig(level=logging.INFO)
     
     clock = Clock()
@@ -215,22 +300,70 @@ async def main(args):
 
     logging.info(f"Starting with location: {args.location}")
 
-    indi_api = IndiTaskAPI(
-        host=args.indi_host, 
-        port=args.indi_port, 
-        location=args.location, 
-        time=clock
-    )
-    
-    client = EdgeClient(
-        server=args.astra_url, 
-        indi_api=indi_api
-    )
-    
-    await indi_api.start_indi_manager()
-    await client.start()
+    indi_process = None
+
+    log_file = open("indiserver.log", "a", encoding="utf-8")
+
+    if args.indi_host in ("localhost", "127.0.0.1") and args.drivers:
+        comm = ["indiserver", "-p", str(args.indi_port), "-v"] + args.drivers
+        logging.info(f"Starting INDI subprocess: {' '.join(comm)}")
+
+        # Subprocess start
+        indi_process = await asyncio.create_subprocess_exec(
+            *comm,
+            stdout=log_file,
+            stderr=log_file
+        )
+        logging.info(f"indiserver started with PID {indi_process.pid}")
+
+        # Wait a second to let indi load
+        await asyncio.sleep(1)
+    elif args.drivers:
+        logging.warning("No local INDI host. INDI subprocess will not start.")
+
+
+    try:
+        indi_api = IndiTaskAPI(
+            host=args.indi_host,
+            port=args.indi_port,
+            location=args.location,
+            time=clock
+        )
+
+        client = EdgeClient(
+            server=args.astra_url,
+            indi_api=indi_api
+        )
+
+        await indi_api.start_indi_manager()
+        await client.start()
+
+    finally:
+        if indi_process:
+            logging.info("Shutting down...")
+            try:
+                indi_process.terminate()
+                await asyncio.wait_for(indi_process.wait(), timeout=3.0)
+                logging.info("indiserver closed!")
+            except asyncio.TimeoutError:
+                logging.warning("indiserver killed!")
+                indi_process.kill()
+            finally:
+                log_file.close()
 
 def valid_location(coords):
+    """
+    Validates the provided location coordinates.
+
+    Args:
+        coords (list[float]): A list containing [lat, lon].
+
+    Returns:
+        tuple[float, float]: Validated (lat, lon) tuple.
+
+    Raises:
+        argparse.ArgumentTypeError: If coordinates are out of valid ranges.
+    """
     try:
         lat, lon = map(float, coords)
         if not (-90 <= lat <= 90):
@@ -273,7 +406,13 @@ if __name__ == "__main__":
     parser.add_argument("--time", 
                         default=os.getenv("START_TIME", None),
                         help="Initial time ISO format")
-    
+
+    # INDI drivers to be used
+    parser.add_argument("--drivers",
+                        nargs="*",
+                        default=os.getenv("INDI_DRIVERS", "").split(),
+                        help="INDI driver list to be used (e.g. indi_celestron_gps indi_asi_ccd)")
+
     args = parser.parse_args()
     
     try:

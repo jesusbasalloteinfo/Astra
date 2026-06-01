@@ -1,3 +1,21 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 import os
 import asyncio
 import inspect
@@ -16,18 +34,33 @@ from api.auth import router as auth_router
 # ================================================================================
 
 setup_global_logging(file_path=f".tmp/log-{datetime.now(timezone.utc)}.log")
+DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 
 API_BASE_PATH="/api/auth"
 
 async def init_db():
+    """Initialize the MongoDB connection and setup required indexes.
+    
+    This function connects to the database using the global db_connector and
+    ensures that the AuthRepository has its indexes (username, email) configured.
+    """
     await db_connector.connect()
     auth_repo = AuthRepository()
     await auth_repo.setup_indexes() 
 
 @asynccontextmanager
-async def lifespan(app:FastAPI):
-    """
-    App lifespan with async context manager
+async def lifespan(app: FastAPI):
+    """Manage the application lifespan events.
+
+    This async context manager handles the startup and shutdown phases of the
+    FastAPI application, including key generation, database initialization,
+    and connection teardown.
+
+    Args:
+        app (FastAPI): The FastAPI application instance.
+
+    Raises:
+        HTTPException: If an error occurs during the startup phase.
     """
     LOG = get_logger("ASTRA AUTH")
     LOG.debug("Starting Astra Auth Service...")
@@ -53,9 +86,9 @@ app=FastAPI(
     title="Astra Auth API",
     description="Identity and Authentication Service for Astra",
     lifespan=lifespan,
-    docs_url=API_BASE_PATH+"/docs",
-    redoc_url=API_BASE_PATH+"/redoc",
-    openapi_url=API_BASE_PATH+"/openapi.json",
+    docs_url=API_BASE_PATH+"/docs" if DEBUG else None,
+    redoc_url=API_BASE_PATH+"/redoc" if DEBUG else None,
+    openapi_url=API_BASE_PATH+"/openapi.json" if DEBUG else None,
     swagger_ui_parameters={"defaultModelsExpandDepth": -1}
 )
 
@@ -67,6 +100,11 @@ api=APIRouter(prefix=API_BASE_PATH)
 
 @api.get("/health")
 def health():
+    """Service health check endpoint.
+
+    Returns:
+        dict: A status message indicating the service is running.
+    """
     return {"status": "ok", "message": "Astra Auth Service is running!"}
 
 app.include_router(api, tags=["Main"])

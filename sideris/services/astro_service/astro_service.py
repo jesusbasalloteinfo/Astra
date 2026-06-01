@@ -1,3 +1,21 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 import asyncio
 from datetime import datetime
 import json
@@ -16,19 +34,39 @@ from core.logging import get_logger
 from models.catalog.planetary import PlanetaryObject
 
 class AstroService:
-    """Singleton class for astronomical calculations and data retrieval."""
+    """Singleton class for astronomical calculations and data retrieval.
+
+    This service coordinates the loading of astronomical catalogs, maintains
+    in-memory indexes for fast searching, and delegates complex calculations
+    to specialized sidereal and planetary engines.
+    """
 
     _instance: Optional['AstroService'] = None
     _lock = asyncio.Lock()  # Avoid race conditions
 
     def __init__(self, sidereal_path: str, constellation_path: str):
+        """Initialize the AstroService.
+
+        Args:
+            sidereal_path (str): File path to the pickled sidereal catalog.
+            constellation_path (str): File path to the constellations JSON catalog.
+        """
         self._sidereal_path = sidereal_path
         self._constellation_path = constellation_path
         self._initialized = True
-        self._sidereal_catalog=None
+        self._sidereal_catalog = None
 
     @classmethod
     async def get_instance(cls, *args, **kwargs) -> 'AstroService':
+        """Retrieves or creates the singleton instance of AstroService.
+
+        Args:
+            *args: Positional arguments for initialization.
+            **kwargs: Keyword arguments for initialization.
+
+        Returns:
+            AstroService: The singleton service instance.
+        """
         if cls._instance is None:
             async with cls._lock:
                 if cls._instance is None:
@@ -38,19 +76,24 @@ class AstroService:
         return cls._instance
     
     async def _setup_catalog(self):
+        """Loads catalogs from the file system and initializes calculation engines.
+
+        Raises:
+            FileNotFoundError: If the required catalog files are missing.
+        """
         if os.path.isfile(self._sidereal_path) and os.path.isfile(self._constellation_path):
             get_logger("Astroservice").debug("Loading from Pickle...")
             with open(self._sidereal_path, 'rb') as f:
                 self._sidereal_catalog = pickle.load(f)
             with open(self._constellation_path, 'r', encoding='utf-8') as f:
-                data=json.load(f)
-                self._constellation_catalog=ConstellationCatalog.model_validate(data)
+                data = json.load(f)
+                self._constellation_catalog = ConstellationCatalog.model_validate(data)
             get_logger("Astroservice").debug("Loaded from Pickle successfully!")
         else:
             raise FileNotFoundError("Catalogs have not been found!")
         
-        self._sidereal_engine:SiderealEngine = SiderealEngine(self._sidereal_catalog, self._constellation_catalog)
-        self._planetary_engine:PlanetaryEngine = PlanetaryEngine()
+        self._sidereal_engine: SiderealEngine = SiderealEngine(self._sidereal_catalog, self._constellation_catalog)
+        self._planetary_engine: PlanetaryEngine = PlanetaryEngine()
 
         self._catalog_index = {}
         for star in self._sidereal_catalog.data.stars:
@@ -61,7 +104,11 @@ class AstroService:
         self._build_sidereal_metadata_cache()
 
     def _build_sidereal_metadata_cache(self):
-        """Construct the static metadata catalog in startup"""
+        """Constructs the static metadata cache for API responses.
+
+        Processes the loaded catalogs to create a ready-to-serve representation
+        of stars, DSOs, and constellations, including J2000 coordinates.
+        """
         get_logger("Astroservice").debug("Building frontend metadata cache...")
         ui_objects = {}
 
@@ -129,7 +176,11 @@ class AstroService:
         get_logger("Astroservice").debug("Metadata cache & Search index ready!")
         
     def _build_search_index(self):
-        """Creates a fast search dictionary mimicking the frontend"""
+        """Creates a flattened search index for fast text matching.
+
+        Generates lowercased, space-removed keys for all object names (common, 
+        catalog, latin, etc.) to allow for fuzzy-like fast memory search.
+        """
         self._search_index = []
 
         # Sidereal indexing
@@ -152,9 +203,18 @@ class AstroService:
                     self._search_index.append({"key": search_key, "result": res})
     
     def search_objects(self, query: str, limit: int = 10, planetary_translations: dict = None) -> list:
-        """
-        Search objects applying the frontend scoring logic.
-        Uses static indexing for sidereal/constellations and dynamic injection for planets.
+        """Performs a ranked search across all astronomical catalogs.
+
+        Uses the pre-built search index for sidereal objects and constellations, 
+        and dynamically injects planetary objects using provided translations.
+
+        Args:
+            query (str): The search string.
+            limit (int): Maximum number of results. Defaults to 10.
+            planetary_translations (dict): Localization dictionary for planets.
+
+        Returns:
+            list: A ranked list of search result dictionaries.
         """
         clean_query = query.lower().replace(" ", "")
         if len(clean_query) < 2:
@@ -207,20 +267,53 @@ class AstroService:
     
     # Sidereal Object Handling
     def get_sidereal_metadata(self) -> MetadataCatalogPayload:
-        """Return the cached sidereal metadata."""
+        """Retrieves the cached sidereal metadata.
+
+        Returns:
+            MetadataCatalogPayload: The full sidereal catalog metadata.
+        """
         return self._sidereal_metadata
     
     def get_constellations_metadata(self) -> MetadataCatalogPayload:
-        """Return the cached constellations metadata."""
+        """Retrieves the cached constellations metadata.
+
+        Returns:
+            MetadataCatalogPayload: The full constellations catalog metadata.
+        """
         return self._constellations_metadata
     
-    def get_sidereal_positions(self, target_time: datetime, lat: float, lon: float, elev: float, ttl:float=120.0) -> SyncPayload:
-        """Calculate positions for stars and deep-sky objects."""
+    def get_sidereal_positions(self, target_time: datetime, lat: float, lon: float, elev: float, ttl: float = 120.0) -> SyncPayload:
+        """Calculates current Altitude/Azimuth for all sidereal objects.
+
+        Args:
+            target_time (datetime): Target time for the calculation.
+            lat (float): Latitude of the observer.
+            lon (float): Longitude of the observer.
+            elev (float): Elevation of the observer.
+            ttl (float): Movement window in seconds. Defaults to 120.0.
+
+        Returns:
+            SyncPayload: The computed positions for stars and DSOs.
+        """
         return self._sidereal_engine.get_sky_movement(target_time, lat, lon, elev, ttl)
     
     
-    def get_sidereal_object(self, target_obj:str, target_time: datetime, lat: float, lon: float, elev: float) -> SiderealObjectDataResponse:
-        """Calculate and return information about an object."""
+    def get_sidereal_object(self, target_obj: str, target_time: datetime, lat: float, lon: float, elev: float) -> SiderealObjectDataResponse:
+        """Retrieves ephemeris and physical data for a specific sidereal object.
+
+        Args:
+            target_obj (str): The ID of the object.
+            target_time (datetime): Target time for the calculation.
+            lat (float): Latitude of the observer.
+            lon (float): Longitude of the observer.
+            elev (float): Elevation of the observer.
+
+        Returns:
+            SiderealObjectDataResponse: Combined catalog and real-time movement data.
+
+        Raises:
+            ValueError: If the object is not found in the index.
+        """
         catalog_obj = self._catalog_index.get(target_obj)
         if not catalog_obj:
             raise ValueError(f"Object {target_obj} not found!")
@@ -241,19 +334,55 @@ class AstroService:
     # ═════════════════════════════════════════════
 
 
-    def get_planetary_metadata(self, utc_time: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0):
-        """Return the cached sidereal metadata"""
+    def get_planetary_metadata(self, utc_time: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl: float = 120.0):
+        """Retrieves the current metadata for all planetary bodies.
+
+        Args:
+            utc_time (datetime): Target time.
+            lat (float): Latitude.
+            lon (float): Longitude.
+            elev_m (float): Elevation in meters. Defaults to 0.0.
+            ttl (float): Movement window. Defaults to 120.0.
+
+        Returns:
+            MetadataCatalogPayload: Metadata including observability for planets.
+        """
         return self._planetary_engine.get_metadata(utc_time, lat, lon, elev_m, ttl)
     
 
-    def get_planetary_positions(self, target_time: datetime, lat: float, lon: float, elev: float, ttl:float=120.0) -> SyncPayload:
-        """Calculate positions for all planetary objects"""
+    def get_planetary_positions(self, target_time: datetime, lat: float, lon: float, elev: float, ttl: float = 120.0) -> SyncPayload:
+        """Calculates current Altitude/Azimuth for all planetary objects.
+
+        Args:
+            target_time (datetime): Target time.
+            lat (float): Latitude.
+            lon (float): Longitude.
+            elev (float): Elevation.
+            ttl (float): Movement window. Defaults to 120.0.
+
+        Returns:
+            SyncPayload: Computed planetary positions.
+        """
         return self._planetary_engine.get_sky_movement(target_time, lat, lon, elev, ttl)
     
     
-    def get_planetary_object(self, target_obj:str, target_time: datetime, lat: float, lon: float, elev: float, ttl:float=120.0):
-        """Calculate and return information about an object"""
-        
+    def get_planetary_object(self, target_obj: str, target_time: datetime, lat: float, lon: float, elev: float, ttl: float = 120.0):
+        """Retrieves ephemeris and physical data for a specific planetary object.
+
+        Args:
+            target_obj (str): The name/id of the planetary object.
+            target_time (datetime): Target time.
+            lat (float): Latitude.
+            lon (float): Longitude.
+            elev (float): Elevation.
+            ttl (float): Movement window. Defaults to 120.0.
+
+        Returns:
+            PlanetaryObjectDataResponse: Computed data for the planet.
+
+        Raises:
+            ValueError: If the object is not a valid planetary body.
+        """
         try:
             _ = PlanetaryObject[target_obj.upper()]
         except KeyError:

@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observation/TargetDetailsPanel.svelte -->
 <script lang="ts">
     import { fade } from 'svelte/transition';
@@ -17,21 +35,30 @@
 	import InfoBlockCard from './targetDetailsPanelComponents/InfoBlockCard.svelte';
 	import PlanetInfoCard from './targetDetailsPanelComponents/PlanetInfoCard.svelte';
 	import { translateObjectType } from '$lib/utils/i18n';
+    import { onMount } from 'svelte';
 
     let { onFlyTo, onClear } = $props<{ 
-        onFlyTo: (alt: number, az: number) => void;
+        onFlyTo: (alt: number, az: number) => void; 
         onClear: () => void; 
     }>();
 
+    // -- State & Derived --
     const isTelescopeReady = $derived(
         deviceStore.activeDetails?.is_online && 
         deviceStore.effectiveActiveId && 
         deviceStore.activeComponents?.telescope
     );
     let isSlewing = $state(false);
+    let imageLoadError = $state(false);
+    let imageLoaded = $state(false);
 
-    let imageLoadError = $state(false); // Error during image load
-    let imageLoaded = $state(false); // Image succesfuly loaded
+    // -- Responsive & Gesture State --
+    let isPortrait = $state(false);
+    let isMobileLandscape = $state(false);
+    let viewMode = $state<'collapsed' | 'expanded'>('collapsed');
+    let dragY = $state(0);
+    let isDragging = $state(false);
+    let startY = 0;
 
     function formatTime(isoString: string | null | undefined) {
         if (!isoString) return '—';
@@ -42,15 +69,11 @@
         const id = selectionStore.targetId;
         const details = selectionStore.targetDetails;
         const dynamicData = skyEngine.positions.get(id || '');
-
         if (!id || !details || !dynamicData) return null;
-
         const isPlanet = selectionStore.targetType === 'planetary';
-        
         const imageUrl = getImageUrl(details, isPlanet);
         const { stats, ephemeris } = buildDynamicStats(details, dynamicData, isPlanet);
         const wikipediaUrl = getWikipediaUrl(details.wikipedia_qid);
-
 
         return {
             id,
@@ -78,19 +101,67 @@
         imageLoadError = false;
         imageLoaded = false;
         isSlewing = false;
+        viewMode = 'collapsed'; // Reset on target change
     });
 
+    onMount(() => {
+        const updateMedia = () => {
+            isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            isMobileLandscape = window.matchMedia("(orientation: landscape) and (max-width: 1023px)").matches;
+        };
+        updateMedia();
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
+
+    /**
+     * Handles the start of a pointer gesture for swiping the panel
+     * @param {PointerEvent} e - The pointer down event
+     */
+    function handlePointerDown(e: PointerEvent) {
+        if (!isPortrait) return; // Only gestures on portrait
+        isDragging = true;
+        startY = e.clientY;
+        (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    }
+
+    /**
+     * Handles pointer movement during a swipe gesture
+     * @param {PointerEvent} e - The pointer move event
+     */
+    function handlePointerMove(e: PointerEvent) {
+        if (!isDragging) return;
+        dragY = e.clientY - startY;
+    }
+
+    /**
+     * Handles the end of a pointer gesture and determines swipe actions
+     */
+    function handlePointerUp() {
+        if (!isDragging) return;
+        isDragging = false;
+
+        if (dragY > 100) { // Swiped DOWN
+            if (viewMode === 'expanded') viewMode = 'collapsed';
+            else onClear();
+        } else if (dragY < -100) { // Swiped UP
+            if (viewMode === 'collapsed') viewMode = 'expanded';
+        }
+        dragY = 0;
+    }
+
+    /**
+     * Sends a command to the active telescope to slew to and track the selected target
+     */
     async function handleSlewAndTrack() {
         if (!isTelescopeReady || !selectedInfo) return;
-        
         const deviceId = deviceStore.effectiveActiveId!;
         const telescopeId = deviceStore.activeComponents!.telescope!;
-
         isSlewing = true;
         try {
             await deviceAPI.slewTelescope(deviceId, telescopeId, {
-                coord: [selectedInfo.ra, selectedInfo.dec],
-                input_type: CoordinateTypes.EQUATORIAL_J2000,
+                coord: [selectedInfo.alt, selectedInfo.az],
+                input_type: CoordinateTypes.HORIZONTAL,
                 mode: "TRACK" 
             });
         } catch (error) {
@@ -103,38 +174,58 @@
 
 {#if selectionStore.targetId}
     <div 
-        transition:fly={{ x: 50, duration: 300 }} 
-        class="w-100 max-h-[85vh] flex flex-col bg-surface backdrop-blur-xl border border-border rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] pointer-events-auto"
+        transition:fly={isPortrait ? { y: 200, duration: 300 } : (isMobileLandscape ? { scale: 0.9, duration: 300 } : { x: 50, duration: 300 })} 
+        class="flex flex-col bg-surface backdrop-blur-xl border border-border transition-all duration-300 pointer-events-auto overflow-hidden
+               {isPortrait ? (viewMode === 'expanded' ? 'h-[90dvh]' : 'h-[55dvh]') : 'h-full landscape:h-full md:landscape:h-auto'}
+               {isPortrait ? 'w-full rounded-t-3xl rounded-b-none' : 'landscape:w-full md:landscape:w-100 lg:w-100 rounded-3xl md:landscape:rounded-3xl lg:rounded-3xl'}
+               {isPortrait ? 'shadow-[0_-8px_32px_rgba(0,0,0,0.3)]' : 'shadow-[0_8px_32px_rgba(0,0,0,0.3)]'}
+               {isPortrait ? '' : 'landscape:max-h-[80vh] md:landscape:max-h-[70vh] 2xl:landscape:max-h-[92vh]'}
+               {!isPortrait && !isMobileLandscape ? 'border-border/60' : ''}"
+        style="transform: translateY({isDragging ? dragY : 0}px)"
     >
-        <!-- Header -->
-        <div class="p-5 pb-4 border-b border-border/50 shrink-0">
-            <div class="flex items-start justify-between gap-3">
-                <div class="min-w-0">
-                    <div class="flex items-center gap-2 mb-1.5 drop-shadow-[0_0_5px_var(--color-accent-glow)]">
-                        <Target size={14} class="text-accent animate-pulse" />
-                        <span class="text-[10px] font-bold text-accent uppercase tracking-widest">{m.obs_targetinfo_title()}</span>
-                    </div>
-                    {#if selectionStore.isLoadingDetails && !selectedInfo}
-                        <div class="h-6 w-32 bg-panel rounded animate-pulse mb-1"></div>
-                        <div class="h-4 w-20 bg-panel rounded animate-pulse"></div>
-                    {:else if selectedInfo}
-                        <h2 class="text-xl font-bold text-copy-primary leading-tight truncate" title={selectedInfo.name}>{selectedInfo.name}</h2>
-                        <p class="text-xs text-copy-muted mt-1 truncate">{translateObjectType(selectedInfo.category)}</p>
-                    {/if}
-                </div>
+        <!-- Drag Handle / Header Area for Gestures -->
+        <div 
+            onpointerdown={handlePointerDown}
+            onpointermove={handlePointerMove}
+            onpointerup={handlePointerUp}
+            onpointercancel={handlePointerUp}
+            class="shrink-0 touch-none select-none"
+        >
+            <!-- Visual Handle -->
+            <div class="w-full flex justify-center pt-3 pb-1 landscape:hidden shrink-0">
+                <div class="w-12 h-1.5 bg-border/40 rounded-full"></div>
+            </div>
 
-                <button onclick={onClear} class="cursor-pointer p-1.5 text-copy-muted hover:text-white rounded-full hover:bg-panel/50 transition-colors shrink-0">
-                    <X size={18}/>
-                </button>
+            <!-- Header Content -->
+            <div class="p-5 pb-4 border-b border-border/50">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                        <div class="flex items-center gap-2 mb-1.5 drop-shadow-[0_0_5px_var(--color-accent-glow)]">
+                            <Target size={14} class="text-accent animate-pulse" />
+                            <span class="text-[10px] font-bold text-accent uppercase tracking-widest">{m.obs_targetinfo_title()}</span>
+                        </div>
+                        {#if selectionStore.isLoadingDetails && !selectedInfo}
+                            <div class="h-6 w-32 bg-panel rounded animate-pulse mb-1"></div>
+                            <div class="h-4 w-20 bg-panel rounded animate-pulse"></div>
+                        {:else if selectedInfo}
+                            <h2 class="text-xl font-bold text-copy-primary leading-tight truncate" title={selectedInfo.name}>{selectedInfo.name}</h2>
+                            <p class="text-xs text-copy-muted mt-1 truncate">{translateObjectType(selectedInfo.category)}</p>
+                        {/if}
+                    </div>
+
+                    <button onclick={onClear} class="cursor-pointer p-1.5 text-copy-muted hover:text-white rounded-full hover:bg-panel/50 transition-colors shrink-0">
+                        <X size={18}/>
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Content -->
-        <div class="p-5 overflow-y-auto custom-scrollbar flex-1 space-y-5">
+        <div class="p-4 landscape:p-5 overflow-y-auto custom-scrollbar flex-1 space-y-5">
             
             <!-- --- Image --- -->
             {#if selectedInfo && selectedInfo.imageUrl && !imageLoadError}
-                <div class="aspect-16/10 w-full rounded-2xl border border-border/50 bg-panel/30 overflow-hidden relative shadow-inner group">
+                <div class="aspect-16/10 w-full rounded-2xl border border-border/50 bg-panel/30 overflow-hidden relative shadow-inner group shrink-0">
                     {#if !imageLoaded}
                         <div class="absolute inset-0 flex flex-col items-center justify-center" out:fade={{ duration: 300 }}>
                             <Image size={28} class="text-copy-muted/40 animate-pulse" />
@@ -169,6 +260,7 @@
                     {/each}
                 {/if}
             </div>
+            
             <!-- Special cards -->
             {#if selectedInfo?.extraDetails}
                 {#if selectedInfo.extraDetails.category === 'moon'}
@@ -240,7 +332,7 @@
         </div>
 
         <!-- Footer / Actions -->
-        <div class="p-5 border-t border-border/50 shrink-0 flex flex-col gap-2">
+        <div class="p-5 border-t border-border/50 shrink-0 flex flex-col gap-2 bg-surface/50">
             <button 
                 onclick={() => selectedInfo && onFlyTo(selectedInfo.alt, selectedInfo.az)} 
                 disabled={!selectedInfo}

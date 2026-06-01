@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/dashboard/MobileLanguageSelector.svelte -->
 <script lang="ts">
 	import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
@@ -6,17 +24,27 @@
     import { authStore } from '$lib/stores/auth.svelte';
 	import { AVAILABLE_LANGUAGES, type LanguageCode } from '$lib/config/languages';
 
+    /** Current active locale code */
 	let currentLocale = $state(getLocale()); 
 
+    /**
+     * Switches the application locale and reloads the page
+     * @param {LanguageCode} newLocale - The locale code to switch to
+     */
 	async function switchLocale(newLocale: LanguageCode) {
 		if (newLocale === currentLocale) return;
 
-		setLocale(newLocale);
-
-        // Persist to backend if logged in
+        // 1. Persist to backend if logged in and wait for it
         if (authStore.isAuthenticated && authStore.user?.settings.language !== newLocale) {
             await authStore.updateSettings({ language: newLocale });
         }
+
+        // 2. Update local state and cookie
+		setLocale(newLocale);
+        if (browser) {
+            document.cookie = `PARAGLIDE_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+        }
+        currentLocale = newLocale;
 
 		const segments = page.url.pathname.split('/');
 		const supportedCodes = AVAILABLE_LANGUAGES.map(l => l.code);

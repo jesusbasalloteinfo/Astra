@@ -1,3 +1,21 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 import os
 import json
 import asyncio
@@ -21,7 +39,18 @@ client = AsyncOpenAI(
 # --- Helper Functions ---
 
 def _prepare_openai_kwargs(history: ChatHistory, tools: List[CurriedTool], model: str, system_prompt: Optional[str] = None) -> Dict[str, Any]:
-    """Converts the ChatHistory models into the raw dictionaries expected by OpenAI and prepares the kwargs"""
+    """
+    Converts ChatHistory and tools into the raw dictionaries expected by OpenAI.
+
+    Args:
+        history (ChatHistory): The current chat history.
+        tools (List[CurriedTool]): List of available tools.
+        model (str): The model identifier.
+        system_prompt (Optional[str]): The system prompt to prepend.
+
+    Returns:
+        Dict[str, Any]: Keyword arguments for the OpenAI chat completion call.
+    """
 
     messages = [msg.model_dump(exclude_none=True) for msg in history.messages]
     
@@ -41,7 +70,15 @@ def _prepare_openai_kwargs(history: ChatHistory, tools: List[CurriedTool], model
     return kwargs
 
 def _build_tool_calls_from_buffer(tool_calls_buffer: Dict[int, ToolCallBuilder]) -> List[ToolCall]:
-    """Converts the toolcalls buffer to ToolCall objects."""
+    """
+    Converts the tool calls buffer into a list of ToolCall objects.
+
+    Args:
+        tool_calls_buffer (Dict[int, ToolCallBuilder]): The buffered tool call data.
+
+    Returns:
+        List[ToolCall]: A sorted list of validated tool calls.
+    """
 
     assistant_tool_calls = []
     for _, builder in sorted(tool_calls_buffer.items()):
@@ -57,7 +94,16 @@ def _build_tool_calls_from_buffer(tool_calls_buffer: Dict[int, ToolCallBuilder])
     return assistant_tool_calls
 
 async def _execute_single_tool(tc: ToolCall, tools_by_name: Dict[str, CurriedTool]) -> ToolResult:
-    """Executes a single tool and formats its result."""
+    """
+    Executes a single tool and formats its result for the model.
+
+    Args:
+        tc (ToolCall): The tool call to execute.
+        tools_by_name (Dict[str, CurriedTool]): Mapping of tool names to instances.
+
+    Returns:
+        ToolResult: The consolidated result of the tool execution.
+    """
     
     tool_name = tc.function.name
     arguments_json = tc.function.arguments
@@ -83,7 +129,16 @@ async def _execute_single_tool(tc: ToolCall, tools_by_name: Dict[str, CurriedToo
     )
 
 async def _execute_tools_concurrently(assistant_tool_calls: List[ToolCall], tools: List[CurriedTool]) -> List[ToolResult]:
-    """Executes all requested tools at the same time"""
+    """
+    Executes all requested tools concurrently using asyncio.gather.
+
+    Args:
+        assistant_tool_calls (List[ToolCall]): List of tools to execute.
+        tools (List[CurriedTool]): Available tool instances.
+
+    Returns:
+        List[ToolResult]: List of results for each tool call.
+    """
 
     tools_by_name = {t.name: t for t in tools}
     return await asyncio.gather(*(_execute_single_tool(tc, tools_by_name) for tc in assistant_tool_calls))
@@ -98,8 +153,20 @@ async def stream_chat(
     system_prompt: Optional[str] = None
 ) -> AsyncGenerator[SSEEvent, None]:
     """
-    The main chat orchestrator. Streams responses, intercepts tool requests, executes them,
-    and loops back to the LLM automatically.
+    The main chat orchestrator that streams responses and handles tool execution.
+
+    This generator yields Server-Sent Events (SSE) representing text chunks, 
+    reasoning chunks, and tool execution status. If tools are called, it 
+    automatically executes them and recurses to provide results back to the LLM.
+
+    Args:
+        history (ChatHistory): The chat history to continue.
+        tools (List[CurriedTool]): available tools for the model.
+        model (str): The LLM model to use.
+        system_prompt (Optional[str]): Optional override for the system prompt.
+
+    Yields:
+        SSEEvent: Specific event instances (TextEvent, ReasoningEvent, etc.).
     """
     
     # 1. Setup the Network Request

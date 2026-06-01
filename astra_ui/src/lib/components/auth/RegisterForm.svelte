@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { goto } from '$app/navigation';
     import { page } from '$app/state';
@@ -5,17 +23,31 @@
     import { authStore } from '$lib/stores/auth.svelte';
     import { authAPI } from '$lib/api/auth';
 
-    let { onToggleMode } = $props<{ onToggleMode: () => void }>();
+    let { 
+        /** Callback function to toggle between login and register modes */
+        onToggleMode 
+    } = $props<{ onToggleMode: () => void }>();
 
+    /** Input value for the username field */
     let username = $state('');
+    /** Input value for the email field */
     let email = $state('');
+    /** Input value for the password field */
     let password = $state('');
+    /** Input value for the password confirmation field */
     let confirmPassword = $state('');
+    /** Whether a registration request is currently in progress */
     let loading = $state(false);
+    /** Error message to display if registration fails */
     let error = $state('');
 
+    /** Regular expression for basic email validation */
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    /**
+     * Validates input and attempts to register a new user
+     * Auto-logs in the user and redirects to dashboard upon success
+     */
     async function handleRegister() {
         // Validations
         if (!username.trim()) {

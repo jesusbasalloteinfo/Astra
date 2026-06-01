@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/stores/activeSelection.svelte.ts
 import { siderisAPI } from '$lib/api/sideris';
 import type { SiderealObjectDetails, PlanetaryObjectDetails } from '$lib/types/sideris';
@@ -5,14 +23,27 @@ import { locStore } from './location.svelte';
 import { timeEngine } from './timeEngine.svelte';
 import { getLocale } from '$lib/paraglide/runtime';
 
+/**
+ * Store for managing the currently selected celestial object and its details.
+ * Automatically updates details when the time drifts significantly.
+ */
 class ActiveSelection {
+    /** ID of the currently selected target. */
     targetId = $state<string | null>(null);
+    /** Type of the currently selected target. */
     targetType = $state<'sidereal' | 'planetary' | null>(null);
+    /** Detailed information about the selected target. */
     targetDetails = $state<SiderealObjectDetails | PlanetaryObjectDetails | null>(null);
+    /** Loading state for fetching target details. */
     isLoadingDetails = $state(false);
 
+    /** Timestamp of the last successful details fetch. */
     private lastFetchTime: number = 0;
 
+    /**
+     * Initializes the store and sets up an effect to automatically refresh object details
+     * when time drifts by more than 5 minutes.
+     */
     constructor() {
         if (typeof window !== 'undefined') {
             $effect.root(() => {
@@ -37,6 +68,13 @@ class ActiveSelection {
         }
     }
 
+    /**
+     * Selects a celestial object and fetches its details.
+     * 
+     * @param id - The ID of the object to select.
+     * @param type - The type of the object ('sidereal' or 'planetary').
+     * @returns A promise that resolves when details are fetched.
+     */
     async select(id: string, type: 'sidereal' | 'planetary') {
         // Reset if it's a new target to avoid showing old details
         if (this.targetId !== id) {
@@ -48,6 +86,13 @@ class ActiveSelection {
         await this.fetchDetails(id, type);
     }
 
+    /**
+     * Fetches details for the specified object from the Sideris API.
+     * 
+     * @param id - The ID of the object.
+     * @param type - The type of the object ('sidereal' or 'planetary').
+     * @returns A promise that resolves when the fetch is complete.
+     */
     private async fetchDetails(id: string, type: 'sidereal' | 'planetary') {
         if (this.isLoadingDetails) return;
         
@@ -73,6 +118,9 @@ class ActiveSelection {
         }
     }
 
+    /**
+     * Clears the current selection and resets the store.
+     */
     clear() {
         this.targetId = null;
         this.targetType = null;
@@ -82,4 +130,7 @@ class ActiveSelection {
     }
 }
 
+/**
+ * Singleton instance of ActiveSelection.
+ */
 export const selectionStore = new ActiveSelection();

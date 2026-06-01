@@ -11,7 +11,7 @@
   
   "landing_cta": "Comença a Explorar",
   "landing_cta_docs": "Veure Documentació",
-  "landing_cta_gallery": "Veure Galeria",
+  "landing_cta_repo": "Veure Codi",
 
   "landing_nav_features": "Característiques",
   "landing_nav_technology": "Tecnologia",
@@ -44,8 +44,8 @@
   "landing_stat_indi": "Protocol INDI",
   "landing_stat_telescopes": "Suportat",
   "landing_stat_objects": "Objectes Celestials",
-  "landing_stat_guiding": "Precició de l'Auto Guiatge",
-  "landing_stat_satisfaction": "Satisfacció d'Usuaris",
+  "landing_stat_architecture": "Arquitectura",
+  "landing_stat_license": "Llicència",
 
   "landing_end_cta_title": "Estàs preparat per explorar el Cosmos?",
   "landing_end_cta_desc": "Uneix-te a milers d'aficionats que fan servir ASTRA per descobrir les meravelles de l'univers. Disponible a la web.",
@@ -69,6 +69,7 @@
 
   "-------------------------------------- LOGIN SECTION -------------------------------------- ": "",
   "login_title": "Iniciar sessió - {name}",
+  "register_title": "Registrar-se - {name}",
   "login_welcome": "Benvingut",
   "login_input_msg": "Inicia sessió per a continuar",
   "login_username_input": "Usuari",
@@ -91,7 +92,13 @@
   "login_register_error": "Error al registrar-se. L'usuari o el correu podrien estar en ús.",
   "login_return_home": "← Torna a l'inici",
 
-
+  
+  "-------------------------------------- SPLASH SECTION -------------------------------------- ": "",
+  "splash_status_core": "Inicialitzant el nucli...",
+  "splash_status_interface": "Connectant amb la interfície Astra...",
+  "splash_status_sessions": "Obtenint sessions xifrades...",
+  "splash_status_sync": "Sincronitzant l'estat de l'observador...",
+  "splash_status_render": "Renderitzant la interfície...",
 
   "====================================== DASHBOARD ======================================": "",
   "dash_title": "Taulell de control - {name}",
@@ -103,7 +110,7 @@
   "dash_side_new_session": "Nova sessió",
   "dash_side_home": "Inici",
   "dash_side_sessions": "Sessions",
-  "dash_side_telescope": "Telescopis",
+  "dash_side_devices": "Dispositius",
   "dash_side_location": "Ubicació",
   "dash_side_profile": "Perfil",
   "dash_side_logout": "Tancar sessió",
@@ -127,14 +134,33 @@
 
 
   "-------------------------------------- DASHBOARD -------------------------------------- ": "",
-  "dash_main_greeting_morning": "Bon dia, {user} ☀️",
-  "dash_main_sub_morning_morning": "Planificant la sessió solar d'avui?",
-  "dash_main_greeting_afternoon": "Bona tarda, {user} 🌤️",
-  "dash_main_sub_morning_afternoon": "A punt per a la transició cap al crepuscle?",
-  "dash_main_greeting_evening": "Bon vespre, {user} 🌙",
-  "dash_main_sub_morning_evening": "Tot a punt per a la sessió d'aquesta nit?",
-  "dash_main_greeting_night": "Bona nit, {user} 🌌",
-  "dash_main_sub_morning_night": "Quin és l'objectiu per a aquesta nit?",
+  "dash_main_greeting_morning_0": "Bon dia, {user}",
+  "dash_main_greeting_morning_1": "Preparat per explorar, {user}?",
+  "dash_main_greeting_morning_2": "Sistemes a punt, {user}.",
+  "dash_main_sub_morning_morning_0": "Planificant la sessió solar d'avui?",
+  "dash_main_sub_morning_morning_1": "Quin és l'objectiu d'aquest matí?",
+  "dash_main_sub_morning_morning_2": "Un bon moment per revisar l'equipament.",
+  
+  "dash_main_greeting_afternoon_0": "Bona tarda, {user}",
+  "dash_main_greeting_afternoon_1": "Benvingut de nou, {user}",
+  "dash_main_greeting_afternoon_2": "A punt per a la transició, {user}?",
+  "dash_main_sub_morning_afternoon_0": "A punt per a la transició cap al crepuscle?",
+  "dash_main_sub_morning_afternoon_1": "El cel s'està preparant per aquesta nit.",
+  "dash_main_sub_morning_afternoon_2": "Bona hora per començar a refredar les càmeres.",
+
+  "dash_main_greeting_evening_0": "Bon vespre, {user}",
+  "dash_main_greeting_evening_1": "Comença l'espectacle, {user}",
+  "dash_main_greeting_evening_2": "El cel s'enfosqueix, {user}",
+  "dash_main_sub_morning_evening_0": "Tot a punt per a la sessió d'aquesta nit?",
+  "dash_main_sub_morning_evening_1": "Les primeres estrelles ja són visibles.",
+  "dash_main_sub_morning_evening_2": "Hora de connectar l'equip i iniciar l'alineació.",
+
+  "dash_main_greeting_night_0": "Bona nit, {user}",
+  "dash_main_greeting_night_1": "Bona caça, {user}",
+  "dash_main_greeting_night_2": "L'univers t'espera, {user}",
+  "dash_main_sub_morning_night_0": "Quin és l'objectiu per a aquesta nit?",
+  "dash_main_sub_morning_night_1": "Ideal per planificar la sessió d'espai profund.",
+  "dash_main_sub_morning_night_2": "L'assistent Astra està llest per seguir els teus objectius.",
   
   "dash_main_new_session": "Nova sessió",
 
@@ -176,13 +202,13 @@
   "dash_device_action_pair": "Vincular Dispositiu",
   "dash_device_new_pairing": "Nova Vinculació",
   "dash_device_token_label": "Token de Vinculació",
-  "dash_device_token_placeholder": "Introdueix el tòquen de 8 caràcters",
-  "dash_device_pair_error": "Tòken invàlid o dispositiu ja vinculat.",
+  "dash_device_token_placeholder": "Introdueix el token de 8 caràcters",
+  "dash_device_pair_error": "Token invàlid o dispositiu ja vinculat.",
   "dash_device_pairing": "Vinculant...",
   "dash_device_pair": "Vincular",
   "dash_device_del_title": "Desvincular Dispositiu",
   "dash_device_del_confirm": "Estàs segur que vols desvincular \"{name}\"?",
-  "dash_device_del_warning": "Perdràs l'accés fins que tornis a introduir un tòquen.",
+  "dash_device_del_warning": "Perdràs l'accés fins que tornis a introduir un token.",
   "dash_device_del_action": "Desvincular",
   "dash_device_found": [
     {
@@ -199,7 +225,8 @@
   "-------------------------------------- DASHBOARD SESSIONS -------------------------------------- ": "",
   "dash_observ_title": "Sessions",
   "dash_observ_new_session": "Nova sessió",
-
+  "dash_observ_no_location_title": "Ubicació Requerida",
+  "dash_observ_no_location_desc": "Necessites configurar almenys una ubicació per començar a observar.",
   "dash_observ_found": [
     {
       "declarations": ["input count", "local countPlural = count: plural"],
@@ -231,6 +258,9 @@
   "dash_observ_action_save": "Desar canvis",
   "dash_observ_action_delete": "Esborrar",
   "dash_observ_action_cancel": "Cancel·lar",
+  "dash_observ_error_exists": "Ja existeix una sessió amb aquest nom",
+  "dash_observ_creation_date": "Data de creació",
+  "dash_observ_last_activity": "Última activitat",
 
 
   "-------------------------------------- DASHBOARD LOCATIONS -------------------------------------- ": "",
@@ -285,7 +315,7 @@
   "obs_error_load_title": "Error carregant observació",
   "obs_error_load_btn": "Tornar al Taulell de control",
 
-  "obs_sidedock_return": "Tornar a Sessions",
+  "obs_sidedock_return": "Tornar",
   "obs_sidedock_settings": "Configuració visual",
   "obs_sidedock_theme": "Configuració de tema",
   "obs_sidedock_constellations_title": "Constel·lacions",
@@ -422,6 +452,9 @@
   "data_moon_phase_waxing_crescent": "Luna Creixent",
   "data_moon_phase_waxing_gibbous": "Gibosa Creixent",
   "data_moon_phase_waning_crescent": "Lluna Minvant",
-  "data_moon_phase_waning_gibbous": "Gibosa Minvant"
+  "data_moon_phase_waning_gibbous": "Gibosa Minvant",
 
+  "error_title_404": "Pàgina no trobada",
+  "error_title_unexpected": "Alguna cosa ha anat malament",
+  "error_desc_default": "No hem pogut trobar la pàgina que busques o ha passat un error inesperat."
 }

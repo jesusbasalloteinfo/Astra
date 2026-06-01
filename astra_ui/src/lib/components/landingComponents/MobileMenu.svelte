@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { X } from 'lucide-svelte';
     import { fade, fly } from 'svelte/transition';
@@ -5,12 +23,26 @@
     import LanguageSelector from '$lib/components/LanguageSwitcher.svelte';
     import AppLogo from '../AppLogo.svelte';
 
-    let { isOpen = $bindable(), navLinks, onNavigate = () => {} } = $props();
+    let { 
+        /** Whether the menu is currently open (bindable) */
+        isOpen = $bindable(), 
+        /** Array of navigation link objects */
+        navLinks, 
+        /** Callback function triggered upon navigation */
+        onNavigate = () => {} 
+    } = $props();
 
+    /**
+     * Closes the mobile menu
+     */
     function close() {
         isOpen = false;
     }
 
+    /**
+     * Handles navigation when a menu link is clicked
+     * @param {string} href - The destination URL
+     */
     function handleNavigate(href: string) {
         onNavigate?.(href);
         close();

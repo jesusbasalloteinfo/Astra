@@ -1,3 +1,21 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 import json
 from pathlib import Path
 from typing import Dict, Any, List, TypeVar, Union
@@ -12,7 +30,11 @@ translations_cache: Dict[str, LanguageLocale] = {}
 TModel = TypeVar('TModel', bound=BaseModel)
 
 def load_translations():
-    """Load all translations from locales and validate with Pydantic"""
+    """Loads all translation files from the 'locales' directory.
+
+    Iterates through language subdirectories, parses JSON files into Pydantic models, 
+    and caches them for global use.
+    """
     # Use absolute path relative to this file (sideris/core/translations.py)
     # parent.parent goes up to 'sideris/'
     base_path = Path(__file__).parent.parent
@@ -49,7 +71,15 @@ def load_translations():
     print(f"Loaded languages: {list(translations_cache.keys())}")
 
 def get_lang_dict(catalog_type: str, lang: str) -> Dict[str, Union[TranslationEntry, ConstellationTranslationEntry]]:
-    """ Get the language dict for a specific catalog type """
+    """Retrieves the translation dictionary for a specific catalog and language.
+
+    Args:
+        catalog_type (str): The type of catalog ('sidereal', 'planetary', 'constellations').
+        lang (str): The ISO language code.
+
+    Returns:
+        Dict[str, Union[TranslationEntry, ConstellationTranslationEntry]]: The translation map.
+    """
     if lang not in translations_cache:
         return {}
     
@@ -59,8 +89,18 @@ def get_lang_dict(catalog_type: str, lang: str) -> Dict[str, Union[TranslationEn
 
 
 def localise_object(obj: TModel, lang_dict: Dict[str, Union[TranslationEntry, ConstellationTranslationEntry]]) -> TModel:
-    """
-    Localises an object and injects translations
+    """Injects localized strings into an astronomical object model.
+
+    Updates names, descriptions, and other textual fields based on the 
+    provided language dictionary.
+
+    Args:
+        obj (TModel): The Pydantic model instance to localize.
+        lang_dict (Dict[str, Union[TranslationEntry, ConstellationTranslationEntry]]): 
+            The dictionary of translations.
+
+    Returns:
+        TModel: A copy of the object with localized fields.
     """
     if not lang_dict:
         return obj
@@ -104,12 +144,19 @@ def localise_object(obj: TModel, lang_dict: Dict[str, Union[TranslationEntry, Co
     return obj.model_copy(update=updates)
 
 
-# 2. Inyector específico para Payloads que contienen diccionarios
 def localise_dict_payload(
     payload: MetadataCatalogPayload[Dict[str, TModel]], 
     lang_dict: dict
 ) -> MetadataCatalogPayload[Dict[str, TModel]]:
-    
+    """Localizes a payload containing a dictionary of objects.
+
+    Args:
+        payload (MetadataCatalogPayload): The payload containing the 'data' dictionary.
+        lang_dict (dict): The translation map.
+
+    Returns:
+        MetadataCatalogPayload: The localized payload.
+    """
     if not lang_dict:
         return payload
 
@@ -121,12 +168,19 @@ def localise_dict_payload(
     return payload.model_copy(update={"data": localised_data})
 
 
-# 3. Inyector específico para Payloads que contienen listas
 def localise_list_payload(
     payload: MetadataCatalogPayload[List[TModel]], 
     lang_dict: dict
 ) -> MetadataCatalogPayload[List[TModel]]:
-    
+    """Localizes a payload containing a list of objects.
+
+    Args:
+        payload (MetadataCatalogPayload): The payload containing the 'data' list.
+        lang_dict (dict): The translation map.
+
+    Returns:
+        MetadataCatalogPayload: The localized payload.
+    """
     if not lang_dict:
         return payload
 

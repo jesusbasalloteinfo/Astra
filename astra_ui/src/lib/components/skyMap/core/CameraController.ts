@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/components/skyMap/core/CameraController.ts
 
 import * as THREE from 'three';
@@ -11,17 +29,28 @@ import { FOV_DEFAULT, FOV_MIN, FOV_MAX, ZOOM_SPEED, EYE_LEVEL, CAMERA_SPEED } fr
  * with a custom FOV-based zooming to simulate optical zoom.
  */
 export class CameraController {
+    /** The Three.js perspective camera. */
     public camera: THREE.PerspectiveCamera;
+    /** The orbit controls for camera interaction. */
     public controls: OrbitControls;
+    /** Whether the camera is currently tracking a target. */
     public isTracking: boolean = false; // Maintain always centered
 
+    /** Initial distance for pinch-to-zoom on mobile. */
     private initialPinchDistance: number | null = null;
+    /** The HTML container element for the renderer. */
     private container: HTMLElement;
 
     // ── Navigation State ──
+    /** Whether the camera is currently in a "fly-to" animation. */
     private isFlying: boolean = false;
+    /** The target position for the "fly-to" animation. */
     private flightTarget: THREE.Vector3 = new THREE.Vector3();
 
+    /**
+     * Creates an instance of CameraController.
+     * @param {HTMLElement} container - The HTML element that contains the SkyMap.
+     */
     constructor(container: HTMLElement) {
         this.container = container;
         // Initialize camera with a wide default Field of View
@@ -57,7 +86,13 @@ export class CameraController {
     }
 
     /**
-     * Caslculate the selected object's position
+     * Calculates the flight target position based on altitude and azimuth.
+     * Uses a spherical-to-Cartesian transformation where:
+     * - Altitude (alt) is the angle above the horizon.
+     * - Azimuth (az) is the angle from North (0°) clockwise.
+     * @param {number} alt - Altitude in degrees.
+     * @param {number} az - Azimuth in degrees.
+     * @private
      */
     private calculateFlightTarget(alt: number, az: number) {
         const altRad = alt * (Math.PI / 180);
@@ -75,7 +110,9 @@ export class CameraController {
     }
 
     /**
-     * Starts a smooth movement to the coordinates.
+     * Starts a smooth "fly-to" movement to the specified celestial coordinates.
+     * @param {number} alt - Altitude in degrees.
+     * @param {number} az - Azimuth in degrees.
      */
     flyTo(alt: number, az: number) {
         this.calculateFlightTarget(alt, az);
@@ -83,7 +120,8 @@ export class CameraController {
     }
 
     /**
-     * Stops the flying momement if user takes control.
+     * Stops the flying movement and tracking if the user takes control.
+     * @private
      */
     private cancelFlight = () => {
         this.isFlying = false;
@@ -91,7 +129,9 @@ export class CameraController {
     };
 
     /**
-     * Follow a selected object
+     * Smoothly follows a selected object based on its altitude and azimuth.
+     * @param {number} alt - Altitude in degrees.
+     * @param {number} az - Azimuth in degrees.
      */
     track(alt: number, az: number) {
         this.calculateFlightTarget(alt, az);
@@ -104,6 +144,9 @@ export class CameraController {
 
     /**
      * Custom zoom handler using the mouse wheel (Desktop).
+     * Modifies the FOV to simulate zooming.
+     * @param {WheelEvent} e - The wheel event.
+     * @private
      */
     private onWheel = (e: WheelEvent) => {
         e.preventDefault();
@@ -112,6 +155,8 @@ export class CameraController {
 
     /**
      * Initializes pinch distance when two fingers touch the screen (Mobile).
+     * @param {TouchEvent} e - The touch event.
+     * @private
      */
     private onTouchStart = (e: TouchEvent) => {
         if (e.touches.length === 2) {
@@ -126,6 +171,8 @@ export class CameraController {
 
     /**
      * Calculates the change in pinch distance and applies zoom (Mobile).
+     * @param {TouchEvent} e - The touch event.
+     * @private
      */
     private onTouchMove = (e: TouchEvent) => {
         if (e.touches.length === 2 && this.initialPinchDistance !== null) {
@@ -148,6 +195,8 @@ export class CameraController {
 
     /**
      * Resets pinch state when fingers are lifted.
+     * @param {TouchEvent} e - The touch event.
+     * @private
      */
     private onTouchEnd = (e: TouchEvent) => {
         if (e.touches.length < 2) {
@@ -156,7 +205,9 @@ export class CameraController {
     };
 
     /**
-     * Stop tracking if user makes a click
+     * Stops tracking and flight animation if the user clicks or interacts.
+     * @param {PointerEvent} e - The pointer event.
+     * @private
      */
     private onPointerDown = (e: PointerEvent) => {
         if (e.pointerType !== 'touch') {
@@ -167,6 +218,8 @@ export class CameraController {
     /**
      * Modifies the camera's Field of View (FOV) instead of moving its Z position.
      * Shared logic for both Mouse Wheel and Touch Pinch.
+     * @param {number} delta - The amount to change the zoom by.
+     * @private
      */
     private applyZoom(delta: number) {
         // Calculate new FOV within the allowed min/max boundaries
@@ -178,7 +231,8 @@ export class CameraController {
     }
 
     /**
-     * Should be called in the main animation loop to update damping physics.
+     * Updates the camera state, including damping physics and flight animations.
+     * Should be called in the main animation loop.
      */
     update() {
         if (this.isFlying) {
@@ -199,6 +253,8 @@ export class CameraController {
 
     /**
      * Adjusts the camera projection when the viewport size changes.
+     * @param {number} width - New viewport width.
+     * @param {number} height - New viewport height.
      */
     resize(width: number, height: number) {
         this.camera.aspect = width / height;
@@ -206,7 +262,7 @@ export class CameraController {
     }
 
     /**
-     * Cleans up event listeners and controls when destroyed.
+     * Cleans up event listeners and controls when the controller is destroyed.
      */
     dispose() {
         this.container.removeEventListener('pointerdown', this.cancelFlight);

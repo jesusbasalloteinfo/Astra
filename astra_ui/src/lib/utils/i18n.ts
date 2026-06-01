@@ -1,16 +1,53 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/utils/i18n.ts
 import { m } from "$lib/paraglide/messages";
 import { getLocale } from "$lib/paraglide/runtime";
 
+/**
+ * Converts a boolean value to an Inlang-compatible string representation.
+ * 
+ * @param val - The boolean value to convert.
+ * @returns "true" if val is true, "false" otherwise.
+ */
 export const toInlangBool = (val: boolean): "true" | "false" => val ? "true" : "false";
 
-export const formatNumber = (value, decimals = 1) => {
+/**
+ * Formats a number into a localized string with a specified number of decimal places.
+ * 
+ * @param value - The number to format.
+ * @param decimals - The number of decimal places to include (default: 1).
+ * @returns A localized number string.
+ */
+export const formatNumber = (value: number, decimals = 1) => {
   return value.toLocaleString(getLocale(), {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   });
 };
 
+/**
+ * Translates an astronomical object type into a localized string.
+ * 
+ * @param type - The object type string (e.g., 'galaxy', 'nebula').
+ * @returns The localized object type name.
+ */
 export const translateObjectType = (type: string): string => {
   const lookup: Record<string, () => string> = {
     "planetary": m.data_types_planetary,
@@ -30,11 +67,21 @@ export const translateObjectType = (type: string): string => {
     "constellation": m.data_types_constellation,
     "unknown": m.data_types_unknown
   };
-  console.log(type)
+  
   // Execute the message function if found, otherwise fallback
   return (lookup[type] || m.data_types_unknown)();
 };
 
+/**
+ * Returns a localized name for the current moon phase based on its characteristics.
+ * 
+ * @param isNewMoon - Whether it is a new moon.
+ * @param isFullMoon - Whether it is a full moon.
+ * @param isWaxing - Whether the moon is waxing (growing).
+ * @param isCrescent - Whether the moon is in a crescent phase.
+ * @param illuminationPct - The percentage of the moon's surface that is illuminated.
+ * @returns The localized moon phase name.
+ */
 export const getMoonPhaseName = (
     isNewMoon: boolean, 
     isFullMoon: boolean, 

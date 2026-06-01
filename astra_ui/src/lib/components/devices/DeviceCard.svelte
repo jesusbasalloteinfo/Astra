@@ -1,29 +1,70 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { deviceStore } from '$lib/stores/devices.svelte';
     import { Cpu, Trash2, Pen, Camera, Telescope, ChevronDown } from 'lucide-svelte';
     import Modal from '../ui/Modal.svelte';
     import * as m from '$lib/paraglide/messages.js';
 
-    let { id, name, owner, isOnline } = $props(); 
+    let { 
+        /** Unique identifier for the device */
+        id, 
+        /** Display name of the device */
+        name, 
+        /** Owner of the device */
+        owner, 
+        /** Whether the device is currently online */
+        isOnline 
+    } = $props(); 
 
+    /** Whether the deletion confirmation modal is visible */
     let showDeleteModal = $state(false);
+    /** Whether the name editing modal is visible */
     let showEditModal = $state(false);
+    /** Temporary name value used during editing */
     let editName = $state(name);
 
+    /** Whether this device is the currently selected active device */
     const isActive = $derived(deviceStore.effectiveActiveId === id);
+    /** Detailed status of the device if it's active */
     const details = $derived(isActive ? deviceStore.activeDetails : null);
 
+    /**
+     * Attempts to delete the device after confirmation
+     */
     async function handleDelete() {
         await deviceStore.deleteDevice(id);
         showDeleteModal = false;
     }
 
+    /**
+     * Attempts to update the device's display name
+     */
     async function handleUpdate() {
         if (!editName.trim()) return;
         await deviceStore.update(id, { name: editName });
         showEditModal = false;
     }
 
+    /**
+     * Initializes the edit state and opens the edit modal
+     */
     function openEdit() {
         editName = name;
         showEditModal = true;
@@ -71,7 +112,9 @@
         </div>
     </button>
 
-    <div class="absolute top-4 right-3 opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0 flex items-center gap-1">
+    <div class="absolute top-4 right-3 transition-all flex items-center gap-1
+                opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0
+                [@media(hover:none)]:opacity-100 [@media(hover:none)]:translate-x-0">
         <button 
             onclick={openEdit}
             class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-accent hover:border-accent/30 transition-all shadow-sm">

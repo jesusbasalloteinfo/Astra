@@ -1,14 +1,43 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/components/skyMap/entities/TelescopePointer.ts
 
 import * as THREE from 'three';
 import { DOME_RADIUS } from '../utils/const';
 
+/**
+ * TelescopePointer Entity
+ * 
+ * Manages the rendering and animation of a visual pointer that indicates the telescope's current pointing position in the sky.
+ */
 export class TelescopePointer {
+    /** The Three.js sprite used for visual representation. */
     public sprite: THREE.Sprite;
 
+    /** The target position to interpolate towards. */
     private targetPos: THREE.Vector3 | null = null;
+    /** Flag to handle initial positioning without interpolation. */
     private isFirstPosition: boolean = true;
 
+    /**
+     * Creates an instance of TelescopePointer.
+     */
     constructor() {
         const mat = new THREE.SpriteMaterial({ 
             transparent: true, 
@@ -24,16 +53,18 @@ export class TelescopePointer {
         this.sprite.scale.set(18, 18, 1);
     }
 
+    /**
+     * Creates the SVG-based texture for the telescope pointer.
+     * @returns {THREE.Texture} The generated texture.
+     * @private
+     */
     private createTexture(): THREE.Texture {
         const svg = `
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <!-- Circunferencia aprox 251. 251 / 4 = 62.7 -->
-                <!-- Usamos 40 de línea y 22.7 de espacio -->
                 <circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="4" 
                         stroke-dasharray="40 22.75" 
                         transform="rotate(-72 50 50)" />
 
-                <!-- Miras -->
                 <line x1="50" y1="5" x2="50" y2="20" stroke="white" stroke-width="4" />
                 <line x1="50" y1="80" x2="50" y2="95" stroke="white" stroke-width="4" />
                 <line x1="5" y1="50" x2="20" y2="50" stroke="white" stroke-width="4" />
@@ -45,10 +76,12 @@ export class TelescopePointer {
     }
 
     /**
-     * Update the telescope pointer position
+     * Updates the target telescope position in the sky.
+     * Converts altitude and azimuth to Cartesian coordinates.
+     * @param {number} alt - Telescope altitude in degrees.
+     * @param {number} az - Telescope azimuth in degrees.
      */
     updatePosition(alt: number, az: number) {
-        console.warn(alt,az)
         const altRad = alt * (Math.PI / 180);
         const azRad  = (180 - az) * (Math.PI / 180);
         
@@ -67,6 +100,10 @@ export class TelescopePointer {
         }
     }
 
+    /**
+     * Updates the pointer's animation (rotation/pulsing) and interpolates its position.
+     * Should be called in the main render loop.
+     */
     update(){
         this.sprite.material.rotation += 0.008;
         const time = performance.now() * 0.003;
@@ -81,12 +118,18 @@ export class TelescopePointer {
         }
     }
 
+    /**
+     * Hides the telescope pointer and resets its state.
+     */
     hide() {
         this.sprite.visible = false;
         this.isFirstPosition = true; 
         this.targetPos = null;
     }
 
+    /**
+     * Cleans up Three.js resources used by the pointer.
+     */
     dispose() {
         if (this.sprite.material.map) this.sprite.material.map.dispose();
         this.sprite.material.dispose();

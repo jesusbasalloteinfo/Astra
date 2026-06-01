@@ -1,16 +1,45 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { goto } from '$app/navigation';
     import { page } from '$app/state';
     import * as m from '$lib/paraglide/messages.js';
     import { authStore } from '$lib/stores/auth.svelte';
 
-    let { onToggleMode } = $props<{ onToggleMode: () => void }>();
+    let { 
+        /** Callback function to toggle between login and register modes */
+        onToggleMode 
+    } = $props<{ onToggleMode: () => void }>();
 
+    /** Input value for the username field */
     let username = $state('');
+    /** Input value for the password field */
     let password = $state('');
+    /** Whether a login request is currently in progress */
     let loading = $state(false);
+    /** Error message to display if login fails */
     let error = $state('');
 
+    /**
+     * Validates input and attempts to log in the user
+     * Redirects to dashboard upon success
+     */
     async function handleLogin() {
         if (!username.trim()) {
             error = m.login_no_user();

@@ -1,19 +1,46 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/stores/location.svelte.ts
 import { authStore } from './auth.svelte';
 import { userAPI } from '$lib/api/user';
 import type { LocationCreate } from '$lib/types/user';
 import { browser } from '$app/environment';
 
+/**
+ * Store for managing user locations.
+ * Handles location selection, GPS detection, and adding/deleting locations.
+ */
 class LocationStore {
+    /** ID of the currently active location. */
     activeId = $state<string | null>(browser ? localStorage.getItem('active_location_id') : null);
 
+    /** Indicates if the store is syncing with the server. */
     isSyncing = $state(false);
+    /** Indicates if GPS detection is in progress. */
     isDetecting = $state(false);
+    /** Indicates if the add location form is visible. */
     isAdding = $state(false); // UI control
 
-    
+    /** Computed property that returns all available locations for the user. */
     all = $derived(authStore.user?.locations || []);
     
+    /** Computed property that returns the effective active location object. */
     active = $derived.by(() => {
         if (this.all.length === 0) return null;
 
@@ -29,13 +56,21 @@ class LocationStore {
         return this.all[0];
     });
 
+    /** Shows the add location form. */
     showForm() { this.isAdding = true; }
+    /** Hides the add location form. */
     hideForm() { this.isAdding = false; }
 
+    /** Returns the ID of the effective active location. */
     get effectiveActiveId() {
         return this.active?.id || null;
     }
 
+    /**
+     * Selects a location as the active one.
+     * 
+     * @param id - The ID of the location to select, or null to deselect.
+     */
     select(id: string | null) {
         this.activeId = id;
         if (browser) {
@@ -44,6 +79,11 @@ class LocationStore {
         }
     }
 
+    /**
+     * Detects the user's current GPS position.
+     * 
+     * @returns A promise that resolves with the detected location coordinates.
+     */
     async detectGPS(): Promise<Partial<LocationCreate>> {
         this.isDetecting = true;
         
@@ -68,11 +108,21 @@ class LocationStore {
                     this.isDetecting = false;
                     reject(err);
                 },
-                { timeout: 10000 }
+                { 
+                    enableHighAccuracy: true,
+                    timeout: 30000,
+                    maximumAge: 60000 
+                }
             );
         });
     }
 
+    /**
+     * Adds a new location to the user's profile.
+     * 
+     * @param data - The location data to add.
+     * @returns A promise that resolves when the location is added.
+     */
     async addLocation(data: LocationCreate) {
         if (data.lat < -90 || data.lat > 90) throw new Error("Invalid latitude");
         if (data.lng < -180 || data.lng > 180) throw new Error("Invalid longitude");
@@ -100,6 +150,12 @@ class LocationStore {
         }
     }
 
+    /**
+     * Deletes a location from the user's profile.
+     * 
+     * @param id - The ID of the location to delete.
+     * @returns A promise that resolves when the location is deleted.
+     */
     async deleteLocation(id: string) {
         this.isSyncing = true;
         try {
@@ -113,6 +169,9 @@ class LocationStore {
         }
     }
 
+    /**
+     * Clears the active location and resets the store.
+     */
     clear() {
         this.activeId = null;
         if (browser) {
@@ -121,4 +180,7 @@ class LocationStore {
     }
 }
 
+/**
+ * Singleton instance of LocationStore.
+ */
 export const locStore = new LocationStore();

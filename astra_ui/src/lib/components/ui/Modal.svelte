@@ -1,8 +1,35 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/ui/Modal.svelte -->
 <script lang="ts">
     import { X } from 'lucide-svelte';
     import { fade, scale } from 'svelte/transition';
 
+    /**
+     * Component props
+     * @type {{ open: boolean, title?: string, size?: 'sm' | 'md' | 'lg' | 'xl', onclose?: () => void, children: any }}
+     * @property {boolean} open - Whether the modal is currently open (bindable)
+     * @property {string} [title=''] - Optional title to display in the modal header
+     * @property {'sm'|'md'|'lg'|'xl'} [size='md'] - The size constraint of the modal
+     * @property {() => void} [onclose] - Optional callback triggered when the modal closes
+     * @property {any} children - The content to be rendered inside the modal
+     */
     let {
         open = $bindable(false),
         title = '',
@@ -24,15 +51,26 @@
         xl: 'max-w-2xl',
     };
 
+    /**
+     * Closes the modal and calls the onclose callback if provided
+     */
     function close() {
         open = false;
         onclose?.();
     }
 
+    /**
+     * Handles backdrop clicks to close the modal
+     * @param {MouseEvent} e - The mouse event
+     */
     function handleBackdrop(e: MouseEvent) {
         if (e.target === e.currentTarget) close();
     }
 
+    /**
+     * Handles keyboard events to close the modal (e.g., Escape key)
+     * @param {KeyboardEvent} e - The keyboard event
+     */
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Escape') close();
     }

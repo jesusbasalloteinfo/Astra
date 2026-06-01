@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { Cpu, PowerOff, LoaderCircle, Settings, CircleAlert } from 'lucide-svelte';
     import { fade } from 'svelte/transition';
@@ -6,14 +24,20 @@
     import * as m from '$lib/paraglide/messages.js';
 
     let {
+        /** Callback function triggered for configuration actions */
         onconfig = () => {}
     } = $props();
 
+    /** Base information of the active device */
     const base = $derived(deviceStore.activeBase);
+    /** Detailed status and components of the active device */
     const details = $derived(deviceStore.activeDetails);
+    /** Whether device details are currently being fetched */
     const isLoading = $derived(deviceStore.isFetchingDetails);
 
+    /** Whether the active device is currently online */
     const isOnline = $derived(details?.is_online ?? false);
+    /** Timer interval for periodic status refreshes */
     let interval: ReturnType<typeof setInterval>;
 
 
@@ -92,14 +116,14 @@
             </div>
 
             {#if isOnline && details?.components}
-                <div class="grid grid-cols-2 gap-4 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/40">
+                <!-- <div class="grid grid-cols-2 gap-4 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/40">
                     <div>
                         <p class="text-[8px] md:text-[9px] uppercase font-black text-copy-muted leading-none mb-1">Placeholder</p>
                         <p class="text-xs md:text-sm font-mono text-copy-primary leading-none">
                             placeholder
                         </p>
                     </div>
-                </div>
+                </div> -->
             {:else if !isOnline}
                 <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/40 flex items-center gap-2 text-warning">
                     <CircleAlert size={12} class="shrink-0 md:w-14" />

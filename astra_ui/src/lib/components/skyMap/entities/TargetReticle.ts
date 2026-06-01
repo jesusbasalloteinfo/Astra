@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/components/skyMap/entities/TargetReticle.ts
 
 import * as THREE from 'three';
@@ -9,11 +27,15 @@ import type { PositionUpdates } from '$lib/stores/skyEngine.svelte';
 /**
  * TargetReticle Entity
  * 
- * Manages the rendering of a target reticle across a selected object.
+ * Manages the rendering and animation of a target reticle that follows the currently selected celestial object.
  */
 export class TargetReticle {
+    /** The Three.js sprite used for visual representation. */
     public sprite: THREE.Sprite;
 
+    /**
+     * Creates an instance of TargetReticle.
+     */
     constructor() {
         const mat = new THREE.SpriteMaterial({ 
             transparent: true, 
@@ -26,7 +48,11 @@ export class TargetReticle {
     }
 
     /**
-     * Locks the reticle onto a new target, generating the appropriate SVG and scale.
+     * Locks the reticle onto a new target.
+     * Generates a new texture based on the object type and scales it appropriately.
+     * @param {boolean} isPlanet - Whether the target is a planetary object.
+     * @param {string} hexColor - Color hex string for the reticle.
+     * @param {number} baseSize - Base size of the target object for scaling.
      */
     lockOn(isPlanet: boolean, hexColor: string, baseSize: number) {
         // Clean up old texture to prevent memory leaks
@@ -50,15 +76,17 @@ export class TargetReticle {
     }
 
     /**
-     * Hides the reticle (e.g., when clicking on empty space).
+     * Hides the reticle (e.g., when the selection is cleared).
      */
     hide() {
         this.sprite.visible = false;
     }
 
     /**
-     * Updates the 3D position and handles rotation/pulsing animations.
+     * Updates the 3D position based on the selected object's coordinates.
+     * Handles rotation and pulsing (opacity) animations.
      * Should be called in the main render loop.
+     * @param {PositionUpdates} updates - Current celestial positions.
      */
     update(updates: PositionUpdates) {
         if (!this.sprite.visible || !selectionStore.targetId) return;
@@ -82,7 +110,7 @@ export class TargetReticle {
     }
 
     /**
-     * Disposes of materials and textures.
+     * Cleans up Three.js resources used by the reticle.
      */
     dispose() {
         if (this.sprite.material.map) {

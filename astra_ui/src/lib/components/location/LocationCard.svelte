@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/location/LocationCard.svelte -->
 <script lang="ts">
     import { locStore } from '$lib/stores/location.svelte';
@@ -7,15 +25,33 @@
     import * as m from '$lib/paraglide/messages.js';
 	import Modal from '../ui/Modal.svelte';
 
-    let { id, label, lat, lng, tz, elevation } = $props();
+    let { 
+        /** Unique identifier for the location */
+        id, 
+        /** Display label for the location */
+        label, 
+        /** Latitude in decimal degrees */
+        lat, 
+        /** Longitude in decimal degrees */
+        lng, 
+        /** Timezone offset from UTC */
+        tz, 
+        /** Elevation above sea level in meters */
+        elevation 
+    } = $props();
 
+    /** Whether the deletion confirmation modal is visible */
     let showDeleteModal = $state(false);
 
+    /**
+     * Attempts to delete the location after confirmation
+     */
     async function handleDelete() {
         locStore.deleteLocation(id);
         showDeleteModal = false;
     }
     
+    /** Formatted timezone string (e.g., "+1" or "-5") */
     const formattedTZ = $derived(tz >= 0 ? `+${tz}` : `${tz}`);
 </script>
 
@@ -57,7 +93,9 @@
         </div>
     </button>
 
-    <div class="absolute right-3 opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
+    <div class="absolute right-3 transition-all
+                opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0
+                [@media(hover:none)]:opacity-100 [@media(hover:none)]:translate-x-0">
         <button 
             // onclick={(e) => { e.stopPropagation(); locStore.deleteLocation(id); }}
             onclick={() => showDeleteModal = true}

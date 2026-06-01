@@ -1,9 +1,39 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/components/observation/skyFinderComponents/useSkySearch.svelte.ts
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
+/**
+ * Creates and manages the state for searching astronomical objects in the sky catalog.
+ * Provides search query management, keyboard navigation for results, and selection handling.
+ * 
+ * @param {(id: string, type: string) => void} onSelect - Callback function called when an object is selected
+ * @returns {Object} Search state and control functions
+ */
 export function createSkySearch(onSelect: (id: string, type: string) => void) {
+    /** The current search query string */
     let searchQuery = $state('');
+
+    /** The index of the currently highlighted result in the results list */
     let selectedIndex = $state(0);
+
+    /** The list of objects matching the current search query, derived from the catalog store */
     const results = $derived(catalogStore.searchObjects(searchQuery));
 
     // Reset selection when search query changes
@@ -14,6 +44,10 @@ export function createSkySearch(onSelect: (id: string, type: string) => void) {
         }
     });
 
+    /**
+     * Handles keyboard navigation (ArrowUp, ArrowDown, Enter) for search results
+     * @param {KeyboardEvent} e - The keyboard event
+     */
     function handleNavigation(e: KeyboardEvent) {
         if (e.key === 'ArrowDown') {
             e.preventDefault();
@@ -28,6 +62,9 @@ export function createSkySearch(onSelect: (id: string, type: string) => void) {
         }
     }
 
+    /**
+     * Clears the search query and resets the selection index
+     */
     function clear() {
         searchQuery = '';
         selectedIndex = 0;

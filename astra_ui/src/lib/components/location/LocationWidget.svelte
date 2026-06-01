@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/location/LocationWidget.svelte -->
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages';
@@ -6,10 +24,13 @@
     import { fade } from 'svelte/transition';
 
     let {
+        /** Current temperature to display */
         temperature = 12, 
+        /** Current humidity percentage to display */
         humidity = 65,
     } = $props();
 
+    /** The currently active location from the location store */
     const active = $derived(locStore.active);
 </script>
 
@@ -49,7 +70,7 @@
                 <span>{active.elevation}m</span>
             </div>
 
-            <div class="grid grid-cols-2 gap-4 pt-3 md:pt-4 border-t border-border/40">
+            <!-- <div class="grid grid-cols-2 gap-4 pt-3 md:pt-4 border-t border-border/40">
                 <div class="flex items-center gap-2 md:gap-3">
                     <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-secondary/50 flex items-center justify-center text-copy-muted group-hover:text-accent transition-colors">
                         <Thermometer size={14} class="md:w-3.75" />
@@ -69,7 +90,7 @@
                         <p class="text-xs md:text-sm font-mono text-copy-primary leading-none">{humidity}%</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     {:else}
         <div class="py-4 md:py-6 text-center border-2 border-dashed border-border/50 rounded-xl bg-secondary/20">

@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/stores/skyCatalog.svelte.ts
 import { siderisAPI } from '$lib/api/sideris';
 import type { SyncParams } from '$lib/api/sideris';
@@ -14,30 +32,49 @@ import { timeEngine } from './timeEngine.svelte';
 import { untrack } from 'svelte';
 import { getLocale } from '$lib/paraglide/runtime';
 
+/**
+ * Represents a single search result from the celestial catalog.
+ */
 export interface SearchResult {
     id: string;
     name: string;
     type: string;
     mag: number | null;
 }
+
+/**
+ * Store for managing the celestial object catalog.
+ * Handles sidereal, planetary, and constellation metadata, and providing search functionality.
+ */
 class CatalogStore {
     
-    // Fast dictionary storage
+    /** Dictionary of sidereal object metadata indexed by ID. */
     siderealData = $state<Record<string, SiderealObjectMetadata>>({});
+    /** Dictionary of planetary object metadata indexed by ID. */
     planetaryData = $state<Record<string, PlanetaryObjectMetadata>>({});
     
+    /** List of all constellations. */
     constellations = $state<ConstellationMetadata[]>([]);
     
-    // Store control flags
+    /** Indicates if the catalog has been fully loaded. */
     isLoaded = $state(false);
+    /** Indicates if the catalog is currently loading. */
     isLoading = $state(false);
+    /** Indicates if the catalog manager is running and should react to location changes. */
     isRunning = $state(false);
+    /** Error message if catalog synchronization fails. */
     error = $state<string | null>(null);
 
+    /** Timestamp of the last planetary metadata update. */
     private lastPlanetaryUpdate = 0; 
 
+    /** Internal index for fast object searching. */
     private searchIndex: { key: string, result: SearchResult }[] = [];
 
+    /**
+     * Initializes the store and sets up an effect to trigger initial catalog loading
+     * when a location is active.
+     */
     constructor() {
         // Effect root to manage auto-subscriptions safely outside a component
         if (typeof window !== 'undefined') { // Only browser
@@ -65,7 +102,10 @@ class CatalogStore {
     }
 
     /**
-     * Initial full catalog fetch (Sidereal, Constellations, and Planetary)
+     * Performs the initial full catalog fetch (Sidereal, Constellations, and Planetary).
+     * 
+     * @param params - Synchronization parameters (time, coordinates).
+     * @returns A promise that resolves when the catalog is initialized.
      */
     async init(params: SyncParams) {
         if (this.isLoaded || this.isLoading) return;
@@ -99,8 +139,10 @@ class CatalogStore {
     }
 
     /**
-     * Updates only planetary metadata if a significant amount of 
-     * simulated time has passed or if time has made a major time change.
+     * Checks for planetary updates and refetches if significant time has passed.
+     * 
+     * @param params - Current synchronization parameters.
+     * @returns A promise that resolves after the update check.
      */
     async checkUpdates(params: SyncParams) {
         if (!this.isLoaded) return;
@@ -122,7 +164,7 @@ class CatalogStore {
     }
 
     /**
-     * Creates a fast search dictionary flattening all possible names
+     * Creates a fast search dictionary by flattening all possible object names.
      */
     private buildSearchIndex() {
         this.searchIndex = [];
@@ -186,7 +228,11 @@ class CatalogStore {
     }
 
     /**
-     * Search objects within the catalog, normalising the search query
+     * Searches for objects within the catalog based on a query string.
+     * 
+     * @param query - The search query.
+     * @param limit - The maximum number of results to return.
+     * @returns An array of SearchResult objects.
      */
     public searchObjects(query: string, limit = 10): SearchResult[] {
         const cleanQuery = query.toLowerCase().replace(/\s+/g, '');
@@ -229,7 +275,12 @@ class CatalogStore {
             .slice(0, limit);
     }
 
-
+    /**
+     * Retrieves metadata for a specific celestial object by its ID.
+     * 
+     * @param objId - The ID of the object.
+     * @returns Metadata for the object, or null if not found.
+     */
     getInfo(objId:string): SiderealObjectMetadata | PlanetaryObjectMetadata | null {
         if (objId in this.siderealData) return this.siderealData[objId];
         if (objId in this.planetaryData) return this.planetaryData[objId];
@@ -237,7 +288,11 @@ class CatalogStore {
     }
 
     /**
-     * Get a constellation name or in latin with an id
+     * Retrieves the name of a constellation by its abbreviation.
+     * 
+     * @param abbr - The constellation abbreviation (e.g., 'Ori').
+     * @param latin - Whether to return the Latin name.
+     * @returns The constellation name, or null if not found.
      */
     getConstellationName(abbr: string, latin:boolean=false): string | null {
         const constellation = this.constellations.find(c => c.abbr === abbr);
@@ -246,7 +301,7 @@ class CatalogStore {
 
 
     /**
-     * Clears the cache and resets the store
+     * Clears the catalog data and resets the store to its initial state.
      */
     reset() {
         this.siderealData = {};
@@ -258,4 +313,7 @@ class CatalogStore {
     }
 }
 
+/**
+ * Singleton instance of CatalogStore.
+ */
 export const catalogStore = new CatalogStore();

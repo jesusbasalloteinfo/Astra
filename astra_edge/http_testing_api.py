@@ -1,13 +1,31 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+"""
+Simple FastAPI for testing INDI operations via HTTP.
+"""
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import Dict, List, Optional
+from typing import Optional
 from datetime import datetime
-import asyncio
 from api.IndiAPI import IndiAPI
 from utils.CoordinateHandler import CoordinateTypes
-from common.INDIModels import *
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
 import uvicorn
 
 
@@ -15,28 +33,33 @@ import uvicorn
 indi_api = None
 
 class Coordinate(BaseModel):
+    """Coordinate data model."""
     ra: Optional[float] = None
     dec: Optional[float] = None
     alt: Optional[float] = None
     az: Optional[float] = None
 
 class SlewRequest(BaseModel):
+    """Request model for slewing operations."""
     coordinate: Coordinate
     input_type: CoordinateTypes = CoordinateTypes.EQUATORIAL_J2000
     mode: str = "TRACK"
 
 class LocationRequest(BaseModel):
+    """Request model for location updates."""
     lat: float
     lon: float
 
 class TimeRequest(BaseModel):
+    """Request model for time updates."""
     time: datetime
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Manages the lifespan of the FastAPI application."""
     global indi_api
     indi_api = IndiAPI()
-    indi_api.update_location(42,2)
+    indi_api.update_location(42, 2)
     await indi_api.start_indi_manager()
     
     yield  
@@ -49,11 +72,12 @@ app = FastAPI(title="INDI test API", version="1.0.0", lifespan=lifespan)
 
 @app.get("/")
 async def root():
+    """Root endpoint for status check."""
     return {"message": "INDI test API is running"}
 
 @app.get("/devices")
 async def get_devices():
-    """Get all managed devices"""
+    """Retrieves all managed devices."""
     try:
         devices = await indi_api.get_devices()
         return devices
@@ -62,7 +86,7 @@ async def get_devices():
 
 @app.get("/telescope/{telescope_name}/position")
 async def get_telescope_position(telescope_name: str):
-    """Get the current position of a telescope"""
+    """Retrieves the current position of a telescope."""
     try:
         position = await indi_api.position_telescope(telescope_name)
         return position
@@ -71,7 +95,7 @@ async def get_telescope_position(telescope_name: str):
 
 @app.post("/telescope/{telescope_name}/slew")
 async def slew_telescope(telescope_name: str, request: SlewRequest):
-    """Slew a telescope to the specified coordinates"""
+    """Slews a telescope to the specified coordinates."""
     try:
         # Convert Coordinate object to tuple
         if request.input_type == CoordinateTypes.HORIZONTAL:
@@ -91,9 +115,9 @@ async def slew_telescope(telescope_name: str, request: SlewRequest):
 
 @app.delete("/telescope/{telescope_name}/slew")
 async def abord_slew_telescope(telescope_name: str):
-    """Cancel the telescope movement"""
+    """Aborts the telescope movement."""
     try:
-        position = await indi_api.abort_slew_telescope(telescope_name)
+        await indi_api.abort_slew_telescope(telescope_name)
         return {"message": f"Telescope {telescope_name} slew aborted successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -101,7 +125,7 @@ async def abord_slew_telescope(telescope_name: str):
 
 @app.post("/location")
 async def update_location(location: LocationRequest):
-    """Update the observer's location"""
+    """Updates the observer's location."""
     try:
         indi_api.update_location(location.lat, location.lon)
         return {"message": "Location updated successfully"}
@@ -110,7 +134,7 @@ async def update_location(location: LocationRequest):
 
 @app.post("/time")
 async def update_time(time_request: TimeRequest):
-    """Update the current time"""
+    """Updates the synchronized time."""
     try:
         indi_api.update_time(time_request.time)
         return {"message": "Time updated successfully"}
@@ -119,7 +143,7 @@ async def update_time(time_request: TimeRequest):
 
 @app.get("/status")
 async def get_status():
-    """Get the status of the INDI API"""
+    """Retrieves the status of the INDI API."""
     return {
         "status": "running",
         "location": indi_api._location if indi_api else None,
@@ -127,5 +151,5 @@ async def get_status():
     }
 
 
-if __name__=="__main__":
-    uvicorn.run("http_api:app", host="0.0.0.0", port=9000, reload=True)
+if __name__ == "__main__":
+    uvicorn.run("http_testing_api:app", host="0.0.0.0", port=9000, reload=True)

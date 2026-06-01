@@ -1,3 +1,21 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 from datetime import datetime, timedelta, timezone
 import math
 from skyfield.api import load, wgs84
@@ -11,9 +29,12 @@ from models.catalog.planetary import PlanetaryObject
 from services.astro_service.engines.BaseEngine import BaseEngine
 
 
-
-
 class PlanetaryEngine(BaseEngine):
+    """Engine for calculating positions and ephemerides of solar system bodies.
+
+    Uses Skyfield and the DE440 ephemeris to compute high-precision data for the 
+    Sun, Moon, and major planets, including magnitudes, phase angles, and rise/set times.
+    """
 
     PLANETARY_RADIUS = {    
         # Equatorial radii in kilometres
@@ -31,6 +52,11 @@ class PlanetaryEngine(BaseEngine):
     }
 
     def __init__(self, bsp_file: str = 'de440.bsp'):
+        """Initialize the PlanetaryEngine.
+
+        Args:
+            bsp_file (str): The path to the JPL ephemeris file. Defaults to 'de440.bsp'.
+        """
         print(f"[Engine] Loading ephemerides from {bsp_file}...")
         self._eph = load(bsp_file)
         self._ts = load.timescale()
@@ -42,7 +68,15 @@ class PlanetaryEngine(BaseEngine):
     # ═════════════════════════════════════════════
 
     def _get_angular_diameter(self, obj: PlanetaryObject, distance_km: float) -> float:
-        """Calculates angular diameter in arcminutes."""
+        """Calculates the angular diameter of a body.
+
+        Args:
+            obj (PlanetaryObject): The object to calculate for.
+            distance_km (float): Distance from the observer in kilometers.
+
+        Returns:
+            float: Angular diameter in arcminutes.
+        """
         radius_km = self.PLANETARY_RADIUS.get(obj)
         if not radius_km or distance_km <= 0:
             return 0.0
@@ -52,7 +86,18 @@ class PlanetaryEngine(BaseEngine):
         return round(ang_diam_deg * 60.0, 2)
     
     def _calculate_magnitude(self, obj: PlanetaryObject, astrometric, t_now) -> Optional[float]:
-        """Calculates a planetary magnitude with the current time"""
+        """Calculates the apparent visual magnitude of a body.
+
+        Uses specialized formulas for the Sun, Moon, and Pluto, and the standard model for other planets.
+
+        Args:
+            obj (PlanetaryObject): The object to calculate for.
+            astrometric: The Skyfield astrometric observation.
+            t_now: The Skyfield time object.
+
+        Returns:
+            Optional[float]: Apparent magnitude, or None if calculation fails.
+        """
         apparent = astrometric.apparent()
         dist = astrometric.distance().au
         sun = self._eph[PlanetaryObject.SUN.value]
@@ -84,9 +129,17 @@ class PlanetaryEngine(BaseEngine):
 
     def _calculate_movement(self, obj: PlanetaryObject, observer, t_now, ttl: float = 1.0
         ) -> Tuple[Tuple[float, float], Tuple[float, float], Tuple[float, float], Tuple[float, float]]:
-            """
-            Calculates current positions and their rates of change over `ttl` seconds.
-            Returns: ((alt, az), (d_alt, d_az), (ra, dec), (d_ra, d_dec))
+            """Calculates current positions and their rates of change.
+
+            Args:
+                obj (PlanetaryObject): The object to calculate for.
+                observer: The Skyfield observer location.
+                t_now: The Skyfield time object.
+                ttl (float): Time window in seconds for delta calculation. Defaults to 1.0.
+
+            Returns:
+                Tuple[Tuple[float, float], Tuple[float, float], Tuple[float, float], Tuple[float, float]]: 
+                    ((alt, az), (d_alt, d_az), (ra, dec), (d_ra, d_dec)) where deltas are per second.
             """
 
             body = self._eph[obj.value]
@@ -124,7 +177,16 @@ class PlanetaryEngine(BaseEngine):
             return (current_altaz, delta_altaz, current_radec, delta_radec)
 
     def _calculate_rise_set(self, obj: PlanetaryObject, topo_observer, t_now) -> RiseSetTransit:
-        """Calculates the rise-setting events of a planet"""
+        """Calculates rise, set, and transit events.
+
+        Args:
+            obj (PlanetaryObject): The object to calculate for.
+            topo_observer: The Skyfield topographic observer.
+            t_now: The Skyfield time object.
+
+        Returns:
+            RiseSetTransit: Model containing event times and coordinates.
+        """
 
         body = self._eph[obj.value]
         # Search for upcoming events starting from now up to 36 hours ahead
@@ -194,7 +256,18 @@ class PlanetaryEngine(BaseEngine):
         )
 
     def _calculate_moon_details(self, astrometric, observer, t_now) -> MoonDetails:
-        """Calculates extra Moon information"""
+        """Calculates specific parameters for the Moon.
+
+        Computes phase, age, illumination, and next phase events.
+
+        Args:
+            astrometric: The Skyfield astrometric observation of the Moon.
+            observer: The Skyfield observer location.
+            t_now: The Skyfield time object.
+
+        Returns:
+            MoonDetails: Model containing Moon-specific data.
+        """
         apparent = astrometric.apparent()
         sun = self._eph[PlanetaryObject.SUN.value]
         sun_apparent = observer.at(t_now).observe(sun).apparent()
@@ -240,7 +313,17 @@ class PlanetaryEngine(BaseEngine):
         )
     
     def _calculate_planet_details(self, astrometric, t_now) -> PlanetDetails:
-        """Calculate planetary extra information"""
+        """Calculates specific parameters for planets.
+
+        Computes elongation, phase angle, and illumination.
+
+        Args:
+            astrometric: The Skyfield astrometric observation of the planet.
+            t_now: The Skyfield time object.
+
+        Returns:
+            PlanetDetails: Model containing planet-specific data.
+        """
         apparent = astrometric.apparent()
         sun = self._eph[PlanetaryObject.SUN.value]
         sun_apparent = self._earth.at(t_now).observe(sun).apparent()
@@ -258,21 +341,35 @@ class PlanetaryEngine(BaseEngine):
     # MAIN METHODS
     # ═════════════════════════════════════════════
 
-    def get_metadata(self, utc_time: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0) -> MetadataCatalogPayload:
-        """Returns heavy metadata for all available objects."""
+    def get_metadata(self, utc_time: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl: float = 120.0) -> MetadataCatalogPayload:
+        """Retrieves lightweight metadata for all planetary objects.
+
+        Calculates basic properties like distance and magnitude for all major
+        solar system bodies at once.
+
+        Args:
+            utc_time (datetime): Target UTC time.
+            lat (float): Observer latitude.
+            lon (float): Observer longitude.
+            elev_m (float): Observer elevation in meters. Defaults to 0.0.
+            ttl (float): Movement window. Defaults to 120.0.
+
+        Returns:
+            MetadataCatalogPayload: A collection of basic metadata for all planets.
+        """
         objects = {}
         topo_observer = wgs84.latlon(lat, lon)
         observer = self._earth + topo_observer
         t_now = self._ts.from_datetime(utc_time)
 
         for obj in PlanetaryObject:
-            object_type="planetary"
+            object_type = "planetary"
             if obj == PlanetaryObject.EARTH:
                 continue
             elif obj == PlanetaryObject.SUN:
-                object_type="star"
+                object_type = "star"
             elif obj == PlanetaryObject.MOON:
-                object_type="moon"
+                object_type = "moon"
             
             body = self._eph[obj.value]
 
@@ -300,9 +397,19 @@ class PlanetaryEngine(BaseEngine):
         )
         return results
 
-    def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120.0, targets: Optional[List[PlanetaryObject]] = None) -> SyncPayload:
-        """
-        Calculates the sky and its movement for a time and location
+    def get_sky_movement(self, t0_dt: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl: float = 120.0, targets: Optional[List[PlanetaryObject]] = None) -> SyncPayload:
+        """Calculates Altitude/Azimuth and their drifts for synchronization.
+
+        Args:
+            t0_dt (datetime): Target UTC time.
+            lat (float): Observer latitude.
+            lon (float): Observer longitude.
+            elev_m (float): Observer elevation in meters. Defaults to 0.0.
+            ttl (float): Movement window in seconds. Defaults to 120.0.
+            targets (Optional[List[PlanetaryObject]]): Specific bodies to calculate. Defaults to all.
+
+        Returns:
+            SyncPayload: Collection of positions and velocity updates.
         """
         topo_observer = wgs84.latlon(lat, lon, elev_m)
         observer = self._earth + topo_observer
@@ -333,17 +440,33 @@ class PlanetaryEngine(BaseEngine):
             updates=updates
         )
     
-    def get_object_movement(self, target_id:str, target_time: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl:float=120):
+    def get_object_movement(self, target_id: str, target_time: datetime, lat: float, lon: float, elev_m: float = 0.0, ttl: float = 120):
+        """Calculates comprehensive movement and physical data for a single object.
+
+        Computes horizontal/equatorial coordinates, drifts, angular diameter, 
+        rise/set events, and specific body details (phases, elongation).
+
+        Args:
+            target_id (str): The ID of the planetary body.
+            target_time (datetime): Target UTC time.
+            lat (float): Observer latitude.
+            lon (float): Observer longitude.
+            elev_m (float): Observer elevation. Defaults to 0.0.
+            ttl (float): Movement window. Defaults to 120.
+
+        Returns:
+            PlanetaryObjectMetadata: Full ephemeris and physical data for the object.
+
+        Raises:
+            ValueError: If the object ID is invalid or is 'Earth'.
         """
-        Calculate an object movement and metadata
-        """
-        object_type="planetary"
+        object_type = "planetary"
         try:
             obj = PlanetaryObject[target_id.upper()]
             if obj == PlanetaryObject.SUN:
-                object_type="star"
+                object_type = "star"
             elif obj == PlanetaryObject.MOON:
-                object_type="moon"
+                object_type = "moon"
         except KeyError:
             raise ValueError(f"Object {target_id} not found!")
 
@@ -365,7 +488,7 @@ class PlanetaryEngine(BaseEngine):
 
         ang_diameter = self._get_angular_diameter(obj, astrometric.distance().km)
 
-        rise_set=self._calculate_rise_set(obj, topo_observer, t_now)
+        rise_set = self._calculate_rise_set(obj, topo_observer, t_now)
 
         extra = None
         if obj == PlanetaryObject.MOON:
@@ -373,7 +496,7 @@ class PlanetaryEngine(BaseEngine):
         elif obj not in (PlanetaryObject.SUN, PlanetaryObject.EARTH):
             extra = self._calculate_planet_details(astrometric, t_now)
 
-        motion=MotionDelta(
+        motion = MotionDelta(
             ttl=ttl,
             target_time=target_time,
             delta_alt=d_alt,

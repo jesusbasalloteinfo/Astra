@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observation/SkyFinder.svelte -->
 <script lang="ts">
     import { Search } from 'lucide-svelte';
@@ -7,15 +25,26 @@
     import SkyFinderResult from './skyFinderComponents/SkyFinderResult.svelte';
     import { createSkySearch } from './skyFinderComponents/useSkySearch.svelte';
 
-    let { open = $bindable(), onSelect } = $props<{ 
+    let { 
+        /** Whether the finder palette is currently open (bindable) */
+        open = $bindable(), 
+        /** Callback function triggered when a search result is selected */
+        onSelect 
+    } = $props<{ 
         open: boolean;
         onSelect: (id: string) => void;
     }>();
 
+    /** Search logic rune for handling queries and results */
     const search = createSkySearch((id, type) => {
         selectObject(id, type);
     });
 
+    /**
+     * Selects an object from the search results, updates the store, and closes the finder
+     * @param {string} id - The ID of the selected object
+     * @param {string} type - The type of the selected object
+     */
     function selectObject(id: string, type: string) {
         if (type !== 'constellation') {
             selectionStore.select(id, type as 'sidereal' | 'planetary');
@@ -29,6 +58,10 @@
         open = false;
     }
 
+    /**
+     * Handles keyboard shortcuts (e.g. Ctrl+F) and navigation within search results
+     * @param {KeyboardEvent} e - The keydown event
+     */
     function handleKeydown(e: KeyboardEvent) {
         // Open
         if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'f') {

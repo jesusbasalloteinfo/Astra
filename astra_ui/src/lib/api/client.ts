@@ -1,9 +1,31 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // lib/api/client.ts
 import axios from 'axios';
 import { goto } from '$app/navigation';
 import { endpoints } from './endpoints';
 import { browser } from '$app/environment'; 
 
+/**
+ * Axios instance configured for the Astra API.
+ * Includes base URL, common headers, and fetch adapter.
+ */
 export const api = axios.create({
     baseURL: endpoints.apiBase,
     headers: { 'Content-Type': 'application/json' },
@@ -11,7 +33,11 @@ export const api = axios.create({
 });
 
 
-// Redirects to /login saving the destination route as ?goto=
+/**
+ * Redirects the user to the login page while preserving the current route for post-login redirection.
+ * Handles locale-prefixed routes automatically.
+ * @returns {void}
+ */
 const redirectToLogin = () => {
     if (!browser) return; // Avoid Node.js execution
     

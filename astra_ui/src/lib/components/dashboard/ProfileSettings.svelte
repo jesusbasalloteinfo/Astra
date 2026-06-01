@@ -1,17 +1,45 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { authStore } from '$lib/stores/auth.svelte';
     import { authAPI } from '$lib/api/auth';
     import * as m from '$lib/paraglide/messages.js';
     import { User as UserIcon, Camera, LoaderCircle, CircleCheck, Save } from 'lucide-svelte';
 
+    /** Whether a profile picture upload is in progress */
     let uploading = $state(false);
+    /** Whether a profile update request is in progress */
     let saving = $state(false);
+    /** Success message to display after a successful operation */
     let successMessage = $state('');
+    /** Error message to display if an operation fails */
     let errorMessage = $state('');
 
+    /** Input value for the user's full name */
     let fullName = $state(authStore.user?.full_name ?? '');
+    /** Input value for the user's bio */
     let bio = $state(authStore.user?.bio ?? '');
 
+    /**
+     * Handles profile picture file selection and upload
+     * @param {Event} event - The file input change event
+     */
     async function handleFileChange(event: Event) {
         const input = event.target as HTMLInputElement;
         if (!input.files || input.files.length === 0) return;

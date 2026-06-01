@@ -1,8 +1,35 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observation/targetDetailsPanelComponents/InfoBlockCard.svelte -->
 <script lang="ts">
     import type { Snippet } from 'svelte';
     import { ChevronDown } from 'lucide-svelte';
 
+    /**
+     * Component props
+     * @type {{ title: string, text?: string | null, icon: any, variant?: 'default' | 'funFact' | 'visualTip', headerAction?: Snippet }}
+     * @property {string} title - The title of the information block
+     * @property {string|null} [text=null] - The main content text (optional)
+     * @property {any} icon - The Lucide icon component to display
+     * @property {'default'|'funFact'|'visualTip'} [variant='default'] - Visual style variant
+     * @property {Snippet} [headerAction] - Optional Svelte 5 snippet for an action in the header
+     */
     let {
         title,
         text = null,
@@ -17,8 +44,10 @@
         headerAction?: Snippet; // Svelte 5 Snippet
     }>();
 
+    /** Whether the text content is expanded to show all lines */
     let isExpanded = $state(false);
 
+    /** Theme configuration derived from the variant prop */
     const theme = $derived.by(() => {
         if (variant === 'funFact') return { icon: 'text-yellow-500/70', bg: 'bg-yellow-500/5', border: 'border-yellow-500/10', largeIcon: 'text-yellow-500 opacity-[0.07]' };
         if (variant === 'visualTip') return { icon: 'text-blue-400/70', bg: 'bg-blue-400/5', border: 'border-blue-400/10', largeIcon: 'text-blue-400 opacity-[0.07]' };
@@ -42,7 +71,7 @@
         {#if text}
             <button 
                 onclick={() => isExpanded = !isExpanded}
-                class="w-full text-left relative overflow-hidden {theme.bg} p-4 rounded-xl border {theme.border} shadow-inner group transition-all duration-300"
+                class="w-full text-left relative overflow-hidden {theme.bg} p-4 rounded-xl border {theme.border} shadow-inner group transition-all duration-300 cursor-pointer"
             >
                 <div class="absolute -right-4 -bottom-4 {theme.largeIcon} group-hover:scale-110 transition-transform duration-700">
                     <IconComponent size={64} strokeWidth={1} />

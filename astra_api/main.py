@@ -1,3 +1,27 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+"""
+Main entry point for the Astra API service.
+
+Initializes the FastAPI application, configures logging, establishes database
+connections, and registers all API routers.
+"""
 import os
 import asyncio
 import inspect
@@ -22,11 +46,15 @@ from api.chat import router as chat_router
 # ================================================================================
 
 setup_global_logging(file_path=f".tmp/log-{datetime.now(timezone.utc)}.log")
+DEBUG = os.getenv("USER_DEBUG", "False").lower() == "true"
 
 
 API_BASE_PATH="/api"
 
 async def init_db():
+    """
+    Initializes the database connection and sets up collection indexes.
+    """
     await db_connector.connect()
 
     user_service = UserService()
@@ -34,9 +62,12 @@ async def init_db():
 
 
 @asynccontextmanager
-async def lifespan(app:FastAPI):
+async def lifespan(app: FastAPI):
     """
-    App lifespan with async context manager
+    Manages the application lifecycle.
+
+    Connects to the database on startup and ensures a clean disconnection
+    on shutdown.
     """
 
     LOG = get_logger("ASTRA API")
@@ -61,9 +92,9 @@ app=FastAPI(
     title="Astra Backend API",
     description="Documentation for the Astra Backend API",
     lifespan=lifespan,
-    docs_url=API_BASE_PATH+"/docs",
-    redoc_url=API_BASE_PATH+"/redoc",
-    openapi_url=API_BASE_PATH+"/openapi.json",
+    docs_url=API_BASE_PATH+"/docs" if DEBUG else None,
+    redoc_url=API_BASE_PATH+"/redoc" if DEBUG else None,
+    openapi_url=API_BASE_PATH+"/openapi.json" if DEBUG else None,
     swagger_ui_parameters={"defaultModelsExpandDepth": -1} # Hide the schemas section
 )
 
@@ -81,6 +112,7 @@ api=APIRouter(prefix=API_BASE_PATH)
 
 @api.get("")
 def health():
+    """Health check endpoint."""
     return {"status": "ok", "message": "Astra API is running!"}
 
 
@@ -90,8 +122,3 @@ app.include_router(users_router, prefix=API_BASE_PATH+"/users", tags=["User Mana
 app.include_router(devices_router, prefix=API_BASE_PATH+"/devices", tags=["Device management"])
 app.include_router(obs_router, prefix=API_BASE_PATH+"/observations", tags=["Observations"])
 app.include_router(chat_router, prefix=API_BASE_PATH+"/chat", tags=["Chat"])
-
-
-
-
-

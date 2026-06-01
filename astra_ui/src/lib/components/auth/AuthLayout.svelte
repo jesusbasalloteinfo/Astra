@@ -1,13 +1,36 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import Stars from '$lib/components/landingComponents/Stars.svelte';
     import AppLogo from '$lib/components/AppLogo.svelte';
     import * as m from '$lib/paraglide/messages.js';
 
     let { 
+        /** Content to be rendered inside the layout card */
         children, 
+        /** Primary title for the authentication screen */
         title, 
+        /** Descriptive subtitle under the title */
         subtitle, 
+        /** URL for the back navigation link */
         backLink = "/", 
+        /** Text to display for the back navigation link at the bottom */
         backText 
     } = $props();
 </script>

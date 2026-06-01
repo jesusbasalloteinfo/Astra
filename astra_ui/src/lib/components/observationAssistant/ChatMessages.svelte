@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observationAssistant/ChatMessages.svelte -->
 <script lang="ts">
     import { tick, onMount } from 'svelte';
@@ -6,15 +24,25 @@
     import ChatMessageComponent from './ChatMessageComponent.svelte';
 	import { m } from '$lib/paraglide/messages';
 
+    /** Reference to the scrollable container for chat messages */
     let chatContainer = $state<HTMLElement>();
+
+    /** Whether the user has scrolled up away from the bottom of the chat */
     let isScrolledUp = $state(false);
 
+    /**
+     * Handles the scroll event to determine if the user has scrolled up
+     */
     function handleScroll() {
         if (!chatContainer) return;
         const distanceToBottom = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
         isScrolledUp = distanceToBottom > 50;
     }
 
+    /**
+     * Scrolls the chat container to the very bottom
+     * @param {boolean} [smooth=true] - Whether to use smooth scrolling behavior
+     */
     function scrollToBottom(smooth = true) {
         if (!chatContainer) return;
         chatContainer.scrollTo({

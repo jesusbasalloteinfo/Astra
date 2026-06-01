@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/components/skyMap/entities/Constellations.ts
 
 import * as THREE from 'three';
@@ -5,33 +23,63 @@ import { DOME_RADIUS } from '../utils/const';
 import { altAzToXYZ } from '../utils/coordinates';
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
+/**
+ * Interface representing a constellation label's data.
+ * @interface
+ */
 interface ConstellationLabel {
+    /** The Three.js sprite object for the label. */
     sprite: THREE.Sprite;
+    /** IDs of the stars that form the constellation. */
     starsIds: string[];
+    /** Localized name of the constellation. */
     name: string;
+    /** Latin name of the constellation. */
     latin: string;
+    /** Texture containing the rendered text. */
     texture: THREE.CanvasTexture;
+    /** Canvas 2D context used for drawing the text. */
     ctx: CanvasRenderingContext2D;
 }
 
 /**
  * Constellations Entity
- * * Manages the rendering of constellation lines and their dynamic labels
+ * 
+ * Manages the rendering of constellation lines and their dynamic labels.
+ * Handles language switching, visibility, and daytime contrast adjustments.
  */
 export class Constellations {
+    /** Group containing all constellation lines and labels. */
     public group = new THREE.Group();
+    /** The line segments mesh for constellation boundaries/patterns. */
     private lines: THREE.LineSegments;
 
+    /** Array of star ID pairs representing the start and end of each line segment. */
     private constellationPairs: string[] = [];
+    /** List of label objects for each constellation. */
     private labels: ConstellationLabel[] = [];
     
+    /** Whether constellation labels are visible. */
     private showLabels: boolean = true;
+    /** Whether to use Latin names instead of localized names. */
     private useLatin: boolean = false;
+    /** Current color of the constellation lines. */
     private currentColor: number = 0xffffff;
+    /** Current color of the constellation labels. */
     private currentLabelColor: number = 0xffffff;
+    /** Current opacity of the lines. */
     private currentOpacity: number = 0.4;
+    /** Factor used to track changes in daylight for performance. */
     private lastDayFactor: number = -1; // For tracking color changes
 
+    /**
+     * Creates an instance of Constellations.
+     * @param {number} color - Initial line color.
+     * @param {number} labelColor - Initial label text color.
+     * @param {number} opacity - Initial line opacity.
+     * @param {boolean} showLabels - Initial label visibility.
+     * @param {boolean} useLatin - Whether to use Latin names.
+     */
     constructor(color: number, labelColor:number, opacity: number, showLabels: boolean, useLatin: boolean) {
         this.currentColor = color;
         this.currentLabelColor = labelColor;
@@ -55,6 +103,8 @@ export class Constellations {
 
     /**
      * Parses the constellation catalog to build connection lines and prepare labels.
+     * @returns {THREE.BufferGeometry} The generated geometry for constellation lines.
+     * @private
      */
     private buildGeometry(): THREE.BufferGeometry {
         const pairs: string[] = [];
@@ -99,6 +149,8 @@ export class Constellations {
 
     /**
      * Creates an empty Sprite and Canvas for a label, ready to be painted.
+     * @returns {{ sprite: THREE.Sprite, texture: THREE.CanvasTexture, ctx: CanvasRenderingContext2D }} Label resources.
+     * @private
      */
     private createLabelCanvas() {
         const canvas = document.createElement('canvas');
@@ -116,7 +168,10 @@ export class Constellations {
     }
 
     /**
-     * Redraws the text on the Canvas (used for init and when switching languages/daytime)
+     * Redraws the text on the Canvas (used for init and when switching languages/daytime).
+     * @param {ConstellationLabel} label - The label object to update.
+     * @param {number} [colorOverride] - Optional color override for the text.
+     * @private
      */
     private updateLabelText(label: ConstellationLabel, colorOverride?: number) {
         const text = this.useLatin ? label.latin : label.name;
@@ -135,7 +190,10 @@ export class Constellations {
     }
 
     /**
-     * Updates lines and calculates the centroid for each label.
+     * Updates lines and calculates the centroid for each label based on current star positions.
+     * Adjusts visibility and contrast based on the daylight factor.
+     * @param {Map<string, { alt: number, az: number }>} positionsMap - Map of object IDs to Alt/Az positions.
+     * @param {number} [daylightFade=1.0] - Fade factor for daytime (1.0 = night, 0.0 = day).
      */
     update(positionsMap: Map<string, { alt: number, az: number }>, daylightFade: number = 1.0) {
         if (!this.group.visible || this.constellationPairs.length === 0) return;
@@ -230,6 +288,12 @@ export class Constellations {
 
     /**
      * Dynamically updates the visual properties and text settings.
+     * @param {boolean} visible - Whether constellation lines are visible.
+     * @param {number} color - Line color hex value.
+     * @param {number} labelColor - Label color hex value.
+     * @param {number} opacity - Line opacity (0-1).
+     * @param {boolean} [showLabels] - Whether to show text labels.
+     * @param {boolean} [useLatin] - Whether to use Latin names.
      */
     setProps(visible: boolean, color: number, labelColor: number, opacity: number, showLabels?: boolean, useLatin?: boolean) {
         if (visible !== undefined) this.group.visible = visible;
@@ -272,6 +336,9 @@ export class Constellations {
         }
     }
 
+    /**
+     * Cleans up Three.js resources used by constellations.
+     */
     dispose() {
         this.lines.geometry.dispose();
         (this.lines.material as THREE.Material).dispose();

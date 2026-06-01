@@ -1,5 +1,9 @@
 model_list:
   - model_name: astra_ai
     litellm_params:
-      model: gemini/gemini-3.1-flash-lite-preview
-      api_key: "os.environ/TEST_API_KEY" 
+      model: gemini/gemini-3.1-flash-lite
+      api_key: "os.environ/AI_API_KEY" 
+
+general_settings:
+  store_model_in_db: true
+  store_prompts_in_spend_logs: true

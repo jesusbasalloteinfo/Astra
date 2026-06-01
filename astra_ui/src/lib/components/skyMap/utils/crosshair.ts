@@ -1,7 +1,35 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+// src/lib/components/skyMap/utils/crosshair.ts
+/**
+ * @fileoverview Utility for generating crosshair textures used in the SkyMap.
+ */
+
 import * as THREE from 'three';
 
 /**
- * Create an svg texture for a crosshair
+ * Creates an SVG-based texture for a crosshair.
+ * Supports different styles: 'sidereal' (circular target) or 'focus' (corner brackets).
+ * 
+ * @param {('sidereal' | 'focus')} type - The style of the crosshair.
+ * @param {string} color - The CSS color string (e.g., '#ffffff', 'red') for the crosshair.
+ * @returns {THREE.Texture} A Three.js texture containing the SVG crosshair.
  */
 export function createCrosshairTexture(type: 'sidereal' | 'focus', color: string): THREE.Texture {
     let svg = '';

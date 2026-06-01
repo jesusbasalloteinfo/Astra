@@ -1,3 +1,21 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 import os
 import jwt
 from typing import Optional
@@ -18,7 +36,12 @@ PUBLIC_KEY_PATH = os.path.join(KEYS_DIR, "public_key.pem")
 ALGORITHM = "RS256"
 
 def generate_keys_if_not_exists():
-    """Generates RS256 keypair if they don't exist."""
+    """Generates RS256 keypair if they don't exist.
+    
+    This function checks if the keys directory and the private/public key files
+    exist. If they don't, it generates a new 2048-bit RSA keypair and saves
+    them in PEM format.
+    """
     
     if not os.path.exists(KEYS_DIR):
         os.makedirs(KEYS_DIR)
@@ -61,16 +84,35 @@ def generate_keys_if_not_exists():
 
     LOG.info(f"Keys generated successfully in {KEYS_DIR}/")
 
-def get_private_key():
+def get_private_key() -> bytes:
+    """Read the RS256 private key from the file system.
+
+    Returns:
+        bytes: The content of the private key file.
+    """
     with open(PRIVATE_KEY_PATH, 'rb') as f:
         return f.read()
 
-def get_public_key():
+def get_public_key() -> bytes:
+    """Read the RS256 public key from the file system.
+
+    Returns:
+        bytes: The content of the public key file.
+    """
     with open(PUBLIC_KEY_PATH, 'rb') as f:
         return f.read()
 
 def create_access_token(username: str, email: str, expires_delta: Optional[timedelta] = None) -> str:
-    """Create a signed RS256 JWT using JWTPayload model."""
+    """Create a signed RS256 JWT using JWTPayload model.
+
+    Args:
+        username (str): The subject (username) of the token.
+        email (str): The email address of the user.
+        expires_delta (Optional[timedelta]): Optional expiration time. Defaults to 7 days.
+
+    Returns:
+        str: The encoded JWT string.
+    """
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
@@ -88,7 +130,17 @@ def create_access_token(username: str, email: str, expires_delta: Optional[timed
     return encoded_jwt
 
 def decode_access_token(token: str) -> JWTPayload:
-    """Decode and validate a JWT returning a JWTPayload object."""
+    """Decode and validate a JWT returning a JWTPayload object.
+
+    Args:
+        token (str): The JWT string to decode.
+
+    Returns:
+        JWTPayload: The decoded payload as a Pydantic model.
+
+    Raises:
+        jwt.PyJWTError: If the token is invalid or expired.
+    """
     public_key = get_public_key()
     decoded = jwt.decode(token, public_key, algorithms=[ALGORITHM])
     return JWTPayload(**decoded)

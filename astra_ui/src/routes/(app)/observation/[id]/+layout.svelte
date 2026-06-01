@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/routes/(app)/observation/[id]/+layout.svelte -->
 <script lang="ts">
     import { page } from '$app/state';
@@ -6,11 +24,23 @@
     import { catalogStore } from '$lib/stores/skyCatalog.svelte';
     import { skyEngine } from '$lib/stores/skyEngine.svelte';
     import { timeEngine } from '$lib/stores/timeEngine.svelte';
+    import { selectionStore } from '$lib/stores/activeSelection.svelte';
+    import { locStore } from '$lib/stores/location.svelte';
+    import { authStore } from '$lib/stores/auth.svelte';
+    import { goto } from '$app/navigation';
+    import { browser } from '$app/environment';
 	import { m } from '$lib/paraglide/messages';
 
     let { children } = $props();
 
     $effect(() => {
+        if (authStore.isLoading) return;
+
+        if (locStore.all.length === 0) {
+            goto('/dashboard/sessions');
+            return;
+        }
+
         const id = page.params.id;
         if (id) {
             catalogStore.isRunning = true;
@@ -24,8 +54,21 @@
             timeEngine.setLive(true);
             skyEngine.reset();
             catalogStore.reset();
+            selectionStore.clear();
+            activeObs.clear();
         };
     });
+
+    /**
+     * Returns to the previous page or falls back to the dashboard
+     */
+    function handleBack() {
+        if (browser && document.referrer && document.referrer.includes(window.location.host)) {
+            window.history.back();
+        } else {
+            goto('/dashboard');
+        }
+    }
 </script>
 
 {#if activeObs.isLoading}
@@ -62,12 +105,12 @@
             <p class="text-sm text-copy-muted max-w-sm mx-auto mt-2 mb-8">
                 {activeObs.error || 'The requested observation is not available.'}
             </p>
-            <a 
-                href="/dashboard/sessions" 
-                class="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-accent/20"
+            <button 
+                onclick={handleBack} 
+                class="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-accent/20 cursor-pointer outline-none"
             >
                 {m.obs_error_load_btn()}
-            </a>
+            </button>
         </div>
     </div>
 

@@ -1,3 +1,24 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+"""
+Logging configuration for astra_edge with rich console output and file rotation.
+"""
 from datetime import datetime
 import os
 import json
@@ -12,12 +33,34 @@ DEFAULT_WIDTH = 16
 _console = Console()
 
 class SmartFormatter(logging.Formatter):
+    """
+    Custom formatter that handles dynamic terminal width and complex data structures.
+
+    Can truncate long messages for the console and expand them with details for file logs.
+    """
     def __init__(self, fmt, width=DEFAULT_WIDTH, is_file=False):
+        """
+        Initializes the SmartFormatter.
+
+        Args:
+            fmt (str): The format string.
+            width (int): Fixed width for the logger name.
+            is_file (bool): Whether this formatter is for a file handler.
+        """
         super().__init__(fmt)
         self.width = width
         self.is_file = is_file
 
     def format(self, record):
+        """
+        Formats the log record.
+
+        Args:
+            record (logging.LogRecord): The log record to format.
+
+        Returns:
+            str: The formatted log message.
+        """
         terminal_width = _console.width
         dynamic_max = max(40, terminal_width - 45)
 
@@ -42,7 +85,7 @@ class SmartFormatter(logging.Formatter):
                     margin = " " * 36
                     full_data = formatted_data.replace("\n", "\n" + margin)
 
-                record.msg = f"{original_msg}\n{" "*24}└── DETAILS: {full_data}"
+                record.msg = f"{original_msg}\n{' '*24}└── DETAILS: {full_data}"
             else:
                 record.msg = original_msg
             # Clean tags
@@ -59,30 +102,51 @@ class SmartFormatter(logging.Formatter):
         return result
 
 class ExtraLogger(logging.LoggerAdapter):
+    """
+    Logger adapter that supports passing extra detail objects in log calls.
+    """
     def __init__(self, logger):
+        """
+        Initializes the ExtraLogger adapter.
+
+        Args:
+            logger (logging.Logger): The underlying logger to wrap.
+        """
         super().__init__(logger, {})
 
     def debug(self, msg, details=None, *args, **kwargs):
+        """Log a debug message with optional details."""
         if details: kwargs["extra"] = {"full_msg": details}
         self.logger.debug(msg, *args, **kwargs)
 
     def info(self, msg, details=None, *args, **kwargs):
+        """Log an info message with optional details."""
         if details: kwargs["extra"] = {"full_msg": details}
         self.logger.info(msg, *args, **kwargs)
 
     def warning(self, msg, details=None, *args, **kwargs):
+        """Log a warning message with optional details."""
         if details: kwargs["extra"] = {"full_msg": details}
         self.logger.warning(msg, *args, **kwargs)
 
     def error(self, msg, details=None, *args, **kwargs):
+        """Log an error message with optional details."""
         if details: kwargs["extra"] = {"full_msg": details}
         self.logger.error(msg, *args, **kwargs)
 
     def critical(self, msg, details=None, *args, **kwargs):
+        """Log a critical message with optional details."""
         if details: kwargs["extra"] = {"full_msg": details}
         self.logger.critical(msg, *args, **kwargs)
 
-def setup_global_logging(level = logging.DEBUG, file_path: str = "logs/app.log"):
+def setup_global_logging(level=logging.DEBUG, file_path: str = "logs/app.log"):
+    """
+    Configures the global logging system with console and file handlers.
+
+    Args:
+        level (int): The logging level (e.g., logging.DEBUG).
+        file_path (str): The path to the log file.
+    """
     root_logger = logging.getLogger()
     if root_logger.handlers: return
 
@@ -95,7 +159,7 @@ def setup_global_logging(level = logging.DEBUG, file_path: str = "logs/app.log")
         "logging.level.critical": "bold white on red",
         "log.time": "cadet_blue"
     })
-    name_color="bold grey50"
+    name_color = "bold grey50"
 
     # CONSOLE-only
     console = Console(theme=theme)
@@ -123,4 +187,13 @@ def setup_global_logging(level = logging.DEBUG, file_path: str = "logs/app.log")
     root_logger.addHandler(file_handler)
 
 def get_logger(name: str):
+    """
+    Creates and returns an ExtraLogger instance.
+
+    Args:
+        name (str): The name of the logger.
+
+    Returns:
+        ExtraLogger: The configured logger adapter.
+    """
     return ExtraLogger(logging.getLogger(name))

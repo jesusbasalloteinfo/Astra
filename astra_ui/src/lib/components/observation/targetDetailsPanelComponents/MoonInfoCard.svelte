@@ -1,8 +1,34 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
 	import { m } from "$lib/paraglide/messages";
 	import { getLocale } from "$lib/paraglide/runtime";
 	import { formatNumber, getMoonPhaseName } from "$lib/utils/i18n";
 
+    /**
+     * Component props
+     * @type {{ age?: number, illuminationPct: number, nextNewMoon?: string | null, nextFullMoon?: string | null }}
+     * @property {number} [age=0] - The age of the moon in days
+     * @property {number} illuminationPct - The percentage of the moon that is illuminated
+     * @property {string|null} [nextNewMoon=null] - ISO date string of the next new moon
+     * @property {string|null} [nextFullMoon=null] - ISO date string of the next full moon
+     */
     let { 
         age = 0, 
         illuminationPct = 0,
@@ -15,18 +41,35 @@
         nextFullMoon?: string | null;
     }>();
 
+    /** Whether the moon is currently in the "New Moon" phase */
     let isNewMoon = $derived(illuminationPct < 1);
+
+    /** Whether the moon is currently in the "Full Moon" phase */
     let isFullMoon = $derived(illuminationPct > 99);
+
+    /** Whether the moon is waxing (growing) */
     let isWaxing = $derived(age <= 14.76);
+
+    /** Whether the moon is in a crescent phase (less than 50% illumination) */
     let isCrescent = $derived(illuminationPct < 50);
     
-    // SVG rendering
+    /** X-radius for the SVG terminator ellipse, calculated based on illumination */
     let ellipseRx = $derived(50 * Math.abs(1 - 2 * (illuminationPct / 100)));
+
+    /** Opacity of the moon's glow based on illumination */
     let glowOpacity = $derived((illuminationPct / 100) * 0.5);
+
+    /** Blur amount for the moon's glow based on illumination */
     let glowBlur = $derived((illuminationPct / 100) * 12);
 
+    /** Translated name of the current moon phase */
     let phaseName = $derived(getMoonPhaseName(isNewMoon, isFullMoon, isWaxing, isCrescent, illuminationPct));
 
+    /**
+     * Formats an ISO date string into a localized short date and time
+     * @param {string|null|undefined} isoString - The ISO date string to format
+     * @returns {string} Formatted date string or '—' if input is null/undefined
+     */
     function formatPhaseDate(isoString: string | null | undefined) {
         if (!isoString) return '—';
         const date = new Date(isoString);
@@ -45,7 +88,7 @@
     <!-- Upper part: Phase and SVG -->
     <div class="flex items-center justify-between">
         <div>
-            <h4 class="text-[10px] uppercase tracking-wider text-copy-muted mb-1">Lunar Phase</h4>
+            <h4 class="text-[10px] uppercase tracking-wider text-copy-muted mb-1">{m.obs_targetinfo_lunar_title()}</h4>
             <div class="flex flex-col gap-2">
                 <div class="flex items-baseline gap-2">
                     <span class="text-xl font-bold text-white tabular-nums">{formatNumber(illuminationPct, 1)}%</span>

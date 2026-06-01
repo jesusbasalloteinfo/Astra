@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { deviceStore } from '$lib/stores/devices.svelte';
     import { deviceAPI } from '$lib/api/devices';
@@ -6,13 +24,21 @@
     import * as m from '$lib/paraglide/messages.js';
     import DeviceCard from './DeviceCard.svelte';
 
+    /** Whether the "Add Device" (pairing) section is visible */
     let isAdding = $state(false);
+    /** Input value for the device pairing token/PIN */
     let pairingToken = $state('');
+    /** Whether a pairing request is currently in progress */
     let isPairing = $state(false);
+    /** Error message to display if pairing fails */
     let pairingError = $state<string | null>(null);
 
+    /** Whether the current pairing token input is valid */
     const isValid = $derived(pairingToken.trim().length > 0);
 
+    /**
+     * Attempts to pair a new device using the provided token
+     */
     async function handlePair() {
         if (!isValid) return;
         

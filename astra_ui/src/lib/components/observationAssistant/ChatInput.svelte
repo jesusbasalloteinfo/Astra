@@ -1,17 +1,43 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observationAssistant/ChatInput.svelte -->
 <script lang="ts">
     import { Send, Square } from 'lucide-svelte';
     import { chatStore } from '$lib/stores/chat.svelte';
 	import { m } from '$lib/paraglide/messages';
 
+    /** The current message being typed by the user */
     let inputMessage = $state('');
 
+    /**
+     * Sends the current input message to the chat store
+     */
     function handleSend() {
         if (!inputMessage.trim() || chatStore.isStreaming) return;
         chatStore.sendMessage(inputMessage.trim());
         inputMessage = '';
     }
 
+    /**
+     * Handles keyboard events in the input field, specifically for sending on Enter
+     * @param {KeyboardEvent} e - The keyboard event object
+     */
     function handleKeydown(e: KeyboardEvent) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();

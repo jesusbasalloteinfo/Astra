@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
     import { locStore } from '$lib/stores/location.svelte';
     import { MapPin, Navigation, Plus, Trash2, X, Map as MapIcon, Globe, ChevronRight } from 'lucide-svelte';
@@ -6,8 +24,13 @@
     import * as m from '$lib/paraglide/messages.js';
 	import LocationCard from './LocationCard.svelte';
 
+    /**
+     * Calculates the local timezone offset in hours
+     * @returns {number} Timezone offset from UTC
+     */
     const getLocalTimezone = () => -(new Date().getTimezoneOffset() / 60);
 
+    /** State for the new location being created */
     let newLoc = $state<LocationCreate>({ 
         label: '', 
         lat: 0, 
@@ -17,7 +40,7 @@
         is_default: false 
     });
 
-    // Validación reactiva
+    /** Whether the current newLoc state is valid for submission */
     const isValid = $derived(
         newLoc.label.trim() !== '' &&
         newLoc.lat >= -90 && newLoc.lat <= 90 &&
@@ -26,6 +49,9 @@
         newLoc.timezone >= -12 && newLoc.timezone <= 14
     );
 
+    /**
+     * Attempts to detect the user's current GPS location and update newLoc
+     */
     async function handleGPS() {
         try {
             const coords = await locStore.detectGPS();
@@ -38,6 +64,9 @@
         }
     }
 
+    /**
+     * Saves the new location to the store and resets the form
+     */
     async function save() {
         await locStore.addLocation(newLoc);
         locStore.hideForm();
@@ -141,7 +170,7 @@
                     <button 
                         onclick={handleGPS}
                         disabled={locStore.isDetecting}
-                        class="w-full flex items-center justify-center gap-2 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-secondary/30 hover:bg-secondary/60 border border-border rounded-xl transition-all">
+                        class="w-full flex items-center justify-center cursor-pointer gap-2 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-secondary/30 hover:bg-secondary/60 border border-border rounded-xl transition-all">
                         <Navigation size={14} class={locStore.isDetecting ? 'animate-spin text-accent' : ''} />
                         {locStore.isDetecting ? m.dash_location_new_gps_detect() : m.dash_location_new_gps()}
                     </button>
@@ -163,7 +192,7 @@
                     <button 
                         onclick={save}
                         disabled={!isValid || locStore.isSyncing}
-                        class="w-full py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/20 disabled:opacity-30 transition-all active:scale-[0.98]">
+                        class="w-full cursor-pointer py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/20 disabled:opacity-30 transition-all active:scale-[0.98]">
                         {locStore.isSyncing ? m.dash_location_action_saving() : m.dash_location_action_add()}
                     </button>
                 </div>

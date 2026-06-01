@@ -1,13 +1,32 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/dashboard/MobileBottomNav.svelte -->
 <script lang="ts">
     import * as m from '$lib/paraglide/messages.js';
     import { LayoutDashboard, History, Telescope, MapPin } from 'lucide-svelte';
     import { page } from '$app/state';
 
+    /** Navigation items configuration for the bottom bar */
     const navItems = $derived([
         { href: '/dashboard',           icon: LayoutDashboard, label: m.dash_side_home() },
         { href: '/dashboard/sessions',  icon: History,         label: m.dash_side_sessions() },
-        { href: '/dashboard/devices',   icon: Telescope,       label: m.dash_side_telescope() },
+        { href: '/dashboard/devices',   icon: Telescope,       label: m.dash_side_devices() },
         { href: '/dashboard/location',  icon: MapPin,          label: m.dash_side_location() },
     ]);
 </script>

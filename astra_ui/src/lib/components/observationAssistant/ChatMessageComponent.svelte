@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/lib/components/observationAssistant/ChatMessageComponent.svelte -->
 <script lang="ts">
     import { Sparkles, LoaderCircle, Wrench, Check, ChevronRight, TriangleAlert } from 'lucide-svelte';
@@ -10,6 +28,14 @@
 	import { m } from '$lib/paraglide/messages';
 	import { toInlangBool } from '$lib/utils/i18n';
 
+    /**
+     * Component props
+     * @type {{ msg: ChatMessage, isFirstInTurn: boolean, isStreaming: boolean, messagesContext: ChatMessage[] }}
+     * @property {ChatMessage} msg - The message object to display
+     * @property {boolean} isFirstInTurn - Whether this message is the first in an assistant's turn
+     * @property {boolean} isStreaming - Whether the message content is currently being streamed
+     * @property {ChatMessage[]} messagesContext - The full message history for context (e.g., finding tool results)
+     */
     let { 
         msg, 
         isFirstInTurn, 
@@ -22,8 +48,11 @@
         messagesContext: ChatMessage[] // Check the tools
     }>();
 
+    /** Whether the assistant's reasoning block is expanded */
     let isReasoningOpen = $state(false);
-    let enableToolDebug = $state(true);
+
+    /** Whether to show tool debugging information */
+    let enableToolDebug = $derived(import.meta.env.VITE_USER_DEBUG === 'true');
 
     // Marked config
     marked.use({ breaks: true, gfm: true });
@@ -35,19 +64,33 @@
         }
     });
 
+    /**
+     * Renders Markdown text into sanitized HTML
+     * @param {string | undefined} text - The Markdown text to render
+     * @returns {string} The sanitized HTML string
+     */
     function renderMD(text: string | undefined) {
         if (!text) return '';
         const rawHtml = marked.parse(text, { async: false }) as string;
         return DOMPurify.sanitize(rawHtml);
     }
     
-    // Tool output debug tools
+    /** Tracking which tool debug panels are open by their tool call ID */
     let openDebugTools = $state<Record<string, boolean>>({});
 
+    /**
+     * Toggles the visibility of a tool's debug information
+     * @param {string} toolId - The unique ID of the tool call
+     */
     function toggleToolDebug(toolId: string) {
         openDebugTools[toolId] = !openDebugTools[toolId];
     }
 
+    /**
+     * Parses a tool response string as JSON
+     * @param {string} content - The raw string content from a tool message
+     * @returns {any|null} The parsed object or null if parsing fails
+     */
     function parseToolResponse(content: string) {
         try {
             return JSON.parse(content);

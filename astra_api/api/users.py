@@ -1,3 +1,24 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
+"""
+FastAPI router for user profile and settings management in astra_api.
+"""
 import httpx
 import os
 from typing import Optional
@@ -14,14 +35,17 @@ router = APIRouter()
 AUTH_ME_URL = os.getenv("AUTH_ME_URL", "http://astra_auth:80/api/auth/me")
 
 class UserEnriched(User):
+    """User profile enriched with identity data from the auth service."""
     email: Optional[str] = None
     profile_picture_url: Optional[str] = None
 
 class UserUpdate(BaseModel):
+    """Request model for updating basic user information."""
     full_name: Optional[str] = None
     bio: Optional[str] = None
 
 class SettingsUpdate(BaseModel):
+    """Request model for updating user application settings."""
     theme: Optional[str] = None
     language: Optional[str] = None
 
@@ -30,6 +54,22 @@ async def get_user(
     username: str = Depends(get_request_user),
     auth: HTTPAuthorizationCredentials = Depends(bearer_scheme)
 ):
+    """
+    Retrieves the current user's profile and settings.
+
+    Enriches local database data with identity information (email, picture)
+    from the central authentication service.
+
+    Args:
+        username (str): The authenticated username.
+        auth (HTTPAuthorizationCredentials): The raw bearer token for enrichment.
+
+    Returns:
+        UserEnriched: The complete user profile.
+
+    Raises:
+        HTTPException: If the user is not found in the local database.
+    """
     user_service: UserService = UserService()
 
     try:
@@ -58,6 +98,19 @@ async def get_user(
 
 @router.put("/me")
 async def update_user(data: UserUpdate, username: str = Depends(get_request_user)):
+    """
+    Updates the current user's profile information.
+
+    Args:
+        data (UserUpdate): The update data.
+        username (str): The authenticated username.
+
+    Returns:
+        dict: Success status.
+
+    Raises:
+        HTTPException: If the update fails.
+    """
     service = UserService()
     # Filter out None values
     update_data = {k: v for k, v in data.model_dump().items() if v is not None}
@@ -71,6 +124,19 @@ async def update_user(data: UserUpdate, username: str = Depends(get_request_user
 
 @router.put("/me/settings")
 async def update_settings(data: SettingsUpdate, username: str = Depends(get_request_user)):
+    """
+    Updates the current user's application settings.
+
+    Args:
+        data (SettingsUpdate): The update data.
+        username (str): The authenticated username.
+
+    Returns:
+        dict: Success status.
+
+    Raises:
+        HTTPException: If the update fails.
+    """
     service = UserService()
     # Use dot notation for nested update to avoid overwriting other settings
     update_data = {f"settings.{k}": v for k, v in data.model_dump().items() if v is not None}
@@ -84,6 +150,19 @@ async def update_settings(data: SettingsUpdate, username: str = Depends(get_requ
 
 @router.post("/me/locations")
 async def add_location(location: Location, user: str = Depends(get_request_user)):
+    """
+    Adds a new geographic location to the current user's profile.
+
+    Args:
+        location (Location): The location data.
+        user (str): The authenticated username.
+
+    Returns:
+        dict: Success status.
+
+    Raises:
+        HTTPException: If the location cannot be added.
+    """
     service = UserService()
     success = await service.add_location(user, location)
     if not success:
@@ -93,6 +172,19 @@ async def add_location(location: Location, user: str = Depends(get_request_user)
 
 @router.delete("/me/locations/{location_id}")
 async def delete_location(location_id: str, user: str = Depends(get_request_user)):
+    """
+    Deletes a specific geographic location from the user's profile.
+
+    Args:
+        location_id (str): The location ID to remove.
+        user (str): The authenticated username.
+
+    Returns:
+        dict: Success status.
+
+    Raises:
+        HTTPException: If the location cannot be deleted.
+    """
     service = UserService()
     success = await service.remove_location(user, location_id)
     if not success:

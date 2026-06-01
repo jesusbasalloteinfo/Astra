@@ -1,0 +1,31 @@
+# Build and Environment
+.env
+**/.env
+node_modules/
+**/node_modules/
+venv/
+**/venv/
+.directory
+.vscode/
+**/__pycache__/
+*.pyc
+
+# ASTRA Specific
+astra_api/.tmp/
+astra_auth/.tmp/
+astra_auth/keys/
+astra_auth/uploads/
+astra_edge/edge_auth.json
+sideris/de440.bsp
+
+# Logs and Temp
+*.log
+**/*.log
+.tmp/
+**/.tmp/
+
+# UI and Tools
+astra_ui/.svelte-kit/
+astra_ui/build/
+project.inlang/cache/
+

@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import { authAPI } from '$lib/api/auth';
 import { browser } from '$app/environment';
 import type { User } from '$lib/types/user';
@@ -7,11 +25,21 @@ import { obsStore } from './observations.svelte';
 import { themeState } from '$lib/themes/themes.svelte';
 import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
 
+/**
+ * Store for managing user authentication and profile settings.
+ */
 class AuthStore {
+    /** The currently authenticated user, or null if not logged in. */
     user = $state<User | null>(null);
+    /** Loading state for authentication processes. */
     isLoading = $state(true);
+    /** Indicates if a logout process is currently in progress. */
     isLoggingOut = $state(false);
 
+    /**
+     * Initializes the auth store by checking for an existing session in localStorage.
+     * @returns A promise that resolves when initialization is complete.
+     */
     async init() {
         if (!browser) return;
         
@@ -22,6 +50,10 @@ class AuthStore {
         this.isLoading = false;
     }
 
+    /**
+     * Refreshes the user's profile and synchronizes settings like theme and language.
+     * @returns A promise that resolves when the profile is refreshed.
+     */
     async refreshProfile() {
         try {
             this.user = await authAPI.getUser();
@@ -49,18 +81,36 @@ class AuthStore {
         }
     }
 
+    /**
+     * Updates the user's settings (theme, language) on the server and locally.
+     * @param settings - The settings to update.
+     * @returns A promise that resolves when the settings are updated.
+     */
     async updateSettings(settings: { theme?: string; language?: string }) {
         if (!this.isAuthenticated) return;
         try {
             await authAPI.updateSettings(settings);
             if (this.user) {
                 this.user.settings = { ...this.user.settings, ...settings };
+                
+                // If language changed, sync the cookie for the next page reload
+                if (settings.language && browser) {
+                    document.cookie = `PARAGLIDE_LOCALE=${settings.language}; path=/; max-age=31536000; SameSite=Lax`;
+                }
             }
         } catch (e) {
             console.error("Failed to update settings:", e);
         }
     }
 
+    /**
+     * Logs the user in with the provided credentials.
+     * 
+     * @param username - The user's username.
+     * @param password - The user's password.
+     * @param syncSettings - Whether to sync local settings to the server after login.
+     * @returns A promise that resolves when the login process is complete.
+     */
     async login(username: string, password: string, syncSettings = false) {
         this.isLoading = true;
         try {
@@ -83,6 +133,10 @@ class AuthStore {
         }
     }
 
+    /**
+     * Logs the user out, clears local data and resets related stores.
+     * @returns A promise that resolves when the logout process is complete.
+     */
     async logout() {
         this.isLoggingOut = true;
         try {
@@ -97,7 +151,13 @@ class AuthStore {
         }
     }
 
+    /**
+     * Computed property that indicates if the user is currently authenticated.
+     */
     isAuthenticated = $derived(this.user !== null);
 }
 
+/**
+ * Singleton instance of AuthStore.
+ */
 export const authStore = new AuthStore();

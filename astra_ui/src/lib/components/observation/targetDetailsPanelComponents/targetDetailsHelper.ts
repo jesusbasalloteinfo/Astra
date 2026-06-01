@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/utils/targetDetailsHelper.ts
 import { getLocale } from '$lib/paraglide/runtime';
 import { m } from '$lib/paraglide/messages';
@@ -6,6 +24,14 @@ import type { PlanetaryObjectDetails, SiderealObjectDetails } from '$lib/types/s
 import { formatNumber } from '$lib/utils/i18n';
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
+/**
+ * Returns the image URL for an astronomical object.
+ * For planets, it returns a local API URL. For sidereal objects, it returns a HiPS2FITS URL.
+ * 
+ * @param {PlanetaryObjectDetails | SiderealObjectDetails} details - Object details from the catalog
+ * @param {boolean} isPlanet - Whether the object is a planet/solar system body
+ * @returns {string|null} The image URL or null if not available
+ */
 export function getImageUrl(details: PlanetaryObjectDetails | SiderealObjectDetails, isPlanet: boolean): string | null {
     if (isPlanet) {
         const planetaryDetails = details as PlanetaryObjectDetails;
@@ -19,6 +45,14 @@ export function getImageUrl(details: PlanetaryObjectDetails | SiderealObjectDeta
     }
 }
 
+/**
+ * Builds a list of statistics and ephemeris data for the target details panel.
+ * 
+ * @param {any} details - Static object details from the catalog
+ * @param {any} dynamicData - Dynamic data (alt/az) for the current observer
+ * @param {boolean} isPlanet - Whether the object is a planet/solar system body
+ * @returns {Object} An object containing the formatted stats array and ephemeris object
+ */
 export function buildDynamicStats(details: any, dynamicData: any, isPlanet: boolean) {
     // 1. Base Stadistics
     let dist = isPlanet ? details.dist : details.distance_ly;
@@ -57,6 +91,12 @@ export function buildDynamicStats(details: any, dynamicData: any, isPlanet: bool
     return { stats, ephemeris };
 }
 
+/**
+ * Constructs a Wikipedia URL for a given Wikidata QID and the current locale.
+ * 
+ * @param {string|null|undefined} qid - The Wikidata QID
+ * @returns {string|null} The Wikipedia URL or null if QID is not provided
+ */
 export function getWikipediaUrl(qid: string | null | undefined): string | null {
     if (!qid) return null;
     return `https://www.wikidata.org/wiki/Special:GoToLinkedPage/${getLocale()}wiki/${qid}`;

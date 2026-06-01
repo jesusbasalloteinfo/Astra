@@ -1,3 +1,21 @@
+/*
+ * ASTRA - Automated Smart Telescope Remote Assistant
+ * Copyright (C) 2026 Jesus Basallote
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 // src/lib/components/skyMap/core/SelectionController.ts
 
 import * as THREE from 'three';
@@ -9,13 +27,32 @@ import { skyEngine } from '$lib/stores/skyEngine.svelte';
 import { selectionStore } from '$lib/stores/activeSelection.svelte'; 
 import { catalogStore } from '$lib/stores/skyCatalog.svelte';
 
+/**
+ * SelectionController
+ * 
+ * Manages user interactions for selecting celestial objects in the 3D scene.
+ * Uses raycasting to detect clicks on planetary and sidereal objects.
+ */
 export class SelectionController {
+    /** The Three.js raycaster used for object picking. */
     private raycaster: THREE.Raycaster = new THREE.Raycaster();
+    /** Current pointer position in normalized device coordinates. */
     private pointer: THREE.Vector2 = new THREE.Vector2();
+    /** Pointer position when the mouse/touch was first pressed. */
     private pointerDownPos = { x: 0, y: 0 }; // Distinguish click from drag
+    /** Whether the user is currently dragging the view. */
     private isDragging: boolean = false;
+    /** The ID of the currently selected celestial object. */
     public selectedId: string | null = null;
 
+    /**
+     * Creates an instance of SelectionController.
+     * @param {HTMLDivElement} container - The container element for event listeners.
+     * @param {CameraController} cameraCtrl - The camera controller for raycasting.
+     * @param {Planetary} planetary - The planetary entities manager.
+     * @param {Sidereal} sidereal - The sidereal entities manager.
+     * @param {TargetReticle} targetReticle - The reticle to show on selection.
+     */
     constructor(
         private container: HTMLDivElement,
         private cameraCtrl: CameraController,
@@ -32,8 +69,11 @@ export class SelectionController {
         this.container.addEventListener('pointerup', this.onPointerUp);
     }
 
-    /** * Double raycast
-     * Check first planetary objects, then sidereal
+    /**
+     * Performs a double raycast to find an object under the pointer.
+     * Checks first planetary objects (priority), then sidereal.
+     * @returns {{ id: string, isPlanet: boolean } | null} The hit object information or null.
+     * @private
      */
     private getHit(): { id: string, isPlanet: boolean } | null {
         // First raycast. Planetary
@@ -57,7 +97,13 @@ export class SelectionController {
         return null;
     }
 
-    /** Creates an calculates an intersecting ray with an xy position */
+    /**
+     * Shoots a ray from the camera at the given viewport coordinates.
+     * If an object is hit, it is selected.
+     * @param {number} posX - X coordinate in normalized device space (-1 to +1).
+     * @param {number} posY - Y coordinate in normalized device space (-1 to +1).
+     * @private
+     */
     private raycast(posX:number, posY:number){
         this.pointer.x = posX;
         this.pointer.y = posY;
@@ -78,7 +124,9 @@ export class SelectionController {
     }
 
     /**
-     * Select an object via id
+     * Selects a celestial object by its ID.
+     * Updates the UI stores, positions the reticle, and initiates a camera "fly-to".
+     * @param {string} id - The unique ID of the object to select.
      */
     public selectById(id: string) {
         if (id === this.selectedId) return;
@@ -128,7 +176,12 @@ export class SelectionController {
         this.cameraCtrl.isTracking = true;
         this.cameraCtrl.flyTo(pos.alt, pos.az);
     }
-    /** Save the initial position for pointer */
+
+    /**
+     * Handles the pointer down event to distinguish between clicks and drags.
+     * @param {PointerEvent} event - The pointer event.
+     * @private
+     */
     private onPointerDown = (event: PointerEvent) => {
         this.pointerDownPos = { x: event.clientX, y: event.clientY };
         this.isDragging = true;
@@ -136,8 +189,10 @@ export class SelectionController {
     };
 
     /** 
-     * Listens everytime for the pointer
-     * If is a click, checks if there's an object behind to activate the cursor
+     * Handles the pointer move event.
+     * Updates the cursor style if an object is hoverable.
+     * @param {PointerEvent} event - The pointer event.
+     * @private
      */
     private onPointerMove = (event: PointerEvent) => {
         if (this.isDragging) return;
@@ -155,7 +210,10 @@ export class SelectionController {
     };
 
     /** 
-     * Check if has been a drag. If not, checks the object behind with the raycaster
+     * Handles the pointer up event.
+     * Triggers selection if the interaction was a click (not a drag).
+     * @param {PointerEvent} event - The pointer event.
+     * @private
      */
     private onPointerUp = (event: PointerEvent) => {
         this.isDragging = false;
@@ -177,7 +235,7 @@ export class SelectionController {
     };
 
     /**
-     * Clear actual selection and hide the reticle
+     * Clears the current selection and hides the reticle.
      */
     public clearSelection() {
         if (this.selectedId) {
@@ -188,6 +246,9 @@ export class SelectionController {
         }
     }
     
+    /**
+     * Cleans up event listeners when the controller is disposed.
+     */
     dispose() {
         this.container.removeEventListener('pointerdown', this.onPointerDown);
         this.container.removeEventListener('pointermove', this.onPointerMove);

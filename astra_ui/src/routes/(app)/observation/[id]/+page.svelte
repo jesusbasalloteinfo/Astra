@@ -1,3 +1,21 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <!-- src/routes/(app)/dashboard/observation/[id]/+page.svelte -->
 <script lang="ts">
     import { onMount, untrack} from 'svelte'; 
@@ -199,7 +217,7 @@
     </div>
 
     <!-- Options dock -->
-    <div class="absolute left-2 md:left-4 top-1/3 md:top-1/2 -translate-y-1/2 z-20 pointer-events-auto scale-90 md:scale-100 origin-left transition-transform">
+    <div class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 pointer-events-auto scale-90 md:scale-100 origin-left transition-transform">
         <SideDock 
             bind:showConstellations 
             bind:showConstellationLabels
@@ -214,7 +232,11 @@
     </div>
 
     <!-- Target info -->
-    <div class="absolute top-4 right-4 md:top-6 md:right-6 z-10 pointer-events-none scale-90 md:scale-100 origin-top-right transition-transform max-w-[60vw] md:max-w-none">
+    <div class="fixed inset-x-0 bottom-0 z-40 w-full 
+                landscape:inset-0 landscape:h-[100dvh] landscape:bottom-auto landscape:z-50 landscape:scale-100
+                md:landscape:absolute md:landscape:inset-auto md:landscape:top-6 md:landscape:right-6 md:landscape:bottom-auto md:landscape:z-10 md:landscape:w-auto
+                lg:absolute lg:inset-auto lg:top-6 lg:right-6 lg:bottom-auto lg:h-auto lg:z-10 lg:w-auto
+                pointer-events-none scale-90 lg:scale-100 origin-bottom landscape:origin-center lg:origin-top-right transition-all">
         {#if !chatOpen}
             <TargetDetailsPanel 
                 onFlyTo={(alt, az) => skyMap?.flyTo(alt, az)} 

@@ -1,3 +1,21 @@
+"""
+ASTRA - Automated Smart Telescope Remote Assistant
+Copyright (C) 2026 Jesus Basallote
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 from datetime import datetime
 from typing import List, Literal
 
@@ -14,8 +32,20 @@ from models.device_messages import GetDevicesCommand, GetTelescopeLocationComman
 from models.device import DeviceAccess
 router = APIRouter()
 
-async def get_device_tunnel(device_id:str, username:str):
-    """ Get and validate that the user has permissions to operate the device"""
+async def get_device_tunnel(device_id: str, username: str) -> DeviceTunnel:
+    """
+    Retrieves and validates a device tunnel for a specific user.
+
+    Args:
+        device_id (str): The identifier of the device.
+        username (str): The username requesting access.
+
+    Returns:
+        DeviceTunnel: The active tunnel for the device.
+
+    Raises:
+        HTTPException: If the user doesn't have access or the device is offline.
+    """
     try:
         service = DeviceService()
         device = await service.get_user_device(device_id, username)
@@ -28,6 +58,19 @@ async def get_device_tunnel(device_id:str, username:str):
 
 @router.post("/pair")
 async def pair_device(req: PairingRequest, user_id: str = Depends(get_request_user)):
+    """
+    Pairs a user with a device using a PIN.
+
+    Args:
+        req (PairingRequest): The request containing the PIN.
+        user_id (str): The authenticated user ID.
+
+    Returns:
+        dict: The device ID if pairing was successful.
+
+    Raises:
+        HTTPException: If the PIN is invalid or the device is already paired.
+    """
     try:
         device_id = await pairing_manager.pair_device(req.pin, user_id)
         return {"device_id": device_id}
@@ -39,6 +82,13 @@ async def pair_device(req: PairingRequest, user_id: str = Depends(get_request_us
     
 @router.websocket("/ws/pair")
 async def ws_pair_tunnel(ws: WebSocket, device_id: str):
+    """
+    WebSocket endpoint for devices to initiate the pairing process.
+
+    Args:
+        ws (WebSocket): The incoming connection.
+        device_id (str): The device hardware ID.
+    """
     await pairing_manager.register(device_id, ws)
 
 @router.websocket("/ws/tunnel/{device_id}")
@@ -47,6 +97,16 @@ async def ws_device_tunnel(
     device_id: str,
     authorization: str | None = Header(default=None),
 ):
+    """
+    WebSocket endpoint for established device tunnels.
+
+    Requires a valid Bearer token previously generated during pairing.
+
+    Args:
+        ws (WebSocket): The incoming tunnel connection.
+        device_id (str): The device hardware ID.
+        authorization (Optional[str]): The Bearer token header.
+    """
     if not authorization or not authorization.startswith("Bearer "):
         await ws.close(code=4401)
         return
@@ -72,17 +132,19 @@ async def ws_device_tunnel(
 
 # ── DEVICE MANAGEMENT ────────────────────────────────────────────
 class DeviceResponse(BaseModel):
+    """Data model for device listing responses."""
     device_id: str
     name: str
     owner: str
     linked: datetime
-    is_online:bool
+    is_online: bool
 
     access_list: list[DeviceAccess] 
 
     model_config = {"from_attributes": True}
 
 class DeviceComponents(BaseModel):
+    """List of INDI components (drivers) available on a device."""
     telescope: list[str] = []
     camera: list[str] = []
     focuser: list[str] = []
@@ -90,13 +152,24 @@ class DeviceComponents(BaseModel):
     indi: list[str] = []
 
 class DeviceInfoResponse(DeviceResponse):
+    """Enriched device data including active components."""
     components: DeviceComponents
 
 class DeviceUpdate(BaseModel):
+    """Request model for updating device details."""
     name: str
 
 @router.get("", response_model=List[DeviceResponse], response_model_by_alias=False)
 async def list_devices(username: str = Depends(get_request_user)):
+    """
+    Lists all devices accessible by the authenticated user.
+
+    Args:
+        username (str): The authenticated username.
+
+    Returns:
+        List[DeviceResponse]: The list of user devices.
+    """
     service = DeviceService()
     devices = await service.get_user_devices(username)
     
@@ -114,6 +187,19 @@ async def get_device_info(
     device_id: str, 
     username: str = Depends(get_request_user)
 ):
+    """
+    Retrieves detailed information and active components for a device.
+
+    Args:
+        device_id (str): The device ID.
+        username (str): The authenticated username.
+
+    Returns:
+        DeviceInfoResponse: The detailed device information.
+
+    Raises:
+        HTTPException: If the device is not found or communication times out.
+    """
     service = DeviceService()
     tunnel = tunnel_manager.get(device_id)
     try:
@@ -142,6 +228,20 @@ async def update_device(
     data: DeviceUpdate, 
     username: str = Depends(get_request_user)
 ):
+    """
+    Updates a device's human-readable name.
+
+    Args:
+        device_id (str): The device ID.
+        data (DeviceUpdate): The update data.
+        username (str): The authenticated username.
+
+    Returns:
+        dict: Success status.
+
+    Raises:
+        HTTPException: If the device is not found.
+    """
     service = DeviceService()
     try:
         success = await service.update_device_info(
@@ -158,6 +258,19 @@ async def delete_device(
     device_id: str, 
     username: str = Depends(get_request_user)
 ):
+    """
+    Unlinks and deletes a device registration.
+
+    Args:
+        device_id (str): The device ID.
+        username (str): The authenticated username.
+
+    Returns:
+        None
+
+    Raises:
+        HTTPException: If the device is not found or user is not the owner.
+    """
     service = DeviceService()
     try:
         await service.unlink_device(device_id, username)
@@ -168,14 +281,17 @@ async def delete_device(
 
 # ── DEVICE OPERATION ────────────────────────────────────────────
 class Coordinates(BaseModel):
+    """Equatorial coordinate model."""
     ra: float
     dec: float
 
 class HorizontalCoordinates(BaseModel):
+    """Horizontal coordinate model."""
     alt: float
     az: float
 
 class TelescopePosition(BaseModel):
+    """Consolidated telescope position model."""
     equatorial_j2000: Coordinates = Field(..., alias="equatorial_j2000")
     equatorial_eod: Coordinates = Field(..., alias="equatorial_eod")
     horizontal: HorizontalCoordinates = Field(..., alias="horizontal")
@@ -187,7 +303,20 @@ class TelescopePosition(BaseModel):
 async def get_telescope_position(device_id: str, 
     telescope: str, 
     username: str = Depends(get_request_user)):
-    """Get the current position of a telescope from the device"""
+    """
+    Retrieves the current astronomical position of a telescope.
+
+    Args:
+        device_id (str): The Edge device ID.
+        telescope (str): The telescope driver name.
+        username (str): The authenticated username.
+
+    Returns:
+        TelescopePosition: The current coordinates.
+
+    Raises:
+        HTTPException: If the command fails or times out.
+    """
     tunnel = await get_device_tunnel(device_id, username)
     payload = GetTelescopeLocationCommand(device=telescope)
     try:
@@ -206,7 +335,21 @@ async def slew_telescope(device_id: str,
     telescope: str, 
     params: SlewCommandData,
     username: str = Depends(get_request_user)):
-    """Set the telescope position by doing an slew the current position of a telescope from the device"""
+    """
+    Commands a telescope to slew to specific coordinates.
+
+    Args:
+        device_id (str): The Edge device ID.
+        telescope (str): The telescope driver name.
+        params (SlewCommandData): Target coordinates and mode.
+        username (str): The authenticated username.
+
+    Returns:
+        None
+
+    Raises:
+        HTTPException: If the command fails, is cancelled, or times out.
+    """
 
     tunnel = await get_device_tunnel(device_id, username)
     payload = SlewCommand(device=telescope, data=params)
@@ -231,7 +374,20 @@ async def slew_telescope(device_id: str,
 async def abort_slew_telescope(device_id: str, 
     telescope: str, 
     username: str = Depends(get_request_user)):
-    """Abort the current telescope movement. Cancells all movements"""
+    """
+    Aborts all ongoing telescope movements immediately.
+
+    Args:
+        device_id (str): The Edge device ID.
+        telescope (str): The telescope driver name.
+        username (str): The authenticated username.
+
+    Returns:
+        None
+
+    Raises:
+        HTTPException: If the command fails or times out.
+    """
 
     tunnel = await get_device_tunnel(device_id, username)
     payload = AbortCommand(device=telescope)

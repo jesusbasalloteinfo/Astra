@@ -1,24 +1,76 @@
+<!--
+  ASTRA - Automated Smart Telescope Remote Assistant
+  Copyright (C) 2026 Jesus Basallote
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Affero General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Affero General Public License for more details.
+  
+  You should have received a copy of the GNU Affero General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <script lang="ts">
-    import { Calendar, Telescope, ChevronRight, Trash2, Pencil } from 'lucide-svelte';
+    import { Calendar, History, ChevronRight, Trash2, Pencil } from 'lucide-svelte';
     import { obsStore } from '$lib/stores/observations.svelte';
     import Modal from '$lib/components/ui/Modal.svelte';
 	import { m } from '$lib/paraglide/messages';
-    import { formatDate } from '$lib/utils/date';
+	import { formatDate } from '$lib/utils/date';
+	import { locStore } from '$lib/stores/location.svelte';
+	import { authStore } from '$lib/stores/auth.svelte';
 
-    let { id, name, creation, telescope = 'Generic', description= null } = $props();
+    /**
+     * Component props
+     * @type {{ id: string, name: string, creation: string, lastUsed: string, telescope?: string, description?: string | null }}
+     * @property {string} id - The unique ID of the observation session
+     * @property {string} name - The name of the session
+     * @property {string} creation - ISO date string of session creation
+     * @property {string} lastUsed - ISO date string of last session activity
+     * @property {string} [telescope='Generic'] - Name of the telescope used
+     * @property {string|null} [description=null] - Optional description of the session
+     */
+	let { id, name, creation, lastUsed, telescope = 'Generic', description= null } = $props();
 
-    let showDeleteModal = $state(false);
-    let showEditModal = $state(false);
-    let editName = $state(name);
-    let editDescription = $state(description || '');
+    /** Whether the delete confirmation modal is visible */
+	let showDeleteModal = $state(false);
 
-    const formattedDate = $derived(formatDate(creation));
+    /** Whether the edit session modal is visible */
+	let showEditModal = $state(false);
 
+    /** The name value currently being edited in the modal */
+	let editName = $state(name);
+
+    /** The description value currently being edited in the modal */
+	let editDescription = $state(description || '');
+
+    /** Formatted creation date string */
+	const formattedCreation = $derived(formatDate(creation));
+    /** Formatted last activity date string */
+	const formattedActivity = $derived(formatDate(lastUsed));
+
+    /** Whether there is at least one location available in the store */
+	const hasLocation = $derived(locStore.all.length > 0);
+
+    /** Whether the application state is ready (auth not loading) */
+	const isReady = $derived(!authStore.isLoading);
+
+    /**
+     * Deletes the session from the store and closes the modal
+     */
     async function handleDelete() {
         await obsStore.remove(id);
         showDeleteModal = false;
     }
 
+    /**
+     * Updates the session details in the store and closes the modal
+     */
     async function handleUpdate() {
         await obsStore.update(id, { 
             name: editName,
@@ -29,31 +81,38 @@
 </script>
 
 <div class="group relative flex items-center">
-    <a href="/observation/{id}"
+    <a href={(hasLocation && isReady) ? `/observation/${id}` : undefined}
        class="flex flex-1 items-center gap-3 md:gap-4 p-3 md:p-4 bg-panel border border-border rounded-xl
-              hover:bg-surface transition-all cursor-pointer pr-20 md:pr-12">
+              transition-all pr-24 md:pr-12 [@media(hover:none)]:pr-24
+              {(hasLocation && isReady) ? 'hover:bg-surface cursor-pointer' : 'opacity-60 cursor-not-allowed'}">
         
-        <div class="w-1 self-stretch rounded-full bg-accent shadow-[0_0_10px_var(--color-accent-glow)]"></div>
+        <div class="w-1 self-stretch rounded-full shadow-[0_0_10px_var(--color-accent-glow)] {(hasLocation && isReady) ? 'bg-accent' : 'bg-copy-muted'}"></div>
 
         <div class="flex-1 min-w-0 space-y-1.5 md:space-y-2">
-            <div class="text-sm font-bold text-copy-primary truncate">{name}</div>
+            <div class="text-sm font-bold text-copy-primary truncate {(hasLocation && isReady) ? '' : 'text-copy-muted'}">{name}</div>
             {#if description!=null}
                 <div class="text-[11px] md:text-xs text-copy-muted line-clamp-1">{description || m.dash_observ_no_description()}</div>
             {/if}
             <div class="flex items-center gap-3 md:gap-4 text-[10px] md:text-xs text-copy-muted">
-                <span class="flex items-center gap-1"><Calendar size={11} /> {formattedDate}</span>
-                <span class="flex items-center gap-1"><Telescope size={11} /> {telescope}</span>
+                <span class="flex items-center gap-1" title={m.dash_observ_creation_date()}><Calendar size={11} /> {formattedCreation}</span>
+                <span class="flex items-center gap-1" title={m.dash_observ_last_activity()}><History size={11} /> {formattedActivity}</span>
+                <!-- <span class="flex items-center gap-1"><Telescope size={11} /> {telescope}</span> -->
             </div>
         </div>
 
         <!-- Hidden when inside -->
         <div class="transition-opacity duration-200 group-hover:opacity-0 hidden md:block">
-            <ChevronRight size={16} class="text-copy-muted" />
+            {#if hasLocation && isReady}
+                <ChevronRight size={16} class="text-copy-muted" />
+            {/if}
         </div>
     </a>
 
     <!-- Action buttons -->
-    <div class="absolute right-3 flex items-center gap-1.5 md:opacity-0 md:group-hover:opacity-100 transition-all md:translate-x-2 md:group-hover:translate-x-0">
+    <div class="absolute right-3 flex items-center gap-1.5 transition-all
+                md:opacity-0 md:group-hover:opacity-100 
+                md:translate-x-2 md:group-hover:translate-x-0
+                [@media(hover:none)]:opacity-100 [@media(hover:none)]:translate-x-0">
         <button 
             onclick={() => showEditModal = true}
             class="cursor-pointer p-2 rounded-lg bg-panel border border-border text-copy-muted hover:text-accent hover:border-accent/30 transition-all shadow-sm active:scale-90">
