@@ -125,6 +125,16 @@ For detailed deployment instructions and technical overview, please refer to the
 
 ASTRA is currently in active development! I am focusing on core features and stability. While I am not accepting major pull requests just yet, your feedback is highly valuable. Please feel free to open an **Issue** to report bugs or suggest enhancements.
 
+## 🤝 Credits
+
+ASTRA is made possible by the following open-source projects:
+
+* [indipyclient](https://github.com/bernie-skipole/indipyclient/)
+* [FastAPI](https://fastapi.tiangolo.com/)
+* [Svelte](https://svelte.dev/)
+* [Three.js](https://threejs.org/)
+* [LiteLLM](https://github.com/BerriAI/litellm)
+
 ## 📜 License
 
 Distributed under the **AGPL v3 License**. See [LICENSE](LICENSE) for more information.
