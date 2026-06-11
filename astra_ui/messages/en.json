@@ -404,6 +404,7 @@
   "obs_assistant_send": "Send",
   "obs_assistant_abort": "Stop",
   "obs_assistant_error": "Error: {reason}",
+  "obs_assistant_repeat_action": "Repeat action",
   "obs_assistant_scrolldown": "Scroll down",
   "obs_assistant_thinking": [
     {
@@ -415,6 +416,17 @@
 			}
     }
   ],
+
+  "====================================== OBSERVATION ASSISTANT TOOLS ======================================": "",
+  "tool_search_wiki_articles": "Searching Wikipedia: {query}",
+  "tool_get_wiki_article_intro": "Reading article intro...",
+  "tool_get_wiki_article_section": "Reading article section...",
+  "tool_get_wiki_article_infotable": "Reading article data...",
+  "tool_sideris_search_object": "Searching celestial objects...",
+  "tool_sideris_get_object_details": "Consulting object details...",
+  "tool_slew_telescope": "Slewing telescope to {target}",
+  "tool_fly_to_constellation": "Centering constellation...",
+  "tool_focus_object": "Centering {object}",
 
   "====================================== OBJECT DATA ======================================": "",
 

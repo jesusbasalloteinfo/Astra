@@ -25,6 +25,7 @@ from fastapi import APIRouter, Depends, WebSocket, HTTPException, Header, status
 from services.db import DeviceService
 from core.db_exceptions import ObjectAlreadyExistsError, ObjectNotFoundError
 from core.dependencies import get_request_user
+from core.logging_utils import get_logger
 from models.pairing import PairingRequest
 from services.device_tunnel.pairing_manager import pairing_manager
 from services.device_tunnel.tunnel import DeviceTunnel, tunnel_manager
@@ -95,38 +96,49 @@ async def ws_pair_tunnel(ws: WebSocket, device_id: str):
 async def ws_device_tunnel(
     ws: WebSocket,
     device_id: str,
+    token: str | None = None,
     authorization: str | None = Header(default=None),
 ):
     """
     WebSocket endpoint for established device tunnels.
 
-    Requires a valid Bearer token previously generated during pairing.
+    Requires a valid token passed either as a query parameter or a Bearer token header.
 
     Args:
         ws (WebSocket): The incoming tunnel connection.
         device_id (str): The device hardware ID.
+        token (Optional[str]): The token from the query parameter.
         authorization (Optional[str]): The Bearer token header.
     """
-    if not authorization or not authorization.startswith("Bearer "):
+    await ws.accept()
+    LOG = get_logger("TUNNEL")
+
+    # Fallback to authorization header if query token is not present
+    if not token and authorization and authorization.startswith("Bearer "):
+        token = authorization.removeprefix("Bearer ")
+        
+    if not token:
+        LOG.warning(f"Tunnel attempt rejected: No token provided for device {device_id}")
         await ws.close(code=4401)
         return
 
-    token = authorization.removeprefix("Bearer ")
     device_service = DeviceService()
 
     is_valid = await device_service.validate_tunnel_token(device_id, token)
     
     if not is_valid:
+        LOG.warning(f"Tunnel attempt rejected: Invalid token for device {device_id}")
         await ws.close(code=4401)
         return
     
-    await ws.accept()
+    LOG.info(f"Tunnel established successfully for device {device_id}")
     tunnel = DeviceTunnel(device_id, ws)
     tunnel_manager.register(tunnel)
 
     try:
         await tunnel.listen()
     finally:
+        LOG.info(f"Tunnel connection closed for device {device_id}")
         tunnel_manager.unregister(device_id)
 
 
@@ -274,6 +286,8 @@ async def delete_device(
     service = DeviceService()
     try:
         await service.unlink_device(device_id, username)
+        # Close the tunnel if it exists
+        await tunnel_manager.close_tunnel(device_id)
         return None 
     except ObjectNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))

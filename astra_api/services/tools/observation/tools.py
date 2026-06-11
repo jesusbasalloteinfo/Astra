@@ -69,6 +69,7 @@ def get_object_details_tool(location: Tuple[float, float]) -> CurriedTool:
 class SlewToArgs(BaseModel):
     """Arguments for commanding a telescope slew."""
     id: str = Field(..., description="The unique ID of the target object.")
+    name: str = Field(None, description="The human-readable name of the object in the user's language (e.g., 'Andromeda Galaxy').")
     type: Literal["sidereal", "planetary"] = Field(..., description="The type of the object.")
     mode: Literal["TRACK", "SLEW", "SYNC"] = Field(..., description="The movement type. TRACK for slew and tracking, SLEW for movement and SYNC for syncing")
 

@@ -22,13 +22,8 @@ import { selectionStore } from '$lib/stores/activeSelection.svelte';
 import { catalogStore } from './skyCatalog.svelte';
 import { locStore } from './location.svelte';
 import { deviceStore } from './devices.svelte';
-
-/**
- * Represents an action triggered by the AI that needs to be handled by the UI.
- */
-export type ChatAction = 
-    | { type: 'focus_object', id: string, objectType: string }
-    | { type: 'fly_to_constellation', abbr: string };
+import type { ChatAction } from '../utils/frontendActions'
+import { TOOL_REGISTRY } from '$lib/utils/toolHelpers';
 
 /**
  * Store for managing chat sessions, messages, and AI tool integrations.
@@ -187,38 +182,21 @@ class ChatStore {
      * @param toolName - The name of the tool that triggered the action.
      * @param args - The arguments passed to the tool.
      */
-    private handleFrontendAction(toolName: string, args: any) {
+    public handleFrontendAction(toolName: string, args: any) {
         console.info(`[Frontend Action Triggered]: ${toolName}`, args);
         
         try {
             const parsedArgs = typeof args === 'string' ? JSON.parse(args) : args;
-
-            switch (toolName) {
-                case 'focus_object':
-                case 'slew_to_object':
-                    if (parsedArgs && parsedArgs.id && parsedArgs.type) {
-                        // Normalize planetary IDs to lowercase to bulletproof against LLM hallucinations
-                        const objectId = parsedArgs.type === 'planetary' ? parsedArgs.id.toLowerCase() : parsedArgs.id;
-                        
-                        this.pendingActions.push({ 
-                            type: 'focus_object', 
-                            id: objectId, 
-                            objectType: parsedArgs.type 
-                        });
-                    } else {
-                        console.warn(`${toolName} tool called without valid id and type.`, parsedArgs);
-                    }
-                    break;
-                case 'fly_to_constellation':
-                    if (parsedArgs && parsedArgs.abbr) {
-                        this.pendingActions.push({
-                            type: 'fly_to_constellation',
-                            abbr: parsedArgs.abbr
-                        });
-                    }
-                    break;
-                default:
-                    console.warn(`No frontend handler implemented for tool: ${toolName}`);
+            const toolDef = TOOL_REGISTRY[toolName];
+            if (toolDef && toolDef.getFrontendAction) {
+                const action = toolDef.getFrontendAction(parsedArgs);
+                if (action) {
+                    this.pendingActions.push(action);
+                } else {
+                    console.warn(`[Frontend Action]: Missing arguments for ${toolName}.`, parsedArgs);
+                }
+            } else if (!toolDef) {
+                console.warn(`No tool definition found in registry for: ${toolName}`);
             }
         } catch (e) {
             console.error(`Failed to handle frontend action for ${toolName}:`, e);
@@ -232,6 +210,13 @@ class ChatStore {
      */
     consumeAction() {
         return this.pendingActions.shift();
+    }
+
+    /**
+    * Clears all pending frontend actions from the queue.
+    */
+    clearPendingActions() {
+        this.pendingActions = [];
     }
 
     /**

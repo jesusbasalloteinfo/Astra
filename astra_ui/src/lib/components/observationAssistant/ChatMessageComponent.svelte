@@ -18,13 +18,14 @@
 
 <!-- src/lib/components/observationAssistant/ChatMessageComponent.svelte -->
 <script lang="ts">
-    import { Sparkles, LoaderCircle, Wrench, Check, ChevronRight, TriangleAlert } from 'lucide-svelte';
+    import { Sparkles, LoaderCircle, Wrench, Check, ChevronRight, TriangleAlert, Repeat } from 'lucide-svelte';
     import { marked } from 'marked';
     import DOMPurify from 'isomorphic-dompurify';
     import type { ChatMessage } from '$lib/types/chat';
 	import { slide } from 'svelte/transition';
-    import { formatToolAction, getToolStatus } from './toolHelpers';
+    import { formatToolAction, getToolStatus, TOOL_REGISTRY } from '../../utils/toolHelpers';
 	import { authStore } from '$lib/stores/auth.svelte';
+	import { chatStore } from '$lib/stores/chat.svelte';
 	import { m } from '$lib/paraglide/messages';
 	import { toInlangBool } from '$lib/utils/i18n';
 
@@ -189,6 +190,17 @@
                             <span class="font-mono {textColor} uppercase tracking-wider">
                                 {formatToolAction(tool.function.name, tool.function.arguments)}
                             </span>
+
+                            {#if TOOL_REGISTRY[tool.function.name]?.isReplayable}
+                                <button 
+                                    onclick={() => chatStore.handleFrontendAction(tool.function.name, tool.function.arguments)}
+                                    class="ml-1 p-0.5 hover:bg-accent/20 rounded transition-colors text-copy-muted hover:text-accent cursor-pointer"
+                                    title={m.obs_assistant_repeat_action()}
+                                    aria-label={m.obs_assistant_repeat_action()}
+                                >
+                                    <Repeat size={10} />
+                                </button>
+                            {/if}
                         </div>
 
                         <!-- Output debugging -->

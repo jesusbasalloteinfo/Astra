@@ -83,7 +83,8 @@ async def slew_to_object_impl(tunnel: DeviceTunnel,
                               location: Tuple[float, float],
                               id: str, 
                               type: str, 
-                              mode: str):
+                              mode: str,
+                              name: str = None):
     """
     Implementation for commanding a telescope to slew to a specific object.
 
@@ -97,6 +98,7 @@ async def slew_to_object_impl(tunnel: DeviceTunnel,
         id (str): The target object identifier.
         type (str): The target object type.
         mode (str): The slew mode ('TRACK', 'SLEW', or 'SYNC').
+        name (str, optional): The human-readable name of the object.
 
     Returns:
         str: Success message.

@@ -6,6 +6,8 @@ services:
     env_file:
       - .env
     restart: always
+    volumes:
+      - ./astra_api/.tmp:/app/.tmp
     environment:
       SIDERIS_API_BASE: http://sideris:8624
     networks:
@@ -14,7 +16,7 @@ services:
     depends_on:
       astra_api_db:
         condition: service_healthy
-    command: uvicorn main:app --host 0.0.0.0 --port 80 --workers 4
+    command: uvicorn main:app --host 0.0.0.0 --port 80 --workers 1
 
   astra_api_db:
     image: mongo:7.0
@@ -49,6 +51,7 @@ services:
       UPLOADS_DIR: uploads
     restart: always
     volumes:
+      - ./astra_auth/.tmp:/app/.tmp
       - astra_auth_keys:/app/keys
       - astra_auth_uploads:/app/uploads
     networks:

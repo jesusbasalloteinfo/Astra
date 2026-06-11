@@ -46,6 +46,7 @@ def fly_to_const_tool() -> CurriedTool:
 class FocusObjectArgs(BaseModel):
     """Arguments for focusing on an object."""
     id: str = Field(..., description="The id of the object to select.")
+    name: str = Field(None, description="The human-readable name of the object in the user's language (e.g., 'Andromeda Galaxy').")
     type: Literal["sidereal", "planetary"] = Field(..., description="The object type (planetary for Solar System objects, sidereal for any other).")
 
 def focus_object_element_tool() -> CurriedTool:

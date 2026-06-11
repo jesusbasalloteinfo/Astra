@@ -127,6 +127,22 @@ class DeviceTunnel:
         except asyncio.TimeoutError:
             self._pending.pop(req_id, None)
             raise TimeoutError(f"No response in {timeout}s")
+        except asyncio.CancelledError:
+            print(f"[TUNNEL] Command {req_id} cancelled for device {self.device_id} due to disconnection")
+            self._pending.pop(req_id, None)
+            raise TimeoutError("Command cancelled due to connection drop")
+
+    async def close(self, code: int = 1000):
+        """
+        Closes the active WebSocket connection.
+
+        Args:
+            code (int): WebSocket close code.
+        """
+        try:
+            await self._ws.close(code=code)
+        except Exception:
+            pass
 
 
 class TunnelManager:
@@ -157,6 +173,20 @@ class TunnelManager:
             device_id (str): The device identifier.
         """
         self._tunnels.pop(device_id, None)
+
+    async def close_tunnel(self, device_id: str):
+        """
+        Closes and removes an active tunnel.
+
+        Args:
+            device_id (str): The identifier of the device to disconnect.
+        """
+        tunnel = self._tunnels.get(device_id)
+        if tunnel:
+            await tunnel.close()
+            # unregister is handled by the ws_device_tunnel finally block, 
+            # but we can do it here too just in case
+            self.unregister(device_id)
 
     def get(self, device_id: str) -> DeviceTunnel | None:
         """

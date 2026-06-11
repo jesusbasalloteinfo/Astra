@@ -158,7 +158,7 @@ class EdgeClient:
         async with aiohttp.ClientSession() as s:
             while not self.token:
                 try:
-                    async with s.ws_connect(url) as ws:
+                    async with s.ws_connect(url, heartbeat=15.0) as ws:
                         async for msg in ws:
                             if msg.type != aiohttp.WSMsgType.TEXT:
                                 break
@@ -174,6 +174,9 @@ class EdgeClient:
                                 self._save()
                                 logger.info("Paired ✓")
                                 break
+                        
+                        if not self.token:
+                            logger.warning("Pairing connection closed — a new PIN will be requested")
                 except Exception as e:
                     logger.warning(f"Pairing error: {e} — retrying in 5s")
                     await asyncio.sleep(5)
@@ -187,9 +190,14 @@ class EdgeClient:
         async with aiohttp.ClientSession() as s:
             while True:
                 try:
+                    # Send token via query parameter to bypass proxy header stripping
+                    tunnel_url = f"{self.ws_url}?token={self.token}"
                     headers = {"Authorization": f"Bearer {self.token}"}
-                    async with s.ws_connect(self.ws_url, headers=headers) as ws:
-                        logger.info("Tunnel established!")
+                    
+                    logger.info(f"Establishing tunnel to {tunnel_url}...")
+                    
+                    async with s.ws_connect(tunnel_url, headers=headers, heartbeat=15.0) as ws:
+                        logger.info("Tunnel established successfully!")
                         self._active_ws = ws
 
                         async for msg in ws:
@@ -197,13 +205,21 @@ class EdgeClient:
                                 await self._handle(ws, msg.data)
                             elif msg.type in (aiohttp.WSMsgType.CLOSED, aiohttp.WSMsgType.ERROR):
                                 break
+                        
+                        # Check for token invalidation close code (4401)
+                        if ws.close_code == 4401:
+                            logger.error("Tunnel rejected by server (4401) — token might be invalid")
+                            self._clear()
+                            await self._pairing()
+
                         self._active_ws = None 
                 except aiohttp.WSServerHandshakeError as e:
-                    if e.status in (4401, 401, 403):
-                        logger.error("Invalid token — trying to pair")
+                    if e.status in (401, 403):
+                        logger.error(f"Tunnel handshake error {e.status} — token might be invalid. Starting pairing...")
                         self._clear()
                         await self._pairing()
                     else:
+                        logger.warning(f"Tunnel handshake error: {e} — retrying in 5s")
                         await asyncio.sleep(5)
                 except Exception as e:
                     logger.warning(f"Tunnel connection lost: {e} — retrying in 5s")

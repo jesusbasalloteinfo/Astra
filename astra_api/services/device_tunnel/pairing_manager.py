@@ -25,6 +25,8 @@ import string
 from fastapi import WebSocket, WebSocketDisconnect
 from models.pairing import WsPairingCode, WsPairedSuccess
 from services.db import DeviceService
+from core.logging_utils import get_logger, setup_global_logging
+
 device_service = DeviceService()
 
 class PairingManager:
@@ -77,27 +79,34 @@ class PairingManager:
             ws (WebSocket): The active WebSocket connection.
         """
         await ws.accept()
-        # Remove older pending pair requests
+
+        # Check if we already have a pin for this device to reuse it
+        pin = self._device_to_pin.get(device_id)
+        
+        # Remove older pending pair requests (but don't cleanup the PIN yet if we found one)
         old_ws = self._pending_ws.get(device_id)
         if old_ws:
-            self._cleanup(device_id)
             try:
                 await old_ws.close(code=4000)
             except Exception:
                 pass
-
-        pin = self._new_pin()
-        self._pin_to_device[pin] = device_id
-        self._device_to_pin[device_id] = pin
+        
+        if not pin:
+            pin = self._new_pin()
+            self._pin_to_device[pin] = device_id
+            self._device_to_pin[device_id] = pin
+        
         self._pending_ws[device_id] = ws
-
+        
         await ws.send_text(WsPairingCode(code=pin).model_dump_json())
 
         try:
             while True:
                 await ws.receive_text()  # keep alive
         except WebSocketDisconnect:
-            self._cleanup(device_id)
+            # We don't cleanup here to allow the PIN to survive intermittent reconnections.
+            # The PIN is removed when pair_device succeeds.
+            pass
 
     async def pair_device(self, pin: str, user_id: str) -> str:
         """
@@ -113,23 +122,38 @@ class PairingManager:
         Raises:
             ValueError: If the PIN is invalid or expired.
         """
+        LOG = get_logger("PAIR")
+        pin = pin.upper()
+        
+        LOG.debug("Pairing attempt", {"pin": pin, "user": user_id})
+        print(f"[PAIR] Attempting to pair PIN {pin} for user {user_id}")
+        
         device_id = self._pin_to_device.get(pin)
         if not device_id:
+            print(f"[PAIR] PIN {pin} not found in memory. Current pins: {list(self._pin_to_device.keys())}")
             raise ValueError("Invalid pin")
 
-        # After validating pin, remove the request keeping the ws connection
+        # Create a new device token FIRST
+        try:
+            token = await device_service.link_device(device_id, user_id)
+        except Exception as e:
+            print(f"[PAIR] link_device failed for {device_id}: {e}")
+            raise e
+
+        # Now we can cleanup
         ws = self._pending_ws.get(device_id)
         self._cleanup(device_id)
-
-        # Create a new device token
-        token = await device_service.link_device(device_id, user_id)
+        
         ws_url = f"/devices/ws/tunnel/{device_id}"
 
         # Send the device token
         if ws:
+            print(f"[PAIR] Notifying device {device_id} of success via WebSocket")
             asyncio.create_task(
                 self._notify_pair(ws, token, ws_url)
             )
+        else:
+            print(f"[PAIR] Device {device_id} has no active pairing WebSocket")
 
         return device_id
 

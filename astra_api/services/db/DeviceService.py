@@ -135,6 +135,7 @@ class DeviceService:
     async def link_device(self, device_id: str, user_id: str) -> str:
         """
         Pairs a new device with a user and generates an access token.
+        If the device is already paired to the same user, it updates the token.
 
         Args:
             device_id (str): The device hardware ID.
@@ -144,18 +145,29 @@ class DeviceService:
             str: The plain text access token generated for the device.
 
         Raises:
-            ObjectAlreadyExistsError: If the device is already paired.
+            ObjectAlreadyExistsError: If the device is already paired to another user.
         """
         # Generate a token
-        plain_token = secrets.token_urlsafe(32)
+        plain_token = secrets.token_hex(32)
         hashed_token = hash_token(plain_token)
 
         existing_device = await self.repo.find_by_device_id(device_id)
 
         if existing_device:
-            raise ObjectAlreadyExistsError("Device already paired!") 
+            print(f"[DeviceService] Device {device_id} already exists. Owner: {existing_device.owner}, Requesting: {user_id}")
+            if existing_device.owner == user_id:
+                # Re-pair: update token
+                print(f"[DeviceService] Same owner. Updating token for device {device_id}")
+                await self.repo.update_one(
+                    {"device_id": device_id},
+                    {"$set": {"device_token": hashed_token}}
+                )
+            else:
+                print(f"[DeviceService] Different owner. Rejecting pairing for {device_id}")
+                raise ObjectAlreadyExistsError("Device already paired to another user!") 
         else:
             # New device
+            print(f"[DeviceService] Creating new pairing for device {device_id} and user {user_id}")
             new_device = Device(
                 device_id=device_id,
                 device_token=hashed_token,

@@ -38,6 +38,7 @@
 	import { chatStore } from '$lib/stores/chat.svelte';
 	import { selectionStore } from '$lib/stores/activeSelection.svelte';
 	import { skyEngine } from '$lib/stores/skyEngine.svelte';
+    import { executeFrontendAction, type ChatAction } from '$lib/utils/frontendActions';
 
     // So we can call fly whenever we want
     let skyMap = $state<ReturnType<typeof SkyMap3D>>();
@@ -154,15 +155,9 @@
             untrack(() => {
                 // Grab the oldest action off the queue
                 const action = chatStore.consumeAction();
-                console.log("[Observation Page] Consumed action from chatStore:", action);
-                
-                if (action?.type === 'fly_to_constellation') {
-                    skyMap?.flyToConstellation(action.abbr);
-                } 
-                else if (action?.type === 'focus_object') {
-                    // Call the store
-                    selectionStore.select(action.id, action.objectType as 'sidereal' | 'planetary');
-                    skyMap?.selectObject(action.id);
+                if (action) {
+                    console.log("[Observation Page] Consumed action from chatStore:", action);
+                    executeFrontendAction(action, {skyMap, selectionStore});
                 }
             });
         }
@@ -171,6 +166,7 @@
     onMount(() => {
         posInterval = setInterval(pollTelescopePosition, 1000);
         return () => {
+            chatStore.clearPendingActions();
             if (!timeEngine.isLive) timeEngine.setLive(true);
             if (posInterval) clearInterval(posInterval);
         };
