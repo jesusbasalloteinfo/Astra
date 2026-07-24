@@ -142,6 +142,23 @@ export abstract class AbstractPlanetaryObject {
     }
 
     /**
+     * Dynamically updates the display name of this entity and updates its text label sprite.
+     */
+    public setName(newName: string) {
+        if (this.name !== newName && newName) {
+            (this as any).name = newName;
+            this.labelObj.name = newName;
+
+            const labelC = new THREE.Color(0xffffff);
+            if (this.lastDayFactor > 0) {
+                const daytimeBlue = new THREE.Color().setHSL(0.64, 1.0, 0.05);
+                labelC.lerp(daytimeBlue, this.lastDayFactor);
+            }
+            this.updateLabelText(this.labelObj, labelC.getHex());
+        }
+    }
+
+    /**
      * Sets the celestial position from Alt/Az coordinates in degrees.
      */
     public setPosition(alt: number, az: number) {

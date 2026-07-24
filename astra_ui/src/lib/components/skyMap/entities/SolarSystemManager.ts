@@ -207,7 +207,17 @@ export class SolarSystemManager {
             this.entities.forEach(e => e.updateDaylightLabel(quantizedDayFactor));
         }
 
-        // 5. Keep composite geometry positions updated
+        // 5. Sync localized entity names from catalog if loaded
+        if (catalogStore.isLoaded) {
+            this.entities.forEach((entity, id) => {
+                const meta = catalogStore.planetaryData[id];
+                if (meta && meta.name) {
+                    entity.setName(meta.name);
+                }
+            });
+        }
+
+        // 6. Keep composite geometry positions updated
         this.syncCompositeGeometry();
     }
 
