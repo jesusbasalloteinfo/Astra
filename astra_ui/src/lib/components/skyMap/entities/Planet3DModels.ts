@@ -16,16 +16,21 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-// src/lib/components/skyMap/entities/Planetary.ts
+// src/lib/components/skyMap/entities/Planet3DModels.ts
 
-import { SolarSystemManager } from './SolarSystemManager';
+import * as THREE from 'three';
+import { PLANET_CONFIGS as PLANET_ENTITY_CONFIGS, PlanetConfig } from './PlanetEntity';
+export { PLANET_ENTITY_CONFIGS as PLANET_CONFIGS };
+export type { PlanetConfig as Planet3DConfig };
 
 /**
- * Planetary
- * 
- * Legacy export alias for `SolarSystemManager` to maintain backwards compatibility
- * with existing engine imports and selection controller.
+ * Planet3DModels (Deprecated)
+ * 3D photorealistic planetary model logic has been refactored into entity classes:
+ * `MoonEntity` and `PlanetEntity`, managed by `SolarSystemManager`.
  */
-export class Planetary extends SolarSystemManager {}
-
-export { SolarSystemManager };
+export class Planet3DModels {
+    public group = new THREE.Group();
+    public getMeshes(): THREE.Mesh[] { return []; }
+    public update(): void {}
+    public dispose(): void {}
+}

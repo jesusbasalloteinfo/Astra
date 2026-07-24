@@ -171,7 +171,7 @@ export class SkyMap3DEngine {
                 daylightFade = this.environment.isAtmosphereEnabled() ? (1.0 - fade) : 1.0;
             }
             
-            this.planetary.update(skyEngine.positions, zoomFactor, daylightFade);
+            this.planetary.update(skyEngine.positions, zoomFactor, daylightFade, this.cameraCtrl.camera.fov);
             this.sidereal.update(skyEngine.positions, zoomFactor, daylightFade);
             this.environment.updateDaylight(daylightFade);
             this.constellations.update(skyEngine.positions, daylightFade);

@@ -76,7 +76,22 @@ export class SelectionController {
      * @private
      */
     private getHit(): { id: string, isPlanet: boolean } | null {
-        // First raycast. Planetary
+        // 1. Raycast 3D Planet Meshes (when zoomed in)
+        const meshes3D = this.planetary.get3DMeshes();
+        if (meshes3D.length > 0) {
+            const intersects3D = this.raycaster.intersectObjects(meshes3D, true);
+            if (intersects3D.length > 0) {
+                let obj: THREE.Object3D | null = intersects3D[0].object;
+                while (obj && !obj.userData?.planetId) {
+                    obj = obj.parent;
+                }
+                if (obj && obj.userData?.planetId) {
+                    return { id: obj.userData.planetId, isPlanet: true };
+                }
+            }
+        }
+
+        // 2. Raycast Planetary Points Mesh
         this.raycaster.params.Points.threshold = 10; // Big hitbox
         let intersects = this.raycaster.intersectObject(this.planetary.getPointsMesh(), false);
         
@@ -85,7 +100,7 @@ export class SelectionController {
             if (id) return { id, isPlanet: true };
         }
 
-        // Second raycast. Sidereal
+        // 3. Raycast Sidereal Points Mesh
         this.raycaster.params.Points.threshold = 5; // Smaller hitbox
         intersects = this.raycaster.intersectObject(this.sidereal.getPointsMesh(), false);
         

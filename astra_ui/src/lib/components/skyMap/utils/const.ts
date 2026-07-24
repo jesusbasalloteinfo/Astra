@@ -57,7 +57,7 @@ export const FOV_DEFAULT = 60;
  * Minimum Field of View (max zoom in).
  * @type {number}
  */
-export const FOV_MIN = 5;
+export const FOV_MIN = 0.5;
 
 /**
  * Maximum Field of View (max zoom out).
