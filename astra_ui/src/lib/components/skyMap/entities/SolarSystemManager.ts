@@ -180,7 +180,7 @@ export class SolarSystemManager {
             altAzToXYZ(sunVec, 0, sunPos.alt, sunPos.az);
 
             this.sunLight.position.set(sunVec[0], sunVec[1], sunVec[2]);
-            this.sunLight.target.position.set(0, 1.6, 0);
+            this.sunLight.target.position.set(0, 0, 0);
             this.sunLight.target.updateMatrixWorld();
 
             this.sun.update(sunPos.alt, sunPos.az, zoomFactor, daylightFade, currentFov);

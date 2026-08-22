@@ -20,7 +20,7 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { FOV_DEFAULT, FOV_MIN, FOV_MAX, ZOOM_SPEED, EYE_LEVEL, CAMERA_SPEED } from '../utils/const';
+import { FOV_DEFAULT, FOV_MIN, FOV_MAX, ZOOM_SPEED, CAMERA_SPEED } from '../utils/const';
 
 /**
  * CameraController
@@ -56,8 +56,8 @@ export class CameraController {
         // Initialize camera with a wide default Field of View
         this.camera = new THREE.PerspectiveCamera(FOV_DEFAULT, container.clientWidth / container.clientHeight, 0.1, 2000);
 
-        // Set camera at human eye level
-        this.camera.position.set(0, EYE_LEVEL, 0);
+        // Set camera at origin looking at center
+        this.camera.position.set(0, 0, 0.1);
 
         // Initialize OrbitControls for looking around
         this.controls = new OrbitControls(this.camera, container);
@@ -67,8 +67,8 @@ export class CameraController {
         this.controls.enableZoom = false; // Disable physical zoom (handled via FOV)
         this.controls.rotateSpeed = CAMERA_SPEED;
 
-        // Point the camera initially towards the North horizon
-        this.controls.target.set(0, EYE_LEVEL, -1);
+        // Point the camera initially towards the North horizon (target at origin, camera at +Z)
+        this.controls.target.set(0, 0, 0);
         this.controls.update();
 
         // ── Event Listeners ──

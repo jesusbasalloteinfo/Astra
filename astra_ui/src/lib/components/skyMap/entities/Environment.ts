@@ -132,7 +132,7 @@ export class Environment {
         this.groundMesh = new THREE.Mesh(geo, mat);
 
         // Position is exactly below the camera eye level by its radius amount
-        this.groundMesh.position.set(0, -GROUND_RADIUS, 0);
+        this.groundMesh.position.set(0, -GROUND_RADIUS - EYE_LEVEL, 0);
         this.groundMesh.renderOrder = 10;
         this.group.add(this.groundMesh);
 
@@ -159,7 +159,7 @@ export class Environment {
             const azRad = (180 - az) * (Math.PI / 180);
             sprite.position.set(
                 (DOME_RADIUS - 20) * Math.sin(azRad),
-                EYE_LEVEL,
+                0,
                 (DOME_RADIUS - 20) * Math.cos(azRad)
             );
             this.group.add(sprite);

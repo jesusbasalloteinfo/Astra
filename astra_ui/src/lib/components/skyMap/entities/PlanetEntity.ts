@@ -416,7 +416,7 @@ export class PlanetEntity extends AbstractPlanetaryObject {
             const ncpVector = new THREE.Vector3(0, Math.sin(latRad), -Math.cos(latRad)).normalize();
 
             this.modelRootGroup.up.copy(ncpVector);
-            this.modelRootGroup.lookAt(0, 1.6, 0);
+            this.modelRootGroup.lookAt(0, 0, 0);
 
             // Daytime atmosphere shader uniforms
             const dayFactor = 1.0 - daylightFade;

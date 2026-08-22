@@ -249,7 +249,7 @@ export class MoonEntity extends AbstractPlanetaryObject {
         const ncpVector = new THREE.Vector3(0, Math.sin(latRad), -Math.cos(latRad)).normalize();
 
         this.modelRootGroup.up.copy(ncpVector);
-        this.modelRootGroup.lookAt(0, 1.6, 0);
+        this.modelRootGroup.lookAt(0, 0, 0);
 
         // 4. Daytime Atmosphere Shader Uniforms & Depth Write Control
         const dayFactor = 1.0 - daylightFade; // 0.0 at night, 1.0 at full day
