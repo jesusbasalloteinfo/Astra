@@ -20,7 +20,7 @@
 <script lang="ts">
     import { page } from '$app/state';
     import { activeObs } from '$lib/stores/activeObservation.svelte';
-    import { CircleAlert, LoaderCircle } from 'lucide-svelte';
+    import { CircleAlert } from 'lucide-svelte';
     import { catalogStore } from '$lib/stores/skyCatalog.svelte';
     import { skyEngine } from '$lib/stores/skyEngine.svelte';
     import { timeEngine } from '$lib/stores/timeEngine.svelte';
@@ -29,7 +29,10 @@
     import { authStore } from '$lib/stores/auth.svelte';
     import { goto } from '$app/navigation';
     import { browser } from '$app/environment';
-	import { m } from '$lib/paraglide/messages';
+    import { fade } from 'svelte/transition';
+	import * as m from '$lib/paraglide/messages';
+    import Stars from '$lib/components/landingComponents/Stars.svelte';
+    import AppLogo from '$lib/components/AppLogo.svelte';
 
     let { children } = $props();
 
@@ -53,7 +56,7 @@
             skyEngine.isRunning = false;
             timeEngine.setLive(true);
             skyEngine.reset();
-            catalogStore.reset();
+            // Do not wipe catalogStore completely so re-entering the observation is instant!
             selectionStore.clear();
             activeObs.clear();
         };
@@ -69,26 +72,64 @@
             goto('/dashboard');
         }
     }
+
+    let isInitializing = $derived(activeObs.isLoading || (!catalogStore.isLoaded && !activeObs.error));
+
+    let loadingStatusText = $derived.by(() => {
+        if (activeObs.isLoading) {
+            return m.obs_load_step_session();
+        }
+        if (!catalogStore.isLoaded) {
+            return m.obs_load_step_ephemeris();
+        }
+        return m.obs_load_step_dome();
+    });
 </script>
 
-{#if activeObs.isLoading}
-    <!-- Loading stores -->
-    <div class="fixed inset-0 bg-secondary z-50 flex items-center justify-center p-6">
-        <div class="w-full max-w-md p-12 bg-panel border border-border rounded-3xl text-center relative overflow-hidden">
-            <div class="absolute -top-24 -left-24 w-48 h-48 bg-accent/10 blur-3xl rounded-full"></div>
+{#if isInitializing}
+    <div class="fixed inset-0 z-50 bg-astralanding-dark flex items-center justify-center overflow-hidden select-none" transition:fade={{ duration: 400 }}>
+        <Stars />
+
+        <!-- Central glow -->
+        <div class="absolute w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col items-center">
             
-            <div class="relative z-10">
-                <div class="w-16 h-16 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                    <LoaderCircle class="animate-spin" size={32} />
+            <!-- Logo with orbital loading ring -->
+            <div class="relative mb-10">
+                <!-- Spinning ring -->
+                <svg class="absolute -inset-6 w-[calc(100%+3rem)] h-[calc(100%+3rem)] animate-spin-slow">
+                    <circle 
+                        cx="50%" cy="50%" r="48%" 
+                        stroke="currentColor" 
+                        stroke-width="1" 
+                        fill="none" 
+                        class="text-blue-500/20"
+                    />
+                    <circle 
+                        cx="50%" cy="50%" r="48%" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        fill="none" 
+                        stroke-dasharray="60 180" 
+                        class="text-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.5)]"
+                    />
+                </svg>
+
+                <div class="relative bg-astralanding-dark rounded-full p-2">
+                    <AppLogo class="w-20 h-20 drop-shadow-[0_0_20px_rgba(37,99,235,0.5)]" />
                 </div>
-                <h2 class="text-xl font-bold text-copy-primary tracking-tight">
-                    {m.obs_load_title()}
-                </h2>
-                <p class="text-sm text-copy-muted mt-2 mb-6 font-mono uppercase tracking-widest text-[10px]">
-                    {m.obs_load_subtitle()}
-                </p>
-                <div class="w-full bg-border/30 h-1 rounded-full overflow-hidden">
-                    <div class="bg-accent h-full animate-progress-loading w-1/3"></div>
+            </div>
+
+            <div class="text-center px-4">
+                <h1 class="text-2xl font-bold text-white tracking-[0.2em] mb-1 truncate max-w-sm">
+                    {activeObs.current?.name?.toUpperCase() || m.name().toUpperCase()}
+                </h1>
+                
+                <div class="h-4 overflow-hidden">
+                    <p class="text-[10px] font-mono text-blue-400/70 tracking-widest uppercase">
+                        {loadingStatusText}
+                    </p>
                 </div>
             </div>
         </div>
@@ -114,16 +155,16 @@
         </div>
     </div>
 
-{:else if activeObs.current}
+{:else if activeObs.current && catalogStore.isLoaded}
     {@render children()}
 {/if}
 
 <style>
-    @keyframes progress-loading {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(300%); }
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
-    .animate-progress-loading {
-        animation: progress-loading 1.5s infinite linear;
+    .animate-spin-slow {
+        animation: spin-slow 1.5s linear infinite;
     }
 </style>

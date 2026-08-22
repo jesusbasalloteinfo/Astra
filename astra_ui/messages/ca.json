@@ -311,6 +311,9 @@
 
   "obs_load_title": "Carregant observació",
   "obs_load_subtitle": "Sincronitzant...",
+  "obs_load_step_session": "Sincronitzant sessió i telescopi...",
+  "obs_load_step_ephemeris": "Calculant efemèrides i catàleg celeste...",
+  "obs_load_step_dome": "Orientant cúpula 3D...",
 
   "obs_error_load_title": "Error carregant observació",
   "obs_error_load_btn": "Tornar al Taulell de control",

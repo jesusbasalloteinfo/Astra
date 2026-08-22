@@ -310,6 +310,9 @@
 
   "obs_load_title": "Loading observation",
   "obs_load_subtitle": "Synchronising...",
+  "obs_load_step_session": "Synchronizing session and telescope...",
+  "obs_load_step_ephemeris": "Calculating ephemeris and celestial catalog...",
+  "obs_load_step_dome": "Orienting 3D dome...",
 
   "obs_error_load_title": "Error loading observation",
   "obs_error_load_btn": "Return to Dashboard",

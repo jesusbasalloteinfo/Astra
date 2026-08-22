@@ -20,6 +20,7 @@
 <script lang="ts">
     import { onMount, untrack} from 'svelte'; 
     import { browser } from '$app/environment';
+    import { fade } from 'svelte/transition';
     import * as m from '$lib/paraglide/messages.js';
     import SkyMap3D from '$lib/components/skyMap/SkyMap3D.svelte';
     import TimeController from '$lib/components/observation/TimeController.svelte';
@@ -181,25 +182,23 @@
 <div class="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-auto text-copy-primary">
 
     <!-- 3D SkyMap -->
-    <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-black">
         {#if catalogStore.isLoaded}
-            <SkyMap3D 
-                bind:this={skyMap} 
-                {showGround} 
-                {solidGround}
-                {showConstellations} 
-                {showConstellationLabels}
-                {useLatinConstellations}
-                showAtmosphere={effectiveShowAtmosphere}
-                groundColor={simColors.ground}
-                constellationColor={simColors.constellations}
-                constellationLabelColor={simColors.constellationLabelColor}
-                cardinalColor={simColors.cardinal}
-                {cardinalLabels}
-            />
-        {:else}
-            <div class="w-full h-full flex flex-col items-center justify-center gap-4 bg-black">
-                <div class="w-12 h-12 border-4 border-accent/30 border-t-accent rounded-full animate-spin"></div>
+            <div in:fade={{ duration: 400 }} class="w-full h-full">
+                <SkyMap3D 
+                    bind:this={skyMap} 
+                    {showGround} 
+                    {solidGround}
+                    {showConstellations} 
+                    {showConstellationLabels}
+                    {useLatinConstellations}
+                    showAtmosphere={effectiveShowAtmosphere}
+                    groundColor={simColors.ground}
+                    constellationColor={simColors.constellations}
+                    constellationLabelColor={simColors.constellationLabelColor}
+                    cardinalColor={simColors.cardinal}
+                    {cardinalLabels}
+                />
             </div>
         {/if}
     </div>

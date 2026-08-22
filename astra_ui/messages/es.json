@@ -308,7 +308,10 @@
   "obs_title": "{obs_title} · {name}",
 
   "obs_load_title": "Cargando observación",
-  "obs_load_subtitle": "Sincronitzant...",
+  "obs_load_subtitle": "Sincronizando...",
+  "obs_load_step_session": "Sincronizando sesión y telescopio...",
+  "obs_load_step_ephemeris": "Calculando efemérides y catálogo celeste...",
+  "obs_load_step_dome": "Orientando cúpula 3D...",
 
   "obs_error_load_title": "Error cargando observación",
   "obs_error_load_btn": "Volver al Panel de control",
