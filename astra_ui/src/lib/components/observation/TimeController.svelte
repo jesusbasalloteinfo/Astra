@@ -65,19 +65,47 @@
         return `${y}-${m}-${d}T${h}:${min}`;
     };
 
+    let isFocused = $state(false);
+    let inputValue = $state(getLocalInputValue(timeEngine.local));
+    let inputEl = $state<HTMLInputElement | undefined>();
+
+    $effect(() => {
+        const currentLocal = getLocalInputValue(timeEngine.local);
+        if (!isFocused) {
+            inputValue = currentLocal;
+        }
+    });
+
     /**
-     * Handles manual time selection from the datetime-local input
-     * @param {Event} e - The input change event
+     * Commits the current input value to the timeEngine
      */
-    const handleTimeChange = (e: Event) => {
-        const value = (e.currentTarget as HTMLInputElement).value;
+    const commitTime = (value: string) => {
         if (!value) return;
 
         const localSelectedTime = new Date(value + 'Z').getTime(); 
+        if (isNaN(localSelectedTime)) return;
         
         const offsetMs = (locStore.active?.timezone || 0) * 3600000;
-        
         timeEngine.setTime(localSelectedTime - offsetMs);
+    };
+
+    /**
+     * Handles manual time selection from the datetime-local input
+     */
+    const handleTimeChange = (e: Event) => {
+        const value = (e.currentTarget as HTMLInputElement).value;
+        inputValue = value;
+        commitTime(value);
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            commitTime(inputValue);
+            inputEl?.blur();
+        } else if (e.key === 'Escape') {
+            inputValue = getLocalInputValue(timeEngine.local);
+            inputEl?.blur();
+        }
     };
 
     onMount(() => {
@@ -169,11 +197,14 @@
         </div>
         
         <input 
+            bind:this={inputEl}
             id="time-travel"
             type="datetime-local" 
-            value={getLocalInputValue(timeEngine.local)} 
+            bind:value={inputValue}
+            onfocus={() => { isFocused = true; }}
+            onblur={() => { isFocused = false; }}
             onchange={handleTimeChange}
-            onclick={(e) => (e.currentTarget as any).showPicker?.()}
+            onkeydown={handleKeyDown}
             class="bg-panel/40 border border-border rounded-xl px-2.5 lg:px-4 py-2 text-[11px] lg:text-xs font-mono text-copy-primary text-center landscape:text-left lg:text-left
                 focus:bg-panel/60 focus:border-accent/50 outline-none transition-all w-full lg:min-w-50 color-scheme-dark shadow-inner cursor-pointer"
         />
