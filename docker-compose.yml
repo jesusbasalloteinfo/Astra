@@ -73,7 +73,7 @@ services:
 
   astra_ui:
     container_name: astra_ui
-    restart: always
+    restart: unless-stopped
     build:
       context: ./astra_ui
       target: dev
@@ -113,7 +113,7 @@ services:
   litellm:
     image: ghcr.io/berriai/litellm:main-latest
     container_name: litellm
-    restart: always
+    restart: unless-stopped
     ports:
       - "5000:5000"
     volumes:
@@ -134,7 +134,7 @@ services:
   litellm_db:
     image: postgres:16-alpine
     container_name: litellm_db
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_DB: ${LLM_DB_NAME}
       POSTGRES_USER: ${LLM_DB_USER}

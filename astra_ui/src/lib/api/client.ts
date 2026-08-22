@@ -21,6 +21,7 @@ import axios from 'axios';
 import { goto } from '$app/navigation';
 import { endpoints } from './endpoints';
 import { browser } from '$app/environment'; 
+import { getLocale } from '$lib/paraglide/runtime.js';
 
 /**
  * Axios instance configured for the Astra API.
@@ -41,11 +42,12 @@ export const api = axios.create({
 const redirectToLogin = () => {
     if (!browser) return; // Avoid Node.js execution
     
+    // Clear stale/expired token
+    localStorage.removeItem('auth');
+
     const path = window.location.pathname;
-    const segments = path.split('/');
-    // Simple check: if first segment is a locale (en, es, ca)
-    const locale = ['en', 'es', 'ca'].includes(segments[1]) ? segments[1] : '';
-    const loginPath = locale ? `/${locale}/login` : '/login';
+    const locale = getLocale();
+    const loginPath = `/${locale}/login`;
 
     const redirect = encodeURIComponent(path + window.location.search);
     
