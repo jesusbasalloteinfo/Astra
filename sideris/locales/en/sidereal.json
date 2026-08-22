@@ -1,175 +1,1022 @@
 {
-    "s_J0645089-164258": {
-        "name": "Sirius",
-        "common_names": [
-            "Dog Star"
-        ],
-        "description": "Sirius is the absolute brightest star in the entire night sky, blazing with a staggering apparent magnitude of -1.46. Located just 8.6 light-years (81 trillion km / 51 trillion miles) away in the constellation Canis Major, it is a hot, main-sequence white star nearly twice as massive as our Sun and 25 times more luminous. Through binoculars or any telescope, it presents a brilliant, diamond-blue beacon that often flashes with vibrant, rainbow-like colors due to atmospheric turbulence near the horizon.",
-        "fun_fact": "Sirius is actually a stealthy double star system! Orbiting the brilliant main star is Sirius B, nicknamed 'the Pup'—the very first white dwarf star ever discovered. Though it has compressed the mass of our entire Sun into a sphere just slightly smaller than Earth, it glows so dimly at magnitude 8.5 that it was completely lost in the blinding glare of its massive companion until telescopes advanced enough to separate them.",
-        "visual_tip": "To spot Sirius, simply locate the three stars of Orion's Belt and draw an imaginary line straight down and to the left. As the winter sky's crown jewel, it is easily visible to the naked eye even from heavily light-polluted city centers, though you will need exceptional atmospheric stability and a 200 mm (8-inch) telescope with high magnification to split the blinding main star from its tiny white dwarf companion.",
-        "wikipedia_qid": "Q3409"
-    },
-    "s_J1950469+085205": {
-        "name": "Altair",
-        "description": "Altair is a brilliant, hot white A-type star shining as the twelfth-brightest star in the night sky with an apparent magnitude of 0.76. Located a mere 16.7 light-years (158 trillion km / 98 trillion miles) away in the constellation Aquila, it is a close cosmic neighbor that anchors the southern point of the famous Summer Triangle asterism. Through binoculars or a small telescope, it resolves as a piercing, steady white point of light that anchors the celestial Eagle's neck.",
-        "fun_fact": "Altair is a cosmic speed demon that is physically flattening itself! It spins on its axis at a blistering 860,000 km/h (530,000 mph), completing a full rotation in just 9 hours compared to our Sun's sluggish 25 days. This extreme centrifugal force stretches the star's equator outward so violently that its equatorial diameter is over 20 percent wider than its poles, turning the star into a flattened, oval-shaped pumpkin.",
-        "visual_tip": "To locate Altair, look high overhead during summer and autumn nights to find the Summer Triangle; Altair is the brightest star marking the lower, southern apex of the trio. It is flanked closely on either side by two fainter stars, Alshain and Tarazed, forming a distinctive three-star line that makes the constellation of Aquila immediately recognizable to the naked eye from anywhere.",
-        "wikipedia_qid": "Q12975"
-    },
-    "s_J0555103+072425": {
-        "name": "Betelgeuse",
-        "description": "Betelgeuse is a monstrous red supergiant star marking the eastern shoulder of Orion, shining as one of the most luminous stars visible to the naked eye with a variable apparent magnitude around 0.5. Located roughly 550 to 650 light-years (5.2 to 6.1 quadrillion km / 3.2 to 3.8 quadrillion miles) away, it is so staggeringly vast that if placed at the center of our solar system, its physical boundary would swallow Mercury, Venus, Earth, Mars, and stretch all the way out to the orbit of Jupiter. Through binoculars or a telescope, it boasts a deeply rich, warm cinnamon-orange hue that contrasts beautifully against the icy blue stars of winter.",
-        "fun_fact": "Betelgeuse is a ticking cosmic time bomb! It has burned through its core fuel so quickly that it is already in the final, volatile stages of its life and is guaranteed to explode as a spectacular supernova. When it finally detonates, the explosion will be so intense that it will shine as bright as a full Moon in our night sky, remaining completely visible in broad daylight for several months before slowly fading away forever.",
-        "visual_tip": "To spot Betelgeuse, simply look up at the famous constellation of Orion during winter nights to find the bright, distinct orange-red star marking his upper left shoulder. Because it is a semiregular variable star, its brightness constantly fluctuates over cycles of several hundred days; try comparing it with nearby Rigel or Aldebaran to see if it is currently dimming or brightening.",
-        "wikipedia_qid": "Q12124"
-    },
-    "s_J0231490+891550": {
-        "name": "Polaris",
-        "common_names": [
-            "North Star",
-            "Pole Star"
-        ],
-        "description": "Polaris is the legendary North Star, shining with a steady apparent magnitude of 2.0 as the brightest star in the constellation Ursa Minor. Located approximately 433 light-years (4.1 quadrillion km / 2.5 quadrillion miles) away, it holds a unique position in celestial mechanics because it sits almost perfectly aligned with Earth's northern rotational axis. While the rest of the entire night sky appears to wheel around it in vast circles over the hours, Polaris remains virtually motionless, acting as an unwavering cosmic compass for northern observers.",
-        "fun_fact": "Polaris is not a single star at all, but a complex triple star system hidden in plain sight! The bright point we see with the naked eye is a massive yellow supergiant star flanked closely by a tight companion, Polaris Ab, which orbits so close that it was only captured directly by the Hubble Space Telescope. Meanwhile, a third star, Polaris B, orbits much further out and has been quietly humming along in its wide path since ancient times.",
-        "visual_tip": "To easily locate Polaris, find the famous bowl of the Big Dipper and follow the two outer 'pointer' stars (Merak and Dubhe) upward in a straight line for about five times the distance between them. It marks the very tip of the Little Dipper's handle, and its altitude above your local northern horizon will always match your exact geographical latitude on Earth.",
-        "wikipedia_qid": "Q12980"
-    },
-    "d_J0534317+220102":{
-        "name": "Crab Nebula",
-        "common_names": [
-            "Crab",
-            "Tau A",
-            "Taurus A"
-        ],
-        "description": "The Crab Nebula (M1) is a spectacular supernova remnant spanning 11 light-years (104 trillion km / 65 trillion miles) across, representing the shattered remains of a massive star. Located about 6,500 light-years away in the constellation of Taurus, it shines at an apparent magnitude of 8.4 and appears through a small telescope as a faint, oval-shaped cloud. At its heart lies the Crab Pulsar—a super-dense neutron star compressed to a diameter of just 20 km (12 miles) but packing the mass of two suns—spinning 30 times per second to power the nebula's eerie, radiation-driven glow.",
-        "fun_fact": "We can track this nebula growing in real time! Recent space telescope data confirms its outer gas filaments are still blasting outward into deep space at a blistering 5.5 million km/h (3.4 million mph). This massive cloud expands so quickly that changes in its structure can be noticed in photographs taken just a few decades apart.",
-        "visual_tip": "To spot this historic cosmic cloud, look roughly 1 degree northwest of the star Zeta Tauri, which marks the southern horn of the bull. While 10x50 binoculars can reveal it as a dim, ghostly smudge under pristine dark skies, using a 150 mm (6-inch) or larger telescope with a UHC or OIII nebula filter will significantly sharpen its irregular boundaries and ragged edges.",
-        "wikipedia_qid": "Q10934"
-    },
-    "d_J1818451-134731":{
-        "name": "Eagle Nebula",
-        "common_names": [
-            "Star Queen",
-            "Pillars of Creation"
-        ],
-        "description": "The Eagle Nebula (M16) is a colossal emission nebula and active stellar nursery spanning roughly 70 by 55 light-years (660 trillion km / 410 trillion miles) across. Located 7,000 light-years away in the constellation Serpens, it shines with an apparent magnitude of 6.0 and appears through binoculars as a faint, glowing patch surrounding a compact cluster of newborn stars. At its core lies an intense star-forming environment illuminated by the ultraviolet radiation of the young open cluster NGC 6611, which sculpts and ionizes the surrounding clouds of cosmic hydrogen gas.",
-        "fun_fact": "This nebula houses the famous 'Pillars of Creation,' towering columns of cold gas and dust that stretch over 4 to 5 light-years (38 to 47 trillion km / 24 to 29 trillion miles) high. Recent high-resolution infrared analysis from space telescopes reveals that these monumental structures are actively being hollowed out and evaporated from within by the very proto-stars forming inside them, meaning the pillars are caught in a relentless, cosmic tug-of-war between creation and destruction.",
-        "visual_tip": "To spot M16, look in the southern sky near the borders of the constellations Serpens, Sagittarius, and Scutum. While binoculars and small 100 mm (4-inch) telescopes easily reveal the bright embedded star cluster, resolving the dark silhouettes of the central pillars requires a larger aperture telescope of 200 mm (8-inch) or more, paired with pristine dark skies and a UHC or OIII nebula filter to maximize gas cloud contrast.",
-        "wikipedia_qid": "Q11349"
-    },
-    "d_J1959363+224316":{
-        "name": "Dumbbell Nebula",
-        "common_names": [
-            "Diabolo Nebula"
-        ],
-        "description": "The Dumbbell Nebula (M27) is a massive planetary nebula spanning roughly 2.9 light-years (27.4 trillion km / 17.1 trillion miles) across, formed as an aging star shed its outer layers into deep space. Located 1,360 light-years away in the faint northern constellation Vulpecula, it shines with a relatively bright combined apparent magnitude of 7.5. Through standard binoculars under dark skies, it appears as a conspicuous, glowing misty patch, while a small 100 mm (4-inch) telescope transforms this cloud into an unmistakable, dual-lobed shape resembling a weights dumbbell or an apple core, illuminated by one of the largest known white dwarf stellar remnants.",
-        "fun_fact": "This object is a monumental first in scientific history! Discovered by Charles Messier in 1764, M27 was the very first planetary nebula ever observed in human history. Its misleading historical category name, 'planetary,' was coined later by astronomers who thought its green-blue glowing disc in primitive telescopes resembled gas giant planets like Uranus, even though it is actually a massive star's explosive gravstone.",
-        "visual_tip": "To spot M27, find the distinct arrow shape of the constellation Sagitta; the nebula sits roughly 3 degrees due north of the tip star, Gamma Sagittae. Because it possesses an unusually high surface brightness for a deep-sky gas cloud, it remains highly visible even under mild city light pollution, though threading an OIII nebula filter into your eyepiece will dramatically isolate its glowing oxygen gas structure and sharpen its iconic hourglass silhouette.",
-        "wikipedia_qid": "Q13628"
-    },
-    "d_J0042443+411607":{
-        "name": "Andromeda Galaxy",
-        "common_names": [
-            "And Nebula",
-            "Andromeda",
-            "Andromeda Nebula"
-        ],
-        "description": "The Andromeda Galaxy (M31) is a colossal spiral galaxy spanning roughly 220,000 light-years (2.1 sextillion km / 1.3 sextillion miles) across, making it the largest member of our Local Group. Located 2.5 million light-years away in the constellation Andromeda, it glows with a bright apparent magnitude of 3.4, making it easily visible to the naked eye under dark skies as a milky, elongated smudge. Through small telescopes or binoculars, observers can easily resolve its brilliant, condensed galactic core and trace the soft, sweeping glow of its inner disc structure, which is flanked by two prominent satellite dwarf galaxies, M32 and M110.",
-        "fun_fact": "Andromeda and the Milky Way are locked in a high-speed gravitational dance! Recent astrophysical data confirms that Andromeda is hurtling toward us at approximately 400,000 km/h (250,000 mph). In about 4.5 billion years, our two galaxies will violently collide and merge into a single, massive elliptical galaxy, completely reshaping the night sky and rearranging our solar system's galactic neighborhood.",
-        "visual_tip": "To spot M31, look for the 'Great Square of Pegasus' and follow the stars of Andromeda upward to Mirach, then hop slightly northwest to find the galaxy. Because M31 spans an immense area in the sky—nearly six times the width of a full Moon—it actually looks best through wide-field 10x50 binoculars or low-magnification small telescopes, as high magnification will narrow your field of view so much that you will only see its bright core and miss the outer spiral disc entirely.",
-        "wikipedia_qid": "Q2469"
-    },
-    "d_J0133508+303936":{
-        "name": "Triangulum Galaxy",
-        "common_names": [
-            "Triangulum Pinwheel"
-        ],
-        "description": "The Triangulum Galaxy (M33) is a majestic spiral galaxy spanning roughly 60,000 light-years (570 trillion km / 350 trillion miles) across, making it the third-largest member of our Local Group behind Andromeda and the Milky Way. Located 2.7 million light-years away in the small constellation Triangulum, it glows with a total integrated apparent magnitude of 5.7, putting it right on the edge of naked-eye visibility under exceptional dark skies. Through standard binoculars, it surfaces as a wide, ghostly oval smudge, while a small telescope reveals a bright, distinct core flanked by loose, expansive spiral arms that host some of the largest star-forming regions in the known universe.",
-        "fun_fact": "This galaxy contains a cosmic monster called NGC 604, a stellar nursery so insanely huge that it completely dwarfs our own Orion Nebula. Spanning a mind-boggling 1,500 light-years across, this single emission nebula inside M33 is over 60 times larger than M42 and is powered by a central cluster of more than 200 massive, newborn stars, making it one of the most violent and active starburst hubs in our entire galactic neighborhood.",
-        "visual_tip": "To easily find M33, look roughly halfway between the bright star Mirach in Andromeda and Hamal in Aries. Because its massive physical size is spread across an area of sky nearly four times larger than a full Moon, its surface brightness is extremely low and easily washed out by city lights; you must observe from a pristine, moonless dark-sky site using low-magnification wide-field binoculars or a small telescope to keep its faint, delicate spiral disks from disappearing into the background.",
-        "wikipedia_qid": "Q13724"
-    },
-    "d_J0535168-052315":{
-        "name": "Great Orion Nebula",
-        "common_names": [
-            "Ori Nebula",
-            "Orion Nebula"
-        ],
-        "description": "The Orion Nebula (M42) is a massive, blisteringly bright stellar nursery spanning 24 light-years (227 trillion km / 141 trillion miles) across, where hundreds of new stars are currently bursting into life. Located 1,350 light-years away in the constellation Orion, it shines at a magnificent apparent magnitude of 4.0, making it clearly visible to the naked eye as a fuzzy star in Orion's Sword. Through binoculars or a small telescope, it transforms into a breathtaking, sweeping bat-winged canopy of glowing gas and dust centered around the Trapezium—a tight, brilliant cluster of four newborn supermassive stars whose intense ultraviolet light illuminates the entire complex.",
-        "fun_fact": "This cosmic cradle is actually a major chemistry lab! High-resolution infrared sweeps from modern space telescopes have detected massive quantities of complex organic molecules—including carbon compounds, water vapor, and precursor ingredients for life—swirling inside the planetary disks around these infant stars. This means that as we look at M42, we are watching the chemical seeds of future planetary systems being actively brewed in real time.",
-        "visual_tip": "To easily locate M42, look directly below Orion's famous three-star belt to find the vertical line of stars making up his sword—the nebula is the middle 'star' of the blade. Because it is so bright, you can easily enjoy its ghostly, fan-shaped glow even from a suburban backyard, but using a 100 mm (4-inch) or larger telescope under dark skies with an OIII or UHC filter will dramatically reveal the intricate dark dust lanes cutting through its glowing core.",
-        "wikipedia_qid": "Q13903"
-    },
-    "d_J0346379+241041":{
-        "name": "Pleiades",
-        "common_names": [
-            "Seven Sisters"
-        ],
-        "description": "The Pleiades (M45), also known as the Seven Sisters, is a spectacular open star cluster dominating a core physical radius of 8 light-years (75 trillion km / 47 trillion miles), with its gravitational tidal footprint stretching out to 43 light-years. Located roughly 444 light-years away in the constellation Taurus, it is the closest Messier object to Earth and burns with a brilliant combined apparent magnitude of 1.6. To the unaided eye under dark skies, it resembles a tiny, glittering dipper of six to seven hot, blue-white B-type stars, which explode into a dense field of over 1,000 stellar members when viewed through standard binoculars or low-magnification telescopes.",
-        "fun_fact": "For decades, astronomers were locked in a fierce cosmic mystery known as the 'Pleiades Distance Controversy' because the Hipparcos satellite incorrectly measured the cluster as much closer than it actually was. High-precision mapping from the recent ESA Gaia mission finally settled the historic debate, utilizing pinpoint geometric parallax to solidly fix the distance at 444 light-years, which proved the satellite's calibrations were flawed and fundamentally saved our standard models of how young stars evolve.",
-        "visual_tip": "To easily find M45, look above the constellation Orion or follow a straight line through the three stars of Orion's Belt upward past the bright orange star Aldebaran. Because this immense star cluster covers more than 2 degrees of the night sky—which is roughly four times the diameter of a full Moon—it will quickly spill out of your view at high power; it is best observed through wide-field 10x50 binoculars or low-magnification small telescopes, where you can also search for the faint, ghostly blue glow of the Merope Reflection Nebula enveloping the stars.",
-        "wikipedia_qid": "Q13423"
-    },
-    "d_J1329526+471142":{
-        "name": "Whirlpool Galaxy",
-        "common_names": [
-            "Question Mark Galaxy",
-            "Whirlpool"
-        ],
-        "description": "The Whirlpool Galaxy (M51) is a classic, grand-design spiral galaxy spanning roughly 76,000 light-years (720 trillion km / 450 trillion miles) across, famously locked in a cosmic tug-of-war with a smaller companion galaxy, NGC 5195. Located 23 million light-years away in the constellation Canes Venatici, it glows at an apparent magnitude of 8.4 and looks like a soft, dual-headed smudge through small binoculars under pristine conditions. A small 100 mm (4-inch) telescope clearly separates the two galactic cores, while mid-sized instruments reveal the faint, ethereal bridge of tidal stars and gas connecting them.",
-        "fun_fact": "This object is a historic milestone in astronomy! In 1845, William Parsons (the 3rd Earl of Rosse) used his monstrous 1.83m (72-inch) telescope to sketch M51, making it the very first celestial object ever recognized to possess a spiral structure. Long before anyone knew 'galaxies' existed outside our own, his famous drawings of M51's whirlpool-like arms provided the foundational visual proof that directly inspired our modern understanding of the sprawling, spinning universe.",
-        "visual_tip": "To spot M51, locate Alkaid—the star at the very tip of the Big Dipper's handle—and look roughly 3.5 degrees to the southwest. While it can be glimpsed as a ghostly cloud in 10x50 binoculars on an ink-black, moonless night, you will need a 200 mm (8-inch) or larger telescope paired with high magnification to clearly resolve the grand-design spiral arms curling away from its bright core.",
-        "wikipedia_qid": "Q13957"
-    },
-    "d_J1853350+330144":{
-        "name": "Ring Nebula",
-        "description": "The Ring Nebula (M57) is a quintessential planetary nebula representing the shell of ionized gas cast off by a dying, sun-like star, stretching roughly 1.3 light-years (12.3 trillion km / 7.6 trillion miles) in diameter. Located 2,300 light-years away in the northern constellation Lyra, it glows at an apparent magnitude of 8.8 and appears through binoculars or a very small telescope as a small, ghostly green-gray disc that is easily mistaken for a distant planet. A moderate 150 mm (6-inch) telescope under dark skies beautifully transforms this smudge into a distinct, hollow cosmic smoke ring floating against the backdrop of deep space, illuminated from within by a fiercely hot white dwarf star.",
-        "fun_fact": "The Ring Nebula is actually a massive cosmic illusion! High-resolution three-dimensional mapping combining visible light and infrared data shows that M57 is not a simple hollow bubble or circle at all, but rather an elongated, barrel-shaped cylinder of gas seen almost directly down its open end. As we look at the nebula from Earth, we are peering straight down the pipe of a stellar barrel, catching the violent geometric expansion of a star's final death throes from a front-row perspective.",
-        "visual_tip": "To easily find M57, locate the bright star Vega and trace the small, distinct parallelogram of stars that forms the body of Lyra; the nebula sits almost perfectly halfway between the two bottom stars, Sheliak and Sulafat. While a 100 mm (4-inch) telescope will readily reveal the dark-centered ring shape, you will need a large 250 mm (10-inch) or bigger instrument pushed to exceptionally high magnification on a steady, moonless night to catch a glimpse of the incredibly faint magnitude 15.7 white dwarf star resting at its absolute center."
-
-    },
-    "d_J1315492+420145": {
-        "name": "Sunflower Galaxy",
-        "description": "The Sunflower Galaxy (M63) is a striking flocculent spiral galaxy spanning roughly 98,000 light-years (930 trillion km / 580 trillion miles) across, characterized by a tightly wound, patch-like arrangement of star-forming arms. Located 27 million light-years away in the constellation Canes Venatici, it glows with an apparent magnitude of 8.6 and appears through small telescopes as a bright, compact oval haze with a highly condensed core. Medium-sized instruments of 150 mm (6 inches) or more beautifully reveal the grainy, multi-armed texture surrounding its nucleus, which visually mimics the dense arrangement of seeds in a sunflower.",
-        "fun_fact": "This galaxy is an outstanding example of a 'flocculent' spiral, meaning its spiral arms are patchy and discontinuous rather than long and sweeping. Recent deep-field imaging and space telescope studies have mapped an immense, looping system of faint stellar tidal streams wrapping around M63, which are the ghostly structural remnants of a smaller satellite galaxy that the Sunflower Galaxy completely tore apart and cannibalized roughly 5 billion years ago.",
-        "visual_tip": "To easily locate M63, trace a path roughly one-third of the way from Cor Caroli (Alpha Canum Venaticorum) to Alkaid at the tip of the Big Dipper's handle. Because of its high surface brightness, it stands up better to light pollution than the nearby Whirlpool Galaxy, but you will need a 200 mm (8-inch) or larger telescope paired with low-magnification, wide-field eyepieces to discern where its bright core ends and its delicate, mottled outer fringes begin.",
-        "wikipedia_qid": "Q13981"
-    },
-    "d_J1256436+214057": {
-        "name": "Black Eye Galaxy",
-        "common_names": [
-            "Sleeping Beauty",
-            "Black Eye Galaxy",
-            "Evil Eye Galaxy"
-        ],
-        "description": "The Black Eye Galaxy (M64) is an extraordinary spiral galaxy spanning roughly 54,000 light-years (510 trillion km / 320 trillion miles) across, instantly recognizable by the massive, sweeping silhouette of dark interstellar dust obscuring its brilliant core. Located 17 million light-years away in the constellation Coma Berenices, it glows with an apparent magnitude of 8.5 and can be easily glimpsed through large binoculars as a soft, bright oval under dark skies. A small 100 mm (4-inch) telescope beautifully isolates its high-contrast nucleus, revealing the prominent, dark-lidded band of cosmic dust that gives the galaxy its iconic, bruised appearance.",
-        "fun_fact": "This galaxy possesses one of the most bizarre internal dynamics in the universe—it rotates in two opposite directions at once! While the stars and inner molecular gas disk spin clockwise out to a radius of 3,000 light-years, the massive cloud of hydrogen gas in its outer disk spins completely counterclockwise. Breakthrough deep-field imaging confirmed that this violent atmospheric clash was caused by M64 entirely swallowing a hydrogen-rich satellite dwarf galaxy over a billion years ago, turning their boundary zone into a highly compressed, turbulent starburst factory.",
-        "visual_tip": "To locate M64, sweep your telescope roughly 5 degrees northwest of the star Diadem (Alpha Comae Berenices). Because its core structure has an unusually high surface brightness, it is a remarkably resilient target that stands up well against moderate city light pollution. However, to clearly resolve the delicate space between the glowing central core and the deep, ink-black dust lane wrapped around it, you will need a 150 mm (6-inch) or larger telescope paired with steady, high-magnification viewing on a moonless night.",
-        "wikipedia_qid": "Q13983"
-    },
-    "d_J0955331+690355": {
-        "name": "Bode's Galaxy",
-        "description": "Bode's Galaxy (M81) is a magnificent grand-design spiral galaxy spanning roughly 90,000 light-years (850 trillion km / 530 trillion miles) across, boasting nearly perfect, symmetric star-forming arms. Located 12 million light-years away in the northern constellation Ursa Major, it shines with a brilliant combined apparent magnitude of 6.9, making it one of the brightest galaxies in the night sky. Through standard binoculars, it is easily visible as a bright, distinct oval haze with a highly condensed core, while small telescopes under dark skies begin to map out the glowing envelope of its majestic outer disk.",
-        "fun_fact": "Bode's Galaxy is currently locked in a violent gravitational dance with its close neighbor, the Cigar Galaxy (M82). Roughly 300 million years ago, the two galaxies executed a close flyby that triggered massive tidal shockwaves through both systems. This cosmic encounter stripped gas away to form an immense hydrogen bridge connecting them, while simultaneously funneling vast amounts of raw material into M81's core, feeding its central supermassive black hole—which weighs a staggering 70 million times the mass of our Sun.",
-        "visual_tip": "To easily find M81, locate the two pointer stars of the Big Dipper's bowl (Merak and Dubhe) and draw an imaginary line through them, continuing it out into deep space for roughly an equal distance to the northwest. Because it has an exceptionally high surface brightness, it is a fantastic target for city-dwellers and can be viewed together with the Cigar Galaxy in a single low-magnification eyepiece field, though a 200 mm (8-inch) telescope under ink-black skies is needed to trace the intricate spiral patterns curling away from its core.",
-        "wikipedia_qid": "Q81102410"
-    },
-    "d_J1239594-113722": {
-        "name": "Sombrero Galaxy",
-        "common_names": [
-            "Sombrero"
-        ],
-        "description": "The Sombrero Galaxy (M104) is a breathtaking, unbarred spiral galaxy spanning roughly 50,000 light-years (470 trillion km / 290 trillion miles) across, instantly recognizable by its massive central bulge and a thick, dark rim of obscuring dust. Located 28 million light-years away in the constellation Virgo, it shines with a brilliant apparent magnitude of 8.0, making it an easy target for small instruments. Through standard binoculars under dark skies, it appears as a sharp, elongated needle of light, while a small 100 mm (4-inch) telescope clearly separates its brilliant core from the sweeping hat-like brim of its outer edge.",
-        "fun_fact": "This galaxy is an absolute cosmic heavyweight wrapped in a mystery! Modern space telescope surveys have revealed that the Sombrero Galaxy does not just have a normal cluster system, but hosts an astonishing swarm of nearly 2,000 globular clusters orbiting its nucleus—nearly ten times more than our entire Milky Way galaxy. Furthermore, precise orbital velocity tracking shows its central supermassive black hole is an absolute monster, packing the mass of one billion suns, making it one of the most massive black holes ever found in a nearby galaxy.",
-        "visual_tip": "To spot M104, look roughly 11 degrees due west of Spica, the brightest star in Virgo, or use the distinct four-star quadrilateral of Corvus the Crow to hop just across the border to the northeast. Because the galaxy is tilted nearly face-edge to our line of sight (just 6 degrees off), its surface brightness is extremely concentrated and stands up well to suburban light pollution, though a 200 mm (8-inch) or larger telescope paired with high magnification is required to visually slice its bright core with the ink-black lane of cosmic dust.",
-        "wikipedia_qid": "Q91461627"
-    },
-    "d_J0040220+414107": {
-        "name": "Messier 110",
-        "description": "Messier 110 (M110) is a smooth, structured dwarf elliptical galaxy spanning roughly 17,000 light-years (160 trillion km / 100 trillion miles) across, acting as the largest satellite companion to the massive Andromeda Galaxy. Located 2.7 million light-years away in the constellation Andromeda, it glows at an apparent magnitude of 8.1. Through small binoculars or low-magnification telescopes, it surfaces as a distinct, elongated ghostly oval drifting quietly just northwest of Andromeda's brilliant central core, showing a gradually brightening nucleus with no visible spiral arms.",
-        "fun_fact": "Despite being an ancient elliptical galaxy—a class normally considered 'dead' and devoid of star formation—M110 is keeping a hidden secret. Recent high-resolution interstellar gas mapping from space telescopes has detected a collection of young, hot blue stars nestled right at its center, alongside a surprising pair of dark cosmic dust clouds. This proves that this tiny companion galaxy has somehow retained enough raw materials to continuously birth brand-new stars within its core over the last few hundred million years.",
-        "visual_tip": "To spot M110, you must first center your telescope on the bright core of the Andromeda Galaxy (M31). Sweep your eyepiece roughly 35 arcminutes northwest of M31's nucleus to find this smooth oval cloud. Because it has a lower surface brightness than Andromeda's other prominent companion, M32, you will need a moonless night and a small 100 mm (4-inch) or larger telescope to clearly separate its soft outer boundaries from the glowing background light of the Andromeda system.",
-        "wikipedia_qid": "Q4662"
-    }
-
+  "s_J0231490+891550": {
+    "name": "Polaris",
+    "common_names": [
+      "North Star",
+      "Pole Star"
+    ],
+    "description": "Polaris is the legendary North Star, shining with a steady apparent magnitude of 2.0 as the brightest star in the constellation Ursa Minor. Located approximately 433 light-years (4.1 quadrillion km / 2.5 quadrillion miles) away, it holds a unique position in celestial mechanics because it sits almost perfectly aligned with Earth's northern rotational axis. While the rest of the entire night sky appears to wheel around it in vast circles over the hours, Polaris remains virtually motionless, acting as an unwavering cosmic compass for northern observers.",
+    "fun_fact": "Polaris is not a single star at all, but a complex triple star system hidden in plain sight! The bright point we see with the naked eye is a massive yellow supergiant star flanked closely by a tight companion, Polaris Ab, which orbits so close that it was only captured directly by the Hubble Space Telescope. Meanwhile, a third star, Polaris B, orbits much further out and has been quietly humming along in its wide path since ancient times.",
+    "visual_tip": "To easily locate Polaris, find the famous bowl of the Big Dipper and follow the two outer 'pointer' stars (Merak and Dubhe) upward in a straight line for about five times the distance between them. It marks the very tip of the Little Dipper's handle, and its altitude above your local northern horizon will always match your exact geographical latitude on Earth.",
+    "wikipedia_qid": "Q12980"
+  },
+  "s_J0555103+072425": {
+    "name": "Betelgeuse",
+    "description": "Betelgeuse is a monstrous red supergiant star marking the eastern shoulder of Orion, shining as one of the most luminous stars visible to the naked eye with a variable apparent magnitude around 0.5. Located roughly 550 to 650 light-years (5.2 to 6.1 quadrillion km / 3.2 to 3.8 quadrillion miles) away, it is so staggeringly vast that if placed at the center of our solar system, its physical boundary would swallow Mercury, Venus, Earth, Mars, and stretch all the way out to the orbit of Jupiter. Through binoculars or a telescope, it boasts a deeply rich, warm cinnamon-orange hue that contrasts beautifully against the icy blue stars of winter.",
+    "fun_fact": "Betelgeuse is a ticking cosmic time bomb! It has burned through its core fuel so quickly that it is already in the final, volatile stages of its life and is guaranteed to explode as a spectacular supernova. When it finally detonates, the explosion will be so intense that it will shine as bright as a full Moon in our night sky, remaining completely visible in broad daylight for several months before slowly fading away forever.",
+    "visual_tip": "To spot Betelgeuse, simply look up at the famous constellation of Orion during winter nights to find the bright, distinct orange-red star marking his upper left shoulder. Because it is a semiregular variable star, its brightness constantly fluctuates over cycles of several hundred days; try comparing it with nearby Rigel or Aldebaran to see if it is currently dimming or brightening.",
+    "wikipedia_qid": "Q12124"
+  },
+  "s_J0645089-164258": {
+    "name": "Sirius",
+    "common_names": [
+      "Dog Star"
+    ],
+    "description": "Sirius is the absolute brightest star in the entire night sky, blazing with a staggering apparent magnitude of -1.46. Located just 8.6 light-years (81 trillion km / 51 trillion miles) away in the constellation Canis Major, it is a hot, main-sequence white star nearly twice as massive as our Sun and 25 times more luminous. Through binoculars or any telescope, it presents a brilliant, diamond-blue beacon that often flashes with vibrant, rainbow-like colors due to atmospheric turbulence near the horizon.",
+    "fun_fact": "Sirius is actually a stealthy double star system! Orbiting the brilliant main star is Sirius B, nicknamed 'the Pup'—the very first white dwarf star ever discovered. Though it has compressed the mass of our entire Sun into a sphere just slightly smaller than Earth, it glows so dimly at magnitude 8.5 that it was completely lost in the blinding glare of its massive companion until telescopes advanced enough to separate them.",
+    "visual_tip": "To spot Sirius, simply locate the three stars of Orion's Belt and draw an imaginary line straight down and to the left. As the winter sky's crown jewel, it is easily visible to the naked eye even from heavily light-polluted city centers, though you will need exceptional atmospheric stability and a 200 mm (8-inch) telescope with high magnification to split the blinding main star from its tiny white dwarf companion.",
+    "wikipedia_qid": "Q3409"
+  },
+  "s_J1950469+085205": {
+    "name": "Altair",
+    "description": "Altair is a brilliant, hot white A-type star shining as the twelfth-brightest star in the night sky with an apparent magnitude of 0.76. Located a mere 16.7 light-years (158 trillion km / 98 trillion miles) away in the constellation Aquila, it is a close cosmic neighbor that anchors the southern point of the famous Summer Triangle asterism. Through binoculars or a small telescope, it resolves as a piercing, steady white point of light that anchors the celestial Eagle's neck.",
+    "fun_fact": "Altair is a cosmic speed demon that is physically flattening itself! It spins on its axis at a blistering 860,000 km/h (530,000 mph), completing a full rotation in just 9 hours compared to our Sun's sluggish 25 days. This extreme centrifugal force stretches the star's equator outward so violently that its equatorial diameter is over 20 percent wider than its poles, turning the star into a flattened, oval-shaped pumpkin.",
+    "visual_tip": "To locate Altair, look high overhead during summer and autumn nights to find the Summer Triangle; Altair is the brightest star marking the lower, southern apex of the trio. It is flanked closely on either side by two fainter stars, Alshain and Tarazed, forming a distinctive three-star line that makes the constellation of Aquila immediately recognizable to the naked eye from anywhere.",
+    "wikipedia_qid": "Q12975"
+  },
+  "d_J0040220+414107": {
+    "name": "Messier 110",
+    "description": "Messier 110 (M110) is a smooth, structured dwarf elliptical galaxy spanning roughly 17,000 light-years (160 trillion km / 100 trillion miles) across, acting as the largest satellite companion to the massive Andromeda Galaxy. Located 2.7 million light-years away in the constellation Andromeda, it glows at an apparent magnitude of 8.1. Through small binoculars or low-magnification telescopes, it surfaces as a distinct, elongated ghostly oval drifting quietly just northwest of Andromeda's brilliant central core, showing a gradually brightening nucleus with no visible spiral arms.",
+    "fun_fact": "Despite being an ancient elliptical galaxy—a class normally considered 'dead' and devoid of star formation—M110 is keeping a hidden secret. Recent high-resolution interstellar gas mapping from space telescopes has detected a collection of young, hot blue stars nestled right at its center, alongside a surprising pair of dark cosmic dust clouds. This proves that this tiny companion galaxy has somehow retained enough raw materials to continuously birth brand-new stars within its core over the last few hundred million years.",
+    "visual_tip": "To spot M110, you must first center your telescope on the bright core of the Andromeda Galaxy (M31). Sweep your eyepiece roughly 35 arcminutes northwest of M31's nucleus to find this smooth oval cloud. Because it has a lower surface brightness than Andromeda's other prominent companion, M32, you will need a moonless night and a small 100 mm (4-inch) or larger telescope to clearly separate its soft outer boundaries from the glowing background light of the Andromeda system.",
+    "wikipedia_qid": "Q4662"
+  },
+  "d_J0042418+405154": {
+    "name": "Messier 32",
+    "common_names": [
+      "Le Gentil's Dwarf"
+    ],
+    "description": "M 32 is a compact elliptical dwarf galaxy located approximately 2.49 million light-years away as a prominent satellite of the Andromeda Galaxy. Despite its small size, it is a dense, star-packed system that serves as a prototype for the rare compact elliptical class. Visually, it appears as a small, fuzzy, and remarkably bright patch of light nestled near the much larger disk of M31.",
+    "fun_fact": "M 32 is so densely packed with stars that its core contains over 30 million solar masses per cubic parsec, making it one of the most concentrated stellar environments in the local universe.",
+    "visual_tip": "Locate M 32 by first finding the Andromeda Galaxy (M31); it appears as a small, circular, star-like glow just south of M31's bright core. While it can be spotted with large binoculars under dark skies, a 4-inch or larger telescope is recommended to clearly distinguish its compact, elliptical shape from the surrounding galactic haze. No filters are required as it is a broadband light source.",
+    "wikipedia_qid": "Q13720"
+  },
+  "d_J0042443+411607": {
+    "name": "Andromeda Galaxy",
+    "common_names": [
+      "And Nebula",
+      "Andromeda",
+      "Andromeda Nebula"
+    ],
+    "description": "The Andromeda Galaxy (M31) is a colossal spiral galaxy spanning roughly 220,000 light-years (2.1 sextillion km / 1.3 sextillion miles) across, making it the largest member of our Local Group. Located 2.5 million light-years away in the constellation Andromeda, it glows with a bright apparent magnitude of 3.4, making it easily visible to the naked eye under dark skies as a milky, elongated smudge. Through small telescopes or binoculars, observers can easily resolve its brilliant, condensed galactic core and trace the soft, sweeping glow of its inner disc structure, which is flanked by two prominent satellite dwarf galaxies, M32 and M110.",
+    "fun_fact": "Andromeda and the Milky Way are locked in a high-speed gravitational dance! Recent astrophysical data confirms that Andromeda is hurtling toward us at approximately 400,000 km/h (250,000 mph). In about 4.5 billion years, our two galaxies will violently collide and merge into a single, massive elliptical galaxy, completely reshaping the night sky and rearranging our solar system's galactic neighborhood.",
+    "visual_tip": "To spot M31, look for the 'Great Square of Pegasus' and follow the stars of Andromeda upward to Mirach, then hop slightly northwest to find the galaxy. Because M31 spans an immense area in the sky—nearly six times the width of a full Moon—it actually looks best through wide-field 10x50 binoculars or low-magnification small telescopes, as high magnification will narrow your field of view so much that you will only see its bright core and miss the outer spiral disc entirely.",
+    "wikipedia_qid": "Q2469"
+  },
+  "d_J0133210+603912": {
+    "name": "Messier 103",
+    "description": "M 103 is a small open cluster of many faint stars located in the constellation Cassiopeia, approximately 9,400 light-years away. With an estimated age between 12.6 and 25 million years, the cluster contains about 172 stars gravitationally bound within a diameter of roughly 15 light-years.",
+    "fun_fact": "Although discovered by Pierre Méchain in 1781, it was the final deep-sky object added to Charles Messier's original catalogue.",
+    "visual_tip": "With an apparent magnitude of 7.4, it is visible through binoculars. Look for two prominent stars and a central red giant; be careful not to mistake the foreground double star Struve 131 for a cluster member.",
+    "wikipedia_qid": "Q14376"
+  },
+  "d_J0133508+303936": {
+    "name": "Triangulum Galaxy",
+    "common_names": [
+      "Triangulum Pinwheel"
+    ],
+    "description": "The Triangulum Galaxy (M33) is a majestic spiral galaxy spanning roughly 60,000 light-years (570 trillion km / 350 trillion miles) across, making it the third-largest member of our Local Group behind Andromeda and the Milky Way. Located 2.7 million light-years away in the small constellation Triangulum, it glows with a total integrated apparent magnitude of 5.7, putting it right on the edge of naked-eye visibility under exceptional dark skies. Through standard binoculars, it surfaces as a wide, ghostly oval smudge, while a small telescope reveals a bright, distinct core flanked by loose, expansive spiral arms that host some of the largest star-forming regions in the known universe.",
+    "fun_fact": "This galaxy contains a cosmic monster called NGC 604, a stellar nursery so insanely huge that it completely dwarfs our own Orion Nebula. Spanning a mind-boggling 1,500 light-years across, this single emission nebula inside M33 is over 60 times larger than M42 and is powered by a central cluster of more than 200 massive, newborn stars, making it one of the most violent and active starburst hubs in our entire galactic neighborhood.",
+    "visual_tip": "To easily find M33, look roughly halfway between the bright star Mirach in Andromeda and Hamal in Aries. Because its massive physical size is spread across an area of sky nearly four times larger than a full Moon, its surface brightness is extremely low and easily washed out by city lights; you must observe from a pristine, moonless dark-sky site using low-magnification wide-field binoculars or a small telescope to keep its faint, delicate spiral disks from disappearing into the background.",
+    "wikipedia_qid": "Q13724"
+  },
+  "d_J0136417+154701": {
+    "name": "Phantom Galaxy",
+    "description": "The Phantom Galaxy is a large, grand design spiral galaxy located approximately 32 million light-years away in the constellation Pisces. Home to about 100 billion stars, it is renowned for its two clearly defined spiral arms and face-on orientation, making it a primary target for professional astronomers studying spiral density waves.",
+    "fun_fact": "Due to its low surface brightness, it is widely considered the most difficult Messier object for amateur astronomers to spot.",
+    "visual_tip": "Because this galaxy is quite faint, find the darkest sky possible away from light pollution. Use averted vision and point your telescope toward the constellation Pisces; you will need patience and a telescope with a decent aperture to successfully resolve its diffuse structure.",
+    "wikipedia_qid": "Q14013"
+  },
+  "d_J0142196+513431": {
+    "name": "Little Dumbbell Nebula",
+    "common_names": [
+      "Barbell Nebula",
+      "Cork Nebula"
+    ],
+    "description": "The Little Dumbbell Nebula is a captivating planetary nebula located in the constellation Perseus, approximately 2,500 light-years away. This bipolar structure formed when a dying star ejected its outer layers, leaving behind an extremely hot white dwarf at its core.",
+    "fun_fact": "Due to its peculiar shape, early astronomers mistakenly thought it consisted of two separate nebulae, which is why it was historically assigned two different catalog numbers.",
+    "visual_tip": "To observe it, look for the constellation Perseus on a clear night. Use a medium-aperture telescope and averted vision, as its +10.1 magnitude makes it a faint object that requires dark skies to appreciate its central bar structure.",
+    "wikipedia_qid": "Q14015"
+  },
+  "d_J0242091+424402": {
+    "name": "Messier 34",
+    "common_names": [
+      "Spiral Cluster"
+    ],
+    "description": "Messier 34 is a large and relatively near open cluster located in the constellation Perseus. Situated about 1,500 light-years away, it contains approximately 400 stars that formed roughly 200 to 250 million years ago.",
+    "fun_fact": "This cluster acts as a miniature stellar graveyard, hosting at least 19 white dwarfs—the dense, cooling remnants of stars that were once significantly more massive than our Sun.",
+    "visual_tip": "Under very dark skies away from city lights, try to spot it with your naked eye. If you have trouble, use binoculars to resolve the individual stars more clearly.",
+    "wikipedia_qid": "Q13729"
+  },
+  "d_J0242407-000047": {
+    "name": "Messier 77",
+    "common_names": [
+      "Squid Galaxy"
+    ],
+    "description": "Messier 77 is a prominent barred spiral galaxy located approximately 35 million light-years away in the constellation Cetus. It is one of the brightest Seyfert galaxies visible from Earth, characterized by its active galactic nucleus and a diameter of about 90,000 light-years.",
+    "fun_fact": "Although discovered by Pierre Méchain in 1780 and initially described as a nebula, both Méchain and Charles Messier, along with William Herschel, originally classified this object as a star cluster before its true nature as a galaxy was understood.",
+    "visual_tip": "To find it, look toward the constellation Cetus. Use a medium-aperture telescope to observe this object; with an apparent magnitude of 8.9, it is a rewarding target for amateur astronomers interested in studying its spiral structure.",
+    "wikipedia_qid": "Q14017"
+  },
+  "d_J0346379+241041": {
+    "name": "Pleiades",
+    "common_names": [
+      "Seven Sisters"
+    ],
+    "description": "The Pleiades (M45), also known as the Seven Sisters, is a spectacular open star cluster dominating a core physical radius of 8 light-years (75 trillion km / 47 trillion miles), with its gravitational tidal footprint stretching out to 43 light-years. Located roughly 444 light-years away in the constellation Taurus, it is the closest Messier object to Earth and burns with a brilliant combined apparent magnitude of 1.6. To the unaided eye under dark skies, it resembles a tiny, glittering dipper of six to seven hot, blue-white B-type stars, which explode into a dense field of over 1,000 stellar members when viewed through standard binoculars or low-magnification telescopes.",
+    "fun_fact": "For decades, astronomers were locked in a fierce cosmic mystery known as the 'Pleiades Distance Controversy' because the Hipparcos satellite incorrectly measured the cluster as much closer than it actually was. High-precision mapping from the recent ESA Gaia mission finally settled the historic debate, utilizing pinpoint geometric parallax to solidly fix the distance at 444 light-years, which proved the satellite's calibrations were flawed and fundamentally saved our standard models of how young stars evolve.",
+    "visual_tip": "To easily find M45, look above the constellation Orion or follow a straight line through the three stars of Orion's Belt upward past the bright orange star Aldebaran. Because this immense star cluster covers more than 2 degrees of the night sky—which is roughly four times the diameter of a full Moon—it will quickly spill out of your view at high power; it is best observed through wide-field 10x50 binoculars or low-magnification small telescopes, where you can also search for the faint, ghostly blue glow of the Merope Reflection Nebula enveloping the stars.",
+    "wikipedia_qid": "Q13423"
+  },
+  "d_J0524105-243127": {
+    "name": "Messier 79",
+    "common_names": [],
+    "description": "Messier 79 is a globular cluster located approximately 42,000 light-years away from Earth in the constellation Lepus. It is believed to be an extragalactic object, likely originating from the Canis Major Dwarf Galaxy, which is currently being disrupted by the Milky Way's galactic tide.",
+    "fun_fact": "Messier 79 is one of the few globular clusters in the Messier catalog that is thought to be non-native to the Milky Way, potentially being part of the 'Gaia Sausage' remnants from an ancient galactic collision.",
+    "visual_tip": "To find it, look for the constellation Lepus just below Orion. Use a medium-aperture telescope on a clear night, as its magnitude of 8.57 makes it impossible to see with the naked eye; point your telescope toward the southern sky and use a star chart to pinpoint its faint, circular glow.",
+    "wikipedia_qid": "Q14019"
+  },
+  "d_J0528400+354908": {
+    "name": "Messier 38",
+    "common_names": [
+      "Starfish Cluster"
+    ],
+    "description": "Messier 38 is a bright open cluster of stars located in the constellation of Auriga, approximately 3,480 light-years away from Earth. It is a prominent member of a trio of famous open clusters in the region, often grouped together with M36 and M37.",
+    "fun_fact": "Although it appears close to the open cluster NGC 1907 in the night sky, the two are likely just experiencing a chance fly-by, as they originated in completely different parts of the galaxy.",
+    "visual_tip": "Look for this cluster in the constellation of Auriga. Use binoculars or a low-power telescope to best appreciate its scattered, cross-like shape, which gives the cluster its popular 'Starfish' nickname.",
+    "wikipedia_qid": "Q13880"
+  },
+  "d_J0534317+220102": {
+    "name": "Crab Nebula",
+    "common_names": [
+      "Crab",
+      "Tau A",
+      "Taurus A"
+    ],
+    "description": "The Crab Nebula (M1) is a spectacular supernova remnant spanning 11 light-years (104 trillion km / 65 trillion miles) across, representing the shattered remains of a massive star. Located about 6,500 light-years away in the constellation of Taurus, it shines at an apparent magnitude of 8.4 and appears through a small telescope as a faint, oval-shaped cloud. At its heart lies the Crab Pulsar—a super-dense neutron star compressed to a diameter of just 20 km (12 miles) but packing the mass of two suns—spinning 30 times per second to power the nebula's eerie, radiation-driven glow.",
+    "fun_fact": "We can track this nebula growing in real time! Recent space telescope data confirms its outer gas filaments are still blasting outward into deep space at a blistering 5.5 million km/h (3.4 million mph). This massive cloud expands so quickly that changes in its structure can be noticed in photographs taken just a few decades apart.",
+    "visual_tip": "To spot this historic cosmic cloud, look roughly 1 degree northwest of the star Zeta Tauri, which marks the southern horn of the bull. While 10x50 binoculars can reveal it as a dim, ghostly smudge under pristine dark skies, using a 150 mm (6-inch) or larger telescope with a UHC or OIII nebula filter will significantly sharpen its irregular boundaries and ragged edges.",
+    "wikipedia_qid": "Q10934"
+  },
+  "d_J0535168-052315": {
+    "name": "Great Orion Nebula",
+    "common_names": [
+      "Ori Nebula",
+      "Orion Nebula"
+    ],
+    "description": "The Orion Nebula (M42) is a massive, blisteringly bright stellar nursery spanning 24 light-years (227 trillion km / 141 trillion miles) across, where hundreds of new stars are currently bursting into life. Located 1,350 light-years away in the constellation Orion, it shines at a magnificent apparent magnitude of 4.0, making it clearly visible to the naked eye as a fuzzy star in Orion's Sword. Through binoculars or a small telescope, it transforms into a breathtaking, sweeping bat-winged canopy of glowing gas and dust centered around the Trapezium—a tight, brilliant cluster of four newborn supermassive stars whose intense ultraviolet light illuminates the entire complex.",
+    "fun_fact": "This cosmic cradle is actually a major chemistry lab! High-resolution infrared sweeps from modern space telescopes have detected massive quantities of complex organic molecules—including carbon compounds, water vapor, and precursor ingredients for life—swirling inside the planetary disks around these infant stars. This means that as we look at M42, we are watching the chemical seeds of future planetary systems being actively brewed in real time.",
+    "visual_tip": "To easily locate M42, look directly below Orion's famous three-star belt to find the vertical line of stars making up his sword—the nebula is the middle 'star' of the blade. Because it is so bright, you can easily enjoy its ghostly, fan-shaped glow even from a suburban backyard, but using a 100 mm (4-inch) or larger telescope under dark skies with an OIII or UHC filter will dramatically reveal the intricate dark dust lanes cutting through its glowing core.",
+    "wikipedia_qid": "Q13903"
+  },
+  "d_J0535309-051611": {
+    "name": "Mairan's Nebula",
+    "common_names": [],
+    "description": "Mairan's Nebula is a star-forming nebula located in the constellation of Orion, approximately 1,300 light-years away. While it is physically part of the larger Orion molecular cloud complex, it appears distinct from the main Orion Nebula due to a dense lane of cosmic dust.",
+    "fun_fact": "Unlike the nearby Orion Nebula, the primary ionizing star in this region, NU Orionis, is not hot enough to produce significant amounts of doubly ionized oxygen emission.",
+    "visual_tip": "Look for this nebula just to the northeast of the main Orion Nebula. Use a medium-aperture telescope to spot the dark lane that separates it from the main complex, giving it an appearance reminiscent of smoke rising from a chimney.",
+    "wikipedia_qid": "Q13906"
+  },
+  "d_J0536198+340802": {
+    "name": "Messier 36",
+    "common_names": [
+      "Pinwheel Cluster"
+    ],
+    "description": "Messier 36 is a young open cluster of stars located in the constellation Auriga, approximately 4,340 light-years from Earth. Often compared to the Pleiades for its stellar arrangement, this compact group contains bright, hot stars that formed roughly 25 million years ago.",
+    "fun_fact": "While it appears as a compact group of stars, the cluster contains a young stellar object with an outflow nicknamed 'Holoea', which is Hawaiian for 'flowing gas', though it is likely an independent object located further away.",
+    "visual_tip": "Look for this cluster in the constellation Auriga using binoculars or a small telescope. Point toward the center of the constellation and use averted vision to better appreciate its brightest stars, which stand out against the dark background.",
+    "wikipedia_qid": "Q13738"
+  },
+  "d_J0546458+000445": {
+    "name": "Messier 78",
+    "common_names": [
+      "Casper the Friendly Ghost Nebula"
+    ],
+    "description": "Messier 78 is a bright reflection nebula located in the constellation Orion, approximately 1,350 light-years from Earth. As part of the Orion B molecular cloud complex, it is the brightest diffuse reflection nebula in its group, illuminated by two hot B-type stars.",
+    "fun_fact": "Due to its distinct shape and the way dust clouds obscure its light, amateur astronomers have affectionately nicknamed it the 'Casper the Friendly Ghost' Nebula.",
+    "visual_tip": "Look for this nebula using a small telescope, where it appears as a hazy patch of light. Point your telescope toward the constellation Orion and use averted vision to better resolve the subtle details of its structure.",
+    "wikipedia_qid": "Q14018"
+  },
+  "d_J0552185+323235": {
+    "name": "Messier 37",
+    "common_names": [
+      "Salt and Pepper Cluster"
+    ],
+    "description": "Messier 37 is the brightest and richest open cluster in the constellation Auriga. Located approximately 4,500 light-years away, this stunning group contains over 500 stars, including at least a dozen red giants that give it a spectacular appearance.",
+    "fun_fact": "It is a fascinating object for astronomers because it contains one of the few known planetary nebulae associated with an open cluster.",
+    "visual_tip": "Look for this cluster in the constellation Auriga. While you can spot it with binoculars under dark skies, use a telescope to better appreciate the sheer number of stars; its dense, sparkling appearance is what earned it the nickname 'Salt and Pepper Cluster'.",
+    "wikipedia_qid": "Q13878"
+  },
+  "d_J0609074+242014": {
+    "name": "Messier 35",
+    "common_names": [
+      "Shoe-Buckle Cluster"
+    ],
+    "description": "Messier 35 is a bright, relatively close open cluster located in the constellation Gemini, approximately 2,970 light-years away. Spanning an area of the sky nearly the size of the full moon, it is a stunning target for amateur astronomers using binoculars or small telescopes.",
+    "fun_fact": "While they appear close together in the sky, the compact cluster NGC 2158 is actually located much further away than M35, creating a striking visual contrast of depth for observers.",
+    "visual_tip": "Look for this cluster in the western part of Gemini. Use binoculars to appreciate its wide, scattered appearance, and if you are using a telescope, point it toward the southwest to spot the small, dense cluster that sits right next to it in the same field of view.",
+    "wikipedia_qid": "Q13736"
+  },
+  "d_J0646031-204306": {
+    "name": "Messier 41",
+    "common_names": [],
+    "description": "This open cluster is located in the constellation Canis Major, approximately 2,360 light-years away. Spanning an area comparable to the size of the full moon, it contains about 100 stars, including several red giants and white dwarfs.",
+    "fun_fact": "The cluster has an estimated age of 200 million years, making it a relatively young object in astronomical terms.",
+    "visual_tip": "Look for the cluster about four degrees south of Sirius. It forms a roughly equilateral triangle with Sirius and the star Nu Canis Majoris, making it a fantastic target to view with binoculars.",
+    "wikipedia_qid": "Q13897"
+  },
+  "d_J0702472-082206": {
+    "name": "Messier 50",
+    "common_names": [
+      "Heart-shaped Cluster"
+    ],
+    "description": "This bright open cluster is located about 2,900 light-years away in the constellation Monoceros. At approximately 140 million years old, it is noted for its distinctive shape, which is often described as resembling a heart or a blunt arrowhead.",
+    "fun_fact": "While traditionally considered a single star cluster, research from 2025 revealed that it actually consists of two separate sub-clusters, making it a binary cluster system.",
+    "visual_tip": "Search for this cluster in the constellation Monoceros using binoculars or a small telescope. Point your instrument toward the region between Sirius and Procyon to locate it; you will see a dense grouping of stars shining at a magnitude of 5.9.",
+    "wikipedia_qid": "Q13956"
+  },
+  "d_J0736357-143015": {
+    "name": "Messier 47",
+    "common_names": [],
+    "description": "This open cluster is located about 1,600 light-years away in the constellation of Puppis. At approximately 78 million years old, it is dominated by hot, bright class B stars and features a striking color contrast provided by its resident red giants.",
+    "fun_fact": "M47 was considered a 'lost' Messier object for years because Messier recorded its position incorrectly. It wasn't until 1959 that an astronomer realized the object could be identified simply by swapping the plus and minus signs in Messier's original coordinates.",
+    "visual_tip": "Look for this cluster on a clear night; it is bright enough to be seen with the naked eye under dark skies. Use binoculars to resolve its brightest stars and try to spot the much older and more distant Messier 46, which sits just one degree away in the same field of view.",
+    "wikipedia_qid": "Q13942"
+  },
+  "d_J0741453-145042": {
+    "name": "Messier 46",
+    "common_names": [],
+    "description": "This stunning open cluster is located in the constellation Puppis, approximately 5,000 light-years away. It contains an estimated 500 stars and is roughly 251 million years old, making it a beautiful target for amateur astronomers.",
+    "fun_fact": "While it appears to lie within the cluster, the planetary nebula visible near its northern edge is actually a coincidental superposition and is not physically associated with the cluster's stars.",
+    "visual_tip": "Look for this cluster just one degree east of its neighbor, Messier 47. Use binoculars or a wide-angle telescope to fit both clusters into the same field of view for a fantastic observing experience.",
+    "wikipedia_qid": "Q13910"
+  },
+  "d_J0744345-235121": {
+    "name": "Messier 93",
+    "common_names": [
+      "Critter Cluster"
+    ],
+    "description": "Messier 93 is a bright open cluster located in the southern constellation of Puppis, representing the poop deck of the legendary ship Argo. Situated approximately 3,380 light-years away, it is well-known for its distinct triangular shape filled with young, luminous stars.",
+    "fun_fact": "With an estimated age of about 387 million years, this cluster is a relatively young stellar grouping, consisting of stars that formed nearly simultaneously from the same giant molecular cloud.",
+    "visual_tip": "Look for this cluster in the southern sky. While you can spot it with binoculars under very dark conditions, use a small telescope to better resolve the individual stars and clearly see its iconic butterfly or triangular pattern.",
+    "wikipedia_qid": "Q14347"
+  },
+  "d_J0813339-054310": {
+    "name": "Messier 48",
+    "common_names": [],
+    "description": "Messier 48 is an open cluster of stars located in the constellation Hydra, approximately 2,500 light-years away. With an estimated age of about 450 million years, this stellar grouping sits at an intermediate age between the well-known Pleiades and Hyades clusters.",
+    "fun_fact": "Charles Messier made an error in his original 1771 coordinates for this object, placing it five degrees off from its true position, which led to confusion regarding its identity for many years.",
+    "visual_tip": "Under good atmospheric conditions, try to spot it with the naked eye. If you cannot see it, use binoculars or a small telescope to scan the area east of the star Alphard; you will find a superb cluster of stars that fills the entire field of view.",
+    "wikipedia_qid": "Q13951"
+  },
+  "d_J0839583+193633": {
+    "name": "Beehive Cluster",
+    "common_names": [
+      "Praesepe"
+    ],
+    "description": "The Beehive Cluster is one of the nearest open clusters to Earth, located in the constellation Cancer. Containing around 1,000 stars and situated approximately 600 light-years away, it has been observed since ancient times as a distinct, nebulous object.",
+    "fun_fact": "Its age and proper motion are remarkably similar to those of the Hyades star cluster, leading astronomers to believe that both clusters may have shared a similar origin in the same region of space.",
+    "visual_tip": "Look for this cluster under dark skies; it appears as a small, fuzzy patch to the naked eye. Use binoculars or a low-powered telescope to easily resolve its many stars, as it spans a wide area of the sky.",
+    "wikipedia_qid": "Q13760"
+  },
+  "d_J0851235+114853": {
+    "name": "Messier 67",
+    "common_names": [
+      "King Cobra Cluster",
+      "Golden Eye Cluster"
+    ],
+    "description": "Messier 67 is a fascinating open cluster located in the constellation Cancer, at a distance of approximately 2,600 to 2,900 light-years. With an estimated age between 3.2 and 5 billion years, it is one of the oldest and most well-studied open clusters known to astronomers.",
+    "fun_fact": "Unlike most open clusters that disperse relatively quickly, M67 is unusually long-lived and contains hundreds of stars with a chemical composition very similar to that of our own Sun.",
+    "visual_tip": "Look for this cluster in the constellation Cancer using binoculars or a small telescope. With an apparent magnitude of 6.1, you will see a dense and beautiful grouping that stands out clearly against the background stars.",
+    "wikipedia_qid": "Q13997"
+  },
+  "d_J0955331+690355": {
+    "name": "Bode's Galaxy",
+    "description": "Bode's Galaxy (M81) is a magnificent grand-design spiral galaxy spanning roughly 90,000 light-years (850 trillion km / 530 trillion miles) across, boasting nearly perfect, symmetric star-forming arms. Located 12 million light-years away in the northern constellation Ursa Major, it shines with a brilliant combined apparent magnitude of 6.9, making it one of the brightest galaxies in the night sky. Through standard binoculars, it is easily visible as a bright, distinct oval haze with a highly condensed core, while small telescopes under dark skies begin to map out the glowing envelope of its majestic outer disk.",
+    "fun_fact": "Bode's Galaxy is currently locked in a violent gravitational dance with its close neighbor, the Cigar Galaxy (M82). Roughly 300 million years ago, the two galaxies executed a close flyby that triggered massive tidal shockwaves through both systems. This cosmic encounter stripped gas away to form an immense hydrogen bridge connecting them, while simultaneously funneling vast amounts of raw material into M81's core, feeding its central supermassive black hole—which weighs a staggering 70 million times the mass of our Sun.",
+    "visual_tip": "To easily find M81, locate the two pointer stars of the Big Dipper's bowl (Merak and Dubhe) and draw an imaginary line through them, continuing it out into deep space for roughly an equal distance to the northwest. Because it has an exceptionally high surface brightness, it is a fantastic target for city-dwellers and can be viewed together with the Cigar Galaxy in a single low-magnification eyepiece field, though a 200 mm (8-inch) telescope under ink-black skies is needed to trace the intricate spiral patterns curling away from its core.",
+    "wikipedia_qid": "Q81102410"
+  },
+  "d_J0955524+694046": {
+    "name": "Cigar Galaxy",
+    "common_names": [],
+    "description": "The Cigar Galaxy is a starburst galaxy located approximately 12 million light-years away in the constellation Ursa Major. It is about five times more luminous than the Milky Way, with its intense star-forming activity triggered by gravitational interactions with the neighboring galaxy M81.",
+    "fun_fact": "In 2023, a gamma-ray burst was observed in this galaxy originating from a magnetar, marking the first time such an event has been detected outside of the Milky Way.",
+    "visual_tip": "Locate the constellation Ursa Major and point your telescope toward the area near M81. Use a dark, clear night to observe its distinct, elongated shape that gives the galaxy its popular name.",
+    "wikipedia_qid": "Q14026"
+  },
+  "d_J1043577+114213": {
+    "name": "Messier 95",
+    "common_names": [],
+    "description": "Messier 95 is a barred spiral galaxy located approximately 33 million light-years away in the constellation Leo. It is well-known for its distinct morphological structure, featuring a prominent central bar surrounded by a ring-shaped star-forming region.",
+    "fun_fact": "The galaxy's inner ring is a massive star-forming factory, containing enough molecular gas to potentially form new globular clusters in the future.",
+    "visual_tip": "To find it, look towards the constellation Leo. Use a telescope with at least moderate aperture, as its magnitude of 9.6 makes it a challenging but rewarding target that benefits significantly from dark, clear skies.",
+    "wikipedia_qid": "Q14351"
+  },
+  "d_J1046457+114911": {
+    "name": "Messier 96",
+    "common_names": [],
+    "description": "Messier 96 is an intermediate spiral galaxy located approximately 31 million light-years away in the constellation Leo. Spanning about 78,000 light-years across, it serves as the brightest member of the galaxy group that bears its name.",
+    "fun_fact": "In 1998, a supernova designated SN 1998bu was discovered within this galaxy, providing astronomers with a valuable opportunity to refine distance measurements to this distant stellar system.",
+    "visual_tip": "Look for this galaxy in the constellation Leo during the spring months. Use a medium-aperture telescope and point toward the heart of the constellation; you will see a faint, diffuse glow that is best observed under dark, clear skies away from city lights.",
+    "wikipedia_qid": "Q14354"
+  },
+  "d_J1047495+123453": {
+    "name": "Messier 105",
+    "common_names": [],
+    "description": "Messier 105 is an elliptical galaxy located approximately 36.6 million light-years away in the constellation of Leo. It is the largest elliptical galaxy in the Messier catalogue that is not part of the Virgo cluster and is known to host a supermassive black hole at its core.",
+    "fun_fact": "Although it is an elliptical galaxy, which are typically considered 'dead' in terms of star formation, M105 contains a few young star clusters, suggesting that it is still capable of forming new stars, albeit very slowly.",
+    "visual_tip": "Look for this galaxy in the constellation of Leo using a medium-aperture telescope. Point your equipment toward the area near the galaxies M95 and M96, as all three form a visually striking group in the night sky.",
+    "wikipedia_qid": "Q14377"
+  },
+  "d_J1111309+554026": {
+    "name": "Messier 108",
+    "common_names": [
+      "Surfboard Galaxy"
+    ],
+    "description": "This barred spiral galaxy is located approximately 46 million light-years away in the constellation Ursa Major. Because of its orientation, it appears almost edge-on from Earth, giving it a distinct, elongated shape.",
+    "fun_fact": "The galaxy hosts a supermassive black hole at its core with an estimated mass of 24 million solar masses, though it shows no signs of active galactic nucleus activity.",
+    "visual_tip": "Look for this galaxy in Ursa Major using a medium-aperture telescope. Point your instrument near the star Merak and use averted vision to better resolve its elongated disk structure.",
+    "wikipedia_qid": "Q4751"
+  },
+  "d_J1114477+550108": {
+    "name": "Owl Nebula",
+    "common_names": [],
+    "description": "The Owl Nebula is a striking planetary nebula located approximately 2,030 light-years away in the constellation Ursa Major. Estimated to be about 8,000 years old, it features a complex, barrel-like internal structure that creates two dark, eye-like patches, giving the nebula its famous avian appearance.",
+    "fun_fact": "The nebula's owl-like appearance is not just a trick of the light; it is caused by an inner shell of gas that is not perfectly circular, but instead forms a barrel-like structure tilted at a 45-degree angle to our line of sight.",
+    "visual_tip": "Look for this object under dark, clear skies, as its surface brightness is quite low. Use a medium-to-large aperture telescope and employ averted vision to help reveal the subtle, dark 'eye' structures within the nebula's glow.",
+    "wikipedia_qid": "Q14359"
+  },
+  "d_J1118559+130532": {
+    "name": "Messier 65",
+    "common_names": [],
+    "description": "Messier 65 is an intermediate spiral galaxy located approximately 35 million light-years away in the constellation Leo. It is a prominent member of the Leo Triplet, a small, gravitationally interacting group of galaxies that includes two other neighboring spiral galaxies.",
+    "fun_fact": "Discovered by Charles Messier in 1780, this galaxy is classified as a LINER, meaning its nucleus exhibits a specific type of spectral emission from ionized gas.",
+    "visual_tip": "To find it, locate the constellation Leo and aim your telescope toward the region between the stars Chertan and Denebola. Use a dark, clear night to try and spot its elongated shape alongside its companions in the Leo Triplet.",
+    "wikipedia_qid": "Q13986"
+  },
+  "d_J1120150+125929": {
+    "name": "Messier 66",
+    "common_names": [
+      "Leo Triplet Galaxy"
+    ],
+    "description": "Messier 66 is an intermediate spiral galaxy located approximately 31 million light-years away in the constellation Leo. It is a prominent member of the Leo Triplet, a small group of galaxies that includes Messier 65, and is characterized by its spiral structure featuring a weak bar and loosely wound arms.",
+    "fun_fact": "Discovered by French astronomer Charles Messier on March 1, 1780, he originally recorded the galaxy in his notes as being 'very long and very faint'.",
+    "visual_tip": "To observe this object, point your telescope toward the constellation Leo. Look for the Leo Triplet, as Messier 66 and Messier 65 are separated by only 20 arcminutes, allowing you to view both within the same field of view using a moderate-power eyepiece.",
+    "wikipedia_qid": "Q13992"
+  },
+  "d_J1157359+532229": {
+    "name": "Messier 109",
+    "common_names": [
+      "Vacuum Cleaner Galaxy"
+    ],
+    "description": "Messier 109 is a barred spiral galaxy located approximately 67.2 million light-years away in the constellation Ursa Major. It is a notable example of a spiral galaxy with a distinct central bar and is classified as a LINER galaxy due to its specific nuclear spectral characteristics.",
+    "fun_fact": "The galaxy is affectionately nicknamed the 'Vacuum Cleaner Galaxy' by astronomers because of its distinct shape as seen in deep-sky imagery.",
+    "visual_tip": "To find it, look for the star Phecda in Ursa Major; point your telescope to the south-east of this star to bring the galaxy into your field of view.",
+    "wikipedia_qid": "Q4746"
+  },
+  "d_J1213482+145401": {
+    "name": "Messier 98",
+    "common_names": [],
+    "description": "Messier 98 is a spiral galaxy located in the constellation Coma Berenices. It is situated at a significant distance from us and is notable for its elongated shape and edge-on orientation.",
+    "fun_fact": "Unlike many other galaxies in the Virgo Cluster, Messier 98 is moving toward the Milky Way at a very high velocity, making it one of the few galaxies known to exhibit a significant blueshift.",
+    "visual_tip": "Look for this galaxy in the constellation Coma Berenices using a medium-aperture telescope. Given its magnitude, point your equipment toward the Virgo Cluster region on a clear night and use averted vision to spot its faint, elongated glow.",
+    "wikipedia_qid": "Q6794029"
+  },
+  "d_J1218496+142459": {
+    "name": "Messier 99",
+    "common_names": [
+      "Coma Pinwheel Galaxy"
+    ],
+    "description": "This spiral galaxy is a prominent member of the Virgo Cluster. It is well-known for its asymmetric structure and clearly defined spiral arms that extend into deep space.",
+    "fun_fact": "Messier 99 was one of the first galaxies in which a spiral structure was identified, a discovery that fundamentally changed our understanding of the cosmos.",
+    "visual_tip": "Look for this galaxy in the constellation Coma Berenices. Use a medium-aperture telescope on a clear, moonless night to better observe its spiral form.",
+    "wikipedia_qid": "Q4546943"
+  },
+  "d_J1218576+471813": {
+    "name": "Messier 106",
+    "common_names": [],
+    "description": "Messier 106 is an intermediate spiral galaxy located in the constellation Canes Venatici, approximately 24 million light-years away from Earth. It is notable for its active galactic nucleus, classified as a Type 2 Seyfert, which is powered by a central supermassive black hole.",
+    "fun_fact": "In addition to its two primary visible spiral arms, this galaxy features two 'anomalous arms' that are only detectable using X-ray telescopes, revealing the intense energetic activity occurring within the galaxy.",
+    "visual_tip": "Look for this galaxy within the constellation Canes Venatici. Use a medium-aperture telescope to observe its structure, as its magnitude of 8.4 makes it a rewarding target for amateur astronomers under dark skies.",
+    "wikipedia_qid": "Q4658"
+  },
+  "d_J1221549+042825": {
+    "name": "Messier 61",
+    "common_names": [
+      "Swelling Spiral Galaxy"
+    ],
+    "description": "Messier 61 is a stunning intermediate barred spiral galaxy located within the Virgo Cluster, approximately 52.5 million light-years away. It is a large, bright galaxy recognized for its intricate spiral structure and active star formation.",
+    "fun_fact": "It is a prolific supernova factory! Messier 61 holds the record for being one of the galaxies where the most supernovae have been detected in the history of modern astronomy.",
+    "visual_tip": "Look for this galaxy in the constellation Virgo. Use a medium-aperture telescope on a clear, dark night to best observe its bright core and spiral arms.",
+    "wikipedia_qid": "Q13978"
+  },
+  "d_J1222119+580459": {
+    "name": "Messier 40",
+    "common_names": [],
+    "description": "Messier 40 is a double star system located in the constellation Ursa Major. Although Charles Messier included it in his famous catalog while searching for nebulae, it is actually a pair of stars that are not physically related to each other.",
+    "fun_fact": "This object is famous in astronomy for being a 'false alarm' in Messier's catalog; unable to find the nebula he was looking for, he recorded this pair of stars by mistake.",
+    "visual_tip": "Look for the star Megrez in Ursa Major and point your telescope slightly to the northeast. Use moderate magnification to clearly distinguish the two component stars.",
+    "wikipedia_qid": "Q26910905"
+  },
+  "d_J1222549+154920": {
+    "name": "Messier 100",
+    "common_names": [
+      "Mirror Galaxy"
+    ],
+    "description": "Messier 100 is a grand design intermediate spiral galaxy located in the constellation Coma Berenices. Situated approximately 55 million light-years away, it stands out as one of the largest and brightest galaxies within the Virgo Cluster.",
+    "fun_fact": "It was one of the first spiral galaxies ever discovered and is estimated to contain around 400 billion stars.",
+    "visual_tip": "Look for this galaxy within the Coma Berenices constellation using a medium-aperture telescope. Point your instrument toward the heart of the Virgo Cluster and use averted vision to better resolve its spiral structure.",
+    "wikipedia_qid": "Q14365"
+  },
+  "d_J1225037+125313": {
+    "name": "Messier 84",
+    "common_names": [],
+    "description": "Messier 84 is a giant elliptical or lenticular galaxy located in the heart of the Virgo Cluster, approximately 55 million light-years away. Discovered by Charles Messier in 1781, this galaxy is notable for harboring a supermassive black hole at its core and being surrounded by a massive dark matter halo.",
+    "fun_fact": "Observations from the Hubble Space Telescope have revealed two jets of matter shooting out from its center, as well as a disk of rapidly rotating gas and stars indicating the presence of a massive supermassive black hole.",
+    "visual_tip": "To find it, look toward the constellation Virgo. Use a medium-aperture telescope to spot its faint glow, as it has an apparent magnitude of 9.1; aim for the dense core of the Virgo Cluster and compare the field of view with a detailed star map.",
+    "wikipedia_qid": "Q92258118"
+  },
+  "d_J1225240+181127": {
+    "name": "Messier 85",
+    "common_names": [],
+    "description": "Messier 85 is a lenticular galaxy located in the constellation Coma Berenices, approximately 60 million light-years away. It is one of the brightest members of the Virgo Cluster and features a smooth, elliptical appearance with a highly luminous core.",
+    "fun_fact": "Despite its quiet appearance, this galaxy shows signs of past interactions with neighboring galaxies, which have left behind faint tidal streams of stars in its outer regions.",
+    "visual_tip": "Look for this galaxy on a clear night using a medium-aperture telescope. Point your equipment toward the constellation Coma Berenices and use averted vision to better perceive its faint central glow.",
+    "wikipedia_qid": "Q5630338"
+  },
+  "d_J1226118+125645": {
+    "name": "Messier 86",
+    "common_names": [],
+    "description": "Messier 86 is a bright elliptical or lenticular galaxy located in the heart of the Virgo Cluster, approximately 52 million light-years away. It is notable for displaying the highest blue shift of all Messier objects, as it is rapidly approaching the Milky Way while falling toward the center of the cluster.",
+    "fun_fact": "As it moves at high speed through the intracluster medium, the galaxy experiences ram-pressure stripping, which leaves behind a long, visible trail of X-ray-emitting hot gas that has been captured by the Chandra space telescope.",
+    "visual_tip": "Look for this galaxy in the constellation of Virgo. Use a medium-aperture telescope to observe its brightness and compare it with its neighbor, Messier 84, as they form a very conspicuous pair in the sky.",
+    "wikipedia_qid": "Q92258250"
+  },
+  "d_J1229467+080001": {
+    "name": "Messier 49",
+    "common_names": [],
+    "description": "Messier 49 is a giant elliptical galaxy located approximately 56 million light-years away in the constellation of Virgo. It was the first member of the Virgo Cluster to be discovered and remains the most luminous galaxy within that cluster.",
+    "fun_fact": "This galaxy hosts an impressive population of about 5,900 globular clusters, which is significantly more than the roughly 200 clusters orbiting our own Milky Way.",
+    "visual_tip": "Look for this galaxy in the constellation of Virgo. With an apparent magnitude of 8.4, use a telescope with moderate aperture to clearly resolve it as a bright, diffuse patch against the night sky.",
+    "wikipedia_qid": "Q13952"
+  },
+  "d_J1230494+122328": {
+    "name": "Messier 87",
+    "common_names": [
+      "Virgo A"
+    ],
+    "description": "Messier 87 is a supergiant elliptical galaxy located about 53 million light-years away in the constellation Virgo. It is one of the most massive galaxies in the local universe, notable for its vast population of globular clusters and a powerful, active galactic nucleus.",
+    "fun_fact": "This galaxy contains a supermassive black hole that became the first ever to be directly imaged by the Event Horizon Telescope collaboration in 2019.",
+    "visual_tip": "Look for this galaxy in the heart of the Virgo Cluster. Use a medium-aperture telescope on a clear, dark night; although it is relatively bright, its diffuse, elliptical glow requires steady skies and dark-adapted eyes to observe effectively.",
+    "wikipedia_qid": "Q14041"
+  },
+  "d_J1231591+142513": {
+    "name": "Messier 88",
+    "common_names": [],
+    "description": "Messier 88 is an unbarred spiral galaxy located approximately 58 million light-years away in the constellation Coma Berenices. As a prominent member of the Virgo Cluster, it is recognized for its well-defined spiral structure and significant size.",
+    "fun_fact": "This galaxy contains an estimated 400 billion stars and is classified as a Seyfert galaxy of type 2, indicating that it hosts an active galactic nucleus that emits intense radiation.",
+    "visual_tip": "To observe this galaxy, locate the constellation Coma Berenices on a clear night. Use a medium-aperture telescope and point it toward the heart of the Virgo Cluster; look for a faint, oval-shaped patch of light against the dark sky.",
+    "wikipedia_qid": "Q14048"
+  },
+  "d_J1235264+142946": {
+    "name": "Messier 91",
+    "common_names": [],
+    "description": "Messier 91 is a barred spiral galaxy located approximately 63 million light-years away within the Virgo Cluster. As a member of our local supercluster, it displays a distinct spiral structure situated in the constellation Coma Berenices.",
+    "fun_fact": "For nearly two centuries, this galaxy was considered a 'missing' object due to a bookkeeping error by Charles Messier; it was not until 1969 that it was finally identified as the same galaxy previously cataloged by William Herschel.",
+    "visual_tip": "As the faintest object in the Messier catalog with an apparent magnitude of 10.2, you should use a telescope under very dark skies and employ averted vision to successfully spot its subtle glow.",
+    "wikipedia_qid": "Q14344"
+  },
+  "d_J1235398+123322": {
+    "name": "Messier 89",
+    "common_names": [],
+    "description": "Messier 89 is an elliptical galaxy located in the constellation Virgo, approximately 50 million light-years away. Discovered by Charles Messier in 1781, it is a prominent member of the Virgo Cluster of galaxies.",
+    "fun_fact": "Unlike many other elliptical galaxies that appear elongated, M89 is notable for its nearly perfect spherical shape, making it a unique subject for studying galactic morphology.",
+    "visual_tip": "Look for this galaxy within the heart of the Virgo Cluster. With an apparent magnitude of 9.8, use a medium-aperture telescope on a clear, dark night to help you resolve it against the background stars.",
+    "wikipedia_qid": "Q14337"
+  },
+  "d_J1236498+130946": {
+    "name": "Messier 90",
+    "common_names": [
+      "Carabin Galaxy"
+    ],
+    "description": "Messier 90 is an intermediate spiral galaxy located approximately 60 million light-years away in the constellation Virgo. It is a prominent member of the Virgo Cluster and is notable for its weak inner ring structure.",
+    "fun_fact": "Messier 90 is one of the few galaxies that exhibits a blueshift, meaning it is moving toward us rather than away, due to its high-speed motion within the Virgo Cluster.",
+    "visual_tip": "To observe this galaxy, find a dark sky site and use a medium-aperture telescope. Point your instrument toward the constellation Virgo and use averted vision to better resolve its elongated spiral structure against the background.",
+    "wikipedia_qid": "Q14343"
+  },
+  "d_J1237435+114905": {
+    "name": "Messier 58",
+    "common_names": [],
+    "description": "Messier 58 is an intermediate barred spiral galaxy with a weak inner ring structure, located approximately 68 million light-years away in the constellation Virgo. It is one of the brightest galaxies within the Virgo Cluster and was discovered by Charles Messier in 1779.",
+    "fun_fact": "From 1779, M58 was arguably the farthest known astronomical object until the release of the New General Catalogue in the 1880s and the subsequent publication of redshift values in the 1920s.",
+    "visual_tip": "To observe this galaxy, find a dark sky location and use a medium-aperture telescope. Point your instrument toward the constellation Virgo and compare its brightness with neighboring galaxies in the cluster to distinguish its bright core and spiral structure.",
+    "wikipedia_qid": "Q13970"
+  },
+  "d_J1239279-264438": {
+    "name": "Messier 68",
+    "common_names": [],
+    "description": "Messier 68 is a stunning globular cluster located approximately 33,600 light-years away from Earth in the constellation Hydra. It is notable for being one of the most metal-poor globular clusters, suggesting it is an ancient object that may have been acquired by the Milky Way through the accretion of a satellite galaxy.",
+    "fun_fact": "This cluster is a treasure trove for astronomers, containing at least 50 variable stars—mostly of the RR Lyrae type—which serve as vital 'standard candles' for measuring distances in the universe.",
+    "visual_tip": "To spot it, look toward the constellation Hydra on a clear, dark night. Use a medium-aperture telescope to resolve its individual stars, as the cluster appears quite loose and ragged at the edges compared to more compact globulars.",
+    "wikipedia_qid": "Q14000"
+  },
+  "d_J1239594-113722": {
+    "name": "Sombrero Galaxy",
+    "common_names": [
+      "Sombrero"
+    ],
+    "description": "The Sombrero Galaxy (M104) is a breathtaking, unbarred spiral galaxy spanning roughly 50,000 light-years (470 trillion km / 290 trillion miles) across, instantly recognizable by its massive central bulge and a thick, dark rim of obscuring dust. Located 28 million light-years away in the constellation Virgo, it shines with a brilliant apparent magnitude of 8.0, making it an easy target for small instruments. Through standard binoculars under dark skies, it appears as a sharp, elongated needle of light, while a small 100 mm (4-inch) telescope clearly separates its brilliant core from the sweeping hat-like brim of its outer edge.",
+    "fun_fact": "This galaxy is an absolute cosmic heavyweight wrapped in a mystery! Modern space telescope surveys have revealed that the Sombrero Galaxy does not just have a normal cluster system, but hosts an astonishing swarm of nearly 2,000 globular clusters orbiting its nucleus—nearly ten times more than our entire Milky Way galaxy. Furthermore, precise orbital velocity tracking shows its central supermassive black hole is an absolute monster, packing the mass of one billion suns, making it one of the most massive black holes ever found in a nearby galaxy.",
+    "visual_tip": "To spot M104, look roughly 11 degrees due west of Spica, the brightest star in Virgo, or use the distinct four-star quadrilateral of Corvus the Crow to hop just across the border to the northeast. Because the galaxy is tilted nearly face-edge to our line of sight (just 6 degrees off), its surface brightness is extremely concentrated and stands up well to suburban light pollution, though a 200 mm (8-inch) or larger telescope paired with high magnification is required to visually slice its bright core with the ink-black lane of cosmic dust.",
+    "wikipedia_qid": "Q91461627"
+  },
+  "d_J1242022+113848": {
+    "name": "Messier 59",
+    "common_names": [],
+    "description": "Messier 59 is an elliptical galaxy located approximately 50 million light-years away in the constellation of Virgo. As a member of the Virgo Cluster, it is characterized by its flattened shape and a complex core containing a supermassive black hole.",
+    "fun_fact": "The core of M59 features a young stellar disk that rotates in the opposite direction to the rest of the galaxy, a discovery that suggests the galaxy may have undergone a major merger event in its history.",
+    "visual_tip": "Use a medium-sized telescope to locate this galaxy in the Virgo constellation. Look for it in the same field of view as the nearby elliptical galaxy Messier 60 to help with your orientation.",
+    "wikipedia_qid": "Q13971"
+  },
+  "d_J1243399+113309": {
+    "name": "Messier 60",
+    "common_names": [],
+    "description": "Messier 60 is a prominent elliptical galaxy located approximately 57 million light-years away in the constellation of Virgo. As a major member of the Virgo Cluster, it forms a striking visual pair with the nearby spiral galaxy NGC 4647.",
+    "fun_fact": "At the heart of this galaxy lies one of the most massive supermassive black holes ever discovered, containing 4.5 billion times the mass of our Sun.",
+    "visual_tip": "To observe this object, look for the constellation of Virgo on a clear night. Use a medium-aperture telescope to resolve its bright core, and try to compare its distinct elliptical shape with the nearby galaxy Messier 59, which can be found in the same field of view.",
+    "wikipedia_qid": "Q13976"
+  },
+  "d_J1250530+410712": {
+    "name": "Messier 94",
+    "common_names": [
+      "Cat's Eye Galaxy",
+      "Crocodile Eye Galaxy"
+    ],
+    "description": "Messier 94 is a spiral galaxy located in the northern constellation of Canes Venatici, approximately 16 million light-years away. It is well-known for its distinct dual-ring structure and a very bright, compact core.",
+    "fun_fact": "While some astronomers classify it as a barred spiral galaxy, the central structure is actually more oval-shaped than a true bar, making its morphology a subject of ongoing scientific interest.",
+    "visual_tip": "Look for this galaxy within the constellation Canes Venatici. Use a telescope with at least moderate aperture to resolve the bright inner region and the surrounding ring, as its magnitude of 8.2 makes it a rewarding target for amateur astronomers.",
+    "wikipedia_qid": "Q14349"
+  },
+  "d_J1256436+214057": {
+    "name": "Black Eye Galaxy",
+    "common_names": [
+      "Sleeping Beauty",
+      "Black Eye Galaxy",
+      "Evil Eye Galaxy"
+    ],
+    "description": "The Black Eye Galaxy (M64) is an extraordinary spiral galaxy spanning roughly 54,000 light-years (510 trillion km / 320 trillion miles) across, instantly recognizable by the massive, sweeping silhouette of dark interstellar dust obscuring its brilliant core. Located 17 million light-years away in the constellation Coma Berenices, it glows with an apparent magnitude of 8.5 and can be easily glimpsed through large binoculars as a soft, bright oval under dark skies. A small 100 mm (4-inch) telescope beautifully isolates its high-contrast nucleus, revealing the prominent, dark-lidded band of cosmic dust that gives the galaxy its iconic, bruised appearance.",
+    "fun_fact": "This galaxy possesses one of the most bizarre internal dynamics in the universe—it rotates in two opposite directions at once! While the stars and inner molecular gas disk spin clockwise out to a radius of 3,000 light-years, the massive cloud of hydrogen gas in its outer disk spins completely counterclockwise. Breakthrough deep-field imaging confirmed that this violent atmospheric clash was caused by M64 entirely swallowing a hydrogen-rich satellite dwarf galaxy over a billion years ago, turning their boundary zone into a highly compressed, turbulent starburst factory.",
+    "visual_tip": "To locate M64, sweep your telescope roughly 5 degrees northwest of the star Diadem (Alpha Comae Berenices). Because its core structure has an unusually high surface brightness, it is a remarkably resilient target that stands up well against moderate city light pollution. However, to clearly resolve the delicate space between the glowing central core and the deep, ink-black dust lane wrapped around it, you will need a 150 mm (6-inch) or larger telescope paired with steady, high-magnification viewing on a moonless night.",
+    "wikipedia_qid": "Q13983"
+  },
+  "d_J1312552+181005": {
+    "name": "Messier 53",
+    "common_names": [],
+    "description": "Messier 53 is a stunning globular cluster located in the Coma Berenices constellation, approximately 58,000 light-years away from our solar system. This ancient stellar collection is notable for being one of the most metal-poor clusters in the Milky Way, containing stars that formed primarily during the first generation of the universe.",
+    "fun_fact": "It is believed that Messier 53 may be dynamically interacting with the neighboring cluster NGC 5053, forming a unique tidal bridge structure that has not been observed elsewhere in our galaxy.",
+    "visual_tip": "Look for this cluster on a clear night using binoculars or a small telescope. Point your equipment toward the Coma Berenices constellation and use averted vision to better appreciate its bright core and spherical shape.",
+    "wikipedia_qid": "Q13960"
+  },
+  "d_J1315492+420145": {
+    "name": "Sunflower Galaxy",
+    "description": "The Sunflower Galaxy (M63) is a striking flocculent spiral galaxy spanning roughly 98,000 light-years (930 trillion km / 580 trillion miles) across, characterized by a tightly wound, patch-like arrangement of star-forming arms. Located 27 million light-years away in the constellation Canes Venatici, it glows with an apparent magnitude of 8.6 and appears through small telescopes as a bright, compact oval haze with a highly condensed core. Medium-sized instruments of 150 mm (6 inches) or more beautifully reveal the grainy, multi-armed texture surrounding its nucleus, which visually mimics the dense arrangement of seeds in a sunflower.",
+    "fun_fact": "This galaxy is an outstanding example of a 'flocculent' spiral, meaning its spiral arms are patchy and discontinuous rather than long and sweeping. Recent deep-field imaging and space telescope studies have mapped an immense, looping system of faint stellar tidal streams wrapping around M63, which are the ghostly structural remnants of a smaller satellite galaxy that the Sunflower Galaxy completely tore apart and cannibalized roughly 5 billion years ago.",
+    "visual_tip": "To easily locate M63, trace a path roughly one-third of the way from Cor Caroli (Alpha Canum Venaticorum) to Alkaid at the tip of the Big Dipper's handle. Because of its high surface brightness, it stands up better to light pollution than the nearby Whirlpool Galaxy, but you will need a 200 mm (8-inch) or larger telescope paired with low-magnification, wide-field eyepieces to discern where its bright core ends and its delicate, mottled outer fringes begin.",
+    "wikipedia_qid": "Q13981"
+  },
+  "d_J1329526+471142": {
+    "name": "Whirlpool Galaxy",
+    "common_names": [
+      "Question Mark Galaxy",
+      "Whirlpool"
+    ],
+    "description": "The Whirlpool Galaxy (M51) is a classic, grand-design spiral galaxy spanning roughly 76,000 light-years (720 trillion km / 450 trillion miles) across, famously locked in a cosmic tug-of-war with a smaller companion galaxy, NGC 5195. Located 23 million light-years away in the constellation Canes Venatici, it glows at an apparent magnitude of 8.4 and looks like a soft, dual-headed smudge through small binoculars under pristine conditions. A small 100 mm (4-inch) telescope clearly separates the two galactic cores, while mid-sized instruments reveal the faint, ethereal bridge of tidal stars and gas connecting them.",
+    "fun_fact": "This object is a historic milestone in astronomy! In 1845, William Parsons (the 3rd Earl of Rosse) used his monstrous 1.83m (72-inch) telescope to sketch M51, making it the very first celestial object ever recognized to possess a spiral structure. Long before anyone knew 'galaxies' existed outside our own, his famous drawings of M51's whirlpool-like arms provided the foundational visual proof that directly inspired our modern understanding of the sprawling, spinning universe.",
+    "visual_tip": "To spot M51, locate Alkaid—the star at the very tip of the Big Dipper's handle—and look roughly 3.5 degrees to the southwest. While it can be glimpsed as a ghostly cloud in 10x50 binoculars on an ink-black, moonless night, you will need a 200 mm (8-inch) or larger telescope paired with high magnification to clearly resolve the grand-design spiral arms curling away from its bright core.",
+    "wikipedia_qid": "Q13957"
+  },
+  "d_J1337009-295156": {
+    "name": "Southern Pinwheel Galaxy",
+    "common_names": [],
+    "description": "The Southern Pinwheel Galaxy is a stunning barred spiral galaxy located approximately 15 million light-years away from Earth, straddling the border between the constellations of Hydra and Centaurus. It is one of the brightest and closest barred spiral galaxies visible in the night sky.",
+    "fun_fact": "Its nickname, the Southern Pinwheel, is derived from its striking visual resemblance to the famous Pinwheel Galaxy located in the northern sky.",
+    "visual_tip": "Try spotting this galaxy with binoculars under a dark sky; its apparent magnitude of 7.5 makes it a rewarding target if you know exactly where to point your optics within the constellation of Hydra.",
+    "wikipedia_qid": "Q14030"
+  },
+  "d_J1342116+282238": {
+    "name": "Messier 3",
+    "common_names": [],
+    "description": "Messier 3 is a stunning globular cluster located approximately 33,900 light-years from Earth in the constellation Canes Venatici. Containing around 500,000 stars, it stands out as one of the largest and brightest globular clusters in the night sky.",
+    "fun_fact": "This cluster is a true cosmic veteran; it is estimated to be about 11.4 billion years old, making it nearly as ancient as the universe itself.",
+    "visual_tip": "Look for this cluster in the constellation Canes Venatici. While it is visible with binoculars under dark skies, use a medium-aperture telescope to start resolving its outer stars and appreciate its dense, spherical structure.",
+    "wikipedia_qid": "Q78384126"
+  },
+  "d_J1403125+542055": {
+    "name": "Pinwheel Galaxy",
+    "common_names": [],
+    "description": "The Pinwheel Galaxy is a stunning face-on, intermediate spiral galaxy located approximately 21 million light-years away in the constellation Ursa Major. Spanning 252,000 light-years in diameter, it is significantly larger than our own Milky Way and is home to an estimated one trillion stars.",
+    "fun_fact": "In 2006, NASA and the European Space Agency released an image of the Pinwheel Galaxy that was, at the time, the largest and most detailed image of a galaxy ever captured by the Hubble Space Telescope, created from 51 individual exposures.",
+    "visual_tip": "Look for this galaxy within the constellation Ursa Major. Given its apparent magnitude, use a medium-aperture telescope on a clear, dark night away from light pollution to try and resolve its beautiful spiral structure.",
+    "wikipedia_qid": "Q14371"
+  },
+  "d_J1506295+554547": {
+    "name": "Spindle Galaxy",
+    "common_names": [
+      "Messier 102"
+    ],
+    "description": "The Spindle Galaxy is a striking lenticular galaxy located in the constellation Draco, approximately 50 million light-years away. It is viewed edge-on, which reveals a prominent dust lane cutting across its disk.",
+    "fun_fact": "Measurements of its globular cluster system imply that this galaxy contains a notably low amount of dark matter compared to other similar galaxies.",
+    "visual_tip": "Look for this galaxy in the constellation Draco. Use a medium-aperture telescope and aim for the area between the stars Iota and Theta Draconis; given its magnitude of 9.9, you will see a distinct, elongated, and thin shape.",
+    "wikipedia_qid": "Q830937"
+  },
+  "d_J1518332+020451": {
+    "name": "Messier 5",
+    "common_names": [],
+    "description": "Messier 5 is one of the largest and oldest known globular clusters, located approximately 24,500 light-years away in the constellation Serpens. This impressive collection contains over 100,000 stars densely packed together, which formed more than 10 billion years ago.",
+    "fun_fact": "The cluster is notable for containing over 100 variable stars, mostly of the RR Lyrae type, which serve as vital 'standard candles' for astronomers to measure cosmic distances.",
+    "visual_tip": "Look for this cluster on a clear, dark night; while it appears as a fuzzy patch through binoculars, use a medium-aperture telescope to begin resolving the individual stars around its edges.",
+    "wikipedia_qid": "Q11217"
+  },
+  "d_J1617024-225833": {
+    "name": "Messier 80",
+    "common_names": [],
+    "description": "Messier 80 is one of the densest globular clusters in the Milky Way, containing hundreds of thousands of stars packed into a region about 95 light-years across. Located approximately 32,600 light-years away in the constellation Scorpius, it is a remarkable example of a tightly bound stellar system.",
+    "fun_fact": "In 1860, the cluster hosted a rare nova event, T Scorpii, which briefly became so luminous that it outshone the entire cluster of hundreds of thousands of stars.",
+    "visual_tip": "Locate this cluster in the constellation Scorpius, positioned midway between the stars Antares and Beta Scorpii. Use a modest telescope under dark sky conditions to observe it as a distinct, mottled ball of light.",
+    "wikipedia_qid": "Q14021"
+  },
+  "d_J1623352-263132": {
+    "name": "Messier 4",
+    "common_names": [
+      "Spider Globular Cluster"
+    ],
+    "description": "Messier 4 is a stunning globular cluster located in the constellation Scorpius, approximately 6,000 light-years away from Earth. It is notable for being the closest globular cluster to our solar system and the first in which individual stars were successfully resolved.",
+    "fun_fact": "This cluster is incredibly ancient, with an estimated age of about 12.2 billion years, making it one of the oldest objects in our galaxy.",
+    "visual_tip": "To find it, look for the bright star Antares in Scorpius; the cluster is located just 1.3 degrees to the west. Use binoculars or a small telescope to resolve its stars, as it is one of the easiest globular clusters to observe.",
+    "wikipedia_qid": "Q11212"
+  },
+  "d_J1632318-130313": {
+    "name": "Messier 107",
+    "common_names": [],
+    "description": "Messier 107 is a globular cluster located in the constellation Ophiuchus. It lies approximately 20,900 light-years from Earth and is notable for its relatively loose structure compared to more densely packed globular clusters.",
+    "fun_fact": "Although observed by Charles Messier in 1782, it was the final object added to the official Messier catalog by astronomer Helen Sawyer Hogg in 1947.",
+    "visual_tip": "To find it, point your telescope toward the constellation Ophiuchus. Use averted vision to better perceive its faint glow and slightly irregular shape.",
+    "wikipedia_qid": "Q18334765"
+  },
+  "d_J1641416+362740": {
+    "name": "Hercules Globular Cluster",
+    "common_names": [
+      "Great Globular Cluster in Hercules",
+      "Great Hercules Cluster"
+    ],
+    "description": "The Hercules Globular Cluster is one of the most spectacular and well-known globular clusters in the Northern Hemisphere. Located approximately 24,100 light-years away, it contains hundreds of thousands of stars tightly packed within the constellation of Hercules.",
+    "fun_fact": "In 1974, this cluster was the target of the famous Arecibo message, a radio signal beamed into deep space with the hope of contacting extraterrestrial civilizations.",
+    "visual_tip": "Look for the cluster between the stars Zeta and Eta Herculis. While it is visible to the naked eye under very dark skies, use binoculars or a small telescope to resolve its outer stars and enjoy its impressive brilliance.",
+    "wikipedia_qid": "Q11312"
+  },
+  "d_J1647141-015654": {
+    "name": "Messier 12",
+    "common_names": [],
+    "description": "Messier 12 is a globular cluster located in the constellation Ophiuchus, approximately 16,400 light-years away from Earth. Originally described by Charles Messier as a \"nebula without stars,\" it is now recognized as a relatively loosely packed globular cluster.",
+    "fun_fact": "A 2006 study concluded that this cluster has an unusually low number of low-mass stars, likely because they were stripped away during its passage through the matter-rich plane of the Milky Way.",
+    "visual_tip": "Look for this cluster about 3° northwest of the cluster M10. You can spot it with binoculars under dark skies, but use a telescope with an aperture of 8 inches (20 cm) or greater to resolve its individual stellar components.",
+    "wikipedia_qid": "Q11307"
+  },
+  "d_J1657090-040601": {
+    "name": "Messier 10",
+    "common_names": [],
+    "description": "Messier 10 is a prominent globular cluster located in the constellation of Ophiuchus, approximately 14,300 light-years away from Earth. Discovered by Charles Messier in 1764, this cluster features a bright, dense core and is considered moderately metal-poor compared to the Sun.",
+    "fun_fact": "While Charles Messier initially described it as a 'nebula without stars,' later observations by William Herschel revealed it to be a beautiful, highly compressed cluster of individual stars.",
+    "visual_tip": "Look for the cluster about one degree west of the orange star 30 Ophiuchi. Use a medium-sized telescope to resolve the core, as the cluster spans an apparent diameter of about two-thirds that of the Moon.",
+    "wikipedia_qid": "Q11267"
+  },
+  "d_J1701126-300644": {
+    "name": "Messier 62",
+    "common_names": [
+      "Flickering Globular Cluster"
+    ],
+    "description": "Messier 62 is a massive and luminous globular cluster located about 21,500 light-years away in the constellation Ophiuchus. It is notable for its nearly perfect spherical shape and its high density, making it one of the most significant globular clusters in the Milky Way.",
+    "fun_fact": "It is nicknamed the 'Flickering Globular Cluster' because it contains an exceptionally high number of variable stars, particularly RR Lyrae variables, which cause its brightness to appear to fluctuate.",
+    "visual_tip": "Look for this cluster in the southern part of Ophiuchus. Use a medium-sized telescope to resolve the stars in its outer regions, as its magnitude 6.6 brightness makes it a rewarding target, though you will need a dark sky to properly distinguish its dense core.",
+    "wikipedia_qid": "Q13980"
+  },
+  "d_J1702376-261604": {
+    "name": "Messier 19",
+    "common_names": [],
+    "description": "Messier 19 is a globular cluster located in the constellation Ophiuchus, situated approximately 28,700 light-years away from the Solar System. It is one of the most oblate globular clusters known, though this appearance is largely due to light extinction caused by intervening gas and dust along its eastern edge.",
+    "fun_fact": "While the cluster appears distinctly oval in visible light, infrared observations reveal that it is actually nearly spherical; the perceived flattening is an optical illusion caused by interstellar dust obscuring part of the cluster's light.",
+    "visual_tip": "Look for the cluster 4.5° west-southwest of Theta Ophiuchi. You can spot it as a fuzzy point of light using 50 mm binoculars, but use a telescope with at least a 25 cm aperture to resolve its core and halo structure.",
+    "wikipedia_qid": "Q11374"
+  },
+  "d_J1717073+430809": {
+    "name": "Messier 92",
+    "common_names": [],
+    "description": "Messier 92 is a stunning globular cluster located in the constellation Hercules, approximately 26,700 light-years away from Earth. It is one of the brightest and oldest clusters in our galaxy, containing hundreds of thousands of stars tightly packed together.",
+    "fun_fact": "Due to its extremely low metallicity, this cluster is incredibly ancient, hosting some of the oldest stars known in the Milky Way that formed shortly after the Big Bang.",
+    "visual_tip": "Look for this cluster in the upper part of the Hercules constellation. While it is visible with binoculars under dark skies, use a medium-aperture telescope to start resolving individual stars along its edges.",
+    "wikipedia_qid": "Q78262275"
+  },
+  "d_J1719117-183058": {
+    "name": "Messier 9",
+    "common_names": [],
+    "description": "Messier 9 is a globular cluster located in the constellation of Ophiuchus, approximately 25,800 light-years away from Earth. This dense collection of stars is positioned remarkably close to the center of our galaxy, lying only about 5,500 light-years from the Galactic Center.",
+    "fun_fact": "Although Charles Messier originally described it as a \"nebula without stars,\" William Herschel later used his reflector telescope to resolve individual stars, revealing a densely packed cluster with a total luminosity 120,000 times that of the Sun.",
+    "visual_tip": "To observe this cluster, point your telescope toward the southern part of Ophiuchus, southwest of the star Eta Ophiuchi. Use a moderately sized telescope to resolve the brightest individual stars, which have an apparent magnitude of 13.5.",
+    "wikipedia_qid": "Q11258"
+  },
+  "d_J1737361-031445": {
+    "name": "Messier 14",
+    "common_names": [],
+    "description": "Messier 14 is a globular cluster located approximately 30,000 light-years away in the constellation Ophiuchus. This dense stellar system contains hundreds of thousands of stars and is characterized by its distinctly elongated shape.",
+    "fun_fact": "In 1938, a nova erupted within the cluster, but it remained undiscovered until astronomers identified the event on photographic plates decades later in 1964.",
+    "visual_tip": "Look for this cluster using binoculars under dark skies, as its magnitude of 7.6 makes it a rewarding target. Use a medium-sized telescope to try and resolve some of the brightest individual stars within the cluster.",
+    "wikipedia_qid": "Q11320"
+  },
+  "d_J1740144-321416": {
+    "name": "Butterfly Cluster",
+    "common_names": [],
+    "description": "The Butterfly Cluster is a stunning open cluster of stars located in the southern constellation of Scorpius, approximately 1,590 light-years away. It is named for the distinct arrangement of its stars, which resembles a butterfly with its wings spread wide.",
+    "fun_fact": "While most of the cluster's stars are hot and blue, its brightest member is a contrasting orange giant star named BM Scorpii, which stands out vividly against the blue background of its neighbors.",
+    "visual_tip": "Look for this cluster near the Ptolemy Cluster in the tail of Scorpius. Use binoculars or a low-power telescope to best capture its butterfly-like shape, as it is a perfect target for wide-field observation.",
+    "wikipedia_qid": "Q11225"
+  },
+  "d_J1753440-344936": {
+    "name": "Ptolemy's Cluster",
+    "common_names": [],
+    "description": "Ptolemy's Cluster is a prominent open cluster of stars located in the constellation of Scorpius. Situated approximately 980 light-years away, it is one of the most striking and easily observable star clusters in the night sky.",
+    "fun_fact": "It holds the distinction of being the southernmost object in the entire Messier catalog, making it a favorite target for observers in the southern hemisphere and lower northern latitudes.",
+    "visual_tip": "Look for the 'stinger' of Scorpius in the night sky; you will find the cluster right next to it. Since it is large and bright, use binoculars to scan the area and enjoy a spectacular view of its individual stars.",
+    "wikipedia_qid": "Q11234"
+  },
+  "d_J1756561-185821": {
+    "name": "Messier 23",
+    "common_names": [],
+    "description": "Messier 23 is an open cluster of stars located in the northwest of the constellation Sagittarius. Situated approximately 2,050 light-years away, it contains between 169 and 414 stars and is estimated to be about 330 million years old.",
+    "fun_fact": "While the cluster appears to be in front of an extensive network of gas and dust, there is likely no physical association between the two; the cluster simply happens to lie in that line of sight.",
+    "visual_tip": "Look for this cluster under dark sky conditions; you can spot it with binoculars or a modestly sized telescope. Point your equipment toward the constellation Sagittarius and scan the area to resolve its brighter members.",
+    "wikipedia_qid": "Q11396"
+  },
+  "d_J1802420-225818": {
+    "name": "Trifid Nebula",
+    "common_names": [],
+    "description": "The Trifid Nebula is a unique star-forming region located approximately 4100 light-years away in the constellation of Sagittarius. This object is a rare combination of a reddish-pink emission nebula, a blue reflection nebula, and a dark nebula that creates its characteristic appearance of being split into three lobes.",
+    "fun_fact": "The name 'Trifid' means 'three-lobe', referring to the dark dust lanes that appear to divide the nebula into three distinct parts when viewed through a telescope.",
+    "visual_tip": "Look for the nebula in the north-west of the Sagittarius constellation. Use a small telescope to observe its peculiar structure and compare the bright emission regions with the dark gaps and the blue reflection areas.",
+    "wikipedia_qid": "Q11377"
+  },
+  "d_J1803370-242312": {
+    "name": "Lagoon Nebula",
+    "common_names": [
+      "Hourglass Nebula"
+    ],
+    "description": "The Lagoon Nebula is a giant star-forming emission nebula located in the constellation Sagittarius, approximately 4,100 light-years away. It is one of only two star-forming nebulae faintly visible to the naked eye from mid-northern latitudes, appearing as a bright, expansive cloud of gas and dust.",
+    "fun_fact": "It is one of only two star-forming nebulae that can be seen without optical aid from mid-northern latitudes, the other being the famous Orion Nebula.",
+    "visual_tip": "Look for the constellation Sagittarius during summer nights. While it is visible to the naked eye under very dark skies, use binoculars or a small telescope to reveal the intricate details of the nebula and the embedded star cluster within it.",
+    "wikipedia_qid": "Q11243"
+  },
+  "d_J1804100-223000": {
+    "name": "Messier 21",
+    "common_names": [
+      "Webb's Cross"
+    ],
+    "description": "Messier 21 is a young, tightly packed open cluster located approximately 3,930 light-years away in the constellation of Sagittarius. Although it appears near the famous Trifid Nebula in the night sky, it is not physically associated with that nebulosity.",
+    "fun_fact": "As of January 2022, Messier 21 remains one of the few objects in the Messier Catalog that has not been photographed by the Hubble Space Telescope.",
+    "visual_tip": "With a magnitude of 6.5, it is not visible to the naked eye. Find a dark sky and use small binoculars to easily spot it near the Trifid Nebula.",
+    "wikipedia_qid": "Q11383"
+  },
+  "d_J1816480-183300": {
+    "name": "Small Sagittarius Star Cloud",
+    "common_names": [],
+    "description": "The Small Sagittarius Star Cloud is a stunning asterism that appears as a dense concentration of stars within the Milky Way. Unlike typical deep-sky objects, it is not a star cluster, but rather a clear window through interstellar dust clouds that allows us to see thousands of distant stars located in the Sagittarius Arm.",
+    "fun_fact": "While often mistaken for a star cluster, this object is actually a region of space relatively free of obscuring dust, providing a unique, clear view into the deeper reaches of our own galaxy.",
+    "visual_tip": "Look for this star cloud in the constellation Sagittarius during summer nights. Use wide-field binoculars to best appreciate the sheer number of stars that appear to crowd into this small patch of the sky.",
+    "wikipedia_qid": "Q6720474"
+  },
+  "d_J1818451-134731": {
+    "name": "Eagle Nebula",
+    "common_names": [
+      "Star Queen",
+      "Pillars of Creation"
+    ],
+    "description": "The Eagle Nebula (M16) is a colossal emission nebula and active stellar nursery spanning roughly 70 by 55 light-years (660 trillion km / 410 trillion miles) across. Located 7,000 light-years away in the constellation Serpens, it shines with an apparent magnitude of 6.0 and appears through binoculars as a faint, glowing patch surrounding a compact cluster of newborn stars. At its core lies an intense star-forming environment illuminated by the ultraviolet radiation of the young open cluster NGC 6611, which sculpts and ionizes the surrounding clouds of cosmic hydrogen gas.",
+    "fun_fact": "This nebula houses the famous 'Pillars of Creation,' towering columns of cold gas and dust that stretch over 4 to 5 light-years (38 to 47 trillion km / 24 to 29 trillion miles) high. Recent high-resolution infrared analysis from space telescopes reveals that these monumental structures are actively being hollowed out and evaporated from within by the very proto-stars forming inside them, meaning the pillars are caught in a relentless, cosmic tug-of-war between creation and destruction.",
+    "visual_tip": "To spot M16, look in the southern sky near the borders of the constellations Serpens, Sagittarius, and Scutum. While binoculars and small 100 mm (4-inch) telescopes easily reveal the bright embedded star cluster, resolving the dark silhouettes of the central pillars requires a larger aperture telescope of 200 mm (8-inch) or more, paired with pristine dark skies and a UHC or OIII nebula filter to maximize gas cloud contrast.",
+    "wikipedia_qid": "Q11349"
+  },
+  "d_J1819562-170421": {
+    "name": "Messier 18",
+    "common_names": [
+      "Black Swan Cluster"
+    ],
+    "description": "Messier 18 is an open cluster of stars located in the constellation Sagittarius, approximately 4,230 light-years from Earth. This sparse cluster is positioned in the sky between the prominent Omega Nebula and the Small Sagittarius Star Cloud.",
+    "fun_fact": "Despite being a Messier catalog object, it is one of the few that has not yet been photographed by the Hubble Space Telescope.",
+    "visual_tip": "Look for this cluster in the dense Sagittarius region using binoculars or a small telescope. Point your equipment between the Omega Nebula and the Small Sagittarius Star Cloud to easily spot it.",
+    "wikipedia_qid": "Q11370"
+  },
+  "d_J1820470-161018": {
+    "name": "Omega Nebula",
+    "common_names": [
+      "Swan Nebula",
+      "Checkmark Nebula",
+      "Lobster Nebula",
+      "Horseshoe Nebula"
+    ],
+    "description": "The Omega Nebula is a brilliant H II region located in the constellation Sagittarius, situated between 5,000 and 6,000 light-years away. It is one of the richest and most active star-forming regions in our Milky Way, known for its distinct shape that resembles a swan or a checkmark.",
+    "fun_fact": "Although it was originally discovered by Philippe Loys de Chéseaux in 1745, Charles Messier included it in his famous catalog in 1764, recognizing its status as one of the brightest features within the rich starfields of Sagittarius.",
+    "visual_tip": "Look for this nebula within the dense starfields of Sagittarius. With an apparent magnitude of 6.0, point your binoculars or a small telescope toward the region to distinguish its bright, glowing structure, especially under dark, clear skies.",
+    "wikipedia_qid": "Q11357"
+  },
+  "d_J1824328-245211": {
+    "name": "Messier 28",
+    "common_names": [],
+    "description": "Messier 28 is a dense globular cluster of stars located in the constellation of Sagittarius, approximately 18,000 light-years away from Earth. It was discovered by French astronomer Charles Messier in 1764, who initially described it as a faint, round nebula.",
+    "fun_fact": "This cluster is scientifically significant for containing the first pulsar ever discovered within a globular cluster, providing key insights into the life cycles of stars in dense environments.",
+    "visual_tip": "Look for this cluster in the central region of Sagittarius. While it can be spotted with binoculars under dark skies, use a telescope to better resolve its compact core and surrounding stars.",
+    "wikipedia_qid": "Q13644"
+  },
+  "d_J1831230-322053": {
+    "name": "Messier 69",
+    "common_names": [],
+    "description": "Located about 28,700 light-years from Earth in the constellation Sagittarius, this globular cluster is a member of the galactic bulge population. It is a relatively metal-rich cluster with a dense, luminous core that stands out against the backdrop of the Milky Way.",
+    "fun_fact": "This cluster is a close neighbor to its analog, Messier 70; the two are separated by only about 1,800 light-years, making them a true pair in the southern sky.",
+    "visual_tip": "To find it, look 2.5 degrees to the northeast of the star Epsilon Sagittarii. It is dimly visible, so try using 50 mm binoculars under a dark sky to spot its faint glow.",
+    "wikipedia_qid": "Q14002"
+  },
+  "d_J1831474-190736": {
+    "name": "Messier 25",
+    "common_names": [],
+    "description": "This open cluster of stars is located in the constellation of Sagittarius, approximately 2,000 light-years away from Earth. At about 67.6 million years old, the cluster is notable for containing a Cepheid variable star known as U Sagittarii.",
+    "fun_fact": "New research indicates that this cluster may actually be part of a ternary star cluster system, linked with two other nearby star groups.",
+    "visual_tip": "Look for this cluster within the constellation of Sagittarius; with an apparent magnitude of 4.6, you can try to spot it with the naked eye under very dark skies, though you will get a much better view of its individual stars using binoculars.",
+    "wikipedia_qid": "Q13623"
+  },
+  "d_J1836239-235417": {
+    "name": "Messier 22",
+    "common_names": [
+      "Great Sagittarius Cluster"
+    ],
+    "description": "Messier 22 is one of the brightest and nearest globular clusters to Earth, located approximately 10,600 light-years away in the constellation Sagittarius. This elliptical cluster contains hundreds of thousands of stars and is a significant object for astronomical study due to its dense core and proximity to the galactic bulge.",
+    "fun_fact": "It is one of only four known globular clusters that contains a planetary nebula, making it a unique laboratory for studying stellar evolution.",
+    "visual_tip": "To find it, look for the constellation Sagittarius and point your telescope northeast of Kaus Borealis, the northernmost star of the 'Teapot' asterism. With an 8-inch telescope, you can resolve hundreds of its individual stars.",
+    "wikipedia_qid": "Q11392"
+  },
+  "d_J1843127-321731": {
+    "name": "Messier 70",
+    "common_names": [],
+    "description": "Messier 70 is a globular cluster of stars located in the southern part of the Sagittarius constellation, approximately 29,400 light-years from Earth. This dense stellar grouping has undergone core collapse, resulting in a highly concentrated center.",
+    "fun_fact": "The famous comet Hale-Bopp was discovered in close proximity to this cluster in 1995, making it a notable landmark for amateur astronomers of that era.",
+    "visual_tip": "Look for this cluster within the Sagittarius constellation using a medium-aperture telescope. Given its magnitude of 8.1, you will see a compact, fuzzy patch; try using averted vision to better resolve the bright central core.",
+    "wikipedia_qid": "Q14004"
+  },
+  "d_J1845168-092313": {
+    "name": "Messier 26",
+    "common_names": [],
+    "description": "Messier 26 is an open cluster located in the constellation Scutum, approximately 5,160 light-years away from Earth. At roughly 85 million years old, it contains about 25 visible stars when viewed through a moderate-sized telescope.",
+    "fun_fact": "The cluster features a mysterious region of low star density near its nucleus, a phenomenon that remains unexplained by modern astronomy despite various hypotheses regarding interstellar matter.",
+    "visual_tip": "Look for this cluster south-southwest of Messier 11. Use a telescope with at least a 3-inch (76 mm) aperture to resolve its stars, as it can be a challenging target for binoculars under anything but ideal sky conditions.",
+    "wikipedia_qid": "Q13626"
+  },
+  "d_J1851037-061618": {
+    "name": "Wild Duck Cluster",
+    "common_names": [],
+    "description": "The Wild Duck Cluster is one of the richest, most compact, and most massive open clusters known. Located approximately 6,120 light-years away in the constellation Scutum, this 316-million-year-old stellar group is famous for its brighter stars, which form a triangle that resembles a flying flock of ducks.",
+    "fun_fact": "The cluster's unusual chemical enrichment with alpha-process elements suggests that its birth molecular cloud may have been seeded by a nearby Type II supernova explosion.",
+    "visual_tip": "Look for the cluster just to the east of the Scutum Star Cloud midpoint. While it is visible with binoculars under dark skies, use a telescope to resolve the individual stars and better appreciate the triangular pattern that gives the cluster its name.",
+    "wikipedia_qid": "Q11294"
+  },
+  "d_J1853350+330144": {
+    "name": "Ring Nebula",
+    "description": "The Ring Nebula (M57) is a quintessential planetary nebula representing the shell of ionized gas cast off by a dying, sun-like star, stretching roughly 1.3 light-years (12.3 trillion km / 7.6 trillion miles) in diameter. Located 2,300 light-years away in the northern constellation Lyra, it glows at an apparent magnitude of 8.8 and appears through binoculars or a very small telescope as a small, ghostly green-gray disc that is easily mistaken for a distant planet. A moderate 150 mm (6-inch) telescope under dark skies beautifully transforms this smudge into a distinct, hollow cosmic smoke ring floating against the backdrop of deep space, illuminated from within by a fiercely hot white dwarf star.",
+    "fun_fact": "The Ring Nebula is actually a massive cosmic illusion! High-resolution three-dimensional mapping combining visible light and infrared data shows that M57 is not a simple hollow bubble or circle at all, but rather an elongated, barrel-shaped cylinder of gas seen almost directly down its open end. As we look at the nebula from Earth, we are peering straight down the pipe of a stellar barrel, catching the violent geometric expansion of a star's final death throes from a front-row perspective.",
+    "visual_tip": "To easily find M57, locate the bright star Vega and trace the small, distinct parallelogram of stars that forms the body of Lyra; the nebula sits almost perfectly halfway between the two bottom stars, Sheliak and Sulafat. While a 100 mm (4-inch) telescope will readily reveal the dark-centered ring shape, you will need a large 250 mm (10-inch) or bigger instrument pushed to exceptionally high magnification on a steady, moonless night to catch a glimpse of the incredibly faint magnitude 15.7 white dwarf star resting at its absolute center."
+  },
+  "d_J1855033-302847": {
+    "name": "Messier 54",
+    "common_names": [],
+    "description": "Messier 54 is a globular cluster located in the constellation Sagittarius, discovered by Charles Messier in 1778. Situated approximately 80,000 light-years away, it is notable for being likely extragalactic in origin.",
+    "fun_fact": "In 2009, astronomers reported evidence of an intermediate-mass black hole residing at the core of this cluster, a rare and significant discovery.",
+    "visual_tip": "To find it, look near the star Zeta Sagittarii. Keep in mind that while it is bright, you will not be able to resolve it into individual stars, even when using larger amateur telescopes.",
+    "wikipedia_qid": "Q13962"
+  },
+  "d_J1916355+301100": {
+    "name": "Messier 56",
+    "common_names": [],
+    "description": "Messier 56 is an ancient globular cluster located approximately 32,900 light-years away in the constellation Lyra. With an estimated age of 13.70 billion years, this dense collection of stars is a remnant of a dwarf galaxy that was merged into the Milky Way long ago.",
+    "fun_fact": "M56 is considered part of the 'Gaia Sausage', the hypothesized remains of a dwarf galaxy that collided with the Milky Way, leaving behind a population of stars with distinct retrograde orbits.",
+    "visual_tip": "Look for this object roughly midway between the stars Albireo and Sulafat. If you use large binoculars, it will appear as a faint, fuzzy star, but point a telescope with an aperture of 8 inches or larger if you want to resolve its individual stars.",
+    "wikipedia_qid": "Q13967"
+  },
+  "d_J1939597-305753": {
+    "name": "Messier 55",
+    "common_names": [
+      "Specter Cluster"
+    ],
+    "description": "Messier 55 is a stunning globular cluster located approximately 17,600 light-years away in the constellation Sagittarius. This ancient collection of stars contains about 269,000 solar masses and is notable for its very low metallicity, indicating that it is an extremely old celestial object.",
+    "fun_fact": "Although Charles Messier attempted to locate it from Paris for years, its low declination made it a very difficult object for him to observe, as it barely rose above the horizon in France.",
+    "visual_tip": "Look for this cluster in dark skies using 50 mm binoculars, where it will appear as a fuzzy patch. If you want to resolve individual stars, point your medium-sized telescope toward the southern region of Sagittarius.",
+    "wikipedia_qid": "Q13965"
+  },
+  "d_J1953464+184645": {
+    "name": "Messier 71",
+    "common_names": [
+      "Angelfish Cluster"
+    ],
+    "description": "Messier 71 is a loosely concentrated globular cluster located in the small northern constellation of Sagitta, approximately 13,000 light-years from Earth. For many decades, it was misclassified as a dense open cluster due to its lack of central compression and the high metallicity of its stars.",
+    "fun_fact": "It was only in the 1970s that modern photometry confirmed its status as a globular cluster by identifying a short 'horizontal branch' on its Hertzsprung–Russell diagram, which is characteristic of older, evolved star systems.",
+    "visual_tip": "Look for this cluster within the constellation Sagitta. While it can be spotted with binoculars under dark skies, use a medium-aperture telescope to better resolve the individual stars that make up this sparse, cloud-like stellar grouping.",
+    "wikipedia_qid": "Q14006"
+  },
+  "d_J1959363+224316": {
+    "name": "Dumbbell Nebula",
+    "common_names": [
+      "Diabolo Nebula"
+    ],
+    "description": "The Dumbbell Nebula (M27) is a massive planetary nebula spanning roughly 2.9 light-years (27.4 trillion km / 17.1 trillion miles) across, formed as an aging star shed its outer layers into deep space. Located 1,360 light-years away in the faint northern constellation Vulpecula, it shines with a relatively bright combined apparent magnitude of 7.5. Through standard binoculars under dark skies, it appears as a conspicuous, glowing misty patch, while a small 100 mm (4-inch) telescope transforms this cloud into an unmistakable, dual-lobed shape resembling a weights dumbbell or an apple core, illuminated by one of the largest known white dwarf stellar remnants.",
+    "fun_fact": "This object is a monumental first in scientific history! Discovered by Charles Messier in 1764, M27 was the very first planetary nebula ever observed in human history. Its misleading historical category name, 'planetary,' was coined later by astronomers who thought its green-blue glowing disc in primitive telescopes resembled gas giant planets like Uranus, even though it is actually a massive star's explosive gravstone.",
+    "visual_tip": "To spot M27, find the distinct arrow shape of the constellation Sagitta; the nebula sits roughly 3 degrees due north of the tip star, Gamma Sagittae. Because it possesses an unusually high surface brightness for a deep-sky gas cloud, it remains highly visible even under mild city light pollution, though threading an OIII nebula filter into your eyepiece will dramatically isolate its glowing oxygen gas structure and sharpen its iconic hourglass silhouette.",
+    "wikipedia_qid": "Q13628"
+  },
+  "d_J2006048-215520": {
+    "name": "Messier 75",
+    "common_names": [],
+    "description": "Messier 75 is a dense and compact globular cluster located in the constellation of Sagittarius. It is situated at a significant distance from Earth, making it one of the most remote and highly concentrated objects of its kind in the Messier catalog.",
+    "fun_fact": "Due to its high stellar density and great distance, this cluster appears as a very small, bright object, often leading observers to mistake it for a fuzzy star or a planetary nebula.",
+    "visual_tip": "Look for this object in very dark skies using a medium or large aperture telescope. Aim toward the constellation of Sagittarius and use averted vision to help distinguish its bright, compact core from the surrounding stars.",
+    "wikipedia_qid": "Q56872685"
+  },
+  "d_J2023429+382925": {
+    "name": "Messier 29",
+    "common_names": [
+      "Cooling Tower Cluster"
+    ],
+    "description": "Messier 29 is a small, bright open cluster located in the constellation Cygnus, positioned just south of the bright star Gamma Cygni. It lies approximately 5,240 light-years away, nestled within the dense interstellar matter of the Milky Way's spiral arms.",
+    "fun_fact": "Despite its modest appearance, this cluster is incredibly young, with an estimated age of only 10 to 13 million years, which is why its brightest members are massive, hot B0-class giant stars.",
+    "visual_tip": "Look for this cluster using binoculars on a clear night. Point your optics toward the star Gamma Cygni in Cygnus and scan just to the south; you will see a small, distinct grouping of stars against the backdrop of the Milky Way.",
+    "wikipedia_qid": "Q13647"
+  },
+  "d_J2053277-123214": {
+    "name": "Messier 72",
+    "common_names": [],
+    "description": "Messier 72 is a globular cluster located in the constellation of Aquarius, situated approximately 54,500 light-years away from Earth. It is a relatively faint and compact object found in the outer reaches of our galaxy.",
+    "fun_fact": "Despite its small and compact appearance, this cluster has an estimated age of about 9.5 billion years, making it an ancient witness to star formation within the galactic halo.",
+    "visual_tip": "Due to its apparent magnitude of 9.3, look for this cluster using a medium-aperture telescope on a clear, dark night. Point your telescope toward the constellation of Aquarius and use averted vision to better distinguish its faint glow against the background stars.",
+    "wikipedia_qid": "Q14008"
+  },
+  "d_J2058599-123759": {
+    "name": "Messier 73",
+    "common_names": [],
+    "description": "Messier 73 is an asterism of four stars in the constellation Aquarius that was long thought to be a small open cluster. Modern data from the Gaia mission has revealed that these stars are not physically associated, as they lie at vastly different distances from the Sun, ranging from approximately 1030 to 2290 light-years away.",
+    "fun_fact": "For many years, astronomers debated whether this group was a genuine star cluster or merely a chance alignment; it is now confirmed to be a purely optical asterism.",
+    "visual_tip": "To find it, point your telescope toward the constellation Aquarius and look a few arcminutes east of the globular cluster Messier 72. Use a telescope with moderate aperture to resolve this small group of stars, which shines at an apparent magnitude of 9.0.",
+    "wikipedia_qid": "Q14009"
+  },
+  "d_J2129583+121001": {
+    "name": "Messier 15",
+    "common_names": [
+      "Great Pegasus Cluster"
+    ],
+    "description": "Messier 15 is a stunning globular cluster located in the constellation Pegasus, approximately 35,700 light-years away. Estimated to be around 12 billion years old, it is one of the oldest known globular clusters and is famous for its exceptionally dense, bright core.",
+    "fun_fact": "This cluster is so dense that it has undergone a 'core collapse,' meaning its center is incredibly compact and packed with stars, making it a fascinating subject for studying stellar dynamics.",
+    "visual_tip": "Look for this object in the constellation Pegasus using binoculars or a small telescope. Point your instrument toward the nose of Pegasus and observe carefully; you will see a bright, circular patch that begins to resolve into individual stars with higher magnification.",
+    "wikipedia_qid": "Q11332"
+  },
+  "d_J2131040+481747": {
+    "name": "Messier 39",
+    "common_names": [
+      "Pyramid Cluster"
+    ],
+    "description": "Messier 39 is an open cluster of stars located in the constellation Cygnus, approximately 1,010 light-years away. With an apparent magnitude of 4.6, this cluster spans an angular diameter roughly equal to the size of the full Moon.",
+    "fun_fact": "While it appears as a modest group of stars, the cluster is scientifically rich, containing several binary star systems and at least five chemically peculiar stars.",
+    "visual_tip": "Look for this cluster about 9 degrees east-northeast of Deneb. While a small telescope will show about two dozen members, use binoculars for the best view of its scattered, open structure.",
+    "wikipedia_qid": "Q13883"
+  },
+  "d_J2133270-004923": {
+    "name": "Messier 2",
+    "common_names": [],
+    "description": "Messier 2 is one of the largest and brightest known globular clusters, located approximately 38,140 light-years away in the constellation Aquarius. This ancient collection of stars, estimated to be 12.5 billion years old, contains hundreds of thousands of stars packed into a dense, spherical structure.",
+    "fun_fact": "Despite its immense size and brightness, it was originally discovered by Jean-Dominique Maraldi in 1746, who initially mistook it for a starless nebula due to the vast distance at which it resides.",
+    "visual_tip": "To find it, look for the star Beta Aquarii and scan five degrees to the north. While it is visible with binoculars under dark skies, use a medium-aperture telescope to begin resolving the individual stars along its edges.",
+    "wikipedia_qid": "Q11099"
+  },
+  "d_J2140221-231047": {
+    "name": "Messier 30",
+    "common_names": [
+      "Jellyfish Cluster"
+    ],
+    "description": "Messier 30 is a stunning globular cluster located approximately 27,100 light-years away in the constellation Capricornus. At nearly 12.9 billion years old, this ancient stellar system is notable for its extremely dense core, which has undergone a dramatic gravitational core collapse.",
+    "fun_fact": "The cluster follows a retrograde orbit through the galactic halo, suggesting it was originally captured from a satellite galaxy rather than forming within the Milky Way.",
+    "visual_tip": "Look for this cluster using 10x50 binoculars to spot a faint, hazy patch of light; use a larger telescope to resolve individual stars and observe the highly compressed core.",
+    "wikipedia_qid": "Q13653"
+  },
+  "d_J2324471+613531": {
+    "name": "Messier 52",
+    "common_names": [
+      "Scorpion Cluster"
+    ],
+    "description": "Messier 52 is a bright open cluster located in the northern constellation of Cassiopeia, approximately 4,600 light-years away. With an estimated age of 158 million years, this cluster is notable for its dense core and rich population of stars.",
+    "fun_fact": "The core of the cluster is notably lacking in interstellar matter, which astronomers believe may be the result of supernova explosions that occurred early in the cluster's history.",
+    "visual_tip": "Look for this cluster on a clear night using binoculars. Point your optics toward the constellation Cassiopeia and compare its brightness to the surrounding stars; keep in mind that interstellar extinction makes the southern half of the cluster appear slightly dimmer.",
+    "wikipedia_qid": "Q13958"
+  }
 }

@@ -1,173 +1,1019 @@
 {
-    "s_J0645089-164258": {
-        "name": "Sírius",
-        "common_names": [
-            "Estrella Gos"
-        ],
-        "description": "Sírius és l'estrella absolutament més brillant de tot el cel nocturn, brillant amb una sorprenent magnitud aparent de -1,46. Situada a només 8,6 anys llum (81 bilions de km) de distància a la constel·lació Canis Major, és una estrella blanca calenta de la seqüència principal gairebé el doble de massiva que el nostre Sol i 25 vegades més lluminosa. A través de prismàtics o de qualsevol telescopi, es presenta com un brillant far blau diamant que sovint centelleja amb colors intensos semblants als de l'arc de Sant Martí a causa de la turbulència atmosfèrica prop de l'horitzó.",
-        "fun_fact": "Sírius és en realitat un silenciós sistema estel·lar doble! Orbitant l'estrella principal brillant hi ha Sírius B, anomenada «el Cadell», la primera estrella nana blanca mai descoberta. Tot i que ha comprimit la massa de tot el nostre Sol en una esfera només lleugerament més petita que la Terra, brilla tan feblement a magnitud 8,5 que es perdia completament en la resplendor encegadora de la seva companya massiva fins que els telescopis van avançar prou per separar-les.",
-        "visual_tip": "Per localitzar Sírius, simplement troba les tres estrelles del Cinturó d'Orió i traça una línia imaginària recta cap avall i a l'esquerra. Com a joia de la corona del cel d'hivern, és fàcilment visible a ull nu fins i tot des de centres urbans amb molta contaminació lluminosa, tot i que necessitaràs una estabilitat atmosfèrica excepcional i un telescopi de 200 mm amb molts augments per separar l'encegadora estrella principal de la seva diminuta companya nana blanca.",
-        "wikipedia_qid": "Q3409"
-    },
-    "s_J1950469+085205": {
-        "name": "Altair",
-        "description": "Altair és una estrella blanca brillant i calenta de tipus A que brilla com la dotzena estrella més brillant del cel nocturn amb una magnitud aparent de 0,76. Situada a només 16,7 anys llum (158 bilions de km) de distància a la constel·lació de l'Àguila, és un veí còmic proper que ancora el punt sud del famós asterisme del Triangle d'Estiu. A través de prismàtics o d'un telescopi petit, es resol com un punt de llum blanca penetrant i constant que ancora el coll de l'Àguila celestial.",
-        "fun_fact": "Altair és un dimoni de la velocitat còsmica que s'està aixafant físicament a si mateix! Gira sobre el seu eix a uns vertiginosos 860.000 km/h, completant una rotació completa en només 9 hores, comparat amb els lents 25 dies del nostre Sol. Aquesta força centrífuga extrema estira l'equador de l'estrella cap a fora de forma tan violenta que el seu diàmetre equatorial és més d'un 20 % més ample que els seus pols, convertint l'estrella en una «carbassa» aplanada de forma ovalada.",
-        "visual_tip": "Per localitzar Altair, mira ben amunt durant les nits d'estiu i tardor per trobar el Triangle d'Estiu; Altair és l'estrella més brillant que marca el vèrtex inferior, el més meridional del trio. Està flanquejada de prop a banda i banda per dues estrelles més febles, Alshain i Tarazed, formant una línia distintiva de tres estrelles que fa que la constel·lació de l'Àguila sigui immediatament reconeixible a ull nu des de qualsevol lloc.",
-        "wikipedia_qid": "Q12975"
-    },
-    "s_J0555103+072425": {
-        "name": "Betelgeuse",
-        "description": "Betelgeuse és una monstruosa estrella supergegant vermella que marca l'espatlla oriental d'Orió, brillant com una de les estrelles més lluminoses visibles a ull nu amb una magnitud aparent variable al voltant de 0,5. Situada a uns 550 o 650 anys llum (entre 5,2 i 6,1 quadrilions de km) de distància, és tan sorprenentment vasta que, si es col·loqués al centre del nostre sistema solar, la seva frontera física s'empassaria Mercuri, Venus, la Terra, Mart i arribaria fins a l'òrbita de Júpiter. A través de prismàtics o d'un telescopi, presumeix d'un to taronja canella càlid i profundament ric que contrasta bellament amb les estrelles blau gel de l'hivern.",
-        "fun_fact": "Betelgeuse és una bomba de rellotgeria còsmica! Ha consumit el combustible del seu nucli tan ràpidament que ja es troba en les etapes finals i volàtils de la seva vida i està garantit que explotarà com una espectacular supernova. Quan finalment detoni, l'explosió serà tan intensa que brillarà tant com una Lluna plena al nostre cel nocturn, romanent completament visible a plena llum del dia durant diversos mesos abans de esvair-se lentament per sempre.",
-        "visual_tip": "Per albirar Betelgeuse, només cal que miris la famosa constel·lació d'Orió durant les nits d'hivern per trobar la brillant i característica estrella de color taronja vermellós que marca la seva espatlla superior esquerra. Com que és una estrella variable semiregular, la seva brillantor fluctua constantment en cicles de diversos centenars de dies; intenta comparar-la amb les pròximes Rigel o Aldebaran per veure si actualment s'està atenuant o brillant.",
-        "wikipedia_qid": "Q12124"
-    },
-    "s_J0231490+891550": {
-        "name": "Polaris",
-        "common_names": [
-            "Estrella del Nord",
-            "Estrella Polar"
-        ],
-        "description": "Polaris és la llegendària Estrella del Nord, que brilla amb una magnitud aparent constant de 2,0 com l'estrella més brillant de la constel·lació de l'Ossa Menor. Situada a uns 433 anys llum (4,1 quadrilions de km) de distància, ocupa una posició única en la mecànica celeste perquè es troba gairebé perfectament alineada amb l'eix de rotació septentrional de la Terra. Mentre que la resta de tot el cel nocturn sembla girar al seu voltant en vastos cercles al llarg de les hores, Polaris roman pràcticament immòbil, actuant com una brúixola còsmica per als observadors del nord.",
-        "fun_fact": "Polaris no és en absolut una estrella única, sinó un complex sistema estel·lar triple ocult a plena vista! El punt brillant que veiem a ull nu és una enorme estrella supergegant groga flanquejada de prop per una companya propera, Polaris Ab, que orbita tan a prop que només va ser captada directament pel telescopi espacial Hubble. Mentrestant, una tercera estrella, Polaris B, orbita molt més lluny i ha seguit brunzint silenciosament en la seva àmplia trajectòria des de l'antiguitat.",
-        "visual_tip": "Per localitzar fàcilment Polaris, busca el famós «bol» del Carro Gran i segueix les dues estrelles «punteres» exteriors (Merak i Dubhe) cap amunt en línia recta durant unes cinc vegades la distància entre elles. Marca l'extrem mateix del mànec del Carro Petit, i la seva altitud sobre el teu horitzó septentrional local coincidirà sempre amb la teva latitud geogràfica exacta a la Terra.",
-        "wikipedia_qid": "Q12980"
-    },
-    "d_J0534317+220102":{
-        "name": "Nebulosa del Cranc",
-        "common_names": [
-            "Cranc",
-            "Tau A",
-            "Taurus A"
-        ],
-        "description": "La Nebulosa del Cranc (M1) és un espectacular romanent de supernova que s'estén al llarg d'11 anys llum (104 bilions de km), i representa les restes destrossades d'una estrella massiva. Situada a uns 6.500 anys llum de distància, a la constel·lació de Taure, brilla amb una magnitud aparent de 8,4 i apareix a través d'un telescopi petit com un tènue núvol de forma ovalada. Al seu cor es troba el Púlsar del Cranc —una estrella de neutrons superdensa comprimida fins a un diàmetre de només 20 km però amb la massa de dos sols— que gira 30 vegades per segon per alimentar la inquietant resplendor de la nebulosa impulsada per la radiació.",
-        "fun_fact": "Podem seguir el creixement d'aquesta nebulosa en temps real! Dades recents de telescopis espacials confirmen que els seus filaments gasosos exteriors segueixen llançant-se cap a l'espai profund a uns vertiginosos 5,5 milions de km/h. Aquest enorme núvol s'expandeix tan ràpidament que els canvis en la seva estructura es poden notar en fotografies preses amb només unes poques dècades de diferència.",
-        "visual_tip": "Per albirar aquest històric núvol còsmic, mira aproximadament 1 grau al nord-oest de l'estrella Zeta Tauri, que marca la banya sud del toro. Tot i que uns prismàtics de 10x50 poden revelar-la com una taca feble i fantasmal sota cels foscs pristins, l'ús d'un telescopi de 150 mm o superior amb un filtre de nebulosa UHC o OIII perfilarà significativament els seus límits irregulars i les vores dentades.",
-        "wikipedia_qid": "Q10934"
-    },
-    "d_J1818451-134731":{
-        "name": "Nebulosa de l'Àliga",
-        "common_names": [
-            "Reina de les Estrelles",
-            "Pilars de la Creació"
-        ],
-        "description": "La Nebulosa de l'Àliga (M16) és una colossal nebulosa d'emissió i viver estel·lar actiu que abasta aproximadament 70 per 55 anys llum (660 bilions de km). Situada a 7.000 anys llum de distància, a la constel·lació del Serpent, brilla amb una magnitud aparent de 6,0 i apareix a través de prismàtics com una taca feble i brillant que envolta un cúmul compacte d'estrelles acabades de néixer. Al seu nucli es troba un intens entorn de formació estel·lar il·luminat per la radiació ultraviolada del jove cúmul obert NGC 6611, que escup i ionitza els núvols circumdants de gas hidrogen còsmic.",
-        "fun_fact": "Aquesta nebulosa allotja els famosos «Pilars de la Creació», imponents columnes de gas fred i pols que arriben de 4 a 5 anys llum (entre 38 i 47 bilions de km) d'alçada. Anàlisis recents d'infrarojos d'alta resolució procedents de telescopis espacials revelen que aquestes monumentals estructures són excavades i evaporades activament des de l'interior per les pròpies protoestrelles que es formen al seu interior, cosa que significa que els pilars es troben en un implacable estira-i-arronsa còsmic entre la creació i la destrucció.",
-        "visual_tip": "Per albirar la M16, busca al cel meridional, prop dels límits de les constel·lacions del Serpent, Sagitari i l'Escut. Tot i que els prismàtics i els telescopis petits de 100 mm revelen fàcilment el brillant cúmul estel·lar incrustat, la resolució de les siluetes fosques dels pilars centrals requereix un telescopi de més obertura, 200 mm o més, juntament amb cels foscs pristins i un filtre de nebulosa UHC o OIII per maximitzar el contrast dels núvols de gas.",
-        "wikipedia_qid": "Q11349"
-    },
-    "d_J1959363+224316":{
-        "name": "Nebulosa Dumbbell",
-        "common_names": [
-            "Nebulosa de l'Haltera",
-            "Nebulosa de les Peses"
-        ],
-        "description": "La Nebulosa Dumbbell (M27) és una enorme nebulosa planetària que abasta uns 2,9 anys llum (27,4 bilions de km), formada quan una estrella que envellia va desprendre les seves capes exteriors cap a l'espai profund. Situada a 1.360 anys llum de distància, a la tènue constel·lació septentrional de la Guineu (Vulpecula), brilla amb una magnitud aparent combinada relativament brillant de 7,5. A través de prismàtics estàndard sota cels foscs, apareix com una taca brumosa conspícua i brillant, mentre que un telescopi petit de 100 mm transforma aquest núvol en una inconfusible forma bilobulada que recorda un pes de gimnàs o el cor d'una poma, il·luminada per un dels romanents estel·lars més grans de nana blanca coneguts.",
-        "fun_fact": "Aquest objecte és una fita monumental en la història de la ciència! Descoberta per Charles Messier el 1764, la M27 va ser la primera nebulosa planetària observada en la història de la humanitat. El seu enganyós nom històric de categoria, «planetària», va ser encunyat més tard per astrònoms que pensaven que el seu disc brillant verd-blau en els primitius telescopis s'assemblava a planetes gegants gasosos com Urà, tot i que en realitat és l'explosiva tomba d'una estrella massiva.",
-        "visual_tip": "Per localitzar la M27, busca la característica forma de fletxa de la constel·lació de la Sageta; la nebulosa es troba aproximadament 3 graus al nord de l'estrella de la punta, Gamma Sagittae. Com que posseeix una brillantor superficial inusualment alta per ser un núvol de gas de cel profund, continua sent molt visible fins i tot sota una lleugera contaminació lluminosa urbana, tot i que enroscar un filtre de nebulosa OIII a l'ocular aïllarà dràsticament la seva estructura de gas oxigen brillant i afilarà la seva icònica silueta de rellotge de sorra.",
-        "wikipedia_qid": "Q13628"
-    },
-    "d_J0042443+411607":{
-        "name": "Galàxia d'Andròmeda",
-        "common_names": [
-            "Nebulosa d'Andròmeda",
-            "Andròmeda"
-        ],
-        "description": "La Galàxia d'Andròmeda (M31) és una colossal galàxia espiral que abasta aproximadament 220.000 anys llum (2,1 sextilions de km), cosa que la converteix en el membre més gran del nostre Grup Local. Situada a 2,5 milions d'anys llum, a la constel·lació d'Andròmeda, brilla amb una magnitud aparent de 3,4, la qual cosa la fa fàcilment visible a ull nu sota cels foscs com una taca lletosa i allargada. A través de telescopis petits o prismàtics, els observadors poden resoldre fàcilment el seu brillant i condensat nucli galàctic i traçar la suau i àmplia resplendor de la seva estructura de disc interior, flanquejat per dues prominents galàxies nanes satèl·lit, M32 i M110.",
-        "fun_fact": "Andròmeda i la Via Làctia estan tancades en una dansa gravitatòria a alta velocitat! Dades astrofísiques recents confirmen que Andròmeda es precipita cap a nosaltres a uns 400.000 km/h. En uns 4.500 milions d'anys, les nostres dues galàxies col·lidiran violentament i es fusionaran en una única i massiva galàxia el·líptica, remodelant per complet el cel nocturn i reordenant el veïnat galàctic del nostre sistema solar.",
-        "visual_tip": "Per albirar la M31, busca el «Gran Quadrat de Pegàs» i segueix les estrelles d'Andròmeda cap amunt fins a Mirach, després salta lleugerament cap al nord-oest per trobar la galàxia. Com que la M31 abasta una àrea immensa al cel —gairebé sis vegades l'amplada d'una Lluna plena— es veu millor a través de prismàtics de camp ampli de 10x50 o de telescopis petits de pocs augments, ja que els augments alts estrenyeran tant el seu camp de visió que només en veureu el nucli brillant i us perdreu completament el disc espiral exterior.",
-        "wikipedia_qid": "Q2469"
-    },
-    "d_J0133508+303936":{
-        "name": "Galàxia del Triangle",
-        "common_names": [
-            "Triangle"
-        ],
-         "description": "La Galàxia del Triangle (M33) és una majestuosa galàxia espiral que abasta aproximadament 60.000 anys llum (570 bilions de km), cosa que la converteix en el tercer membre més gran del nostre Grup Local, per darrere d'Andròmeda i la Via Làctia. Situada a 2,7 milions d'anys llum, a la petita constel·lació del Triangle, brilla amb una magnitud aparent integrada total de 5,7, la qual cosa la situa just al límit de la visibilitat a ull nu sota cels excepcionalment foscs. A través de prismàtics estàndard, sorgeix com una taca ovalada, àmplia i fantasmal, mentre que un telescopi petit revela un nucli brillant i nítid flanquejat per braços espirals laxos i expansius que allotgen algunes de les majors regions de formació estel·lar de l'univers conegut.",
-        "fun_fact": "Aquesta galàxia conté un monstre còsmic anomenat NGC 604, un viver estel·lar tan increïblement enorme que empetiteix per complet la nostra pròpia Nebulosa d'Orió. Amb una extensió sorprenent de 1.500 anys llum, aquesta única nebulosa d'emissió dins de la M33 és més de 60 vegades més gran que la M42 i està alimentada per un cúmulo central de més de 200 estrelles massives acabades de néixer, cosa que la converteix en un dels centres d'esclat estel·lar més violents i actius de tot el nostre veïnat galàctic.",
-        "visual_tip": "Per trobar fàcilment la M33, mira aproximadament a mig camí entre la brillant estrella Mirach a Andròmeda i Hamal en Àries. Com que la seva enorme mida física s'estén per una àrea de cel gairebé quatre vegades més gran que una Lluna plena, la seva brillantor superficial és extremadament baixa i s'esvaeix fàcilment amb les llums de la ciutat; has d'observar des d'un lloc prístí de cel fosc i sense lluna utilitzant prismàtics de camp ampli de pocs augments o un telescopi petit per evitar que els seus febles i delicats discs espirals desapareguin en el fons.",
-        "wikipedia_qid": "Q13724"
-    },
-    "d_J0535168-052315":{
-        "name": "Gran Nebulosa d'Orió",
-        "common_names": [
-            "Nebulosa d'Orió"
-        ],
-        "description": "La Nebulosa d'Orió (M42) és un viver estel·lar massiu i d'una brillantor encegadora que s'estén al llarg de 24 anys llum (227 bilions de km), on centenars de noves estrelles estan neixent en l'actualitat. Situada a 1.350 anys llum de distància, a la constel·lació d'Orió, brilla amb una magnífica magnitud aparent de 4,0, la qual cosa la fa clarament visible a ull nu com una estrella borrosa a l'Espasa d'Orió. A través de prismàtics o d'un telescopi petit, es transforma en un impressionant i ampli vel de gas i pols brillants amb forma d'ala de ratpenat, centrat en el Trapezi —un cúmul atapeït i brillant de quatre estrelles supermassives acabades de néixer la intensa llum ultraviolada de les quals il·lumina tot el complex.",
-        "fun_fact": "Aquest bressol còsmic és en realitat un important laboratori químic! Els escombratges infrarojos d'alta resolució dels telescopis espacials moderns han detectat quantitats massives de molècules orgàniques complexes —inclosos compostos de carboni, vapor d'aigua i ingredients precursors de la vida— arremolinant-se a l'interior dels discs planetaris que envolten aquestes estrelles infantils. Això significa que en observar la M42, veient com es cuinen activament i en temps real les llavors químiques de futurs sistemes planetaris.",
-        "visual_tip": "Per localitzar fàcilment la M42, mira directament sota el famós cinturó de tres estrelles d'Orió per trobar la línia vertical d'estrelles que formen la seva espasa; la nebulosa és l'«estrella» central de la fulla. Com que és tan brillant, podràs gaudir fàcilment de la seva fantasmal resplendor en forma de taca difusa fins i tot des del jardí d'una urbanització, però l'ús d'un telescopi de 100 mm o superior sota cels foscs amb un filtre OIII o UHC revelarà de forma espectacular les intricades bandes de pols fosca que tallen el seu nucli brillant.",
-        "wikipedia_qid": "Q13903"
-    },
-    "d_J0346379+241041":{
-        "name": "Plèiades",
-        "common_names": [
-            "Set Germanes"
-        ],
-        "description": "Les Plèiades (M45), també conegudes com les Set Germanes, és un espectacular cúmul estel·lar obert que domina un radi físic central de 8 anys llum (75 bilions de km), amb la seva petjada gravitatòria de marea estenent-se fins als 43 anys llum. Situat a uns 444 anys llum de distància, a la constel·lació de Taure, és l'objecte Messier més proper a la Terra i crema amb una brillant magnitud aparent combinada d'1,6. Per a l'ull nu sota cels foscs, s'assembla a un petit i centellejant «carro» de sis a set estrelles calentes de tipus B, de color blanc-i-blau, que esclaten en un dens camp de més de 1.000 membres estel·lars quan es veuen a través de prismàtics estàndard o telescopis de pocs augments.",
-        "fun_fact": "Durant dècades, els astrònoms es van veure immersos en un feroç misteri còsmic conegut com la «Controvèrsia de la distància a les Plèiades», ja que el satèl·lit Hipparcos va mesurar incorrectament el cúmul com a molt més proper del que realment estava. El cartografiat d'alta precisió de la recent missió Gaia de l'ESA va tancar finalment l'històric debat, utilitzant una paral·laxi geomètrica mil·limètrica per fixar sòlidament la distància en 444 anys llum, cosa que va demostrar que els calibratges del satèl·lit eren defectuosos i va salvar fonamentalment els nostres models estàndard de com evolucionen les estrelles joves.",
-        "visual_tip": "Per trobar fàcilment la M45, mira per sobre de la constel·lació d'Orió o segueix una línia recta a través de les tres estrelles del Cinturó d'Orió cap amunt, passant per la brillant estrella taronja Aldebaran. Com que aquest immens cúmul estel·lar cobreix més de 2 graus del cel nocturn —el que equival aproximadament a quatre vegades el diàmetre d'una Lluna plena— se sortirà ràpidament de la teva vista a molts augments; és millor observar-lo a través de prismàtics de camp ampli de 10x50 o de telescopis petits de pocs augments, on també podràs buscar la feble i fantasmal resplendor blava de la nebulosa de reflexió de Mèrope que envolta les estrelles.",
-        "wikipedia_qid": "Q13423"
-    },
-    "d_J1329526+471142":{
-        "name": "Galàxia del Remolí",
-        "common_names": [
-            "Galàxia del Signe d'Interrogació",
-            "Remolí"
-        ],
-        "description": "La Galàxia del Remolí (M51) és una clàssica galàxia espiral de gran disseny que abasta uns 76.000 anys llum (720 bilions de km), famosament tancada en un estira-i-arronsa còsmic amb una galàxia companya més petita, la NGC 5195. Situada a 23 milions d'anys llum de distància, a la constel·lació de Canes Venatici, brilla amb una magnitud aparent de 8,4 i sembla una taca suau de dos caps a través de prismàtics petits en condicions prístines. Un telescopi petit de 100 mm separa clarament els dos nuclis galàctics, mentre que els instruments de mida mitjana revelen el feble i eteri pont d'estrelles de marea i gas que els connecta.",
-        "fun_fact": "Aquest objecte és una fita històrica en l'astronomia! El 1845, William Parsons (el tercer comte de Rosse) va utilitzar el seu monstruós telescopi d'1,83 m per dibuixar la M51, convertint-la en el primer objecte celeste reconegut amb una estructura en espiral. Molt abans que ningú sabés que existien «galàxies» fora de la nostra, els seus famosos dibuixos dels braços en forma de remolí de la M51 van proporcionar la prova visual fonamental que va inspirar directament la nostra comprensió moderna de l'univers en expansió i rotació.",
-        "visual_tip": "Per localitzar la M51, situa Alkaid —l'estrella situada a l'extrem mateix del mànec del Carro Gran— i mira aproximadament 3,5 graus cap al sud-oest. Tot i que es pot albirar com un núvol fantasmal amb prismàtics de 10x50 en una nit negra com la tinta i sense lluna, necessitaràs un telescopi de 200 mm o superior, juntament amb grans augments, per resoldre clarament els braços espirals de gran disseny que es corben des del seu brillant nucli.",
-        "wikipedia_qid": "Q13957"
-    },
-    "d_J1853350+330144":{
-        "name": "Nebulosa de l'Anell",
-        "description": "La Nebulosa de l'Anell (M57) és una nebulosa planetària per excel·lència que representa la closca de gas ionitzat expulsada per una estrella moribunda similar al sol, que s'estén aproximadament 1,3 anys llum (12,3 bilions de km) de diàmetre. Situada a 2,300 anys llum de distància, a la constel·lació septentrional de la Lira, brilla amb una magnitud aparent de 8,8 i apareix a través de prismàtics o d'un telescopi molt petit com un disc petit, de color verd grisenc fantasmal, que es confon fàcilment amb un planeta llunyà. Un telescopi moderat de 150 mm sota cels foscs transforma bellament aquesta taca en un distintiu i buit anell de fum còsmic que flota contra el teló de fons de l'espai profund, il·luminat des de l'interior per una estrella nana blanca feroçment calenta.",
-        "fun_fact": "La Nebulosa de l'Anell és en realitat una enorme il·lusió còsmica! El cartografiat tridimensional d'alta resolució que combina llum visible i dades infraroges mostra que la M57 no és en absolut una simple bombolla buida o un cercle, sinó més aviat un cilindre de gas allargat amb forma de barril vist gairebé directament pel seu extrem obert. En mirar la nebulosa des de la Terra, estàs mirant directament pel tub d'un barril estel·lar, captant la violenta expansió geomètrica dels últims gests de la mort d'una estrella des d'una perspectiva de primera fila.",
-        "visual_tip": "Per trobar fàcilment la M57, localitza la brillant estrella Vega i traça el petit i característic paral·lelogram d'estrelles que forma el cos de la Lira; la nebulosa es troba gairebé perfectament a mig camí entre les dues estrelles inferiors, Sheliak i Sulafat. Tot i que un telescopi de 100 mm revelarà fàcilment la forma d'anell amb centre fosc, necessitaràs un instrument gran de 250 mm o superior forçat a augments excepcionalment alts en una nit estable i sense lluna per albirar l'increïblement feble estrella nana blanca de magnitud 15,7 que descansa al seu centre absolut.",
-        "wikipedia_qid": "Q13628"
-    },
-    "d_J1315492+420145": {
-        "name": "Galàxia del Gira-sol",
-        "description": "La Galàxia del Gira-sol (M63) és una cridanera galàxia espiral floculenta que abasta aproximadament 98.000 anys llum (930 bilions de km), caracteritzada per una disposició de braços de formació estel·lar atapeïts i en forma de pegats. Situada a 27 milions d'anys llum de distància, a la constel·lació de Canes Venatici, brilla amb una magnitud aparent de 8,6 i apareix a través de telescopis petits com una bruma ovalada brillant i compacta amb un nucli molt condensat. Els instruments de mida mitjana, de 150 mm o més, revelen bellament la textura granulada i multibraç que envolta el seu nucli, que imita visualment la densa disposició de les llavors en un gira-sol.",
-        "fun_fact": "Aquesta galàxia és un exemple sobresortint d'espiral «floculenta», el que significa que els seus braços espirals són irregulars i discontinus en lloc de llargs i amplis. Estudis recents de telescopis espacials i d'imatges de camp profund han cartografiat un immens sistema de bucles de febles corrents de marea estel·lars que envolten la M63, que són les restes estructurals fantasmals d'una galàxia satèl·lit més petita que la Galàxia del Gira-sol va trossejar per complet i va canibalitzar fa uns 5.000 milions d'anys.",
-        "visual_tip": "Per localitzar fàcilment la M63, traça una trajectòria aproximadament a un terç del camí des de Cor Caroli (Alpha Canum Venaticorum) fins a Alkaid, a l'extrem del mànec del Carro Gran. A causa de la seva elevada brillantor superficial, resisteix millor la contaminació lluminosa que la pròxima Galàxia del Remolí, però necessitaràs un telescopi de 200 mm o superior, combinat amb oculars de camp ampli i pocs augments, per discernir on acaba el seu nucli brillant i on comencen els seus delicats i clapejats serrells exteriors.",
-        "wikipedia_qid": "Q13981"
-    },
-    "d_J1256436+214057": {
-        "name": "Galàxia de l'Ull Negre",
-        "common_names": [
-            "Bella Dorment",
-            "Ull Negre",
-            "Ull del Diable"
-        ],
-        "description": "La Galàxia de l'Ull Negre (M64) és una extraordinària galàxia espiral que abasta aproximadament 54.000 anys llum (510 bilions de km), reconeixible a l'instant per l'enorme i àmplia silueta de pols interestel·lar fosca que enfosqueix el seu brillant nucli. Situada a 17 milions d'anys llum de distància, a la constel·lació de la Cabellera de Berenice, brilla amb una magnitud aparent de 8,5 i es pot albirar fàcilment a través de prismàtics grans com un oval suau i brillant sota cels foscs. Un telescopi petit de 100 mm aïlla bellament el seu nucli d'alt contrast, revelant la prominent banda de pols còsmica que dona a la galàxia la seva icònica aparença de morat.",
-        "fun_fact": "Aquesta galàxia posseeix una de les dinàmiques internes més estranyes de l'univers: gira en dues direccions oposades alhora! Mentre que les estrelles i el disc de gas molecular interior giren en el sentit de les agulles del rellotge fins a un radi de 3.000 anys llum, l'enorme núvol de gas hidrogen del seu disc exterior gira completament en sentit contrari. Les revolucionàries imatges de camp profund van confirmar que aquest violent xoc atmosfèric va ser causat per la M64 en engolir per complet una galàxia nana satèl·lit rica en hidrogen fa més de mil milions d'anys, convertint la seva zona fronterera en una fàbrica de brots estel·lars altament comprimida i turbulenta.",
-        "visual_tip": "Per localitzar la M64, desplaça el teu telescopi aproximadament 5 graus al nord-oest de l'estrella Diadem (Alpha Comae Berenices). A causa que la seva estructura central té una brillantor superficial inusualment alta, és un objectiu notablement resistent que suporta bé la contaminació lluminosa urbana moderada. No obstant això, per resoldre clarament el delicat espai entre el brillant nucli central i la profunda banda de pols negre com la tinta que l'envolta, necessitaràs un telescopi de 150 mm o superior juntament amb una visió estable de grans augments en una nit sense lluna.",
-        "wikipedia_qid": "Q13983"
-    },
-    "d_J0955331+690355": {
-        "name": "Galàxia de Bode",
-        "description": "La Galàxia de Bode (M81) és una magnífica galàxia espiral de gran disseny que abasta aproximadament 90.000 anys llum (850 bilions de km), amb braços de formació estel·lar gairebé perfectament simètrics. Situada a 12 milions d'anys llum de distància, a la constel·lació septentrional de l'Ossa Major, brilla amb una magnífica magnitud aparent combinada de 6,9, la qual cosa la converteix en una de les galàxies més brillants del cel nocturn. A través de prismàtics estàndard, és fàcilment visible com una bruma ovalada brillant i nítida amb un nucli molt condensat, mentre que els telescopis petits sota cels foscs comencen a cartografiar l'embolcall brillant del seu majestuós disc exterior.",
-        "fun_fact": "La Galàxia de Bode es troba actualment tancada en una violenta dansa gravitatòria amb la seva veïna propera, la Galàxia del Cigar (M82). Fa uns 300 milions d'anys, les dues galàxies van executar un sobrevol proper que va desencadenar massives ones de xoc de marea a través de tots dos sistemes. Aquesta trobada còsmica va arrencar gas per formar un immens pont d'hidrogen que les connecta, alhora que canalitzava vastes quantitats de matèria primera cap al nucli de la M81, alimentant el seu forat negre supermassiu central, que pesa la sorprenent xifra de 70 milions de vegades la massa del nostre Sol.",
-        "visual_tip": "Per trobar fàcilment la M81, localitza les dues estrelles indicadores del «bol» del Carro Gran (Merak i Dubhe) i traça una línia imaginària a través d'elles, continuant-la en l'espai profund una distància aproximadament igual cap al nord-oest. En posseir una brillantor superficial excepcionalment alta, és un objectiu fantàstic per als habitants de les ciutats i es pot veure juntament amb la Galàxia del Cigar en un únic camp d'ocular de pocs augments, tot i que es necessita un telescopi de 200 mm sota cels negres com la tinta per traçar els intricats patrons espirals que es corben des del seu nucli.",
-        "wikipedia_qid": "Q81102410"
-    },
-    "d_J1239594-113722": {
-        "name": "Galàxia del Sombrero",
-        "common_names": [
-            "Sombrero"
-        ],
-        "description": "La Galàxia del Sombrero (M104) és una impressionant galàxia espiral no barrada que abasta uns 50.000 anys llum (470 bilions de km), reconeixible a l'instant per la seva enorme protuberància central i una gruixuda i fosca vora de pols que l'enfosqueix. Situada a 28 milions d'anys llum de distància, a la constel·lació de la Verge, brilla amb una magnífica magnitud aparent de 8,0, la qual cosa la converteix en un objectiu fàcil per a instruments petits. A través de prismàtics estàndard sota cels foscs, apareix com una agulla de llum afilada i allargada, mentre que un telescopi petit de 100 mm separa clarament el seu nucli brillant de l'àmplia «ala de barret» de la seva vora exterior.",
-        "fun_fact": "Aquesta galàxia és un pes pesat còsmic absolut envoltat en un misteri! Els estudis dels telescopis espacials moderns han revelat que la Galàxia del Sombrero no només té un sistema de cúmuls normal, sinó que allotja un sorprenent eixam de gairebé 2.000 cúmuls globulars orbitant el seu nucli, gairebé deu vegades més que tota la nostra Via Làctia. A més, el seguiment precís de la velocitat orbital mostra que el seu forat negre supermassiu central és un autèntic monstre, amb una massa de mil milions de sols, cosa que el converteix en un dels forats negres més massius mai trobats en una galàxia propera.",
-        "visual_tip": "Per albirar la M104, mira aproximadament 11 graus a l'oest d'Espiga, l'estrella més brillant de la Verge, o utilitza el característic quadrilàter de quatre estrelles del Corb per saltar just a l'altre costat de la frontera cap al nord-est. A causa que la galàxia està inclinada gairebé de cantell respecte a la nostra línia de visió (a només 6 graus), la seva brillantor superficial està extremadament concentrada i suporta bé la contaminació lluminosa suburbana, tot i que es requereix un telescopi de 200 mm o superior combinat amb grans augments per separar visualment el seu nucli brillant amb la banda de pols còsmica negra com la tinta.",
-        "wikipedia_qid": "Q91461627"
-    },
-    "d_J0040220+414107": {
-        "name": "Messier 110",
-        "description": "Messier 110 (M110) és una galàxia el·líptica nana, estructurada i suau, que abasta aproximadament 17.000 anys llum (160 bilions de km), i actua com la major galàxia satèl·lit de la massiva Galàxia d'Andròmeda. Situada a 2,7 milions d'anys llum, a la constel·lació d'Andròmeda, brilla amb una magnitud aparent de 8,1. A través de prismàtics petits o telescopis de pocs augments, sorgeix com un oval fantasmal nítid i allargat que deriva silenciosament just al nord-oest del brillant nucli central d'Andròmeda, mostrant un nucli que s'il·lumina gradualment sense braços espirals visibles.",
-        "fun_fact": "Tot i ser una galàxia el·líptica antiga —una classe que normalment es considera «morta» i mancada de formació estel·lar— la M110 guarda un secret ocult. Els recents cartografiats de gas interestel·lar d'alta resolució realitzats per telescopis espacials ha detectat una col·lecció d'estrelles blaves joves i calentes niuades just al seu centre, juntament amb un sorprenent parell de núvols de pols còsmica fosca. Això demostra que aquesta diminuta galàxia companya ha conservat d'alguna manera matèries primeres suficients per donar a llum contínuament estrelles noves al seu nucli al llarg dels últims centenars de milions d'anys.",
-        "visual_tip": "Per albirar la M110, primer has de centrar el teu telescopi en el brillant nucli de la Galàxia d'Andròmeda (M31). Desplaça l'ocular aproximadament 35 minuts d'arc al nord-oest del nucli de la M31 per trobar aquest suau núvol ovalat. A causa que té una brillantor superficial inferior a la de l'altra companya destacada d'Andròmeda, la M32, necessitaràs una nit sense lluna i un telescopi petit de 100 mm o superior per separar clarament els seus suaus límits exteriors de la llum de fons brillant del sistema d'Andròmeda.",
-        "wikipedia_qid": "Q4662"
-    }
+  "s_J0231490+891550": {
+    "name": "Polaris",
+    "common_names": [
+      "Estrella del Nord",
+      "Estrella Polar"
+    ],
+    "description": "Polaris és la llegendària Estrella del Nord, que brilla amb una magnitud aparent constant de 2,0 com l'estrella més brillant de la constel·lació de l'Ossa Menor. Situada a uns 433 anys llum (4,1 quadrilions de km) de distància, ocupa una posició única en la mecànica celeste perquè es troba gairebé perfectament alineada amb l'eix de rotació septentrional de la Terra. Mentre que la resta de tot el cel nocturn sembla girar al seu voltant en vastos cercles al llarg de les hores, Polaris roman pràcticament immòbil, actuant com una brúixola còsmica per als observadors del nord.",
+    "fun_fact": "Polaris no és en absolut una estrella única, sinó un complex sistema estel·lar triple ocult a plena vista! El punt brillant que veiem a ull nu és una enorme estrella supergegant groga flanquejada de prop per una companya propera, Polaris Ab, que orbita tan a prop que només va ser captada directament pel telescopi espacial Hubble. Mentrestant, una tercera estrella, Polaris B, orbita molt més lluny i ha seguit brunzint silenciosament en la seva àmplia trajectòria des de l'antiguitat.",
+    "visual_tip": "Per localitzar fàcilment Polaris, busca el famós «bol» del Carro Gran i segueix les dues estrelles «punteres» exteriors (Merak i Dubhe) cap amunt en línia recta durant unes cinc vegades la distància entre elles. Marca l'extrem mateix del mànec del Carro Petit, i la seva altitud sobre el teu horitzó septentrional local coincidirà sempre amb la teva latitud geogràfica exacta a la Terra.",
+    "wikipedia_qid": "Q12980"
+  },
+  "s_J0555103+072425": {
+    "name": "Betelgeuse",
+    "description": "Betelgeuse és una monstruosa estrella supergegant vermella que marca l'espatlla oriental d'Orió, brillant com una de les estrelles més lluminoses visibles a ull nu amb una magnitud aparent variable al voltant de 0,5. Situada a uns 550 o 650 anys llum (entre 5,2 i 6,1 quadrilions de km) de distància, és tan sorprenentment vasta que, si es col·loqués al centre del nostre sistema solar, la seva frontera física s'empassaria Mercuri, Venus, la Terra, Mart i arribaria fins a l'òrbita de Júpiter. A través de prismàtics o d'un telescopi, presumeix d'un to taronja canella càlid i profundament ric que contrasta bellament amb les estrelles blau gel de l'hivern.",
+    "fun_fact": "Betelgeuse és una bomba de rellotgeria còsmica! Ha consumit el combustible del seu nucli tan ràpidament que ja es troba en les etapes finals i volàtils de la seva vida i està garantit que explotarà com una espectacular supernova. Quan finalment detoni, l'explosió serà tan intensa que brillarà tant com una Lluna plena al nostre cel nocturn, romanent completament visible a plena llum del dia durant diversos mesos abans de esvair-se lentament per sempre.",
+    "visual_tip": "Per albirar Betelgeuse, només cal que miris la famosa constel·lació d'Orió durant les nits d'hivern per trobar la brillant i característica estrella de color taronja vermellós que marca la seva espatlla superior esquerra. Com que és una estrella variable semiregular, la seva brillantor fluctua constantment en cicles de diversos centenars de dies; intenta comparar-la amb les pròximes Rigel o Aldebaran per veure si actualment s'està atenuant o brillant.",
+    "wikipedia_qid": "Q12124"
+  },
+  "s_J0645089-164258": {
+    "name": "Sírius",
+    "common_names": [
+      "Estrella Gos"
+    ],
+    "description": "Sírius és l'estrella absolutament més brillant de tot el cel nocturn, brillant amb una sorprenent magnitud aparent de -1,46. Situada a només 8,6 anys llum (81 bilions de km) de distància a la constel·lació Canis Major, és una estrella blanca calenta de la seqüència principal gairebé el doble de massiva que el nostre Sol i 25 vegades més lluminosa. A través de prismàtics o de qualsevol telescopi, es presenta com un brillant far blau diamant que sovint centelleja amb colors intensos semblants als de l'arc de Sant Martí a causa de la turbulència atmosfèrica prop de l'horitzó.",
+    "fun_fact": "Sírius és en realitat un silenciós sistema estel·lar doble! Orbitant l'estrella principal brillant hi ha Sírius B, anomenada «el Cadell», la primera estrella nana blanca mai descoberta. Tot i que ha comprimit la massa de tot el nostre Sol en una esfera només lleugerament més petita que la Terra, brilla tan feblement a magnitud 8,5 que es perdia completament en la resplendor encegadora de la seva companya massiva fins que els telescopis van avançar prou per separar-les.",
+    "visual_tip": "Per localitzar Sírius, simplement troba les tres estrelles del Cinturó d'Orió i traça una línia imaginària recta cap avall i a l'esquerra. Com a joia de la corona del cel d'hivern, és fàcilment visible a ull nu fins i tot des de centres urbans amb molta contaminació lluminosa, tot i que necessitaràs una estabilitat atmosfèrica excepcional i un telescopi de 200 mm amb molts augments per separar l'encegadora estrella principal de la seva diminuta companya nana blanca.",
+    "wikipedia_qid": "Q3409"
+  },
+  "s_J1950469+085205": {
+    "name": "Altair",
+    "description": "Altair és una estrella blanca brillant i calenta de tipus A que brilla com la dotzena estrella més brillant del cel nocturn amb una magnitud aparent de 0,76. Situada a només 16,7 anys llum (158 bilions de km) de distància a la constel·lació de l'Àguila, és un veí còmic proper que ancora el punt sud del famós asterisme del Triangle d'Estiu. A través de prismàtics o d'un telescopi petit, es resol com un punt de llum blanca penetrant i constant que ancora el coll de l'Àguila celestial.",
+    "fun_fact": "Altair és un dimoni de la velocitat còsmica que s'està aixafant físicament a si mateix! Gira sobre el seu eix a uns vertiginosos 860.000 km/h, completant una rotació completa en només 9 hores, comparat amb els lents 25 dies del nostre Sol. Aquesta força centrífuga extrema estira l'equador de l'estrella cap a fora de forma tan violenta que el seu diàmetre equatorial és més d'un 20 % més ample que els seus pols, convertint l'estrella en una «carbassa» aplanada de forma ovalada.",
+    "visual_tip": "Per localitzar Altair, mira ben amunt durant les nits d'estiu i tardor per trobar el Triangle d'Estiu; Altair és l'estrella més brillant que marca el vèrtex inferior, el més meridional del trio. Està flanquejada de prop a banda i banda per dues estrelles més febles, Alshain i Tarazed, formant una línia distintiva de tres estrelles que fa que la constel·lació de l'Àguila sigui immediatament reconeixible a ull nu des de qualsevol lloc.",
+    "wikipedia_qid": "Q12975"
+  },
+  "d_J0040220+414107": {
+    "name": "Messier 110",
+    "description": "Messier 110 (M110) és una galàxia el·líptica nana, estructurada i suau, que abasta aproximadament 17.000 anys llum (160 bilions de km), i actua com la major galàxia satèl·lit de la massiva Galàxia d'Andròmeda. Situada a 2,7 milions d'anys llum, a la constel·lació d'Andròmeda, brilla amb una magnitud aparent de 8,1. A través de prismàtics petits o telescopis de pocs augments, sorgeix com un oval fantasmal nítid i allargat que deriva silenciosament just al nord-oest del brillant nucli central d'Andròmeda, mostrant un nucli que s'il·lumina gradualment sense braços espirals visibles.",
+    "fun_fact": "Tot i ser una galàxia el·líptica antiga —una classe que normalment es considera «morta» i mancada de formació estel·lar— la M110 guarda un secret ocult. Els recents cartografiats de gas interestel·lar d'alta resolució realitzats per telescopis espacials ha detectat una col·lecció d'estrelles blaves joves i calentes niuades just al seu centre, juntament amb un sorprenent parell de núvols de pols còsmica fosca. Això demostra que aquesta diminuta galàxia companya ha conservat d'alguna manera matèries primeres suficients per donar a llum contínuament estrelles noves al seu nucli al llarg dels últims centenars de milions d'anys.",
+    "visual_tip": "Per albirar la M110, primer has de centrar el teu telescopi en el brillant nucli de la Galàxia d'Andròmeda (M31). Desplaça l'ocular aproximadament 35 minuts d'arc al nord-oest del nucli de la M31 per trobar aquest suau núvol ovalat. A causa que té una brillantor superficial inferior a la de l'altra companya destacada d'Andròmeda, la M32, necessitaràs una nit sense lluna i un telescopi petit de 100 mm o superior per separar clarament els seus suaus límits exteriors de la llum de fons brillant del sistema d'Andròmeda.",
+    "wikipedia_qid": "Q4662"
+  },
+  "d_J0042418+405154": {
+    "name": "Messier 32",
+    "common_names": [
+      "Galàxia Nana d'Andròmeda"
+    ],
+    "description": "M 32 és una galàxia el·líptica nana situada a uns 2,9 milions d'anys llum de distància, actuant com una de les galàxies satèl·lit més prominents de la Gran Galàxia d'Andròmeda. A diferència de les galàxies espirals, aquesta petita galàxia és un sistema compacte format principalment per estrelles velles i grogues, sense pràcticament pols ni gas per a la formació estel·lar.",
+    "fun_fact": "El nucli de M 32 és extremadament dens i alberga un forat negre supermassiu, la qual cosa, combinada amb la seva proximitat a la galàxia d'Andròmeda, provoca que les seves estrelles externes siguin arrossegades per les forces de marea de la seva veïna gegant.",
+    "visual_tip": "Localitzar M 32 és senzill si ja teniu la Gran Galàxia d'Andròmeda (M31) al camp de visió; apareix com una petita taca rodona i difusa just al sud del nucli d'M31. És visible amb prismàtics en cels foscos, però un telescopi de mitjana obertura permet apreciar millor la seva forma compacta i brillant; no requereix filtres especials ja que és una galàxia el·líptica.",
+    "wikipedia_qid": "Q13720"
+  },
+  "d_J0042443+411607": {
+    "name": "Galàxia d'Andròmeda",
+    "common_names": [
+      "Nebulosa d'Andròmeda",
+      "Andròmeda"
+    ],
+    "description": "La Galàxia d'Andròmeda (M31) és una colossal galàxia espiral que abasta aproximadament 220.000 anys llum (2,1 sextilions de km), cosa que la converteix en el membre més gran del nostre Grup Local. Situada a 2,5 milions d'anys llum, a la constel·lació d'Andròmeda, brilla amb una magnitud aparent de 3,4, la qual cosa la fa fàcilment visible a ull nu sota cels foscs com una taca lletosa i allargada. A través de telescopis petits o prismàtics, els observadors poden resoldre fàcilment el seu brillant i condensat nucli galàctic i traçar la suau i àmplia resplendor de la seva estructura de disc interior, flanquejat per dues prominents galàxies nanes satèl·lit, M32 i M110.",
+    "fun_fact": "Andròmeda i la Via Làctia estan tancades en una dansa gravitatòria a alta velocitat! Dades astrofísiques recents confirmen que Andròmeda es precipita cap a nosaltres a uns 400.000 km/h. En uns 4.500 milions d'anys, les nostres dues galàxies col·lidiran violentament i es fusionaran en una única i massiva galàxia el·líptica, remodelant per complet el cel nocturn i reordenant el veïnat galàctic del nostre sistema solar.",
+    "visual_tip": "Per albirar la M31, busca el «Gran Quadrat de Pegàs» i segueix les estrelles d'Andròmeda cap amunt fins a Mirach, després salta lleugerament cap al nord-oest per trobar la galàxia. Com que la M31 abasta una àrea immensa al cel —gairebé sis vegades l'amplada d'una Lluna plena— es veu millor a través de prismàtics de camp ampli de 10x50 o de telescopis petits de pocs augments, ja que els augments alts estrenyeran tant el seu camp de visió que només en veureu el nucli brillant i us perdreu completament el disc espiral exterior.",
+    "wikipedia_qid": "Q2469"
+  },
+  "d_J0133210+603912": {
+    "name": "Messier 103",
+    "description": "M 103 és un petit cúmul obert d'estrelles tènues situat a la constel·lació de Cassiopea, a uns 9.400 anys llum de distància. Amb una edat estimada d'entre 12,6 i 25 milions d'anys, aquest cúmul conté aproximadament 172 estrelles vinculades gravitacionalment en un diàmetre d'uns 15 anys llum.",
+    "fun_fact": "Tot i que va ser descobert per Pierre Méchain el 1781, va ser l'última entrada afegida al catàleg original de Charles Messier.",
+    "visual_tip": "Amb una magnitud aparent de 7,4, és visible amb binocles. Busca dues estrelles prominents i una gegant roja al centre; aneu amb compte de no confondre l'estrella doble Struve 131 amb un membre del cúmul, ja que és un objecte de primer pla.",
+    "wikipedia_qid": "Q14376"
+  },
+  "d_J0133508+303936": {
+    "name": "Galàxia del Triangle",
+    "common_names": [
+      "Triangle"
+    ],
+    "description": "La Galàxia del Triangle (M33) és una majestuosa galàxia espiral que abasta aproximadament 60.000 anys llum (570 bilions de km), cosa que la converteix en el tercer membre més gran del nostre Grup Local, per darrere d'Andròmeda i la Via Làctia. Situada a 2,7 milions d'anys llum, a la petita constel·lació del Triangle, brilla amb una magnitud aparent integrada total de 5,7, la qual cosa la situa just al límit de la visibilitat a ull nu sota cels excepcionalment foscs. A través de prismàtics estàndard, sorgeix com una taca ovalada, àmplia i fantasmal, mentre que un telescopi petit revela un nucli brillant i nítid flanquejat per braços espirals laxos i expansius que allotgen algunes de les majors regions de formació estel·lar de l'univers conegut.",
+    "fun_fact": "Aquesta galàxia conté un monstre còsmic anomenat NGC 604, un viver estel·lar tan increïblement enorme que empetiteix per complet la nostra pròpia Nebulosa d'Orió. Amb una extensió sorprenent de 1.500 anys llum, aquesta única nebulosa d'emissió dins de la M33 és més de 60 vegades més gran que la M42 i està alimentada per un cúmulo central de més de 200 estrelles massives acabades de néixer, cosa que la converteix en un dels centres d'esclat estel·lar més violents i actius de tot el nostre veïnat galàctic.",
+    "visual_tip": "Per trobar fàcilment la M33, mira aproximadament a mig camí entre la brillant estrella Mirach a Andròmeda i Hamal en Àries. Com que la seva enorme mida física s'estén per una àrea de cel gairebé quatre vegades més gran que una Lluna plena, la seva brillantor superficial és extremadament baixa i s'esvaeix fàcilment amb les llums de la ciutat; has d'observar des d'un lloc prístí de cel fosc i sense lluna utilitzant prismàtics de camp ampli de pocs augments o un telescopi petit per evitar que els seus febles i delicats discs espirals desapareguin en el fons.",
+    "wikipedia_qid": "Q13724"
+  },
+  "d_J0136417+154701": {
+    "name": "Galàxia Fantasma",
+    "description": "La Galàxia Fantasma és una impressionant galàxia espiral de gran disseny situada a uns 32 milions d'anys llum a la constelació dels Peixos. Amb uns 100 mil milions d'estrelles, destaca pels seus dos braços espirals clarament definits i la seva orientació frontal, la qual cosa la converteix en un laboratori ideal per estudiar l'estructura galàctica.",
+    "fun_fact": "A causa de la seva baixa brillantor superficial, aquesta galàxia és considerada l'objecte del catàleg Messier més difícil d'observar per als astrònoms aficionats.",
+    "visual_tip": "Com que la seva brillantor és molt tènue, busca un cel tan fosc com sigui possible lluny de la contaminació lumínica. Utilitza una tècnica de visió perifèrica i apunta el teu telescopi cap a la constel·lació dels Peixos; necessitaràs paciència i una obertura generosa per distingir la seva forma difusa.",
+    "wikipedia_qid": "Q14013"
+  },
+  "d_J0142196+513431": {
+    "name": "Nebulosa del Petit Halter",
+    "common_names": [
+      "Nebulosa de la Barra",
+      "Nebulosa del Suro"
+    ],
+    "description": "La Nebulosa del Petit Halter és una fascinant nebulosa planetària situada a la constelació de Perseu, a uns 2.500 anys llum de distància. Aquesta estructura bipolar es va formar quan una estrella moribunda va expulsar les seves capes exteriors, deixant enrere una nana blanca extremadament calenta al seu nucli.",
+    "fun_fact": "A causa de la seva forma peculiar, els astrònoms del passat van pensar erròniament que es tractava de dues nebuloses separades, fet que explica per què té dos números de catàleg diferents en registres antics.",
+    "visual_tip": "Per observar-la, busca la constelació de Perseu en una nit clara. Utilitza un telescopi d'obertura mitjana i visió lateral, ja que la seva magnitud de +10.1 la converteix en un objecte tènue que requereix cels foscos per apreciar la seva estructura de barra central.",
+    "wikipedia_qid": "Q14015"
+  },
+  "d_J0242091+424402": {
+    "name": "Messier 34",
+    "common_names": [
+      "Cúmul Espiral"
+    ],
+    "description": "El Messier 34 és un cúmul obert gran i relativament proper situat a la constel·lació de Perseu. Es troba a uns 1.500 anys llum de distància i conté al voltant de 400 estrelles que es van formar fa aproximadament entre 200 i 250 milions d'anys.",
+    "fun_fact": "Aquest cúmul és un cementiri estel·lar en miniatura: conté almenys 19 nanes blanques, que són les restes denses d'estrelles que una vegada van ser molt més massives que el nostre Sol.",
+    "visual_tip": "Si et trobes sota un cel molt fosc i lluny de la contaminació lumínica, intenta buscar-lo a ull nu. Si no ho aconsegueixes, utilitza uns prismàtics per resoldre les seves estrelles amb més facilitat.",
+    "wikipedia_qid": "Q13729"
+  },
+  "d_J0242407-000047": {
+    "name": "Messier 77",
+    "common_names": [
+      "Galàxia del Calamar"
+    ],
+    "description": "La Messier 77 és una impressionant galàxia espiral barrada situada a uns 35 milions d'anys llum de distància, a la constel·lació de la Balena. És una de les galàxies Seyfert més brillants visibles des de la Terra, coneguda pel seu nucli actiu i la seva gran extensió.",
+    "fun_fact": "Tot i que Pierre Méchain la va descobrir el 1780 i la va descriure com una nebulosa, tant ell com Charles Messier i William Herschel van pensar inicialment que es tractava d'un cúmul estel·lar abans de comprendre la seva autèntica naturalesa galàctica.",
+    "visual_tip": "Per trobar-la, busca la constel·lació de la Balena (Cetus) al cel nocturn. Utilitza un telescopi d'obertura mitjana per apreciar la seva brillantor, ja que amb una magnitud de 8.9 és un objectiu excel·lent per observar la seva estructura espiral.",
+    "wikipedia_qid": "Q14017"
+  },
+  "d_J0346379+241041": {
+    "name": "Plèiades",
+    "common_names": [
+      "Set Germanes"
+    ],
+    "description": "Les Plèiades (M45), també conegudes com les Set Germanes, és un espectacular cúmul estel·lar obert que domina un radi físic central de 8 anys llum (75 bilions de km), amb la seva petjada gravitatòria de marea estenent-se fins als 43 anys llum. Situat a uns 444 anys llum de distància, a la constel·lació de Taure, és l'objecte Messier més proper a la Terra i crema amb una brillant magnitud aparent combinada d'1,6. Per a l'ull nu sota cels foscs, s'assembla a un petit i centellejant «carro» de sis a set estrelles calentes de tipus B, de color blanc-i-blau, que esclaten en un dens camp de més de 1.000 membres estel·lars quan es veuen a través de prismàtics estàndard o telescopis de pocs augments.",
+    "fun_fact": "Durant dècades, els astrònoms es van veure immersos en un feroç misteri còsmic conegut com la «Controvèrsia de la distància a les Plèiades», ja que el satèl·lit Hipparcos va mesurar incorrectament el cúmul com a molt més proper del que realment estava. El cartografiat d'alta precisió de la recent missió Gaia de l'ESA va tancar finalment l'històric debat, utilitzant una paral·laxi geomètrica mil·limètrica per fixar sòlidament la distància en 444 anys llum, cosa que va demostrar que els calibratges del satèl·lit eren defectuosos i va salvar fonamentalment els nostres models estàndard de com evolucionen les estrelles joves.",
+    "visual_tip": "Per trobar fàcilment la M45, mira per sobre de la constel·lació d'Orió o segueix una línia recta a través de les tres estrelles del Cinturó d'Orió cap amunt, passant per la brillant estrella taronja Aldebaran. Com que aquest immens cúmul estel·lar cobreix més de 2 graus del cel nocturn —el que equival aproximadament a quatre vegades el diàmetre d'una Lluna plena— se sortirà ràpidament de la teva vista a molts augments; és millor observar-lo a través de prismàtics de camp ampli de 10x50 o de telescopis petits de pocs augments, on també podràs buscar la feble i fantasmal resplendor blava de la nebulosa de reflexió de Mèrope que envolta les estrelles.",
+    "wikipedia_qid": "Q13423"
+  },
+  "d_J0524105-243127": {
+    "name": "Messier 79",
+    "common_names": [],
+    "description": "Messier 79 és un cúmul globular situat a uns 42.000 anys llum de la Terra, dins la constel·lació de la Llebre. Es creu que aquest cúmul no és originari de la nostra Via Làctia, sinó que podria provenir de la galàxia nana del Ca Major, que actualment està experimentant un encontre proper amb la nostra galàxia.",
+    "fun_fact": "A diferència de la majoria de cúmuls globulars que orbiten el centre de la Via Làctia, Messier 79 és un visitant extragalàctic que està sent desintegrat per les forces de marea galàctiques, deixant un rastre de marees al seu pas.",
+    "visual_tip": "Per trobar-lo, busca la constel·lació de la Llebre sota d'Orió. Utilitza un telescopi d'obertura mitjana en una nit ben fosca, ja que la seva magnitud de 8.57 el fa invisible a ull nu; apunta cap al sud i compara la regió amb un mapa estelar per localitzar la seva tènue llum circular.",
+    "wikipedia_qid": "Q14019"
+  },
+  "d_J0528400+354908": {
+    "name": "Messier 38",
+    "common_names": [
+      "Cúmul de l'Estrella de Mar"
+    ],
+    "description": "El Messier 38 és un brillant cúmul obert situat a la constel·lació de l'Auriga, a uns 3.480 anys llum de la Terra. Aquest grup estel·lar destaca per la seva estructura dispersa i és un dels tres cúmuls famosos de la zona juntament amb els seus veïns M36 i M37.",
+    "fun_fact": "Encara que sembla estar a prop del cúmul NGC 1907 al cel, en realitat són veïns casuals; tots dos estan passant a prop l'un de l'altre, però es van originar en regions completament diferents de la nostra galàxia.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació de l'Auriga. Utilitza uns prismàtics o un telescopi de baixa potència per apreciar millor la seva forma característica, que molts observadors comparen amb una estrella de mar o una lletra grega pi.",
+    "wikipedia_qid": "Q13880"
+  },
+  "d_J0534317+220102": {
+    "name": "Nebulosa del Cranc",
+    "common_names": [
+      "Cranc",
+      "Tau A",
+      "Taurus A"
+    ],
+    "description": "La Nebulosa del Cranc (M1) és un espectacular romanent de supernova que s'estén al llarg d'11 anys llum (104 bilions de km), i representa les restes destrossades d'una estrella massiva. Situada a uns 6.500 anys llum de distància, a la constel·lació de Taure, brilla amb una magnitud aparent de 8,4 i apareix a través d'un telescopi petit com un tènue núvol de forma ovalada. Al seu cor es troba el Púlsar del Cranc —una estrella de neutrons superdensa comprimida fins a un diàmetre de només 20 km però amb la massa de dos sols— que gira 30 vegades per segon per alimentar la inquietant resplendor de la nebulosa impulsada per la radiació.",
+    "fun_fact": "Podem seguir el creixement d'aquesta nebulosa en temps real! Dades recents de telescopis espacials confirmen que els seus filaments gasosos exteriors segueixen llançant-se cap a l'espai profund a uns vertiginosos 5,5 milions de km/h. Aquest enorme núvol s'expandeix tan ràpidament que els canvis en la seva estructura es poden notar en fotografies preses amb només unes poques dècades de diferència.",
+    "visual_tip": "Per albirar aquest històric núvol còsmic, mira aproximadament 1 grau al nord-oest de l'estrella Zeta Tauri, que marca la banya sud del toro. Tot i que uns prismàtics de 10x50 poden revelar-la com una taca feble i fantasmal sota cels foscs pristins, l'ús d'un telescopi de 150 mm o superior amb un filtre de nebulosa UHC o OIII perfilarà significativament els seus límits irregulars i les vores dentades.",
+    "wikipedia_qid": "Q10934"
+  },
+  "d_J0535168-052315": {
+    "name": "Gran Nebulosa d'Orió",
+    "common_names": [
+      "Nebulosa d'Orió"
+    ],
+    "description": "La Nebulosa d'Orió (M42) és un viver estel·lar massiu i d'una brillantor encegadora que s'estén al llarg de 24 anys llum (227 bilions de km), on centenars de noves estrelles estan neixent en l'actualitat. Situada a 1.350 anys llum de distància, a la constel·lació d'Orió, brilla amb una magnífica magnitud aparent de 4,0, la qual cosa la fa clarament visible a ull nu com una estrella borrosa a l'Espasa d'Orió. A través de prismàtics o d'un telescopi petit, es transforma en un impressionant i ampli vel de gas i pols brillants amb forma d'ala de ratpenat, centrat en el Trapezi —un cúmul atapeït i brillant de quatre estrelles supermassives acabades de néixer la intensa llum ultraviolada de les quals il·lumina tot el complex.",
+    "fun_fact": "Aquest bressol còsmic és en realitat un important laboratori químic! Els escombratges infrarojos d'alta resolució dels telescopis espacials moderns han detectat quantitats massives de molècules orgàniques complexes —inclosos compostos de carboni, vapor d'aigua i ingredients precursors de la vida— arremolinant-se a l'interior dels discs planetaris que envolten aquestes estrelles infantils. Això significa que en observar la M42, veient com es cuinen activament i en temps real les llavors químiques de futurs sistemes planetaris.",
+    "visual_tip": "Per localitzar fàcilment la M42, mira directament sota el famós cinturó de tres estrelles d'Orió per trobar la línia vertical d'estrelles que formen la seva espasa; la nebulosa és l'«estrella» central de la fulla. Com que és tan brillant, podràs gaudir fàcilment de la seva fantasmal resplendor en forma de taca difusa fins i tot des del jardí d'una urbanització, però l'ús d'un telescopi de 100 mm o superior sota cels foscs amb un filtre OIII o UHC revelarà de forma espectacular les intricades bandes de pols fosca que tallen el seu nucli brillant.",
+    "wikipedia_qid": "Q13903"
+  },
+  "d_J0535309-051611": {
+    "name": "Nebulosa de Mairan",
+    "common_names": [],
+    "description": "La Nebulosa de Mairan és una regió de formació estel·lar situada a la constel·lació d'Orió, a uns 1.300 anys llum de distància. Tot i que físicament forma part de la famosa Gran Nebulosa d'Orió, apareix separada d'ella per una densa franja de pols còsmica.",
+    "fun_fact": "A diferència de la veïna Nebulosa d'Orió, l'estrella principal que il·lumina aquesta nebulosa, NU Orionis, no és prou calenta com per produir la intensa emissió d'oxigen ionitzat que caracteritza altres regions similars.",
+    "visual_tip": "Busca aquesta nebulosa just al nord-est de la Gran Nebulosa d'Orió. Utilitza un telescopi d'obertura mitjana per observar la franja fosca que la separa del complex principal, la qual li atorga una aparença similar a volutes de fum.",
+    "wikipedia_qid": "Q13906"
+  },
+  "d_J0536198+340802": {
+    "name": "Messier 36",
+    "common_names": [
+      "Cúmul Molinet"
+    ],
+    "description": "El Messier 36 és un jove cúmul obert situat a la constel·lació del Cotxer, a uns 4.340 anys llum de la Terra. Sovint comparat amb les Plèiades per la seva estructura estel·lar, aquest grup compacte alberga estrelles brillants i calentes que es van formar fa tot just 25 milions d'anys.",
+    "fun_fact": "Encara que sembla un grup compacte d'estrelles, el cúmul conté un objecte estel·lar jove amb una sortida de gas anomenat 'Holoea', que significa 'gas que flueix' en hawaià, tot i que probablement sigui un objecte independent situat més lluny.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació del Cotxer utilitzant binocles o un telescopi petit. Apunta cap al centre de la constel·lació i utilitza la visió perifèrica per apreciar millor les seves estrelles més brillants, que destaquen sobre un fons fosc.",
+    "wikipedia_qid": "Q13738"
+  },
+  "d_J0546458+000445": {
+    "name": "Messier 78",
+    "common_names": [
+      "Nebulosa de Casper el Fantasma Amistós"
+    ],
+    "description": "Messier 78 és una brillant nebulosa de reflexió situada a la constelació d'Orió, a uns 1.350 anys llum de la Terra. Forma part del complex de núvols moleculars d'Orió i destaca per ser la nebulosa de reflexió difusa més brillant del seu grup, il·luminada per dues estrelles de tipus B.",
+    "fun_fact": "A causa de la seva forma peculiar i a les ombres projectades per la pols interestel·lar, els astrònoms aficionats la coneixen afectuosament com la Nebulosa de Casper el Fantasma Amistós.",
+    "visual_tip": "Busca aquesta nebulosa amb un telescopi petit, on apareixerà com una taca boirosa. Apunta el teu equip cap a la constel·lació d'Orió i utilitza la visió perifèrica per apreciar millor els detalls de la seva tènue lluentor.",
+    "wikipedia_qid": "Q14018"
+  },
+  "d_J0552185+323235": {
+    "name": "Messier 37",
+    "common_names": [
+      "Cúmul Sal i Pebre"
+    ],
+    "description": "El Messier 37 és el cúmul obert més brillant i ric de la constel·lació de l'Cotxer. Situat a uns 4.500 anys llum de distància, aquest impressionant grup conté més de 500 estrelles, incloent-hi almenys una dotzena de gegants vermelles que li donen un aspecte espectacular.",
+    "fun_fact": "És un objecte fascinant per als astrònoms perquè conté una de les poques nebuloses planetàries conegudes que es troben associades directament amb un cúmul obert.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació de l'Cotxer. Encara que el pots veure amb binocles sota cels foscos, utilitza un telescopi per apreciar millor la gran quantitat d'estrelles que el componen; la seva densitat estel·lar et recordarà a un grapat de sal i pebre escampat sobre el fons negre de l'espai.",
+    "wikipedia_qid": "Q13878"
+  },
+  "d_J0609074+242014": {
+    "name": "Messier 35",
+    "common_names": [
+      "Cúmul de la Sivella de Sabata"
+    ],
+    "description": "Messier 35 és un brillant cúmul obert situat a la constelació de Bessons, a uns 2.970 anys llum de distància. Amb una grandària aparent similar a la de la Lluna plena, aquest grup d'estrelles ofereix una vista espectacular a través de binoculars o telescopis petits.",
+    "fun_fact": "Encara que sembla estar a prop al cel, el petit i compacte cúmul NGC 2158 es troba molt més lluny que M35, creant una il·lusió òptica de profunditat que enganya a molts observadors.",
+    "visual_tip": "Busca aquest cúmul a l'extrem nord-oest de Bessons. Utilitza uns binoculars per apreciar la seva extensió i, si tens un telescopi, apunta cap al sud-oest per intentar localitzar el petit i dens cúmul veí que l'acompanya en el mateix camp de visió.",
+    "wikipedia_qid": "Q13736"
+  },
+  "d_J0646031-204306": {
+    "name": "Messier 41",
+    "common_names": [],
+    "description": "Aquest cúmul obert es troba a la constelació del Ca Major, a uns 2360 anys llum de distància. Amb una mida aparent similar a la de la Lluna plena, conté prop de 100 estrelles, incloent-hi gegants vermelles i nanes blanques.",
+    "fun_fact": "El cúmul té una edat estimada de 200 milions d'anys, la qual cosa el converteix en un objecte relativament jove en termes astronòmics.",
+    "visual_tip": "Busca el cúmul a uns quatre graus al sud de Sírius. Forma un triangle gairebé equilàter amb Sírius i l'estrella Nu Canis Majoris, així que és un objectiu fantàstic per observar amb prismàtics.",
+    "wikipedia_qid": "Q13897"
+  },
+  "d_J0702472-082206": {
+    "name": "Messier 50",
+    "common_names": [
+      "Cúmul del Cor"
+    ],
+    "description": "Aquest brillant cúmul obert es troba a uns 2.900 anys llum de distància a la constel·lació de l'Unicorn. Amb una edat d'aproximadament 140 milions d'anys, destaca per la seva forma que recorda un cor o una punta de fletxa romua.",
+    "fun_fact": "Tot i que tradicionalment es considerava un únic cúmul, estudis recents del 2025 han revelat que en realitat està format per dos subcúmuls diferents, la qual cosa el converteix en un sistema binari.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació de l'Unicorn utilitzant uns prismàtics o un telescopi petit. Apunta cap a la zona entre Sírius i Proció per localitzar-lo; veuràs un grup dens d'estrelles que brilla amb una magnitud de 5.9.",
+    "wikipedia_qid": "Q13956"
+  },
+  "d_J0736357-143015": {
+    "name": "Messier 47",
+    "common_names": [],
+    "description": "Aquest cúmul obert es troba a uns 1.600 anys llum de distància a la constel·lació de la Popa. Amb una edat de 78 milions d'anys, destaca per les seves brillants estrelles de classe B i el contrast visual que ofereixen les seves gegants vermelles.",
+    "fun_fact": "Durant molt de temps es va considerar un objecte perdut perquè Messier va cometre un error en els seus càlculs de posició; no va ser fins al 1959 que es va confirmar la seva identitat en descobrir que només calia invertir els signes de les seves coordenades.",
+    "visual_tip": "Busca aquest cúmul en una nit clara; és prou brillant per veure'l a ull nu sota cels foscos. Si utilitzes uns prismàtics, podràs distingir fàcilment les seves estrelles més brillants i comparar-lo amb el veí Messier 46, que es troba a només un grau de distància.",
+    "wikipedia_qid": "Q13942"
+  },
+  "d_J0741453-145042": {
+    "name": "Messier 46",
+    "common_names": [],
+    "description": "Aquest impressionant cúmul obert es troba a la constel·lació de la Popa, a uns 5.000 anys llum de distància. Conté aproximadament 500 estrelles i té una edat estimada d'uns 251 milions d'anys, oferint una vista espectacular a través dels telescopis.",
+    "fun_fact": "Tot i que sembla estar dins del cúmul, la nebulosa planetària que s'observa a prop de la seva vora nord és en realitat un objecte superposat que es troba a una distància diferent, per la qual cosa no forma part del cúmul.",
+    "visual_tip": "Busca aquest cúmul a només un grau a l'est del seu veí, el cúmul Messier 47. Utilitza uns prismàtics o un telescopi de gran camp per observar tots dos objectes simultàniament en el mateix camp de visió.",
+    "wikipedia_qid": "Q13910"
+  },
+  "d_J0744345-235121": {
+    "name": "Messier 93",
+    "common_names": [
+      "Cúmul de la Criatura"
+    ],
+    "description": "Messier 93 és un brillant cúmul obert situat a la constelació de Puppis, la popa del llegendari vaixell Argo. Es troba a uns 3.380 anys llum de distància i destaca per la seva forma triangular, que alberga una gran quantitat d'estrelles joves i calentes.",
+    "fun_fact": "Aquest cúmul té una edat estimada d'uns 387 milions d'anys, la qual cosa el converteix en un objecte relativament jove en termes astronòmics, compost per estrelles que es van formar gairebé al mateix temps a partir del mateix núvol molecular.",
+    "visual_tip": "Busca aquest cúmul a la part sud del cel. Encara que pots intentar veure'l amb binocles sota cels molt foscos, utilitza un telescopi d'obertura petita per resoldre millor les seves estrelles individuals i apreciar la seva característica forma de papallona o triangle.",
+    "wikipedia_qid": "Q14347"
+  },
+  "d_J0813339-054310": {
+    "name": "Messier 48",
+    "common_names": [],
+    "description": "Messier 48 és un cúmul obert d'estrelles situat a la constelació de l'Hidra, a uns 2.500 anys llum de distància. Amb una edat estimada d'uns 450 milions d'anys, aquest grup estel·lar es troba en una etapa intermèdia entre els famosos cúmuls de les Plèiades i les Híades.",
+    "fun_fact": "Charles Messier va cometre un error en les seves coordenades originals en registrar aquest objecte el 1771, situant-lo cinc graus fora de la seva posició real, fet que va provocar que durant molt de temps es qüestionés la seva existència.",
+    "visual_tip": "Sota condicions de cel fosc, intenta localitzar-lo a ull nu. Si no ho aconsegueixes, apunta els teus prismàtics o un telescopi petit cap a la zona a l'est de l'estrella Alphard; veuràs un grup d'estrelles disperses que omple tot el camp de visió.",
+    "wikipedia_qid": "Q13951"
+  },
+  "d_J0839583+193633": {
+    "name": "Cúmul del Pessebre",
+    "common_names": [
+      "Cúmul de l'Abella"
+    ],
+    "description": "El Cúmul del Pessebre és un dels cúmuls oberts més propers a la Terra, situat a la constel·lació del Cranc. Amb prop de 1.000 estrelles i una distància d'uns 600 anys llum, és un dels objectes celestes més brillants i coneguts des de l'antiguitat.",
+    "fun_fact": "L'edat i el moviment propi d'aquest cúmul coincideixen amb els de les Híades, cosa que suggereix que ambdues agrupacions estel·lars podrien compartir un origen comú.",
+    "visual_tip": "Busca el cúmul sota cels foscos; a ull nu sembla una petita taca nebulosa. Utilitza binocles o un telescopi de baixa potència per observar-lo, ja que el seu diàmetre és prou gran per omplir el camp de visió.",
+    "wikipedia_qid": "Q13760"
+  },
+  "d_J0851235+114853": {
+    "name": "Messier 67",
+    "common_names": [
+      "Cúmul Cobra Reial",
+      "Cúmul Ull Daurat"
+    ],
+    "description": "Messier 67 és un fascinant cúmul obert situat a la constelació de Càncer, a una distància d'entre 2.600 i 2.900 anys llum. Amb una edat estimada d'entre 3.200 i 5.000 milions d'anys, és un dels cúmuls oberts més antics i millor estudiats que coneixem.",
+    "fun_fact": "A diferència de la majoria dels cúmuls oberts que es dispersen ràpidament, M67 és inusualment longeu i conté centenars d'estrelles amb una composició química molt similar a la del nostre propi Sol.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació de Càncer utilitzant uns prismàtics o un telescopi petit. Tot i que la seva magnitud aparent és de 6.1, veuràs una agrupació densa i bonica que destaca clarament sobre el fons estel·lar.",
+    "wikipedia_qid": "Q13997"
+  },
+  "d_J0955331+690355": {
+    "name": "Galàxia de Bode",
+    "description": "La Galàxia de Bode (M81) és una magnífica galàxia espiral de gran disseny que abasta aproximadament 90.000 anys llum (850 bilions de km), amb braços de formació estel·lar gairebé perfectament simètrics. Situada a 12 milions d'anys llum de distància, a la constel·lació septentrional de l'Ossa Major, brilla amb una magnífica magnitud aparent combinada de 6,9, la qual cosa la converteix en una de les galàxies més brillants del cel nocturn. A través de prismàtics estàndard, és fàcilment visible com una bruma ovalada brillant i nítida amb un nucli molt condensat, mentre que els telescopis petits sota cels foscs comencen a cartografiar l'embolcall brillant del seu majestuós disc exterior.",
+    "fun_fact": "La Galàxia de Bode es troba actualment tancada en una violenta dansa gravitatòria amb la seva veïna propera, la Galàxia del Cigar (M82). Fa uns 300 milions d'anys, les dues galàxies van executar un sobrevol proper que va desencadenar massives ones de xoc de marea a través de tots dos sistemes. Aquesta trobada còsmica va arrencar gas per formar un immens pont d'hidrogen que les connecta, alhora que canalitzava vastes quantitats de matèria primera cap al nucli de la M81, alimentant el seu forat negre supermassiu central, que pesa la sorprenent xifra de 70 milions de vegades la massa del nostre Sol.",
+    "visual_tip": "Per trobar fàcilment la M81, localitza les dues estrelles indicadores del «bol» del Carro Gran (Merak i Dubhe) i traça una línia imaginària a través d'elles, continuant-la en l'espai profund una distància aproximadament igual cap al nord-oest. En posseir una brillantor superficial excepcionalment alta, és un objectiu fantàstic per als habitants de les ciutats i es pot veure juntament amb la Galàxia del Cigar en un únic camp d'ocular de pocs augments, tot i que es necessita un telescopi de 200 mm sota cels negres com la tinta per traçar els intricats patrons espirals que es corben des del seu nucli.",
+    "wikipedia_qid": "Q81102410"
+  },
+  "d_J0955524+694046": {
+    "name": "Galàxia del Cigar",
+    "common_names": [],
+    "description": "La Galàxia del Cigar és una galàxia amb esclat d'estrelles situada a uns 12 milions d'anys llum de distància, a la constel·lació de l'Ossa Major. És cinc vegades més lluminosa que la Via Làctia i la seva intensa formació estel·lar ha estat provocada per la interacció amb la galàxia veïna M81.",
+    "fun_fact": "El 2023, els astrònoms van detectar un esclat de raigs gamma provinent d'un magnetar en aquesta galàxia, sent la primera vegada que s'observa un esdeveniment d'aquest tipus fora de la Via Làctia.",
+    "visual_tip": "Busca l'Ossa Major i apunta el teu telescopi cap a la zona propera a M81. Utilitza una nit clara i fosca per apreciar la seva forma allargada i peculiar, que li dona el seu nom característic.",
+    "wikipedia_qid": "Q14026"
+  },
+  "d_J1043577+114213": {
+    "name": "Messier 95",
+    "common_names": [],
+    "description": "Messier 95 és una galàxia espiral barrada situada a uns 33 milions d'anys llum de distància, dins la constel·lació de Lleó. Es caracteritza per un anell de formació estel·lar que envolta la seva barra central, des d'on s'estenen els seus braços espirals.",
+    "fun_fact": "El 2012, els astrònoms van descobrir una supernova en aquesta galàxia, un esdeveniment espectacular que ens ajuda a entendre millor com es formen les estrelles en aquestes regions.",
+    "visual_tip": "Per localitzar-la, busca la constel·lació de Lleó. Utilitza un telescopi amb una obertura decent i apunta cap a la zona; recorda que, amb una magnitud de 9.6, necessitaràs un cel ben fosc per distingir-ne els detalls.",
+    "wikipedia_qid": "Q14351"
+  },
+  "d_J1046457+114911": {
+    "name": "Messier 96",
+    "common_names": [],
+    "description": "Messier 96 és una galàxia espiral intermèdia situada a uns 31 milions d'anys llum de distància, dins la constel·lació del Lleó. Amb un diàmetre aproximat de 78.000 anys llum, aquesta galàxia és l'objecte més brillant del grup de galàxies que porta el seu nom.",
+    "fun_fact": "L'any 1998, els astrònoms van observar una supernova en aquesta galàxia, anomenada SN 1998bu, la qual va ser fonamental per ajudar a calcular amb més precisió la distància a la qual es troba aquest sistema.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació del Lleó durant les nits de primavera. Mira a través d'un telescopi d'obertura mitjana i apunta cap a la zona central de la constel·lació; trobaràs una taca difusa i brillant que s'aprecia millor si t'allunyes de la contaminació lumínica.",
+    "wikipedia_qid": "Q14354"
+  },
+  "d_J1047495+123453": {
+    "name": "Messier 105",
+    "common_names": [],
+    "description": "Messier 105 és una galàxia el·líptica situada a uns 36,6 milions d'anys llum a la constel·lació del Lleó. És la galàxia el·líptica més gran del catàleg Messier que no es troba al cúmul de la Verge i destaca per tenir un forat negre supermassiu al seu centre.",
+    "fun_fact": "Tot i ser una galàxia el·líptica, que normalment es consideren 'mortes' pel que fa a la formació d'estrelles, M105 conté alguns cúmuls estel·lars joves, la qual cosa demostra que encara pot formar estrelles, encara que a un ritme molt lent.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació del Lleó utilitzant un telescopi d'obertura mitjana. Apunta el teu equip cap a la zona propera a les galàxies M95 i M96, ja que totes tres formen un grup visualment molt interessant al cel nocturn.",
+    "wikipedia_qid": "Q14377"
+  },
+  "d_J1111309+554026": {
+    "name": "Messier 108",
+    "common_names": [
+      "Galàxia de la Taula de Surf"
+    ],
+    "description": "Aquesta galàxia espiral barrada es troba a uns 46 milions d'anys llum de distància, a la constel·lació de l'Ossa Major. Gràcies a la seva orientació, la veiem gairebé de perfil, fet que li dona una aparença allargada i elegant.",
+    "fun_fact": "Al seu nucli hi ha un forat negre supermassiu amb una massa estimada de 24 milions de vegades la del nostre Sol, tot i que no mostra signes d'activitat intensa en les seves emissions.",
+    "visual_tip": "Busca aquesta galàxia a l'Ossa Major utilitzant un telescopi d'obertura mitjana. Apunta cap a la zona propera a l'estrella Merak i utilitza la visió perifèrica per apreciar millor la seva forma allargada.",
+    "wikipedia_qid": "Q4751"
+  },
+  "d_J1114477+550108": {
+    "name": "Nebulosa del Mussol",
+    "common_names": [],
+    "description": "La Nebulosa del Mussol és una fascinant nebulosa planetària situada a uns 2.030 anys llum de distància, dins la constel·lació de l'Ossa Major. Amb una edat estimada d'uns 8.000 anys, la seva aparença característica prové d'una estructura interna en forma de barril que crea dues zones fosques que recorden els ulls d'un mussol.",
+    "fun_fact": "L'aspecte de mussol no és una casualitat visual; és el resultat d'una estructura interna de capes concèntriques alineada a 45 graus respecte a la nostra línia de visió, la qual cosa genera aquestes dues 'conques oculars' tan distintives.",
+    "visual_tip": "Busca aquesta nebulosa sota cels ben foscos, ja que la seva brillantor superficial és força tènue. Utilitza un telescopi d'obertura mitjana o gran i aplica visió perifèrica per intentar distingir les dues zones fosques que li donen el nom.",
+    "wikipedia_qid": "Q14359"
+  },
+  "d_J1118559+130532": {
+    "name": "Messier 65",
+    "common_names": [],
+    "description": "Messier 65 és una galàxia espiral intermèdia situada a uns 35 milions d'anys llum de distància, a la constel·lació del Lleó. Forma part del conegut Triplet del Lleó, un petit grup de galàxies que es troben relativament a prop les unes de les altres.",
+    "fun_fact": "Charles Messier va descobrir aquesta galàxia l'any 1780. Es classifica com una galàxia LINER, la qual cosa indica que el seu nucli presenta una emissió de gas ionitzat molt particular.",
+    "visual_tip": "Per trobar-la, busca primer la constel·lació del Lleó i apunta el teu telescopi cap a la zona entre els estels Chertan i Denebola. Utilitza una nit ben fosca per intentar distingir la seva forma allargada al costat de les seves companyes del Triplet.",
+    "wikipedia_qid": "Q13986"
+  },
+  "d_J1120150+125929": {
+    "name": "Messier 66",
+    "common_names": [
+      "Galàxia del Triplet de Leo"
+    ],
+    "description": "Messier 66 és una galàxia espiral intermèdia situada a uns 31 milions d'anys llum de distància, dins la constel·lació del Lleó. És un membre destacat del Triplet de Leo, un petit grup de galàxies que inclou la Messier 65, i es caracteritza per tenir una forma espiral amb una barra central feble i braços poc enrotllats.",
+    "fun_fact": "L'astrònom francès Charles Messier va descobrir aquesta galàxia l'1 de març de 1780, descrivint-la en aquell moment com un objecte 'molt llarg i molt feble'.",
+    "visual_tip": "Per observar aquest objecte, apunta el teu telescopi cap a la constel·lació del Lleó. Busca el Triplet de Leo; com que la Messier 66 i la Messier 65 estan separades per només 20 minuts d'arc, podràs veure-les totes dues alhora dins del mateix camp de visió amb un ocular de potència moderada.",
+    "wikipedia_qid": "Q13992"
+  },
+  "d_J1157359+532229": {
+    "name": "Messier 109",
+    "common_names": [
+      "Galàxia de l'Aspiradora"
+    ],
+    "description": "Messier 109 és una galàxia espiral barrada situada a uns 67,2 milions d'anys llum de distància a la constel·lació de l'Ossa Major. Es distingeix per la seva estructura espiral ben definida i per ser una galàxia amb un nucli actiu de tipus LINER.",
+    "fun_fact": "A causa de la seva aparença visual en fotografies de llarga exposició, rep el sobrenom popular de 'Galàxia de l'Aspiradora'.",
+    "visual_tip": "Per trobar-la, busca primer l'estrella Phecda a l'Ossa Major; apunta el teu telescopi cap al sud-est d'aquesta estrella per localitzar la galàxia en el teu camp de visió.",
+    "wikipedia_qid": "Q4746"
+  },
+  "d_J1213482+145401": {
+    "name": "Messier 98",
+    "common_names": [],
+    "description": "Messier 98 és una galàxia espiral situada a la constelació de la Cabellera de Berenice. Es troba a una distància considerable de nosaltres i destaca per la seva forma allargada i la seva orientació de perfil.",
+    "fun_fact": "A diferència de moltes altres galàxies en el cúmul de la Verge, Messier 98 s'està acostant a la Via Làctia a una velocitat molt alta, la qual cosa la converteix en una de les galàxies amb major desplaçament al blau conegudes.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de la Cabellera de Berenice utilitzant un telescopi d'obertura mitjana. A causa de la seva magnitud, apunta el teu equip cap a la regió del cúmul de la Verge en una nit clara i utilitza visió perifèrica per detectar la seva tènue brillantor allargada.",
+    "wikipedia_qid": "Q6794029"
+  },
+  "d_J1218496+142459": {
+    "name": "Messier 99",
+    "common_names": [],
+    "description": "Aquesta galàxia espiral és un membre destacat del Cúmul de la Verge. Es caracteritza per la seva estructura asimètrica i els seus braços espirals ben definits que s'estenen en l'espai profund.",
+    "fun_fact": "Messier 99 és coneguda per ser una de les primeres galàxies en les quals es va identificar una estructura espiral, una troballa que va canviar la nostra comprensió de l'univers.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de la Cabellera de Berenice. Utilitza un telescopi d'obertura mitjana en una nit clara i sense lluna per apreciar millor la seva forma espiral.",
+    "wikipedia_qid": "Q4546943"
+  },
+  "d_J1218576+471813": {
+    "name": "Messier 106",
+    "common_names": [],
+    "description": "Messier 106 és una galàxia espiral intermèdia situada a la constel·lació dels Llebrers, a uns 24 milions d'anys llum de distància. Aquesta galàxia destaca per tenir un nucli actiu de tipus Seyfert, alimentat per un forat negre supermassiu central.",
+    "fun_fact": "A banda dels seus dos braços espirals visibles, aquesta galàxia té dos 'braços anòmals' que només es poden detectar amb telescopis de raigs X, la qual cosa revela processos energètics molt violents al seu interior.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació dels Llebrers. Utilitza un telescopi d'obertura mitjana per apreciar la seva estructura, ja que la seva magnitud de 8.4 la converteix en un objectiu gratificant per a observadors aficionats amb cels foscos.",
+    "wikipedia_qid": "Q4658"
+  },
+  "d_J1221549+042825": {
+    "name": "Messier 61",
+    "common_names": [
+      "Galàxia Espiral Inflada"
+    ],
+    "description": "Messier 61 és una impressionant galàxia espiral barrada intermèdia situada al Cúmul de la Verge, a uns 52,5 milions d'anys llum de distància. És una galàxia de gran mida i brillantor, coneguda per la seva complexa estructura espiral i la seva activa formació estel·lar.",
+    "fun_fact": "És una autèntica fàbrica de supernoves! Messier 61 ostenta el rècord de ser una de les galàxies on s'han detectat més supernoves en la història de l'astronomia moderna.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de la Verge. Utilitza un telescopi d'obertura mitjana en una nit clara i sense contaminació lumínica per apreciar el seu nucli brillant i els seus braços espirals.",
+    "wikipedia_qid": "Q13978"
+  },
+  "d_J1222119+580459": {
+    "name": "Messier 40",
+    "common_names": [],
+    "description": "Messier 40 és un sistema estel·lar doble situat a la constel·lació de l'Ossa Major. Tot i que Charles Messier el va incloure al seu famós catàleg buscant nebuloses, en realitat es tracta de dos estels separats que no estan físicament vinculats entre si.",
+    "fun_fact": "Aquest objecte és famós en l'astronomia per ser una 'falsa alarma' de Messier; en no trobar la nebulosa que buscava, va registrar aquest parell d'estels per error al seu catàleg.",
+    "visual_tip": "Busca l'estel Megrez a l'Ossa Major i apunta el teu telescopi lleugerament cap al nord-est. Utilitza un augment moderat per distingir clarament els dos estels components.",
+    "wikipedia_qid": "Q26910905"
+  },
+  "d_J1222549+154920": {
+    "name": "Messier 100",
+    "common_names": [
+      "Galàxia Mirall"
+    ],
+    "description": "Messier 100 és una espectacular galàxia espiral de gran disseny situada a la constel·lació de la Cabellera de Berenice. Es troba a uns 55 milions d'anys llum de distància i és una de les galàxies més grans i brillants del Cúmul de Virgo.",
+    "fun_fact": "Va ser una de les primeres galàxies espirals descobertes i conté aproximadament 400.000 milions d'estrelles en el seu disc.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de la Cabellera de Berenice amb un telescopi d'obertura mitjana. Apunta cap al centre del Cúmul de Virgo i utilitza la visió perifèrica per intentar distingir els seus braços espirals.",
+    "wikipedia_qid": "Q14365"
+  },
+  "d_J1225037+125313": {
+    "name": "Messier 84",
+    "common_names": [],
+    "description": "Messier 84 és una galàxia gegant el·líptica o lenticular situada al cor del Cúmul de la Verge, a uns 55 milions d'anys llum de distància. Descoberta per Charles Messier el 1781, aquesta galàxia destaca per albergar un forat negre supermassiu al seu nucli i estar envoltada per un enorme halo de matèria fosca.",
+    "fun_fact": "Les observacions del telescopi espacial Hubble han revelat dos dolls de matèria que surten disparats des del seu centre, a més d'un disc de gas i estrelles que giren a gran velocitat al voltant del seu forat negre central.",
+    "visual_tip": "Per localitzar-la, busca primer la constel·lació de la Verge. Utilitza un telescopi d'obertura mitjana per observar la seva brillantor tènue, ja que la seva magnitud aparent és de 9.1; apunta cap al centre del Cúmul de la Verge i compara la zona amb un mapa estel·lar detallat.",
+    "wikipedia_qid": "Q92258118"
+  },
+  "d_J1225240+181127": {
+    "name": "Messier 85",
+    "common_names": [],
+    "description": "Messier 85 és una galàxia lenticular situada a la constel·lació de la Cabellera de Berenice, a uns 60 milions d'anys llum de distància. És un dels membres més brillants del Cúmul de la Verge i destaca per la seva forma el·líptica i un nucli molt lluminós.",
+    "fun_fact": "Malgrat la seva aparença tranquil·la, aquesta galàxia mostra indicis d'haver interactuat amb galàxies veïnes en el passat, fet que ha deixat rastres d'estrelles en les seves regions exteriors.",
+    "visual_tip": "Busca aquesta galàxia en una nit clara utilitzant un telescopi d'obertura mitjana. Apunta el teu equip cap a la constel·lació de la Cabellera de Berenice i utilitza la visió perifèrica per apreciar millor la seva tènue lluentor central.",
+    "wikipedia_qid": "Q5630338"
+  },
+  "d_J1226118+125645": {
+    "name": "Messier 86",
+    "common_names": [],
+    "description": "Messier 86 és una brillant galàxia el·líptica o lenticular situada al cor del Cúmul de la Verge, a uns 52 milions d'anys llum de distància. És famosa per ser l'objecte de Messier amb el desplaçament al blau més gran, fet que indica que s'acosta a la nostra Via Làctia a gran velocitat mentre cau cap al centre del cúmul.",
+    "fun_fact": "Mentre es desplaça a gran velocitat pel medi intergalàctic, la galàxia pateix un procés anomenat 'escombrada per pressió dinàmica', deixant al seu pas una llarga estela de gas calent que emet raigs X, detectada gràcies al telescopi espacial Chandra.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de la Verge. Utilitza un telescopi d'obertura mitjana per observar-ne la brillantor i compara-la amb la seva veïna, la galàxia Messier 84, ja que totes dues formen un grup molt destacat al cel.",
+    "wikipedia_qid": "Q92258250"
+  },
+  "d_J1229467+080001": {
+    "name": "Messier 49",
+    "common_names": [],
+    "description": "Messier 49 és una galàxia el·líptica gegant situada a uns 56 milions d'anys llum de distància, a la constel·lació de la Verge. Va ser la primera galàxia descoberta dins del Cúmul de la Verge i destaca per ser el membre més lluminós d'aquest grup.",
+    "fun_fact": "Aquesta galàxia conté una població impressionant d'uns 5.900 cúmuls globulars, una xifra que supera amb escreix els aproximadament 200 que orbiten la nostra pròpia Via Làctia.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de la Verge. A causa de la seva magnitud aparent de 8.4, utilitza un telescopi d'obertura moderada per distingir-la clarament com una taca difusa i brillant al cel nocturn.",
+    "wikipedia_qid": "Q13952"
+  },
+  "d_J1230494+122328": {
+    "name": "Messier 87",
+    "common_names": [
+      "Verge A"
+    ],
+    "description": "Messier 87 és una galàxia el·líptica supergegant situada a uns 53 milions d'anys llum a la constel·lació de la Verge. És una de les galàxies més massives de l'univers local i destaca per la seva enorme població de cúmuls globulars i un nucli extremadament actiu.",
+    "fun_fact": "Aquesta galàxia allotja un forat negre supermassiu que va ser el primer a ser fotografiat per la humanitat gràcies a la col·laboració del Telescopi de l'Horitzó de Successos el 2019.",
+    "visual_tip": "Busca aquesta galàxia al cor del Cúmul de la Verge. Utilitza un telescopi d'obertura mitjana en una nit clara i fosca, ja que, tot i ser brillant, la seva forma el·líptica i difusa requereix paciència per distingir-la del fons estel·lar.",
+    "wikipedia_qid": "Q14041"
+  },
+  "d_J1231591+142513": {
+    "name": "Messier 88",
+    "common_names": [],
+    "description": "Messier 88 és una galàxia espiral no barrada situada a uns 58 milions d'anys llum de distància, a la constelació de la Cabellera de Berenice. Forma part del Cúmul de la Verge i destaca per la seva estructura espiral ben definida, essent un dels objectes més brillants del seu grup.",
+    "fun_fact": "Aquesta galàxia conté aproximadament 400 mil milions d'estrelles i està classificada com una galàxia de Seyfert de tipus 2, la qual cosa indica que té un nucli galàctic actiu que emet una radiació intensa.",
+    "visual_tip": "Per observar aquesta galàxia, busca la constelació de la Cabellera de Berenice en una nit clara. Utilitza un telescopi d'obertura mitjana i apunta cap al cor del Cúmul de la Verge; veuràs una taca ovalada i difusa que destaca sobre el fons fosc.",
+    "wikipedia_qid": "Q14048"
+  },
+  "d_J1235264+142946": {
+    "name": "Messier 91",
+    "common_names": [],
+    "description": "Aquesta galàxia espiral barrada es troba a uns 63 milions d'anys llum de distància, dins del Cúmul de la Verge. És un membre destacat del nostre supercúmul local i presenta una estructura espiral ben definida que pots observar a la constel·lació de la Cabellera de Berenice.",
+    "fun_fact": "Durant gairebé dos segles, aquesta galàxia va ser un misteri astronòmic; a causa d'un error de càlcul de Charles Messier, es va considerar un objecte perdut fins que, el 1969, es va confirmar que era la mateixa galàxia catalogada posteriorment per William Herschel.",
+    "visual_tip": "Com que és l'objecte més tènue del catàleg Messier, amb una magnitud aparent de 10.2, apunta el teu telescopi cap a la constel·lació de la Cabellera de Berenice en una nit molt fosca i utilitza visió perifèrica per detectar la seva feble brillantor.",
+    "wikipedia_qid": "Q14344"
+  },
+  "d_J1235398+123322": {
+    "name": "Messier 89",
+    "common_names": [],
+    "description": "Messier 89 és una galàxia el·líptica situada a la constel·lació de la Verge, a uns 50 milions d'anys llum de distància. Va ser descoberta per Charles Messier el 1781 i és un membre destacat del Cúmul de la Verge.",
+    "fun_fact": "A diferència de moltes altres galàxies el·líptiques que tenen formes allargades, M89 sembla ser gairebé perfectament esfèrica, la qual cosa la converteix en un objecte fascinant per als astrònoms que estudien l'estructura galàctica.",
+    "visual_tip": "Busca aquesta galàxia al cor del Cúmul de la Verge. A causa de la seva magnitud aparent de 9.8, utilitza un telescopi d'obertura mitjana en una nit clara i fosca per distingir-la de les estrelles del voltant.",
+    "wikipedia_qid": "Q14337"
+  },
+  "d_J1236498+130946": {
+    "name": "Messier 90",
+    "common_names": [
+      "Galàxia Carabin"
+    ],
+    "description": "Messier 90 és una galàxia espiral intermèdia situada a uns 60 milions d'anys llum de distància, a la constelació de la Verge. Aquesta galàxia és un membre destacat del Cúmul de la Verge i presenta una estructura d'anell intern molt subtil.",
+    "fun_fact": "És una de les poques galàxies que mostra un desplaçament cap al blau en el seu espectre, la qual cosa indica que s'està acostant a nosaltres a causa de la seva dinàmica interna dins del cúmul.",
+    "visual_tip": "Per observar-la, busca un lloc amb poca contaminació lumínica i utilitza un telescopi de bona obertura. Apunta cap a la constelació de la Verge i mira amb paciència per distingir la seva estructura espiral allargada entre les altres galàxies del camp.",
+    "wikipedia_qid": "Q14343"
+  },
+  "d_J1237435+114905": {
+    "name": "Messier 58",
+    "common_names": [],
+    "description": "Messier 58 és una galàxia espiral barrada intermèdia amb una estructura d'anell intern feble, situada a uns 68 milions d'anys llum de distància a la constel·lació de la Verge. És una de les galàxies més brillants del Cúmul de la Verge i va ser descoberta per Charles Messier el 1779.",
+    "fun_fact": "Des del seu descobriment el 1779, va ser considerada durant molt de temps com l'objecte astronòmic més llunyà conegut, fins que el desenvolupament de l'astronomia moderna als anys 20 va permetre mesurar les distàncies galàctiques amb precisió.",
+    "visual_tip": "Per observar aquesta galàxia, busca un cel ben fosc i utilitza un telescopi d'obertura mitjana. Apunta cap a la constel·lació de la Verge i compara la seva brillantor amb les galàxies veïnes del cúmul per identificar el seu nucli brillant i la seva forma espiral.",
+    "wikipedia_qid": "Q13970"
+  },
+  "d_J1239279-264438": {
+    "name": "Messier 68",
+    "common_names": [],
+    "description": "Messier 68 és un espectacular cúmul globular situat a uns 33.600 anys llum de la Terra, dins la constel·lació de l'Hidra. Destaca per ser un dels cúmuls més pobres en metalls, fet que indica que és un objecte molt antic que podria haver estat capturat per la Via Làctia provinent d'una galàxia satèl·lit.",
+    "fun_fact": "Aquest cúmul és un laboratori estel·lar fascinant: conté almenys 50 estrelles variables, la majoria de tipus RR Lyrae, que són fonamentals per als astrònoms a l'hora de mesurar distàncies còsmiques.",
+    "visual_tip": "Per observar-lo, busca la constel·lació de l'Hidra en una nit ben fosca. Utilitza un telescopi d'obertura mitjana per resoldre les seves estrelles individuals, ja que, tot i ser brillant, presenta una estructura força dispersa a les vores.",
+    "wikipedia_qid": "Q14000"
+  },
+  "d_J1239594-113722": {
+    "name": "Galàxia del Sombrero",
+    "common_names": [
+      "Sombrero"
+    ],
+    "description": "La Galàxia del Sombrero (M104) és una impressionant galàxia espiral no barrada que abasta uns 50.000 anys llum (470 bilions de km), reconeixible a l'instant per la seva enorme protuberància central i una gruixuda i fosca vora de pols que l'enfosqueix. Situada a 28 milions d'anys llum de distància, a la constel·lació de la Verge, brilla amb una magnífica magnitud aparent de 8,0, la qual cosa la converteix en un objectiu fàcil per a instruments petits. A través de prismàtics estàndard sota cels foscs, apareix com una agulla de llum afilada i allargada, mentre que un telescopi petit de 100 mm separa clarament el seu nucli brillant de l'àmplia «ala de barret» de la seva vora exterior.",
+    "fun_fact": "Aquesta galàxia és un pes pesat còsmic absolut envoltat en un misteri! Els estudis dels telescopis espacials moderns han revelat que la Galàxia del Sombrero no només té un sistema de cúmuls normal, sinó que allotja un sorprenent eixam de gairebé 2.000 cúmuls globulars orbitant el seu nucli, gairebé deu vegades més que tota la nostra Via Làctia. A més, el seguiment precís de la velocitat orbital mostra que el seu forat negre supermassiu central és un autèntic monstre, amb una massa de mil milions de sols, cosa que el converteix en un dels forats negres més massius mai trobats en una galàxia propera.",
+    "visual_tip": "Per albirar la M104, mira aproximadament 11 graus a l'oest d'Espiga, l'estrella més brillant de la Verge, o utilitza el característic quadrilàter de quatre estrelles del Corb per saltar just a l'altre costat de la frontera cap al nord-est. A causa que la galàxia està inclinada gairebé de cantell respecte a la nostra línia de visió (a només 6 graus), la seva brillantor superficial està extremadament concentrada i suporta bé la contaminació lluminosa suburbana, tot i que es requereix un telescopi de 200 mm o superior combinat amb grans augments per separar visualment el seu nucli brillant amb la banda de pols còsmica negra com la tinta.",
+    "wikipedia_qid": "Q91461627"
+  },
+  "d_J1242022+113848": {
+    "name": "Messier 59",
+    "common_names": [],
+    "description": "Messier 59 és una galàxia el·líptica situada a uns 50 milions d'anys llum de distància, dins la constel·lació de la Verge. Com a membre del Cúmul de la Verge, destaca per la seva forma aplanada i per un nucli que amaga un forat negre supermassiu.",
+    "fun_fact": "El nucli d'aquesta galàxia conté un disc estel·lar jove que gira en sentit contrari a la resta de la galàxia, un fenomen que indica que la M59 podria haver estat protagonista d'una fusió galàctica en el passat.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de la Verge amb l'ajuda d'un telescopi d'obertura mitjana. Mira a prop de la galàxia Messier 60, ja que les trobaràs força a prop l'una de l'altra al cel.",
+    "wikipedia_qid": "Q13971"
+  },
+  "d_J1243399+113309": {
+    "name": "Messier 60",
+    "common_names": [],
+    "description": "Messier 60 és una impressionant galàxia el·líptica situada a uns 57 milions d'anys llum de distància, a la constelació de la Verge. És un membre destacat del Cúmul de la Verge i forma un parell visualment fascinant amb la galàxia espiral veïna NGC 4647.",
+    "fun_fact": "Al cor d'aquesta galàxia hi resideix un dels forats negres supermassius més grans mai descoberts, amb una massa equivalent a 4.500 milions de vegades la del nostre Sol.",
+    "visual_tip": "Per observar-la, busca la constelació de la Verge en una nit clara. Utilitza un telescopi d'obertura mitjana per distingir el seu nucli brillant i, si tens bones condicions, intenta comparar la seva forma el·líptica amb la galàxia veïna Messier 59, que també es troba a la mateixa zona.",
+    "wikipedia_qid": "Q13976"
+  },
+  "d_J1250530+410712": {
+    "name": "Messier 94",
+    "common_names": [
+      "Galàxia Ull de Gat",
+      "Galàxia Ull de Cocodril"
+    ],
+    "description": "Messier 94 és una galàxia espiral situada a la constel·lació dels Llebrers (Canes Venatici), a uns 16 milions d'anys llum de distància. Destaca per la seva estructura de doble anell i un nucli molt brillant que la fa molt recognoscible.",
+    "fun_fact": "Tot i que sovint es descriu com una galàxia espiral barrada, l'estructura central és en realitat més aviat ovalada, un detall que la fa única en la seva classificació morfològica.",
+    "visual_tip": "Busca la galàxia a la constel·lació dels Llebrers. Mira d'utilitzar un telescopi amb una obertura decent per distingir el seu nucli brillant i la regió anular, ja que amb una magnitud de 8.2 és un objecte molt gratificant per observar des d'un cel fosc.",
+    "wikipedia_qid": "Q14349"
+  },
+  "d_J1256436+214057": {
+    "name": "Galàxia de l'Ull Negre",
+    "common_names": [
+      "Bella Dorment",
+      "Ull Negre",
+      "Ull del Diable"
+    ],
+    "description": "La Galàxia de l'Ull Negre (M64) és una extraordinària galàxia espiral que abasta aproximadament 54.000 anys llum (510 bilions de km), reconeixible a l'instant per l'enorme i àmplia silueta de pols interestel·lar fosca que enfosqueix el seu brillant nucli. Situada a 17 milions d'anys llum de distància, a la constel·lació de la Cabellera de Berenice, brilla amb una magnitud aparent de 8,5 i es pot albirar fàcilment a través de prismàtics grans com un oval suau i brillant sota cels foscs. Un telescopi petit de 100 mm aïlla bellament el seu nucli d'alt contrast, revelant la prominent banda de pols còsmica que dona a la galàxia la seva icònica aparença de morat.",
+    "fun_fact": "Aquesta galàxia posseeix una de les dinàmiques internes més estranyes de l'univers: gira en dues direccions oposades alhora! Mentre que les estrelles i el disc de gas molecular interior giren en el sentit de les agulles del rellotge fins a un radi de 3.000 anys llum, l'enorme núvol de gas hidrogen del seu disc exterior gira completament en sentit contrari. Les revolucionàries imatges de camp profund van confirmar que aquest violent xoc atmosfèric va ser causat per la M64 en engolir per complet una galàxia nana satèl·lit rica en hidrogen fa més de mil milions d'anys, convertint la seva zona fronterera en una fàbrica de brots estel·lars altament comprimida i turbulenta.",
+    "visual_tip": "Per localitzar la M64, desplaça el teu telescopi aproximadament 5 graus al nord-oest de l'estrella Diadem (Alpha Comae Berenices). A causa que la seva estructura central té una brillantor superficial inusualment alta, és un objectiu notablement resistent que suporta bé la contaminació lluminosa urbana moderada. No obstant això, per resoldre clarament el delicat espai entre el brillant nucli central i la profunda banda de pols negre com la tinta que l'envolta, necessitaràs un telescopi de 150 mm o superior juntament amb una visió estable de grans augments en una nit sense lluna.",
+    "wikipedia_qid": "Q13983"
+  },
+  "d_J1312552+181005": {
+    "name": "Messier 53",
+    "common_names": [],
+    "description": "Messier 53 és un espectacular cúmul globular situat a la constel·lació de la Cabellera de Berenice, a uns 58.000 anys llum del nostre sistema solar. Aquest antic conjunt estel·lar destaca per ser un dels cúmuls més pobres en metalls de la Via Làctia, amb estrelles que es van formar majoritàriament durant la primera generació de l'univers.",
+    "fun_fact": "Es creu que Messier 53 podria estar interactuant dinàmicament amb el cúmul veí NGC 5053, formant una estructura de pont de marea única que no s'ha observat en cap altra part de la nostra galàxia.",
+    "visual_tip": "Busca aquest cúmul en una nit clara utilitzant binocles o un telescopi petit. Apunta cap a la constel·lació de la Cabellera de Berenice i utilitza la visió perifèrica per apreciar millor el seu nucli brillant i la seva forma esfèrica.",
+    "wikipedia_qid": "Q13960"
+  },
+  "d_J1315492+420145": {
+    "name": "Galàxia del Gira-sol",
+    "description": "La Galàxia del Gira-sol (M63) és una cridanera galàxia espiral floculenta que abasta aproximadament 98.000 anys llum (930 bilions de km), caracteritzada per una disposició de braços de formació estel·lar atapeïts i en forma de pegats. Situada a 27 milions d'anys llum de distància, a la constel·lació de Canes Venatici, brilla amb una magnitud aparent de 8,6 i apareix a través de telescopis petits com una bruma ovalada brillant i compacta amb un nucli molt condensat. Els instruments de mida mitjana, de 150 mm o més, revelen bellament la textura granulada i multibraç que envolta el seu nucli, que imita visualment la densa disposició de les llavors en un gira-sol.",
+    "fun_fact": "Aquesta galàxia és un exemple sobresortint d'espiral «floculenta», el que significa que els seus braços espirals són irregulars i discontinus en lloc de llargs i amplis. Estudis recents de telescopis espacials i d'imatges de camp profund han cartografiat un immens sistema de bucles de febles corrents de marea estel·lars que envolten la M63, que són les restes estructurals fantasmals d'una galàxia satèl·lit més petita que la Galàxia del Gira-sol va trossejar per complet i va canibalitzar fa uns 5.000 milions d'anys.",
+    "visual_tip": "Per localitzar fàcilment la M63, traça una trajectòria aproximadament a un terç del camí des de Cor Caroli (Alpha Canum Venaticorum) fins a Alkaid, a l'extrem del mànec del Carro Gran. A causa de la seva elevada brillantor superficial, resisteix millor la contaminació lluminosa que la pròxima Galàxia del Remolí, però necessitaràs un telescopi de 200 mm o superior, combinat amb oculars de camp ampli i pocs augments, per discernir on acaba el seu nucli brillant i on comencen els seus delicats i clapejats serrells exteriors.",
+    "wikipedia_qid": "Q13981"
+  },
+  "d_J1329526+471142": {
+    "name": "Galàxia del Remolí",
+    "common_names": [
+      "Galàxia del Signe d'Interrogació",
+      "Remolí"
+    ],
+    "description": "La Galàxia del Remolí (M51) és una clàssica galàxia espiral de gran disseny que abasta uns 76.000 anys llum (720 bilions de km), famosament tancada en un estira-i-arronsa còsmic amb una galàxia companya més petita, la NGC 5195. Situada a 23 milions d'anys llum de distància, a la constel·lació de Canes Venatici, brilla amb una magnitud aparent de 8,4 i sembla una taca suau de dos caps a través de prismàtics petits en condicions prístines. Un telescopi petit de 100 mm separa clarament els dos nuclis galàctics, mentre que els instruments de mida mitjana revelen el feble i eteri pont d'estrelles de marea i gas que els connecta.",
+    "fun_fact": "Aquest objecte és una fita històrica en l'astronomia! El 1845, William Parsons (el tercer comte de Rosse) va utilitzar el seu monstruós telescopi d'1,83 m per dibuixar la M51, convertint-la en el primer objecte celeste reconegut amb una estructura en espiral. Molt abans que ningú sabés que existien «galàxies» fora de la nostra, els seus famosos dibuixos dels braços en forma de remolí de la M51 van proporcionar la prova visual fonamental que va inspirar directament la nostra comprensió moderna de l'univers en expansió i rotació.",
+    "visual_tip": "Per localitzar la M51, situa Alkaid —l'estrella situada a l'extrem mateix del mànec del Carro Gran— i mira aproximadament 3,5 graus cap al sud-oest. Tot i que es pot albirar com un núvol fantasmal amb prismàtics de 10x50 en una nit negra com la tinta i sense lluna, necessitaràs un telescopi de 200 mm o superior, juntament amb grans augments, per resoldre clarament els braços espirals de gran disseny que es corben des del seu brillant nucli.",
+    "wikipedia_qid": "Q13957"
+  },
+  "d_J1337009-295156": {
+    "name": "Galàxia del Molinet Austral",
+    "common_names": [],
+    "description": "La Galàxia del Molinet Austral és una espectacular galàxia espiral barrada situada a uns 15 milions d'anys llum de la Terra, a la frontera entre les constel·lacions de l'Hidra i el Centaure. És una de les galàxies espirals més brillants i properes que pots observar al cel nocturn.",
+    "fun_fact": "El seu sobrenom de 'Molinet Austral' prové de la seva notable semblança visual amb la famosa Galàxia del Molinet, situada a l'hemisferi nord.",
+    "visual_tip": "Busca aquesta galàxia amb uns prismàtics sota un cel fosc, ja que la seva magnitud aparent de 7.5 la fa accessible si saps exactament on mirar a la constel·lació de l'Hidra.",
+    "wikipedia_qid": "Q14030"
+  },
+  "d_J1342116+282238": {
+    "name": "Messier 3",
+    "common_names": [],
+    "description": "Messier 3 és un impressionant cúmul globular situat a uns 33.900 anys llum de la Terra, a la constel·lació dels Llebrers. Amb prop de mig milió d'estrelles, és un dels cúmuls més grans i brillants que pots observar al cel nocturn.",
+    "fun_fact": "Aquest cúmul és un autèntic veterà del cosmos; s'estima que té uns 11.400 milions d'anys d'antiguitat, la qual cosa el converteix en un testimoni gairebé tan antic com l'univers mateix.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació de Canes Venatici. Tot i que és visible amb binoculars sota cels foscos, utilitza un telescopi d'obertura mitjana per començar a resoldre les seves estrelles perifèriques i gaudir de la seva forma esfèrica densa.",
+    "wikipedia_qid": "Q78384126"
+  },
+  "d_J1403125+542055": {
+    "name": "Galàxia del Molinet",
+    "common_names": [],
+    "description": "La Galàxia del Molinet és una espectacular galàxia espiral vista de cara, situada a uns 21 milions d'anys llum de distància a la constel·lació de l'Ossa Major. Amb un diàmetre de 252.000 anys llum, és notablement més gran que la nostra Via Làctia i alberga prop d'un bilió d'estrelles.",
+    "fun_fact": "El 2006, la NASA i l'Agència Espacial Europea van publicar una imatge d'aquesta galàxia que, en aquell moment, va ser la més gran i detallada mai capturada pel Telescopi Espacial Hubble, composta per 51 exposicions individuals.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació de l'Ossa Major. A causa de la seva magnitud aparent, utilitza un telescopi d'obertura mitjana en una nit ben fosca i sense contaminació lumínica per intentar apreciar la seva estructura espiral.",
+    "wikipedia_qid": "Q14371"
+  },
+  "d_J1506295+554547": {
+    "name": "Galàxia del Fus",
+    "common_names": [
+      "Messier 102"
+    ],
+    "description": "La Galàxia del Fus és una impressionant galàxia lenticular situada a la constel·lació del Dragó, a uns 50 milions d'anys llum de distància. Es caracteritza per ser vista de perfil, la qual cosa permet observar una marcada línia de pols que travessa el seu disc.",
+    "fun_fact": "Les mesures del seu sistema de cúmuls globulars suggereixen que aquesta galàxia té una quantitat inusualment baixa de matèria fosca en comparació amb altres galàxies similars.",
+    "visual_tip": "Busca aquesta galàxia a la constel·lació del Dragó. Utilitza un telescopi d'obertura mitjana i apunta cap a la zona entre els estels Iota i Theta Draconis; a causa de la seva magnitud de 9.9, veuràs una forma allargada i prima molt característica.",
+    "wikipedia_qid": "Q830937"
+  },
+  "d_J1518332+020451": {
+    "name": "Messier 5",
+    "common_names": [],
+    "description": "Messier 5 és un dels cúmuls globulars més grans i antics que coneixem, situat a uns 24.500 anys llum de distància a la constel·lació de la Serp. Aquest espectacular conjunt conté més de 100.000 estrelles densament agrupades que es van formar fa més de 10.000 milions d'anys.",
+    "fun_fact": "Aquest cúmul és famós per albergar més de 100 estrelles variables, la majoria de tipus RR Lyrae, que ajuden els astrònoms a mesurar amb precisió les distàncies a l'univers.",
+    "visual_tip": "Busca aquest cúmul en una nit ben fosca; tot i que és visible amb binocles com una taca difusa, utilitza un telescopi d'obertura mitjana per començar a resoldre les estrelles individuals a les vores.",
+    "wikipedia_qid": "Q11217"
+  },
+  "d_J1617024-225833": {
+    "name": "Messier 80",
+    "common_names": [],
+    "description": "Messier 80 és un dels cúmuls globulars més densos de la Via Làctia, amb centenars de milers d'estrelles concentrades en un diàmetre d'uns 95 anys llum. Es troba a uns 32.600 anys llum de la Terra, dins la constel·lació de l'Escorpió.",
+    "fun_fact": "El cúmul és famós per la seva gran població de 'blue stragglers' (estrelles blaves retardades), que semblen molt més joves que la resta d'estrelles del cúmul a causa de les freqüents interaccions i col·lisions estel·lars al seu nucli dens.",
+    "visual_tip": "Busca el cúmul a la constel·lació de l'Escorpió, situat a mig camí entre les estrelles Antares i Beta Scorpii. Mira-t'ho amb un telescopi d'aficionat en una nit amb poca contaminació lumínica per apreciar la seva forma de bola de llum motejada.",
+    "wikipedia_qid": "Q14021"
+  },
+  "d_J1623352-263132": {
+    "name": "Messier 4",
+    "common_names": [
+      "Cúmul globular de l'Aranya"
+    ],
+    "description": "Messier 4 és un impressionant cúmul globular situat a la constelació de l'Escorpió, a uns 6.000 anys llum de distància de la Terra. És destacable per ser el cúmul globular més proper a nosaltres i el primer en el qual els astrònoms van poder distingir estrelles individuals.",
+    "fun_fact": "Aquest cúmul és extremadament antic, amb una edat estimada d'uns 12.200 milions d'anys, la qual cosa el converteix en un dels objectes més veterans de la nostra galàxia.",
+    "visual_tip": "Per trobar-lo, busca la brillant estrella Antares a l'Escorpió; el cúmul es troba a només 1,3 graus a l'oest. Utilitza uns prismàtics o un telescopi petit per resoldre les seves estrelles, ja que és un dels cúmuls més fàcils d'observar.",
+    "wikipedia_qid": "Q11212"
+  },
+  "d_J1632318-130313": {
+    "name": "Messier 107",
+    "common_names": [],
+    "description": "Messier 107 és un cúmul globular situat a la constelació d'Ofiuc. Es troba a una distància aproximada de 20.900 anys llum de la Terra i destaca per la seva estructura relativament dispersa en comparació amb altres cúmuls globulars més densos.",
+    "fun_fact": "Va ser l'últim objecte afegit al catàleg de Charles Messier per l'astrònoma Helen Sawyer Hogg el 1947, tot i que Messier el va observar originalment el 1782.",
+    "visual_tip": "Per localitzar-lo, apunta el teu telescopi cap a la constelació d'Ofiuc. Utilitza la visió perifèrica per apreciar millor la seva tènue brillantor i la seva forma lleugerament irregular.",
+    "wikipedia_qid": "Q18334765"
+  },
+  "d_J1641416+362740": {
+    "name": "Cúmul d'Hèrcules",
+    "common_names": [
+      "Gran Cúmul d'Hèrcules"
+    ],
+    "description": "El Cúmul d'Hèrcules és un dels cúmuls globulars més espectaculars i coneguts de l'hemisferi nord. Situat a uns 24.100 anys llum de distància, alberga centenars de milers d'estrelles densament agrupades a la constel·lació d'Hèrcules.",
+    "fun_fact": "L'any 1974, aquest cúmul va ser l'objectiu del famós Missatge d'Arecibo, un senyal de ràdio enviat a l'espai profund amb l'esperança de contactar amb civilitzacions extraterrestres.",
+    "visual_tip": "Busca el cúmul entre els estels Zeta i Eta Herculis. Tot i que és visible a ull nu sota cels molt foscos, utilitza uns prismàtics o un telescopi petit per resoldre els seus estels perifèrics i gaudir de la seva brillantor impressionant.",
+    "wikipedia_qid": "Q11312"
+  },
+  "d_J1647141-015654": {
+    "name": "Messier 12",
+    "common_names": [],
+    "description": "Messier 12 és un cúmul globular situat a la constelació d'Ophiuchus, a uns 16.400 anys llum de la Terra. Tot i que Charles Messier el va descriure inicialment com una \"nebulosa sense estrelles\", avui dia el reconeixem com un sistema estel·lar amb una estructura sorprenentment dispersa.",
+    "fun_fact": "Un estudi publicat el 2006 va concloure que el cúmul té un nombre inusualment baix d'estrelles de poca massa, probablement perquè van ser arrencades en travessar el pla de la Via Làctia.",
+    "visual_tip": "Busca aquest cúmul a uns 3° al nord-oest del seu veí, el cúmul M10. Pots veure'l amb binocles en cels molt foscos, però utilitza un telescopi de 20 cm o més si vols resoldre les estrelles que formen el seu nucli.",
+    "wikipedia_qid": "Q11307"
+  },
+  "d_J1657090-040601": {
+    "name": "Messier 10",
+    "common_names": [],
+    "description": "Messier 10 és un espectacular cúmul globular situat a la constelació d'Ofiuc, a uns 14.300 anys llum de la Terra. Aquest dens conjunt d'estrelles va ser descobert per Charles Messier el 1764 i destaca pel seu nucli brillant i la seva composició estel·lar antiga.",
+    "fun_fact": "Tot i que Charles Messier el va descriure inicialment com una 'nebulosa sense estrelles', observacions posteriors amb telescopis més potents van revelar que es tracta d'un cúmul format per milers d'estrelles molt comprimides.",
+    "visual_tip": "Busca el cúmul a un grau a l'oest de l'estrella 30 Ophiuchi. Utilitza un telescopi de mida mitjana per observar-ne el nucli brillant, ja que el seu diàmetre aparent és aproximadament dos terços del de la Lluna plena.",
+    "wikipedia_qid": "Q11267"
+  },
+  "d_J1701126-300644": {
+    "name": "Messier 62",
+    "common_names": [
+      "Cúmul parpellejant"
+    ],
+    "description": "Messier 62 és un impressionant cúmul globular situat a la constel·lació d'Ofiuc, a uns 21.500 anys llum de la Terra. És un dels cúmuls més massius i lluminosos de la nostra galàxia, destacant per la seva forma gairebé perfectament esfèrica i la seva alta densitat estel·lar.",
+    "fun_fact": "Se'l coneix com el 'Cúmul parpellejant' a causa de l'enorme quantitat d'estrelles variables que alberga; de fet, és un dels cúmuls amb més població d'estrelles variables RR Lyrae de tota la Via Làctia.",
+    "visual_tip": "Busca aquest cúmul a la part sud d'Ofiuc. Utilitza un telescopi d'obertura mitjana per resoldre les seves estrelles perifèriques, ja que la seva brillantor aparent de magnitud 6.6 el fa un objectiu fascinant, però que requereix cels foscos per apreciar bé el seu nucli dens.",
+    "wikipedia_qid": "Q13980"
+  },
+  "d_J1702376-261604": {
+    "name": "Messier 19",
+    "common_names": [],
+    "description": "Messier 19 és un cúmul globular situat a la constelació d'Ofiuc, a uns 28.700 anys llum de distància de la Terra. És un dels cúmuls més aplatats que es coneixen, tot i que aquesta forma és en gran part un efecte visual causat per l'extinció de la llum a través de núvols de pols interestel·lar.",
+    "fun_fact": "Tot i que sembla tenir una forma ovalada a la llum visible, les observacions en l'infraroig revelen que el cúmul és gairebé perfectament esfèric; l'aparença aplanada és només el resultat de la pols que bloqueja la llum a la seva vora oriental.",
+    "visual_tip": "Busca aquest cúmul a uns 4,5 graus a l'oest-sud-oest de l'estrella Theta Ophiuchi. Amb uns prismàtics de 50 mm el podràs veure com un punt de llum difús, però utilitza un telescopi d'almenys 25 cm d'obertura per apreciar millor el seu nucli i el seu halo.",
+    "wikipedia_qid": "Q11374"
+  },
+  "d_J1717073+430809": {
+    "name": "Messier 92",
+    "common_names": [],
+    "description": "Messier 92 és un impressionant cúmul globular situat a la constelació d'Hèrcules, a uns 26.700 anys llum de distància de la Terra. És un dels cúmuls més brillants i antics de la nostra galàxia, que conté centenars de milers d'estrelles densament agrupades.",
+    "fun_fact": "A causa de la seva baixíssima metal·licitat, aquest cúmul és extremadament antic i conté algunes de les estrelles més velles conegudes a la Via Làctia, formades poc després del Big Bang.",
+    "visual_tip": "Busca aquest cúmul a la part superior de la constelació d'Hèrcules. Tot i que és visible amb binoculars sota cels foscos, utilitza un telescopi d'obertura mitjana per començar a resoldre les seves estrelles individuals a les vores.",
+    "wikipedia_qid": "Q78262275"
+  },
+  "d_J1719117-183058": {
+    "name": "Messier 9",
+    "common_names": [],
+    "description": "Messier 9 és un cúmul globular situat a la constel·lació d'Ofiuc, a uns 25.800 anys llum de la Terra. Aquest dens conjunt d'estrelles es troba sorprenentment a prop del centre de la nostra galàxia, a només 5.500 anys llum del nucli galàctic.",
+    "fun_fact": "Tot i que Charles Messier el va descriure originalment com una \"nebulosa sense estrelles\", William Herschel va aconseguir resoldre les seves estrelles individuals anys més tard, revelant una estructura densament poblada amb una lluminositat total 120.000 vegades superior a la del Sol.",
+    "visual_tip": "Per observar aquest cúmul, apunta el teu telescopi cap a la part sud d'Ofiuc, al sud-oest de l'estrella Eta Ophiuchi. Utilitza un telescopi de mida moderada per distingir les seves estrelles més brillants, que tenen una magnitud aparent de 13.5.",
+    "wikipedia_qid": "Q11258"
+  },
+  "d_J1737361-031445": {
+    "name": "Messier 14",
+    "common_names": [],
+    "description": "Messier 14 és un cúmul globular situat a uns 30.000 anys llum de distància a la constel·lació d'Ophiuchus. Aquest dens conjunt conté centenars de milers d'estrelles i presenta una forma clarament allargada.",
+    "fun_fact": "L'any 1938, una nova va esclatar dins del cúmul, però el fenomen no es va descobrir fins que els astrònoms van estudiar plaques fotogràfiques d'aquella època l'any 1964.",
+    "visual_tip": "Busca aquest cúmul amb uns binocles sota cels foscos, ja que la seva magnitud aparent de 7.6 el fa força assequible. Si utilitzes un telescopi de mida mitjana, mira si pots resoldre algunes de les seves estrelles individuals més brillants.",
+    "wikipedia_qid": "Q11320"
+  },
+  "d_J1740144-321416": {
+    "name": "Cúmul de la Papallona",
+    "common_names": [],
+    "description": "El Cúmul de la Papallona és un cúmul obert d'estrelles situat a la constel·lació de l'Escorpió, a uns 1590 anys llum de nosaltres. El seu nom deriva de la semblança de la seva forma amb una papallona amb les ales desplegades.",
+    "fun_fact": "Tot i que la majoria de les seves estrelles són joves i blaves, el membre més brillant del cúmul és una gegant taronja anomenada BM Scorpii, que contrasta fortament amb el color blau de les seves veïnes.",
+    "visual_tip": "Busca aquest cúmul a prop del Cúmul de Ptolemeu, a la cua de l'Escorpió. Utilitza uns prismàtics o un telescopi de poc augment per gaudir de la seva forma característica; és un objecte fantàstic per a observacions de camp ampli.",
+    "wikipedia_qid": "Q11225"
+  },
+  "d_J1753440-344936": {
+    "name": "Cúmul de Ptolemeu",
+    "common_names": [],
+    "description": "El Cúmul de Ptolemeu és un brillant cúmul obert d'estrelles situat a la constelació de l'Escorpió. Situat a uns 980 anys llum de distància, és un dels objectes celestes més destacats i fàcils d'observar a ull nu en el cel nocturn.",
+    "fun_fact": "És l'objecte de Messier situat més al sud de tot el catàleg, fet que el converteix en una joia astronòmica per als observadors de l'hemisferi sud i de les latituds baixes del nord.",
+    "visual_tip": "Busca el fibló de l'Escorpió al cel nocturn; veuràs el cúmul just al costat. Com que és molt gran i brillant, utilitza els teus prismàtics per apuntar cap a la zona i gaudir d'una vista espectacular de les seves estrelles individuals.",
+    "wikipedia_qid": "Q11234"
+  },
+  "d_J1756561-185821": {
+    "name": "Messier 23",
+    "common_names": [],
+    "description": "Messier 23 és un cúmul obert d'estrelles situat a la part nord-oest de la constel·lació de Sagitari. Es troba a uns 2.050 anys llum de distància i conté entre 169 i 414 estrelles, amb una edat estimada de 330 milions d'anys.",
+    "fun_fact": "Tot i que sembla estar davant d'una xarxa de gas i pols, és probable que no hi hagi cap associació física entre el cúmul i aquests núvols, ja que el cúmul simplement es troba en aquesta línia de visió.",
+    "visual_tip": "Busca aquest cúmul en condicions de cel fosc; el pots veure amb binocles o un telescopi petit. Apunta cap a la constel·lació de Sagitari i explora la zona per distingir les seves estrelles més brillants.",
+    "wikipedia_qid": "Q11396"
+  },
+  "d_J1802420-225818": {
+    "name": "Nebulosa Trífida",
+    "common_names": [],
+    "description": "La Nebulosa Trífida és una regió de formació estel·lar única situada a uns 4100 anys llum de distància a la constel·lació del Sagitari. Aquest objecte combina de manera fascinant una nebulosa d'emissió rogenca, una nebulosa de reflexió blavosa i una nebulosa fosca que crea el seu característic aspecte dividit en tres lòbuls.",
+    "fun_fact": "El seu nom significa 'dividida en tres lòbuls', una denominació que fa referència a les franges de pols fosca que semblen fragmentar la nebulosa quan l'observes a través d'un telescopi.",
+    "visual_tip": "Busca la nebulosa a la part nord-oest de la constel·lació del Sagitari. Utilitza un telescopi petit per apreciar la seva peculiar estructura i compara les zones brillants d'emissió amb les àrees més fosques i les regions blaves de reflexió.",
+    "wikipedia_qid": "Q11377"
+  },
+  "d_J1803370-242312": {
+    "name": "Nebulosa de la Llacuna",
+    "common_names": [
+      "Nebulosa del Rellotge de Sorra"
+    ],
+    "description": "La Nebulosa de la Llacuna és una gegantina regió de formació estel·lar situada a la constel·lació del Sagitari, a uns 4.100 anys llum de distància. És una de les poques nebuloses que pots observar a ull nu des de latituds mitjanes, destacant per la seva brillantor i la seva complexa estructura de gas i pols.",
+    "fun_fact": "És una de les dues úniques nebuloses de formació estel·lar que són dèbilment visibles a ull nu des de latituds mitjanes de l'hemisferi nord, sent l'altra la famosa Nebulosa d'Orió.",
+    "visual_tip": "Busca la constel·lació del Sagitari durant les nits d'estiu. Encara que és visible a ull nu sota cels molt foscos, utilitza uns prismàtics o un telescopi petit per apreciar millor els detalls de la seva estructura i el cúmul estel·lar que amaga al seu interior.",
+    "wikipedia_qid": "Q11243"
+  },
+  "d_J1804100-223000": {
+    "name": "Messier 21",
+    "common_names": [
+      "Creu de Webb"
+    ],
+    "description": "Messier 21 és un cúmul obert jove i compacte situat a uns 3.930 anys llum de distància a la constel·lació del Sagitari. Tot i que es troba a prop de la famosa Nebulosa Trífida al cel, no té cap relació física amb ella.",
+    "fun_fact": "A dia d'avui, Messier 21 és un dels pocs objectes del catàleg Messier que encara no ha estat fotografiat pel Telescopi Espacial Hubble.",
+    "visual_tip": "Com que la seva magnitud és de 6.5, no el podràs veure a ull nu. Busca un cel fosc i utilitza uns prismàtics petits per localitzar-lo fàcilment a prop de la Nebulosa Trífida.",
+    "wikipedia_qid": "Q11383"
+  },
+  "d_J1816480-183300": {
+    "name": "Petita Núvol Estel·lar de Sagitari",
+    "common_names": [],
+    "description": "La Petita Núvol Estel·lar de Sagitari és un impressionant asterisme que destaca com una densa concentració d'estrelles a la Via Làctia. A diferència d'altres objectes del cel profund, no és un cúmul estel·lar, sinó una finestra clara a través dels núvols de pols interestel·lar que ens permet observar milers d'estrelles distants en el braç de Sagitari.",
+    "fun_fact": "Encara que sovint es confon amb un cúmul estel·lar, aquest objecte és en realitat una regió de l'espai relativament lliure de pols, la qual cosa ens brinda una vista privilegiada cap a les profunditats de la nostra pròpia galàxia.",
+    "visual_tip": "Busca aquest núvol estel·lar a la constel·lació de Sagitari durant les nits d'estiu. Utilitza uns prismàtics de gran camp per apreciar millor la immensa quantitat d'estrelles que semblen agrupar-se en aquest petit tros del cel.",
+    "wikipedia_qid": "Q6720474"
+  },
+  "d_J1818451-134731": {
+    "name": "Nebulosa de l'Àliga",
+    "common_names": [
+      "Reina de les Estrelles",
+      "Pilars de la Creació"
+    ],
+    "description": "La Nebulosa de l'Àliga (M16) és una colossal nebulosa d'emissió i viver estel·lar actiu que abasta aproximadament 70 per 55 anys llum (660 bilions de km). Situada a 7.000 anys llum de distància, a la constel·lació del Serpent, brilla amb una magnitud aparent de 6,0 i apareix a través de prismàtics com una taca feble i brillant que envolta un cúmul compacte d'estrelles acabades de néixer. Al seu nucli es troba un intens entorn de formació estel·lar il·luminat per la radiació ultraviolada del jove cúmul obert NGC 6611, que escup i ionitza els núvols circumdants de gas hidrogen còsmic.",
+    "fun_fact": "Aquesta nebulosa allotja els famosos «Pilars de la Creació», imponents columnes de gas fred i pols que arriben de 4 a 5 anys llum (entre 38 i 47 bilions de km) d'alçada. Anàlisis recents d'infrarojos d'alta resolució procedents de telescopis espacials revelen que aquestes monumentals estructures són excavades i evaporades activament des de l'interior per les pròpies protoestrelles que es formen al seu interior, cosa que significa que els pilars es troben en un implacable estira-i-arronsa còsmic entre la creació i la destrucció.",
+    "visual_tip": "Per albirar la M16, busca al cel meridional, prop dels límits de les constel·lacions del Serpent, Sagitari i l'Escut. Tot i que els prismàtics i els telescopis petits de 100 mm revelen fàcilment el brillant cúmul estel·lar incrustat, la resolució de les siluetes fosques dels pilars centrals requereix un telescopi de més obertura, 200 mm o més, juntament amb cels foscs pristins i un filtre de nebulosa UHC o OIII per maximitzar el contrast dels núvols de gas.",
+    "wikipedia_qid": "Q11349"
+  },
+  "d_J1819562-170421": {
+    "name": "Messier 18",
+    "common_names": [
+      "Cúmul del Cigne Negre"
+    ],
+    "description": "Messier 18 és un cúmul obert d'estrelles situat a la constel·lació de Sagitari, a uns 4.230 anys llum de la Terra. Aquest grup estel·lar, relativament dispers, es troba al cel entre la famosa Nebulosa Omega i el Núvol Estel·lar de Sagitari.",
+    "fun_fact": "Tot i ser un objecte del catàleg de Messier, és un dels pocs que encara no ha estat fotografiat pel Telescopi Espacial Hubble.",
+    "visual_tip": "Busca aquest cúmul en la densa regió de Sagitari utilitzant binocles o un telescopi petit. Apunta el teu equip entre la Nebulosa Omega i el Núvol Estel·lar de Sagitari per localitzar-lo fàcilment.",
+    "wikipedia_qid": "Q11370"
+  },
+  "d_J1820470-161018": {
+    "name": "Nebulosa Omega",
+    "common_names": [
+      "Nebulosa del Cigne",
+      "Nebulosa del Xec",
+      "Nebulosa de la Llagosta",
+      "Nebulosa de la Ferradura"
+    ],
+    "description": "La Nebulosa Omega és una regió H II brillant situada a la constel·lació de Sagitari, a una distància d'entre 5.000 i 6.000 anys llum. És una de les zones de formació estel·lar més riques i actives de la nostra Via Làctia, destacant per la seva forma característica que recorda un cigne o una marca de verificació.",
+    "fun_fact": "Encara que va ser descoberta originalment per Philippe Loys de Chéseaux el 1745, Charles Messier la va incloure en el seu famós catàleg el 1764, reconeixent la seva importància com un dels objectes més brillants dels camps estel·lars de Sagitari.",
+    "visual_tip": "Busca aquesta nebulosa en els rics camps estel·lars de Sagitari. Amb una magnitud aparent de 6.0, apunta els teus binocles o un telescopi petit cap a la zona per distingir la seva forma brillant, especialment sota cels foscos i nets.",
+    "wikipedia_qid": "Q11357"
+  },
+  "d_J1824328-245211": {
+    "name": "Messier 28",
+    "common_names": [],
+    "description": "Messier 28 és un dens cúmul globular d'estrelles situat a la constel·lació de Sagitari, a uns 18.000 anys llum de distància de nosaltres. Va ser descobert per l'astrònom Charles Messier el 1764, qui el va descriure inicialment com una nebulosa rodona difícil de veure.",
+    "fun_fact": "Aquest cúmul és notable per ser el primer on es va descobrir un púlsar, un fet que va marcar una fita important en l'estudi dels objectes compactes dins dels cúmuls globulars.",
+    "visual_tip": "Busca aquest cúmul a la part central de Sagitari. Tot i que pots intentar veure'l amb prismàtics sota cels molt foscos, utilitza un telescopi per apreciar millor la seva estructura densa i compacta.",
+    "wikipedia_qid": "Q13644"
+  },
+  "d_J1831230-322053": {
+    "name": "Messier 69",
+    "common_names": [],
+    "description": "Aquest cúmul globular es troba a uns 28.700 anys llum de la Terra, situat a la constel·lació de Sagitari. És un objecte relativament ric en metalls que forma part de la població del bulb galàctic i presenta una densitat estel·lar notable al seu nucli.",
+    "fun_fact": "És un veí molt proper d'un altre cúmul globular, Messier 70! Tots dos estan separats per només 1.800 anys llum, fet que els converteix en una parella còsmica fascinant al cel austral.",
+    "visual_tip": "Per localitzar-lo, busca l'estrella Epsilon Sagittarii i desplaça't uns 2,5 graus cap al nord-est. Tot i que és tènue, pots arribar a veure'l amb uns prismàtics de 50 mm si el cel és prou fosc.",
+    "wikipedia_qid": "Q14002"
+  },
+  "d_J1831474-190736": {
+    "name": "Messier 25",
+    "common_names": [],
+    "description": "Aquest cúmul obert d'estrelles es troba a la constelació de Sagitari, a uns 2.000 anys llum de la Terra. Amb una edat d'aproximadament 67,6 milions d'anys, aquest grup estel·lar destaca per allotjar una estrella variable cefeida anomenada U Sagittarii.",
+    "fun_fact": "Recerques recents suggereixen que aquest cúmul podria formar part d'un sistema triple de cúmuls estel·lars juntament amb dos grups més propers.",
+    "visual_tip": "Busca aquest cúmul a la constelació de Sagitari; gràcies a la seva magnitud aparent de 4.6, pots intentar localitzar-lo a ull nu sota cels molt foscos, tot i que veuràs molt millor les seves estrelles utilitzant uns prismàtics.",
+    "wikipedia_qid": "Q13623"
+  },
+  "d_J1836239-235417": {
+    "name": "Messier 22",
+    "common_names": [
+      "Gran Cúmul de Sagitari"
+    ],
+    "description": "El Messier 22 és un dels cúmuls globulars més brillants i propers a la Terra, situat a uns 10.600 anys llum de distància a la constel·lació de Sagitari. Aquest espectacular conjunt el·líptic conté centenars de milers d'estrelles i és un objecte clau per a l'estudi de l'evolució estel·lar gràcies a la seva proximitat.",
+    "fun_fact": "És un dels quatre únics cúmuls globulars coneguts que conté una nebulosa planetària al seu interior, una raresa astronòmica fascinant.",
+    "visual_tip": "Per trobar-lo, busca la constel·lació de Sagitari i apunta el teu telescopi cap al nord-est de Kaus Borealis, l'estrella superior de l'asterisme de la 'Tetera'. Amb un telescopi de 8 polzades, podràs començar a resoldre individualment les seves estrelles més brillants.",
+    "wikipedia_qid": "Q11392"
+  },
+  "d_J1843127-321731": {
+    "name": "Messier 70",
+    "common_names": [],
+    "description": "Messier 70 és un cúmul globular d'estrelles situat a la part sud de la constel·lació de Sagitari, a uns 29.400 anys llum de la Terra. Aquest dens conjunt estel·lar ha experimentat un col·lapse en el seu nucli, la qual cosa li confereix una concentració central molt marcada.",
+    "fun_fact": "Aquest cúmul és famós en la història de l'astronomia moderna perquè el cèlebre cometa Hale-Bopp va ser descobert molt a prop seu el 1995.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació de Sagitari utilitzant un telescopi d'obertura mitjana. A causa de la seva magnitud de 8.1, veuràs una taca difusa i compacta; intenta fer servir la visió perifèrica per apreciar millor la seva brillantor central.",
+    "wikipedia_qid": "Q14004"
+  },
+  "d_J1845168-092313": {
+    "name": "Messier 26",
+    "common_names": [],
+    "description": "Messier 26 és un cúmul obert situat a la constelació de l'Escut, a uns 5.160 anys llum de distància. Amb una edat d'uns 85 milions d'anys, aquest cúmul es caracteritza per una distribució estel·lar única al seu centre.",
+    "fun_fact": "Una característica fascinant d'aquest cúmul és la seva regió central de baixa densitat estel·lar; tot i que s'havia teoritzat que era causada per pols interestelar, avui dia continua sent un misteri sense explicació clara.",
+    "visual_tip": "Busca el cúmul al sud-sud-oest de Messier 11. Mira d'utilitzar un telescopi d'almenys 76 mm d'obertura per observar les aproximadament 25 estrelles que es poden arribar a distingir amb equips d'aficionat.",
+    "wikipedia_qid": "Q13626"
+  },
+  "d_J1851037-061618": {
+    "name": "Cúmul de l'Ànec Salvatge",
+    "common_names": [],
+    "description": "El Cúmul de l'Ànec Salvatge és un dels cúmuls oberts més rics, compactes i massius que coneixem. Situat a uns 6.120 anys llum de distància a la constel·lació de l'Escut, aquest grup estel·lar d'uns 316 milions d'anys d'antiguitat destaca per la disposició de les seves estrelles més brillants, que semblen formar una bandada d'ànecs en vol.",
+    "fun_fact": "Es creu que la composició química inusual del cúmul, rica en elements del procés alfa, podria ser deguda a la influència d'una explosió de supernova propera que va enriquir el núvol molecular on van néixer les seves estrelles.",
+    "visual_tip": "Busca el cúmul just a l'est del punt mitjà del Núvol Estel·lar de l'Escut. Tot i que és visible amb binocles sota cels foscos, utilitza un telescopi per distingir millor la forma triangular de les seves estrelles més brillants que li dona el nom.",
+    "wikipedia_qid": "Q11294"
+  },
+  "d_J1853350+330144": {
+    "name": "Nebulosa de l'Anell",
+    "description": "La Nebulosa de l'Anell (M57) és una nebulosa planetària per excel·lència que representa la closca de gas ionitzat expulsada per una estrella moribunda similar al sol, que s'estén aproximadament 1,3 anys llum (12,3 bilions de km) de diàmetre. Situada a 2,300 anys llum de distància, a la constel·lació septentrional de la Lira, brilla amb una magnitud aparent de 8,8 i apareix a través de prismàtics o d'un telescopi molt petit com un disc petit, de color verd grisenc fantasmal, que es confon fàcilment amb un planeta llunyà. Un telescopi moderat de 150 mm sota cels foscs transforma bellament aquesta taca en un distintiu i buit anell de fum còsmic que flota contra el teló de fons de l'espai profund, il·luminat des de l'interior per una estrella nana blanca feroçment calenta.",
+    "fun_fact": "La Nebulosa de l'Anell és en realitat una enorme il·lusió còsmica! El cartografiat tridimensional d'alta resolució que combina llum visible i dades infraroges mostra que la M57 no és en absolut una simple bombolla buida o un cercle, sinó més aviat un cilindre de gas allargat amb forma de barril vist gairebé directament pel seu extrem obert. En mirar la nebulosa des de la Terra, estàs mirant directament pel tub d'un barril estel·lar, captant la violenta expansió geomètrica dels últims gests de la mort d'una estrella des d'una perspectiva de primera fila.",
+    "visual_tip": "Per trobar fàcilment la M57, localitza la brillant estrella Vega i traça el petit i característic paral·lelogram d'estrelles que forma el cos de la Lira; la nebulosa es troba gairebé perfectament a mig camí entre les dues estrelles inferiors, Sheliak i Sulafat. Tot i que un telescopi de 100 mm revelarà fàcilment la forma d'anell amb centre fosc, necessitaràs un instrument gran de 250 mm o superior forçat a augments excepcionalment alts en una nit estable i sense lluna per albirar l'increïblement feble estrella nana blanca de magnitud 15,7 que descansa al seu centre absolut.",
+    "wikipedia_qid": "Q13628"
+  },
+  "d_J1855033-302847": {
+    "name": "Messier 54",
+    "common_names": [],
+    "description": "Messier 54 és un cúmul globular situat a la constel·lació de Sagitari, descobert per Charles Messier el 1778. Es troba a uns 80.000 anys llum de distància i destaca per ser probablement d'origen extragalàctic.",
+    "fun_fact": "El 2009, els astrònoms van trobar proves de l'existència d'un forat negre de massa intermèdia al nucli d'aquest cúmul, un fet molt poc habitual.",
+    "visual_tip": "Per localitzar-lo, busca l'estrella Zeta Sagittarii; el cúmul es troba molt a prop. Tingues en compte que, tot i ser brillant, no podràs distingir estrelles individuals ni tan sols amb telescopis d'aficionat grans.",
+    "wikipedia_qid": "Q13962"
+  },
+  "d_J1916355+301100": {
+    "name": "Messier 56",
+    "common_names": [],
+    "description": "Messier 56 és un antic cúmul globular situat a uns 32.900 anys llum de distància a la constel·lació de la Lira. Amb una edat estimada de 13.700 milions d'anys, aquest dens conjunt d'estrelles és un supervivent d'una antiga galàxia nana que va ser absorbida per la Via Làctia.",
+    "fun_fact": "Es creu que aquest cúmul forma part de la 'Salsitxa de Gaia', les restes d'una galàxia nana que va col·lidir amb la nostra fa milers de milions d'anys, deixant un rastre d'estrelles amb òrbites retrògrades.",
+    "visual_tip": "Busca aquest objecte a mig camí entre les estrelles Albireo i Sulafat. Si utilitzes binoculars grans, el veuràs com una petita taca difusa, però apunta un telescopi d'almenys 20 cm d'obertura si vols resoldre les seves estrelles individuals.",
+    "wikipedia_qid": "Q13967"
+  },
+  "d_J1939597-305753": {
+    "name": "Messier 55",
+    "common_names": [
+      "Cúmul Espectre"
+    ],
+    "description": "Messier 55 és un espectacular cúmul globular situat a uns 17.600 anys llum de distància, dins la constel·lació de Sagitari. Aquest antic conjunt d'estrelles conté aproximadament 269.000 masses solars i destaca per la seva molt baixa metal·licitat, la qual cosa ens indica que és un objecte extremadament vell.",
+    "fun_fact": "Tot i que Charles Messier va intentar localitzar-lo des de París durant anys, la seva baixa declinació va fer que fos un objecte molt difícil d'observar per a ell, ja que amb prou feines s'elevava sobre l'horitzó francès.",
+    "visual_tip": "Busca aquest cúmul en cels foscos utilitzant uns prismàtics de 50 mm, on apareixerà com una taca difusa. Si vols resoldre les seves estrelles individuals, apunta el teu telescopi de mida mitjana cap a la regió sud de Sagitari.",
+    "wikipedia_qid": "Q13965"
+  },
+  "d_J1953464+184645": {
+    "name": "Messier 71",
+    "common_names": [
+      "Cúmul del Peix Àngel"
+    ],
+    "description": "El Messier 71 és un cúmul globular poc dens situat a la petita constel·lació de la Fletxa, a uns 13.000 anys llum de la Terra. Durant molt de temps va ser classificat erròniament com un cúmul obert a causa de la seva estructura dispersa i la composició metàl·lica de les seves estrelles.",
+    "fun_fact": "Durant dècades, els astrònoms van debatre si era un cúmul obert o globular; no va ser fins a la dècada de 1970 que es va confirmar la seva naturalesa globular en detectar una branca horitzontal en el seu diagrama de Hertzsprung-Russell.",
+    "visual_tip": "Busca aquest cúmul a la constel·lació de la Fletxa. Tot i que és visible amb binoculars sota cels foscos, utilitza un telescopi d'obertura mitjana per començar a resoldre les seves estrelles individuals, que apareixen com un núvol tènue i dispers.",
+    "wikipedia_qid": "Q14006"
+  },
+  "d_J1959363+224316": {
+    "name": "Nebulosa Dumbbell",
+    "common_names": [
+      "Nebulosa de l'Haltera",
+      "Nebulosa de les Peses"
+    ],
+    "description": "La Nebulosa Dumbbell (M27) és una enorme nebulosa planetària que abasta uns 2,9 anys llum (27,4 bilions de km), formada quan una estrella que envellia va desprendre les seves capes exteriors cap a l'espai profund. Situada a 1.360 anys llum de distància, a la tènue constel·lació septentrional de la Guineu (Vulpecula), brilla amb una magnitud aparent combinada relativament brillant de 7,5. A través de prismàtics estàndard sota cels foscs, apareix com una taca brumosa conspícua i brillant, mentre que un telescopi petit de 100 mm transforma aquest núvol en una inconfusible forma bilobulada que recorda un pes de gimnàs o el cor d'una poma, il·luminada per un dels romanents estel·lars més grans de nana blanca coneguts.",
+    "fun_fact": "Aquest objecte és una fita monumental en la història de la ciència! Descoberta per Charles Messier el 1764, la M27 va ser la primera nebulosa planetària observada en la història de la humanitat. El seu enganyós nom històric de categoria, «planetària», va ser encunyat més tard per astrònoms que pensaven que el seu disc brillant verd-blau en els primitius telescopis s'assemblava a planetes gegants gasosos com Urà, tot i que en realitat és l'explosiva tomba d'una estrella massiva.",
+    "visual_tip": "Per localitzar la M27, busca la característica forma de fletxa de la constel·lació de la Sageta; la nebulosa es troba aproximadament 3 graus al nord de l'estrella de la punta, Gamma Sagittae. Com que posseeix una brillantor superficial inusualment alta per ser un núvol de gas de cel profund, continua sent molt visible fins i tot sota una lleugera contaminació lluminosa urbana, tot i que enroscar un filtre de nebulosa OIII a l'ocular aïllarà dràsticament la seva estructura de gas oxigen brillant i afilarà la seva icònica silueta de rellotge de sorra.",
+    "wikipedia_qid": "Q13628"
+  },
+  "d_J2006048-215520": {
+    "name": "Messier 75",
+    "common_names": [],
+    "description": "Messier 75 és un cúmul globular dens i compacte situat a la constel·lació del Sagitari. Es troba a una distància considerable de la Terra, la qual cosa el converteix en un dels objectes més remots i concentrats del seu tipus en el catàleg de Messier.",
+    "fun_fact": "A causa de la seva alta densitat estel·lar i la seva gran distància, aquest cúmul apareix com un objecte molt petit i brillant, fet que sovint fa que els observadors el confonguin amb un estel difús o una nebulosa planetària.",
+    "visual_tip": "Busca aquest objecte en cels molt foscos utilitzant un telescopi d'obertura mitjana o gran. Apunta cap a la constel·lació del Sagitari i utilitza visió perifèrica per distingir el seu nucli brillant i compacte dels estels del voltant.",
+    "wikipedia_qid": "Q56872685"
+  },
+  "d_J2023429+382925": {
+    "name": "Messier 29",
+    "common_names": [
+      "Cúmul de la Torre de Refrigeració"
+    ],
+    "description": "El Messier 29 és un cúmul obert petit i brillant situat a la constel·lació del Cigne, just al sud de l'estrella Gamma Cygni. Es troba a uns 5.240 anys llum de distància i està immers en la densa nebulositat dels braços espirals de la Via Làctia.",
+    "fun_fact": "Tot i la seva aparença modesta, aquest cúmul és extremadament jove, amb una edat estimada de només 10 a 13 milions d'anys, fet que explica per què les seves estrelles més brillants són gegants de classe B0.",
+    "visual_tip": "Busca aquest cúmul utilitzant binocles en una nit clara. Apunta cap a l'estrella Gamma Cygni al Cigne i mira just al sud; veuràs un petit grup d'estrelles que destaca sobre el fons de la Via Làctia.",
+    "wikipedia_qid": "Q13647"
+  },
+  "d_J2053277-123214": {
+    "name": "Messier 72",
+    "common_names": [],
+    "description": "Messier 72 és un cúmul globular situat a la constelació d'Aquari, a una distància aproximada de 54.500 anys llum de la Terra. És un objecte relativament tènue i compacte que es troba a les regions exteriors de la nostra galàxia.",
+    "fun_fact": "Tot i la seva aparença petita i compacta, aquest cúmul té una edat estimada d'uns 9.500 milions d'anys, fet que el converteix en un testimoni antic de la formació estel·lar al halo galàctic.",
+    "visual_tip": "A causa de la seva magnitud aparent de 9.3, busca aquest cúmul utilitzant un telescopi d'obertura mitjana en una nit clara i fosca. Apunta el teu telescopi cap a la constel·lació d'Aquari i utilitza la visió perifèrica per distingir millor la seva tènue llum entre les estrelles de fons.",
+    "wikipedia_qid": "Q14008"
+  },
+  "d_J2058599-123759": {
+    "name": "Messier 73",
+    "common_names": [],
+    "description": "Messier 73 és un asterisme format per quatre estrelles a la constel·lació d'Aquari que durant molt de temps es va considerar un petit cúmul obert. Gràcies a les dades de la missió Gaia, sabem que aquestes estrelles no estan relacionades físicament, ja que es troben a distàncies molt diferents de la Terra, que oscil·len entre els 1030 i els 2290 anys llum.",
+    "fun_fact": "Encara que durant dècades els astrònoms van debatre si es tractava d'un cúmul estel·lar real, les mesures modernes de distància han confirmat que és només una coincidència visual, un simple alineament d'estrelles al cel.",
+    "visual_tip": "Per localitzar-lo, apunta el teu telescopi cap a la constel·lació d'Aquari i busca una mica a l'est del cúmul globular Messier 72. Utilitza una obertura moderada per distingir aquest petit grup d'estrelles amb una magnitud aparent de 9.0.",
+    "wikipedia_qid": "Q14009"
+  },
+  "d_J2129583+121001": {
+    "name": "Messier 15",
+    "common_names": [
+      "Gran Cúmul de Pegàs"
+    ],
+    "description": "Messier 15 és un impressionant cúmul globular situat a la constel·lació de Pegàs, a uns 35.700 anys llum de distància. Amb una antiguitat estimada de 12.000 milions d'anys, és un dels cúmuls més antics que coneixem i destaca pel seu nucli extremadament dens i brillant.",
+    "fun_fact": "Aquest cúmul és tan dens que ha experimentat un fenomen anomenat 'col·lapse del nucli', la qual cosa significa que el seu centre és increïblement compacte i alberga una gran quantitat d'estrelles en un espai molt reduït.",
+    "visual_tip": "Busca aquest objecte a la constel·lació de Pegàs utilitzant uns prismàtics o un telescopi petit. Apunta cap al musell de Pegàs i mira amb atenció; veuràs una taca circular brillant que, amb més augment, comença a revelar la seva naturalesa estel·lar.",
+    "wikipedia_qid": "Q11332"
+  },
+  "d_J2131040+481747": {
+    "name": "Messier 39",
+    "common_names": [
+      "Cúmul Piràmide"
+    ],
+    "description": "Messier 39 és un cúmul obert situat a la constel·lació del Cigne, a uns 1.010 anys llum de distància. Amb una magnitud aparent de 4.6, aquest grup d'estrelles ocupa una àrea al cel similar a la mida de la Lluna plena.",
+    "fun_fact": "Tot i que sembla un grup petit a través d'un telescopi, aquest cúmul conté una complexa varietat d'estrelles, incloent-hi diverses estrelles binàries i almenys cinc estrelles químicament peculiars.",
+    "visual_tip": "Busca aquest cúmul a uns 9 graus a l'est-nord-est de Deneb. Encara que el pots veure amb un telescopi petit, utilitza millor uns prismàtics per apreciar la seva estructura oberta i dispersa.",
+    "wikipedia_qid": "Q13883"
+  },
+  "d_J2133270-004923": {
+    "name": "Messier 2",
+    "common_names": [],
+    "description": "Messier 2 és un dels cúmuls globulars més grans i brillants que coneixem, situat a uns 38.140 anys llum de distància a la constel·lació d'Aquari. Aquest antic conjunt d'estrelles, amb una edat estimada de 12.500 milions d'anys, conté centenars de milers d'estrelles densament agrupades.",
+    "fun_fact": "Malgrat la seva gran grandària i brillantor, aquest cúmul va ser descobert originalment per Jean-Dominique Maraldi el 1746, qui inicialment va pensar que es tractava d'una nebulosa sense estrelles a causa de la gran distància a la qual es troba.",
+    "visual_tip": "Per trobar-lo, busca l'estrella Beta Aquarii i desplaça't uns cinc graus cap al nord. Encara que és visible amb binocles sota cels foscos, utilitza un telescopi d'obertura mitjana per començar a resoldre les seves estrelles individuals a les vores.",
+    "wikipedia_qid": "Q11099"
+  },
+  "d_J2140221-231047": {
+    "name": "Messier 30",
+    "common_names": [
+      "Cúmul de la Medusa"
+    ],
+    "description": "El Messier 30 és un espectacular cúmul globular situat a uns 27.100 anys llum de distància, dins la constel·lació de Capricorn. Amb una edat d'uns 12.900 milions d'anys, aquest objecte és famós pel seu nucli extremadament dens, resultat d'un procés de col·lapse del nucli.",
+    "fun_fact": "El cúmul segueix una òrbita retrògrada al voltant del centre de la Via Làctia, la qual cosa indica que probablement va ser capturat d'una galàxia satèl·lit en lloc de formar-se dins la nostra galàxia.",
+    "visual_tip": "Busca aquest cúmul amb uns prismàtics 10x50 per observar una taca de llum tènue; si utilitzes un telescopi, apunta cap a la zona per intentar resoldre les estrelles individuals i veure el seu nucli dens i comprimit.",
+    "wikipedia_qid": "Q13653"
+  },
+  "d_J2324471+613531": {
+    "name": "Messier 52",
+    "common_names": [
+      "Cúmul de l'Escorpí"
+    ],
+    "description": "Messier 52 és un brillant cúmul obert situat a la constel·lació de Cassiopea, a uns 4.600 anys llum de distància. Amb una edat estimada de 158 milions d'anys, aquest grup estel·lar destaca per la seva densitat i el seu nucli ben definit.",
+    "fun_fact": "El nucli del cúmul gairebé no té matèria interestel·lar, fet que suggereix que antigues explosions de supernoves podrien haver expulsat el gas sobrant durant les primeres etapes de la seva formació.",
+    "visual_tip": "Busca aquest cúmul en una nit clara utilitzant binocles. Apunta cap a la constel·lació de Cassiopea i compara la seva brillantor amb les estrelles del voltant; notaràs que la seva visibilitat es veu lleugerament afectada per la pols interestel·lar a la part sud.",
+    "wikipedia_qid": "Q13958"
+  }
 }

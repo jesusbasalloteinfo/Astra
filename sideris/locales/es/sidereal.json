@@ -1,173 +1,1019 @@
 {
-    "s_J0645089-164258": {
-        "name": "Sirio",
-        "common_names": [
-            "Estrella Perro",
-            "Estrella del Perro"
-        ],
-        "description": "Sirio es la estrella absolutamente más brillante de todo el cielo nocturno, brillando con una asombrosa magnitud aparente de -1,46. Situada a solo 8,6 años luz (81 billones de km) de distancia en la constelación de Canis Major, es una estrella blanca caliente de la secuencia principal casi el doble de masiva que nuestro Sol y 25 veces más luminosa. A través de prismáticos o de cualquier telescopio, se presenta como un brillante faro azul diamante que a menudo centellea con vibrantes colores parecidos a los del arco iris debido a la turbulencia atmosférica cerca del horizonte.",
-        "fun_fact": "¡Sirio es en realidad un sigiloso sistema estelar doble! Orbitando a la brillante estrella principal se encuentra Sirio B, apodada «el Cachorro», la primera estrella enana blanca jamás descubierta. Aunque ha comprimido la masa de todo nuestro Sol en una esfera solo ligeramente más pequeña que la Tierra, brilla tan tenuemente a magnitud 8,5 que se perdía por completo en el resplandor cegador de su compañera masiva hasta que los telescopios avanzaron lo suficiente como para separarlas.",
-        "visual_tip": "Para localizar a Sirio, simplemente encuentra las tres estrellas del Cinturón de Orión y traza una línea imaginaria recta hacia abajo y hacia la izquierda. Como joya de la corona del cielo invernal, es fácilmente visible a simple vista incluso desde centros urbanos con gran contaminación lumínica, aunque necesitarás una estabilidad atmosférica excepcional y un telescopio de 200 mm con gran aumento para separar la cegadora estrella principal de su diminuta compañera enana blanca.",
-        "wikipedia_qid": "Q3409"
-    },
-    "s_J1950469+085205": {
-        "name": "Altair",
-        "description": "Altair es una brillante y caliente estrella blanca de tipo A que brilla como la duodécima estrella más brillante del cielo nocturno con una magnitud aparente de 0,76. Situada a solo 16,7 años luz (158 billones de km) de distancia en la constelación de Aquila, es un vecino cósmico cercano que ancla el punto sur del famoso asterismo del Triángulo de Verano. A través de prismáticos o de un pequeño telescopio, se resuelve como un punto de luz blanca penetrante y constante que ancla el cuello del Águila celestial.",
-        "fun_fact": "¡Altair es un demonio de la velocidad cósmica que se está aplastando físicamente a sí mismo! Gira sobre su eje a unos vertiginosos 860.000 km/h, completando una rotación completa en solo 9 horas, frente a los lentos 25 días de nuestro Sol. Esta fuerza centrífuga extrema estira el ecuador de la estrella hacia fuera de forma tan violenta que su diámetro ecuatorial es más de un 20 % más ancho que sus polos, convirtiendo a la estrella en una «calabaza» aplanada de forma ovalada.",
-        "visual_tip": "Para localizar Altair, mira a lo alto durante las noches de verano y otoño para encontrar el Triángulo de Verano; Altair es la estrella más brillante que marca el vértice inferior, el más meridional del trío. Está flanqueada de cerca a ambos lados por dos estrellas más tenues, Alshain y Tarazed, formando una distintiva línea de tres estrellas que hace que la constelación de Aquila sea inmediatamente reconocible a simple vista desde cualquier lugar.",
-        "wikipedia_qid": "Q12975"
-    },
-    "s_J0555103+072425": {
-        "name": "Betelgeuse",
-        "description": "Betelgeuse es una monstruosa estrella supergigante roja que marca el hombro oriental de Orión, brillando como una de las estrellas más luminosas visibles a simple vista con una magnitud aparente variable en torno a 0,5. Situada a unos 550 o 650 años luz (entre 5,2 y 6,1 cuatrillones de km) de distancia, es tan asombrosamente vasta que, si se colocara en el centro de nuestro sistema solar, su frontera física se tragaría a Mercurio, Venus, la Tierra, Marte y llegaría hasta la órbita de Júpiter. A través de prismáticos o de un telescopio, presume de un tono naranja canela cálido y profundamente rico que contrasta bellamente con las estrellas azul hielo del invierno.",
-        "fun_fact": "¡Betelgeuse es una bomba de relojería cósmica! Ha consumido el combustible de su núcleo tan rápidamente que ya se encuentra en las etapas finales y volátiles de su vida y está garantizado que explotará como una espectacular supernova. Cuando finalmente detone, la explosión será tan intensa que brillará tanto como una Luna llena en nuestro cielo nocturno, permaneciendo completamente visible a plena luz del día durante varios meses antes de desvanecerse lentamente para siempre.",
-        "visual_tip": "Para avistar Betelgeuse, basta con mirar a la famosa constelación de Orión durante las noches de invierno para encontrar la brillante y característica estrella de color naranja rojizo que marca su hombro superior izquierdo. Debido a que es una estrella variable semirregular, su brillo fluctúa constantemente en ciclos de varios cientos de días; intenta compararla con las cercanas Rígel o Aldebarán para ver si actualmente se está atenuando o abrillantando.",
-        "wikipedia_qid": "Q12124"
-    },
-    "s_J0231490+891550": {
-        "name": "Polaris",
-        "common_names": [
-            "Estrella del Norte",
-            "Estrella Polar"
-        ],
-        "description": "Polaris es la legendaria Estrella del Norte, que brilla con una magnitud aparente constante de 2,0 como la estrella más brillante de la constelación de la Osa Menor. Situada a unos 433 años luz (4,1 cuatrillones de km) de distancia, ocupa una posición única en la mecánica celeste porque se encuentra casi perfectamente alineada con el eje de rotación septentrional de la Tierra. Mientras que el resto de todo el cielo nocturno parece girar a su alrededor en vastos círculos a lo largo de las horas, Polaris permanece virtualmente inmóvil, actuando como una inquebrantable brújula cósmica para los observadores del norte.",
-        "fun_fact": "¡Polaris no es en absoluto una estrella única, sino un complejo sistema estelar triple oculto a plena vista! El punto brillante que vemos a simple vista es una enorme estrella supergigante amarilla flanqueada de cerca por una compañera cercana, Polaris Ab, que orbita tan cerca que solo fue captada directamente por el telescopio espacial Hubble. Mientras tanto, una tercera estrella, Polaris B, orbita mucho más lejos y ha seguido zumbando silenciosamente en su amplia trayectoria desde la antigüedad.",
-        "visual_tip": "Para localizar fácilmente a Polaris, busca el famoso «cuenco» de la Osa Mayor y sigue las dos estrellas «punteras» exteriores (Merak y Dubhe) hacia arriba en línea recta durante unas cinco veces la distancia entre ellas. Marca el extremo mismo del mango de la Osa Menor, y su altitud sobre tu horizonte septentrional local coincidirá siempre con tu latitud geográfica exacta en la Tierra.",
-        "wikipedia_qid": "Q12980"
-    },
-    "d_J0534317+220102":{
-        "name": "Nebulosa del Cangrejo",
-        "common_names": [
-            "Cangrejo",
-            "Tau A",
-            "Taurus A"
-        ],
-        "description": "La Nebulosa del Cangrejo (M1) es un espectacular remanente de supernova que se extiende a lo largo de 11 años luz (104 billones de km), y representa los restos destrozados de una estrella masiva. Situada a unos 6.500 años luz de distancia, en la constelación de Tauro, brilla con una magnitud aparente de 8,4 y aparece a través de un pequeño telescopio como una tenue nube de forma ovalada. En su corazón se encuentra el Púlsar del Cangrejo —una estrella de neutrones superdensa comprimida hasta un diámetro de solo 20 km pero con la masa de dos soles— que gira 30 veces por segundo para alimentar el inquietante resplandor de la nebulosa impulsado por la radiación.",
-        "fun_fact": "¡Podemos seguir el crecimiento de esta nebulosa en tiempo real! Datos recientes de telescopios espaciales confirman que sus filamentos gaseosos exteriores siguen lanzándose hacia el espacio profundo a unos vertiginosos 5,5 millones de km/h. Esta enorme nube se expande tan rápidamente que los cambios en su estructura pueden notarse en fotografías tomadas con solo unas pocas décadas de diferencia.",
-        "visual_tip": "Para avistar esta histórica nube cósmica, mire aproximadamente 1 grado al noroeste de la estrella Zeta Tauri, que marca el cuerno sur del toro. Aunque unos prismáticos de 10x50 pueden revelarla como una mancha tenue y fantasmal bajo cielos oscuros prístinos, el uso de un telescopio de 150 mm o mayor con un filtro de nebulosa UHC o OIII perfilará significativamente sus límites irregulares y bordes dentados.",
-        "wikipedia_qid": "Q10934"
-    },
-    "d_J1818451-134731":{
-        "name": "Nebulosa del Águila",
-        "common_names": [
-            "Reina de las Estrellas",
-            "Pilares de la Creación"
-        ],
-        "description": "La Nebulosa del Águila (M16) es una colosal nebulosa de emisión y vivero estelar activo que abarca aproximadamente 70 por 55 años luz (660 billones de km). Situada a 7.000 años luz de distancia, en la constelación de Serpens, brilla con una magnitud aparente de 6,0 y aparece a través de prismáticos como una mancha tenue y brillante que rodea un cúmulo compacto de estrellas recién nacidas. En su núcleo se encuentra un intenso entorno de formación estelar iluminado por la radiación ultravioleta del joven cúmulo abierto NGC 6611, que esculpe y ioniza las nubes circundantes de gas hidrógeno cósmico.",
-        "fun_fact": "Esta nebulosa alberga los famosos «Pilares de la Creación», imponentes columnas de gas frío y polvo que alcanzan de 4 a 5 años luz (entre 38 y 47 billones de km) de altura. Análisis recientes de infrarrojos de alta resolución procedentes de telescopios espaciales revelan que estas monumentales estructuras están siendo excavadas y evaporadas activamente desde su interior por las propias protoestrellas que se forman en su interior, lo que significa que los pilares se encuentran en un implacable tira y afloja cósmico entre la creación y la destrucción.",
-        "visual_tip": "Para avistar la M16, busque en el cielo meridional, cerca de los límites de las constelaciones de Serpens, Sagitario y Scutum. Aunque los prismáticos y los pequeños telescopios de 100 mm revelan fácilmente el brillante cúmulo estelar incrustado, la resolución de las siluetas oscuras de los pilares centrales requiere un telescopio de mayor apertura, de 200 mm o más, junto con cielos oscuros prístinos y un filtro de nebulosa UHC o OIII para maximizar el contraste de las nubes de gas.",
-        "wikipedia_qid": "Q11349"
-    },
-    "d_J1959363+224316":{
-        "name": "Nebulosa Dumbbell",
-        "common_names": [
-            "Nebulosa de la Haltera",
-            "Nebulosa de las Pesas"
-        ],
-        "description": "La Nebulosa Dumbbell (M27) es una enorme nebulosa planetaria que abarca unos 2,9 años luz (27,4 billones de km), formada cuando una estrella que envejecía desprendió sus capas exteriores hacia el espacio profundo. Situada a 1.360 años luz de distancia, en la tenue constelación septentrional de Vulpecula, brilla con una magnitud aparente combinada relativamente brillante de 7,5. A través de prismáticos estándar bajo cielos oscuros, aparece como una mancha brumosa conspicua y brillante, mientras que un pequeño telescopio de 100 mm transforma esta nube en una inconfundible forma bilobulada que recuerda a una pesa de gimnasio o al corazón de una manzana, iluminada por uno de los mayores remanentes estelares de enana blanca conocidos.",
-        "fun_fact": "¡Este objeto es un hito monumental en la historia de la ciencia! Descubierta por Charles Messier en 1764, la M27 fue la primera nebulosa planetaria observada en la historia de la humanidad. Su engañoso nombre histórico de categoría, «planetaria», fue acuñado más tarde por astrónomos que pensaban que su disco brillante verde-azulado en los primitivos telescopios se parecía a planetas gigantes gaseosos como Urano, a pesar de que en realidad es la explosiva tumba de una estrella masiva.",
-        "visual_tip": "Para localizar la M27, busque la característica forma de flecha de la constelación de Sagitta; la nebulosa se encuentra aproximadamente 3 grados al norte de la estrella de la punta, Gamma Sagittae. Debido a que posee un brillo superficial inusualmente alto para ser una nube de gas de cielo profundo, sigue siendo muy visible incluso bajo una ligera contaminación lumínica urbana, aunque enroscar un filtro de nebulosa OIII en su ocular aislará drásticamente su estructura de gas oxígeno brillante y afilará su icónica silueta de reloj de arena.",
-        "wikipedia_qid": "Q13628"
-    },
-    "d_J0042443+411607":{
-        "name": "Galaxia de Andrómeda",
-        "common_names": [
-            "Nebulosa de Andrómeda",
-            "Andrómeda"
-        ],
-        "description": "La Galaxia de Andrómeda (M31) es una colosal galaxia espiral que abarca aproximadamente 220.000 años luz (2,1 sextillones de km), lo que la convierte en el miembro más grande de nuestro Grupo Local. Situada a 2,5 millones de años luz, en la constelación de Andrómeda, brilla con una magnitud aparente de 3,4, lo que la hace fácilmente visible a simple vista bajo cielos oscuros como una mancha lechosa y alargada. A través de pequeños telescopios o prismáticos, los observadores pueden resolver fácilmente su brillante y condensado núcleo galáctico y trazar el suave y amplio resplandor de su estructura de disco interior, flanqueado por dos prominentes galaxias enanas satélites, M32 y M110.",
-        "fun_fact": "¡Andrómeda y la Vía Láctea están enzarzadas en una danza gravitatoria a alta velocidad! Datos astrofísicos recientes confirman que Andrómeda se precipita hacia nosotros a unos 400.000 km/h. En unos 4.500 millones de años, nuestras dos galaxias colisionarán violentamente y se fusionarán en una única y masiva galaxia elíptica, remodelando por completo el cielo nocturno y reordenando la vecindad galáctica de nuestro sistema solar.",
-        "visual_tip": "Para avistar la M31, busque el «Gran Cuadrante de Pegaso» y siga las estrellas de Andrómeda hacia arriba hasta Mirach, luego salte ligeramente hacia el noroeste para encontrar la galaxia. Debido a que la M31 abarca un área inmensa en el cielo —casi seis veces la anchura de una Luna llena— se ve mejor a través de prismáticos de campo amplio de 10x50 o de pequeños telescopios de pocos aumentos, ya que los aumentos altos estrecharán tanto su campo de visión que solo verá su núcleo brillante y se perderá por completo el disco espiral exterior.",
-        "wikipedia_qid": "Q2469"
-    },
-    "d_J0133508+303936":{
-        "name": "Galaxia del Triángulo",
-        "common_names": [
-            "Triangulo"
-        ],
-         "description": "La Galaxia del Triángulo (M33) es una majestuosa galaxia espiral que abarca aproximadamente 60.000 años luz (570 billones de km), lo que la convierte en el tercer miembro más grande de nuestro Grupo Local, por detrás de Andrómeda y la Vía Láctea. Situada a 2,7 millones de años luz, en la pequeña constelación del Triángulo, brilla con una magnitud aparente integrada total de 5,7, lo que la sitúa justo en el límite de la visibilidad a simple vista bajo cielos excepcionalmente oscuros. A través de prismáticos estándar, surge como una mancha ovalada, amplia y fantasmal, mientras que un pequeño telescopio revela un núcleo brillante y nítido flanqueado por brazos espirales sueltos y expansivos que albergan algunas de las mayores regiones de formación estelar del universo conocido.",
-        "fun_fact": "Esta galaxia contiene un monstruo cósmico llamado NGC 604, un vivero estelar tan increíblemente enorme que empequeñece por completo a nuestra propia Nebulosa de Orión. Con una extensión asombrosa de 1.500 años luz, esta única nebulosa de emisión dentro de la M33 es más de 60 veces mayor que la M42 y está alimentada por un cúmulo central de más de 200 estrellas masivas recién nacidas, lo que la convierte en uno de los centros de estallido estelar más violentos y activos de toda nuestra vecindad galáctica.",
-        "visual_tip": "Para encontrar fácilmente la M33, mire aproximadamente a mitad de camino entre la brillante estrella Mirach en Andrómeda y Hamal en Aries. Debido a que su enorme tamaño físico se extiende por un área de cielo casi cuatro veces mayor que una Luna llena, su brillo superficial es extremadamente bajo y se desvanece fácilmente con las luces de la ciudad; debe observar desde un lugar prístino de cielo oscuro y sin luna utilizando prismáticos de campo amplio de pocos aumentos o un telescopio pequeño para evitar que sus tenues y delicados discos espirales desaparezcan en el fondo.",
-        "wikipedia_qid": "Q13724"
-    },
-    "d_J0535168-052315":{
-        "name": "Gran Nebulosa de Orión",
-        "common_names": [
-            "Nebulosa de Orión"
-        ],
-        "description": "La Nebulosa de Orión (M42) es un vivero estelar masivo y de un brillo cegador que se extiende a lo largo de 24 años luz (227 billones de km), donde cientos de nuevas estrellas están naciendo en la actualidad. Situada a 1.350 años luz de distancia, en la constelación de Orión, brilla con una magnífica magnitud aparente de 4,0, lo que la hace claramente visible a simple vista como una estrella borrosa en la Espada de Orión. A través de prismáticos o de un pequeño telescopio, se transforma en un impresionante y amplio dosel de gas y polvo brillantes con forma de ala de murciélago, centrado en el Trapecio, un cúmulo apretado y brillante de cuatro estrellas supermasivas recién nacidas cuya intensa luz ultravioleta ilumina todo el complejo.",
-        "fun_fact": "¡Esta cuna cósmica es en realidad un importante laboratorio químico! Los barridos infrarrojos de alta resolución de los telescopios espaciales modernos han detectado cantidades masivas de moléculas orgánicas complejas —incluidos compuestos de carbono, vapor de agua e ingredientes precursores de la vida— arremolinándose en el interior de los discos planetarios que rodean a estas estrellas infantiles. Esto significa que al observar la M42, estamos viendo cómo se cocinan activamente y en tiempo real las semillas químicas de futuros sistemas planetarios.",
-        "visual_tip": "Para localizar fácilmente la M42, mire directamente debajo del famoso cinturón de tres estrellas de Orión para encontrar la línea vertical de estrellas que forman su espada; la nebulosa es la «estrella» central de la hoja. Al ser tan brillante, podrá disfrutar fácilmente de su fantasmal resplandor en forma de abanico incluso desde el jardín de una urbanización, pero el uso de un telescopio de 100 mm o mayor bajo cielos oscuros con un filtro OIII o UHC revelará de forma espectacular las intrincadas bandas de polvo oscuro que cortan su núcleo brillante.",
-        "wikipedia_qid": "Q13903"
-    },
-    "d_J0346379+241041":{
-        "name": "Pléyades",
-        "common_names": [
-            "Siete Hermanas"
-        ],
-        "description": "Las Pléyades (M45), también conocidas como las Siete Hermanas, es un espectacular cúmulo estelar abierto que domina un radio físico central de 8 años luz (75 billones de km), con su huella gravitatoria de marea extendiéndose hasta los 43 años luz. Situado a unos 444 años luz de distancia, en la constelación de Tauro, es el objeto Messier más cercano a la Tierra y arde con una brillante magnitud aparente combinada de 1,6. Para el ojo desnudo bajo cielos oscuros, se asemeja a un pequeño y centelleante «carro» de seis a siete estrellas calientes de tipo B, de color blanco azulado, que estallan en un denso campo de más de 1.000 miembros estelares cuando se ven a través de prismáticos estándar o telescopios de pocos aumentos.",
-        "fun_fact": "Durante décadas, los astrónomos se vieron inmersos en un feroz misterio cósmico conocido como la «Controversia de la distancia a las Pléyades», ya que el satélite Hipparcos midió incorrectamente el cúmulo como mucho más cercano de lo que realmente estaba. El cartografiado de alta precisión de la reciente misión Gaia de la ESA zanjó finalmente el histórico debate, utilizando un paralaje geométrica milimétrica para fijar sólidamente la distancia en 444 años luz, lo que demostró que las calibraciones del satélite eran defectuosas y salvó fundamentalmente nuestros modelos estándar de cómo evolucionan las estrellas jóvenes.",
-        "visual_tip": "Para encontrar fácilmente la M45, mire por encima de la constelación de Orión o siga una línea recta a través de las tres estrellas del Cinturón de Orión hacia arriba, pasando por la brillante estrella naranja Aldebarán. Debido a que este inmenso cúmulo estelar cubre más de 2 grados del cielo nocturno —lo que equivale aproximadamente a cuatro veces el diámetro de una Luna llena— se saldrá rápidamente de su vista a gran potencia; es mejor observarlo a través de prismáticos de campo amplio de 10x50 o de pequeños telescopios de pocos aumentos, donde también podrá buscar el tenue y fantasmal resplandor azul de la nebulosa de reflexión de Mérope que envuelve a las estrellas.",
-        "wikipedia_qid": "Q13423"
-    },
-    "d_J1329526+471142":{
-        "name": "Galaxia del Remolino",
-        "common_names": [
-            "Remolino"
-        ],
-        "description": "La Galaxia del Remolino (M51) es una clásica galaxia espiral de gran diseño que abarca unos 76.000 años luz (720 billones de km), famosamente encerrada en un tira y afloja cósmico con una galaxia compañera más pequeña, la NGC 5195. Situada a 23 millones de años luz de distancia, en la constelación de Canes Venatici, brilla con una magnitud aparente de 8,4 y parece una mancha suave de dos cabezas a través de prismáticos pequeños en condiciones prístinas. Un pequeño telescopio de 100 mm separa claramente los dos núcleos galácticos, mientras que los instrumentos de tamaño medio revelan el tenue y etéreo puente de estrellas de marea y gas que los conecta.",
-        "fun_fact": "¡Este objeto es un hito histórico en la astronomía! En 1845, William Parsons (el tercer conde de Rosse) utilizó su monstruoso telescopio de 1,83 m para dibujar la M51, convirtiéndola en el primer objeto celeste reconocido con una estructura en espiral. Mucho antes de que nadie supiera que existían «galaxias» fuera de la nuestra, sus famosos dibujos de los brazos en forma de remolino de la M51 proporcionaron la prueba visual fundamental que inspiró directamente nuestra comprensión moderna del universo en expansión y rotación.",
-        "visual_tip": "Para localizar la M51, sitúa Alkaid —la estrella situada en el extremo mismo del mango de la Osa Mayor— y mira aproximadamente 3,5 grados hacia el suroeste. Aunque puede vislumbrarse como una nube fantasmal con prismáticos de 10x50 en una noche negra como la tinta y sin luna, necesitará un telescopio de 200 mm o mayor, junto con grandes aumentos, para resolver claramente los brazos espirales de gran diseño que se curvan desde su brillante núcleo.",
-        "wikipedia_qid": "Q13957"
-    },
-    "d_J1853350+330144":{
-        "name": "Nebulosa del Anillo",
-        "description": "La Nebulosa del Anillo (M57) es una nebulosa planetaria por excelencia que representa la cáscara de gas ionizado expulsada por una estrella moribunda similar al sol, que se extiende aproximadamente 1,3 años luz (12,3 billones de km) de diámetro. Situada a 2.300 años luz de distancia, en la constelación septentrional de Lyra, brilla con una magnitud aparente de 8,8 y aparece a través de prismáticos o de un telescopio muy pequeño como un disco pequeño, de color verde grisáceo fantasmal, que se confunde fácilmente con un planeta lejano. Un telescopio moderado de 150 mm bajo cielos oscuros transforma bellamente esta mancha en un distintivo y hueco anillo de humo cósmico que flota contra el telón de fondo del espacio profundo, iluminado desde el interior por una estrella enana blanca ferozmente caliente.",
-        "fun_fact": "¡La Nebulosa del Anillo es en realidad una enorme ilusión cósmica! El cartografiado tridimensional de alta resolución que combina luz visible y datos infrarrojos muestra que la M57 no es en absoluto una simple burbuja hueca o un círculo, sino más bien un cilindro de gas alargado con forma de barril visto casi directamente por su extremo abierto. Al mirar la nebulosa desde la Tierra, estamos mirando directamente por el tubo de un barril estelar, captando la violenta expansión geométrica de los últimos estertores de la muerte de una estrella desde una perspectiva de primera fila.",
-        "visual_tip": "Para encontrar fácilmente la M57, localice la brillante estrella Vega y trace el pequeño y característico paralelogramo de estrellas que forma el cuerpo de Lyra; la nebulosa se encuentra casi perfectamente a mitad de camino entre las dos estrellas inferiores, Sheliak y Sulafat. Aunque un telescopio de 100 mm revelará fácilmente la forma de anillo con centro oscuro, necesitará un instrumento grande de 250 mm o mayor forzado a aumentos excepcionalmente altos en una noche estable y sin luna para vislumbrar la increíblemente tenue estrella enana blanca de magnitud 15,7 que descansa en su centro absoluto.",
-        "wikipedia_qid": "Q13628"
-    },
-    "d_J1315492+420145": {
-        "name": "Galaxia del Girasol",
-        "description": "La Galaxia del Girasol (M63) es una llamativa galaxia espiral floculenta que abarca aproximadamente 98.000 años luz (930 billones de km), caracterizada por una disposición de brazos de formación estelar apretados y en forma de parches. Situada a 27 millones de años luz de distancia, en la constelación de Canes Venatici, brilla con una magnitud aparente de 8,6 y aparece a través de pequeños telescopios como una bruma ovalada brillante y compacta con un núcleo muy condensado. Los instrumentos de tamaño medio, de 150 mm o más, revelan bellamente la textura granulada y multibrazo que rodea su núcleo, que imita visualmente la densa disposición de las semillas en un girasol.",
-        "fun_fact": "Esta galaxia es un ejemplo sobresaliente de espiral «floculenta», lo que significa que sus brazos espirales son irregulares y discontinuos en lugar de largos y amplios. Estudios recientes de telescopios espaciales y de imágenes de campo profundo han cartografiado un inmenso sistema de bucles de tenues corrientes de marea estelares que envuelven a la M63, que son los restos estructurales fantasmales de una galaxia satélite más pequeña que la Galaxia del Girasol despedazó por completo y canibalizó hace unos 5.000 millones de años.",
-        "visual_tip": "Para localizar fácilmente la M63, trace una trayectoria aproximadamente a un tercio del camino desde Cor Caroli (Alpha Canum Venaticorum) hasta Alkaid, en el extremo del mango de la Osa Mayor. Debido a su elevado brillo superficial, resiste mejor la contaminación lumínica que la cercana Galaxia del Remolino, pero necesitará un telescopio de 200 mm o mayor, combinado con oculares de campo amplio y pocos aumentos, para discernir dónde termina su núcleo brillante y dónde comienzan sus delicados y moteados flecos exteriores.",
-        "wikipedia_qid": "Q13981"
-    },
-    "d_J1256436+214057": {
-        "name": "Galaxia del Ojo Negro",
-        "common_names": [
-            "Bella Durmiente",
-            "Ojo Negro",
-            "Ojo del Diablo"
-        ],
-        "description": "La Galaxia del Ojo Negro (M64) es una extraordinaria galaxia espiral que abarca aproximadamente 54.000 años luz (510 billones de km), reconocible al instante por la enorme y amplia silueta de polvo interestelar oscuro que oscurece su brillante núcleo. Situada a 17 millones de años luz de distancia, en la constelación de Coma Berenices, brilla con una magnitud aparente de 8,5 y puede vislumbrarse fácilmente a través de prismáticos grandes como un óvalo suave y brillante bajo cielos oscuros. Un pequeño telescopio de 100 mm aísla bellamente su núcleo de alto contraste, revelando la prominente banda de polvo cósmico que da a la galaxia su icónica apariencia de moretón.",
-        "fun_fact": "Esta galaxia posee una de las dinámicas internas más extrañas del universo: ¡gira en dos direcciones opuestas a la vez! Mientras que las estrellas y el disco de gas molecular interior giran en el sentido de las agujas del reloj hasta un radio de 3.000 años luz, la enorme nube de gas hidrógeno de su disco exterior gira completamente en sentido contrario. Las revolucionarias imágenes de campo profundo confirmaron que este violento choque atmosférico fue causado por la M64 al engullir por completo una galaxia enana satélite rica en hidrógeno hace más de mil millones de años, convirtiendo su zona fronterera en una fábrica de brotes estelares altamente comprimida y turbulenta.",
-        "visual_tip": "Para localizar la M64, desplace su telescopio aproximadamente 5 grados al noroeste de la estrella Diadem (Alpha Comae Berenices). Debido a que su estructura central tiene un brillo superficial inusualmente alto, es un objetivo notablemente resistente que soporta bien la contaminación lumínica urbana moderada. Sin embargo, para resolver claramente el delicado espacio entre el brillante núcleo central y la profunda banda de polvo negro como la tinta que lo envuelve, necesitará un telescopio de 150 mm o mayor junto con una visión estable de grandes aumentos en una noche sin luna.",
-        "wikipedia_qid": "Q13983"
-    },
-    "d_J0955331+690355": {
-        "name": "Galaxia de Bode",
-        "description": "La Galaxia de Bode (M81) es una magnífica galaxia espiral de gran diseño que abarca aproximadamente 90.000 años luz (850 billones de km), con brazos de formación estelar casi perfectamente simétricos. Situada a 12 millones de años luz de distancia, en la constelación septentrional de la Osa Mayor, brilla con una magnífica magnitud aparente combinada de 6,9, lo que la convierte en una de las galaxias más brillantes del cielo nocturno. A través de prismáticos estándar, es fácilmente visible como una bruma ovalada brillante y nítida con un núcleo muy condensado, mientras que los pequeños telescopios bajo cielos oscuros comienzan a cartografiar la envoltura brillante de su majestuoso disco exterior.",
-        "fun_fact": "La Galaxia de Bode se encuentra actualmente encerrada en una violenta danza gravitatoria con su vecina cercana, la Galaxia del Cigarro (M82). Hace unos 300 millones de años, las dos galaxias ejecutaron un sobrevuelo cercano que desencadenó masivas ondas de choque de marea a través de ambos sistemas. Este encuentro cósmico arrancó gas para formar un inmenso puente de hidrógeno que las conecta, al tiempo que canalizaba vastas cantidades de materia prima hacia el núcleo de la M81, alimentando su agujero negro supermasivo central, que pesa la asombrosa cifra de 70 millones de veces la masa de nuestro Sol.",
-        "visual_tip": "Para encontrar fácilmente la M81, localice las dos estrellas indicadoras del «cuenco» de la Osa Mayor (Merak y Dubhe) y trace una línea imaginaria a través de ellas, continuándola en el espacio profundo una distancia aproximadamente igual hacia el noroeste. Al poseer un brillo superficial excepcionalmente alto, es un objetivo fantástico para los habitantes de las ciudades y puede verse junto a la Galaxia del Cigarro en un único campo de ocular de pocos aumentos, aunque se necesita un telescopio de 200 mm bajo cielos negros como la tinta para trazar los intrincados patrones espirales que se curvan desde su núcleo.",
-        "wikipedia_qid": "Q81102410"
-    },
-    "d_J1239594-113722": {
-        "name": "Galaxia del Sombrero",
-        "common_names": [
-            "Sombrero"
-        ],
-        "description": "La Galaxia del Sombrero (M104) es una impresionante galaxia espiral no barrada que abarca unos 50.000 años luz (470 billones de km), reconocible al instante por su enorme protuberancia central y un grueso y oscuro borde de polvo que la oscurece. Situada a 28 millones de años luz de distancia, en la constelación de Virgo, brilla con una magnífica magnitud aparente de 8,0, lo que la convierte en un objetivo fácil para instrumentos pequeños. A través de prismáticos estándar bajo cielos oscuros, aparece como una aguja de luz afilada y alargada, mientras que un pequeño telescopio de 100 mm separa claramente su núcleo brillante del amplio «ala de sombrero» de su borde exterior.",
-        "fun_fact": "¡Esta galaxia es un peso pesado cósmico absoluto envuelto en un misterio! Los estudios de los telescopios espaciales modernos han revelado que la Galaxia del Sombrero no solo tiene un sistema de cúmulos normal, sino que alberga un asombroso enjambre de casi 2.000 cúmulos globulares orbitando su núcleo, casi diez veces más que toda nuestra Vía Láctea. Además, el seguimiento preciso de la velocidad orbital muestra que su agujero negro supermasivo central es un auténtico monstruo, con una masa de mil millones de soles, lo que lo convierte en uno de los agujeros negros más masivos jamás hallados en una galaxia cercana.",
-        "visual_tip": "Para avistar la M104, mire aproximadamente 11 grados al oeste de Spica, la estrella más brillante de Virgo, o utilice el característico cuadrilátero de cuatro estrellas de Corvus el Cuervo para saltar justo al otro lado de la frontera hacia el noreste. Debido a que la galaxia está inclinada casi de canto con respecto a nuestra línea de visión (a solo 6 grados), su brillo superficial está extremadamente concentrado y soporta bien la contaminación lumínica suburbana, aunque se requiere un telescopio de 200 mm o mayor combinado con grandes aumentos para rebanar visualmente su núcleo brillante con la banda de polvo cósmico negra como la tinta.",
-        "wikipedia_qid": "Q91461627"
-    },
-    "d_J0040220+414107": {
-        "name": "Messier 110",
-        "description": "Messier 110 (M110) es una galaxia elíptica enana, estructurada y suave, que abarca aproximadamente 17.000 años luz (160 billones de km), y actúa como la mayor compañera satélite de la masiva Galaxia de Andrómeda. Situada a 2,7 millones de años luz, en la constelación de Andrómeda, brilla con una magnitud aparente de 8,1. A través de prismáticos pequeños o telescopios de pocos aumentos, surge como un óvalo fantasmal nítido y alargado que deriva silenciosamente justo al noroeste del brillante núcleo central de Andrómeda, mostrando un núcleo que se ilumina gradualmente sin brazos espirales visibles.",
-        "fun_fact": "A pesar de ser una galaxia elíptica antigua —una clase que normalmente se considera «muerta» y carente de formación estelar— la M110 guarda un secreto oculto. El reciente cartografiado de gas interestelar d'alta resolución realizado por telescopios espaciales ha detectado una colección de estrellas azules jóvenes y calientes anidadas justo en su centro, junto con un sorprendente par de nubes de polvo cósmico oscuro. Esto demuestra que esta diminuta galaxia compañera ha conservado de algún modo materias primas suficientes para dar a luz continuamente a estrellas nuevas en su núcleo a lo largo de los últimos cientos de millones de años.",
-        "visual_tip": "Para avistar la M110, primero debe centrar su telescopio en el brillante núcleo de la Galaxia de Andrómeda (M31). Desplace su ocular aproximadamente 35 minutos de arco al noroeste del núcleo de la M31 para encontrar esta suave nube ovalada. Debido a que tiene un brillo superficial inferior al de la otra compañera destacada de Andrómeda, la M32, necesitará una noche sin luna y un pequeño telescopio de 100 mm o mayor para separar claramente sus suaves límites exteriores de la luz de fondo brillante del sistema de Andrómeda.",
-        "wikipedia_qid": "Q4662"
-    }
+  "s_J0231490+891550": {
+    "name": "Polaris",
+    "common_names": [
+      "Estrella del Norte",
+      "Estrella Polar"
+    ],
+    "description": "Polaris es la legendaria Estrella del Norte, que brilla con una magnitud aparente constante de 2,0 como la estrella más brillante de la constelación de la Osa Menor. Situada a unos 433 años luz (4,1 cuatrillones de km) de distancia, ocupa una posición única en la mecánica celeste porque se encuentra casi perfectamente alineada con el eje de rotación septentrional de la Tierra. Mientras que el resto de todo el cielo nocturno parece girar a su alrededor en vastos círculos a lo largo de las horas, Polaris permanece virtualmente inmóvil, actuando como una inquebrantable brújula cósmica para los observadores del norte.",
+    "fun_fact": "¡Polaris no es en absoluto una estrella única, sino un complejo sistema estelar triple oculto a plena vista! El punto brillante que vemos a simple vista es una enorme estrella supergigante amarilla flanqueada de cerca por una compañera cercana, Polaris Ab, que orbita tan cerca que solo fue captada directamente por el telescopio espacial Hubble. Mientras tanto, una tercera estrella, Polaris B, orbita mucho más lejos y ha seguido zumbando silenciosamente en su amplia trayectoria desde la antigüedad.",
+    "visual_tip": "Para localizar fácilmente a Polaris, busca el famoso «cuenco» de la Osa Mayor y sigue las dos estrellas «punteras» exteriores (Merak y Dubhe) hacia arriba en línea recta durante unas cinco veces la distancia entre ellas. Marca el extremo mismo del mango de la Osa Menor, y su altitud sobre tu horizonte septentrional local coincidirá siempre con tu latitud geográfica exacta en la Tierra.",
+    "wikipedia_qid": "Q12980"
+  },
+  "s_J0555103+072425": {
+    "name": "Betelgeuse",
+    "description": "Betelgeuse es una monstruosa estrella supergigante roja que marca el hombro oriental de Orión, brillando como una de las estrellas más luminosas visibles a simple vista con una magnitud aparente variable en torno a 0,5. Situada a unos 550 o 650 años luz (entre 5,2 y 6,1 cuatrillones de km) de distancia, es tan asombrosamente vasta que, si se colocara en el centro de nuestro sistema solar, su frontera física se tragaría a Mercurio, Venus, la Tierra, Marte y llegaría hasta la órbita de Júpiter. A través de prismáticos o de un telescopio, presume de un tono naranja canela cálido y profundamente rico que contrasta bellamente con las estrellas azul hielo del invierno.",
+    "fun_fact": "¡Betelgeuse es una bomba de relojería cósmica! Ha consumido el combustible de su núcleo tan rápidamente que ya se encuentra en las etapas finales y volátiles de su vida y está garantizado que explotará como una espectacular supernova. Cuando finalmente detone, la explosión será tan intensa que brillará tanto como una Luna llena en nuestro cielo nocturno, permaneciendo completamente visible a plena luz del día durante varios meses antes de desvanecerse lentamente para siempre.",
+    "visual_tip": "Para avistar Betelgeuse, basta con mirar a la famosa constelación de Orión durante las noches de invierno para encontrar la brillante y característica estrella de color naranja rojizo que marca su hombro superior izquierdo. Debido a que es una estrella variable semirregular, su brillo fluctúa constantemente en ciclos de varios cientos de días; intenta compararla con las cercanas Rígel o Aldebarán para ver si actualmente se está atenuando o abrillantando.",
+    "wikipedia_qid": "Q12124"
+  },
+  "s_J0645089-164258": {
+    "name": "Sirio",
+    "common_names": [
+      "Estrella Perro",
+      "Estrella del Perro"
+    ],
+    "description": "Sirio es la estrella absolutamente más brillante de todo el cielo nocturno, brillando con una asombrosa magnitud aparente de -1,46. Situada a solo 8,6 años luz (81 billones de km) de distancia en la constelación de Canis Major, es una estrella blanca caliente de la secuencia principal casi el doble de masiva que nuestro Sol y 25 veces más luminosa. A través de prismáticos o de cualquier telescopio, se presenta como un brillante faro azul diamante que a menudo centellea con vibrantes colores parecidos a los del arco iris debido a la turbulencia atmosférica cerca del horizonte.",
+    "fun_fact": "¡Sirio es en realidad un sigiloso sistema estelar doble! Orbitando a la brillante estrella principal se encuentra Sirio B, apodada «el Cachorro», la primera estrella enana blanca jamás descubierta. Aunque ha comprimido la masa de todo nuestro Sol en una esfera solo ligeramente más pequeña que la Tierra, brilla tan tenuemente a magnitud 8,5 que se perdía por completo en el resplandor cegador de su compañera masiva hasta que los telescopios avanzaron lo suficiente como para separarlas.",
+    "visual_tip": "Para localizar a Sirio, simplemente encuentra las tres estrellas del Cinturón de Orión y traza una línea imaginaria recta hacia abajo y hacia la izquierda. Como joya de la corona del cielo invernal, es fácilmente visible a simple vista incluso desde centros urbanos con gran contaminación lumínica, aunque necesitarás una estabilidad atmosférica excepcional y un telescopio de 200 mm con gran aumento para separar la cegadora estrella principal de su diminuta compañera enana blanca.",
+    "wikipedia_qid": "Q3409"
+  },
+  "s_J1950469+085205": {
+    "name": "Altair",
+    "description": "Altair es una brillante y caliente estrella blanca de tipo A que brilla como la duodécima estrella más brillante del cielo nocturno con una magnitud aparente de 0,76. Situada a solo 16,7 años luz (158 billones de km) de distancia en la constelación de Aquila, es un vecino cósmico cercano que ancla el punto sur del famoso asterismo del Triángulo de Verano. A través de prismáticos o de un pequeño telescopio, se resuelve como un punto de luz blanca penetrante y constante que ancla el cuello del Águila celestial.",
+    "fun_fact": "¡Altair es un demonio de la velocidad cósmica que se está aplastando físicamente a sí mismo! Gira sobre su eje a unos vertiginosos 860.000 km/h, completando una rotación completa en solo 9 horas, frente a los lentos 25 días de nuestro Sol. Esta fuerza centrífuga extrema estira el ecuador de la estrella hacia fuera de forma tan violenta que su diámetro ecuatorial es más de un 20 % más ancho que sus polos, convirtiendo a la estrella en una «calabaza» aplanada de forma ovalada.",
+    "visual_tip": "Para localizar Altair, mira a lo alto durante las noches de verano y otoño para encontrar el Triángulo de Verano; Altair es la estrella más brillante que marca el vértice inferior, el más meridional del trío. Está flanqueada de cerca a ambos lados por dos estrellas más tenues, Alshain y Tarazed, formando una distintiva línea de tres estrellas que hace que la constelación de Aquila sea inmediatamente reconocible a simple vista desde cualquier lugar.",
+    "wikipedia_qid": "Q12975"
+  },
+  "d_J0040220+414107": {
+    "name": "Messier 110",
+    "description": "Messier 110 (M110) es una galaxia elíptica enana, estructurada y suave, que abarca aproximadamente 17.000 años luz (160 billones de km), y actúa como la mayor compañera satélite de la masiva Galaxia de Andrómeda. Situada a 2,7 millones de años luz, en la constelación de Andrómeda, brilla con una magnitud aparente de 8,1. A través de prismáticos pequeños o telescopios de pocos aumentos, surge como un óvalo fantasmal nítido y alargado que deriva silenciosamente justo al noroeste del brillante núcleo central de Andrómeda, mostrando un núcleo que se ilumina gradualmente sin brazos espirales visibles.",
+    "fun_fact": "A pesar de ser una galaxia elíptica antigua —una clase que normalmente se considera «muerta» y carente de formación estelar— la M110 guarda un secreto oculto. El reciente cartografiado de gas interestelar d'alta resolución realizado por telescopios espaciales ha detectado una colección de estrellas azules jóvenes y calientes anidadas justo en su centro, junto con un sorprendente par de nubes de polvo cósmico oscuro. Esto demuestra que esta diminuta galaxia compañera ha conservado de algún modo materias primas suficientes para dar a luz continuamente a estrellas nuevas en su núcleo a lo largo de los últimos cientos de millones de años.",
+    "visual_tip": "Para avistar la M110, primero debe centrar su telescopio en el brillante núcleo de la Galaxia de Andrómeda (M31). Desplace su ocular aproximadamente 35 minutos de arco al noroeste del núcleo de la M31 para encontrar esta suave nube ovalada. Debido a que tiene un brillo superficial inferior al de la otra compañera destacada de Andrómeda, la M32, necesitará una noche sin luna y un pequeño telescopio de 100 mm o mayor para separar claramente sus suaves límites exteriores de la luz de fondo brillante del sistema de Andrómeda.",
+    "wikipedia_qid": "Q4662"
+  },
+  "d_J0042418+405154": {
+    "name": "Messier 32",
+    "common_names": [
+      "Galaxia Enana de Andrómeda"
+    ],
+    "description": "M 32 es una galaxia elíptica enana compacta que actúa como una de las galaxias satélite más prominentes de la gran Galaxia de Andrómeda (M31). Situada a unos 2,5 millones de años luz de distancia, esta pequeña galaxia destaca por su alta densidad estelar y su núcleo extremadamente brillante. Se cree que su estructura actual es el resultado de una antigua interacción gravitatoria con Andrómeda, que despojó a M 32 de gran parte de sus estrellas periféricas.",
+    "fun_fact": "Se sospecha que M 32 fue originalmente una galaxia mucho más grande, pero las fuerzas de marea de la Galaxia de Andrómeda la 'canibalizaron' hace miles de millones de años, dejando atrás solo su denso núcleo central.",
+    "visual_tip": "Localizar M 32 es sencillo si ya has encontrado la Galaxia de Andrómeda; aparece como una pequeña mancha difusa y redondeada justo al sur del núcleo brillante de M31. Es visible con binoculares de gran apertura o telescopios pequeños bajo cielos oscuros, aunque no requiere filtros especiales como UHC o OIII, ya que su luz es principalmente estelar y no nebular.",
+    "wikipedia_qid": "Q13720"
+  },
+  "d_J0042443+411607": {
+    "name": "Galaxia de Andrómeda",
+    "common_names": [
+      "Nebulosa de Andrómeda",
+      "Andrómeda"
+    ],
+    "description": "La Galaxia de Andrómeda (M31) es una colosal galaxia espiral que abarca aproximadamente 220.000 años luz (2,1 sextillones de km), lo que la convierte en el miembro más grande de nuestro Grupo Local. Situada a 2,5 millones de años luz, en la constelación de Andrómeda, brilla con una magnitud aparente de 3,4, lo que la hace fácilmente visible a simple vista bajo cielos oscuros como una mancha lechosa y alargada. A través de pequeños telescopios o prismáticos, los observadores pueden resolver fácilmente su brillante y condensado núcleo galáctico y trazar el suave y amplio resplandor de su estructura de disco interior, flanqueado por dos prominentes galaxias enanas satélites, M32 y M110.",
+    "fun_fact": "¡Andrómeda y la Vía Láctea están enzarzadas en una danza gravitatoria a alta velocidad! Datos astrofísicos recientes confirman que Andrómeda se precipita hacia nosotros a unos 400.000 km/h. En unos 4.500 millones de años, nuestras dos galaxias colisionarán violentamente y se fusionarán en una única y masiva galaxia elíptica, remodelando por completo el cielo nocturno y reordenando la vecindad galáctica de nuestro sistema solar.",
+    "visual_tip": "Para avistar la M31, busque el «Gran Cuadrante de Pegaso» y siga las estrellas de Andrómeda hacia arriba hasta Mirach, luego salte ligeramente hacia el noroeste para encontrar la galaxia. Debido a que la M31 abarca un área inmensa en el cielo —casi seis veces la anchura de una Luna llena— se ve mejor a través de prismáticos de campo amplio de 10x50 o de pequeños telescopios de pocos aumentos, ya que los aumentos altos estrecharán tanto su campo de visión que solo verá su núcleo brillante y se perderá por completo el disco espiral exterior.",
+    "wikipedia_qid": "Q2469"
+  },
+  "d_J0133210+603912": {
+    "name": "Messier 103",
+    "description": "M 103 es un pequeño cúmulo abierto de estrellas tenues situado en la constelación de Casiopea, a unos 9.400 años luz de distancia. Con una edad estimada de entre 12,6 y 25 millones de años, este cúmulo contiene aproximadamente 172 estrellas vinculadas gravitacionalmente en un diámetro de unos 15 años luz.",
+    "fun_fact": "Aunque fue descubierto por Pierre Méchain en 1781, fue la última entrada añadida al catálogo original de Charles Messier.",
+    "visual_tip": "Con una magnitud aparente de 7,4, es visible con binoculares. Busca dos estrellas prominentes y una gigante roja en el centro; tenga cuidado de no confundir la estrella doble Struve 131 con un miembro del cúmulo, ya que es un objeto de primer plano.",
+    "wikipedia_qid": "Q14376"
+  },
+  "d_J0133508+303936": {
+    "name": "Galaxia del Triángulo",
+    "common_names": [
+      "Triangulo"
+    ],
+    "description": "La Galaxia del Triángulo (M33) es una majestuosa galaxia espiral que abarca aproximadamente 60.000 años luz (570 billones de km), lo que la convierte en el tercer miembro más grande de nuestro Grupo Local, por detrás de Andrómeda y la Vía Láctea. Situada a 2,7 millones de años luz, en la pequeña constelación del Triángulo, brilla con una magnitud aparente integrada total de 5,7, lo que la sitúa justo en el límite de la visibilidad a simple vista bajo cielos excepcionalmente oscuros. A través de prismáticos estándar, surge como una mancha ovalada, amplia y fantasmal, mientras que un pequeño telescopio revela un núcleo brillante y nítido flanqueado por brazos espirales sueltos y expansivos que albergan algunas de las mayores regiones de formación estelar del universo conocido.",
+    "fun_fact": "Esta galaxia contiene un monstruo cósmico llamado NGC 604, un vivero estelar tan increíblemente enorme que empequeñece por completo a nuestra propia Nebulosa de Orión. Con una extensión asombrosa de 1.500 años luz, esta única nebulosa de emisión dentro de la M33 es más de 60 veces mayor que la M42 y está alimentada por un cúmulo central de más de 200 estrellas masivas recién nacidas, lo que la convierte en uno de los centros de estallido estelar más violentos y activos de toda nuestra vecindad galáctica.",
+    "visual_tip": "Para encontrar fácilmente la M33, mire aproximadamente a mitad de camino entre la brillante estrella Mirach en Andrómeda y Hamal en Aries. Debido a que su enorme tamaño físico se extiende por un área de cielo casi cuatro veces mayor que una Luna llena, su brillo superficial es extremadamente bajo y se desvanece fácilmente con las luces de la ciudad; debe observar desde un lugar prístino de cielo oscuro y sin luna utilizando prismáticos de campo amplio de pocos aumentos o un telescopio pequeño para evitar que sus tenues y delicados discos espirales desaparezcan en el fondo.",
+    "wikipedia_qid": "Q13724"
+  },
+  "d_J0136417+154701": {
+    "name": "Galaxia del Abanico",
+    "description": "La Galaxia del Abanico es una impresionante galaxia espiral de gran diseño situada a unos 32 millones de años luz en la constelación de Piscis. Con unos 100 mil millones de estrellas, destaca por sus dos brazos espirales claramente definidos y su orientación frontal, lo que la convierte en un laboratorio ideal para estudiar la estructura galáctica.",
+    "fun_fact": "Debido a su bajo brillo superficial, esta galaxia es considerada el objeto del catálogo Messier más difícil de observar para los astrónomos aficionados.",
+    "visual_tip": "Como su brillo es muy tenue, busca un cielo lo más oscuro posible lejos de la contaminación lumínica. Utiliza una técnica de visión periférica y apunta tu telescopio hacia la constelación de Piscis; necesitarás paciencia y una apertura generosa para distinguir su forma difusa.",
+    "wikipedia_qid": "Q14013"
+  },
+  "d_J0142196+513431": {
+    "name": "Nebulosa Dumbbell Pequeña",
+    "common_names": [
+      "Nebulosa de la Barra",
+      "Nebulosa del Corcho"
+    ],
+    "description": "La Nebulosa Dumbbell Pequeña es una fascinante nebulosa planetaria situada en la constelación de Perseo, a unos 2.500 años luz de distancia. Esta estructura bipolar se formó cuando una estrella moribunda expulsó sus capas exteriores, dejando atrás una enana blanca extremadamente caliente en su núcleo.",
+    "fun_fact": "Debido a su forma peculiar, los astrónomos del pasado pensaron erróneamente que se trataba de dos nebulosas separadas, lo que explica por qué tiene dos números de catálogo distintos en registros antiguos.",
+    "visual_tip": "Para observarla, busca la constelación de Perseo en una noche despejada. Utiliza un telescopio de apertura media y visión lateral, ya que su magnitud de +10.1 la hace un objeto tenue que requiere cielos oscuros para apreciar su estructura de barra central.",
+    "wikipedia_qid": "Q14015"
+  },
+  "d_J0242091+424402": {
+    "name": "Messier 34",
+    "common_names": [
+      "Cúmulo Espiral"
+    ],
+    "description": "El Messier 34 es un cúmulo abierto grande y relativamente cercano situado en la constelación de Perseo. Se encuentra a unos 1.500 años luz de distancia y contiene alrededor de 400 estrellas que se formaron hace aproximadamente 200 a 250 millones de años.",
+    "fun_fact": "Este cúmulo es un cementerio estelar en miniatura: contiene al menos 19 enanas blancas, que son los restos densos de estrellas que alguna vez fueron mucho más masivas que nuestro Sol.",
+    "visual_tip": "Si te encuentras bajo un cielo muy oscuro y lejos de la contaminación lumínica, intenta buscarlo a simple vista. Si no lo logras, utiliza unos prismáticos para resolver sus estrellas con mayor facilidad.",
+    "wikipedia_qid": "Q13729"
+  },
+  "d_J0242407-000047": {
+    "name": "Messier 77",
+    "common_names": [
+      "Galaxia del Calamar"
+    ],
+    "description": "La Messier 77 es una impresionante galaxia espiral barrada situada a unos 35 millones de años luz de distancia en la constelación de Cetus. Es una de las galaxias Seyfert más brillantes que podemos observar desde la Tierra, destacando por su núcleo activo y su gran tamaño.",
+    "fun_fact": "Aunque Pierre Méchain la descubrió en 1780 y la describió como una nebulosa, tanto él como Charles Messier y William Herschel pensaron inicialmente que se trataba de un cúmulo estelar antes de comprender su verdadera naturaleza galáctica.",
+    "visual_tip": "Para encontrarla, busca la constelación de la Ballena (Cetus) en el cielo nocturno. Utiliza un telescopio de apertura media para apreciar su brillo, ya que con una magnitud de 8.9 es un objetivo excelente para observar su estructura espiral.",
+    "wikipedia_qid": "Q14017"
+  },
+  "d_J0346379+241041": {
+    "name": "Pléyades",
+    "common_names": [
+      "Siete Hermanas"
+    ],
+    "description": "Las Pléyades (M45), también conocidas como las Siete Hermanas, es un espectacular cúmulo estelar abierto que domina un radio físico central de 8 años luz (75 billones de km), con su huella gravitatoria de marea extendiéndose hasta los 43 años luz. Situado a unos 444 años luz de distancia, en la constelación de Tauro, es el objeto Messier más cercano a la Tierra y arde con una brillante magnitud aparente combinada de 1,6. Para el ojo desnudo bajo cielos oscuros, se asemeja a un pequeño y centelleante «carro» de seis a siete estrellas calientes de tipo B, de color blanco azulado, que estallan en un denso campo de más de 1.000 miembros estelares cuando se ven a través de prismáticos estándar o telescopios de pocos aumentos.",
+    "fun_fact": "Durante décadas, los astrónomos se vieron inmersos en un feroz misterio cósmico conocido como la «Controversia de la distancia a las Pléyades», ya que el satélite Hipparcos midió incorrectamente el cúmulo como mucho más cercano de lo que realmente estaba. El cartografiado de alta precisión de la reciente misión Gaia de la ESA zanjó finalmente el histórico debate, utilizando un paralaje geométrica milimétrica para fijar sólidamente la distancia en 444 años luz, lo que demostró que las calibraciones del satélite eran defectuosas y salvó fundamentalmente nuestros modelos estándar de cómo evolucionan las estrellas jóvenes.",
+    "visual_tip": "Para encontrar fácilmente la M45, mire por encima de la constelación de Orión o siga una línea recta a través de las tres estrellas del Cinturón de Orión hacia arriba, pasando por la brillante estrella naranja Aldebarán. Debido a que este inmenso cúmulo estelar cubre más de 2 grados del cielo nocturno —lo que equivale aproximadamente a cuatro veces el diámetro de una Luna llena— se saldrá rápidamente de su vista a gran potencia; es mejor observarlo a través de prismáticos de campo amplio de 10x50 o de pequeños telescopios de pocos aumentos, donde también podrá buscar el tenue y fantasmal resplandor azul de la nebulosa de reflexión de Mérope que envuelve a las estrellas.",
+    "wikipedia_qid": "Q13423"
+  },
+  "d_J0524105-243127": {
+    "name": "Messier 79",
+    "common_names": [],
+    "description": "Messier 79 es un cúmulo globular situado a unos 42.000 años luz de la Tierra, en la constelación de la Liebre. Se cree que este cúmulo no es originario de nuestra Vía Láctea, sino que podría provenir de la galaxia enana del Can Mayor, la cual está siendo absorbida actualmente por nuestra galaxia.",
+    "fun_fact": "A diferencia de la mayoría de los cúmulos globulares que orbitan el centro de la Vía Láctea, Messier 79 es un visitante extragaláctico que está siendo desgarrado por las fuerzas de marea de nuestra galaxia, dejando tras de sí una larga cola de estrellas.",
+    "visual_tip": "Para encontrarlo, busca la constelación de la Liebre debajo de Orión. Utiliza un telescopio de apertura media en una noche despejada, ya que su magnitud de 8.57 lo hace difícil de ver a simple vista; apunta hacia el sur y compara la zona con un mapa estelar para identificar su tenue brillo circular.",
+    "wikipedia_qid": "Q14019"
+  },
+  "d_J0528400+354908": {
+    "name": "Messier 38",
+    "common_names": [
+      "Cúmulo de la Estrella de Mar"
+    ],
+    "description": "El Messier 38 es un brillante cúmulo abierto situado en la constelación de Auriga, a unos 3.480 años luz de la Tierra. Este grupo estelar destaca por su estructura dispersa y es uno de los tres cúmulos famosos de la zona junto a sus vecinos M36 y M37.",
+    "fun_fact": "Aunque parece estar cerca del cúmulo NGC 1907 en el cielo, en realidad son vecinos casuales; ambos se encuentran pasando cerca el uno del otro, pero se originaron en regiones completamente distintas de nuestra galaxia.",
+    "visual_tip": "Busca este cúmulo en la constelación de Auriga. Utiliza unos prismáticos o un telescopio de baja potencia para apreciar mejor su forma característica, que muchos observadores comparan con una estrella de mar o una letra griega pi.",
+    "wikipedia_qid": "Q13880"
+  },
+  "d_J0534317+220102": {
+    "name": "Nebulosa del Cangrejo",
+    "common_names": [
+      "Cangrejo",
+      "Tau A",
+      "Taurus A"
+    ],
+    "description": "La Nebulosa del Cangrejo (M1) es un espectacular remanente de supernova que se extiende a lo largo de 11 años luz (104 billones de km), y representa los restos destrozados de una estrella masiva. Situada a unos 6.500 años luz de distancia, en la constelación de Tauro, brilla con una magnitud aparente de 8,4 y aparece a través de un pequeño telescopio como una tenue nube de forma ovalada. En su corazón se encuentra el Púlsar del Cangrejo —una estrella de neutrones superdensa comprimida hasta un diámetro de solo 20 km pero con la masa de dos soles— que gira 30 veces por segundo para alimentar el inquietante resplandor de la nebulosa impulsado por la radiación.",
+    "fun_fact": "¡Podemos seguir el crecimiento de esta nebulosa en tiempo real! Datos recientes de telescopios espaciales confirman que sus filamentos gaseosos exteriores siguen lanzándose hacia el espacio profundo a unos vertiginosos 5,5 millones de km/h. Esta enorme nube se expande tan rápidamente que los cambios en su estructura pueden notarse en fotografías tomadas con solo unas pocas décadas de diferencia.",
+    "visual_tip": "Para avistar esta histórica nube cósmica, mire aproximadamente 1 grado al noroeste de la estrella Zeta Tauri, que marca el cuerno sur del toro. Aunque unos prismáticos de 10x50 pueden revelarla como una mancha tenue y fantasmal bajo cielos oscuros prístinos, el uso de un telescopio de 150 mm o mayor con un filtro de nebulosa UHC o OIII perfilará significativamente sus límites irregulares y bordes dentados.",
+    "wikipedia_qid": "Q10934"
+  },
+  "d_J0535168-052315": {
+    "name": "Gran Nebulosa de Orión",
+    "common_names": [
+      "Nebulosa de Orión"
+    ],
+    "description": "La Nebulosa de Orión (M42) es un vivero estelar masivo y de un brillo cegador que se extiende a lo largo de 24 años luz (227 billones de km), donde cientos de nuevas estrellas están naciendo en la actualidad. Situada a 1.350 años luz de distancia, en la constelación de Orión, brilla con una magnífica magnitud aparente de 4,0, lo que la hace claramente visible a simple vista como una estrella borrosa en la Espada de Orión. A través de prismáticos o de un pequeño telescopio, se transforma en un impresionante y amplio dosel de gas y polvo brillantes con forma de ala de murciélago, centrado en el Trapecio, un cúmulo apretado y brillante de cuatro estrellas supermasivas recién nacidas cuya intensa luz ultravioleta ilumina todo el complejo.",
+    "fun_fact": "¡Esta cuna cósmica es en realidad un importante laboratorio químico! Los barridos infrarrojos de alta resolución de los telescopios espaciales modernos han detectado cantidades masivas de moléculas orgánicas complejas —incluidos compuestos de carbono, vapor de agua e ingredientes precursores de la vida— arremolinándose en el interior de los discos planetarios que rodean a estas estrellas infantiles. Esto significa que al observar la M42, estamos viendo cómo se cocinan activamente y en tiempo real las semillas químicas de futuros sistemas planetarios.",
+    "visual_tip": "Para localizar fácilmente la M42, mire directamente debajo del famoso cinturón de tres estrellas de Orión para encontrar la línea vertical de estrellas que forman su espada; la nebulosa es la «estrella» central de la hoja. Al ser tan brillante, podrá disfrutar fácilmente de su fantasmal resplandor en forma de abanico incluso desde el jardín de una urbanización, pero el uso de un telescopio de 100 mm o mayor bajo cielos oscuros con un filtro OIII o UHC revelará de forma espectacular las intrincadas bandas de polvo oscuro que cortan su núcleo brillante.",
+    "wikipedia_qid": "Q13903"
+  },
+  "d_J0535309-051611": {
+    "name": "Nebulosa de Mairan",
+    "common_names": [],
+    "description": "La Nebulosa de Mairan es una región de formación estelar situada en la constelación de Orión, a unos 1.300 años luz de distancia. Aunque físicamente forma parte de la famosa Gran Nebulosa de Orión, aparece separada de ella por una densa franja de polvo cósmico.",
+    "fun_fact": "A diferencia de la vecina Nebulosa de Orión, la estrella principal que ilumina esta nebulosa, NU Orionis, no es lo suficientemente caliente como para producir la intensa emisión de oxígeno ionizado que caracteriza a otras regiones similares.",
+    "visual_tip": "Busca esta nebulosa justo al noreste de la Gran Nebulosa de Orión. Utiliza un telescopio de apertura media para observar la franja oscura que la separa del complejo principal, la cual le otorga una apariencia similar a volutas de humo.",
+    "wikipedia_qid": "Q13906"
+  },
+  "d_J0536198+340802": {
+    "name": "Messier 36",
+    "common_names": [
+      "Cúmulo Molinete"
+    ],
+    "description": "El Messier 36 es un joven cúmulo abierto situado en la constelación del Cochero, a unos 4.340 años luz de la Tierra. A menudo comparado con las Pléyades por su estructura estelar, este grupo compacto alberga estrellas brillantes y calientes que se formaron hace apenas 25 millones de años.",
+    "fun_fact": "Aunque parece un grupo compacto de estrellas, el cúmulo contiene un objeto estelar joven con una salida de gas apodado 'Holoea', que significa 'gas que fluye' en hawaiano, aunque probablemente sea un objeto independiente situado más lejos.",
+    "visual_tip": "Busca este cúmulo en la constelación del Cochero usando binoculares o un telescopio pequeño. Apunta hacia el centro de la constelación y utiliza una visión periférica para apreciar mejor sus estrellas más brillantes, que destacan sobre un fondo oscuro.",
+    "wikipedia_qid": "Q13738"
+  },
+  "d_J0546458+000445": {
+    "name": "Messier 78",
+    "common_names": [
+      "Nebulosa de Casper el Fantasma Amistoso"
+    ],
+    "description": "Messier 78 es una brillante nebulosa de reflexión situada en la constelación de Orión, a unos 1.350 años luz de la Tierra. Forma parte del complejo de nubes moleculares de Orión y destaca por ser la nebulosa de reflexión difusa más brillante de su grupo, iluminada por dos estrellas de tipo B.",
+    "fun_fact": "Debido a su peculiar forma y a las sombras proyectadas por el polvo interestelar, los astrónomos aficionados la conocen cariñosamente como la Nebulosa de Casper el Fantasma Amistoso.",
+    "visual_tip": "Busca esta nebulosa con un telescopio pequeño, donde aparecerá como una mancha brumosa. Apunta tu equipo hacia la constelación de Orión y utiliza una técnica de visión periférica para apreciar mejor los detalles de su tenue brillo.",
+    "wikipedia_qid": "Q14018"
+  },
+  "d_J0552185+323235": {
+    "name": "Messier 37",
+    "common_names": [
+      "Cúmulo Sal y Pimienta"
+    ],
+    "description": "El Messier 37 es el cúmulo abierto más brillante y rico de la constelación de Auriga. Situado a unos 4.500 años luz de distancia, este impresionante grupo contiene más de 500 estrellas, incluyendo al menos una docena de gigantes rojas que le confieren un aspecto espectacular.",
+    "fun_fact": "Es un objeto fascinante para los astrónomos porque contiene una de las pocas nebulosas planetarias conocidas que se encuentran asociadas directamente con un cúmulo abierto.",
+    "visual_tip": "Busca este cúmulo en la constelación de Auriga. Aunque puedes verlo con binoculares bajo cielos oscuros, utiliza un telescopio para apreciar mejor la gran cantidad de estrellas que lo componen; su densidad estelar te recordará a un puñado de sal y pimienta esparcido sobre el fondo negro del espacio.",
+    "wikipedia_qid": "Q13878"
+  },
+  "d_J0609074+242014": {
+    "name": "Messier 35",
+    "common_names": [
+      "Cúmulo de la Hebilla de Zapato"
+    ],
+    "description": "Messier 35 es un brillante cúmulo abierto situado en la constelación de Géminis, a unos 2.970 años luz de distancia. Con un tamaño aparente similar al de la Luna llena, este grupo de estrellas ofrece una vista espectacular a través de binoculares o telescopios pequeños.",
+    "fun_fact": "Aunque parece estar cerca en el cielo, el pequeño y compacto cúmulo NGC 2158 se encuentra mucho más lejos que M35, creando una ilusión óptica de profundidad que engaña a muchos observadores.",
+    "visual_tip": "Busca este cúmulo en el extremo noroeste de Géminis. Utiliza unos binoculares para apreciar su extensión y, si tienes un telescopio, apunta hacia el suroeste para intentar localizar el pequeño y denso cúmulo vecino que lo acompaña en el mismo campo de visión.",
+    "wikipedia_qid": "Q13736"
+  },
+  "d_J0646031-204306": {
+    "name": "Messier 41",
+    "common_names": [],
+    "description": "Este cúmulo abierto se encuentra en la constelación del Can Mayor, a unos 2360 años luz de distancia. Con un tamaño aparente similar al de la Luna llena, alberga cerca de 100 estrellas, incluyendo gigantes rojas y enanas blancas.",
+    "fun_fact": "El cúmulo tiene una edad estimada de 200 millones de años, lo que lo convierte en un objeto relativamente joven en términos astronómicos.",
+    "visual_tip": "Busca el cúmulo a unos cuatro grados al sur de Sirio. Forma un triángulo casi equilátero con Sirio y la estrella Nu Canis Majoris, por lo que es un objetivo fantástico para observar con prismáticos.",
+    "wikipedia_qid": "Q13897"
+  },
+  "d_J0702472-082206": {
+    "name": "Messier 50",
+    "common_names": [
+      "Cúmulo del Corazón"
+    ],
+    "description": "Este brillante cúmulo abierto se encuentra a unos 2.900 años luz de distancia en la constelación del Unicornio. Con una edad de aproximadamente 140 millones de años, destaca por su forma que recuerda a un corazón o a una punta de flecha roma.",
+    "fun_fact": "Aunque tradicionalmente se consideraba un único cúmulo, estudios recientes de 2025 han revelado que en realidad está formado por dos subcúmulos distintos, lo que lo convierte en un sistema binario.",
+    "visual_tip": "Busca este cúmulo en la constelación del Unicornio utilizando unos prismáticos o un telescopio pequeño. Apunta hacia la zona entre Sirio y Proción para localizarlo; verás un grupo denso de estrellas que brilla con una magnitud de 5.9.",
+    "wikipedia_qid": "Q13956"
+  },
+  "d_J0736357-143015": {
+    "name": "Messier 47",
+    "common_names": [],
+    "description": "Este cúmulo abierto se encuentra a unos 1.600 años luz de distancia en la constelación de Puppis. Con una edad de 78 millones de años, destaca por sus brillantes estrellas de clase B y el contraste visual que ofrecen sus gigantes rojas.",
+    "fun_fact": "Durante mucho tiempo se consideró un objeto perdido porque Messier cometió un error en sus cálculos de posición; no fue hasta 1959 que se confirmó su identidad al descubrir que solo había que invertir los signos de sus coordenadas.",
+    "visual_tip": "Busca este cúmulo en una noche despejada; es lo suficientemente brillante como para verlo a simple vista bajo cielos oscuros. Si utilizas unos prismáticos, podrás distinguir fácilmente sus estrellas más brillantes y compararlo con el vecino Messier 46, que se encuentra a solo un grado de distancia.",
+    "wikipedia_qid": "Q13942"
+  },
+  "d_J0741453-145042": {
+    "name": "Messier 46",
+    "common_names": [],
+    "description": "Este impresionante cúmulo abierto se encuentra en la constelación de Puppis, a unos 5.000 años luz de distancia. Contiene aproximadamente 500 estrellas y tiene una edad estimada de unos 251 millones de años, ofreciendo una vista espectacular a través de telescopios.",
+    "fun_fact": "Aunque parece estar dentro del cúmulo, la nebulosa planetaria que se observa cerca de su borde norte es en realidad un objeto superpuesto que se encuentra mucho más cerca o más lejos de nosotros, por lo que no forma parte del cúmulo.",
+    "visual_tip": "Busca este cúmulo a solo un grado al este de su vecino, el cúmulo Messier 47. Utiliza unos prismáticos o un telescopio de gran campo para observar ambos objetos simultáneamente en el mismo campo de visión.",
+    "wikipedia_qid": "Q13910"
+  },
+  "d_J0744345-235121": {
+    "name": "Messier 93",
+    "common_names": [
+      "Cúmulo de la Criatura"
+    ],
+    "description": "Messier 93 es un brillante cúmulo abierto situado en la constelación de Puppis, la popa del legendario barco Argo. Se encuentra a unos 3.380 años luz de distancia y destaca por su forma triangular, que alberga una gran cantidad de estrellas jóvenes y calientes.",
+    "fun_fact": "Este cúmulo tiene una edad estimada de unos 387 millones de años, lo que lo convierte en un objeto relativamente joven en términos astronómicos, compuesto por estrellas que se formaron casi al mismo tiempo a partir de la misma nube molecular.",
+    "visual_tip": "Busca este cúmulo en la parte sur del cielo. Aunque puedes intentar verlo con binoculares bajo cielos muy oscuros, utiliza un telescopio de apertura pequeña para resolver mejor sus estrellas individuales y apreciar su característica forma de mariposa o triángulo.",
+    "wikipedia_qid": "Q14347"
+  },
+  "d_J0813339-054310": {
+    "name": "Messier 48",
+    "common_names": [],
+    "description": "Messier 48 es un cúmulo abierto de estrellas situado en la constelación de Hydra, a unos 2.500 años luz de distancia. Con una edad estimada de unos 450 millones de años, este grupo estelar se encuentra en una etapa intermedia entre los famosos cúmulos de las Pléyades y las Híades.",
+    "fun_fact": "Charles Messier cometió un error en sus coordenadas originales al registrar este objeto en 1771, situándolo cinco grados fuera de su posición real, lo que llevó a que durante mucho tiempo se cuestionara su existencia.",
+    "visual_tip": "Bajo condiciones de cielo oscuro, intenta localizarlo a simple vista. Si no lo consigues, apunta tus prismáticos o un telescopio pequeño hacia la zona al este de la estrella Alphard; verás un grupo de estrellas dispersas que llena todo el campo de visión.",
+    "wikipedia_qid": "Q13951"
+  },
+  "d_J0839583+193633": {
+    "name": "El Pesebre",
+    "common_names": [
+      "Cúmulo de la Colmena"
+    ],
+    "description": "El Pesebre es uno de los cúmulos abiertos más cercanos a la Tierra, ubicado en la constelación de Cáncer. Contiene alrededor de 1.000 estrellas y se encuentra a unos 600 años luz de distancia, ofreciendo una vista espectacular que ha fascinado a los astrónomos desde la antigüedad.",
+    "fun_fact": "Galileo Galilei fue uno de los primeros en estudiar este cúmulo con su telescopio, revelando que lo que a simple vista parece una mancha nebulosa es en realidad un denso grupo de estrellas.",
+    "visual_tip": "Busca este cúmulo bajo cielos oscuros; a simple vista parece una pequeña mancha nebulosa. Utiliza binoculares o un telescopio de baja potencia para resolver sus estrellas, ya que su tamaño aparente es bastante grande.",
+    "wikipedia_qid": "Q13760"
+  },
+  "d_J0851235+114853": {
+    "name": "Messier 67",
+    "common_names": [
+      "Cúmulo Cobra Real",
+      "Cúmulo Ojo Dorado"
+    ],
+    "description": "Messier 67 es un fascinante cúmulo abierto situado en la constelación de Cáncer, a una distancia de entre 2.600 y 2.900 años luz. Con una edad estimada de entre 3.200 y 5.000 millones de años, es uno de los cúmulos abiertos más antiguos y mejor estudiados que conocemos.",
+    "fun_fact": "A diferencia de la mayoría de los cúmulos abiertos que se dispersan rápidamente, M67 es inusualmente longevo y contiene cientos de estrellas con una composición química muy similar a la de nuestro propio Sol.",
+    "visual_tip": "Busca este cúmulo en la constelación de Cáncer utilizando unos prismáticos o un telescopio pequeño. Aunque su magnitud aparente es de 6.1, verás una agrupación densa y hermosa que destaca claramente sobre el fondo estelar.",
+    "wikipedia_qid": "Q13997"
+  },
+  "d_J0955331+690355": {
+    "name": "Galaxia de Bode",
+    "description": "La Galaxia de Bode (M81) es una magnífica galaxia espiral de gran diseño que abarca aproximadamente 90.000 años luz (850 billones de km), con brazos de formación estelar casi perfectamente simétricos. Situada a 12 millones de años luz de distancia, en la constelación septentrional de la Osa Mayor, brilla con una magnífica magnitud aparente combinada de 6,9, lo que la convierte en una de las galaxias más brillantes del cielo nocturno. A través de prismáticos estándar, es fácilmente visible como una bruma ovalada brillante y nítida con un núcleo muy condensado, mientras que los pequeños telescopios bajo cielos oscuros comienzan a cartografiar la envoltura brillante de su majestuoso disco exterior.",
+    "fun_fact": "La Galaxia de Bode se encuentra actualmente encerrada en una violenta danza gravitatoria con su vecina cercana, la Galaxia del Cigarro (M82). Hace unos 300 millones de años, las dos galaxias ejecutaron un sobrevuelo cercano que desencadenó masivas ondas de choque de marea a través de ambos sistemas. Este encuentro cósmico arrancó gas para formar un inmenso puente de hidrógeno que las conecta, al tiempo que canalizaba vastas cantidades de materia prima hacia el núcleo de la M81, alimentando su agujero negro supermasivo central, que pesa la asombrosa cifra de 70 millones de veces la masa de nuestro Sol.",
+    "visual_tip": "Para encontrar fácilmente la M81, localice las dos estrellas indicadoras del «cuenco» de la Osa Mayor (Merak y Dubhe) y trace una línea imaginaria a través de ellas, continuándola en el espacio profundo una distancia aproximadamente igual hacia el noroeste. Al poseer un brillo superficial excepcionalmente alto, es un objetivo fantástico para los habitantes de las ciudades y puede verse junto a la Galaxia del Cigarro en un único campo de ocular de pocos aumentos, aunque se necesita un telescopio de 200 mm bajo cielos negros como la tinta para trazar los intrincados patrones espirales que se curvan desde su núcleo.",
+    "wikipedia_qid": "Q81102410"
+  },
+  "d_J0955524+694046": {
+    "name": "Galaxia del Cigarro",
+    "common_names": [],
+    "description": "La Galaxia del Cigarro es una galaxia con brote estelar situada a unos 12 millones de años luz de distancia en la constelación de la Osa Mayor. Es cinco veces más luminosa que nuestra Vía Láctea y su intensa formación de estrellas se debe a la interacción gravitatoria con su vecina, la galaxia M81.",
+    "fun_fact": "En 2023, los astrónomos detectaron un estallido de rayos gamma proveniente de un magnetar en esta galaxia, siendo la primera vez que se observa un evento de este tipo fuera de la Vía Láctea.",
+    "visual_tip": "Busca la Osa Mayor y apunta tu telescopio hacia la zona cercana a M81. Utiliza una noche despejada y oscura para apreciar su forma alargada y peculiar, que le otorga su característico nombre.",
+    "wikipedia_qid": "Q14026"
+  },
+  "d_J1043577+114213": {
+    "name": "Messier 95",
+    "common_names": [],
+    "description": "Messier 95 es una galaxia espiral barrada situada a unos 33 millones de años luz en la constelación de Leo. Destaca por su estructura central, que incluye un anillo de formación estelar que rodea su barra central.",
+    "fun_fact": "Esta galaxia es famosa por haber albergado una supernova en 2012, un evento explosivo que permitió a los astrónomos estudiar mejor sus procesos de formación estelar.",
+    "visual_tip": "Para encontrarla, busca la constelación de Leo en el cielo nocturno. Utiliza un telescopio de apertura media, ya que su magnitud aparente de 9.6 la hace un objeto tenue que requiere cielos oscuros para apreciar su forma espiral.",
+    "wikipedia_qid": "Q14351"
+  },
+  "d_J1046457+114911": {
+    "name": "Messier 96",
+    "common_names": [],
+    "description": "Messier 96 es una galaxia espiral intermedia situada a unos 31 millones de años luz de distancia en la constelación de Leo. Con un tamaño estimado de 78.000 años luz, esta galaxia destaca por su estructura espiral compleja y es el miembro más brillante del grupo de galaxias que lleva su mismo nombre.",
+    "fun_fact": "En 1998, los astrónomos detectaron una supernova en esta galaxia, denominada SN 1998bu, que permitió a los científicos refinar las mediciones de distancia a este sistema estelar.",
+    "visual_tip": "Busca esta galaxia en la constelación de Leo durante la primavera. Utiliza un telescopio de apertura media y apunta hacia la región central de la constelación; verás una mancha difusa y brillante que destaca mejor bajo cielos oscuros y sin contaminación lumínica.",
+    "wikipedia_qid": "Q14354"
+  },
+  "d_J1047495+123453": {
+    "name": "Messier 105",
+    "common_names": [],
+    "description": "Messier 105 es una galaxia elíptica situada a unos 36,6 millones de años luz en la constelación de Leo. Es la galaxia elíptica más grande del catálogo Messier que no forma parte del cúmulo de Virgo y destaca por albergar un agujero negro supermasivo en su núcleo.",
+    "fun_fact": "Aunque es una galaxia elíptica, que suelen ser consideradas 'muertas' en cuanto a formación estelar, M105 contiene algunos cúmulos estelares jóvenes, lo que demuestra que todavía puede formar estrellas, aunque a un ritmo muy lento.",
+    "visual_tip": "Busca esta galaxia en la constelación de Leo utilizando un telescopio de apertura media. Apunta tu equipo hacia la zona cercana a las galaxias M95 y M96, ya que las tres forman un grupo visualmente muy interesante en el cielo nocturno.",
+    "wikipedia_qid": "Q14377"
+  },
+  "d_J1111309+554026": {
+    "name": "Messier 108",
+    "common_names": [
+      "Galaxia Tabla de Surf"
+    ],
+    "description": "Esta galaxia espiral barrada se encuentra a unos 46 millones de años luz de distancia, en la constelación de la Osa Mayor. Debido a su orientación, la vemos casi de canto, lo que le otorga una apariencia alargada y elegante.",
+    "fun_fact": "En su núcleo reside un agujero negro supermasivo con una masa estimada de 24 millones de veces la de nuestro Sol, aunque no muestra signos de actividad intensa en sus emisiones.",
+    "visual_tip": "Busca esta galaxia en la Osa Mayor utilizando un telescopio de apertura media. Apunta hacia la zona cercana a la estrella Merak y utiliza visión periférica para apreciar mejor su forma alargada.",
+    "wikipedia_qid": "Q4751"
+  },
+  "d_J1114477+550108": {
+    "name": "Nebulosa del Búho",
+    "common_names": [],
+    "description": "La Nebulosa del Búho es una fascinante nebulosa planetaria situada a unos 2.030 años luz de distancia en la constelación de la Osa Mayor. Con una antigüedad estimada de 8.000 años, su apariencia característica se debe a una estructura interna en forma de barril que crea dos zonas oscuras similares a los ojos de un búho.",
+    "fun_fact": "Su apariencia de búho no es una simple coincidencia visual; es el resultado de una estructura interna de capas concéntricas alineada a 45 grados respecto a nuestra línea de visión, lo que genera esas dos 'cuencas oculares' tan distintivas.",
+    "visual_tip": "Busca esta nebulosa bajo cielos muy oscuros, ya que su brillo superficial es bastante tenue. Utiliza un telescopio de apertura media o grande y aplica visión periférica para intentar distinguir las dos zonas oscuras que le dan su nombre.",
+    "wikipedia_qid": "Q14359"
+  },
+  "d_J1118559+130532": {
+    "name": "Messier 65",
+    "common_names": [],
+    "description": "Messier 65 es una galaxia espiral intermedia situada a unos 35 millones de años luz de distancia en la constelación de Leo. Junto con otras dos galaxias cercanas, forma el famoso Triplete de Leo, un pequeño grupo galáctico que interactúa gravitacionalmente entre sí.",
+    "fun_fact": "Esta galaxia fue descubierta por Charles Messier en 1780 y es conocida por ser una galaxia de tipo LINER, lo que significa que su núcleo muestra una emisión espectral característica de gas ionizado.",
+    "visual_tip": "Para encontrarla, busca primero la constelación de Leo y apunta tu telescopio hacia la zona entre las estrellas Chertan y Denebola. Utiliza una noche despejada y oscura para intentar distinguir su forma alargada junto a sus compañeras del Triplete.",
+    "wikipedia_qid": "Q13986"
+  },
+  "d_J1120150+125929": {
+    "name": "Messier 66",
+    "common_names": [
+      "Galaxia del Triplete de Leo"
+    ],
+    "description": "Messier 66 es una galaxia espiral intermedia situada a unos 31 millones de años luz de distancia en la constelación de Leo. Forma parte del famoso Triplete de Leo, un pequeño grupo de galaxias que incluye a sus vecinas Messier 65 y otra galaxia espiral, destacando por su estructura de brazos espirales débilmente barrados.",
+    "fun_fact": "Charles Messier descubrió esta galaxia el 1 de marzo de 1780 y la describió en sus notas originales como un objeto 'muy largo y muy débil'.",
+    "visual_tip": "Para observar este objeto, apunta tu telescopio hacia la constelación de Leo. Busca el Triplete de Leo, ya que Messier 66 y Messier 65 están separadas por solo 20 minutos de arco, lo que te permite ver ambas en el mismo campo de visión con un ocular de aumento moderado.",
+    "wikipedia_qid": "Q13992"
+  },
+  "d_J1157359+532229": {
+    "name": "Messier 109",
+    "common_names": [
+      "Galaxia de la Aspiradora"
+    ],
+    "description": "Messier 109 es una galaxia espiral barrada situada a unos 67,2 millones de años luz de distancia en la constelación de la Osa Mayor. Se distingue por su estructura prominente y su clasificación como galaxia LINER, lo que indica una actividad nuclear particular en su centro.",
+    "fun_fact": "Debido a su forma característica en las imágenes astronómicas, a menudo se la conoce coloquialmente como la 'Galaxia de la Aspiradora'.",
+    "visual_tip": "Para encontrarla, busca primero la estrella Phecda en la Osa Mayor; apunta tu telescopio hacia el sureste de esta estrella para localizar la galaxia en el campo de visión.",
+    "wikipedia_qid": "Q4746"
+  },
+  "d_J1213482+145401": {
+    "name": "Messier 98",
+    "common_names": [],
+    "description": "Messier 98 es una galaxia espiral situada en la constelación de Coma Berenices. Se encuentra a una distancia considerable de nosotros y destaca por su forma alargada y su orientación de perfil.",
+    "fun_fact": "A diferencia de muchas otras galaxias en el cúmulo de Virgo, Messier 98 se está acercando a la Vía Láctea a una velocidad muy alta, lo que la convierte en una de las galaxias con mayor desplazamiento al azul conocidas.",
+    "visual_tip": "Busca esta galaxia en la constelación de Coma Berenices utilizando un telescopio de apertura media. Debido a su magnitud, apunta tu equipo hacia la región del cúmulo de Virgo en una noche despejada y utiliza visión periférica para detectar su tenue brillo alargado.",
+    "wikipedia_qid": "Q6794029"
+  },
+  "d_J1218496+142459": {
+    "name": "Messier 99",
+    "common_names": [],
+    "description": "Esta galaxia espiral es un miembro destacado del Cúmulo de Virgo. Se caracteriza por su estructura asimétrica y sus brazos espirales bien definidos que se extienden en el espacio profundo.",
+    "fun_fact": "Messier 99 es conocida por ser una de las primeras galaxias en las que se identificó una estructura espiral, un descubrimiento que cambió nuestra comprensión del universo.",
+    "visual_tip": "Busca esta galaxia en la constelación de Coma Berenices. Utiliza un telescopio de apertura media en una noche despejada y sin luna para apreciar mejor su forma espiral.",
+    "wikipedia_qid": "Q4546943"
+  },
+  "d_J1218576+471813": {
+    "name": "Messier 106",
+    "common_names": [],
+    "description": "Messier 106 es una galaxia espiral intermedia situada en la constelación de los Lebreles, a unos 24 millones de años luz de distancia. Esta galaxia destaca por albergar un núcleo activo de tipo Seyfert, impulsado por un agujero negro supermasivo central.",
+    "fun_fact": "Además de sus dos brazos espirales visibles, esta galaxia posee dos 'brazos anómalos' que solo pueden detectarse mediante telescopios de rayos X, revelando procesos energéticos violentos en su interior.",
+    "visual_tip": "Busca esta galaxia en la constelación de los Lebreles. Utiliza un telescopio de apertura media para apreciar su estructura, ya que su magnitud de 8.4 la hace un objetivo gratificante para observadores aficionados con cielos oscuros.",
+    "wikipedia_qid": "Q4658"
+  },
+  "d_J1221549+042825": {
+    "name": "Messier 61",
+    "common_names": [
+      "Galaxia Espiral Hinchada"
+    ],
+    "description": "Messier 61 es una impresionante galaxia espiral barrada intermedia situada en el Cúmulo de Virgo, a unos 52,5 millones de años luz de distancia. Es una galaxia de gran tamaño y brillo, conocida por su compleja estructura espiral y su activa formación estelar.",
+    "fun_fact": "¡Es una auténtica fábrica de supernovas! Messier 61 ostenta el récord de ser una de las galaxias donde se han detectado más supernovas en la historia de la astronomía moderna.",
+    "visual_tip": "Busca esta galaxia en la constelación de Virgo. Utiliza un telescopio de apertura media en una noche despejada y sin contaminación lumínica para apreciar su núcleo brillante y sus brazos espirales.",
+    "wikipedia_qid": "Q13978"
+  },
+  "d_J1222119+580459": {
+    "name": "Messier 40",
+    "common_names": [],
+    "description": "Messier 40 es un sistema estelar doble situado en la constelación de la Osa Mayor. Aunque Charles Messier lo incluyó en su famoso catálogo buscando nebulosas, en realidad se trata de dos estrellas separadas que no están físicamente vinculadas entre sí.",
+    "fun_fact": "Este objeto es famoso en la astronomía por ser una 'falsa alarma' de Messier; al no encontrar la nebulosa que buscaba, registró este par de estrellas por error en su catálogo.",
+    "visual_tip": "Busca la estrella Megrez en la Osa Mayor y apunta tu telescopio ligeramente hacia el noreste. Utiliza un aumento moderado para distinguir claramente las dos estrellas componentes.",
+    "wikipedia_qid": "Q26910905"
+  },
+  "d_J1222549+154920": {
+    "name": "Messier 100",
+    "common_names": [
+      "Galaxia Espejo"
+    ],
+    "description": "Messier 100 es una impresionante galaxia espiral de gran diseño situada en la constelación de Coma Berenices. Ubicada a unos 55 millones de años luz de distancia, es uno de los miembros más grandes y brillantes del Cúmulo de Virgo.",
+    "fun_fact": "Fue una de las primeras galaxias espirales descubiertas en la historia y cuenta con unos 400.000 millones de estrellas en su estructura.",
+    "visual_tip": "Busca esta galaxia en la constelación de Coma Berenices utilizando un telescopio de apertura media. Debido a su magnitud, apunta hacia el corazón del Cúmulo de Virgo y utiliza visión periférica para apreciar mejor sus brazos espirales.",
+    "wikipedia_qid": "Q14365"
+  },
+  "d_J1225037+125313": {
+    "name": "Messier 84",
+    "common_names": [],
+    "description": "Messier 84 es una galaxia gigante elíptica o lenticular situada en el corazón del Cúmulo de Virgo, a unos 55 millones de años luz de distancia. Descubierta por Charles Messier en 1781, esta galaxia destaca por albergar un agujero negro supermasivo en su núcleo y estar rodeada por un enorme halo de materia oscura.",
+    "fun_fact": "Las observaciones del telescopio espacial Hubble han revelado dos chorros de materia que salen disparados desde su centro, además de un disco de gas y estrellas que giran a gran velocidad alrededor de su agujero negro central.",
+    "visual_tip": "Para localizarla, busca primero la constelación de Virgo. Utiliza un telescopio de apertura media para observar su brillo tenue, ya que su magnitud aparente es de 9.1; apunta hacia el centro del Cúmulo de Virgo y compara la zona con un mapa estelar detallado.",
+    "wikipedia_qid": "Q92258118"
+  },
+  "d_J1225240+181127": {
+    "name": "Messier 85",
+    "common_names": [],
+    "description": "Messier 85 es una galaxia lenticular situada en la constelación de Coma Berenices, a unos 60 millones de años luz de distancia. Es uno de los miembros más brillantes del Cúmulo de Virgo y presenta una forma elíptica suave con un núcleo muy luminoso.",
+    "fun_fact": "A pesar de su apariencia tranquila, esta galaxia muestra signos de haber interactuado con galaxias vecinas en el pasado, lo que ha dejado rastros de estrellas en sus regiones exteriores.",
+    "visual_tip": "Busca esta galaxia en una noche despejada utilizando un telescopio de apertura media. Apunta tu equipo hacia la constelación de Coma Berenices y utiliza visión periférica para apreciar mejor su tenue brillo central.",
+    "wikipedia_qid": "Q5630338"
+  },
+  "d_J1226118+125645": {
+    "name": "Messier 86",
+    "common_names": [],
+    "description": "Messier 86 es una brillante galaxia elíptica o lenticular situada en el corazón del Cúmulo de Virgo, a unos 52 millones de años luz de distancia. Es famosa por ser el objeto de Messier con el mayor desplazamiento al azul, lo que indica que se acerca a nuestra Vía Láctea a gran velocidad debido a su caída hacia el centro del cúmulo.",
+    "fun_fact": "A medida que se desplaza a gran velocidad por el medio intergaláctico, esta galaxia sufre un proceso llamado 'despojo por presión dinámica', dejando tras de sí una larga estela de gas caliente que emite rayos X, detectable por telescopios espaciales.",
+    "visual_tip": "Busca esta galaxia en la constelación de Virgo. Utiliza un telescopio de apertura media para observar su brillo y compárala con su vecina, la galaxia Messier 84, ya que ambas forman un grupo muy conspicuo en el cielo.",
+    "wikipedia_qid": "Q92258250"
+  },
+  "d_J1229467+080001": {
+    "name": "Messier 49",
+    "common_names": [],
+    "description": "Messier 49 es una galaxia elíptica gigante situada a unos 56 millones de años luz de distancia, en la constelación de Virgo. Fue la primera galaxia descubierta en el Cúmulo de Virgo y destaca por ser el miembro más luminoso de dicho grupo.",
+    "fun_fact": "Esta galaxia alberga una población impresionante de unos 5.900 cúmulos globulares, una cifra que supera con creces los aproximadamente 200 que orbitan nuestra propia Vía Láctea.",
+    "visual_tip": "Busca esta galaxia en la constelación de Virgo. Debido a su magnitud aparente de 8.4, utiliza un telescopio de apertura moderada para distinguirla claramente como una mancha difusa y brillante en el cielo nocturno.",
+    "wikipedia_qid": "Q13952"
+  },
+  "d_J1230494+122328": {
+    "name": "Messier 87",
+    "common_names": [
+      "Virgo A"
+    ],
+    "description": "Messier 87 es una galaxia elíptica supergigante situada a unos 53 millones de años luz en la constelación de Virgo. Es una de las galaxias más masivas del universo local y destaca por su enorme población de cúmulos globulares y un núcleo extremadamente activo.",
+    "fun_fact": "Esta galaxia alberga un agujero negro supermasivo que fue el primero en ser fotografiado por la humanidad gracias a la colaboración del Telescopio del Horizonte de Sucesos en 2019.",
+    "visual_tip": "Busca esta galaxia en el corazón del Cúmulo de Virgo. Utiliza un telescopio de apertura media en una noche despejada y oscura, ya que, aunque es brillante, su forma elíptica y difusa requiere paciencia para distinguirla del fondo estelar.",
+    "wikipedia_qid": "Q14041"
+  },
+  "d_J1231591+142513": {
+    "name": "Messier 88",
+    "common_names": [],
+    "description": "Messier 88 es una galaxia espiral no barrada situada a unos 58 millones de años luz de distancia, en la constelación de Coma Berenices. Forma parte del Cúmulo de Virgo y destaca por su estructura espiral bien definida, siendo uno de los objetos más brillantes de su grupo.",
+    "fun_fact": "Esta galaxia alberga aproximadamente 400 mil millones de estrellas y es clasificada como una galaxia de Seyfert de tipo 2, lo que significa que posee un núcleo galáctico activo que emite una radiación intensa.",
+    "visual_tip": "Para observar esta galaxia, busca la constelación de Coma Berenices en una noche despejada. Utiliza un telescopio de apertura media y apunta hacia el corazón del Cúmulo de Virgo; verás una mancha ovalada y difusa que destaca sobre el fondo oscuro.",
+    "wikipedia_qid": "Q14048"
+  },
+  "d_J1235264+142946": {
+    "name": "Messier 91",
+    "common_names": [],
+    "description": "Esta galaxia espiral barrada se encuentra a unos 63 millones de años luz de distancia, dentro del Cúmulo de Virgo. Es un miembro destacado de nuestro supercúmulo local y presenta una estructura espiral bien definida que puedes observar en la constelación de Coma Berenices.",
+    "fun_fact": "Durante casi dos siglos, esta galaxia fue un misterio astronómico; debido a un error de cálculo de Charles Messier, se consideró un objeto perdido hasta que, en 1969, se confirmó que era la misma galaxia catalogada posteriormente por William Herschel.",
+    "visual_tip": "Como es el objeto más tenue del catálogo Messier, con una magnitud aparente de 10.2, apunta tu telescopio hacia la constelación de Coma Berenices en una noche muy oscura y utiliza visión periférica para detectar su débil brillo.",
+    "wikipedia_qid": "Q14344"
+  },
+  "d_J1235398+123322": {
+    "name": "Messier 89",
+    "common_names": [],
+    "description": "Messier 89 es una galaxia elíptica situada en la constelación de Virgo, a unos 50 millones de años luz de distancia. Descubierta por Charles Messier en 1781, esta galaxia es un miembro destacado del Cúmulo de Virgo.",
+    "fun_fact": "A diferencia de muchas otras galaxias elípticas que tienen formas alargadas, M89 parece ser casi perfectamente esférica, lo que la convierte en un objeto fascinante para los astrónomos que estudian la estructura galáctica.",
+    "visual_tip": "Busca esta galaxia en el corazón del Cúmulo de Virgo. Debido a su magnitud aparente de 9.8, utiliza un telescopio de apertura media en una noche despejada y oscura para distinguirla de las estrellas circundantes.",
+    "wikipedia_qid": "Q14337"
+  },
+  "d_J1236498+130946": {
+    "name": "Messier 90",
+    "common_names": [
+      "Galaxia Carabin"
+    ],
+    "description": "Messier 90 es una galaxia espiral intermedia situada a unos 60 millones de años luz de distancia, en la constelación de Virgo. Esta impresionante galaxia destaca por su estructura de anillo interno débil y es un miembro prominente del Cúmulo de Virgo.",
+    "fun_fact": "A diferencia de la mayoría de las galaxias, Messier 90 presenta un desplazamiento al azul, lo que significa que se está moviendo hacia nosotros en lugar de alejarse, debido a su alta velocidad dentro del Cúmulo de Virgo.",
+    "visual_tip": "Para observar esta galaxia, busca un cielo oscuro y utiliza un telescopio de apertura media. Apunta hacia la constelación de Virgo y compara su posición con las galaxias vecinas del cúmulo para identificar su forma espiral alargada.",
+    "wikipedia_qid": "Q14343"
+  },
+  "d_J1237435+114905": {
+    "name": "Messier 58",
+    "common_names": [],
+    "description": "Messier 58 es una galaxia espiral barrada intermedia con una estructura de anillo interno débil, situada a unos 68 millones de años luz de distancia en la constelación de Virgo. Es una de las galaxias más brillantes del Cúmulo de Virgo y fue descubierta por Charles Messier en 1779.",
+    "fun_fact": "Durante mucho tiempo, desde su descubrimiento en 1779, se consideró posiblemente el objeto astronómico más lejano conocido, un título que mantuvo hasta que se comprendió mejor la escala del universo en la década de 1920.",
+    "visual_tip": "Para observar esta galaxia, busca un cielo oscuro y utiliza un telescopio de apertura media. Apunta hacia la constelación de Virgo y compara su brillo con las galaxias vecinas del cúmulo para identificar su núcleo brillante y su forma espiral.",
+    "wikipedia_qid": "Q13970"
+  },
+  "d_J1239279-264438": {
+    "name": "Messier 68",
+    "common_names": [],
+    "description": "Messier 68 es un impresionante cúmulo globular situado a unos 33.600 años luz de la Tierra, en la constelación de Hidra. Es conocido por ser uno de los cúmulos más pobres en metales, lo que sugiere que es un objeto extremadamente antiguo que podría haber sido capturado por nuestra galaxia desde una galaxia satélite.",
+    "fun_fact": "Este cúmulo es un laboratorio estelar fascinante: alberga al menos 50 estrellas variables, la mayoría de tipo RR Lyrae, que ayudan a los astrónomos a medir distancias cósmicas con gran precisión.",
+    "visual_tip": "Para verlo, busca la constelación de Hidra en una noche despejada. Utiliza un telescopio de apertura media para resolver sus estrellas individuales, ya que, aunque es brillante, su estructura es bastante dispersa en los bordes.",
+    "wikipedia_qid": "Q14000"
+  },
+  "d_J1239594-113722": {
+    "name": "Galaxia del Sombrero",
+    "common_names": [
+      "Sombrero"
+    ],
+    "description": "La Galaxia del Sombrero (M104) es una impresionante galaxia espiral no barrada que abarca unos 50.000 años luz (470 billones de km), reconocible al instante por su enorme protuberancia central y un grueso y oscuro borde de polvo que la oscurece. Situada a 28 millones de años luz de distancia, en la constelación de Virgo, brilla con una magnífica magnitud aparente de 8,0, lo que la convierte en un objetivo fácil para instrumentos pequeños. A través de prismáticos estándar bajo cielos oscuros, aparece como una aguja de luz afilada y alargada, mientras que un pequeño telescopio de 100 mm separa claramente su núcleo brillante del amplio «ala de sombrero» de su borde exterior.",
+    "fun_fact": "¡Esta galaxia es un peso pesado cósmico absoluto envuelto en un misterio! Los estudios de los telescopios espaciales modernos han revelado que la Galaxia del Sombrero no solo tiene un sistema de cúmulos normal, sino que alberga un asombroso enjambre de casi 2.000 cúmulos globulares orbitando su núcleo, casi diez veces más que toda nuestra Vía Láctea. Además, el seguimiento preciso de la velocidad orbital muestra que su agujero negro supermasivo central es un auténtico monstruo, con una masa de mil millones de soles, lo que lo convierte en uno de los agujeros negros más masivos jamás hallados en una galaxia cercana.",
+    "visual_tip": "Para avistar la M104, mire aproximadamente 11 grados al oeste de Spica, la estrella más brillante de Virgo, o utilice el característico cuadrilátero de cuatro estrellas de Corvus el Cuervo para saltar justo al otro lado de la frontera hacia el noreste. Debido a que la galaxia está inclinada casi de canto con respecto a nuestra línea de visión (a solo 6 grados), su brillo superficial está extremadamente concentrado y soporta bien la contaminación lumínica suburbana, aunque se requiere un telescopio de 200 mm o mayor combinado con grandes aumentos para rebanar visualmente su núcleo brillante con la banda de polvo cósmico negra como la tinta.",
+    "wikipedia_qid": "Q91461627"
+  },
+  "d_J1242022+113848": {
+    "name": "Messier 59",
+    "common_names": [],
+    "description": "Messier 59 es una galaxia elíptica situada a unos 50 millones de años luz de distancia, en la constelación de Virgo. Es un miembro destacado del Cúmulo de Virgo y presenta una forma notablemente aplanada con un núcleo que alberga un agujero negro supermasivo.",
+    "fun_fact": "El núcleo de esta galaxia contiene un disco estelar joven que gira en sentido contrario al resto de la galaxia, lo que sugiere que M59 pudo haber experimentado una fusión galáctica en su pasado remoto.",
+    "visual_tip": "Busca esta galaxia en la constelación de Virgo utilizando un telescopio de apertura media. Apunta cerca de la galaxia Messier 60, ya que ambas aparecen relativamente próximas en el campo de visión.",
+    "wikipedia_qid": "Q13971"
+  },
+  "d_J1243399+113309": {
+    "name": "Messier 60",
+    "common_names": [],
+    "description": "Messier 60 es una impresionante galaxia elíptica situada a unos 57 millones de años luz de distancia, en la constelación de Virgo. Es un miembro destacado del Cúmulo de Virgo y forma un par visualmente fascinante con la galaxia espiral cercana NGC 4647.",
+    "fun_fact": "En el corazón de esta galaxia reside uno de los agujeros negros supermasivos más grandes jamás descubiertos, con una masa equivalente a 4.500 millones de veces la de nuestro Sol.",
+    "visual_tip": "Para observarla, busca la constelación de Virgo en una noche despejada. Utiliza un telescopio de apertura media para distinguir su núcleo brillante y, si tienes buenas condiciones, intenta comparar su forma elíptica con la galaxia vecina Messier 59, que también se encuentra en la misma zona.",
+    "wikipedia_qid": "Q13976"
+  },
+  "d_J1250530+410712": {
+    "name": "Messier 94",
+    "common_names": [
+      "Galaxia Ojo de Gato",
+      "Galaxia Ojo de Cocodrilo"
+    ],
+    "description": "Messier 94 es una galaxia espiral situada en la constelación de Canes Venatici, a unos 16 millones de años luz de distancia. Se caracteriza por su estructura de doble anillo y un núcleo brillante, lo que le otorga un aspecto fascinante a través de telescopios.",
+    "fun_fact": "Aunque a veces se clasifica como una galaxia espiral barrada, su estructura central es en realidad más ovalada que una barra definida, lo que la convierte en un objeto de estudio interesante para los astrónomos.",
+    "visual_tip": "Busca esta galaxia en la constelación de los Lebreles (Canes Venatici). Utiliza un telescopio de apertura media para apreciar mejor su núcleo brillante y el anillo interior, ya que su magnitud aparente de 8.2 la hace un objetivo excelente para observadores aficionados.",
+    "wikipedia_qid": "Q14349"
+  },
+  "d_J1256436+214057": {
+    "name": "Galaxia del Ojo Negro",
+    "common_names": [
+      "Bella Durmiente",
+      "Ojo Negro",
+      "Ojo del Diablo"
+    ],
+    "description": "La Galaxia del Ojo Negro (M64) es una extraordinaria galaxia espiral que abarca aproximadamente 54.000 años luz (510 billones de km), reconocible al instante por la enorme y amplia silueta de polvo interestelar oscuro que oscurece su brillante núcleo. Situada a 17 millones de años luz de distancia, en la constelación de Coma Berenices, brilla con una magnitud aparente de 8,5 y puede vislumbrarse fácilmente a través de prismáticos grandes como un óvalo suave y brillante bajo cielos oscuros. Un pequeño telescopio de 100 mm aísla bellamente su núcleo de alto contraste, revelando la prominente banda de polvo cósmico que da a la galaxia su icónica apariencia de moretón.",
+    "fun_fact": "Esta galaxia posee una de las dinámicas internas más extrañas del universo: ¡gira en dos direcciones opuestas a la vez! Mientras que las estrellas y el disco de gas molecular interior giran en el sentido de las agujas del reloj hasta un radio de 3.000 años luz, la enorme nube de gas hidrógeno de su disco exterior gira completamente en sentido contrario. Las revolucionarias imágenes de campo profundo confirmaron que este violento choque atmosférico fue causado por la M64 al engullir por completo una galaxia enana satélite rica en hidrógeno hace más de mil millones de años, convirtiendo su zona fronterera en una fábrica de brotes estelares altamente comprimida y turbulenta.",
+    "visual_tip": "Para localizar la M64, desplace su telescopio aproximadamente 5 grados al noroeste de la estrella Diadem (Alpha Comae Berenices). Debido a que su estructura central tiene un brillo superficial inusualmente alto, es un objetivo notablemente resistente que soporta bien la contaminación lumínica urbana moderada. Sin embargo, para resolver claramente el delicado espacio entre el brillante núcleo central y la profunda banda de polvo negro como la tinta que lo envuelve, necesitará un telescopio de 150 mm o mayor junto con una visión estable de grandes aumentos en una noche sin luna.",
+    "wikipedia_qid": "Q13983"
+  },
+  "d_J1312552+181005": {
+    "name": "Messier 53",
+    "common_names": [],
+    "description": "Messier 53 es un impresionante cúmulo globular situado en la constelación de Coma Berenices, a unos 58.000 años luz de nuestro sistema solar. Este antiguo conjunto estelar destaca por ser uno de los cúmulos más pobres en metales de la Vía Láctea, albergando estrellas que se formaron principalmente en la primera generación del universo.",
+    "fun_fact": "Se cree que Messier 53 podría estar interactuando dinámicamente con el cúmulo vecino NGC 5053, formando una estructura de puente de marea única que no se ha observado en ninguna otra parte de nuestra galaxia.",
+    "visual_tip": "Busca este cúmulo en una noche despejada utilizando binoculares o un telescopio pequeño. Apunta hacia la constelación de Coma Berenices y utiliza visión periférica para apreciar mejor su núcleo brillante y su forma esférica.",
+    "wikipedia_qid": "Q13960"
+  },
+  "d_J1315492+420145": {
+    "name": "Galaxia del Girasol",
+    "description": "La Galaxia del Girasol (M63) es una llamativa galaxia espiral floculenta que abarca aproximadamente 98.000 años luz (930 billones de km), caracterizada por una disposición de brazos de formación estelar apretados y en forma de parches. Situada a 27 millones de años luz de distancia, en la constelación de Canes Venatici, brilla con una magnitud aparente de 8,6 y aparece a través de pequeños telescopios como una bruma ovalada brillante y compacta con un núcleo muy condensado. Los instrumentos de tamaño medio, de 150 mm o más, revelan bellamente la textura granulada y multibrazo que rodea su núcleo, que imita visualmente la densa disposición de las semillas en un girasol.",
+    "fun_fact": "Esta galaxia es un ejemplo sobresaliente de espiral «floculenta», lo que significa que sus brazos espirales son irregulares y discontinuos en lugar de largos y amplios. Estudios recientes de telescopios espaciales y de imágenes de campo profundo han cartografiado un inmenso sistema de bucles de tenues corrientes de marea estelares que envuelven a la M63, que son los restos estructurales fantasmales de una galaxia satélite más pequeña que la Galaxia del Girasol despedazó por completo y canibalizó hace unos 5.000 millones de años.",
+    "visual_tip": "Para localizar fácilmente la M63, trace una trayectoria aproximadamente a un tercio del camino desde Cor Caroli (Alpha Canum Venaticorum) hasta Alkaid, en el extremo del mango de la Osa Mayor. Debido a su elevado brillo superficial, resiste mejor la contaminación lumínica que la cercana Galaxia del Remolino, pero necesitará un telescopio de 200 mm o mayor, combinado con oculares de campo amplio y pocos aumentos, para discernir dónde termina su núcleo brillante y dónde comienzan sus delicados y moteados flecos exteriores.",
+    "wikipedia_qid": "Q13981"
+  },
+  "d_J1329526+471142": {
+    "name": "Galaxia del Remolino",
+    "common_names": [
+      "Remolino"
+    ],
+    "description": "La Galaxia del Remolino (M51) es una clásica galaxia espiral de gran diseño que abarca unos 76.000 años luz (720 billones de km), famosamente encerrada en un tira y afloja cósmico con una galaxia compañera más pequeña, la NGC 5195. Situada a 23 millones de años luz de distancia, en la constelación de Canes Venatici, brilla con una magnitud aparente de 8,4 y parece una mancha suave de dos cabezas a través de prismáticos pequeños en condiciones prístinas. Un pequeño telescopio de 100 mm separa claramente los dos núcleos galácticos, mientras que los instrumentos de tamaño medio revelan el tenue y etéreo puente de estrellas de marea y gas que los conecta.",
+    "fun_fact": "¡Este objeto es un hito histórico en la astronomía! En 1845, William Parsons (el tercer conde de Rosse) utilizó su monstruoso telescopio de 1,83 m para dibujar la M51, convirtiéndola en el primer objeto celeste reconocido con una estructura en espiral. Mucho antes de que nadie supiera que existían «galaxias» fuera de la nuestra, sus famosos dibujos de los brazos en forma de remolino de la M51 proporcionaron la prueba visual fundamental que inspiró directamente nuestra comprensión moderna del universo en expansión y rotación.",
+    "visual_tip": "Para localizar la M51, sitúa Alkaid —la estrella situada en el extremo mismo del mango de la Osa Mayor— y mira aproximadamente 3,5 grados hacia el suroeste. Aunque puede vislumbrarse como una nube fantasmal con prismáticos de 10x50 en una noche negra como la tinta y sin luna, necesitará un telescopio de 200 mm o mayor, junto con grandes aumentos, para resolver claramente los brazos espirales de gran diseño que se curvan desde su brillante núcleo.",
+    "wikipedia_qid": "Q13957"
+  },
+  "d_J1337009-295156": {
+    "name": "Molinillo Austral",
+    "common_names": [],
+    "description": "El Molinillo Austral es una impresionante galaxia espiral barrada situada a unos 15 millones de años luz de la Tierra, en la frontera entre las constelaciones de Hidra y Centauro. Es una de las galaxias espirales más brillantes y cercanas que podemos observar en el cielo nocturno.",
+    "fun_fact": "Su apodo de 'Molinillo Austral' proviene de su notable parecido visual con la famosa Galaxia del Molinete, situada en el hemisferio norte.",
+    "visual_tip": "Busca esta galaxia con unos prismáticos bajo un cielo oscuro, ya que su magnitud aparente de 7.5 la hace accesible si sabes exactamente dónde mirar en la constelación de Hidra.",
+    "wikipedia_qid": "Q14030"
+  },
+  "d_J1342116+282238": {
+    "name": "Messier 3",
+    "common_names": [],
+    "description": "Messier 3 es un impresionante cúmulo globular situado a unos 33.900 años luz de la Tierra, en la constelación de los Lebreles. Con cerca de medio millón de estrellas, es uno de los cúmulos más grandes y brillantes que puedes observar en el cielo nocturno.",
+    "fun_fact": "Este cúmulo es un auténtico veterano del cosmos; se estima que tiene unos 11.400 millones de años de antigüedad, lo que lo convierte en un testigo casi tan antiguo como el propio universo.",
+    "visual_tip": "Busca este cúmulo en la constelación de Canes Venatici. Aunque es visible con binoculares bajo cielos oscuros, utiliza un telescopio de apertura media para empezar a resolver sus estrellas periféricas y disfrutar de su forma esférica densa.",
+    "wikipedia_qid": "Q78384126"
+  },
+  "d_J1403125+542055": {
+    "name": "Galaxia del Molinete",
+    "common_names": [],
+    "description": "La Galaxia del Molinete es una impresionante galaxia espiral vista de frente, situada a unos 21 millones de años luz de distancia en la constelación de la Osa Mayor. Con un diámetro de 252.000 años luz, es significativamente más grande que nuestra propia Vía Láctea y contiene aproximadamente un billón de estrellas.",
+    "fun_fact": "En 2006, la NASA y la Agencia Espacial Europea publicaron una imagen de esta galaxia que, en su momento, fue la más grande y detallada jamás capturada por el Telescopio Espacial Hubble, compuesta por 51 exposiciones individuales.",
+    "visual_tip": "Busca esta galaxia en la constelación de la Osa Mayor. Debido a su magnitud aparente, utiliza un telescopio de apertura media en una noche despejada y sin contaminación lumínica para intentar apreciar su estructura espiral.",
+    "wikipedia_qid": "Q14371"
+  },
+  "d_J1506295+554547": {
+    "name": "Galaxia del Huso",
+    "common_names": [
+      "Messier 102"
+    ],
+    "description": "La Galaxia del Huso es una impresionante galaxia lenticular situada en la constelación de Draco, a unos 50 millones de años luz de distancia. Se caracteriza por ser vista de canto, lo que permite observar una marcada línea de polvo que atraviesa su disco.",
+    "fun_fact": "Las mediciones de su sistema de cúmulos globulares sugieren que esta galaxia tiene una cantidad inusualmente baja de materia oscura en comparación con otras galaxias similares.",
+    "visual_tip": "Busca esta galaxia en la constelación de Draco. Utiliza un telescopio de apertura media y apunta hacia la zona entre las estrellas Iota y Theta Draconis; debido a su magnitud de 9.9, verás una forma alargada y delgada muy característica.",
+    "wikipedia_qid": "Q830937"
+  },
+  "d_J1518332+020451": {
+    "name": "Messier 5",
+    "common_names": [],
+    "description": "Messier 5 es uno de los cúmulos globulares más grandes y antiguos conocidos, ubicado a unos 24.500 años luz de distancia en la constelación de la Serpiente. Este impresionante conjunto contiene más de 100.000 estrellas densamente agrupadas que se formaron hace más de 10.000 millones de años.",
+    "fun_fact": "Este cúmulo es famoso por albergar más de 100 estrellas variables, la mayoría de tipo RR Lyrae, que ayudan a los astrónomos a medir con precisión las distancias en el universo.",
+    "visual_tip": "Busca este cúmulo en una noche despejada y oscura; aunque es visible con binoculares como una mancha difusa, utiliza un telescopio de apertura media para empezar a resolver sus estrellas individuales en los bordes.",
+    "wikipedia_qid": "Q11217"
+  },
+  "d_J1617024-225833": {
+    "name": "Messier 80",
+    "common_names": [],
+    "description": "Messier 80 es uno de los cúmulos globulares más densos de la Vía Láctea, albergando cientos de miles de estrellas en un espacio relativamente compacto. Situado a unos 32.600 años luz de distancia en la constelación de Escorpio, este objeto destaca por su alta concentración de estrellas y su fascinante historia estelar.",
+    "fun_fact": "En 1860, este cúmulo fue el escenario de una nova espectacular llamada T Scorpii, que brilló tanto que durante un breve periodo superó en luminosidad a todo el cúmulo de estrellas que la rodeaba.",
+    "visual_tip": "Busca este cúmulo en la constelación de Escorpio, justo a medio camino entre las estrellas Antares y Beta Scorpii. Utiliza un telescopio modesto y apunta hacia esa región bajo cielos oscuros para ver una pequeña bola de luz moteada.",
+    "wikipedia_qid": "Q14021"
+  },
+  "d_J1623352-263132": {
+    "name": "Messier 4",
+    "common_names": [
+      "Cúmulo globular de la Araña"
+    ],
+    "description": "Messier 4 es un impresionante cúmulo globular situado en la constelación de Escorpio, a unos 6.000 años luz de distancia de la Tierra. Es notable por ser el cúmulo globular más cercano a nosotros y el primero en el que los astrónomos pudieron distinguir estrellas individuales.",
+    "fun_fact": "Este cúmulo es extremadamente antiguo, con una edad estimada de unos 12.200 millones de años, lo que lo convierte en uno de los objetos más veteranos de nuestra galaxia.",
+    "visual_tip": "Para encontrarlo, busca la brillante estrella Antares en Escorpio; el cúmulo se encuentra a solo 1,3 grados al oeste. Utiliza unos prismáticos o un telescopio pequeño para resolver sus estrellas, ya que es uno de los cúmulos más fáciles de observar.",
+    "wikipedia_qid": "Q11212"
+  },
+  "d_J1632318-130313": {
+    "name": "Messier 107",
+    "common_names": [],
+    "description": "Messier 107 es un cúmulo globular situado en la constelación de Ofiuco. Se encuentra a una distancia aproximada de 20.900 años luz de la Tierra y destaca por su estructura relativamente dispersa en comparación con otros cúmulos globulares más densos.",
+    "fun_fact": "Fue el último objeto añadido al catálogo de Charles Messier por el astrónomo Helen Sawyer Hogg en 1947, aunque Messier lo observó originalmente en 1782.",
+    "visual_tip": "Para localizarlo, apunta tu telescopio hacia la constelación de Ofiuco. Utiliza una técnica de visión periférica para apreciar mejor su tenue brillo y su forma ligeramente irregular.",
+    "wikipedia_qid": "Q18334765"
+  },
+  "d_J1641416+362740": {
+    "name": "Cúmulo de Hércules",
+    "common_names": [
+      "Gran Cúmulo de Hércules"
+    ],
+    "description": "El Cúmulo de Hércules es uno de los cúmulos globulares más espectaculares y conocidos del hemisferio norte. Situado a unos 24.100 años luz de distancia, alberga cientos de miles de estrellas densamente agrupadas en la constelación de Hércules.",
+    "fun_fact": "En 1974, este cúmulo fue el objetivo del famoso Mensaje de Arecibo, una señal de radio enviada al espacio profundo con la esperanza de contactar con civilizaciones extraterrestres.",
+    "visual_tip": "Busca el cúmulo entre las estrellas Zeta y Eta Herculis. Aunque es visible a simple vista bajo cielos muy oscuros, utiliza unos prismáticos o un telescopio pequeño para resolver sus estrellas periféricas y disfrutar de su impresionante brillo.",
+    "wikipedia_qid": "Q11312"
+  },
+  "d_J1647141-015654": {
+    "name": "Messier 12",
+    "common_names": [],
+    "description": "Messier 12 es un cúmulo globular situado en la constelación de Ofiuco, a unos 16.400 años luz de la Tierra. Aunque fue descrito originalmente por Charles Messier como una \"nebulosa sin estrellas\", hoy sabemos que es un sistema estelar fascinante con una estructura inusualmente dispersa.",
+    "fun_fact": "Un estudio de 2006 reveló que este cúmulo tiene una cantidad inusualmente baja de estrellas de baja masa, probablemente porque fueron arrancadas al atravesar el plano de la Vía Láctea.",
+    "visual_tip": "Busca este cúmulo a unos 3° al noroeste de su vecino, el cúmulo M10. En condiciones de cielo oscuro, puedes verlo con binoculares, pero utiliza un telescopio de al menos 20 cm de apertura si quieres resolver sus estrellas individuales.",
+    "wikipedia_qid": "Q11307"
+  },
+  "d_J1657090-040601": {
+    "name": "Messier 10",
+    "common_names": [],
+    "description": "Messier 10 es un impresionante cúmulo globular situado en la constelación de Ofiuco, a unos 14.300 años luz de la Tierra. Este denso conjunto de estrellas fue descubierto por Charles Messier en 1764 y destaca por su núcleo brillante y su estructura moderadamente pobre en metales.",
+    "fun_fact": "Aunque Charles Messier lo describió originalmente como una 'nebulosa sin estrellas', William Herschel logró resolverlo años después, maravillándose ante su aspecto de cúmulo de estrellas extremadamente comprimidas.",
+    "visual_tip": "Busca el cúmulo a un grado de distancia al oeste de la estrella 30 Ophiuchi. Utiliza un telescopio de tamaño medio para apreciar mejor su núcleo brillante, ya que su tamaño aparente es aproximadamente dos tercios del diámetro de la Luna.",
+    "wikipedia_qid": "Q11267"
+  },
+  "d_J1701126-300644": {
+    "name": "Messier 62",
+    "common_names": [
+      "Cúmulo parpadeante"
+    ],
+    "description": "Messier 62 es un impresionante cúmulo globular situado en la constelación de Ofiuco, a unos 21.500 años luz de la Tierra. Es uno de los cúmulos más masivos y luminosos de nuestra galaxia, destacando por su forma casi perfectamente esférica y su alta densidad estelar.",
+    "fun_fact": "Se le conoce como el 'Cúmulo parpadeante' debido a la enorme cantidad de estrellas variables que alberga; de hecho, es uno de los cúmulos con mayor población de estrellas variables RR Lyrae de toda la Vía Láctea.",
+    "visual_tip": "Busca este cúmulo en la parte sur de Ofiuco. Utiliza un telescopio de apertura media para resolver sus estrellas periféricas, ya que su brillo aparente de magnitud 6.6 lo hace un objetivo fascinante pero que requiere cielos oscuros para apreciar bien su núcleo denso.",
+    "wikipedia_qid": "Q13980"
+  },
+  "d_J1702376-261604": {
+    "name": "Messier 19",
+    "common_names": [],
+    "description": "Messier 19 es un cúmulo globular situado en la constelación de Ofiuco, a unos 28.700 años luz de distancia de nosotros. Es uno de los cúmulos más achatados conocidos, aunque esta forma se debe en gran medida a la absorción de luz causada por el polvo interestelar en su borde oriental.",
+    "fun_fact": "Aunque parece tener una forma ovalada, si lo observaras en el espectro infrarrojo, verías que es prácticamente esférico; el achatamiento es solo una ilusión óptica provocada por nubes de gas y polvo que bloquean parte de su luz.",
+    "visual_tip": "Busca este cúmulo a unos 4,5 grados al oeste-suroeste de la estrella Theta Ophiuchi. Con unos prismáticos de 50 mm podrás distinguirlo como un punto de luz difuso, pero utiliza un telescopio de al menos 25 cm de apertura para apreciar mejor su núcleo y su halo.",
+    "wikipedia_qid": "Q11374"
+  },
+  "d_J1717073+430809": {
+    "name": "Messier 92",
+    "common_names": [],
+    "description": "Messier 92 es un impresionante cúmulo globular situado en la constelación de Hércules, a unos 26.700 años luz de distancia de la Tierra. Es uno de los cúmulos más brillantes y antiguos de nuestra galaxia, albergando cientos de miles de estrellas densamente agrupadas.",
+    "fun_fact": "Debido a su bajísima metalicidad, este cúmulo es extremadamente antiguo, conteniendo algunas de las estrellas más viejas conocidas en la Vía Láctea, formadas poco después del Big Bang.",
+    "visual_tip": "Busca este cúmulo en la parte superior de la constelación de Hércules. Aunque es visible con binoculares bajo cielos oscuros, utiliza un telescopio de apertura media para empezar a resolver sus estrellas individuales en los bordes.",
+    "wikipedia_qid": "Q78262275"
+  },
+  "d_J1719117-183058": {
+    "name": "Messier 9",
+    "common_names": [],
+    "description": "Messier 9 es un cúmulo globular situado en la constelación de Ofiuco, a unos 25.800 años luz de la Tierra. Este denso conjunto de estrellas se encuentra sorprendentemente cerca del centro de nuestra galaxia, a solo 5.500 años luz del núcleo galáctico.",
+    "fun_fact": "Aunque Charles Messier lo describió originalmente como una \"nebulosa sin estrellas\", William Herschel logró resolver sus estrellas individuales años más tarde, revelando una estructura densamente poblada con una luminosidad total 120.000 veces superior a la del Sol.",
+    "visual_tip": "Para observar este cúmulo, apunta tu telescopio hacia la parte sur de Ofiuco, al suroeste de la estrella Eta Ophiuchi. Utiliza un telescopio de tamaño moderado para distinguir sus estrellas más brillantes, que tienen una magnitud aparente de 13.5.",
+    "wikipedia_qid": "Q11258"
+  },
+  "d_J1737361-031445": {
+    "name": "Messier 14",
+    "common_names": [],
+    "description": "Messier 14 es un cúmulo globular situado a unos 30.000 años luz de distancia en la constelación de Ofiuco. Este denso conjunto alberga cientos de miles de estrellas y destaca por su forma notablemente alargada.",
+    "fun_fact": "En 1938, una nova estalló dentro del cúmulo, pero el evento pasó desapercibido hasta que los astrónomos descubrieron su rastro en placas fotográficas antiguas décadas más tarde.",
+    "visual_tip": "Busca este cúmulo con binoculares bajo cielos oscuros, ya que su magnitud aparente de 7.6 lo hace accesible. Si utilizas un telescopio de tamaño medio, intenta distinguir algunas de sus estrellas individuales más brillantes.",
+    "wikipedia_qid": "Q11320"
+  },
+  "d_J1740144-321416": {
+    "name": "Cúmulo de la Mariposa",
+    "common_names": [],
+    "description": "El Cúmulo de la Mariposa es un brillante cúmulo abierto de estrellas situado en la constelación de Escorpio, a unos 1590 años luz de distancia. Su nombre proviene de la forma característica que dibujan sus estrellas, que recuerda a una mariposa con las alas extendidas.",
+    "fun_fact": "Aunque la mayoría de sus estrellas son jóvenes y azules, el miembro más brillante del cúmulo es una gigante naranja llamada BM Scorpii, que destaca notablemente por su color frente a sus compañeras azules.",
+    "visual_tip": "Busca este cúmulo cerca del Cúmulo de Ptolomeo en la cola de Escorpio. Utiliza unos prismáticos o un telescopio de baja potencia para apreciar mejor su forma de mariposa, ya que es un objeto ideal para observaciones de campo amplio.",
+    "wikipedia_qid": "Q11225"
+  },
+  "d_J1753440-344936": {
+    "name": "Cúmulo de Ptolomeo",
+    "common_names": [],
+    "description": "El Cúmulo de Ptolomeo es un brillante cúmulo abierto de estrellas situado en la constelación de Escorpio. Ubicado a unos 980 años luz de distancia, es uno de los objetos celestes más destacados y fáciles de observar a simple vista en el cielo nocturno.",
+    "fun_fact": "Es el objeto de Messier situado más al sur de todo el catálogo, lo que lo convierte en una joya astronómica para los observadores del hemisferio sur y de las latitudes bajas del norte.",
+    "visual_tip": "Busca el aguijón de Escorpio en el cielo nocturno; verás el cúmulo justo al lado. Como es muy grande y brillante, apunta tus prismáticos hacia la zona para disfrutar de una vista espectacular de sus estrellas individuales.",
+    "wikipedia_qid": "Q11234"
+  },
+  "d_J1756561-185821": {
+    "name": "Messier 23",
+    "common_names": [],
+    "description": "Messier 23 es un cúmulo abierto de estrellas situado en la parte noroeste de la constelación de Sagitario. Se encuentra a unos 2.050 años luz de distancia y contiene entre 169 y 414 estrellas, con una edad estimada de 330 millones de años.",
+    "fun_fact": "Aunque parece estar frente a una red de gas y polvo, es probable que no exista una asociación física entre el cúmulo y estas nubes, ya que el cúmulo simplemente se encuentra en esa línea de visión.",
+    "visual_tip": "Busca este cúmulo en condiciones de cielo oscuro; puedes verlo con binoculares o un telescopio pequeño. Apunta hacia la constelación de Sagitario y explora la zona para distinguir sus estrellas más brillantes.",
+    "wikipedia_qid": "Q11396"
+  },
+  "d_J1802420-225818": {
+    "name": "Nebulosa Trífida",
+    "common_names": [],
+    "description": "La Nebulosa Trífida es una región de formación estelar única situada a unos 4100 años luz de distancia en la constelación de Sagitario. Este objeto combina de forma fascinante una nebulosa de emisión rojiza, una nebulosa de reflexión azulada y una nebulosa oscura que crea su característico aspecto dividido en tres lóbulos.",
+    "fun_fact": "Su nombre significa 'dividida en tres lóbulos', un nombre que hace referencia a las franjas de polvo oscuro que parecen fragmentar la nebulosa cuando la observas a través de un telescopio.",
+    "visual_tip": "Busca la nebulosa en la parte noroeste de la constelación de Sagitario. Utiliza un telescopio pequeño para apreciar su peculiar estructura y compara las zonas brillantes de emisión con las áreas más oscuras y las regiones azules de reflexión.",
+    "wikipedia_qid": "Q11377"
+  },
+  "d_J1803370-242312": {
+    "name": "Nebulosa de la Laguna",
+    "common_names": [
+      "Nebulosa del Reloj de Arena"
+    ],
+    "description": "La Nebulosa de la Laguna es una gigantesca región de formación estelar situada en la constelación de Sagitario, a unos 4.100 años luz de distancia. Es una de las pocas nebulosas que puedes observar a simple vista desde latitudes medias, destacando por su brillo y su compleja estructura de gas y polvo.",
+    "fun_fact": "Es una de las dos únicas nebulosas de formación estelar que son débilmente visibles a simple vista desde latitudes medias del hemisferio norte, siendo la otra la famosa Nebulosa de Orión.",
+    "visual_tip": "Busca la constelación de Sagitario en las noches de verano. Aunque es visible a simple vista bajo cielos muy oscuros, utiliza unos prismáticos o un telescopio pequeño para apreciar mejor los detalles de su estructura y el cúmulo estelar que alberga en su interior.",
+    "wikipedia_qid": "Q11243"
+  },
+  "d_J1804100-223000": {
+    "name": "Messier 21",
+    "common_names": [
+      "Cruz de Webb"
+    ],
+    "description": "Messier 21 es un cúmulo abierto joven y compacto situado a unos 3.930 años luz de distancia en la constelación de Sagitario. Aunque se encuentra cerca de la famosa Nebulosa Trífida en el cielo, no tiene ninguna relación física con ella.",
+    "fun_fact": "A día de hoy, Messier 21 es uno de los pocos objetos del catálogo Messier que todavía no ha sido fotografiado por el Telescopio Espacial Hubble.",
+    "visual_tip": "Como su magnitud es de 6.5, no podrás verlo a simple vista. Busca un cielo oscuro y utiliza unos prismáticos pequeños para localizarlo fácilmente cerca de la Nebulosa Trífida.",
+    "wikipedia_qid": "Q11383"
+  },
+  "d_J1816480-183300": {
+    "name": "Pequeña Nube Estelar de Sagitario",
+    "common_names": [],
+    "description": "La Pequeña Nube Estelar de Sagitario es un impresionante asterismo que destaca como una densa concentración de estrellas en la Vía Láctea. A diferencia de otros objetos del cielo profundo, no es un cúmulo estelar, sino una ventana clara a través de las nubes de polvo interestelar que nos permite observar miles de estrellas distantes en el brazo de Sagitario.",
+    "fun_fact": "Aunque a menudo se confunde con un cúmulo estelar, este objeto es en realidad una región del espacio relativamente libre de polvo, lo que nos brinda una vista privilegiada hacia las profundidades de nuestra propia galaxia.",
+    "visual_tip": "Busca esta nube estelar en la constelación de Sagitario durante las noches de verano. Utiliza unos prismáticos de gran campo para apreciar mejor la inmensa cantidad de estrellas que parecen agruparse en este pequeño parche del cielo.",
+    "wikipedia_qid": "Q6720474"
+  },
+  "d_J1818451-134731": {
+    "name": "Nebulosa del Águila",
+    "common_names": [
+      "Reina de las Estrellas",
+      "Pilares de la Creación"
+    ],
+    "description": "La Nebulosa del Águila (M16) es una colosal nebulosa de emisión y vivero estelar activo que abarca aproximadamente 70 por 55 años luz (660 billones de km). Situada a 7.000 años luz de distancia, en la constelación de Serpens, brilla con una magnitud aparente de 6,0 y aparece a través de prismáticos como una mancha tenue y brillante que rodea un cúmulo compacto de estrellas recién nacidas. En su núcleo se encuentra un intenso entorno de formación estelar iluminado por la radiación ultravioleta del joven cúmulo abierto NGC 6611, que esculpe y ioniza las nubes circundantes de gas hidrógeno cósmico.",
+    "fun_fact": "Esta nebulosa alberga los famosos «Pilares de la Creación», imponentes columnas de gas frío y polvo que alcanzan de 4 a 5 años luz (entre 38 y 47 billones de km) de altura. Análisis recientes de infrarrojos de alta resolución procedentes de telescopios espaciales revelan que estas monumentales estructuras están siendo excavadas y evaporadas activamente desde su interior por las propias protoestrellas que se forman en su interior, lo que significa que los pilares se encuentran en un implacable tira y afloja cósmico entre la creación y la destrucción.",
+    "visual_tip": "Para avistar la M16, busque en el cielo meridional, cerca de los límites de las constelaciones de Serpens, Sagitario y Scutum. Aunque los prismáticos y los pequeños telescopios de 100 mm revelan fácilmente el brillante cúmulo estelar incrustado, la resolución de las siluetas oscuras de los pilares centrales requiere un telescopio de mayor apertura, de 200 mm o más, junto con cielos oscuros prístinos y un filtro de nebulosa UHC o OIII para maximizar el contraste de las nubes de gas.",
+    "wikipedia_qid": "Q11349"
+  },
+  "d_J1819562-170421": {
+    "name": "Messier 18",
+    "common_names": [
+      "Cúmulo del Cisne Negro"
+    ],
+    "description": "Messier 18 es un cúmulo abierto de estrellas situado en la constelación de Sagitario, a unos 4.230 años luz de la Tierra. Este grupo estelar, relativamente disperso, se encuentra ubicado en el cielo entre la famosa Nebulosa Omega y la Nube Estelar de Sagitario.",
+    "fun_fact": "A pesar de ser un objeto del catálogo de Messier, es uno de los pocos que aún no ha sido fotografiado por el Telescopio Espacial Hubble.",
+    "visual_tip": "Busca este cúmulo en la densa región de Sagitario utilizando binoculares o un telescopio pequeño. Apunta tu equipo entre la Nebulosa Omega y la Nube Estelar de Sagitario para localizarlo fácilmente.",
+    "wikipedia_qid": "Q11370"
+  },
+  "d_J1820470-161018": {
+    "name": "Nebulosa Omega",
+    "common_names": [
+      "Nebulosa del Cisne",
+      "Nebulosa del Cheque",
+      "Nebulosa de la Langosta",
+      "Nebulosa de la Herradura"
+    ],
+    "description": "La Nebulosa Omega es una brillante región H II situada en la constelación de Sagitario, a una distancia de entre 5.000 y 6.000 años luz. Es una de las zonas de formación estelar más ricas y activas de nuestra Vía Láctea, destacando por su forma característica que recuerda a un cisne o una marca de verificación.",
+    "fun_fact": "Aunque fue descubierta originalmente por Philippe Loys de Chéseaux en 1745, Charles Messier la incluyó en su famoso catálogo en 1764, reconociendo su importancia como uno de los objetos más brillantes de los campos estelares de Sagitario.",
+    "visual_tip": "Busca esta nebulosa en los ricos campos estelares de Sagitario. Con una magnitud aparente de 6.0, apunta tus binoculares o un telescopio pequeño hacia la zona para distinguir su forma brillante, especialmente bajo cielos oscuros y despejados.",
+    "wikipedia_qid": "Q11357"
+  },
+  "d_J1824328-245211": {
+    "name": "Messier 28",
+    "common_names": [],
+    "description": "Messier 28 es un denso cúmulo globular de estrellas situado en la constelación de Sagitario, a unos 18.000 años luz de distancia de nosotros. Fue descubierto por Charles Messier en 1764, quien inicialmente lo describió como una nebulosa tenue y redonda.",
+    "fun_fact": "Este cúmulo es famoso en la comunidad científica por albergar el primer púlsar descubierto dentro de un cúmulo globular, un hallazgo que cambió nuestra comprensión sobre la evolución estelar.",
+    "visual_tip": "Busca este cúmulo en la parte central de Sagitario. Aunque es visible con binoculares bajo cielos oscuros, utiliza un telescopio de apertura media para empezar a resolver sus estrellas periféricas y apreciar su forma compacta.",
+    "wikipedia_qid": "Q13644"
+  },
+  "d_J1831230-322053": {
+    "name": "Messier 69",
+    "common_names": [],
+    "description": "Este cúmulo globular se encuentra a unos 28.700 años luz de la Tierra, en el corazón de la constelación de Sagitario. Es un objeto relativamente rico en metales que forma parte de la población del bulbo galáctico, mostrando una densidad estelar notable en su núcleo.",
+    "fun_fact": "¡Es un vecino muy cercano de otro cúmulo globular, Messier 70! Ambos están separados por apenas 1.800 años luz, lo que los convierte en una pareja cósmica fascinante en el cielo austral.",
+    "visual_tip": "Para localizarlo, busca la estrella Epsilon Sagittarii y desplázate unos 2,5 grados hacia el noreste. Aunque es tenue, puedes llegar a verlo con unos prismáticos de 50 mm si el cielo está lo suficientemente oscuro.",
+    "wikipedia_qid": "Q14002"
+  },
+  "d_J1831474-190736": {
+    "name": "Messier 25",
+    "common_names": [],
+    "description": "Este cúmulo abierto de estrellas se encuentra en la constelación de Sagitario, a unos 2.000 años luz de la Tierra. Con una edad de aproximadamente 67,6 millones de años, este grupo estelar destaca por albergar una estrella variable cefeida llamada U Sagittarii.",
+    "fun_fact": "Investigaciones recientes sugieren que este cúmulo podría formar parte de un sistema triple de cúmulos estelares junto a otros dos grupos cercanos.",
+    "visual_tip": "Busca este cúmulo en la constelación de Sagitario; gracias a su magnitud aparente de 4.6, puedes intentar localizarlo a simple vista bajo cielos muy oscuros, aunque verás mucho mejor sus estrellas utilizando unos prismáticos.",
+    "wikipedia_qid": "Q13623"
+  },
+  "d_J1836239-235417": {
+    "name": "Messier 22",
+    "common_names": [
+      "Gran Cúmulo de Sagitario"
+    ],
+    "description": "El Messier 22 es uno de los cúmulos globulares más brillantes y cercanos a la Tierra, situado a unos 10.600 años luz de distancia en la constelación de Sagitario. Este impresionante conjunto elíptico alberga cientos de miles de estrellas y destaca por su denso núcleo y su importancia en el estudio de la evolución estelar.",
+    "fun_fact": "Es uno de los poquísimos cúmulos globulares en los que se ha descubierto una nebulosa planetaria en su interior, un hallazgo extremadamente raro para este tipo de objetos.",
+    "visual_tip": "Para encontrarlo, busca la constelación de Sagitario y apunta tu telescopio hacia el noreste de Kaus Borealis, la estrella superior del asterismo de la 'Tetera'. Con un telescopio de 8 pulgadas, podrás empezar a resolver individualmente sus estrellas más brillantes.",
+    "wikipedia_qid": "Q11392"
+  },
+  "d_J1843127-321731": {
+    "name": "Messier 70",
+    "common_names": [],
+    "description": "Messier 70 es un cúmulo globular de estrellas situado en la parte sur de la constelación de Sagitario, a unos 29.400 años luz de la Tierra. Este denso conjunto estelar ha experimentado un colapso en su núcleo, lo que le otorga una concentración central muy marcada.",
+    "fun_fact": "Este cúmulo es famoso en la historia de la astronomía moderna porque el célebre cometa Hale-Bopp fue descubierto muy cerca de él en 1995.",
+    "visual_tip": "Busca este cúmulo en la constelación de Sagitario utilizando un telescopio de apertura media. Debido a su magnitud de 8.1, verás una mancha difusa y compacta; intenta usar visión periférica para apreciar mejor su brillo central.",
+    "wikipedia_qid": "Q14004"
+  },
+  "d_J1845168-092313": {
+    "name": "Messier 26",
+    "common_names": [],
+    "description": "Messier 26 es un cúmulo abierto situado en la constelación de Escudo, a unos 5.160 años luz de la Tierra. Con una edad estimada de 85 millones de años, este cúmulo destaca por su estructura peculiar y su densidad estelar moderada.",
+    "fun_fact": "El cúmulo presenta una región de baja densidad estelar cerca de su núcleo, un fenómeno desconcertante que los astrónomos aún no han podido explicar completamente, descartando la presencia de nubes de polvo interestelar.",
+    "visual_tip": "Busca este cúmulo al suroeste de Messier 11. Aunque es un desafío con binoculares, utiliza un telescopio con una apertura de al menos 76 mm para empezar a distinguir sus estrellas bajo cielos oscuros.",
+    "wikipedia_qid": "Q13626"
+  },
+  "d_J1851037-061618": {
+    "name": "Cúmulo del Pato Salvaje",
+    "common_names": [],
+    "description": "El Cúmulo del Pato Salvaje es uno de los cúmulos abiertos más ricos, compactos y masivos conocidos. Situado a unos 6.120 años luz de distancia en la constelación del Escudo, este grupo estelar de unos 316 millones de años de antigüedad destaca por la disposición de sus estrellas más brillantes, que parecen formar una bandada de patos en vuelo.",
+    "fun_fact": "Se cree que la composición química inusual del cúmulo, rica en elementos del proceso alfa, podría deberse a la influencia de una explosión de supernova cercana que enriqueció la nube molecular donde nacieron sus estrellas.",
+    "visual_tip": "Busca el cúmulo justo al este del punto medio de la Nube Estelar del Escudo. Aunque es visible con binoculares bajo cielos oscuros, utiliza un telescopio para distinguir mejor la forma triangular de sus estrellas más brillantes que le da su nombre.",
+    "wikipedia_qid": "Q11294"
+  },
+  "d_J1853350+330144": {
+    "name": "Nebulosa del Anillo",
+    "description": "La Nebulosa del Anillo (M57) es una nebulosa planetaria por excelencia que representa la cáscara de gas ionizado expulsada por una estrella moribunda similar al sol, que se extiende aproximadamente 1,3 años luz (12,3 billones de km) de diámetro. Situada a 2.300 años luz de distancia, en la constelación septentrional de Lyra, brilla con una magnitud aparente de 8,8 y aparece a través de prismáticos o de un telescopio muy pequeño como un disco pequeño, de color verde grisáceo fantasmal, que se confunde fácilmente con un planeta lejano. Un telescopio moderado de 150 mm bajo cielos oscuros transforma bellamente esta mancha en un distintivo y hueco anillo de humo cósmico que flota contra el telón de fondo del espacio profundo, iluminado desde el interior por una estrella enana blanca ferozmente caliente.",
+    "fun_fact": "¡La Nebulosa del Anillo es en realidad una enorme ilusión cósmica! El cartografiado tridimensional de alta resolución que combina luz visible y datos infrarrojos muestra que la M57 no es en absoluto una simple burbuja hueca o un círculo, sino más bien un cilindro de gas alargado con forma de barril visto casi directamente por su extremo abierto. Al mirar la nebulosa desde la Tierra, estamos mirando directamente por el tubo de un barril estelar, captando la violenta expansión geométrica de los últimos estertores de la muerte de una estrella desde una perspectiva de primera fila.",
+    "visual_tip": "Para encontrar fácilmente la M57, localice la brillante estrella Vega y trace el pequeño y característico paralelogramo de estrellas que forma el cuerpo de Lyra; la nebulosa se encuentra casi perfectamente a mitad de camino entre las dos estrellas inferiores, Sheliak y Sulafat. Aunque un telescopio de 100 mm revelará fácilmente la forma de anillo con centro oscuro, necesitará un instrumento grande de 250 mm o mayor forzado a aumentos excepcionalmente altos en una noche estable y sin luna para vislumbrar la increíblemente tenue estrella enana blanca de magnitud 15,7 que descansa en su centro absoluto.",
+    "wikipedia_qid": "Q13628"
+  },
+  "d_J1855033-302847": {
+    "name": "Messier 54",
+    "common_names": [],
+    "description": "Messier 54 es un cúmulo globular situado en la constelación de Sagitario, descubierto por Charles Messier en 1778. Se encuentra a unos 80.000 años luz de distancia y destaca por ser probablemente de origen extragaláctico.",
+    "fun_fact": "En 2009, los astrónomos hallaron pruebas de la existencia de un agujero negro de masa intermedia en el núcleo de este cúmulo, algo muy poco común.",
+    "visual_tip": "Para localizarlo, busca la estrella Zeta Sagittarii; el cúmulo se encuentra muy cerca. Ten en cuenta que, aunque es brillante, no podrás distinguir estrellas individuales ni siquiera con telescopios de aficionado grandes.",
+    "wikipedia_qid": "Q13962"
+  },
+  "d_J1916355+301100": {
+    "name": "Messier 56",
+    "common_names": [],
+    "description": "Messier 56 es un antiguo cúmulo globular situado a unos 32.900 años luz de distancia en la constelación de la Lira. Con una edad estimada de 13.700 millones de años, este denso conjunto de estrellas es un superviviente de una antigua galaxia enana que fue absorbida por la Vía Láctea.",
+    "fun_fact": "Se cree que este cúmulo es parte de la 'Salchicha de Gaia', los restos de una galaxia enana que colisionó con la nuestra hace miles de millones de años, dejando tras de sí un rastro de estrellas con órbitas retrógradas.",
+    "visual_tip": "Busca este objeto a medio camino entre las estrellas Albireo y Sulafat. Si utilizas binoculares grandes, lo verás como una pequeña mancha difusa, pero apunta un telescopio de al menos 20 cm de apertura si quieres resolver sus estrellas individuales.",
+    "wikipedia_qid": "Q13967"
+  },
+  "d_J1939597-305753": {
+    "name": "Messier 55",
+    "common_names": [
+      "Cúmulo Espectro"
+    ],
+    "description": "Messier 55 es un impresionante cúmulo globular situado a unos 17.600 años luz de distancia en la constelación de Sagitario. Este antiguo conjunto de estrellas contiene aproximadamente 269.000 masas solares y se caracteriza por su bajísima metalicidad, lo que indica que es un objeto extremadamente viejo.",
+    "fun_fact": "Aunque Charles Messier intentó localizarlo desde París durante años, su baja declinación hizo que fuera un objeto muy difícil de observar para él, ya que apenas se elevaba sobre el horizonte francés.",
+    "visual_tip": "Busca este cúmulo en cielos oscuros utilizando unos prismáticos de 50 mm, donde aparecerá como una mancha difusa. Si quieres resolver sus estrellas individuales, apunta tu telescopio de tamaño medio hacia la región sur de Sagitario.",
+    "wikipedia_qid": "Q13965"
+  },
+  "d_J1953464+184645": {
+    "name": "Messier 71",
+    "common_names": [
+      "Cúmulo del Pez Ángel"
+    ],
+    "description": "Messier 71 es un cúmulo globular poco denso situado en la pequeña constelación de la Flecha, a unos 13.000 años luz de la Tierra. Durante mucho tiempo fue clasificado erróneamente como un cúmulo abierto debido a su estructura dispersa y a la composición metálica de sus estrellas.",
+    "fun_fact": "Durante décadas, los astrónomos debatieron si era un cúmulo abierto o globular; no fue hasta la década de 1970 que se confirmó su naturaleza globular al detectar una rama horizontal en su diagrama de Hertzsprung-Russell.",
+    "visual_tip": "Busca este cúmulo en la constelación de la Flecha. Aunque es visible con binoculares bajo cielos oscuros, utiliza un telescopio de apertura media para empezar a resolver sus estrellas individuales, que aparecen como una nube tenue y dispersa.",
+    "wikipedia_qid": "Q14006"
+  },
+  "d_J1959363+224316": {
+    "name": "Nebulosa Dumbbell",
+    "common_names": [
+      "Nebulosa de la Haltera",
+      "Nebulosa de las Pesas"
+    ],
+    "description": "La Nebulosa Dumbbell (M27) es una enorme nebulosa planetaria que abarca unos 2,9 años luz (27,4 billones de km), formada cuando una estrella que envejecía desprendió sus capas exteriores hacia el espacio profundo. Situada a 1.360 años luz de distancia, en la tenue constelación septentrional de Vulpecula, brilla con una magnitud aparente combinada relativamente brillante de 7,5. A través de prismáticos estándar bajo cielos oscuros, aparece como una mancha brumosa conspicua y brillante, mientras que un pequeño telescopio de 100 mm transforma esta nube en una inconfundible forma bilobulada que recuerda a una pesa de gimnasio o al corazón de una manzana, iluminada por uno de los mayores remanentes estelares de enana blanca conocidos.",
+    "fun_fact": "¡Este objeto es un hito monumental en la historia de la ciencia! Descubierta por Charles Messier en 1764, la M27 fue la primera nebulosa planetaria observada en la historia de la humanidad. Su engañoso nombre histórico de categoría, «planetaria», fue acuñado más tarde por astrónomos que pensaban que su disco brillante verde-azulado en los primitivos telescopios se parecía a planetas gigantes gaseosos como Urano, a pesar de que en realidad es la explosiva tumba de una estrella masiva.",
+    "visual_tip": "Para localizar la M27, busque la característica forma de flecha de la constelación de Sagitta; la nebulosa se encuentra aproximadamente 3 grados al norte de la estrella de la punta, Gamma Sagittae. Debido a que posee un brillo superficial inusualmente alto para ser una nube de gas de cielo profundo, sigue siendo muy visible incluso bajo una ligera contaminación lumínica urbana, aunque enroscar un filtro de nebulosa OIII en su ocular aislará drásticamente su estructura de gas oxígeno brillante y afilará su icónica silueta de reloj de arena.",
+    "wikipedia_qid": "Q13628"
+  },
+  "d_J2006048-215520": {
+    "name": "Messier 75",
+    "common_names": [],
+    "description": "Messier 75 es un cúmulo globular denso y compacto situado en la constelación de Sagitario. Se encuentra a una distancia considerable de la Tierra, lo que lo convierte en uno de los objetos más remotos y concentrados de su tipo en el catálogo de Messier.",
+    "fun_fact": "Debido a su alta densidad estelar y su gran distancia, este cúmulo aparece como un objeto muy pequeño y brillante, lo que a menudo hace que los observadores lo confundan con una estrella difusa o una nebulosa planetaria.",
+    "visual_tip": "Busca este objeto en cielos muy oscuros utilizando un telescopio de apertura media o grande. Apunta hacia la constelación de Sagitario y utiliza visión periférica para distinguir su núcleo brillante y compacto de las estrellas circundantes.",
+    "wikipedia_qid": "Q56872685"
+  },
+  "d_J2023429+382925": {
+    "name": "Messier 29",
+    "common_names": [
+      "Cúmulo de la Torre de Refrigeración"
+    ],
+    "description": "El Messier 29 es un cúmulo abierto pequeño y brillante situado en la constelación del Cisne, justo al sur de la estrella Gamma Cygni. Se encuentra a unos 5.240 años luz de distancia y está inmerso en la densa nebulosidad de los brazos espirales de la Vía Láctea.",
+    "fun_fact": "A pesar de su apariencia modesta, este cúmulo es extremadamente joven, con una edad estimada de apenas 10 a 13 millones de años, lo que explica por qué sus estrellas más brillantes son gigantes de clase B0.",
+    "visual_tip": "Busca este cúmulo utilizando binoculares en una noche despejada. Apunta hacia la estrella Gamma Cygni en el Cisne y mira justo al sur; verás un pequeño grupo de estrellas que destaca sobre el fondo de la Vía Láctea.",
+    "wikipedia_qid": "Q13647"
+  },
+  "d_J2053277-123214": {
+    "name": "Messier 72",
+    "common_names": [],
+    "description": "Messier 72 es un cúmulo globular situado en la constelación de Acuario, a una distancia aproximada de 54.500 años luz de la Tierra. Es un objeto relativamente tenue y compacto que se encuentra en las regiones exteriores de nuestra galaxia.",
+    "fun_fact": "A pesar de su apariencia pequeña y compacta, este cúmulo tiene una edad estimada de unos 9.500 millones de años, lo que lo convierte en un testigo antiguo de la formación estelar en el halo galáctico.",
+    "visual_tip": "Debido a su magnitud aparente de 9.3, busca este cúmulo utilizando un telescopio de apertura media en una noche despejada y oscura. Apunta tu telescopio hacia la constelación de Acuario y utiliza visión periférica para distinguir mejor su tenue brillo entre las estrellas de fondo.",
+    "wikipedia_qid": "Q14008"
+  },
+  "d_J2058599-123759": {
+    "name": "Messier 73",
+    "common_names": [],
+    "description": "Messier 73 es un asterismo formado por cuatro estrellas en la constelación de Acuario que durante mucho tiempo se consideró un pequeño cúmulo abierto. Gracias a los datos de la misión Gaia, sabemos que estas estrellas no están relacionadas físicamente, ya que se encuentran a distancias muy diferentes de la Tierra, que oscilan entre los 1030 y los 2290 años luz.",
+    "fun_fact": "Aunque durante décadas los astrónomos debatieron si se trataba de un cúmulo estelar real, las mediciones modernas de distancia han confirmado que es solo una coincidencia visual, un simple alineamiento de estrellas en el cielo.",
+    "visual_tip": "Para localizarlo, apunta tu telescopio hacia la constelación de Acuario y busca un poco al este del cúmulo globular Messier 72. Utiliza una apertura moderada para distinguir este pequeño grupo de estrellas con una magnitud aparente de 9.0.",
+    "wikipedia_qid": "Q14009"
+  },
+  "d_J2129583+121001": {
+    "name": "Messier 15",
+    "common_names": [
+      "Gran Cúmulo de Pegaso"
+    ],
+    "description": "Messier 15 es un impresionante cúmulo globular situado en la constelación de Pegaso, a unos 35.700 años luz de distancia. Con una antigüedad estimada de 12.000 millones de años, es uno de los cúmulos más antiguos que conocemos y destaca por su núcleo extremadamente denso y brillante.",
+    "fun_fact": "Este cúmulo es tan denso que ha experimentado un fenómeno llamado 'colapso del núcleo', lo que significa que su centro es increíblemente compacto y alberga una gran cantidad de estrellas en un espacio muy reducido.",
+    "visual_tip": "Busca este objeto en la constelación de Pegaso utilizando unos prismáticos o un telescopio pequeño. Apunta hacia el hocico de Pegaso y mira con atención; verás una mancha circular brillante que, con mayor aumento, empieza a revelar su naturaleza estelar.",
+    "wikipedia_qid": "Q11332"
+  },
+  "d_J2131040+481747": {
+    "name": "Messier 39",
+    "common_names": [
+      "Cúmulo Pirámide"
+    ],
+    "description": "Messier 39 es un cúmulo abierto situado en la constelación del Cisne, a unos 1.010 años luz de distancia. Con una magnitud aparente de 4.6, este grupo de estrellas ocupa un área en el cielo similar al tamaño de la Luna llena.",
+    "fun_fact": "Aunque parece un grupo pequeño a través de un telescopio, este cúmulo contiene una compleja variedad de estrellas, incluyendo varias estrellas binarias y al menos cinco estrellas químicamente peculiares.",
+    "visual_tip": "Busca este cúmulo a unos 9 grados al este-noreste de Deneb. Aunque puedes verlo con un telescopio pequeño, utiliza mejor unos prismáticos para apreciar su estructura abierta y dispersa.",
+    "wikipedia_qid": "Q13883"
+  },
+  "d_J2133270-004923": {
+    "name": "Messier 2",
+    "common_names": [],
+    "description": "Messier 2 es uno de los cúmulos globulares más grandes y brillantes conocidos, situado a unos 38.140 años luz de distancia en la constelación de Acuario. Este antiguo conjunto de estrellas, con una edad estimada de 12.500 millones de años, alberga cientos de miles de estrellas densamente agrupadas.",
+    "fun_fact": "A pesar de su enorme tamaño y brillo, este cúmulo fue descubierto originalmente por Jean-Dominique Maraldi en 1746, quien inicialmente pensó que se trataba de una nebulosa sin estrellas debido a la gran distancia a la que se encuentra.",
+    "visual_tip": "Para encontrarlo, busca la estrella Beta Aquarii y desplázate unos cinco grados hacia el norte. Aunque es visible con binoculares bajo cielos oscuros, utiliza un telescopio de apertura media para empezar a resolver sus estrellas individuales en los bordes.",
+    "wikipedia_qid": "Q11099"
+  },
+  "d_J2140221-231047": {
+    "name": "Messier 30",
+    "common_names": [
+      "Cúmulo de la Medusa"
+    ],
+    "description": "El Messier 30 es un impresionante cúmulo globular situado a unos 27.100 años luz de distancia en la constelación de Capricornio. Este antiguo conjunto de estrellas, con unos 12.900 millones de años de antigüedad, destaca por su núcleo extremadamente denso que ha sufrido un proceso de colapso gravitatorio.",
+    "fun_fact": "Este cúmulo sigue una órbita retrógrada a través del halo galáctico, lo que sugiere que no se formó originalmente en la Vía Láctea, sino que fue capturado de una galaxia satélite hace mucho tiempo.",
+    "visual_tip": "Busca este cúmulo con unos prismáticos 10x50 para ver una mancha de luz tenue; si utilizas un telescopio de mayor apertura, apunta con cuidado para intentar resolver sus estrellas individuales y apreciar su núcleo comprimido.",
+    "wikipedia_qid": "Q13653"
+  },
+  "d_J2324471+613531": {
+    "name": "Messier 52",
+    "common_names": [
+      "Cúmulo del Escorpión"
+    ],
+    "description": "Messier 52 es un brillante cúmulo abierto situado en la constelación de Casiopea, a unos 4.600 años luz de distancia. Con una edad estimada de 158 millones de años, este grupo estelar destaca por su densidad y su núcleo bien definido.",
+    "fun_fact": "El núcleo del cúmulo carece de materia interestelar, lo que sugiere que antiguas explosiones de supernovas pudieron haber expulsado el gas sobrante en las primeras etapas de su formación.",
+    "visual_tip": "Busca este cúmulo en una noche despejada utilizando binoculares. Apunta hacia la constelación de Casiopea y compara su brillo con las estrellas circundantes; notarás que su visibilidad se ve ligeramente afectada por el polvo interestelar en su parte sur.",
+    "wikipedia_qid": "Q13958"
+  }
 }
