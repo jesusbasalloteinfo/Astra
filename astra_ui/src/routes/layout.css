@@ -323,8 +323,70 @@
 /* Other base styles */
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-primary, #0a1525);
+  color-scheme: dark;
 }
 
-html, body {
+body {
+  background-color: var(--color-primary, #0a1525);
   overscroll-behavior-x: none; 
+}
+
+/* ============================================
+   VIEW TRANSITIONS & PAGE ANIMATIONS
+   ============================================ */
+::view-transition {
+  background-color: #0a1525;
+}
+
+::view-transition-group(root) {
+  animation-duration: 250ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(root) {
+  animation: 180ms ease-out both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 220ms ease-in both vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.995);
+  }
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(1.005);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.vt-app-logo {
+  view-transition-name: app-logo;
+}
+
+.vt-auth-card {
+  view-transition-name: auth-card;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

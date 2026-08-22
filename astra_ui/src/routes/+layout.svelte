@@ -18,9 +18,37 @@
 
 <script lang="ts">
 	import './layout.css';
-
+	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+
 	let { children } = $props();
+
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+
+		const from = navigation.from?.url.pathname ?? '';
+		const to = navigation.to?.url.pathname ?? '';
+
+		// Exclude dashboard and observations
+		const isInsideDashboard = from.includes('/dashboard') && to.includes('/dashboard');
+		const isObservation = from.includes('/observation') || to.includes('/observation');
+		if (isInsideDashboard || isObservation) {
+			return;
+		}
+
+		// Apply only to landing and login/register
+		const isLandingOrLoginNav = (from.includes('/login') || to.includes('/login') || from === '/' || to === '/' || /^\/[a-z]{2}(\/)?$/.test(from) || /^\/[a-z]{2}(\/)?$/.test(to));
+		if (!isLandingOrLoginNav) {
+			return;
+		}
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
 
 	$effect(() => {
         const currentPath = page.url.pathname;

@@ -37,10 +37,10 @@
             {@const isActive = page.url.pathname === item.href || (item.href !== '/dashboard' && page.url.pathname.startsWith(item.href))}
             <a 
                 href={item.href} 
-                class="flex flex-col items-center justify-center w-full h-full gap-1 transition-colors {isActive ? 'text-accent' : 'text-copy-secondary hover:text-copy-primary'}"
+                class="flex flex-col items-center justify-center w-full h-full gap-1 transition-all duration-200 active:scale-95 {isActive ? 'text-accent' : 'text-copy-secondary hover:text-copy-primary'}"
             >
-                <item.icon class="w-5 h-5 landscape:w-4 landscape:h-4 {isActive ? 'stroke-[2.5px]' : 'stroke-2'}" />
-                <span class="text-[10px] font-bold uppercase tracking-tight {isActive ? 'opacity-100' : 'opacity-70'} landscape:hidden">{item.label}</span>
+                <item.icon class="w-5 h-5 landscape:w-4 landscape:h-4 transition-transform duration-200 {isActive ? 'scale-110 stroke-[2.5px]' : 'scale-100 stroke-2'}" />
+                <span class="text-[10px] font-bold uppercase tracking-tight transition-opacity duration-200 {isActive ? 'opacity-100' : 'opacity-70'} landscape:hidden">{item.label}</span>
             </a>
         {/each}
     </div>

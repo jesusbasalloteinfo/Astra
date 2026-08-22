@@ -18,6 +18,7 @@
 
 <script lang="ts">
     import * as m from '$lib/paraglide/messages.js';
+    import { fade } from 'svelte/transition';
     import AuthLayout from '$lib/components/auth/AuthLayout.svelte';
     import LoginForm from '$lib/components/auth/LoginForm.svelte';
     import RegisterForm from '$lib/components/auth/RegisterForm.svelte';
@@ -41,8 +42,12 @@
     backText={m.login_return_home()}
 >
     {#if isRegister}
-        <RegisterForm onToggleMode={toggleMode} />
+        <div in:fade={{ duration: 200, delay: 50 }}>
+            <RegisterForm onToggleMode={toggleMode} />
+        </div>
     {:else}
-        <LoginForm onToggleMode={toggleMode} />
+        <div in:fade={{ duration: 200, delay: 50 }}>
+            <LoginForm onToggleMode={toggleMode} />
+        </div>
     {/if}
 </AuthLayout>

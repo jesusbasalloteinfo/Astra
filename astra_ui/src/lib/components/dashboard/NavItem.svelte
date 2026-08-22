@@ -39,10 +39,13 @@
 </script>
 
 <a {href}
-   class="flex items-center justify-start gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors
+   class="relative flex items-center justify-start gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
           {active
-              ? 'bg-surface text-copy-primary'
+              ? 'bg-surface text-copy-primary font-semibold shadow-xs'
               : 'text-copy-secondary hover:text-copy-primary hover:bg-surface'}">
-    <Icon size={17} class={active ? 'text-accent' : ''} />
+    {#if active}
+        <span class="absolute left-0 top-2 bottom-2 w-1 bg-accent rounded-r-full"></span>
+    {/if}
+    <Icon size={17} class="transition-colors duration-200 {active ? 'text-accent' : ''}" />
     {label}
 </a>
